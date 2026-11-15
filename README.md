@@ -30,6 +30,14 @@ De första åtta momenten i användarens tio-stegsplan är nu [genomförda och d
 - **Fortfarande preliminärt:** exakta tonhöjder, längder, ljudprioritering, slutlig ljudpalett och samtidiga effekter. **Inget ROM-ljud byggt.**
 - [Ljudspecifikation v0.17](https://github.com/Odourman/let-me-out/blob/main/docs/SOUND_DESIGN_V017_2026-11-15.md) och [identiskt originalunderlag i Drive](https://drive.google.com/file/d/1bm19imkHic0zPSvDk-MGJ5842VfQtuWS/view).
 
+## Teknisk ROM-grind v0.18 – färdig plan, ingen kodstart
+
+- Framtida avgränsad diagnostik omfattar **R1–R4**: rastervärstafall 6 androider+spelare+skott, 5 androider+spelare+nyckel+skott, asymmetrisk högerdörr och styrd rasterstress.
+- **16 framtida ROM-testfall** är definierade, samtliga `NOT_RUN_IN_ROM`; fristående [VERIFICATION](docs/ROM_GATE_V018_VERIFICATION.md) krävs.
+- [Uppdragets scope](docs/ROM_GATE_V018_SCOPE.md) · [acceptanskriterier](docs/ROM_GATE_V018_ACCEPTANCE.md) · [testmatris](planning/ROM_GATE_V018_TEST_MATRIX.csv) · [risker och stopp](docs/ROM_GATE_V018_BLOCKERS.md).
+- [Ladda ned hela grinden från Drive](https://drive.google.com/file/d/1FzQJWYYMzO0T18wxil079WxqmdboFPiw/view?usp=drivesdk).
+- **Kodning är fortfarande PAUSAD** och kräver [separat uttrycklig auktorisation](https://github.com/Odourman/let-me-out/issues/6). Detta gäller inte fullspelet.
+
 ## Spelidé
 
 Spelaren ska hitta en nyckel som döljs hos en av sex androider. Första *avfyrade* skottet gör de tidigare ofarliga androiderna fientliga. Efter att nyckeln plockats upp måste spelaren ta sig ut genom dörren på höger sida. Fler överlevande androider ger en poängbonus vid lyckad utgång.
@@ -39,7 +47,7 @@ Fastslagna grundvärden: sex androider (fyra stora, två små), fyra speglade ru
 ## Underlag
 
 - [Master specification och beslutsregister i projektets Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u).
-- Google Drive innehåller 17 versionerade projektarkiv (till v0.16), en separat kopia av den valda kartdatan, mobilrapporter och en besluts-/färdplanfil som motsvarar GitHubs statusrapport. GitHub innehåller egna textbaserade beslut, arbetsunderlag och [öppna designärenden](https://github.com/Odourman/let-me-out/issues), men inga referens-ROM:er eller tredjepartsfiler. Linear används inte för detta spel.
+- Google Drive innehåller 18 versionerade projektarkiv (till v0.18), en separat kopia av den valda kartdatan, mobilrapporter och en besluts-/färdplanfil som motsvarar GitHubs statusrapport. GitHub innehåller egna textbaserade beslut, arbetsunderlag och [öppna designärenden](https://github.com/Odourman/let-me-out/issues), men inga referens-ROM:er eller tredjepartsfiler. Linear används inte för detta spel.
 
 ## Arbetsregler
 
