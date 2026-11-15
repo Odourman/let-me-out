@@ -22,7 +22,7 @@ for mode in frame breakpoint_first breakpoint_second; do
       if [ "$mode" = breakpoint_first ]; then symbol=R1aFirstRESP1; else symbol=R1aSecondRESP1; fi
       addr=$(awk -v sym="$symbol" 'tolower($1)==tolower(sym) {print $2;exit}' r1a.sym)
       test -n "$addr" || { echo "missing symbol $symbol" >&2; exit 1; }
-      echo "runToPc \$addr"
+      printf 'runToPc $%s\n' "$addr"
     fi
     echo 'print _fCount'
     echo 'print _scan'
