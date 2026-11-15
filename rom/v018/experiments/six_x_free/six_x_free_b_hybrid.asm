@@ -76,6 +76,7 @@ ClearRam:
  STA COLUP0
  LDA #$0E
  STA COLUP1
+ STA COLUPF  ; make six coarse PF android bodies visible, white on black
  LDA #0
  STA COLUBK
  LDA #145
