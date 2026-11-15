@@ -12,5 +12,5 @@ assert len(p)==4096
 Path("dist/LetMeOut_v018_two_silhouette_F6.bin").write_bytes(p*4)
 print("bank size",len(p),"F6 ROM size",len(p)*4)
 PY
-sha256sum dist/proof_bank.bin dist/LetMeOut_v018_two_silhouette_F6.bin > dist/SHA256SUMS.txt
+(cd dist && sha256sum proof_bank.bin LetMeOut_v018_two_silhouette_F6.bin > SHA256SUMS.txt)
 cat dist/SHA256SUMS.txt
