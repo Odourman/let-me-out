@@ -6,7 +6,7 @@
 ## Beslutsstatus
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
-- Senare studier v0.1–v0.11 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner) och C02 (planerad kartlayout) godkändes av användaren i direkt svar på MAIN:s respektive förslag 2026-11-15; se separata beslutsloggar nedan.
+- Senare studier v0.1–v0.12 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner) och C02 (planerad kartlayout) godkändes av användaren i direkt svar på MAIN:s respektive förslag 2026-11-15; se separata beslutsloggar nedan.
 - ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
 
 ## Fastställd kärna
@@ -23,7 +23,7 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 - **AI:** P2 (patrullera rakt och sväng ibland) och J2 (enkel närmandelogik med kort slumpmässig omväg).
 - **Svårighet:** C-1 är en föreslagen kurva, inte fastslagen hastighetsimplementering.
 - **Grafik:** sex androider på samma rasterhöjd, spelarskott, dörr i speglad playfield och nyckel kräver verkliga timingtester.
-- **Dörr:** PF0-/playfield-ändring är en hypotes, inte verifierad lösning.
+- **Dörr:** v0.12 visar att alla fyra kartorna har samma högerdörrzon **x=39, y=9–12** och konstant stängd vänsterkant. Logikmodell 16/16 PASS, **inget ROM-test**. [v0.12](https://github.com/Odourman/let-me-out/blob/main/docs/DOOR_VISUAL_RIGHT_ONLY_STUDY_V012.md) föreslår orange smal port (V2) som visuellt mål, med brun PF0-port (V1) som tekniskt testbasfall. Färg och implementering är **inte godkända eller verifierade**.
 
 ## Senast godkända MAIN-beslut (K1/E1)
 
@@ -36,11 +36,12 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 1. **C02 valt som planerad karta C** (beslut; inte speltestad): [GitHub-beslut och spawngranskning v0.11](https://github.com/Odourman/let-me-out/blob/main/docs/APPROVED_MAP_C02_AND_SPAWN_AUDIT_V011.md), [Drive-paket](https://drive.google.com/file/d/1WbnLfcSKM-bqmVIz5jCJ0ga0sUzPU0UK/view?usp=drivesdk), [avslutat Issue #2](https://github.com/Odourman/let-me-out/issues/2). A01/B01/D01 ej ändrade. Jämför bara A/B/D med annat utförande om senare speltest kräver det.
 2. **Spawnspelbalans ännu öppen:** samtliga 64 045 möjliga sexstartval ur nuvarande fyra pools klarade offline 2×2-kontroll. S0 oförändrad bas, S1 (minst 12 fyrvägssteg från spelarstart) **endast testkandidat**.
 3. Detaljer för patrullering, jakt och svårighet (P2/J2/C-1), tills vidare testkandidater.
-4. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
+4. **Visuell dörrfråga öppen:** godkänn/avvisa V2 (orange port som försvinner) som designmål. [GitHub Issue #4](https://github.com/Odourman/let-me-out/issues/4). Testa PF0-lösning och orange avvikande färg först efter separat kodgodkännande.
+5. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – tolv versionerade ZIP-arkiv från huvudöverlämningen till planerade kartor/spawngranskning v0.11, inklusive manifest.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – tretton versionerade ZIP-arkiv från huvudöverlämningen till högerdörrstudie v0.12, inklusive manifest, plus kartdata JSON och en separat mobilrapport.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
 - **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
