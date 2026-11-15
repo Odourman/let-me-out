@@ -28,7 +28,7 @@ jobs:
         run: |
           cd rom/v018/experiments/venetian_blinds
           (cd dist && sha256sum -c SHA256SUMS.txt)
-          for v in vb_9_interleave vb_18_doubled; do
+          for v in vb_9_interleave vb_18_doubled vb_9_vdel; do
             for frame in 12 17; do
               test -s "evidence/$v/frame_$frame/stella_full.png"
             done
