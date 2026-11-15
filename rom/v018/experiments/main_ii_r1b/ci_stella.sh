@@ -11,18 +11,10 @@ xpid=$!
 trap 'kill "$xpid" 2>/dev/null || true' EXIT
 export DISPLAY=:119
 sleep 2
-# On a fresh Xvfb session Stella's first launch can leave the root screenshot
-# black even with a live process. Warm up once and discard all its evidence.
-cat > "$ACTUAL_HOME/.config/stella/autoexec.script" <<'EOF'
-base #10
-frame #2
-EOF
-stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/r1b_F6.bin" > evidence/stella_warmup_stdout.txt 2>&1 &
-warm_pid=$!
-sleep 8
-kill "$warm_pid" 2>/dev/null || true
-wait "$warm_pid" 2>/dev/null || true
-for pair in 0:13 1:29 2:45 3:61; do
+# The first Stella debugger session may be blank. Prime with the EXACT
+# same ROM path and command script, but discard that first session.
+first_capture=1
+for pair in 0:13 1:29 2:45 3:61 0:13; do
   phase="${pair%%:*}"; frame="${pair##*:}"
   dst="evidence/phase_${phase}"
   mkdir -p "$dst"
@@ -44,6 +36,13 @@ for pair in 0:13 1:29 2:45 3:61; do
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/$dst/proof.bin" > "$dst/stella_stdout.txt" 2>&1 &
   pid=$!
   sleep 8
+  if [ "$phase" = "0" ] && [ "$first_capture" -eq 1 ]; then
+    first_capture=0
+    echo "Discarding initial Stella debugger session (startup-only)"
+    kill "$pid" 2>/dev/null || true
+    wait "$pid" 2>/dev/null || true
+    continue
+  fi
   if kill -0 "$pid" 2>/dev/null; then
     for attempt in 1 2 3 4; do
       import -window root "$dst/stella_full.png"
