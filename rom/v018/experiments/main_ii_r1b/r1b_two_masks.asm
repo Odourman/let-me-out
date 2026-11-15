@@ -86,7 +86,9 @@ M0Delay:
  BNE M0Delay
  STA RESM0
  STA WSYNC
- LDX #6
+ ; Place initial main P1 copy farther right so row-0 main-copy ghost
+ ; cannot begin before the first same-line RESP1 retrigger.
+ LDX #10
 P1Delay:
  DEX
  BNE P1Delay
