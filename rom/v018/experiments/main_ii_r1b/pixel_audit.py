@@ -58,12 +58,12 @@ def analyze(path):
     masks.sort(key=lambda x:x["gui_x"])
     player=sum(1 for y in range(162,171) for x in range(105,133)
         if (lambda rgb: rgb[0]>120 and rgb[1]>100 and rgb[2]<100)(im.getpixel((x,y))))
-    missile=sum(1 for x in range(175,195) if white(x,162))
+    missile=sum(1 for x in range(230,251) if (lambda rgb: rgb[0]>120 and rgb[1]>100 and rgb[2]<100)(im.getpixel((x,166))))
     return {
         "mask_count":len(masks),
         "masks":masks,
         "p0_yellow_pixel_count":player,
-        "m0_white_pixel_count":missile,
+        "m0_yellow_pixel_count":missile,
         "pass_pair":len(masks)==2 and
             masks[0]["male_mask_exact"] and masks[1]["female_mask_exact"] and
             masks[0]["gui_y"]==masks[1]["gui_y"] and player>0 and missile>0,
