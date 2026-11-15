@@ -1,0 +1,129 @@
+{
+  "note": "9 rows and 8 columns read from real 1366x900 Stella raw screenshot; threshold white=RGB channel sum > 400; Stella stretched 2 display pixels per original color clock. Original reference from project main design/NPC_REFERENCE_8x9_masks.json.",
+  "comparisons": [
+    {
+      "mode": "near",
+      "character": "large_male",
+      "matched": true,
+      "scanline_rows": 9,
+      "columns": 8,
+      "screen_x": 182,
+      "screen_y": 161,
+      "observed": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00011000",
+        "00100100",
+        "00100100",
+        "01000010",
+        "01000010"
+      ],
+      "authoritative": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00011000",
+        "00100100",
+        "00100100",
+        "01000010",
+        "01000010"
+      ]
+    },
+    {
+      "mode": "near",
+      "character": "large_female",
+      "matched": true,
+      "scanline_rows": 9,
+      "columns": 8,
+      "screen_x": 246,
+      "screen_y": 161,
+      "observed": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00111100",
+        "01111110",
+        "01111110",
+        "00100100",
+        "00100100"
+      ],
+      "authoritative": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00111100",
+        "01111110",
+        "01111110",
+        "00100100",
+        "00100100"
+      ]
+    },
+    {
+      "mode": "far",
+      "character": "large_male",
+      "matched": true,
+      "scanline_rows": 9,
+      "columns": 8,
+      "screen_x": 182,
+      "screen_y": 161,
+      "observed": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00011000",
+        "00100100",
+        "00100100",
+        "01000010",
+        "01000010"
+      ],
+      "authoritative": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00011000",
+        "00100100",
+        "00100100",
+        "01000010",
+        "01000010"
+      ]
+    },
+    {
+      "mode": "far",
+      "character": "large_female",
+      "matched": true,
+      "scanline_rows": 9,
+      "columns": 8,
+      "screen_x": 310,
+      "screen_y": 161,
+      "observed": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00111100",
+        "01111110",
+        "01111110",
+        "00100100",
+        "00100100"
+      ],
+      "authoritative": [
+        "00111100",
+        "00111100",
+        "00011000",
+        "11111111",
+        "00111100",
+        "01111110",
+        "01111110",
+        "00100100",
+        "00100100"
+      ]
+    }
+  ]
+}
