@@ -6,7 +6,7 @@
 ## Beslutsstatus
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
-- Senare studier v0.1–v0.8 har skapat nya **rådgivande förslag**, inte automatiskt fastställda spelregler.
+- Senare studier v0.1–v0.9 har skapat nya **rådgivande förslag**, inte automatiskt fastställda spelregler.
 - ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
 
 ## Fastställd kärna
@@ -25,6 +25,12 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 - **Grafik:** sex androider på samma rasterhöjd, spelarskott, dörr i speglad playfield och nyckel kräver verkliga timingtester.
 - **Dörr:** PF0-/playfield-ändring är en hypotes, inte verifierad lösning.
 
+## Senaste MAIN-förslag (inte beslut)
+
+- **v0.9 K1:** Nyckel som uppstår under stillastående spelare får tas i nästa logiska uppdatering utan rörelse.
+- **v0.9 E1:** Dödlig kontakt med överlevande android i öppnad dörr prioriteras före rumsbonus.
+- Båda inväntar användarens beslut: [GitHub Issue #1](https://github.com/Odourman/let-me-out/issues/1). [Förslag och källor](https://github.com/Odourman/let-me-out/blob/main/docs/COLLISION_EDGE_CASES_V09_PROPOSAL.md), [fullständigt Drive-paket](https://drive.google.com/file/d/1Ztg48ihTanH58Z07OhH3Ge3-Rim2v3iC/view?usp=drivesdk).
+
 ## Viktigaste öppna val
 
 1. Exakt prioritet mellan dödlig kontakt och rumsutgång samma uppdatering.
@@ -34,9 +40,10 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – nio versionerade ZIP-arkiv från huvudöverlämning till AI v0.8, inklusive manifest.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – tio versionerade ZIP-arkiv från huvudöverlämning till kollisionsförslag v0.9, inklusive manifest.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
+- **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
 
 **Auktoritet:** Senare direkta användarbeslut > registrerade spelbeslut > experimentella modellförslag > tredjepartsresearch.  
 **Detta är en statusöversikt**, inte ersättning för originalbeslutsregistret.
