@@ -28,6 +28,9 @@ jobs:
       - name: Capture two horizontal placements in real Stella debugger
         timeout-minutes: 5
         run: bash rom/v018/experiments/two_silhouettes/stella_capture.sh
+      - name: Capture independent P1-retrigger horizontal placements in Stella
+        timeout-minutes: 5
+        run: bash rom/v018/experiments/two_silhouettes/stella_capture_retrigger.sh
       - name: Verify packaged binary, images and manifests
         run: |
           cd rom/v018/experiments/two_silhouettes
@@ -35,6 +38,8 @@ jobs:
           (cd dist && sha256sum -c SHA256SUMS.txt)
           test -s evidence/near/stella_debugger_full.png
           test -s evidence/far/stella_debugger_full.png
+          test -s evidence_retrigger/near/stella_debugger_full.png
+          test -s evidence_retrigger/far/stella_debugger_full.png
           sha256sum evidence/{near,far}/stella_debugger_full.png | tee evidence/screenshots_sha256.txt
       - uses: actions/upload-artifact@v4
         if: always()
@@ -43,6 +48,10 @@ jobs:
           path: |
             rom/v018/experiments/two_silhouettes/dist/
             rom/v018/experiments/two_silhouettes/evidence/
+            rom/v018/experiments/two_silhouettes/evidence_retrigger/
+            rom/v018/experiments/two_silhouettes/proof_nusiz.asm
+            rom/v018/experiments/two_silhouettes/proof_retrigger_visible.asm
+            rom/v018/experiments/two_silhouettes/stella_capture_retrigger.sh
             rom/v018/experiments/two_silhouettes/proof.asm
             rom/v018/experiments/two_silhouettes/build.sh
             rom/v018/experiments/two_silhouettes/stella_capture.sh
