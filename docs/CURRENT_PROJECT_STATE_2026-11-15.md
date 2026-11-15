@@ -5,6 +5,14 @@
 
 ## Beslutsstatus
 
+### Synkad beslutslogg – senaste beslut, 2026-11-15
+
+- **[Kompletterande MAIN-beslutsregister i GitHub](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_DECISION_LEDGER_SUPPLEMENT_2026-11-15.md)** och **[identisk kopia i Google Drive](https://drive.google.com/file/d/1bMUNx-8-sUkx4CHo5Rmm7DpzIFzAXJkF/view)** bevarar de elva nyare användarbesluten/prioriteringarna med explicit status, länkade originalkällor och öppna frågor. Detta kompletterar (ersätter inte) originalhandoffens 57 beslut.
+- **Senaste rumsvilja:** få bruna väggar, öppna Berzerk-inspirerade rum som *antyder* små avdelningar. **Godkänd designriktning**, inte godkännande av varje exakt ny 40×22-kartcell. `A_OPEN_01`–`D_OPEN_01` är fortfarande **v0.19-kandidater**; tidigare A01/B01/C02/D01 bevarade, inklusive godkänt C02-val.
+- **Senaste spelar-/spritevilja:** gul spelare lika stor som stor android, mindre än dörröppningen; två stora män, två stora kvinnor, liten man och liten kvinna. Ursprungliga 8×9-NPC-masker kvarstår som referenser, inte slutligt implementerade 2600-sprites.
+- **Grindar fortsatt separata:** endast NTSC/R1–R4 v0.18 kodauktoriserat; prioritera sex individuella X. PR #7 är draft och inte full R1 PASS; oberoende VERIFICATION #8 gäller fryst baseline. Inga nya kartbyten, fullspelsfaser, PAL, ändrade AI-/kollisions-/poängregler utan särskilt godkännande.
+
+
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
 - Senare studier v0.1–v0.16 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner), C02 (planerad kartlayout), V2B/GULD (visuell riktning) och nu **O1 (android får tillfälligt skymma nyckeln)** har godkänts av användaren. En mindre mängd flimmer i spelet har accepterats kvalitativt, utan numerisk tolerans. Se [besluts- och planrapporten](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_STATUS_NEXT_10_2026-11-15.md).
 - **NYTT ANVÄNDARBESLUT 2026-11-15:** Endast **ROM DEVELOPMENT-diagnostik v0.18 med NTSC**, R1–R4, är **uttryckligen kodauktoriserad**. F6 16 KB får användas om tekniskt motiverat. [Auktorisation](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md), [Issue #6](https://github.com/Odourman/let-me-out/issues/6). **Ingen fullspelsutveckling, PAL-utbyggnad eller senare ROM-steg är auktoriserade. En körbar 16 384-byte F6/NTSC-utvecklar-ROM har nu levererats via PR #7, men den är blockerad och ännu inte oberoende verifierad.**
