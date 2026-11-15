@@ -5,6 +5,14 @@
 
 ## Beslutsstatus
 
+## MAIN – RESP1: rotorsakshypotes och rättad mätmetod (v0.18)
+
+- **Ny MAIN-analys av faktiska källor och sex ursprungliga Stella-skärmbilder:** [RESP1-rotorsaksanalys](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_RESP1_ROOT_CAUSE_ANALYSIS_2026-11-15.md). Inga ändringar i ROM eller godkännanden.
+- **Bekräftad instrumenteringsbrist:** `ci_pc_cycle_probe.sh` använder `break $f0a8; frame #1; step`; sparad Stella-bild står vid PC `$F047`/scanline 0, inte `$F0A8`. Rekommenderat `break` + `run` eller `runToPc` med kontrollerad PC/bank/cykel före och efter faktisk `STA RESP1`. T07 fortsatt INCONCLUSIVE.
+- **Stark men ännu omätt TIA-förklaring:** `GRP1` skrivs tidigt, `RESP1` senare på varje rasterrad (man ungefär CPU-cykel 30/35, kvinna 50/55 statiskt). En RESP-reset av P1:s huvudkopia sätter position för följande scanline; nästa tidiga reset kan hinna överstyra den sent förberedda positionen innan den ritas. Förutsäger att mest vänstergruppen syns, i linje med skärmbilderna; behöver verklig TIA-debuggertrace för bekräftelse. 9-raders radinterfoliering tappar ändå 4/5 originalrader och är inte full R1-PASS.
+- **Scope bevarat:** endast befintligt uttryckligt v0.18 R1–R4; ytterligare kod efter tidigare rapporterat STOPP kräver kontroll av gällande mandat och separat uttryckligt tillstånd om ny teknisk uppgift ligger utanför det. Ingen fullspel/PAL/ny designwaiver/merge. Draft PR #7 och äldre frysta VERIFICATION-baslinjen lämnas orörda.
+
+
 ## MAIN – Venetian Blinds v0.18: tre verkliga ROM, R1 FAIL/BLOCKED
 
 - **Nyaste ROM DEVELOPMENT-leverans:** [full rapport](https://github.com/Odourman/let-me-out/blob/rom-dev/v018-ntsc-diagnostic/rom/v018/experiments/venetian_blinds/TO_MAIN_VENETIAN_BLINDS_2026-11-15.md), [T01–T16-delta](https://github.com/Odourman/let-me-out/blob/rom-dev/v018-ntsc-diagnostic/rom/v018/experiments/venetian_blinds/TEST_MATRIX_V018_VENETIAN_DELTA.csv), [MAIN:s mottagningsgranskning](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_VENETIAN_BLINDS_INTAKE_2026-11-15.md). Draft [PR #7](https://github.com/Odourman/let-me-out/pull/7) HEAD vid mottagning `82667dae033f70570dce903f8e1d4866528be02a`; **ej mergad**.
