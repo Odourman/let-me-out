@@ -22,6 +22,14 @@ De första åtta momenten i användarens tio-stegsplan är nu [genomförda och d
 - **Beslutat:** Ingen separat startskärm.
 - **Beslutat:** Berzerk-inspirerad Game Over-effekt i labyrinten med färgväxling och blinkande slutpoäng. **Endast konsolens GAME RESET/RESET startar om. Fire gör ingenting efter Game Over.** Vid omstart: 0 poäng och 3 liv. Exakta effekter är inte ROM-verifierade. [Game Over- och RESET-beslut](docs/GAME_OVER_RESET_ONLY_DECISION_2026-11-15.md).
 
+## Ljuddesign v0.17 – fyra korta effekter
+
+- **Redan beslutat i ursprunglig Master Spec:** ljud vid nyckelupptagning (+50), precis en gång.
+- **Användarens föreslagna riktning:** stigande elektroniskt tjut när första verkligt avfyrade skottet gör androiderna aggressiva; androidförstörelseljud och kort skottljud.
+- **MAIN:s testrekommendation:** fyra ljud totalt (jaktlarm, skott, androidförstörelse, nyckelupptagning). Ingen bakgrundsmusik eller kontinuerligt jaktljud. Tekniken använder TIA:s två ljudkanaler.
+- **Fortfarande preliminärt:** exakta tonhöjder, längder, ljudprioritering, slutlig ljudpalett och samtidiga effekter. **Inget ROM-ljud byggt.**
+- [Ljudspecifikation v0.17](https://github.com/Odourman/let-me-out/blob/main/docs/SOUND_DESIGN_V017_2026-11-15.md) och [identiskt originalunderlag i Drive](https://drive.google.com/file/d/1bm19imkHic0zPSvDk-MGJ5842VfQtuWS/view).
+
 ## Spelidé
 
 Spelaren ska hitta en nyckel som döljs hos en av sex androider. Första *avfyrade* skottet gör de tidigare ofarliga androiderna fientliga. Efter att nyckeln plockats upp måste spelaren ta sig ut genom dörren på höger sida. Fler överlevande androider ger en poängbonus vid lyckad utgång.
