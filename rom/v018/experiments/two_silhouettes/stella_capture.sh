@@ -46,14 +46,14 @@ for point in near:20 far:100; do
   wait "$pid" 2>/dev/null || true
 done
 python3 - <<'PY'
-from PIL import Image
+import subprocess
 from pathlib import Path
 import hashlib,json
 root=Path("evidence")
 out=[]
 for p in sorted(root.glob("*/stella_debugger_full.png")):
- im=Image.open(p)
- out.append({"path":str(p),"resolution":list(im.size),"sha256":hashlib.sha256(p.read_bytes()).hexdigest()})
+ resolution=subprocess.check_output(["identify","-format","%wx%h",str(p)],text=True)
+ out.append({"path":str(p),"resolution":resolution,"sha256":hashlib.sha256(p.read_bytes()).hexdigest()})
 assert len(out)==2,out
 (root/"capture_manifest.json").write_text(json.dumps(out,indent=2)+"\n")
 print(json.dumps(out,indent=2))
