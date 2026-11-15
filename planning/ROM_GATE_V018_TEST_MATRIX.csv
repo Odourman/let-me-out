@@ -1,0 +1,17 @@
+﻿test_id;topic;scene;required_action;expected;gate;result_status;requires_separate_rom_authorization
+T01;Boot/synk;R1-R4;600 frames after init, NTSC profile;"262 scanlines each frame; stable VSYNC; log deviations";HARD;NOT_RUN_IN_ROM;YES
+T02;Raster 6+P+S;R1;6 white androids + player + shot on same y-band;All 8 logical objects represented, visual hazards legible;HARD;NOT_RUN_IN_ROM;YES
+T03;Raster 5+K+P+S;R2;5 white androids + key + player + shot same y-band;"No logical key loss; all hazards/shot distinguishable";HARD;NOT_RUN_IN_ROM;YES
+T04;Different silhouettes;R1;2 large male,2 large female,1 small male,1 small female;Four approved silhouettes discernible under stress;VISUAL;NOT_RUN_IN_ROM;YES
+T05;Key O1 full occlusion;R2/R4;Stationary key overlapped by android then uncovered;Same exact logical key coordinate before and after;HARD;NOT_RUN_IN_ROM;YES
+T06;Key O1 long hold;R4;Android remains over key across extended frames;"No key move/pickup; document real visibility limitation";HARD;NOT_RUN_IN_ROM;YES
+T07;Scanline cycle budget;R1-R4;Probe TIA writes during critical horizontal bands;"No mis-timed scanlines; trace position, _scan, _sCycles";HARD;NOT_RUN_IN_ROM;YES
+T08;Raster motion stress;R4;Scripted near-line crossings for player/android/shot;No introduced desync, visibly attributable losses reported;HARD;NOT_RUN_IN_ROM;YES
+T09;Door right-only locked;R3;Locked right port, left boundary complete;"No spurious opening on left; right shows closed";HARD;NOT_RUN_IN_ROM;YES
+T10;Door right-only open;R3;Toggle test-only door_open flag;Right clear, left solid, no stray playfield cells;HARD;NOT_RUN_IN_ROM;YES
+T11;Orange port;R3;Compare brown technical baseline and orange port;Orange variant rendering measured, tradeoffs explicit;VISUAL;NOT_RUN_IN_ROM;YES
+T12;Black keyhole;R3;Try black keyhole without stealing critical units;"Keyhole test measured; FAIL/BLOCKED if cannot coexist";DESIGN_GATE;NOT_RUN_IN_ROM;YES
+T13;Key K11/K09 legibility;R2;Gold key mask comparison on dark/brown background;Record which is legible and raster cost, do not silently choose;VISUAL;NOT_RUN_IN_ROM;YES
+T14;Build reproducibility;DELIVERY;Clean build from source using pinned versions;Binary SHA-256 identical to submitted .bin;HARD;NOT_RUN_IN_ROM;YES
+T15;Independent verification;VERIFICATION;Verifier rebuilds and reruns R1–R4;Independent signed report and trace evidence;HARD;NOT_RUN_IN_ROM;YES
+T16;Safety isolation;DELIVERY;Review commit contents and archive;"No Berzerk third party binaries; no The Cabin/ILAF changes";HARD;NOT_RUN_IN_ROM;YES
