@@ -22,9 +22,19 @@ stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$OU
 PID=$!
 sleep 7
 kill -0 "$PID"
-WINDOW_ID="$(xdotool search --onlyvisible --name Stella | head -n1 || true)"
-test -n "$WINDOW_ID" || { echo "Stella GUI not found" >&2; exit 2; }
-xdotool windowfocus --sync "$WINDOW_ID"
+# Some fresh Xvfb/Stella sessions expose only unmapped debugger windows.
+# Diagnose actual X11 windows and retry by name without --onlyvisible.
+xwininfo -root -tree >"$OUT/windows.txt" 2>&1 || true
+xdotool search --name Stella >"$OUT/window_ids.txt" 2>&1 || true
+WINDOW_ID="$(head -n1 "$OUT/window_ids.txt" 2>/dev/null || true)"
+if [ -z "$WINDOW_ID" ]; then
+  echo "Stella window absent. Window-tree:" >&2
+  cat "$OUT/windows.txt" >&2
+  exit 2
+fi
+xdotool getwindowname "$WINDOW_ID" >"$OUT/window_name.txt" 2>&1 || true
+xdotool windowmap "$WINDOW_ID" || true
+xdotool windowfocus --sync "$WINDOW_ID" || true
 import -window root "$OUT/initial_debugger.png"
 echo "Stella window ID: $WINDOW_ID"
 for ((i=1;i<=600;i++)); do
