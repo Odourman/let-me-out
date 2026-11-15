@@ -66,6 +66,14 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
+## MAIN – första fungerande originalsilhuetter i Stella (v0.18 teknikdelta)
+
+- **Ny utvecklarcommit på [draft PR #7](https://github.com/Odourman/let-me-out/pull/7):** `f5c06f352ba8653f3ce65bbc3e5e392c892beec5`. Fryst originalbaseline för separat [VERIFICATION #8](https://github.com/Odourman/let-me-out/issues/8) är fortfarande `561d3baf00c6c4c4bd9bc46599a91dc693abdeba` och har **inte** ersatts.
+- **MAIN:s mottagningsgranskning:** [full rapport](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_REVIEW_SPRITE_DELTA_V018_2026-11-15.md), [ZIP-evidens i Drive](https://drive.google.com/file/d/1Ho50YGc7IDYodm962MpBNxLvkqtt6xZ7/view). Arkiv-SHA-256 `675bfcf17343bccdd2bf2d5843dcf77738d9d0521fa5e9ae606bd52eabbf03b6`, 52/52 interna checksummor OK.
+- **Lokalt teknikdelprov:** NUSIZ kan visa två olika godkända 8×9-androider (stor man + stor kvinna) med pixeljämförelse 72/72 per mask i två fasta kopieavstånd (32/64 färgklockor). Gul nio-raders spelarkandidat och testskott synliga. Försök med två oberoende RESP1-repositioneringar misslyckades.
+- **Ingen R1–R4-godkänd ROM:** sex individuella androider i R1 fortfarande **BLOCKERADE**; R2/R3/R4 inte omimplementerade av detta delprov. 600-frame script har bildruta 610 men **saknar 600 individuella sparade scanlinemätningar** (tom `saveSes`). CI kördes på föregående kodcommit och ny HEAD lägger endast till rapport/paket, inte ny kod.
+- **MAIN:s nästa avgränsade instruktion kommenterad i PR #7:** jämför högst två implementeringskandidater för individuella X-värden (kontrollerad frame-tidsmultiplexning eller PF/TIA-hybrid), logga faktisk per-android-synlighet och 600-frame-rasterdata, behåll originalmasker och sex logiska androider. Inget tyst designundantag; **ingen merge, fullspelsutveckling eller ny fas**.
+
 ## MAIN – spelarstorlek och fyra ursprungsmasker (senaste visuella förtydligandet)
 
 - **Användarbeslut:** gul spelare ska vara **lika stor som de stora androiderna** på skärmen och fortsatt ha hatt och vapen från originalsissen. Den nya jämförelsebilden är pedagogisk målskiss, **inte** en godkänd ny pixelmask eller autentisk Stella-bild.
