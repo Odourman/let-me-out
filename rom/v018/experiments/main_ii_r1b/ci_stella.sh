@@ -11,6 +11,14 @@ xpid=$!
 trap 'kill "$xpid" 2>/dev/null || true' EXIT
 export DISPLAY=:119
 sleep 2
+# On a fresh Xvfb session Stella's first launch can leave the root screenshot
+# black even with a live process. Warm up once and discard all its evidence.
+printf 'base #10\\nframe #2\\n' > "$ACTUAL_HOME/.config/stella/autoexec.script"
+stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/r1b_F6.bin" > evidence/stella_warmup_stdout.txt 2>&1 &
+warm_pid=$!
+sleep 8
+kill "$warm_pid" 2>/dev/null || true
+wait "$warm_pid" 2>/dev/null || true
 for pair in 0:13 1:29 2:45 3:61; do
   phase="${pair%%:*}"; frame="${pair##*:}"
   dst="evidence/phase_${phase}"
