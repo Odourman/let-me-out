@@ -53,7 +53,7 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 ## Presentation – nytt användarbeslut och öppet designförslag
 
 - **BESLUT:** Ingen separat startskärm i Let Me Out! (användarens direktinstruktion 2026-11-15). Spelstart/omstart sker utan fristående titelskärm; exakt kontroll- och startflöde återstår att specificera.
-- **GAME OVER – FÖRSLAG, INTE GODKÄNT:** Behåll sista labyrintbilden, stoppa rörelse, växla väggfärg eller kontrast, låt slutpoängen blinka lugnt, ge ett kort ljud och låt Fire starta om. Användaren föreslog att inspireras av Berzerk med inverterade färger/blinkande score. Berzerks originalmanual bekräftar att sista livets förlust avslutar spelet och att Fire kan starta om; den dokumenterar blinkande bonuspoäng vid rumsrensning, men styrker **inte** inversion och blinkande totalpoäng specifikt vid Game Over. [Originalmanualen](https://www.atariage.com/2600/manuals_old/berzerk.html).
+- **BESLUT GAME OVER/RESET:** Berzerk-inspirerad slutpresentation i labyrinten med färgväxling och långsamt blinkande slutpoäng. **Endast Atari-konsolens GAME RESET/RESET startar om** efter GAME OVER; Fire får inte starta om och är inaktivt efter sista livet. RESET startar nytt spel med 0 poäng och 3 liv. Ingen separat start- eller Game Over-skärm. Exakta färger och blinkintervall är tekniskt öppna; original-Berzerks Game Over-inversion är inte styrkt av manualen. [Beslutslogg](https://github.com/Odourman/let-me-out/blob/main/docs/GAME_OVER_RESET_ONLY_DECISION_2026-11-15.md), [samma på Drive](https://drive.google.com/file/d/1r417oy8bAyVBj-bfeeC58QjynEwzHevv/view).
 - Dessa effekter får inte förväxlas med användarens accepterade **begränsade flimmer under spel**. Ingen ROM-implementation har godkänts.
 
 ## Viktigaste öppna val
@@ -68,7 +68,7 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – sjutton versionerade ZIP-arkiv från huvudöverlämningen till MAIN:s samlade åttastegsstudie v0.16, inklusive manifest, samt status-/färdplanfil (O1-beslut), kartdata JSON och mobilrapporter/RGB-skisser.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – sjutton versionerade ZIP-arkiv från huvudöverlämningen till MAIN:s samlade åttastegsstudie v0.16, inklusive manifest, samt status-/färdplanfil (O1-beslut), Game Over-/RESET-beslut, kartdata JSON och mobilrapporter/RGB-skisser.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
 - **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
