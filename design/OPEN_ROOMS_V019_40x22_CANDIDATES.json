@@ -1,0 +1,1023 @@
+{
+  "project": "Atari 2600 - Let Me Out!",
+  "deliverable_version": "v0.19 OPEN ROOM CANDIDATES",
+  "date": "2026-11-15",
+  "authority": {
+    "approved": "open airy walls / few structures / suggests mini rooms, yellow player size equal large NPC / right only door / four rooms",
+    "not_approved": "these four precise placements, spawn redesign, implementation, any change to full R1-R4 acceptance",
+    "original_v011_source_sha256": "760d77bbb71bfdd0b3020d827ca7874abdcde4e399979289f75719572ee22d4a",
+    "v011_preserved": true
+  },
+  "coordinate_system": {
+    "width": 40,
+    "height": 22,
+    "horizontal_playfield_color_clocks_per_cell": 4,
+    "vertical_preview_scanlines_per_cell": 8,
+    "tile_symbols": {
+      "#": "brown wall",
+      ".": "floor",
+      "D": "locked door marker at right"
+    }
+  },
+  "collision_offline_model": "2x2-cell square-foot anchor with 4-direction BFS. NOT real 8x9 pixels, player wall-slide, screen timing, TIA collision or Stella.",
+  "maps": [
+    {
+      "id": "A_OPEN_01",
+      "letter": "A",
+      "title": "Öppna hörn",
+      "description": "Fyra L-formade hörnformationer; fri mittarena",
+      "grid": [
+        "########################################",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "#.......#......................#.......#",
+        "#.......#......................#.......#",
+        "#.......#......................#.......#",
+        "#.......######............######.......#",
+        "#......................................#",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#......................................#",
+        "#.......######............######.......#",
+        "#.......#......................#.......#",
+        "#.......#......................#.......#",
+        "#.......#......................#.......#",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "########################################"
+      ],
+      "player_start_anchor": [
+        2,
+        10
+      ],
+      "door": {
+        "x": 39,
+        "rows": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "marker": "D",
+        "locked_visual": "orange vertical with black keyhole (visual target; rendering not verified)"
+      },
+      "historic_S0_candidate_positions": [
+        [
+          14,
+          3
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          29,
+          6
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          29,
+          12
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          24,
+          15
+        ],
+        [
+          4,
+          18
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          29,
+          18
+        ],
+        [
+          34,
+          18
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ]
+      ],
+      "reusable_old_S0_candidates_for_geometry_only": [
+        [
+          14,
+          3
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          29,
+          12
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          24,
+          15
+        ],
+        [
+          4,
+          18
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          29,
+          18
+        ],
+        [
+          34,
+          18
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ]
+      ],
+      "illustrative_six_anchors_for_preview_only": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          29,
+          18
+        ]
+      ],
+      "previous_layout_id": "A01",
+      "status": "candidate precise 40x22 offline map; NOT approved as new canon or ROM implemented"
+    },
+    {
+      "id": "B_OPEN_01",
+      "letter": "B",
+      "title": "Väggstumpar",
+      "description": "Fyra dubbla vertikala väggstumpar; fri mittkorridor",
+      "grid": [
+        "########################################",
+        "#......................................#",
+        "#......................................#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#.........##................##.........#",
+        "#......................................#",
+        "#......................................#",
+        "########################################"
+      ],
+      "player_start_anchor": [
+        2,
+        10
+      ],
+      "door": {
+        "x": 39,
+        "rows": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "marker": "D",
+        "locked_visual": "orange vertical with black keyhole (visual target; rendering not verified)"
+      },
+      "historic_S0_candidate_positions": [
+        [
+          9,
+          3
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          29,
+          3
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          15
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          29,
+          15
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "reusable_old_S0_candidates_for_geometry_only": [
+        [
+          19,
+          3
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "illustrative_six_anchors_for_preview_only": [
+        [
+          19,
+          3
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "previous_layout_id": "B01",
+      "status": "candidate precise 40x22 offline map; NOT approved as new canon or ROM implemented"
+    },
+    {
+      "id": "C_OPEN_01",
+      "letter": "C",
+      "title": "Nästan små rum",
+      "description": "Fyra vinklade partier som antyder rum men lämnar stora öppningar",
+      "grid": [
+        "########################################",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "#....##########..........##########....#",
+        "#............##..........##............#",
+        "#............##..........##............#",
+        "#............##..........##............#",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#............##..........##............#",
+        "#............##..........##............#",
+        "#............##..........##............#",
+        "#....##########..........##########....#",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "########################################"
+      ],
+      "player_start_anchor": [
+        2,
+        10
+      ],
+      "door": {
+        "x": 39,
+        "rows": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "marker": "D",
+        "locked_visual": "orange vertical with black keyhole (visual target; rendering not verified)"
+      },
+      "historic_S0_candidate_positions": [
+        [
+          14,
+          3
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          29,
+          6
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          24,
+          15
+        ],
+        [
+          4,
+          18
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          29,
+          18
+        ],
+        [
+          34,
+          18
+        ],
+        [
+          6,
+          13
+        ],
+        [
+          31,
+          13
+        ]
+      ],
+      "reusable_old_S0_candidates_for_geometry_only": [
+        [
+          14,
+          3
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          29,
+          6
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          4,
+          18
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          29,
+          18
+        ],
+        [
+          34,
+          18
+        ],
+        [
+          6,
+          13
+        ],
+        [
+          31,
+          13
+        ]
+      ],
+      "illustrative_six_anchors_for_preview_only": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          29,
+          18
+        ]
+      ],
+      "previous_layout_id": "C02",
+      "status": "candidate precise 40x22 offline map; NOT approved as new canon or ROM implemented"
+    },
+    {
+      "id": "D_OPEN_01",
+      "letter": "D",
+      "title": "Öppen mittarena",
+      "description": "Två par innerväggar med korta armar mot mittarenan",
+      "grid": [
+        "########################################",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "#..........##..............##..........#",
+        "#..........##..............##..........#",
+        "#..........##..............##..........#",
+        "#..........##..............##..........#",
+        "#..........#######....#######..........#",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#......................................D",
+        "#..........#######....#######..........#",
+        "#..........##..............##..........#",
+        "#..........##..............##..........#",
+        "#..........##..............##..........#",
+        "#..........##..............##..........#",
+        "#......................................#",
+        "#......................................#",
+        "#......................................#",
+        "########################################"
+      ],
+      "player_start_anchor": [
+        2,
+        10
+      ],
+      "door": {
+        "x": 39,
+        "rows": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "marker": "D",
+        "locked_visual": "orange vertical with black keyhole (visual target; rendering not verified)"
+      },
+      "historic_S0_candidate_positions": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          29,
+          6
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          29,
+          12
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          24,
+          15
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "reusable_old_S0_candidates_for_geometry_only": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          29,
+          6
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          29,
+          12
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          24,
+          15
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "illustrative_six_anchors_for_preview_only": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          24,
+          15
+        ]
+      ],
+      "previous_layout_id": "D01",
+      "status": "candidate precise 40x22 offline map; NOT approved as new canon or ROM implemented"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "A_OPEN_01",
+      "room": "A",
+      "new_interior_wall_cells": 36,
+      "new_wall_pct_of_760": 4.74,
+      "old_map": "A01",
+      "old_interior_wall_cells": 64,
+      "old_wall_pct_of_760": 8.42,
+      "reduction_pct": 43.8,
+      "reachable_2x2_anchors": 623,
+      "all_2x2_anchors": 623,
+      "unreachable_2x2_anchors": 0,
+      "player_exit_distance_min_4way_2x2": 35,
+      "old_spawn_candidates": 20,
+      "reusable_old_S0_candidates_as_2x2": 18,
+      "six_nonoverlapping_combinations_from_reusable_S0": 18564,
+      "illustrative_six": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          29,
+          18
+        ]
+      ],
+      "central_open_rows_9_to_12_all": true,
+      "left_boundary_closed": true,
+      "right_only_door": true,
+      "mirror_symmetry_interior": true,
+      "horizontal_and_vertical_symmetry": true
+    },
+    {
+      "id": "B_OPEN_01",
+      "room": "B",
+      "new_interior_wall_cells": 48,
+      "new_wall_pct_of_760": 6.32,
+      "old_map": "B01",
+      "old_interior_wall_cells": 156,
+      "old_wall_pct_of_760": 20.53,
+      "reduction_pct": 69.2,
+      "reachable_2x2_anchors": 619,
+      "all_2x2_anchors": 619,
+      "unreachable_2x2_anchors": 0,
+      "player_exit_distance_min_4way_2x2": 35,
+      "old_spawn_candidates": 13,
+      "reusable_old_S0_candidates_as_2x2": 9,
+      "six_nonoverlapping_combinations_from_reusable_S0": 84,
+      "illustrative_six": [
+        [
+          19,
+          3
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "central_open_rows_9_to_12_all": true,
+      "left_boundary_closed": true,
+      "right_only_door": true,
+      "mirror_symmetry_interior": true,
+      "horizontal_and_vertical_symmetry": true
+    },
+    {
+      "id": "C_OPEN_01",
+      "room": "C",
+      "new_interior_wall_cells": 64,
+      "new_wall_pct_of_760": 8.42,
+      "old_map": "C02",
+      "old_interior_wall_cells": 124,
+      "old_wall_pct_of_760": 16.32,
+      "reduction_pct": 48.4,
+      "reachable_2x2_anchors": 579,
+      "all_2x2_anchors": 579,
+      "unreachable_2x2_anchors": 0,
+      "player_exit_distance_min_4way_2x2": 35,
+      "old_spawn_candidates": 18,
+      "reusable_old_S0_candidates_as_2x2": 16,
+      "six_nonoverlapping_combinations_from_reusable_S0": 8008,
+      "illustrative_six": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          29,
+          18
+        ]
+      ],
+      "central_open_rows_9_to_12_all": true,
+      "left_boundary_closed": true,
+      "right_only_door": true,
+      "mirror_symmetry_interior": true,
+      "horizontal_and_vertical_symmetry": true
+    },
+    {
+      "id": "D_OPEN_01",
+      "room": "D",
+      "new_interior_wall_cells": 60,
+      "new_wall_pct_of_760": 7.89,
+      "old_map": "D01",
+      "old_interior_wall_cells": 168,
+      "old_wall_pct_of_760": 22.11,
+      "reduction_pct": 64.3,
+      "reachable_2x2_anchors": 591,
+      "all_2x2_anchors": 591,
+      "unreachable_2x2_anchors": 0,
+      "player_exit_distance_min_4way_2x2": 35,
+      "old_spawn_candidates": 15,
+      "reusable_old_S0_candidates_as_2x2": 15,
+      "six_nonoverlapping_combinations_from_reusable_S0": 5005,
+      "illustrative_six": [
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          24,
+          15
+        ]
+      ],
+      "central_open_rows_9_to_12_all": true,
+      "left_boundary_closed": true,
+      "right_only_door": true,
+      "mirror_symmetry_interior": true,
+      "horizontal_and_vertical_symmetry": true
+    }
+  ]
+}
