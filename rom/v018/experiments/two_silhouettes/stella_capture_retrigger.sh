@@ -10,10 +10,10 @@ mkdir -p "$HOME/.config/stella"
 ACTUAL_HOME="$(getent passwd "$(id -un)" | cut -d: -f6)"
 mkdir -p "$ACTUAL_HOME/.config/stella"
 printf "base #10\n" > "$ACTUAL_HOME/.config/stella/autoexec.script"
-Xvfb :97 -screen 0 1366x900x24 -ac > evidence_retrigger/xvfb.log 2>&1 &
+Xvfb :98 -screen 0 1366x900x24 -ac > evidence_retrigger/xvfb.log 2>&1 &
 XVFBPID=$!
 trap 'kill "$XVFBPID" 2>/dev/null || true' EXIT
-export DISPLAY=:97
+export DISPLAY=:98
 sleep 1
 for point in near:20 far:100; do
   name="${point%%:*}"
