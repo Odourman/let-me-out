@@ -7,7 +7,9 @@ command -v dasm >/dev/null || { echo "DASM missing"; exit 2; }
 mkdir -p dist/dasm
 for bank in 0 1 2 3; do
   printf ' processor 6502\n' > "dist/dasm/bank$bank.dasm.asm"
-  cat "src/bank$bank.asm" >> "dist/dasm/bank$bank.dasm.asm"
+  # DASM requires indented ORG directives and accumulator shifts without the A operand.
+  # These are syntax-only rewrites; binary identity below detects changes in semantics.
+  sed -e 's/^ORG / ORG /' -e 's/^ LSR A$/ LSR/' "src/bank$bank.asm" >> "dist/dasm/bank$bank.dasm.asm"
   dasm "dist/dasm/bank$bank.dasm.asm" -f3 -o"dist/dasm/bank$bank.bin" -s"dist/dasm/bank$bank.sym" -l"dist/dasm/bank$bank.lst" >"dist/dasm/bank$bank.stdout.txt" 2>&1
   test "$(stat -c %s "dist/dasm/bank$bank.bin")" = 4096
 done
