@@ -80,7 +80,7 @@ P0Delay:
  BNE P0Delay
  STA RESP0
  STA WSYNC
- LDX #13
+ LDX #8
 M0Delay:
  DEX
  BNE M0Delay
