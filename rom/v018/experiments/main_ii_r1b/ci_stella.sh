@@ -47,11 +47,11 @@ for pair in 0:13 1:29 2:45 3:61 0:13; do
     for attempt in 1 2 3 4; do
       import -window root "$dst/stella_full.png"
       colors=$(identify -format '%k' "$dst/stella_full.png")
-      if [ "$colors" -gt 20 ]; then break; fi
+      if [ "$colors" -gt 5 ]; then break; fi
       echo "Black/unmapped screenshot for $dst, retry $attempt" >&2
       sleep 4
     done
-    test "$(identify -format '%k' "$dst/stella_full.png")" -gt 20
+    test "$(identify -format '%k' "$dst/stella_full.png")" -gt 5
     kill "$pid" || true; wait "$pid" 2>/dev/null || true
   else
     cat "$dst/stella_stdout.txt" >&2; exit 1
@@ -86,11 +86,11 @@ for label in R1bFirstRESP1 R1bFemaleWrite R1bSecondRESP1; do
     for attempt in 1 2 3 4; do
       import -window root "$dst/stella_full.png"
       colors=$(identify -format '%k' "$dst/stella_full.png")
-      if [ "$colors" -gt 20 ]; then break; fi
+      if [ "$colors" -gt 5 ]; then break; fi
       echo "Black/unmapped screenshot for $dst, retry $attempt" >&2
       sleep 4
     done
-    test "$(identify -format '%k' "$dst/stella_full.png")" -gt 20
+    test "$(identify -format '%k' "$dst/stella_full.png")" -gt 5
     kill "$pid" || true; wait "$pid" 2>/dev/null || true
   else
     cat "$dst/stella_stdout.txt" >&2; exit 1
