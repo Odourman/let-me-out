@@ -5,6 +5,14 @@
 
 ## Beslutsstatus
 
+## MAIN – 16 november: NUSIZ1-close retriggering, nytt snävt forskningsfynd
+
+- **Ny källgranskad teknikhypotes, inte ny kod eller PASS:** [MAIN_TIA_RETRIGGER_NUSIZ_CLOSE_RESEARCH_2026-11-16.md](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_TIA_RETRIGGER_NUSIZ_CLOSE_RESEARCH_2026-11-16.md). Andrew Towers [TIA Hardware Notes](https://www.retroisle.com/atari/vcs/Technical/Hardware/TIAnotes.php) beskriver Eckhard Stolbergs `grid2` och hur `RESP1` med `NUSIZ1`-kopieläge kan utlösa en *nära* P1-kopia på **samma rasterrad** cirka 17 färgklockor efter reset (mellan ~33). **Det är inte samma teknik som tidigare misslyckade NUSIZ1=0-Venetian-prover**, vilka gör en P1-reset per rad och inte triggar samma-rad-kopior.
+- **Viktig gräns:** flera nära-kopior bevisar bara flera former om `GRP1` laddas om i korrekt tidsfönster för **två olika kompletta 8×9 originalmasker på fria X**. Ny P1-kopiemekanism ger inte gratis pixelbandbredd, oberoende 6-X, vägg-PF eller R2-nyckel. Same-Y-full-R1 fortfarande **FAIL/BLOCKED**, T07-trace fortfarande INCONCLUSIVE.
+- **Rådgivande minimiprovsordning** (inget nytt implementationstillstånd): först giltigt `break` + `run` vid faktisk `STA RESP1`; därefter minimal *två RESP1 på samma rad* med `NUSIZ1=$01` som kopieutlösningsprob, sedan två originalmasker med olika bitmapdata och fria X. Först därefter, om mandat och delbevis räcker, skala mot sex och R2 med key/O1 och full PF-/TIA-budget. Historisk `grid2` är inte verifierat Let Me Out!-PASS.
+- **Scope/respekt:** endast tidigare uttryckligen auktoriserad v0.18 NTSC/R1–R4; stoppad ROM-utveckling får inte automatiskt återstartas av forskning. Ingen ny mapper, fullspelsfas, waiver, PAL, kartcutover eller PR-merge. PR #7 ska förbli DRAFT; oberoende VERIFICATION äldre baslinje separat.
+
+
 ## MAIN – research 16 november: samtliga 30 Atari-trick, 52 teknikmönster
 
 - **Inläst och granskat:** 55-sidig, användaruppladdad samlad Atari 2600-teknikavhandling (inklusive historiska 67-problemsstudien) samt separat 30-tricksbilaga. [30 originaltrick arkiverade](https://github.com/Odourman/let-me-out/blob/main/docs/RESEARCH_30_ORIGINAL_ATARI_TRICKS_2026-11-16.md); [MAIN:s fullständiga prioriterade granskning med samtliga 30](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_30_TRICKS_RESEARCH_REVIEW_2026-11-16.md). 52 T-poster och 30 numrerade trick överlappar; inte 82 oberoende lösningar.
