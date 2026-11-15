@@ -10,6 +10,8 @@
 | C | **C02** | Godkänd som planerad kartvariant, C01 arkiverad för jämförelse |
 | D | D01 | Oförändrad ursprunglig layoutkandidat |
 
+- [Exakt planerad fyrarumskarta i GitHub](../design/PLANERADE_RUMSKARTOR_V011.json) ([samma JSON i Drive](https://drive.google.com/file/d/1WrDNv2AqMuQ8sbHAFq8HsLTn7_fe7lc-/view?usp=drivesdk)). SHA-256 för den ursprungliga JSON-filen: `760d77bbb71bfdd0b3020d827ca7874abdcde4e399979289f75719572ee22d4a`.
+
 De två öppningarna i C02 är exakt de åtta tidigare granskade väggcellerna x=8–9 och x=30–31, y=10–11 på 40×22-cellsgriden. Kartorna är inte uppmätt i Atari-pixelgeometri och renderingens tekniska lösning har inte godkänts.
 
 ## Spawn-granskning (offline)
