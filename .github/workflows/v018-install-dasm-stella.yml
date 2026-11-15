@@ -21,7 +21,7 @@ jobs:
       - name: Install DASM and Stella, log exact package versions
         run: |
           sudo apt-get update
-          sudo apt-get install -y dasm stella xvfb
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick
           dpkg-query -W -f='${binary:Package}\t${Version}\n' dasm stella xvfb | tee versions.txt
           command -v dasm
           command -v stella
@@ -37,6 +37,13 @@ jobs:
           ldd "$(command -v stella)" > stella-libraries.txt
           xvfb-run -a timeout 10s stella -help > stella-help.txt 2>&1 || true
           sed -n '1,25p' stella-help.txt
+      - name: Run real Stella debugger and screenshot capture R1-R4
+        timeout-minutes: 8
+        run: bash rom/v018/tools/ci_stella_capture.sh
+      - name: Collect diagnostics and file hashes
+        if: always()
+        run: |
+          find rom/v018/evidence/stella_live -type f -print0 | sort -z | xargs -0 -r sha256sum > rom/v018/evidence/stella_live_sha256.txt || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -46,4 +53,6 @@ jobs:
             rom-sha256-actual.txt
             stella-libraries.txt
             stella-help.txt
+            rom/v018/evidence/stella_live/
+            rom/v018/evidence/stella_live_sha256.txt
           if-no-files-found: ignore
