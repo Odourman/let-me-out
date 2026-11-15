@@ -5,11 +5,11 @@ Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin o
 ## Status – 2026-11-15
 
 - **Design:** grundregler finns dokumenterade; fortsatt granskning pågår.
-- **Förstudier:** labyrinter v0.1–v0.2, AI/rörelse v0.3, v0.7–v0.8, grafikrisk v0.4–v0.5, svårighetskurva v0.6, kollisionsbeslut v0.9, kartjämförelse v0.10 och godkänd planerad C02-bas/spawngranskning v0.11.
+- **Förstudier:** labyrinter v0.1–v0.2, AI/rörelse v0.3, v0.7–v0.8, grafikrisk v0.4–v0.5, svårighetskurva v0.6, kollisionsbeslut v0.9, kartjämförelse v0.10, godkänd planerad C02-bas/spawngranskning v0.11 och **högerdörrstudie v0.12**.
 - **ROM-kodning:** **pausad**. Ingen prototyp, binär eller emulatorverifierad spelimplementation finns här.
 - **Nya godkända spelregler:** K1 (nyckel kan tas från och med uppdateringen efter att den uppstått under stillastående spelare) och E1 (dödlig androidkontakt avgörs före samtidigt utträde). [Beslutslogg](docs/APPROVED_EDGE_CASE_DECISIONS_K1_E1_2026-11-15.md).
 - **Planerat fyrarum-set:** A01/B01/**C02**/D01. C02 är **godkänd som planerad karta C** av användaren; C01 behålls som historisk jämförelse. [Exakt kartdata i GitHub](design/PLANERADE_RUMSKARTOR_V011.json) och [beslutslogg/spawngranskning](docs/APPROVED_MAP_C02_AND_SPAWN_AUDIT_V011.md).
-- **Ej godkända testkandidater:** P2 (patrull), J2 (jakt), C-1 (svårighetskurva) och S1 (alternativt android-startfilter). Varken verklig pixelgeometri eller spelbalans är verifierade.
+- **Ej godkända testkandidater:** P2 (patrull), J2 (jakt), C-1 (svårighetskurva), S1 (alternativt android-startfilter), samt **V2 (orange dörr som visuellt mål)**. [Dörrens design- och teknikstudie v0.12](docs/DOOR_VISUAL_RIGHT_ONLY_STUDY_V012.md). Varken verklig pixelgeometri, timing eller spelbalans är verifierade.
 
 ## Spelidé
 
@@ -20,7 +20,7 @@ Fastslagna grundvärden: sex androider (fyra stora, två små), fyra speglade ru
 ## Underlag
 
 - [Master specification och beslutsregister i projektets Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u).
-- Google Drive innehåller 12 versionerade projektarkiv (till v0.11) samt en separat kopia av den valda kartdatan. GitHub innehåller egna textbaserade beslut, arbetsunderlag och [öppna designärenden](https://github.com/Odourman/let-me-out/issues), men inga referens-ROM:er eller tredjepartsfiler. Linear används inte för detta spel.
+- Google Drive innehåller 13 versionerade projektarkiv (till v0.12) samt en separat kopia av den valda kartdatan och en mobilrapport. GitHub innehåller egna textbaserade beslut, arbetsunderlag och [öppna designärenden](https://github.com/Odourman/let-me-out/issues), men inga referens-ROM:er eller tredjepartsfiler. Linear används inte för detta spel.
 
 ## Arbetsregler
 
