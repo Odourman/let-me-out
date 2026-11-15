@@ -17,6 +17,11 @@ Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin o
 
 De första åtta momenten i användarens tio-stegsplan är nu [genomförda och dokumenterade](docs/MAIN_EIGHT_STEPS_V016_2026-11-15.md): nyckelskymning, rasterstress, högra dörren, nyckelpixelgrafik, AI, startpositioner, svårighetskurva och HUD. Nästa punkter är **9 ljud/presentation** och **10 framtida ROM-grind**. Samtliga tester är offline och **ingen ROM-kodning har startats**.
 
+## Presentation
+
+- **Beslutat:** Ingen separat startskärm.
+- **Föreslaget:** Efter sista livet står labyrintbilden stilla, kontrasten kan växla och slutpoängen blinka långsamt. Ingen slutsekvens är slutligt godkänd eller verifierad.
+
 ## Spelidé
 
 Spelaren ska hitta en nyckel som döljs hos en av sex androider. Första *avfyrade* skottet gör de tidigare ofarliga androiderna fientliga. Efter att nyckeln plockats upp måste spelaren ta sig ut genom dörren på höger sida. Fler överlevande androider ger en poängbonus vid lyckad utgång.
