@@ -10,6 +10,7 @@ Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin o
 - **Nya godkända spelregler:** K1 (nyckel kan tas från och med uppdateringen efter att den uppstått under stillastående spelare) och E1 (dödlig androidkontakt avgörs före samtidigt utträde). [Beslutslogg](docs/APPROVED_EDGE_CASE_DECISIONS_K1_E1_2026-11-15.md).
 - **Planerat fyrarum-set:** A01/B01/**C02**/D01. C02 är **godkänd som planerad karta C** av användaren; C01 behålls som historisk jämförelse. [Exakt kartdata i GitHub](design/PLANERADE_RUMSKARTOR_V011.json) och [beslutslogg/spawngranskning](docs/APPROVED_MAP_C02_AND_SPAWN_AUDIT_V011.md).
 - **Godkänt visuellt mål V2B/GULD:** orange dörr med svart nyckelhål som försvinner vid upplåsning; guldgul nyckel med runt genomgående hål, kort skaft och tänder. [Designunderlag v0.13](docs/KEY_AND_DOOR_VISUAL_TARGET_V013.md). Exakt pixelmask och TIA-grafik är fortfarande öppna.
+- **Nytt v0.14-underlag:** [offline RGB-kontrastjämförelse](docs/KEY_CONTRAST_RGB_REVIEW_V014.md) antyder att en något djupare guldton för nyckeln passar bättre än nästan spelargult. Exakt färgkod är **inte** godkänd eller TIA-verifierad.
 - **Ej godkända testkandidater:** P2 (patrull), J2 (jakt), C-1 (svårighetskurva), S1 (alternativt android-startfilter), K11/K09-nyckelsilhuetter. Varken verklig pixelgeometri, timing eller spelbalans är verifierade.
 
 ## Spelidé
@@ -21,7 +22,7 @@ Fastslagna grundvärden: sex androider (fyra stora, två små), fyra speglade ru
 ## Underlag
 
 - [Master specification och beslutsregister i projektets Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u).
-- Google Drive innehåller 14 versionerade projektarkiv (till v0.13) samt en separat kopia av den valda kartdatan och en mobilrapport. GitHub innehåller egna textbaserade beslut, arbetsunderlag och [öppna designärenden](https://github.com/Odourman/let-me-out/issues), men inga referens-ROM:er eller tredjepartsfiler. Linear används inte för detta spel.
+- Google Drive innehåller 15 versionerade projektarkiv (till v0.14) samt en separat kopia av den valda kartdatan och en mobilrapport. GitHub innehåller egna textbaserade beslut, arbetsunderlag och [öppna designärenden](https://github.com/Odourman/let-me-out/issues), men inga referens-ROM:er eller tredjepartsfiler. Linear används inte för detta spel.
 
 ## Arbetsregler
 
