@@ -6,7 +6,7 @@
 ## Beslutsstatus
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
-- Senare studier v0.1–v0.15 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner), C02 (planerad kartlayout), V2B/GULD (visuell riktning) och nu **O1 (android får tillfälligt skymma nyckeln)** har godkänts av användaren. En mindre mängd flimmer i spelet har accepterats kvalitativt, utan numerisk tolerans. Se [besluts- och planrapporten](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_STATUS_NEXT_10_2026-11-15.md).
+- Senare studier v0.1–v0.16 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner), C02 (planerad kartlayout), V2B/GULD (visuell riktning) och nu **O1 (android får tillfälligt skymma nyckeln)** har godkänts av användaren. En mindre mängd flimmer i spelet har accepterats kvalitativt, utan numerisk tolerans. Se [besluts- och planrapporten](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_STATUS_NEXT_10_2026-11-15.md).
 - ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
 
 ## Fastställd kärna
@@ -36,6 +36,13 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 - Två användaruppladdade formreferenser från 2026-11-15: guldgul nyckel med runt hål/tandat kort skaft samt svart nyckelhål med rund topp och kilformad nederdel. Bilderna är vattenmärkta stockfoton; **originalbilderna har inte lagts i publika GitHub eller i ZIP**. Projektet använder egna bitmapskisser i v0.13.
 - Originalnyckelns form var redan beslutad i Master Spec; ny bild preciserar det visuella målet utan att ändra poäng eller kollisionsyta.
 
+## Senaste arbetsstatus v0.16 – åtta analyser fullföljda
+
+- [Samlad 8-stegsstudie i GitHub](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_EIGHT_STEPS_V016_2026-11-15.md), [37+1 filer i Drive ZIP](https://drive.google.com/file/d/1YrXJtgqvY9bjaSKKxoyb7hvs7ye5msx-/view?usp=drivesdk), [mobil-PDF](https://drive.google.com/file/d/1RbjgcJs_oTlYIqeHF3tZk6PZawRIbiZu/view?usp=drivesdk).
+- Avgränsat innehåll: lång nyckelskymning (160 modellförlopp), rastervärstafall (8 logiska enheter), högerdörr, nyckelmasker, P2/J2-AI (480 modellförlopp), S0/S1 (64 045 kombinationer), C-1/C-soft-kurvor och score/HUD.
+- **Arbetsrekommendationer, inte nya canon-beslut:** P2/J2 med 1/8, K11 med K09 som reserv, S0, C-1 och HUD-A. De 22 framtida tekniska fallen är **NOT_RUN_IN_ROM**.
+- **Återstår i 10-stegsplanen:** steg 9 – presentation/ljud; steg 10 – integrerad teknikgrind. Ingen ROM-kodstart har auktoriserats.
+
 ## Senaste användarbeslut: O1 och viss flimmertolerans
 
 - [Beslut, senaste tio steg och kommande tio steg i GitHub](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_STATUS_NEXT_10_2026-11-15.md), [identiskt dokument i Drive](https://drive.google.com/file/d/1N4D5GH-hhBsbQPIK82v2KF5IdMgq33HJ/view).
@@ -50,11 +57,12 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 3. Detaljer för patrullering, jakt och svårighet (P2/J2/C-1), tills vidare testkandidater.
 4. **VISUELLT MÅL BESLUTAT v0.13:** guldgul nyckel med runt genomgående hål och kort tandat skaft; smalt orange dörrstreck med **svart nyckelhål**. Hela dörren och symbolen försvinner vid upplåsning. [Beslutsunderlag](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_AND_DOOR_VISUAL_TARGET_V013.md) och [avslutat designärende #4](https://github.com/Odourman/let-me-out/issues/4). **Exakt pixelmask och TIA-teknik överifierade.** [Öppet framtida testärende #5](https://github.com/Odourman/let-me-out/issues/5).
 5. **Nyckelns kontraststudie v0.14, inte beslut om färgkod:** tre hypotetiska RGB-toner jämförda, preliminärt föredras en något djupare guldton framför nästan spelargult; varken K11/K09 eller PAL/NTSC-kod låst. [Designstudie i GitHub](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_CONTRAST_RGB_REVIEW_V014.md), [ZIP i Drive](https://drive.google.com/file/d/17I6nUhYTCSRIQ35fMvILE1pmVIIDh8SA/view?usp=drivesdk). 9 matematiska RGB-kombinationer och två offline-maskkontroller, **ingen Atari-körning**. [Framtida verifieringsärende #5](https://github.com/Odourman/let-me-out/issues/5).
-6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).\n7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
+6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
+7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – sexton versionerade ZIP-arkiv från huvudöverlämningen till nyckelöverlappningsstudie v0.15, inklusive manifest, samt ny status-/färdplanfil (O1-beslut), kartdata JSON och mobilrapporter/RGB-skisser.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – sjutton versionerade ZIP-arkiv från huvudöverlämningen till MAIN:s samlade åttastegsstudie v0.16, inklusive manifest, samt status-/färdplanfil (O1-beslut), kartdata JSON och mobilrapporter/RGB-skisser.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
 - **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
