@@ -1,0 +1,40 @@
+name: v0.18 six independent X stress test (experimental)
+on:
+  push:
+    branches: [rom-dev/v018-ntsc-diagnostic]
+    paths:
+      - '.github/workflows/v018-six-x-free.yml'
+      - 'rom/v018/experiments/six_x_free/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-dasm-stella:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and X11
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Assemble six-independent-X ROM with real DASM
+        run: bash rom/v018/experiments/six_x_free/build.sh
+      - name: Run real Stella debugger and probe snapshot instrumentation
+        run: bash rom/v018/experiments/six_x_free/ci_capture.sh
+      - name: Validate real ROM and raw screenshot file provenance
+        run: |
+          cd rom/v018/experiments/six_x_free
+          test "$(stat -c %s dist/six_x_free_a_f6.bin)" = 16384
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          test -s evidence/debugger_full.png
+          python3 -m json.tool evidence/measurement_status.json >/dev/null
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: letmeout-v018-sex-x-free
+          path: |
+            versions.txt
+            rom/v018/experiments/six_x_free/
+          if-no-files-found: ignore
