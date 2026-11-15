@@ -40,10 +40,14 @@ FOUND="$(find "$OUT/raw" -type f -name 'frame_*.png' | wc -l)"
 echo "Frame+1 keypresses: $NFRAMES; original X11 debugger screenshots: $FOUND"
 test "$FOUND" -eq "$NFRAMES"
 python3 - "$OUT" "$NFRAMES" <<'PY'
-import json,sys
+import json,sys,subprocess
 from pathlib import Path
 out=Path(sys.argv[1]); n=int(sys.argv[2]); files=sorted((out/"raw").glob("frame_*.png"))
 assert len(files)==n
 assert all(p.stat().st_size>500 for p in files)
-(out/"capture_summary.json").write_text(json.dumps({"keypresses":n,"saved_unmodified_debugger_crops":len(files),"continuous_600_frame_stability_proven":False,"per_frame_cpu_scanline_measurement":"not yet decoded from actual HUD screenshot; no PASS without classification"},indent=2)+"\n")
+signatures=[subprocess.check_output(["identify","-format","%#",str(p)],text=True) for p in files]
+unique=len(set(signatures))
+print("Distinct actual Stella screenshot pixel arrays:",unique)
+assert unique>=min(5,max(2,n//3)), "No verified frame advancement: near-identical screenshots"
+(out/"capture_summary.json").write_text(json.dumps({"keypresses":n,"saved_unmodified_debugger_crops":len(files),"distinct_pixel_frames":unique,"continuous_600_frame_stability_proven":False,"per_frame_cpu_scanline_measurement":"not yet decoded from actual HUD screenshot; no PASS without classification"},indent=2)+"\n")
 PY
