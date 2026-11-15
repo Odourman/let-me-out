@@ -20,7 +20,7 @@ De första åtta momenten i användarens tio-stegsplan är nu [genomförda och d
 ## Presentation
 
 - **Beslutat:** Ingen separat startskärm.
-- **Föreslaget:** Efter sista livet står labyrintbilden stilla, kontrasten kan växla och slutpoängen blinka långsamt. Ingen slutsekvens är slutligt godkänd eller verifierad.
+- **Beslutat:** Berzerk-inspirerad Game Over-effekt i labyrinten med färgväxling och blinkande slutpoäng. **Endast konsolens GAME RESET/RESET startar om. Fire gör ingenting efter Game Over.** Vid omstart: 0 poäng och 3 liv. Exakta effekter är inte ROM-verifierade. [Game Over- och RESET-beslut](docs/GAME_OVER_RESET_ONLY_DECISION_2026-11-15.md).
 
 ## Spelidé
 
