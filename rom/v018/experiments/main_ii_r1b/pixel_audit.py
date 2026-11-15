@@ -56,17 +56,24 @@ def analyze(path):
             "female_bit_errors":sum((a^b).bit_count() for a,b in zip(bits,FEMALE)),
         })
     masks.sort(key=lambda x:x["gui_x"])
+    # Any white pixel NOT explained by the two exact 8x9 sprites is a ghost.
+    # The M0 missile is yellow and is therefore excluded from this test.
+    unexplained=[(x,y) for (x,y) in pixels if 162<=y<=170
+        and not any(m["gui_x"]<=x<=m["gui_x"]+15
+                    and m["gui_y"]<=y<=m["gui_y"]+8 for m in masks)]
     player=sum(1 for y in range(162,171) for x in range(105,133)
         if (lambda rgb: rgb[0]>120 and rgb[1]>100 and rgb[2]<100)(im.getpixel((x,y))))
     missile=sum(1 for x in range(230,251) if (lambda rgb: rgb[0]>120 and rgb[1]>100 and rgb[2]<100)(im.getpixel((x,166))))
     return {
         "mask_count":len(masks),
+        "unexplained_white_pixel_count":len(unexplained),
+        "unexplained_white_pixels":unexplained[:40],
         "masks":masks,
         "p0_yellow_pixel_count":player,
         "m0_yellow_pixel_count":missile,
         "pass_pair":len(masks)==2 and
             masks[0]["male_mask_exact"] and masks[1]["female_mask_exact"] and
-            masks[0]["gui_y"]==masks[1]["gui_y"] and player>0 and missile>0,
+            masks[0]["gui_y"]==masks[1]["gui_y"] and len(unexplained)==0 and player>0 and missile>0,
     }
 
 def main():
