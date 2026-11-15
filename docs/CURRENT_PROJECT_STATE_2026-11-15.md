@@ -66,6 +66,14 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
+## MAIN v0.18 – färdig teknisk uppdragsgrind (INTE KODAUtORISATION)
+
+- **Design/analys steg 10 genomfört.** Avgränsat framtida ROM-test omfattar endast **R1** (sex androider, spelare, testsymbolskott), **R2** (fem androider, nyckel, spelare, skott), **R3** (endast högerdörr, orange och nyckelhål), **R4** (förprogrammerad raster-/nyckelskymningsstress).
+- **16 definierade testfall**, alla `NOT_RUN_IN_ROM`, med egentliga acceptanskriterier, stoppregler och **oberoende VERIFICATION**. **Ingen ROM, 6502-kodning eller faktisk Stella-verifiering har påbörjats.**
+- [Scope](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_SCOPE.md) · [Acceptans](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_ACCEPTANCE.md) · [Testmatris](https://github.com/Odourman/let-me-out/blob/main/planning/ROM_GATE_V018_TEST_MATRIX.csv) · [Oberoende verifiering](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_VERIFICATION.md).
+- [Gemensam ZIP i Drive](https://drive.google.com/file/d/1FzQJWYYMzO0T18wxil079WxqmdboFPiw/view?usp=drivesdk) · [mobilrapport](https://drive.google.com/file/d/1gVhSzEX3UnD1UTm-nl4pwdwrtrRFFGm4/view?usp=drivesdk) · [Issue #6: separat uttryckligt kodgodkännande krävs](https://github.com/Odourman/let-me-out/issues/6).
+- NTSC och 16KB F6 är **tekniska förslag**, inte nya bindande beslut. **Godkänd diagnostik ska aldrig automatiskt öppna ett senare fullspelsuppdrag.**
+
 ## Ljuddesign v0.17 – fyra korta effekter
 
 - **Redan beslutat i ursprunglig Master Spec:** ljud vid nyckelupptagning (+50), precis en gång.
@@ -76,7 +84,7 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – sjutton versionerade ZIP-arkiv från huvudöverlämningen till MAIN:s samlade åttastegsstudie v0.16, inklusive manifest, samt status-/färdplanfil (O1-beslut), Game Over-/RESET-beslut, kartdata JSON och mobilrapporter/RGB-skisser.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – arton versionerade ZIP-arkiv från huvudöverlämningen till den färdiga ROM-grinden v0.18, inklusive manifest, samt status-/färdplanfil (O1-beslut), Game Over-/RESET-beslut, kartdata JSON och mobilrapporter/RGB-skisser.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
 - **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
