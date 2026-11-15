@@ -66,6 +66,13 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
+## MAIN – spelarstorlek och fyra ursprungsmasker (senaste visuella förtydligandet)
+
+- **Användarbeslut:** gul spelare ska vara **lika stor som de stora androiderna** på skärmen och fortsatt ha hatt och vapen från originalsissen. Den nya jämförelsebilden är pedagogisk målskiss, **inte** en godkänd ny pixelmask eller autentisk Stella-bild.
+- [Original 8×9-NPC-referenser (oförändrade)](https://github.com/Odourman/let-me-out/blob/main/design/NPC_REFERENCE_8x9_masks.json) är importerade byte-identiskt ur huvudöverlämningens `assets/NPC_REFERENCE_8x9_masks.json`. Stora figurer har 9 synliga rader, små 6 inom samma 8×9-matriser. SHA-256 `1ace693e093be62d256b2d1f573e5ef8bc540e8ec8daae1b245ebdfb435c8e38`.
+- [Spelarskalans MAIN-specifikation](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_PLAYER_SCALE_V018_2026-11-15.md), [samma i Drive](https://drive.google.com/file/d/1ZEq-8_69amjwSIEZFjroT0q2w-pTn_aY/view). Integrerat **förprov inom befintligt R1**, inte ny fas eller separat R1-acceptans.
+- **Ingen ny ROM-byggning** eller oberoende verifiering följer av de visuella referenserna; **draft PR #7** får fortsatt inte merge innan blockerarna åtgärdats och separat VERIFICATION slutförts.
+
 ## MAIN:s två-silhuetters förprov v0.18 – rådgivande avgränsning
 
 - [Teknisk analys av NUSIZ och sprite-/PF-konflikten](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_SPRITE_FEASIBILITY_V018_2026-11-15.md), [samma memo i Google Drive](https://drive.google.com/file/d/1LUEuhOVYcOw6rgey7kS_NTbXyCEFWKI6/view).
