@@ -255,6 +255,7 @@ Delay08:
  LDA #0
  STA GRP0
  STA GRP1
+ STA GRP0  ; VDEL1: second GRP0 write flushes delayed GRP1 latch to zero
  STA ENAM0
  LDX #102
 BottomBlank:
