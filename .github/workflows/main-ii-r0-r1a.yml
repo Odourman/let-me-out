@@ -1,0 +1,39 @@
+name: MAIN II R0-R1a isolated NUSIZ close-copy diagnostic
+on:
+  push:
+    branches:
+      - research/main-ii-r0-r1a-actions-20261116
+    paths:
+      - .github/workflows/main-ii-r0-r1a.yml
+      - rom/v018/experiments/main_ii_r0_r1a/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r0-r1a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM and Stella
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick xdotool
+          dpkg-query -W -f='\${binary:Package} \${Version}\\n' dasm stella | tee versions.txt
+      - name: Assemble independent 16K F6 test
+        run: bash rom/v018/experiments/main_ii_r0_r1a/build.sh
+      - name: Capture authentic Stella frames and two RESP1 PC stops
+        run: bash rom/v018/experiments/main_ii_r0_r1a/ci_stella.sh
+      - name: Verify screenshots and binary
+        run: |
+          cd rom/v018/experiments/main_ii_r0_r1a
+          test "$(stat -c %s r1a_F6.bin)" -eq 16384
+          for name in frame breakpoint_first breakpoint_second; do test -s "evidence/$name/stella_full.png"; done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r0-r1a-stella-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_r0_r1a/
+          if-no-files-found: ignore
