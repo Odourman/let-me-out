@@ -33,7 +33,7 @@ print *\$82
 print *\$90
 print *\$91
 EOF
-    stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$ROOT/$dir/proof.bin" >"$dir/stella_stdout.txt" 2>&1 &
+    stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$dir/proof.bin" >"$dir/stella_stdout.txt" 2>&1 &
     pid=$!
     sleep 5
     if ! kill -0 "$pid" 2>/dev/null; then
