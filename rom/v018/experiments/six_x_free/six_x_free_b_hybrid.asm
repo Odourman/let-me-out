@@ -423,7 +423,7 @@ Subtract15:
  STA RESP0,X
  STA HMP0,X
  RTS
- ORG $F200
+ ORG $F500
 MaleRows:
  BYTE $42,$42,$24,$24,$18,$FF,$18,$3C,$3C
 FemaleRows:
@@ -442,12 +442,12 @@ PtrHi:
  BYTE >MaleRows,>MaleRows,>FemaleRows,>FemaleRows,>SmallMaleRows,>SmallFemaleRows
 ; 6 independently defined deterministic X paths, each table aligned to
 ; same 256-byte page to avoid absolute-indexed page-cross in VBLANK update.
- ORG $F260
+ ORG $F560
 PFScenePtrLo:
  BYTE <PFScene0,<PFScene1,<PFScene2,<PFScene3,<PFScene4,<PFScene5,<PFScene6,<PFScene7,<PFScene8,<PFScene9,<PFScene10,<PFScene11,<PFScene12,<PFScene13,<PFScene14,<PFScene15,<PFScene16,<PFScene17,<PFScene18,<PFScene19,<PFScene20,<PFScene21,<PFScene22,<PFScene23,<PFScene24,<PFScene25,<PFScene26,<PFScene27,<PFScene28,<PFScene29,<PFScene30,<PFScene31
 PFScenePtrHi:
  BYTE >PFScene0,>PFScene1,>PFScene2,>PFScene3,>PFScene4,>PFScene5,>PFScene6,>PFScene7,>PFScene8,>PFScene9,>PFScene10,>PFScene11,>PFScene12,>PFScene13,>PFScene14,>PFScene15,>PFScene16,>PFScene17,>PFScene18,>PFScene19,>PFScene20,>PFScene21,>PFScene22,>PFScene23,>PFScene24,>PFScene25,>PFScene26,>PFScene27,>PFScene28,>PFScene29,>PFScene30,>PFScene31
- ORG $F300
+ ORG $F600
 Path0:
  BYTE $10,$11,$12,$13,$14,$13,$12,$11,$10,$0F,$0E,$0D,$0C,$0D,$0E,$0F
  BYTE $11,$12,$13,$14,$15,$14,$13,$12,$11,$10,$0F,$0E,$0D,$0E,$0F,$10
@@ -466,7 +466,7 @@ Path4:
 Path5:
  BYTE $74,$76,$78,$7A,$7C,$7A,$78,$76,$74,$72,$70,$6E,$6C,$6E,$70,$72
  BYTE $73,$75,$77,$79,$7B,$79,$77,$75,$73,$71,$6F,$6D,$6B,$6D,$6F,$71
- ORG $F400
+ ORG $F700
 PFScene0:
  BYTE $00,$00,$00,$00,$00,$00,$00,$00,$00
  BYTE $C6,$C6,$C6,$C6,$C6,$C6,$C6,$C6,$C6
