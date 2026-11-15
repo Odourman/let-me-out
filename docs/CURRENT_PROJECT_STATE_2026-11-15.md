@@ -5,6 +5,14 @@
 
 ## Beslutsstatus
 
+## MAIN – research 16 november: samtliga 30 Atari-trick, 52 teknikmönster
+
+- **Inläst och granskat:** 55-sidig, användaruppladdad samlad Atari 2600-teknikavhandling (inklusive historiska 67-problemsstudien) samt separat 30-tricksbilaga. [30 originaltrick arkiverade](https://github.com/Odourman/let-me-out/blob/main/docs/RESEARCH_30_ORIGINAL_ATARI_TRICKS_2026-11-16.md); [MAIN:s fullständiga prioriterade granskning med samtliga 30](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_30_TRICKS_RESEARCH_REVIEW_2026-11-16.md). 52 T-poster och 30 numrerade trick överlappar; inte 82 oberoende lösningar.
+- **Nya filers proveniens:** MD-original 30 374 byte, SHA-256 `6d45b2ba5747ee7c64a7446d5295f6f8add988386593b5662a70b700aabff28c`, 30/30 index- och rubrikposter. PDF 55 sidor, 534 513 byte, SHA-256 `596ee313bbbfcf3926efea61807a7b169363dd1aef994a4fc9a635877c62019f`; PDF-bilagan finns i konversationen, ingen Drive-kopia hävdas.
+- **Teknisk prioritet oförändrad:** först giltig Stella `STA RESP1` PC/bank/scanline/cykeltrace (tidigare `break; frame; step` missade), sedan två oförändrade 8x9-originalmasker med fria X på samma höjd samtidigt med P0-spelare och M0-skott. Vid faktiskt bevis och rätt auktorisation: full R1 och R2 med nyckel/O1, därefter R3/R4. **Ingen ny R1 PASS**, fortfarande **FAIL/BLOCKED**. R2–R4 på Venetian inte omtestade; självtester ej oberoende VERIFICATION.
+- **Historiska trickens värde och spärr:** hög forskning för GRP/NUSIZ-deadlines, HMOVE, precompute, P0/P1-displaylistor, F6-specialkernels och asymmetrisk PF för högerdörr. Venetian/sixfas-flicker/grov PF redan lokalt negativa. Tricken **27–30** kräver annan kassetthårdvara än godkänd standard F6. Ingen ny ROM-kod, ny mapper, fullspelsfas, PAL, kartcutover eller grafisk waiver auktoriseras genom forskningen. Draft PR #7/VERIFICATION #8:s äldre baseline förblir åtskilda.
+
+
 ## MAIN – F6-bank- och ROM-minnesrevision (rådgivande)
 
 - **Ny statisk käll-/symbolbaserad revision:** [MAIN_F6_BANK_MEMORY_AUDIT_2026-11-15.md](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_F6_BANK_MEMORY_AUDIT_2026-11-15.md). Verifierat i utvecklingsgrenens `rom/v018/tools/build.py`, `src/bank0.asm`–`bank3.asm` och `dist/symbols.json`, mot rapport om bank switching som användaren bifogat.
