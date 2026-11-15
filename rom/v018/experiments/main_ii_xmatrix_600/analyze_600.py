@@ -14,7 +14,7 @@ MALE=[0x3c,0x3c,0x18,0xff,0x18,0x24,0x24,0x42,0x42]
 FEMALE=[0x3c,0x3c,0x18,0xff,0x3c,0x7e,0x7e,0x24,0x24]
 A=[1,2,3,1,2,3,1,2]
 B=[1,1,1,2,2,2,3,3]
-SCAN_262="04f59d7fbc17d360e0cea738d4e512ab7208118b9b4d4b4743f3a702d96f1fdb"
+SCAN_262="a169787b7bdcf465b5a1b7505dca83c31f60fa2c16337d39fea3e957ea13ace2"
 
 def white(p):
     return min(p)>180 and max(p)-min(p)<40
