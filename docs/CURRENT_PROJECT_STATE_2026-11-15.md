@@ -5,6 +5,16 @@
 
 ## Beslutsstatus
 
+## MAIN – Venetian Blinds v0.18: tre verkliga ROM, R1 FAIL/BLOCKED
+
+- **Nyaste ROM DEVELOPMENT-leverans:** [full rapport](https://github.com/Odourman/let-me-out/blob/rom-dev/v018-ntsc-diagnostic/rom/v018/experiments/venetian_blinds/TO_MAIN_VENETIAN_BLINDS_2026-11-15.md), [T01–T16-delta](https://github.com/Odourman/let-me-out/blob/rom-dev/v018-ntsc-diagnostic/rom/v018/experiments/venetian_blinds/TEST_MATRIX_V018_VENETIAN_DELTA.csv), [MAIN:s mottagningsgranskning](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_VENETIAN_BLINDS_INTAKE_2026-11-15.md). Draft [PR #7](https://github.com/Odourman/let-me-out/pull/7) HEAD vid mottagning `82667dae033f70570dce903f8e1d4866528be02a`; **ej mergad**.
+- **Resultat:** tre reproducerbara 16 KB F6/NTSC-prototyper byggda i DASM och prövade i Stella 6.7.1: 9-line Venetian interleave, 18-line diagnostisk dubbelhöjd och 9-line VDEL. I sex valda råa Stella-bilder ser man P0-spelare/M0-skott och 262-scanline-HUD, **men ingen komplett andra fritt placerad originalandroid**. Det här bevisar fel i de prövade implementationerna, **inte** att all Venetian Blinds-teknik är omöjlig.
+- **Bevisbegränsning:** endast sex utvalda Venetian-bilder, inget nytt 600-frame-test och **ingen giltig individuell TIA-register-/CPU-skrivtrace**. Statisk cykelbudget är inte uppmätt registertiming. Ny delta-matris: **2 LOCAL_PASS, 2 FAIL, 2 INCONCLUSIVE, 10 NOT_RUN**. R1-grafik fortfarande **FAIL/BLOCKED**. R2–R4 inte omtestade på denna kod.
+- **Evidensarkiv kontrollerat av MAIN:** [Google Drive ZIP](https://drive.google.com/file/d/1toh8XDyCBk2LckDwrm4oAQHJ_E4RSEfP/view) 355 517 byte; SHA-256 `b8141a874ad1e10de1ec958d1af36f46c51cc7a548181370ccfe6714dcfda271`; ZIP-integritet OK, **94/94 interna manifestposter korrekta**.
+- **Rotorsak ej fastställd:** `GRP1` skrivs före `RESP1` på synliga rader; MAIN rekommenderar exakt uppmätt register-/pixeldeadline före ytterligare uppskalning. Nominella X-tabeller är inte visade fria X i bild. Även lyckad 9-line varannan-rad-modell förlorar originalrader och uppfyller inte automatiskt hela silhuettkravet.
+- **Grind fortsatt oförändrad:** endast tidigare uttryckligen auktoriserad v0.18 NTSC/R1–R4-diagnostik; ingen ny spelversion, PAL, designwaiver, v0.19-kartcutover eller merge. Fryst oberoende [VERIFICATION #8](https://github.com/Odourman/let-me-out/issues/8) på `561d3baf00c6c4c4bd9bc46599a91dc693abdeba` får inte överföras till ny commit. Eventuell ny teknisk insats kräver separat prioritering och vid behov uttrycklig utökad auktorisation.
+
+
 ## MAIN – research från The Cabin: rådgivande, ingen ny teknik-PASS
 
 - **Arkiverad användarlevererad research**: [exakt källrapport](https://github.com/Odourman/let-me-out/blob/main/docs/RESEARCH_THE_CABIN_TRANSFER_2026-11-15.md) (också [Google Drive-kopia](https://drive.google.com/file/d/1BXeRmUnBUtO-Xexisw6O0cadz3Sklw3C/view)) samt [MAIN:s källkritiska bedömning](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_RESEARCH_CABIN_EVALUATION_2026-11-15.md). **Research är rådgivande; ändrar inga användarbeslut, ROM-grindar eller Canons.**
