@@ -6,16 +6,21 @@ Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin o
 
 - **Design:** grundregler finns dokumenterade; fortsatt granskning pågår.
 - **Förstudier:** labyrinter v0.1–v0.2, AI/rörelse v0.3, v0.7–v0.8, grafikrisk v0.4–v0.5, svårighetskurva v0.6, kollisionsbeslut v0.9, kartjämförelse v0.10, godkänd planerad C02-bas/spawngranskning v0.11 **högerdörrstudie v0.12**, visuellt mål v0.13, nyckelkontrast v0.14 och nyckelöverlappning v0.15, följt av [åtta avslutade MAIN-studier v0.16](docs/MAIN_EIGHT_STEPS_V016_2026-11-15.md).
-- **ROM-kodning:** **endast diagnostik v0.18 uttryckligen auktoriserad 2026-11-15** för NTSC R1–R4, 16 KB F6 om motiverat; **inte fullspelet**. Ingen byggd eller oberoende verifierad ROM har ännu rapporterats. [Auktorisation](docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md).
+- **ROM-kodning:** **endast diagnostik v0.18 uttryckligen auktoriserad 2026-11-15** för NTSC R1–R4, 16 KB F6 om motiverat; **inte fullspelet**. **Körbar DASM-byggd NTSC-diagnostik levererad i draft PR #7**, men **grafiktestet har blockerande FAIL** och den är inte oberoende verifierad. [Auktorisation](docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md).
 - **Nya godkända spelregler:** K1 (nyckel kan tas från och med uppdateringen efter att den uppstått under stillastående spelare) och E1 (dödlig androidkontakt avgörs före samtidigt utträde). [Beslutslogg](docs/APPROVED_EDGE_CASE_DECISIONS_K1_E1_2026-11-15.md).
 - **Planerat fyrarum-set:** A01/B01/**C02**/D01. C02 är **godkänd som planerad karta C** av användaren; C01 behålls som historisk jämförelse. [Exakt kartdata i GitHub](design/PLANERADE_RUMSKARTOR_V011.json) och [beslutslogg/spawngranskning](docs/APPROVED_MAP_C02_AND_SPAWN_AUDIT_V011.md).
 - **Godkänt visuellt mål V2B/GULD:** orange dörr med svart nyckelhål som försvinner vid upplåsning; guldgul nyckel med runt genomgående hål, kort skaft och tänder. [Designunderlag v0.13](docs/KEY_AND_DOOR_VISUAL_TARGET_V013.md). Exakt pixelmask och TIA-grafik är fortfarande öppna.
 - **Nytt v0.14-underlag:** [offline RGB-kontrastjämförelse](docs/KEY_CONTRAST_RGB_REVIEW_V014.md) antyder att en något djupare guldton för nyckeln passar bättre än nästan spelargult. Exakt färgkod är **inte** godkänd eller TIA-verifierad.
 - **Ej godkända testkandidater:** P2 (patrull), J2 (jakt), C-1 (svårighetskurva), S1 (alternativt android-startfilter), K11/K09-nyckelsilhuetter. Varken verklig pixelgeometri, timing eller spelbalans är verifierade. **O1 (android kan tillfälligt skymma nyckeln utan att den flyttas)** är nu **godkänt** av användaren. Ett mindre, tillfälligt flimmer i spelet är acceptabelt utan att någon mätbar tolerans är fastställd. [Beslutslogg och kommande 10 steg](docs/MAIN_STATUS_NEXT_10_2026-11-15.md).
 
+## MAIN v0.18 – ROM DEVELOPMENT:s första leverans (BLOCKERAD)
+
+- [Draft PR #7](https://github.com/Odourman/let-me-out/pull/7) innehåller NTSC/F6 ROM och autentiska Stella-skärmbilder; [MAIN:s mottagningsgranskning](docs/MAIN_REVIEW_ROM_V018_STELLA_2026-11-15.md) noterar fem FAIL, framför allt oläsliga androidsilhuetter. DASM-bygget är byteidentiskt i utvecklarens CI.
+- [Oberoende VERIFICATION uppdrag #8](https://github.com/Odourman/let-me-out/issues/8) inväntar separat kontroll. **Ingen merge, inget fullspel och ingen ny utvecklingsfas**.
+
 ## MAIN v0.16 – genomförd designresearch
 
-De första åtta momenten i användarens tio-stegsplan är nu [genomförda och dokumenterade](docs/MAIN_EIGHT_STEPS_V016_2026-11-15.md): nyckelskymning, rasterstress, högra dörren, nyckelpixelgrafik, AI, startpositioner, svårighetskurva och HUD. Nästa punkter är **9 ljud/presentation** och **10 framtida ROM-grind**. Samtliga tester är offline och **ingen ROM-kodning har startats**.
+De första åtta momenten i användarens tio-stegsplan är nu [genomförda och dokumenterade](docs/MAIN_EIGHT_STEPS_V016_2026-11-15.md): nyckelskymning, rasterstress, högra dörren, nyckelpixelgrafik, AI, startpositioner, svårighetskurva och HUD. Nästa punkter är **9 ljud/presentation** och **10 framtida ROM-grind**. Dessa v0.16-tester var offline. **Senare har endast den avgränsade diagnostiken v0.18 kodats**, se status ovan.
 
 ## Presentation
 
@@ -30,10 +35,10 @@ De första åtta momenten i användarens tio-stegsplan är nu [genomförda och d
 - **Fortfarande preliminärt:** exakta tonhöjder, längder, ljudprioritering, slutlig ljudpalett och samtidiga effekter. **Inget ROM-ljud byggt.**
 - [Ljudspecifikation v0.17](https://github.com/Odourman/let-me-out/blob/main/docs/SOUND_DESIGN_V017_2026-11-15.md) och [identiskt originalunderlag i Drive](https://drive.google.com/file/d/1bm19imkHic0zPSvDk-MGJ5842VfQtuWS/view).
 
-## Teknisk ROM-grind v0.18 – färdig plan, ingen kodstart
+## Teknisk ROM-grind v0.18 – kodad diagnostik, ej godkänd
 
-- Framtida avgränsad diagnostik omfattar **R1–R4**: rastervärstafall 6 androider+spelare+skott, 5 androider+spelare+nyckel+skott, asymmetrisk högerdörr och styrd rasterstress.
-- **16 framtida ROM-testfall** är definierade, samtliga `NOT_RUN_IN_ROM`; fristående [VERIFICATION](docs/ROM_GATE_V018_VERIFICATION.md) krävs.
+- Avgränsad diagnostik omfattar **R1–R4**: rastervärstafall 6 androider+spelare+skott, 5 androider+spelare+nyckel+skott, asymmetrisk högerdörr och styrd rasterstress.
+- **16 ROM-testfall** är definierade. Utvecklarens senare utfall: 5 PASS / 5 FAIL / 5 INCONCLUSIVE / 1 NOT_RUN. Fristående [VERIFICATION](docs/ROM_GATE_V018_VERIFICATION.md) krävs fortfarande.
 - [Uppdragets scope](docs/ROM_GATE_V018_SCOPE.md) · [acceptanskriterier](docs/ROM_GATE_V018_ACCEPTANCE.md) · [testmatris](planning/ROM_GATE_V018_TEST_MATRIX.csv) · [risker och stopp](docs/ROM_GATE_V018_BLOCKERS.md).
 - [Ladda ned hela grinden från Drive](https://drive.google.com/file/d/1FzQJWYYMzO0T18wxil079WxqmdboFPiw/view?usp=drivesdk).
 - **Kodning är nu tillåten endast för diagnostik v0.18** enligt [separat uttrycklig auktorisation](https://github.com/Odourman/let-me-out/issues/6). Fullspel och alla senare implementeringssteg är fortfarande spärrade.
