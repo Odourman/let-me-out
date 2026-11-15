@@ -7,6 +7,9 @@ mkdir -p evidence
 export SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=x11
 export HOME="$ROOT/evidence/home"
 mkdir -p "$HOME/.config/stella"
+ACTUAL_HOME="$(getent passwd "$(id -un)" | cut -d: -f6)"
+mkdir -p "$ACTUAL_HOME/.config/stella"
+printf "base #10\n" > "$ACTUAL_HOME/.config/stella/autoexec.script"
 Xvfb :97 -screen 0 1366x900x24 -ac > evidence/xvfb.log 2>&1 &
 XVFBPID=$!
 trap 'kill "$XVFBPID" 2>/dev/null || true' EXIT
@@ -31,7 +34,7 @@ for point in near:20 far:100; do
     echo 'print *$81'
   } >"evidence/$name/proof.script"
   # ROM-specific script is loaded from same folder as ROM, including DASM symbols/list.
-  stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "evidence/$name/proof.bin" >"evidence/$name/stella_stdout.txt" 2>&1 &
+  stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$ROOT/evidence/$name/proof.bin" >"evidence/$name/stella_stdout.txt" 2>&1 &
   pid=$!
   sleep 7
   if ! kill -0 "$pid" 2>/dev/null; then
