@@ -66,6 +66,13 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
+## MAIN – sex individuella X-positioner (v0.18, offline-stresstest och utvecklingsuppdrag)
+
+- **Uttrycklig ny arbetsprioritet från användaren:** börja med sex androider på **individuella X-positioner**, viktigaste tekniska hindret. Fortsatt enbart auktoriserade v0.18 NTSC/R1–R4, ingen ny fas.
+- [MAIN:s geometriska stresstest](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_SIX_INDEPENDENT_X_V018_2026-11-15.md), [reproducerbart paket i Drive](https://drive.google.com/file/d/1s4gWod2rnvYJRFoyQlDpkR3VMeXTnffU/view): **44 191 av 64 045** historiska S0-sexval saknar NPC-par på just de **i tidigare Stella-prov verifierade** NUSIZ-separationerna 32 och 64 färgklockor; A01 66,9%, B01 24,1%, C02 77,5%, D01 69,2%. Avser *offline-x-geometri*, inte faktisk same-Y-rendering eller spelbarhetsrisk.
+- **Konkreta R1-provet skickat till [PR #7](https://github.com/Odourman/let-me-out/pull/7):** sex separata X-koordinater och NPC-typer, same-Y-test x i färgklockor `[16,36,56,76,96,116]`, högst två tekniska renderingsspår, faktiskt 600 konsekutiva Stella-frame-värden, per-android-synlighetsmask/frekvens/längsta osynlighet och verkliga CPU/TIA-skrivcykler. Ingen förenklad spriteformation får räknas som full R1 PASS.
+- **Status:** Implementation och faktisk Stella-körning av detta sex-X-prov **inte levererad eller verifierad**. PR #7 fortsatt DRAFT. [VERIFICATION #8](https://github.com/Odourman/let-me-out/issues/8) gäller fryst historisk baseline, ej ny implementatörscommit.
+
 ## MAIN – första fungerande originalsilhuetter i Stella (v0.18 teknikdelta)
 
 - **Ny utvecklarcommit på [draft PR #7](https://github.com/Odourman/let-me-out/pull/7):** `f5c06f352ba8653f3ce65bbc3e5e392c892beec5`. Fryst originalbaseline för separat [VERIFICATION #8](https://github.com/Odourman/let-me-out/issues/8) är fortfarande `561d3baf00c6c4c4bd9bc46599a91dc693abdeba` och har **inte** ersatts.
