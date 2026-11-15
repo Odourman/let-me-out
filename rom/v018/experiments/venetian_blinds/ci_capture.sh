@@ -13,7 +13,7 @@ XVPID=$!
 trap 'kill "$XVPID" 2>/dev/null || true' EXIT
 export DISPLAY=:106
 sleep 1
-for variant in vb_9_interleave vb_18_doubled; do
+for variant in vb_9_interleave vb_18_doubled vb_9_vdel; do
   for frame in 12 17; do
     dir="$OUT/$variant/frame_$frame"
     mkdir -p "$dir"
