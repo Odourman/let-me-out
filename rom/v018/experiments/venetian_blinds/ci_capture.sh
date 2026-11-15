@@ -14,7 +14,7 @@ trap 'kill "$XVPID" 2>/dev/null || true' EXIT
 export DISPLAY=:106
 sleep 1
 for variant in vb_9_interleave vb_18_doubled; do
-  for frame in 12 28; do
+  for frame in 12 17; do
     dir="$OUT/$variant/frame_$frame"
     mkdir -p "$dir"
     cp "dist/$variant.F6.bin" "$dir/proof.bin"
