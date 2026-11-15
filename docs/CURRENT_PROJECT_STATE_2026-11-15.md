@@ -50,6 +50,12 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 - **Lite flimmer accepterat:** inte tillstånd för långvarig oläslighet eller skymd spelarfara. Bedöms i framtida ROM och oberoende VERIFICATION.
 - Ingen ytterligare ROM-/6502-auktorisation har givits.
 
+## Presentation – nytt användarbeslut och öppet designförslag
+
+- **BESLUT:** Ingen separat startskärm i Let Me Out! (användarens direktinstruktion 2026-11-15). Spelstart/omstart sker utan fristående titelskärm; exakt kontroll- och startflöde återstår att specificera.
+- **GAME OVER – FÖRSLAG, INTE GODKÄNT:** Behåll sista labyrintbilden, stoppa rörelse, växla väggfärg eller kontrast, låt slutpoängen blinka lugnt, ge ett kort ljud och låt Fire starta om. Användaren föreslog att inspireras av Berzerk med inverterade färger/blinkande score. Berzerks originalmanual bekräftar att sista livets förlust avslutar spelet och att Fire kan starta om; den dokumenterar blinkande bonuspoäng vid rumsrensning, men styrker **inte** inversion och blinkande totalpoäng specifikt vid Game Over. [Originalmanualen](https://www.atariage.com/2600/manuals_old/berzerk.html).
+- Dessa effekter får inte förväxlas med användarens accepterade **begränsade flimmer under spel**. Ingen ROM-implementation har godkänts.
+
 ## Viktigaste öppna val
 
 1. **C02 valt som planerad karta C** (beslut; inte speltestad): [GitHub-beslut och spawngranskning v0.11](https://github.com/Odourman/let-me-out/blob/main/docs/APPROVED_MAP_C02_AND_SPAWN_AUDIT_V011.md), [Drive-paket](https://drive.google.com/file/d/1WbnLfcSKM-bqmVIz5jCJ0ga0sUzPU0UK/view?usp=drivesdk), [avslutat Issue #2](https://github.com/Odourman/let-me-out/issues/2). A01/B01/D01 ej ändrade. Jämför bara A/B/D med annat utförande om senare speltest kräver det.
