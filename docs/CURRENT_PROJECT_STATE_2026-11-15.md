@@ -5,6 +5,14 @@
 
 ## Beslutsstatus
 
+## MAIN – F6-bank- och ROM-minnesrevision (rådgivande)
+
+- **Ny statisk käll-/symbolbaserad revision:** [MAIN_F6_BANK_MEMORY_AUDIT_2026-11-15.md](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_F6_BANK_MEMORY_AUDIT_2026-11-15.md). Verifierat i utvecklingsgrenens `rom/v018/tools/build.py`, `src/bank0.asm`–`bank3.asm` och `dist/symbols.json`, mot rapport om bank switching som användaren bifogat.
+- **Huvuddiagnostiken använder fyra skilda R1/R2/R3/R4-databanker men samma exekverbara kernel.** Kernel `$F000-$F1E0` = **481 byte/bank**, åtta fulla tabeller `$F400-$FBFF` = **2 048 byte/bank**, säkert tillgängligt oallokerat ROM i `$F1E1-$F3FF` och `$FC00-$FFF5` = **1 557 byte/bank** (hotspots `$FFF6-$FFF9` och sista vektorområdet reserverade). Detta är **ROM, inte extra RIOT-RAM eller TIA-/cykeltid**.
+- **Skilj diagnostik från faktiskt spel:** separata bank-R1 (NPC) och bank-R3 (dörr) bevisar **inte** att dörr och alla NPC kan visas samtidigt i en spelruta. Senare sex-X/Venetian-ROM:er upprepar sin egen 4 KB-bank fyra gånger, utnyttjar inte extra unika data i 16 KB.
+- **Forskning, ingen kodstart:** specialiserad R1/R2-kernel och förberäknade data kan undersökas, men gemensam bankbytesfortsättning/reset måste säkras och själva RESP1-timingen fortfarande mätas. `STA $FFF6` vs `BIT $FFF6` är en hypotetisk A/B-kontroll, inte ett konstaterat fel. **Ingen ändring av godkända R1–R4, fullspel, PAL, kartcutover, ROM-gren eller PR-merge.**
+
+
 ## MAIN – RESP1: rotorsakshypotes och rättad mätmetod (v0.18)
 
 - **Ny MAIN-analys av faktiska källor och sex ursprungliga Stella-skärmbilder:** [RESP1-rotorsaksanalys](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_RESP1_ROOT_CAUSE_ANALYSIS_2026-11-15.md). Inga ändringar i ROM eller godkännanden.
