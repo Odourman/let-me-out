@@ -1,0 +1,17 @@
+test_id,new_experiment_status,basis_and_limitations
+T01,INCONCLUSIVE,6 sampled Stella frames all show 262 HUD; no 600 consecutive frames for NEW Venetian ROMs
+T02,FAIL,two separate original NPCs not simultaneously rendered in tested 9/18/VDEL variants; six still untested
+T03,NOT_RUN,no R2 five-NPC key shot regression after new code
+T04,FAIL,only 2 types attempted; 9-row line interleave loses 4/5 mask rows and second independent X fails
+T05,NOT_RUN,key O1 overlap not implemented in Venetian experiment
+T06,NOT_RUN,key hold not implemented
+T07,INCONCLUSIVE,cycle budget static; Stella logTrace and PC break did not capture actual TIA write cycle
+T08,NOT_RUN,no complete R4 raster-Y collision stress
+T09,NOT_RUN,R3 locked right door not retested
+T10,NOT_RUN,R3 opened right door not retested
+T11,NOT_RUN,R3 orange port not retested
+T12,NOT_RUN,R3 black keyhole not retested
+T13,NOT_RUN,R2 key legibility not retested
+T14,LOCAL_PASS,"real DASM 2.20.14.1, three 16KiB F6 binaries verified with SHA256SUMS; independent rebuild not yet done"
+T15,NOT_RUN,independent VERIFICATION issue 8 pertains historic frozen baseline only
+T16,LOCAL_PASS,"no third-party code/ROM, only Odourman/let-me-out test branch changed; GitHub diff should be checked"
