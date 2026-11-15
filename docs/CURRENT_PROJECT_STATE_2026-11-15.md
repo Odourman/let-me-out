@@ -66,6 +66,13 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
+## MAIN:s statiska rasterbudget v0.18 – nytt deluppdrag (inte egen ROM-verifiering)
+
+- [Beräknad 6502-instruktionsbudget](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_RASTER_DELTA_V018_2026-11-15.md): både `FullLoop` och `BandLoop` i frysta utvecklarkällan har **74/76 CPU-cykler per normalt loopvarv**, innan faktisk Stella-kontroll. Resurskonflikt: P0 används för spelaren och P1 för nyckeln i R2, medan PF ritar grova androidblock.
+- Debuggerskärmbilderna visar saknade `.script`, `.lst` och `.sym`-filer, vilket måste rättas innan fullständig Stella-mätdokumentation kan erhållas.
+- **MAIN har kommenterat PR #7** med ett strikt avgränsat korrigeringsuppdrag inom redan godkända R1–R4: först objekt-/cykelschema, sedan prövad hybrid/PF-kernel, 600 faktiska sammanhängande Stella-bildrutor och explicit ny R3-dörrbedömning.
+- **VERIFICATION Issue #8** gäller fortsatt fryst baseline-commit; inga omdömen från MAIN ersätter dess oberoende ombyggnad.
+
 ## Mottagen ROM DEVELOPMENT-leverans – MAIN preflight (2026-11-15)
 
 - **Utvecklarbaseline:** [draft PR #7](https://github.com/Odourman/let-me-out/pull/7), commit `561d3baf00c6c4c4bd9bc46599a91dc693abdeba`, ROM SHA-256 `d31380be676752bd517c18d3c8bb64b30854d3d84175cf9c1163af76689f8620`.
