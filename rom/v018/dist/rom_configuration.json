@@ -1,0 +1,77 @@
+{
+  "title": "Let Me Out! NTSC v0.18 R1-R4 diagnostic only",
+  "rom_format": "Atari 2600 16 KiB F6; four 4096 byte bank segments, switch on $FFF6..$FFF9",
+  "ntsc_nominal_frames": {
+    "lines_total": 262,
+    "vsync": 3,
+    "vblank": 37,
+    "picture": 192,
+    "overscan": 30
+  },
+  "assembly_tool": "bundled Python tools/as6502.py v0.18a subset interpreter, not DASM",
+  "build_python": "Python 3.13.5",
+  "stella_version": "NOT AVAILABLE / NOT RUN",
+  "actual_rom_bytes": 16384,
+  "banks": [
+    {
+      "number": 0,
+      "scene": "R1",
+      "bytes": 4096,
+      "code_region": "$F000-$F1E0 (~481 B)",
+      "sprite_and_pf_table_region": "$F400-$FBFF (2048 B)",
+      "reserved_padding_and_vectors": "$FBFF-$FFFF"
+    },
+    {
+      "number": 1,
+      "scene": "R2",
+      "bytes": 4096,
+      "code_region": "$F000-$F1E0 (~481 B)",
+      "sprite_and_pf_table_region": "$F400-$FBFF (2048 B)",
+      "reserved_padding_and_vectors": "$FBFF-$FFFF"
+    },
+    {
+      "number": 2,
+      "scene": "R3",
+      "bytes": 4096,
+      "code_region": "$F000-$F1E0 (~481 B)",
+      "sprite_and_pf_table_region": "$F400-$FBFF (2048 B)",
+      "reserved_padding_and_vectors": "$FBFF-$FFFF"
+    },
+    {
+      "number": 3,
+      "scene": "R4",
+      "bytes": 4096,
+      "code_region": "$F000-$F1E0 (~481 B)",
+      "sprite_and_pf_table_region": "$F400-$FBFF (2048 B)",
+      "reserved_padding_and_vectors": "$FBFF-$FFFF"
+    }
+  ],
+  "bank_switch_hotspots": [
+    "$FFF6",
+    "$FFF7",
+    "$FFF8",
+    "$FFF9"
+  ],
+  "cpu": "MOS 6502, 76 CPU cycles per scanline",
+  "ram_used": {
+    "$80": "SCENE",
+    "$81": "FRAMELO",
+    "$82": "FRAMEHI",
+    "$83": "PHASE",
+    "$84": "KEY_X",
+    "$85": "KEY_Y",
+    "$86": "KEY_ALIVE",
+    "$87": "DOORCOLOR"
+  },
+  "riot_ram_total_bytes": 128,
+  "tia_allocation": {
+    "P0": "yellow player, R1/R2/R4",
+    "P1": "gold key R2/R4, orange/brown door R3",
+    "PF0_PF1_PF2": "six or five white android silhouette masks, shot test symbol, C02 maze",
+    "M0": "unused",
+    "M1": "unused",
+    "BALL": "unused"
+  },
+  "status": "Locally built & 6502 cycle-model preflight only; Stella and independent verification not performed",
+  "rom_sha256": "d31380be676752bd517c18d3c8bb64b30854d3d84175cf9c1163af76689f8620"
+}

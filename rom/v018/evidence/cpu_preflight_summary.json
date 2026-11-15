@@ -1,0 +1,37 @@
+{
+  "method": "Offline custom MOS 6502 instruction/cycle model; NOT Stella or physical Atari 2600",
+  "rom_sha256": "d31380be676752bd517c18d3c8bb64b30854d3d84175cf9c1163af76689f8620",
+  "model_version": "cpu_trace.py v0.18a",
+  "steps": 7287927,
+  "frames_observed": 2403,
+  "scene_counts": {
+    "R1": 603,
+    "R2": 600,
+    "R3": 600,
+    "R4": 600
+  },
+  "frame_delta_distribution": {
+    "R1": {
+      "261.145": 1,
+      "262.000": 601
+    },
+    "R2": {
+      "262.000": 600
+    },
+    "R3": {
+      "262.000": 600
+    },
+    "R4": {
+      "262.000": 600
+    }
+  },
+  "key_ram_stable": true,
+  "room_source": "C02, design/PLANERADE_RUMSKARTOR_V011.json, source bank2",
+  "unverified": [
+    "Stella VSYNC/VBLANK/262",
+    "TIA actual pixels",
+    "real sprite RESP alignment",
+    "flicker and legibility",
+    "independent VERIFICATION"
+  ]
+}
