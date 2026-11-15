@@ -66,6 +66,15 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
+## MAIN – fyra öppna rum 40×22 (v0.19 förslag, inte ny canon)
+
+- **Användargodkänd designriktning:** fyra luftiga rum med få bruna väggpartier som antyder mindre utrymmen, inte en tät labyrint. **Nya exakta kandidater** i [design/OPEN_ROOMS_V019_40x22_CANDIDATES.json](https://github.com/Odourman/let-me-out/blob/main/design/OPEN_ROOMS_V019_40x22_CANDIDATES.json): A_OPEN_01, B_OPEN_01, C_OPEN_01, D_OPEN_01. [Full MAIN-rapport](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_OPEN_ROOMS_V019_2026-11-15.md) samt [reproducerbart ZIP i Drive](https://drive.google.com/file/d/1kO38zm26fFSwu0cAnwQYAZ56D52HrJvK/view).
+- **Innerväggar:** 4,74 % / 6,32 % / 8,42 % / 7,89 % av respektive 38×20 inneryta (tidigare 8,42 % / 20,53 % / 16,32 % / 22,11 %). Fortfarande 40×22, stängd vänstergräns, högerdörr x39/y9–12, spelstart x2/y10 och symmetrisk innervägg.
+- **Offline-geometri:** 623/623, 619/619, 579/579 respektive 591/591 godkända 2×2-fotankare nåbara från spelstart och högerdörr, med minst sex separata historiska S0-exempelstartpositioner i varje rum.
+- **Förenklad dynamisk studie:** 100 deterministiska trafikförsök per rum (400 totalt, 180 logiska steg), sex 2×2-NPC-objekt och en spelare som söker dörren. Spelaren nådde utgången i 400/400; längsta observerade robotstopp ≤2 steg. Detta **är inte** godkänd P2/J2-fiende-AI, riktig 8×9-kollision, faktisk Atari-grafik eller en garanti för att ingen kan fastna under gameplay.
+- **Behåll gamla kartor och tidigare användarval:** [A01/B01/C02/D01 v0.11](https://github.com/Odourman/let-me-out/blob/main/design/PLANERADE_RUMSKARTOR_V011.json) har inte ersatts. **C02:s tidigare godkännande upphävs inte automatiskt.** De fyra nya rutmatriserna behöver ett separat exakt kartbeslut före canon-byte.
+- **Ingen ny ROM-fas:** befintlig NTSC-diagnostik v0.18 R1–R4 är enda auktoriserade implementationen. [Draft PR #7](https://github.com/Odourman/let-me-out/pull/7) lämnas oförändrad och ingen fullspelsspelmotor/kartcutover är godkänd.
+
 ## MAIN – sex individuella X-positioner (v0.18, offline-stresstest och utvecklingsuppdrag)
 
 - **Uttrycklig ny arbetsprioritet från användaren:** börja med sex androider på **individuella X-positioner**, viktigaste tekniska hindret. Fortsatt enbart auktoriserade v0.18 NTSC/R1–R4, ingen ny fas.
