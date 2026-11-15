@@ -28,6 +28,8 @@ jobs:
         run: bash rom/v018/experiments/venetian_blinds/ci_trace_probe.sh
       - name: Probe actual RESP1 TIA write cycles at two critical scanlines
         run: bash rom/v018/experiments/venetian_blinds/ci_tia_traps.sh
+      - name: Probe actual Stella CPU cycles at precise row0/row1 RESP1 opcode breakpoints
+        run: bash rom/v018/experiments/venetian_blinds/ci_pc_cycle_probe.sh
       - name: Require both ROMs, four images and SHA
         run: |
           cd rom/v018/experiments/venetian_blinds
