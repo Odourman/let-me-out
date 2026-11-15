@@ -29,8 +29,8 @@ for mode in frame breakpoint_first breakpoint_second; do
     echo 'print _scan'
     echo 'print _sCycles'
     echo 'print _bank'
-  } > "$dest/proof.script"
-  cp "$dest/proof.script" "$ACTUAL_HOME/.config/stella/autoexec.script"
+  } > "$dest/commands.txt"
+  cp "$dest/commands.txt" "$ACTUAL_HOME/.config/stella/autoexec.script"
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/$dest/proof.bin" > "$dest/stella_stdout.txt" 2>&1 &
   pid=$!
   sleep 7
