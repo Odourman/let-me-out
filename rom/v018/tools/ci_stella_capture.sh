@@ -22,6 +22,11 @@ for entry in "R1:100" "R2:710" "R3_locked_brown:1230" "R3_locked_orange:1330" "R
   echo "saveSes" >> "$OUT/$name/letmeout.script"
   mkdir -p "$HOME/.config/stella"
   cp "$OUT/$name/letmeout.script" "$HOME/.config/stella/letmeout.script"
+  # Stella 6.7 resolves autoexec against the system passwd home, not always env HOME.
+  ACTUAL_HOME="$(getent passwd "$(id -un)" | cut -d: -f6)"
+  mkdir -p "$ACTUAL_HOME/.config/stella"
+  cp "$OUT/$name/letmeout.script" "$ACTUAL_HOME/.config/stella/autoexec.script"
+  cp "$OUT/$name/letmeout.script" "$ACTUAL_HOME/.config/stella/letmeout.script"
   echo "$name frames=$frames" >> "$OUT/scene_plan.txt"
   echo "START $name frames=$frames"
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 -snapsavedir "$OUT/snaps" -snapname rom -ss1x 1 "$OUT/$name/letmeout.bin" >"$OUT/$name/stella_stdout.txt" 2>&1 &
