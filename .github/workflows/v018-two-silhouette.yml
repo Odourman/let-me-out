@@ -31,6 +31,9 @@ jobs:
       - name: Capture independent P1-retrigger horizontal placements in Stella
         timeout-minutes: 5
         run: bash rom/v018/experiments/two_silhouettes/stella_capture_retrigger.sh
+      - name: Real Stella 600 consecutive per-frame scanline debug trace (isolated proof)
+        timeout-minutes: 3
+        run: bash rom/v018/experiments/two_silhouettes/stella_trace_600.sh
       - name: Verify packaged binary, images and manifests
         run: |
           cd rom/v018/experiments/two_silhouettes
@@ -49,6 +52,8 @@ jobs:
             rom/v018/experiments/two_silhouettes/dist/
             rom/v018/experiments/two_silhouettes/evidence/
             rom/v018/experiments/two_silhouettes/evidence_retrigger/
+            rom/v018/experiments/two_silhouettes/evidence_600/
+            rom/v018/experiments/two_silhouettes/stella_trace_600.sh
             rom/v018/experiments/two_silhouettes/proof_nusiz.asm
             rom/v018/experiments/two_silhouettes/proof_retrigger_visible.asm
             rom/v018/experiments/two_silhouettes/stella_capture_retrigger.sh
