@@ -6,7 +6,7 @@
 ## Beslutsstatus
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
-- Senare studier v0.1–v0.9 är i huvudsak **rådgivande förslag**. Undantag: K1 och E1 godkändes av användaren i direkt svar på MAIN:s fråga 2026-11-15; se beslutslogg nedan.
+- Senare studier v0.1–v0.10 är i huvudsak **rådgivande förslag**. Undantag: K1 och E1 godkändes av användaren i direkt svar på MAIN:s fråga 2026-11-15; se beslutslogg nedan.
 - ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
 
 ## Fastställd kärna
@@ -33,13 +33,13 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 
 ## Viktigaste öppna val
 
-1. Godkännande eller korrigering av C02 och övriga labyrinter.
+1. Godkännande eller korrigering av C02 och övriga labyrinter. Ny analys v0.10: C01→C02 minskar kortaste 2×2-vägen start→dörrinsida från 41 till 35 abstrakta steg och förbättrar enkel androidframkomlighet, men kan också öka spelarsvårigheten. [Kartgranskning](https://github.com/Odourman/let-me-out/blob/main/docs/MAP_C01_VS_C02_REVIEW_V010.md), [Drive-paket](https://drive.google.com/file/d/13JHPwn11DtoCcPQupKlPMengz0hQQShE/view?usp=drivesdk). C02 är **fortfarande en testkandidat**, inte slutligt kartbeslut.
 2. Detaljer för patrullering, jakt och svårighet (P2/J2/C-1), tills vidare testkandidater.
 3. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – tio versionerade ZIP-arkiv från huvudöverlämning till kollisionsförslag v0.9, inklusive manifest.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – elva versionerade ZIP-arkiv från huvudöverlämningen till kartgranskning v0.10, inklusive manifest.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
 - **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
