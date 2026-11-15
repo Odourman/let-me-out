@@ -5,6 +5,15 @@
 
 ## Beslutsstatus
 
+## MAIN – research från The Cabin: rådgivande, ingen ny teknik-PASS
+
+- **Arkiverad användarlevererad research**: [exakt källrapport](https://github.com/Odourman/let-me-out/blob/main/docs/RESEARCH_THE_CABIN_TRANSFER_2026-11-15.md) (också [Google Drive-kopia](https://drive.google.com/file/d/1BXeRmUnBUtO-Xexisw6O0cadz3Sklw3C/view)) samt [MAIN:s källkritiska bedömning](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_RESEARCH_CABIN_EVALUATION_2026-11-15.md). **Research är rådgivande; ändrar inga användarbeslut, ROM-grindar eller Canons.**
+- **Kontrollerad primärkod** i användarens The Cabin-källarkiv: Cyloid = tvålinjers P0/P1/M0/PF + endast ett utvalt P1-mål åt gången (ingen ny lösning för same-Y sex NPC); AStar = tidsbestämda asymmetriska PF1/PF2-skrivningar (relevant för högerdörr/väggar, inte en lösning för fyra exakta androidsilhuetter). AStar-källan är GPL-3.0: studera idéer, ingen obehörig kodkopiering. Crystal Castles' vertikala objektåterbruk löser inte sex på samma rasterhöjd. PoC/Pachinko överför framför allt verifieringsmetodik.
+- **Senaste ROM-delta ersätter äldre historiskt statuspåstående om att sex-X inte levererats:** [SEX_X_FREE-rapport i PR #7](https://github.com/Odourman/let-me-out/blob/rom-dev/v018-ntsc-diagnostic/rom/v018/experiments/six_x_free/TO_MAIN_SIX_INDEPENDENT_X_STELLA_2026-11-15.md), kontrollerad HEAD `febfda591c1a4b81682bbb33b20f02b6a99aae0c`: sex logiskt fristående X fungerar som utvecklarprov. **R1-grafik FAIL:** A varje NPC 100/600 bildrutor, B PF-former oläsliga som godkända människosilhuetter. 600/600 Stella-HUD med 262 scanlines per A och B rapporterat, men ingen fullständig individuell TIA-/CPU-registertrace och ingen oberoende VERIFICATION. **R2–R4 ej omtestade på denna kod.**
+- **Cykelgräns:** older/historiskt ~74/76 får inte användas som uppmätt värde för de nya experimenten. A ~30, B ~67–70 cykler är **statiska estimat** (inte en bevisad friskrivning från 76-cykelrestriktionen).
+- **Nästa tekniska undersökning, ej användarbeslut eller nytt implementeringssteg:** verifiera `RESP1/HMOVE/GRP1/VDEL` vid samma-Y för två oberoende exakta NPC-masker i samma frame med gul P0 och testsymbolskott M0; bara vid positivt Stella-bevis skala 3→6. Separat R2-nyckel och R3-asymmetrisk PF. Om ej möjligt, öppet FAIL/BLOCKED till MAIN. **Ingen** designwaiver, fullspelsauktorisation, PAL, kartcutover eller merge.
+
+
 ### Synkad beslutslogg – senaste beslut, 2026-11-15
 
 - **[Kompletterande MAIN-beslutsregister i GitHub](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_DECISION_LEDGER_SUPPLEMENT_2026-11-15.md)** och **[identisk kopia i Google Drive](https://drive.google.com/file/d/1bMUNx-8-sUkx4CHo5Rmm7DpzIFzAXJkF/view)** bevarar de elva nyare användarbesluten/prioriteringarna med explicit status, länkade originalkällor och öppna frågor. Detta kompletterar (ersätter inte) originalhandoffens 57 beslut.
