@@ -16,10 +16,12 @@ for entry in "R1:100" "R2:710" "R3_locked_brown:1230" "R3_locked_orange:1330" "R
   name="${entry%%:*}"; frames="${entry#*:}"
   mkdir -p "$OUT/$name"
   cp "$ROM" "$OUT/$name/letmeout.bin"
-  echo "frame #$frames" > "$OUT/$name/letmeout.bin.script"
-  for label in _fCount _scanEnd _scan _sCycles _bank; do echo "print $label" >> "$OUT/$name/letmeout.bin.script"; done
-  for addr in 80 81 82 84 85 86; do echo 'print *$'"$addr" >> "$OUT/$name/letmeout.bin.script"; done
-  echo "saveSes" >> "$OUT/$name/letmeout.bin.script"
+  echo "frame #$frames" > "$OUT/$name/letmeout.script"
+  for label in _fCount _scanEnd _scan _sCycles _bank; do echo "print $label" >> "$OUT/$name/letmeout.script"; done
+  for addr in 80 81 82 84 85 86; do echo 'print *$'"$addr" >> "$OUT/$name/letmeout.script"; done
+  echo "saveSes" >> "$OUT/$name/letmeout.script"
+  mkdir -p "$HOME/.config/stella"
+  cp "$OUT/$name/letmeout.script" "$HOME/.config/stella/letmeout.script"
   echo "$name frames=$frames" >> "$OUT/scene_plan.txt"
   echo "START $name frames=$frames"
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 -snapsavedir "$OUT/snaps" -snapname rom -ss1x 1 "$OUT/$name/letmeout.bin" >"$OUT/$name/stella_stdout.txt" 2>&1 &
