@@ -21,6 +21,8 @@
 
 GUI-X är rå debuggerbild-koordinater i 1366×900. Ett steg 30 GUI-pixlar är 15 TIA-färgklockor. Fas 1→2 visar **mannen flyttad med kvinnan stilla**; fas 1→3 visar **kvinnan flyttad med mannen stilla**. Därmed finns en begränsad konkret grad av individuell X-justering men **inte bevis för godtyckligt fria X**. Undersökta separationsavstånd är 69 respektive 84 färgklockor, alltså inte närpositioner.
 
+**Kvarstående visuellt fel:** Fasskärmbilder 1 och 3 innehåller ett separat vitt fyrpixelsstreck (8 GUI-pixlar vid X186–193) på första NPC-raden, utöver de två kompletta originalmaskerna. Detta upptäcktes efter pixelmaskkontrollen, som korrekt mäter båda huvudsilhuetterna men inte automatiskt avvisar extra kopior. Möjlig TIA-orsak är startpositionen för P1:s ordinarie kopia innan rasterkärnans första same-line RESP1. **R1b är alltså en positiv tvåmaskersdemonstration, inte ett bevis på helt ren tvåfigursrendering.** En separat ghost-suppression-variant ska prövas utan att ändra den PASS-mätta baslinjen.
+
 Samma nio TIA-rasterrader används för båda, NTSC 262 rasterlinjer; gul P0 9-raders temporär spelarkandidat och gult M0-testskott (två GUI-pixlar vid GUI X240–241, Y166) observerade. Ingen PF-/vägg-/dörrintegrering.
 
 ## Verkliga PC-stoppar i Stella, frame13 scanline119 bank0
