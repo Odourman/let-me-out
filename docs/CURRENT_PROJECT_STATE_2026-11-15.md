@@ -7,7 +7,7 @@
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
 - Senare studier v0.1–v0.16 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner), C02 (planerad kartlayout), V2B/GULD (visuell riktning) och nu **O1 (android får tillfälligt skymma nyckeln)** har godkänts av användaren. En mindre mängd flimmer i spelet har accepterats kvalitativt, utan numerisk tolerans. Se [besluts- och planrapporten](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_STATUS_NEXT_10_2026-11-15.md).
-- **NYTT ANVÄNDARBESLUT 2026-11-15:** Endast **ROM DEVELOPMENT-diagnostik v0.18 med NTSC**, R1–R4, är **uttryckligen kodauktoriserad**. F6 16 KB får användas om tekniskt motiverat. [Auktorisation](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md), [Issue #6](https://github.com/Odourman/let-me-out/issues/6). **Ingen fullspelsutveckling, PAL-utbyggnad eller senare ROM-steg är auktoriserade. Ingen körbar ROM eller oberoende verifiering har ännu rapporterats.**
+- **NYTT ANVÄNDARBESLUT 2026-11-15:** Endast **ROM DEVELOPMENT-diagnostik v0.18 med NTSC**, R1–R4, är **uttryckligen kodauktoriserad**. F6 16 KB får användas om tekniskt motiverat. [Auktorisation](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md), [Issue #6](https://github.com/Odourman/let-me-out/issues/6). **Ingen fullspelsutveckling, PAL-utbyggnad eller senare ROM-steg är auktoriserade. En körbar 16 384-byte F6/NTSC-utvecklar-ROM har nu levererats via PR #7, men den är blockerad och ännu inte oberoende verifierad.**
 
 ## Fastställd kärna
 
@@ -66,13 +66,21 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
-## MAIN v0.18 – uppdragsgrind nu separat AUKTORISERAD för diagnostik
+## Mottagen ROM DEVELOPMENT-leverans – MAIN preflight (2026-11-15)
+
+- **Utvecklarbaseline:** [draft PR #7](https://github.com/Odourman/let-me-out/pull/7), commit `561d3baf00c6c4c4bd9bc46599a91dc693abdeba`, ROM SHA-256 `d31380be676752bd517c18d3c8bb64b30854d3d84175cf9c1163af76689f8620`.
+- **Mottagningsgranskning, inte oberoende verifiering:** [MAIN-rapport](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_REVIEW_ROM_V018_STELLA_2026-11-15.md), [arkiverad utvecklar-evidens i Drive](https://drive.google.com/file/d/1jGG6b_g8LSH_fyGe4pX9bsx0phQ0sDJ8/view).
+- **5 utvecklar-PASS, 5 FAIL, 5 INCONCLUSIVE, 1 NOT_RUN.** Kritisk avvikelse: sex vita androider har inte igenkännbara silhuetter; nyckelhål och väggfärg brister; full 600-frame/CPU-cykelspårning saknas. DASM-byteidentitet är demonstrerad av utvecklarens CI, inte självständigt av VERIFICATION.
+- **Beslut:** PR #7 förblir draft / ej merge. Begränsat tekniskt korrigeringsförsök inom samma auktoriserade R1–R4, inga spelregeländringar och ingen designwaiver.
+- **Oberoende VERIFICATION väntar:** [Issue #8](https://github.com/Odourman/let-me-out/issues/8) med [separat intake](https://github.com/Odourman/let-me-out/blob/main/docs/VERIFICATION_INTAKE_ROM_V018_2026-11-15.md). Ingen ny senare ROM-fas får börja utan nytt tillstånd.
+
+## MAIN v0.18 – uppdragsgrind auktoriserad; utvecklar-ROM blockerad
 
 - **Design/analys steg 10 genomfört.** Avgränsat framtida ROM-test omfattar endast **R1** (sex androider, spelare, testsymbolskott), **R2** (fem androider, nyckel, spelare, skott), **R3** (endast högerdörr, orange och nyckelhål), **R4** (förprogrammerad raster-/nyckelskymningsstress).
-- **16 definierade testfall**, alla `NOT_RUN_IN_ROM`, med egentliga acceptanskriterier, stoppregler och **oberoende VERIFICATION**. **ROM-kodning för exakt detta diagnostikscope är nu auktoriserad men ingen faktisk ROM, Stella-verifiering eller byggning har rapporterats.**
+- **16 definierade testfall** i originalgrinden. ROM DEVELOPMENT har nu lämnat en **egenkontroll med 5 PASS, 5 FAIL, 5 INCONCLUSIVE och 1 NOT_RUN**, men detta är inte oberoende VERIFICATION. Körbar F6/NTSC-ROM är byggd; **grafikacceptansen är blockerad**. Originaltestmatrisen är planeringsunderlag, den faktiska utvecklarmatrisen finns i PR #7.
 - [Scope](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_SCOPE.md) · [Acceptans](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_ACCEPTANCE.md) · [Testmatris](https://github.com/Odourman/let-me-out/blob/main/planning/ROM_GATE_V018_TEST_MATRIX.csv) · [Oberoende verifiering](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_VERIFICATION.md).
 - [Gemensam ZIP i Drive](https://drive.google.com/file/d/1FzQJWYYMzO0T18wxil079WxqmdboFPiw/view?usp=drivesdk) · [mobilrapport](https://drive.google.com/file/d/1gVhSzEX3UnD1UTm-nl4pwdwrtrRFFGm4/view?usp=drivesdk) · [Issue #6: separat uttryckligt kodgodkännande givet](https://github.com/Odourman/let-me-out/issues/6).
-- NTSC och 16KB F6 är **tekniska förslag**, inte nya bindande beslut. **Godkänd diagnostik ska aldrig automatiskt öppna ett senare fullspelsuppdrag.**
+- **NTSC är uttryckligen auktoriserat** för första diagnostiken och utvecklaren har valt **16 KB F6**; detta utvidgar inte till PAL eller fullspel. **Godkänd diagnostik ska aldrig automatiskt öppna ett senare fullspelsuppdrag.**
 
 ## Ljuddesign v0.17 – fyra korta effekter
 
