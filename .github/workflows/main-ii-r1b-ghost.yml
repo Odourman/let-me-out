@@ -1,0 +1,43 @@
+name: MAIN II R1b suppress extra one-line P1 ghost
+on:
+  push:
+    branches:
+      - research/main-ii-r1b-ghost-fix-20261116
+    paths:
+      - .github/workflows/main-ii-r1b-ghost.yml
+      - rom/v018/experiments/main_ii_r1b/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r1b:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real DASM Stella and X11 tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\\n' dasm stella | tee versions.txt
+      - name: Assemble F6 R1b test
+        run: bash rom/v018/experiments/main_ii_r1b/build.sh
+      - name: Capture four original-mask configurations and three PC stops
+        run: bash rom/v018/experiments/main_ii_r1b/ci_stella.sh
+      - name: Pixel-by-pixel compare original male/female masks in four phases
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1b/pixel_audit.py
+      - name: Validate output files
+        run: |
+          cd rom/v018/experiments/main_ii_r1b
+          test "$(stat -c %s r1b_F6.bin)" -eq 16384
+          (sha256sum -c SHA256SUMS.txt)
+          for i in 0 1 2 3; do test -s "evidence/phase_$i/stella_full.png"; done
+          for i in R1bFirstRESP1 R1bFemaleWrite R1bSecondRESP1; do test -s "evidence/pc_$i/stella_full.png"; done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1b-ghost-fix-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_r1b/
+          if-no-files-found: ignore
