@@ -6,7 +6,7 @@
 ## Beslutsstatus
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
-- Senare studier v0.1–v0.10 är i huvudsak **rådgivande förslag**. Undantag: K1 och E1 godkändes av användaren i direkt svar på MAIN:s fråga 2026-11-15; se beslutslogg nedan.
+- Senare studier v0.1–v0.11 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner) och C02 (planerad kartlayout) godkändes av användaren i direkt svar på MAIN:s respektive förslag 2026-11-15; se separata beslutsloggar nedan.
 - ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
 
 ## Fastställd kärna
@@ -19,7 +19,7 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 
 ## Preliminära tekniska kandidater
 
-- **Kartor:** A01/B01/C01/D01 är förslag, C02 är modifierat rum C som underlättar enkel jakt-AI.
+- **Kartor:** Planerat fyrarum-set är **A01/B01/C02/D01**. **C02 är godkänd som planerad version av C**; C01 sparas som jämförelsekarta. A01/B01/D01 behålls oförändrade som hittills studerade kandidater. Ingen pixel- eller ROM-verifiering har skett.
 - **AI:** P2 (patrullera rakt och sväng ibland) och J2 (enkel närmandelogik med kort slumpmässig omväg).
 - **Svårighet:** C-1 är en föreslagen kurva, inte fastslagen hastighetsimplementering.
 - **Grafik:** sex androider på samma rasterhöjd, spelarskott, dörr i speglad playfield och nyckel kräver verkliga timingtester.
@@ -33,13 +33,14 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 
 ## Viktigaste öppna val
 
-1. Godkännande eller korrigering av C02 och övriga labyrinter. Ny analys v0.10: C01→C02 minskar kortaste 2×2-vägen start→dörrinsida från 41 till 35 abstrakta steg och förbättrar enkel androidframkomlighet, men kan också öka spelarsvårigheten. [Kartgranskning](https://github.com/Odourman/let-me-out/blob/main/docs/MAP_C01_VS_C02_REVIEW_V010.md), [Drive-paket](https://drive.google.com/file/d/13JHPwn11DtoCcPQupKlPMengz0hQQShE/view?usp=drivesdk). C02 är **fortfarande en testkandidat**, inte slutligt kartbeslut.
-2. Detaljer för patrullering, jakt och svårighet (P2/J2/C-1), tills vidare testkandidater.
-3. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
+1. **C02 valt som planerad karta C** (beslut; inte speltestad): [GitHub-beslut och spawngranskning v0.11](https://github.com/Odourman/let-me-out/blob/main/docs/APPROVED_MAP_C02_AND_SPAWN_AUDIT_V011.md), [Drive-paket](https://drive.google.com/file/d/1WbnLfcSKM-bqmVIz5jCJ0ga0sUzPU0UK/view?usp=drivesdk), [avslutat Issue #2](https://github.com/Odourman/let-me-out/issues/2). A01/B01/D01 ej ändrade. Jämför bara A/B/D med annat utförande om senare speltest kräver det.
+2. **Spawnspelbalans ännu öppen:** samtliga 64 045 möjliga sexstartval ur nuvarande fyra pools klarade offline 2×2-kontroll. S0 oförändrad bas, S1 (minst 12 fyrvägssteg från spelarstart) **endast testkandidat**.
+3. Detaljer för patrullering, jakt och svårighet (P2/J2/C-1), tills vidare testkandidater.
+4. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – elva versionerade ZIP-arkiv från huvudöverlämningen till kartgranskning v0.10, inklusive manifest.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – tolv versionerade ZIP-arkiv från huvudöverlämningen till planerade kartor/spawngranskning v0.11, inklusive manifest.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
 - **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
