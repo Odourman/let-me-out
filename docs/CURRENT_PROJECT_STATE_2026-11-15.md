@@ -6,7 +6,7 @@
 ## Beslutsstatus
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
-- Senare studier v0.1–v0.13 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner) och C02 (planerad kartlayout) godkändes av användaren i direkt svar på MAIN:s respektive förslag 2026-11-15; se separata beslutsloggar nedan.
+- Senare studier v0.1–v0.14 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner) och C02 (planerad kartlayout) godkändes av användaren i direkt svar på MAIN:s respektive förslag 2026-11-15; se separata beslutsloggar nedan.
 - ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
 
 ## Fastställd kärna
@@ -42,11 +42,12 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 2. **Spawnspelbalans ännu öppen:** samtliga 64 045 möjliga sexstartval ur nuvarande fyra pools klarade offline 2×2-kontroll. S0 oförändrad bas, S1 (minst 12 fyrvägssteg från spelarstart) **endast testkandidat**.
 3. Detaljer för patrullering, jakt och svårighet (P2/J2/C-1), tills vidare testkandidater.
 4. **VISUELLT MÅL BESLUTAT v0.13:** guldgul nyckel med runt genomgående hål och kort tandat skaft; smalt orange dörrstreck med **svart nyckelhål**. Hela dörren och symbolen försvinner vid upplåsning. [Beslutsunderlag](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_AND_DOOR_VISUAL_TARGET_V013.md) och [avslutat designärende #4](https://github.com/Odourman/let-me-out/issues/4). **Exakt pixelmask och TIA-teknik överifierade.** [Öppet framtida testärende #5](https://github.com/Odourman/let-me-out/issues/5).
-5. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
+5. **Nyckelns kontraststudie v0.14, inte beslut om färgkod:** tre hypotetiska RGB-toner jämförda, preliminärt föredras en något djupare guldton framför nästan spelargult; varken K11/K09 eller PAL/NTSC-kod låst. [Designstudie i GitHub](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_CONTRAST_RGB_REVIEW_V014.md), [ZIP i Drive](https://drive.google.com/file/d/17I6nUhYTCSRIQ35fMvILE1pmVIIDh8SA/view?usp=drivesdk). 9 matematiska RGB-kombinationer och två offline-maskkontroller, **ingen Atari-körning**. [Framtida verifieringsärende #5](https://github.com/Odourman/let-me-out/issues/5).
+6. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
 ## Källor och isolation
 
-- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – fjorton versionerade ZIP-arkiv från huvudöverlämningen till visuell nyckel- och dörrstudie v0.13, inklusive manifest, plus kartdata JSON och separata mobilrapporter.
+- [Let Me Out! i Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u) – femton versionerade ZIP-arkiv från huvudöverlämningen till RGB-kontraststudien v0.14, inklusive manifest, plus kartdata JSON och separata mobilrapporter/RGB-skisser.
 - [GitHub-förrådet](https://github.com/Odourman/let-me-out) – egna projekttexter, inga tredjeparts-ROM:er.
 - Ändra aldrig **The Cabin** eller **I Love a Fish** som del av detta projekt.
 - **Linear används inte för Let Me Out!** (användarbeslut 2026-11-15). Arbetsuppgifter hanteras vid behov i GitHub Issues.
