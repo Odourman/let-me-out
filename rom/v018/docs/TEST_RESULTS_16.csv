@@ -1,19 +1,17 @@
-<PARSED TEXT FOR SHEET: 1 / 1 TABS
-TAB NAME: docs_TEST_RESULTS_16.csv>
-index,test_id,result_status,evidence_and_limitation
-0,T01,INCONCLUSIVE,CPU model 600 stable frames/scene at 262; Stella not run
-1,T02,INCONCLUSIVE,Six PF-drawn silhouettes plus P0 player/PF shot encoded; visibility not tested in Stella
-2,T03,INCONCLUSIVE,Five silhouettes plus P1 key/P0 player/PF shot encoded; visual confirmation missing
-3,T04,INCONCLUSIVE,"Four original 4x9 PF cell mask types exist; legibility unverified, likely coarse"
-4,T05,INCONCLUSIVE,"ROM RAM key x=27,y=80,alive=1 stable under CPU model; visual occlusion unverified"
-5,T06,INCONCLUSIVE,Two 64-frame covered phases modeled; key stable; no Stella screenshot
-6,T07,INCONCLUSIVE,Provisional 6502 model PF writes cycles 7/14/21 and 36/43/50; no Stella TIA probe
-7,T08,INCONCLUSIVE,R4 four prerecorded PF movement profiles modeled; monitor stability in Stella
-8,T09,INCONCLUSIVE,C02 source left solid with P1 over right gap; no Stella
-9,T10,INCONCLUSIVE,R3 unlocked P1 color background over right-only PF gap; no Stella
-10,T11,INCONCLUSIVE,R3 brown and orange color periods encoded; no Stella visual comparison
-11,T12,INCONCLUSIVE,8-pixel P1 orange with transparent black-hole attempt; no visual or contention proof
-12,T13,INCONCLUSIVE,R2 key K11 phase0 vs K09 phase3 encoded; no Stella visual acceptance
-13,T14,PASS,"Source-built clean twice, SHA identical; bundled deterministic assembler v0.18a"
-14,T15,NOT_RUN,No separate independent VERIFICATION signature or rerun
-15,T16,PASS,"Locally reviewed build and archive; only Let Me Out original sources, no Berzerk ROM"
+test_id,result_status,evidence_and_limitation
+T01,INCONCLUSIVE,CPU model 600 stable frames/scene at 262; Stella not run
+T02,INCONCLUSIVE,Six PF-drawn silhouettes plus P0 player/PF shot encoded; visibility not tested in Stella
+T03,INCONCLUSIVE,Five silhouettes plus P1 key/P0 player/PF shot encoded; visual confirmation missing
+T04,INCONCLUSIVE,"Four original 4x9 PF cell mask types exist; legibility unverified, likely coarse"
+T05,INCONCLUSIVE,"ROM RAM key x=27,y=80,alive=1 stable under CPU model; visual occlusion unverified"
+T06,INCONCLUSIVE,Two 64-frame covered phases modeled; key stable; no Stella screenshot
+T07,INCONCLUSIVE,Provisional 6502 model PF writes cycles 7/14/21 and 36/43/50; no Stella TIA probe
+T08,INCONCLUSIVE,R4 four prerecorded PF movement profiles modeled; monitor stability in Stella
+T09,INCONCLUSIVE,C02 source left solid with P1 over right gap; no Stella
+T10,INCONCLUSIVE,R3 unlocked P1 color background over right-only PF gap; no Stella
+T11,INCONCLUSIVE,R3 brown and orange color periods encoded; no Stella visual comparison
+T12,INCONCLUSIVE,8-pixel P1 orange with transparent black-hole attempt; no visual or contention proof
+T13,INCONCLUSIVE,R2 key K11 phase0 vs K09 phase3 encoded; no Stella visual acceptance
+T14,PASS,"Source-built clean twice, SHA identical; bundled deterministic assembler v0.18a"
+T15,NOT_RUN,No separate independent VERIFICATION signature or rerun
+T16,PASS,"Locally reviewed build and archive; only Let Me Out original sources, no Berzerk ROM"
