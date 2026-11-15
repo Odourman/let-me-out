@@ -32,9 +32,16 @@ for pair in 0:13 1:29 2:45 3:61; do
   cp "$dst/commands.txt" "$ACTUAL_HOME/.config/stella/autoexec.script"
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/$dst/proof.bin" > "$dst/stella_stdout.txt" 2>&1 &
   pid=$!
-  sleep 6
+  sleep 8
   if kill -0 "$pid" 2>/dev/null; then
-    import -window root "$dst/stella_full.png"
+    for attempt in 1 2 3 4; do
+      import -window root "$dst/stella_full.png"
+      colors=$(identify -format '%k' "$dst/stella_full.png")
+      if [ "$colors" -gt 20 ]; then break; fi
+      echo "Black/unmapped screenshot for $dst, retry $attempt" >&2
+      sleep 4
+    done
+    test "$(identify -format '%k' "$dst/stella_full.png")" -gt 20
     kill "$pid" || true; wait "$pid" 2>/dev/null || true
   else
     cat "$dst/stella_stdout.txt" >&2; exit 1
@@ -64,9 +71,16 @@ for label in R1bFirstRESP1 R1bFemaleWrite R1bSecondRESP1; do
   cp "$dst/commands.txt" "$ACTUAL_HOME/.config/stella/autoexec.script"
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/$dst/proof.bin" > "$dst/stella_stdout.txt" 2>&1 &
   pid=$!
-  sleep 6
+  sleep 8
   if kill -0 "$pid" 2>/dev/null; then
-    import -window root "$dst/stella_full.png"
+    for attempt in 1 2 3 4; do
+      import -window root "$dst/stella_full.png"
+      colors=$(identify -format '%k' "$dst/stella_full.png")
+      if [ "$colors" -gt 20 ]; then break; fi
+      echo "Black/unmapped screenshot for $dst, retry $attempt" >&2
+      sleep 4
+    done
+    test "$(identify -format '%k' "$dst/stella_full.png")" -gt 20
     kill "$pid" || true; wait "$pid" 2>/dev/null || true
   else
     cat "$dst/stella_stdout.txt" >&2; exit 1
