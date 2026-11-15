@@ -1,0 +1,43 @@
+name: v018 Venetian Blinds R1 raster feasibility (experimental)
+on:
+  push:
+    branches:
+      - rom-dev/v018-ntsc-diagnostic
+    paths:
+      - .github/workflows/v018-venetian-blinds.yml
+      - rom/v018/experiments/venetian_blinds/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  venetian:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM and real Stella
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella > tool_versions.txt
+      - name: Assemble nine-row and doubled-height diagnostic with DASM
+        run: bash rom/v018/experiments/venetian_blinds/build.sh
+      - name: Capture authentic Stella debugger screens at two independent movement phases
+        run: bash rom/v018/experiments/venetian_blinds/ci_capture.sh
+      - name: Require both ROMs, four images and SHA
+        run: |
+          cd rom/v018/experiments/venetian_blinds
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          for v in vb_9_interleave vb_18_doubled; do
+            for frame in 12 28; do
+              test -s "evidence/$v/frame_$frame/stella_full.png"
+            done
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: let-me-out-v018-venetian-evidence
+          path: |
+            tool_versions.txt
+            rom/v018/experiments/venetian_blinds/
+          if-no-files-found: ignore
