@@ -23,6 +23,12 @@ jobs:
         run: bash rom/v018/experiments/six_x_free/build.sh
       - name: Run real Stella debugger and probe snapshot instrumentation
         run: bash rom/v018/experiments/six_x_free/ci_capture.sh
+      - name: X11 debugger frame-by-frame capture for six-X candidate A
+        timeout-minutes: 4
+        run: CAPTURE_VARIANT=a NFRAMES=12 bash rom/v018/experiments/six_x_free/ci_frame_walk.sh
+      - name: X11 debugger frame-by-frame capture for six-X candidate B
+        timeout-minutes: 4
+        run: CAPTURE_VARIANT=b NFRAMES=12 bash rom/v018/experiments/six_x_free/ci_frame_walk.sh
       - name: Validate real ROM and raw screenshot file provenance
         run: |
           cd rom/v018/experiments/six_x_free
