@@ -24,6 +24,8 @@ jobs:
         run: bash rom/v018/experiments/venetian_blinds/build.sh
       - name: Capture authentic Stella debugger screens at two independent movement phases
         run: bash rom/v018/experiments/venetian_blinds/ci_capture.sh
+      - name: Probe actual Stella 6.7 debugger CPU and TIA trace feature
+        run: bash rom/v018/experiments/venetian_blinds/ci_trace_probe.sh
       - name: Require both ROMs, four images and SHA
         run: |
           cd rom/v018/experiments/venetian_blinds
