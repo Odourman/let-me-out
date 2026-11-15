@@ -7,7 +7,7 @@
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
 - Senare studier v0.1–v0.16 är i huvudsak **rådgivande förslag**. Undantag: K1/E1 (kollisioner), C02 (planerad kartlayout), V2B/GULD (visuell riktning) och nu **O1 (android får tillfälligt skymma nyckeln)** har godkänts av användaren. En mindre mängd flimmer i spelet har accepterats kvalitativt, utan numerisk tolerans. Se [besluts- och planrapporten](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_STATUS_NEXT_10_2026-11-15.md).
-- ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
+- **NYTT ANVÄNDARBESLUT 2026-11-15:** Endast **ROM DEVELOPMENT-diagnostik v0.18 med NTSC**, R1–R4, är **uttryckligen kodauktoriserad**. F6 16 KB får användas om tekniskt motiverat. [Auktorisation](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md), [Issue #6](https://github.com/Odourman/let-me-out/issues/6). **Ingen fullspelsutveckling, PAL-utbyggnad eller senare ROM-steg är auktoriserade. Ingen körbar ROM eller oberoende verifiering har ännu rapporterats.**
 
 ## Fastställd kärna
 
@@ -66,12 +66,12 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
-## MAIN v0.18 – färdig teknisk uppdragsgrind (INTE KODAUtORISATION)
+## MAIN v0.18 – uppdragsgrind nu separat AUKTORISERAD för diagnostik
 
 - **Design/analys steg 10 genomfört.** Avgränsat framtida ROM-test omfattar endast **R1** (sex androider, spelare, testsymbolskott), **R2** (fem androider, nyckel, spelare, skott), **R3** (endast högerdörr, orange och nyckelhål), **R4** (förprogrammerad raster-/nyckelskymningsstress).
-- **16 definierade testfall**, alla `NOT_RUN_IN_ROM`, med egentliga acceptanskriterier, stoppregler och **oberoende VERIFICATION**. **Ingen ROM, 6502-kodning eller faktisk Stella-verifiering har påbörjats.**
+- **16 definierade testfall**, alla `NOT_RUN_IN_ROM`, med egentliga acceptanskriterier, stoppregler och **oberoende VERIFICATION**. **ROM-kodning för exakt detta diagnostikscope är nu auktoriserad men ingen faktisk ROM, Stella-verifiering eller byggning har rapporterats.**
 - [Scope](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_SCOPE.md) · [Acceptans](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_ACCEPTANCE.md) · [Testmatris](https://github.com/Odourman/let-me-out/blob/main/planning/ROM_GATE_V018_TEST_MATRIX.csv) · [Oberoende verifiering](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_VERIFICATION.md).
-- [Gemensam ZIP i Drive](https://drive.google.com/file/d/1FzQJWYYMzO0T18wxil079WxqmdboFPiw/view?usp=drivesdk) · [mobilrapport](https://drive.google.com/file/d/1gVhSzEX3UnD1UTm-nl4pwdwrtrRFFGm4/view?usp=drivesdk) · [Issue #6: separat uttryckligt kodgodkännande krävs](https://github.com/Odourman/let-me-out/issues/6).
+- [Gemensam ZIP i Drive](https://drive.google.com/file/d/1FzQJWYYMzO0T18wxil079WxqmdboFPiw/view?usp=drivesdk) · [mobilrapport](https://drive.google.com/file/d/1gVhSzEX3UnD1UTm-nl4pwdwrtrRFFGm4/view?usp=drivesdk) · [Issue #6: separat uttryckligt kodgodkännande givet](https://github.com/Odourman/let-me-out/issues/6).
 - NTSC och 16KB F6 är **tekniska förslag**, inte nya bindande beslut. **Godkänd diagnostik ska aldrig automatiskt öppna ett senare fullspelsuppdrag.**
 
 ## Ljuddesign v0.17 – fyra korta effekter
