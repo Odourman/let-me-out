@@ -5,9 +5,10 @@ Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin o
 ## Status – 2026-11-15
 
 - **Design:** grundregler finns dokumenterade; fortsatt granskning pågår.
-- **Förstudier:** labyrinter v0.1, AI/rörelse v0.2–v0.8 och grafik-riskanalys v0.4–v0.5.
+- **Förstudier:** labyrinter v0.1–v0.2, AI/rörelse v0.3, v0.7–v0.8, grafikrisk v0.4–v0.5, svårighetskurva v0.6 samt kollisionsbeslut v0.9 och kartjämförelse v0.10.
 - **ROM-kodning:** **pausad**. Ingen prototyp, binär eller emulatorverifierad spelimplementation finns här.
-- **Designförslag är inte automatiskt beslut:** P2 (patrull), J2 (jakt), C02 (rum C) och C-1 (svårighetskurva) är testkandidater.
+- **Nya godkända spelregler:** K1 (nyckel kan tas från och med uppdateringen efter att den uppstått under stillastående spelare) och E1 (dödlig androidkontakt avgörs före samtidigt utträde). [Beslutslogg](docs/APPROVED_EDGE_CASE_DECISIONS_K1_E1_2026-11-15.md).
+- **Designförslag är inte automatiskt beslut:** P2 (patrull), J2 (jakt), C02 (rum C) och C-1 (svårighetskurva) är fortfarande testkandidater. [Senaste kartjämförelse](docs/MAP_C01_VS_C02_REVIEW_V010.md).
 
 ## Spelidé
 
@@ -18,7 +19,7 @@ Fastslagna grundvärden: sex androider (fyra stora, två små), fyra speglade ru
 ## Underlag
 
 - [Master specification och beslutsregister i projektets Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u).
-- GitHub-förrådet innehåller endast egna textbaserade projektbeskrivningar och arbetsunderlag; referens-ROM:er eller tredjepartsfiler ingår inte.
+- Google Drive innehåller 11 versionerade projektarkiv (till v0.10). GitHub innehåller egna textbaserade beslut, arbetsunderlag och [öppna designärenden](https://github.com/Odourman/let-me-out/issues), men inga referens-ROM:er eller tredjepartsfiler. Linear används inte för detta spel.
 
 ## Arbetsregler
 
