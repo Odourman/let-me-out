@@ -12,13 +12,14 @@ XVPID=$!
 trap 'kill "$XVPID" 2>/dev/null || true' EXIT
 export DISPLAY=:97
 sleep 1
-for entry in "R1:100" "R2:710" "R3_locked_brown:1230" "R3_locked_orange:1330" "R3_open:1450" "R4:1925"; do
+for entry in "R1:130" "R2_key_visible:625" "R2_key_hidden:715" "R2_key_return:835" "R3_locked_brown:1225" "R3_locked_orange:1335" "R3_open:1420" "R4:1925"; do
   name="${entry%%:*}"; frames="${entry#*:}"
   mkdir -p "$OUT/$name"
   cp "$ROM" "$OUT/$name/letmeout.bin"
   echo "frame #$frames" > "$OUT/$name/letmeout.script"
   for label in _fCount _scanEnd _scan _sCycles _bank; do echo "print $label" >> "$OUT/$name/letmeout.script"; done
   for addr in 80 81 82 84 85 86; do echo 'print *$'"$addr" >> "$OUT/$name/letmeout.script"; done
+  echo "saveSnap" >> "$OUT/$name/letmeout.script"
   echo "saveSes" >> "$OUT/$name/letmeout.script"
   mkdir -p "$HOME/.config/stella"
   cp "$OUT/$name/letmeout.script" "$HOME/.config/stella/letmeout.script"
@@ -31,10 +32,12 @@ for entry in "R1:100" "R2:710" "R3_locked_brown:1230" "R3_locked_orange:1330" "R
   echo "START $name frames=$frames"
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 -snapsavedir "$OUT/snaps" -snapname rom -ss1x 1 "$OUT/$name/letmeout.bin" >"$OUT/$name/stella_stdout.txt" 2>&1 &
   PID=$!
-  sleep 4
+  sleep 6
   if ! kill -0 "$PID" 2>/dev/null; then echo "Stella exited early for $name"; cat "$OUT/$name/stella_stdout.txt"; continue; fi
   xdotool search --onlyvisible --name "Stella" getwindowname > "$OUT/$name/window_name.txt" 2>&1 || true
   import -window root "$OUT/$name/debugger_screen.png" 2>"$OUT/$name/import.log" || true
+  EXACT="$(ls -t "$OUT/snaps"/*.png 2>/dev/null | head -n1 || true)"
+  if test -n "$EXACT"; then cp "$EXACT" "$OUT/$name/debugger_exact_frame.png"; fi
   xdotool key --clearmodifiers grave || true
   sleep 0.6
   xdotool key --clearmodifiers F12 || true
