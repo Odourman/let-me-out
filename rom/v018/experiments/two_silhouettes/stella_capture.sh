@@ -19,9 +19,9 @@ for point in near:20 far:100; do
   name="${point%%:*}"
   frames="${point#*:}"
   mkdir -p "evidence/$name"
-  cp dist/LetMeOut_v018_two_silhouette_F6.bin "evidence/$name/proof.bin"
-  cp dist/proof.sym "evidence/$name/proof.sym"
-  cp dist/proof.lst "evidence/$name/proof.lst"
+  cp dist/LetMeOut_v018_two_silhouette_NUSIZ_F6.bin "evidence/$name/proof.bin"
+  cp dist/proof_nusiz.sym "evidence/$name/proof.sym"
+  cp dist/proof_nusiz.lst "evidence/$name/proof.lst"
   {
     echo "base #10"
     echo "frame #$frames"
