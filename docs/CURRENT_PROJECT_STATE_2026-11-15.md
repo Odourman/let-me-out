@@ -6,7 +6,7 @@
 ## Beslutsstatus
 
 - 57 beslut registrerades i den ursprungliga överlämningen. Beslutsregistret i `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` är underlag för beslutens exakta status och historik.
-- Senare studier v0.1–v0.9 har skapat nya **rådgivande förslag**, inte automatiskt fastställda spelregler.
+- Senare studier v0.1–v0.9 är i huvudsak **rådgivande förslag**. Undantag: K1 och E1 godkändes av användaren i direkt svar på MAIN:s fråga 2026-11-15; se beslutslogg nedan.
 - ROM-prototyp, 6502-kodning och test i Stella är **pausade** i väntan på uttryckligt separat godkännande.
 
 ## Fastställd kärna
@@ -25,18 +25,17 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 - **Grafik:** sex androider på samma rasterhöjd, spelarskott, dörr i speglad playfield och nyckel kräver verkliga timingtester.
 - **Dörr:** PF0-/playfield-ändring är en hypotes, inte verifierad lösning.
 
-## Senaste MAIN-förslag (inte beslut)
+## Senast godkända MAIN-beslut (K1/E1)
 
-- **v0.9 K1:** Nyckel som uppstår under stillastående spelare får tas i nästa logiska uppdatering utan rörelse.
-- **v0.9 E1:** Dödlig kontakt med överlevande android i öppnad dörr prioriteras före rumsbonus.
-- Båda inväntar användarens beslut: [GitHub Issue #1](https://github.com/Odourman/let-me-out/issues/1). [Förslag och källor](https://github.com/Odourman/let-me-out/blob/main/docs/COLLISION_EDGE_CASES_V09_PROPOSAL.md), [fullständigt Drive-paket](https://drive.google.com/file/d/1Ztg48ihTanH58Z07OhH3Ge3-Rim2v3iC/view?usp=drivesdk).
+- **BESLUT K1:** Nyckel som uppstår under stillastående spelare får tas i nästa logiska uppdatering utan rörelse.
+- **BESLUT E1:** Dödlig kontakt med överlevande android i öppnad dörr prioriteras före rumsbonus.
+- Båda är **godkända som spelregler**, men **inte implementerade eller verifierade**: [beslutslogg](https://github.com/Odourman/let-me-out/blob/main/docs/APPROVED_EDGE_CASE_DECISIONS_K1_E1_2026-11-15.md) och [avslutat GitHub Issue #1](https://github.com/Odourman/let-me-out/issues/1). [Underlag v0.9](https://drive.google.com/file/d/1Ztg48ihTanH58Z07OhH3Ge3-Rim2v3iC/view?usp=drivesdk).
 
 ## Viktigaste öppna val
 
-1. Exakt prioritet mellan dödlig kontakt och rumsutgång samma uppdatering.
-2. Upptagning när spelaren står på en nyss framkommen nyckel.
-3. Godkännande eller korrigering av C02 och övriga labyrinter.
-4. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
+1. Godkännande eller korrigering av C02 och övriga labyrinter.
+2. Detaljer för patrullering, jakt och svårighet (P2/J2/C-1), tills vidare testkandidater.
+3. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
 ## Källor och isolation
 
