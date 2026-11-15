@@ -1,0 +1,49 @@
+name: v0.18 install DASM and Stella (diagnostic only)
+
+on:
+  push:
+    branches:
+      - rom-dev/v018-ntsc-diagnostic
+    paths:
+      - .github/workflows/v018-install-dasm-stella.yml
+      - rom/v018/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install-and-smoke-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM and Stella, log exact package versions
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb
+          dpkg-query -W -f='${binary:Package}\t${Version}\n' dasm stella xvfb | tee versions.txt
+          command -v dasm
+          command -v stella
+      - name: Rebuild existing diagnostic from current original source
+        run: |
+          cd rom/v018
+          python3 tools/build.py
+          sha256sum dist/LetMeOut_Diagnostic_NTSC_F6_v018.bin | tee ../../rom-sha256-actual.txt
+      - name: Check emulator executable and ROM file (not a Stella gameplay test)
+        run: |
+          file rom/v018/dist/LetMeOut_Diagnostic_NTSC_F6_v018.bin
+          test "$(stat -c %s rom/v018/dist/LetMeOut_Diagnostic_NTSC_F6_v018.bin)" = 16384
+          ldd "$(command -v stella)" > stella-libraries.txt
+          xvfb-run -a timeout 10s stella -help > stella-help.txt 2>&1 || true
+          sed -n '1,25p' stella-help.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v018-dasm-stella-install-logs
+          path: |
+            versions.txt
+            rom-sha256-actual.txt
+            stella-libraries.txt
+            stella-help.txt
+          if-no-files-found: ignore
