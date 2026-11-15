@@ -30,6 +30,9 @@ jobs:
           cd rom/v018
           python3 tools/build.py
           sha256sum dist/LetMeOut_Diagnostic_NTSC_F6_v018.bin | tee ../../rom-sha256-actual.txt
+      - name: Independently assemble all four banks with installed DASM
+        continue-on-error: true
+        run: bash rom/v018/tools/build_with_dasm.sh
       - name: Check emulator executable and ROM file (not a Stella gameplay test)
         run: |
           file rom/v018/dist/LetMeOut_Diagnostic_NTSC_F6_v018.bin
@@ -53,6 +56,7 @@ jobs:
             rom-sha256-actual.txt
             stella-libraries.txt
             stella-help.txt
+            rom/v018/dist/dasm/
             rom/v018/evidence/stella_live/
             rom/v018/evidence/stella_live_sha256.txt
           if-no-files-found: ignore
