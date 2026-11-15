@@ -147,8 +147,9 @@ PositionShot:
  STA WSYNC
  ; VBLANK line8: apply fine motion, player/shot HMP=0 by reset.
  STA HMOVE
- ; VBLANK lines9-39 inclusive: 31 fixed WSYNC lines.
- LDX #31
+ ; Correct frame accounting: 30 WSYNC after HMOVE = 262 total lines.
+ ; First Stella run measured 263, traced to an extra VBLANK WSYNC.
+ LDX #30
 BlankFill:
  STA WSYNC
  DEX
