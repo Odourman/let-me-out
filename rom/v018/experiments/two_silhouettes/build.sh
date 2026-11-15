@@ -14,3 +14,15 @@ print("bank size",len(p),"F6 ROM size",len(p)*4)
 PY
 (cd dist && sha256sum proof_bank.bin LetMeOut_v018_two_silhouette_F6.bin > SHA256SUMS.txt)
 cat dist/SHA256SUMS.txt
+
+# Second, independent ROM candidate: NUSIZ1 copy modes 2/4, same original masks.
+dasm proof_nusiz.asm -f3 -odist/proof_nusiz_bank.bin -sdist/proof_nusiz.sym -ldist/proof_nusiz.lst >dist/dasm_nusiz.stdout.txt 2>&1
+test "$(stat -c %s dist/proof_nusiz_bank.bin)" = 4096
+python3 - <<'PY'
+from pathlib import Path
+p=Path("dist/proof_nusiz_bank.bin").read_bytes()
+assert len(p)==4096
+Path("dist/LetMeOut_v018_two_silhouette_NUSIZ_F6.bin").write_bytes(p*4)
+PY
+(cd dist && sha256sum proof_bank.bin LetMeOut_v018_two_silhouette_F6.bin proof_nusiz_bank.bin LetMeOut_v018_two_silhouette_NUSIZ_F6.bin >SHA256SUMS.txt)
+cat dist/SHA256SUMS.txt
