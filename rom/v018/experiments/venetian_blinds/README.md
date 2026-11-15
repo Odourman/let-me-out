@@ -23,7 +23,7 @@ bash rom/v018/experiments/venetian_blinds/ci_capture.sh
 
 The build emits one DASM bank, `.lst`, `.sym`, and a 16,384-byte F6 test ROM for each variant. The F6 binaries are exactly 4 repeats of the same 4K program bank; no extra sprites/RAM or bank-specific effect is claimed. `dist/SHA256SUMS.txt` is checked.
 
-Real Stella evidence comes from an Xvfb-backed GUI after debugger `frame #12` and `frame #17`. Original 1366×900 `stella_full.png` images are required. The separate `ci_trace_probe.sh`, `ci_tia_traps.sh` and `ci_pc_cycle_probe.sh` are **instrumentation attempts**, not automatically valid timing evidence. The trained auditor must check actual debugger PC/scanline/cycle, not only that the command ran.
+Real Stella evidence comes from an Xvfb-backed GUI after debugger `frame #13` and `frame #18`. Original 1366×900 `stella_full.png` images are required. The separate `ci_trace_probe.sh`, `ci_tia_traps.sh` and `ci_pc_cycle_probe.sh` are **instrumentation attempts**, not automatically valid timing evidence. The trained auditor must check actual debugger PC/scanline/cycle, not only that the command ran.
 
 ## Interpretation
 
