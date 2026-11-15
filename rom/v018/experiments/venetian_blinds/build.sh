@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 mkdir -p dist
-for variant in vb_9_interleave vb_18_doubled; do
+for variant in vb_9_interleave vb_18_doubled vb_9_vdel; do
   dasm "$variant.asm" -f3 -o"dist/$variant.bank.bin" -l"dist/$variant.lst" -s"dist/$variant.sym" >"dist/$variant.dasm.log" 2>&1
   test "$(stat -c %s "dist/$variant.bank.bin")" -eq 4096
   python3 - "$variant" <<'PY'
