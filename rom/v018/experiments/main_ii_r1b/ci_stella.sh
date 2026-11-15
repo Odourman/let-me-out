@@ -13,7 +13,10 @@ export DISPLAY=:119
 sleep 2
 # On a fresh Xvfb session Stella's first launch can leave the root screenshot
 # black even with a live process. Warm up once and discard all its evidence.
-printf 'base #10\\nframe #2\\n' > "$ACTUAL_HOME/.config/stella/autoexec.script"
+cat > "$ACTUAL_HOME/.config/stella/autoexec.script" <<'EOF'
+base #10
+frame #2
+EOF
 stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/r1b_F6.bin" > evidence/stella_warmup_stdout.txt 2>&1 &
 warm_pid=$!
 sleep 8
