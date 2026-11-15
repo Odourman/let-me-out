@@ -66,6 +66,13 @@ Androiderna är ofarliga fram till första **faktiskt avfyrade** skottet, då de
 6. **Nyckelöverlappning v0.15 – O1 NU GODKÄND:** Android får tillfälligt skymma statisk nyckel, men får aldrig flytta, påverka eller ta den. Nyckeln återkommer synligt på oförändrad position när skymningen upphör. Ingen avsiktlig blinkväxling. Mindre tillfälligt flimmer i spelet är acceptabelt, men exakt teknisk gräns är inte bestämd. 20/20 offline-händelsetester klarade. **Ingen TIA-/ROM-verifiering.** [Studie](https://github.com/Odourman/let-me-out/blob/main/docs/KEY_OCCLUSION_LOGIC_V015.md), [Drive ZIP](https://drive.google.com/file/d/1u6FNeEnsNUNufpJtugXfGfm7irAEOQPm/view?usp=drivesdk).
 7. Grafikarkitektur och tolerans för flimmer – först efter uttryckligt godkänd ROM-prototyp.
 
+## MAIN:s två-silhuetters förprov v0.18 – rådgivande avgränsning
+
+- [Teknisk analys av NUSIZ och sprite-/PF-konflikten](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_SPRITE_FEASIBILITY_V018_2026-11-15.md), [samma memo i Google Drive](https://drive.google.com/file/d/1LUEuhOVYcOw6rgey7kS_NTbXyCEFWKI6/view).
+- **Förprov till R1, inte ändrat acceptanskrav:** verklig Stella-bild med **två olika 8×9-androidsilhuetter + spelare + skott på samma rasterhöjd**, och ett instruktions-/TIA-schema. Om detta misslyckas ska teknikförslaget revideras eller stoppas före uppskalning.
+- **Slutkrav oförändrade:** sex androider R1, fem+nyckel R2, högerdörr R3 och R4; 16 fall enligt v0.18. `NUSIZ`-kopior ger inte automatiskt olika sprites och fria individuella X-positioner.
+- Uppgiften kommenterad i [draft PR #7](https://github.com/Odourman/let-me-out/pull/7); separat [VERIFICATION Issue #8](https://github.com/Odourman/let-me-out/issues/8) förblir oberoende och gäller fryst originalcommit.
+
 ## MAIN:s statiska rasterbudget v0.18 – nytt deluppdrag (inte egen ROM-verifiering)
 
 - [Beräknad 6502-instruktionsbudget](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_RASTER_DELTA_V018_2026-11-15.md): både `FullLoop` och `BandLoop` i frysta utvecklarkällan har **74/76 CPU-cykler per normalt loopvarv**, innan faktisk Stella-kontroll. Resurskonflikt: P0 används för spelaren och P1 för nyckeln i R2, medan PF ritar grova androidblock.
