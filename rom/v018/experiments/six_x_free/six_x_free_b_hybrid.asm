@@ -333,8 +333,8 @@ PositionShot:
  STA $00A0,Y
  DEY
  STA WSYNC
- ; 11 PF-copy WSYNC plus 19 remaining blank lines = prior 30 lines.
- LDX #19
+ ; One WSYNC before copy, 11 copy WSYNC, 18 blanks = 30 total.
+ LDX #18
 BlankFill:
  STA WSYNC
  DEX
