@@ -52,4 +52,4 @@ Skapa `SCORE_LIVES_HUD_VISUAL_V01_TO_MAIN.md`, JSON för **ursprungliga C02-rade
 
 **STOPP efter H1 och H2 och en samlad handoff.** Ingen kod, DASM, ROM, Stella, bankbyte, score-/lives-/extraliv-implementation, högre R1–R4, PAL, kart-/NPC-/spelarspritemaputbyte, GAME OVER-/KEY-ny canon, eller ny maskuthållighet. Vid källkonflikt redovisa för MAIN innan konstnärlig beslutswaiver. Här väljer GRAPHICS inte slutlig HUD-canon.
 
-**Syftet:** fatta ett bättre framtida presentationsbeslut utan att lägga UI-information ovanpå redan blockerad ATI-kernel och anta att den magiskt ryms i hårdvaran.
+**Syftet:** fatta ett bättre framtida presentationsbeslut utan att lägga UI-information ovanpå redan blockerad TIA-kernel och anta att den magiskt ryms i hårdvaran.
