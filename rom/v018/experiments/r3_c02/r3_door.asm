@@ -72,6 +72,9 @@ ClearRIOT:
  STA HMP0
  STA HMP1
  STA HMCLR
+ LDA #$90     ; HMOVE shifts P1 +7 color clocks: measured coarse x~145 => x~152
+ STA HMP1
+ LDA #0
  STA CTRLPF ; asymmetric playfield
  STA COLUBK ; black background/keyhole
  LDA #$34
