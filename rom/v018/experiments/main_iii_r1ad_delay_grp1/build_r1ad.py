@@ -75,7 +75,7 @@ for k,(c1,c2,n1,n2) in heads.items():
   line=line.strip()
   if not line or line.startswith(";"):continue
   if line in ("NOP","DEY"):cy=2
-  elif line.startswith("BIT ") or line.startswith("STA "):cy=3
+  elif line.startswith("BIT ") or line.startswith("STA ") or line.startswith("STX "):cy=3
   elif line.startswith("LDA ") and line.endswith(",Y"):cy=4
   elif line.startswith("LDX ") and line.endswith(",Y"):cy=4
   else:raise ValueError(("cycle_unknown",k,line))
