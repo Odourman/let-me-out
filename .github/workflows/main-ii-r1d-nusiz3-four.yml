@@ -1,0 +1,36 @@
+name: MAIN II R1d NUSIZ3 automatic fourth-original mask test
+on:
+  push:
+    branches:
+      - research/main-ii-r1d-nusiz-triple-20261116
+    paths:
+      - .github/workflows/main-ii-r1d-nusiz3-four.yml
+      - rom/v018/experiments/main_ii_nusiz3_four/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  four-same-y:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install actual DASM Stella GUI and pixel-audit tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build NUSIZ3 triple-copy and fourth-original-mask F6 variants
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_nusiz3_four/build_variants.py
+      - name: Capture real Stella images and three RESP1 PC stops for each
+        run: bash rom/v018/experiments/main_ii_nusiz3_four/ci_capture.sh
+      - name: Pixel-accurate audit of all original masks and unwanted copies
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_nusiz3_four/audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1d-nusiz3-four-originals-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_nusiz3_four/
+          if-no-files-found: ignore
