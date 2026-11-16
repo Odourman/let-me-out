@@ -1,0 +1,79 @@
+name: R1-F7 SAME IMMUTABLE ROM READONLY capture recovery after X11 BadWindow
+on:
+  push:
+    branches: [rom-dev/v018-r1-f7-two-binary-runtime-selectors-20261116]
+    paths: [.github/workflows/v018-r1-f7-recapture-original-rom.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  same-ROM-capture-recovery-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download immutable exact ONE original compiled R1-F7 ROM and authentic 16 previous TIA traps, NO build
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F7_ONE_ROM_160_REAL_STELLA_16_REGISTER_TRAPS_ALL_STATES
+          run-id: 43966843507
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed/
+      - name: Verify unchanged F7 ROM SHA+bank/metadata, copy ONLY original bin + prior authentic traps to current workspace
+        run: |
+          R=rom/v018/experiments/r1_free_xy
+          S=seed/$R
+          test -f "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin"
+          mkdir -p "$R/dist" "$R/evidence/r1_f7_one_rom"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin" "$R/dist/"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM.json" "$R/dist/"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM.lst" "$R/dist/"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM.sym" "$R/dist/"
+          cp "$S/r1_f7_2x2_independent_RAM_X_ONE_ROM.asm" "$R/"
+          cp -a "$S/evidence/r1_f7_one_rom/traps" "$R/evidence/r1_f7_one_rom/traps"
+          printf '%s  %s\n' ede93075c3c2c88b6cca226f52958fbbcb9117a068edca01d4d83ff30e4677df "$R/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin" | sha256sum -c
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('rom/v018/experiments/r1_free_xy/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin')
+          b=p.read_bytes()
+          assert len(b)==16384 and all(b[i*4096:(i+1)*4096]==b[:4096] for i in range(4))
+          t=Path('rom/v018/experiments/r1_free_xy/evidence/r1_f7_one_rom/traps')
+          assert len(list(t.glob('mode_*/*/stella_full.png')))==16
+          print('F7_IMMUTABLE_SAME_ONE_ROM_VERIFIED_AND_16_GENUINE_PRIOR_REGISTER_TRAPS_RETAINED')
+          PY
+      - name: Install only Stella GUI and pixel dependencies (DASM intentionally NOT installed / NO build)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W stella python3-pil > r1_f7_capture_only_versions.txt
+      - name: Recollect 160 consecutive true Stella frames from UNCHANGED pinned ROM after positive GUI pixel readiness; audit all four phases
+        id: capture
+        run: bash rom/v018/experiments/r1_free_xy/r1_f7_capture.sh
+      - name: Report fail-closed RAW truth table, no new phase and no ROM rebuild under any outcome
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('rom/v018/experiments/r1_free_xy/evidence/r1_f7_one_rom/TRUE_160_FRAMES_2x2_SOURCE_CANON_PIXEL_AUDIT.json')
+          if p.exists():
+              x=json.loads(p.read_text())
+              print('F7_SAME_ROM_READONLY_PIXEL_OUTCOME',x['classification'],
+                    'actual',x['actual_measured_single_pair_per_mode'],
+                    'orthogonal',x['all_four_independent_orthogonality_pair_checks_PASS'])
+          else:
+              print('F7_INCONCLUSIVE_NO_AUDIT; DO NOT CLAIM F7 PASS; NO NEW ROM')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: LET_ME_OUT_R1_F7_ONE_ORIGINAL_ROM_160_TRUE_STELLA_RECOVERY_16_OLD_TRAPS
+          path: |
+            r1_f7_capture_only_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f7_*
+            rom/v018/experiments/r1_free_xy/dist/r1_f7_*
+            rom/v018/experiments/r1_free_xy/evidence/r1_f7_one_rom/
+          if-no-files-found: ignore
