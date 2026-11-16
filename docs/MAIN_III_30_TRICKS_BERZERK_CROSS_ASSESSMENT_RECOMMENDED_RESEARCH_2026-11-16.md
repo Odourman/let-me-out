@@ -18,7 +18,7 @@
 | **R1y** [Actions #43848364350](https://github.com/Odourman/let-me-out/actions/runs/43848364350) | **474 PASS, 126 FAIL** | M0 saknas i D/x378-läget på x288–300 för att `ENAM0` släcks för tidigt |
 | **R1z** [Actions #43850116022](https://github.com/Odourman/let-me-out/actions/runs/43850116022) | **456 PASS, 144 FAIL** | senare avstängning räddar missil-enable men tidigare `COLUP0` vitfärgar M0; 108 extra vita pixlar |
 | **R1aa** [Actions #43851081064](https://github.com/Odourman/let-me-out/actions/runs/43851081064) | **456 PASS, 144 FAIL** | `NUSIZ0=ONE_COPY` på D-raden räddar **600 gula M0**, men utan återställning förlorar efterföljande P0/NPC-rader kopior; 2 628 vita ghost-pixlar och felmasker |
-| **R1ab** [Actions #43852230740](https://github.com/Odourman/let-me-out/actions/runs/43852230740) | **PÅGÅENDE – resultat inte känt i denna anteckningsversion** | exakt registeråterställning `NUSIZ0=$02` vid beräknad 76-cykelsgräns med särskild första efterföljande D-rad; strikt audit utan ändrat maskkrav |
+| **R1ab** [Actions #43852230740](https://github.com/Odourman/let-me-out/actions/runs/43852230740) | **456 PASS, 144 FAIL** | `NUSIZ0=$02` återställs vid 76-cykelsgräns via separat första D-rad; alla 600 gula M0 syns och spelarmask återställd, men x378-masken fortfarande fel och **12 420 vita extrabildpunkter** |
 
 OBS: detta är *lokala research-pass* och fail-closed emulatortester, inte independent VERIFICATION. R1x är sista fullt PASS, men **full R1 är fortfarande FAIL/BLOCKED**.
 
@@ -42,7 +42,7 @@ Index och namn följer **exakt** befintliga `LET_ME_OUT_30_URSPRUNGLIGA_ATARI_TR
 | **12** | Raster Color Changes | **Kritisk konfliktyta**: `COLUP0` färgar M0 **och** P0. R1z FAIL visar denna begränsning konkret. Kan användas för kontrollerat färgbyte, inte vid fel tidpunkt. |
 | **13** | 48-Pixel / Six-Digit Score Kernel | Idé om hårt schemalagda GRP-latchar, men fast geometri och HUD, inte sex oberoende godtyckliga X. |
 | **14** | Multiple Display Kernels | **Högst prioritet för full M0-räckvidd**: välj kernel efter projektilens horisontella region/fjärde P0-X, VBLANK gör uppdelning och förberedelser. |
-| **15** | NUSIZ Sprite Duplication | **Dubbel roll**: ger våra P0-kopior men duplicerar samtidigt M0. R1aa visar att ONE_COPY på specialraden ger rätt missil men kan förstöra maskerna efteråt. **R1ab testar återställning på linjegräns.** |
+| **15** | NUSIZ Sprite Duplication | **Dubbel roll**: ger våra P0-kopior men duplicerar samtidigt M0. R1aa visar att ONE_COPY på specialraden ger rätt missil men kan förstöra maskerna efteråt. **R1ab testade linjegränsåterställning men blev FAIL – 144 trasiga D-mode-masker.** |
 | **16** | Sprite Reflection | ROM-sparande för spelarriktning efter maskgodkännande; löser inte skottposition eller antal figurer. |
 | **17** | Missile and Ball Reuse | Färsk alternativhypotes: prova M1/BL som projektillager; **M1 delar NUSIZ1/COLUP1 med vita P1**, BL delar färg med PF-vägg. Ingen godkänd drop-in-ersättning. |
 | **18** | Playfield Score Mode | Låg: fler PF-halvfärger men delar P0/P1-färg, kan förvärra färgkonflikten. |
@@ -63,9 +63,9 @@ Index och namn följer **exakt** befintliga `LET_ME_OUT_30_URSPRUNGLIGA_ATARI_TR
 
 ### A. En-kopietrick + SNABB ÅTERSTÄLLNING (mest direkt falsifierbart)
 
-R1aa visar en gul M0 i alla 600 riktiga frames även i D, men 144 trasiga D-androidlägen på efterföljande rader. Hypotesen **R1ab** är att hålla `NUSIZ0=ONE_COPY` från D:s c53 bara till linjeslut, stänga `ENAM0`, samt sätta `NUSIZ0=$02` **exakt på nästa 76-cykelgräns**; därefter ritas nästa rad utan inledande `STA WSYNC`, via en separat första efterföljande D-kernel. 6502-matrisen ska pixeltestas i Stella. Även om detta reparerar nedre maskerna kan den *aktuella skottraden* ha förlorat en P0-kopia genom byte vid c53; sådana bitmapfel måste fortsätta vara FAIL.
+R1aa visar en gul M0 i alla 600 riktiga frames även i D, men 144 trasiga D-androidlägen på efterföljande rader. Hypotesen **R1ab** prövade att hålla `NUSIZ0=ONE_COPY` från D:s c53 bara till linjeslut, stänga `ENAM0`, samt återställa `NUSIZ0=$02` med en extra `LDA #$02; STA NUSIZ0` på en beräknad **c76-gräns**, följt av en separat första efterföljande D-kernel utan `WSYNC`. [GitHub Actions #43852230740](https://github.com/Odourman/let-me-out/actions/runs/43852230740) **FAIL 456/600**. Det gav faktiskt **0 saknade gula playerpixlar** och **600 gula skott**, men fjärde masken x378 var fortfarande fel i alla 144 sådana frames och det uppstod **12 420 extra vita pixlar**. Att återställa kopieläget på linjegränsen räcker alltså inte i denna tidsplan. Se [R1ab-exakt felrapport](https://github.com/Odourman/let-me-out/blob/research/main-iii-r1ab-berzerk-nusiz-restore-boundary-20261116/docs/MAIN_III_R1AB_NUSIZ0_BOUNDARY_RESTORE_600_STELLA_FAIL_2026-11-16.md).
 
-**Stoppa här om R1ab FAIL:** vi har då ett direkt bevis för att minst en separat P0-rekonstruktion eller annan regionkernel behövs, inte en passande linjegränsfix.
+**Nästa grind:** mät exakt vilka P0/M0-decoders som är aktiva kring skottradens c53, c56, c59 och nästa rad före försök med en annan P0-rekonstruktion eller regionkernel. Ingen godkänd fix finns ännu.
 
 ### B. Skillnad mellan TIA:s fysiska missile-kopia och logiskt bullet-state
 
