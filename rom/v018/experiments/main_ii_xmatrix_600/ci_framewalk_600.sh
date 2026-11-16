@@ -18,18 +18,26 @@ XPID=$!
 trap 'kill "$XPID" 2>/dev/null || true' EXIT
 export DISPLAY=:122
 sleep 2
-stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$OUT/proof.bin" >"$OUT/stella_stdout.txt" 2>&1 &
-PID=$!
-sleep 7
-kill -0 "$PID"
-# Some fresh Xvfb/Stella sessions expose only unmapped debugger windows.
-# Diagnose actual X11 windows and retry by name without --onlyvisible.
-xwininfo -root -tree >"$OUT/windows.txt" 2>&1 || true
-xdotool search --name Stella >"$OUT/window_ids.txt" 2>&1 || true
-WINDOW_ID="$(head -n1 "$OUT/window_ids.txt" 2>/dev/null || true)"
+# Stella may not create an X11 window on its first fresh-runner launch.
+# Retry cleanly rather than recording black images or declaring a ROM failure.
+WINDOW_ID=""
+for attempt in 1 2 3 4; do
+  stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$OUT/proof.bin" >"$OUT/stella_stdout_attempt_$attempt.txt" 2>&1 &
+  PID=$!
+  sleep 7
+  if kill -0 "$PID" 2>/dev/null; then
+    WINDOW_ID="$(xdotool search --name Stella 2>/dev/null | head -n1 || true)"
+  fi
+  if [ -n "$WINDOW_ID" ]; then
+    echo "Mapped Stella on attempt $attempt window $WINDOW_ID"
+    break
+  fi
+  echo "No Stella GUI on attempt $attempt; restarting" >&2
+  kill "$PID" 2>/dev/null || true
+  wait "$PID" 2>/dev/null || true
+done
 if [ -z "$WINDOW_ID" ]; then
-  echo "Stella window absent. Window-tree:" >&2
-  cat "$OUT/windows.txt" >&2
+  echo "ERROR: no Stella debugger X11 window after 4 attempts" >&2
   exit 2
 fi
 xdotool getwindowname "$WINDOW_ID" >"$OUT/window_name.txt" 2>&1 || true
