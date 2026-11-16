@@ -44,8 +44,8 @@ src=src.replace(anchor,"; Four TIA fine-motion positions: -4CC,-3CC,-2CC,-1CC\nR
 for label in ("MaleRows","FemaleRows","SmallMaleRows","SmallFemaleRows","PlayerRows"):
  for suf in ("","14"):
   key=label+suf+":\n"
-  assert old.count(key)==src.count(key)==1
-  assert old.split(key,1)[1].split("\n",1)[0]==src.split(key,1)[1].split("\n",1)[0],key
+  assert old.count("\n"+key)==src.count("\n"+key)==1, key
+  assert old.split("\n"+key,1)[1].split("\n",1)[0]==src.split("\n"+key,1)[1].split("\n",1)[0],key
 for suffix in "ABCD":
  for token in (f"R1oShot{suffix}:\n",f"R1oLower{suffix}:\n"):
   assert src.split(token,1)[1].split("\n",1)[0]==old.split(token,1)[1].split("\n",1)[0]
