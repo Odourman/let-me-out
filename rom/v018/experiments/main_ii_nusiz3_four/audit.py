@@ -57,8 +57,21 @@ def check(name):
             if 0<=dx<16 and MASKS[t][y-Y0]&(1<<(7-dx//2)):
                 recognized=True;break
         if not recognized:unexplained.append((x,y))
-    # P0 can move in the four-mask variant. M0 may be on prior scanline.
-    ypc=sum(yellow(im.getpixel((x,y))) for y in range(162,171) for x in range(102,355))
+    # Discover P0 across the entire scene using its exact 8x9 yellow
+    # bitmap; P0 can be moved far right in the experimental variant.
+    source_player=re.search(r"^PlayerRows:\\s*\\n\\s+BYTE (.+)$",text,re.M)
+    assert source_player
+    player_bytes=[int(v.strip().replace("$","0x"),16) for v in source_player.group(1).split(",")][::-1]
+    player_exact=[]
+    for x0 in range(104,437,2):
+        errors=0
+        for j,bits in enumerate(player_bytes):
+            for bit in range(8):
+                expected=bool(bits & (1<<(7-bit)))
+                for scale in (0,1):
+                    errors+=int(yellow(im.getpixel((x0+bit*2+scale,Y0+j)))!=expected)
+        if errors==0:player_exact.append(x0)
+    ypc=sum(yellow(im.getpixel((x,y))) for y in range(162,171) for x in range(102,440))
     # Earlier in 3-copy control: M0 is at GUI x240-241 Y166; in 4-copy probe
     # it is a separate one-scanline shot at Y160. Avoid counting yellow P0.
     ym0=sum(yellow(im.getpixel((x,y))) for y in range(157,169) for x in range(238,243))
@@ -67,14 +80,15 @@ def check(name):
         "04f59d7fbc17d360e0cea738d4e512ab7208118b9b4d4b4743f3a702d96f1fdb",
         "a169787b7bdcf465b5a1b7505dca83c31f60fa2c16337d39fea3e957ea13ace2"
     ) else None
-    valid=len(anchored)==len(types) and len(unexplained)==0 and scans==262 and ypc>0 and ym0>0
+    valid=len(anchored)==len(types) and len(unexplained)==0 and scans==262 and len(player_exact)==1 and ym0>0
     return {
       "variant":name,"required_types":list(types),
       "all_source_masks_match_ref":all(results[t]["assembler_mask_matches_reference"] for t in types),
       "masks":results,"white_gui_pixel_count":len(whites),
       "unexplained_white_pixel_count":len(unexplained),
       "unexplained_white_first":unexplained[:80],
-      "yellow_player_pixel_count":ypc,"yellow_missile_pixel_count":ym0,
+      "yellow_player_pixel_count":ypc,"p0_full_mask_exact_gui_x":player_exact,
+      "yellow_missile_pixel_count":ym0,
       "ntsc_262":scans==262,"hud_sha256":sha,
       "raster_test":"STATIC one frame only; not a 600-frame proof",
       "four_distinct_exact_status":"LOCAL_PASS_STATIC_4_ORIGINAL_MASKS" if valid and name=="four_mask_probe" else "FAIL_OR_INCONCLUSIVE"
