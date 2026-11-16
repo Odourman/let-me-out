@@ -1,0 +1,49 @@
+name: MAIN IV R1aq static 2M2F SM SF final X timing sweep
+on:
+  push:
+    branches:
+      - research/main-iv-r1aq-last-two-masks-20261116
+    paths:
+      - .github/workflows/main-iv-r1aq-six-mask-timing-600.yml
+      - rom/v018/experiments/main_iv_r1aq_timing/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  six-original-mask-sweep:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0, 1]
+    env:
+      R1AQ_BATCH: ${{ matrix.batch }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 X11 and screenshot audit
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build source-pinned NUSIZ3 six static masks with alternate last X
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1aq_timing/build_r1aq.py
+      - name: Capture 600 consecutive authentic Stella screenshots
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1aq_timing/ci_framewalk_600.sh
+      - name: Strict source-exact 2M 2F SM SF plus yellow P0 M0
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1aq_timing/analyze_600.py
+      - name: ROM format SHA and 600 screenshot artifacts
+        run: |
+          cd rom/v018/experiments/main_iv_r1aq_timing
+          test "$(stat -c %s r1aq_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1aq-batch-${{ matrix.batch }}-six-full-P1-masks
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1aq_timing/
+          if-no-files-found: ignore
