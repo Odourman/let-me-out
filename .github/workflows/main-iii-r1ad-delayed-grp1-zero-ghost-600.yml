@@ -1,0 +1,45 @@
+name: MAIN III R1ad cycle neutral delayed first GRP1 dual P1 original masks 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1ad-delay-grp1-after-first-resp-20261116
+    paths:
+      - .github/workflows/main-iii-r1ad-delayed-grp1-zero-ghost-600.yml
+      - rom/v018/experiments/main_iii_r1ad_delay_grp1/build_r1ad.py
+      - rom/v018/experiments/main_iii_r1ad_delay_grp1/analyze_600.py
+      - rom/v018/experiments/main_iii_r1ad_delay_grp1/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  delayed-first-male-grp1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned-runner DASM Stella and X11 capture
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Compile from immutable R1ac source SHA and check four exact RESP1 deadlines
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1ad_delay_grp1/build_r1ad.py
+      - name: Record 600 genuine consecutive Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1ad_delay_grp1/ci_framewalk_600.sh
+      - name: Strict both exact original 9-row P1 masks, 4 independent X pairs, 0 white/yellow ghost
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1ad_delay_grp1/analyze_600.py
+      - name: Confirm F6 ROM and 600 images
+        run: |
+          cd rom/v018/experiments/main_iii_r1ad_delay_grp1
+          test "$(stat -c %s r1ad_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1ad-delayed-first-P1-GRP1-600-real-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1ad_delay_grp1/
+          if-no-files-found: ignore
