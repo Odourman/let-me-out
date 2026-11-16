@@ -1,0 +1,45 @@
+name: MAIN III R1k fifth original female c39 c45 RESP1 600 real Stella frames
+on:
+  push:
+    branches:
+      - research/main-iii-r1k-fifth-large-female-20261116
+    paths:
+      - .github/workflows/main-iii-r1k-fifth-female-600.yml
+      - rom/v018/experiments/main_iii_r1k_fifth_female/build_r1k.py
+      - rom/v018/experiments/main_iii_r1k_fifth_female/ci_framewalk_600.sh
+      - rom/v018/experiments/main_iii_r1k_fifth_female/analyze_600.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fifth-original-female:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and screenshot tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build cycle-neutral extra RESP1 c39 and c45 from exact R1h PASS base
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1k_fifth_female/build_r1k.py
+      - name: Capture 600 consecutive authentic Stella 6.7.1 screenshots
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1k_fifth_female/ci_framewalk_600.sh
+      - name: Verify BOTH large-female original masks, plus three others, shot, walls and door
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1k_fifth_female/analyze_600.py
+      - name: Check F6 file size and 600 images
+        run: |
+          cd rom/v018/experiments/main_iii_r1k_fifth_female
+          test "$(stat -c %s r1k_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1k-fifth-original-female-same-line-600-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1k_fifth_female/
+          if-no-files-found: ignore
