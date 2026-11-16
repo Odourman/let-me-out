@@ -25,14 +25,10 @@ for s in "ABCD":
  head,rest=src.split(start,1)
  shot,tail=rest.split(end,1)
  if s in "AB":
-  before=""" STX GRP0
- ; Five cycles: whiten only P0 automatic wide-spaced second copy.
- STY ENAM0
+  before=""" STY ENAM0
  LDA #$0E
  STA COLUP0"""
-  after=""" STX GRP0
- ; R1w A/B off c56 instead of c54, while white still c59.
- LDA #$0E
+  after=""" LDA #$0E
  STY ENAM0
  STA COLUP0"""
  elif s=="C":
