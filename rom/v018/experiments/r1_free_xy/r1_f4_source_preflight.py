@@ -21,7 +21,7 @@ assert "e268cf68c19543083e59b63b65087699ef281ec04c170a3cf624eab90c579012" in f2
 assert " CPX #0\\n BNE *+2\\n STA RESP1\\n STA GRP1\\n BEQ *+2\\n STA RESP1\\n" in f2
 assert " CPY #0\\n BNE *+2\\n STA RESP1\\n STA GRP1\\n BEQ *+2\\n STA RESP1\\n" in f3
 canon=(R/'canon_masks.json').read_bytes()
-assert hashlib.sha1(b'blob '+str(len(canon)).encode()+b'\\0'+canon).hexdigest()==MASK_GIT_BLOB
+assert hashlib.sha1(b'blob '+str(len(canon)).encode()+bytes([0])+canon).hexdigest()==MASK_GIT_BLOB
 ref=json.loads(canon)
 assert list(ref['sprites'])==['large_male','large_female','small_male','small_female']
 for t,bits in ref['sprites'].items():assert len(bits)==9 and all(len(b)==8 and set(b)<={'0','1'} for b in bits)
