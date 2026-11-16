@@ -133,7 +133,7 @@ StateChosen:
  STA WSYNC
  ; VBLANK scanline 4: set P1 near far right. This is a single
  ; coarse position per frame. Measure exact drawn X in Stella.
- LDX #14
+ LDX #13    ; #14 overruns one CPU scanline and wraps P1 to x~0
 PlaceDoor:
  DEX
  BNE PlaceDoor
