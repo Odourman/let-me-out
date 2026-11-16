@@ -92,6 +92,11 @@ R1hDoorTop:
  ; R1f:"""
 assert src.count(oldtop)==1
 src=src.replace(oldtop,newtop)
+# MUST clear A before the original shot-line STA NUSIZ0. With door locked,
+# A=$10 otherwise widens M0 from 1 to 2 color clocks (actual Stella FAIL).
+shotline="R1hDoorTop:\\n STA WSYNC\\n DEX\\n BNE R1hDoorTop\\n ; R1f:"
+assert src.count(shotline.replace("\\\\n","\\n"))==1
+src=src.replace(shotline.replace("\\\\n","\\n"),shotline.replace("\\\\n","\\n").replace(" ; R1f:"," LDA #0\\n ; R1f:"))
 oldend="""R1gAfterRows:
  LDA #0
  STA GRP0
