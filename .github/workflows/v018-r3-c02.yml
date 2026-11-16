@@ -15,7 +15,7 @@ permissions:
 jobs:
   r3:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 27
     steps:
       - uses: actions/checkout@v4
       - name: Install genuine DASM and Stella debugger
@@ -30,12 +30,20 @@ jobs:
       - name: Capture original and new C02 orange/black/locked/open scenes in REAL Stella
         timeout-minutes: 5
         run: bash rom/v018/experiments/r3_c02/capture.sh
+      - name: Capture 600 consecutive real Stella debugger frames across locked and unlocked phases
+        timeout-minutes: 15
+        run: bash rom/v018/experiments/r3_c02/capture_600.sh
+      - name: Attempt measured per-register TIA scanline and CPU-cycle traps
+        timeout-minutes: 3
+        run: bash rom/v018/experiments/r3_c02/trace_tia.sh
       - name: Verify deliverables exist and checksums
         run: |
           cd rom/v018/experiments/r3_c02
           (cd dist && sha256sum -c SHA256SUMS.txt)
           test "$(stat -c %s dist/LetMeOut_v018_R3_C02_F6_NTSC.bin)" = 16384
           for x in old_brown old_orange old_open new_brown new_orange new_open; do test -s "evidence/$x/stella_full.png"; done
+          test "$(find evidence/sequence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+          test -s evidence/sequence_600/capture_metadata.json
       - name: Upload all real Stella raw images, assembler listings and ROMs
         uses: actions/upload-artifact@v4
         if: always()
