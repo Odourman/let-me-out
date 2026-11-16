@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""R1 authorized two-silhouette primitive: independent 2x2 X, all original 8x9.
+"""R1 authorized two-silhouette primitive: independent 2x2 X, all original 8x9 in canonical top-to-bottom orientation.
 Uses the previously verified R1af/R1ae delayed-GRP1 opcode pattern, but freshly
 rebuilds a standalone source from the pinned original Venetian source and approved
 mask JSON. No third-party Atari code is copied.
@@ -9,7 +9,7 @@ import hashlib,json,subprocess,re
 HERE=Path(__file__).resolve().parent
 REPO=HERE.parents[3]
 BASE=REPO/'rom/v018/experiments/venetian_blinds/vb_9_interleave.asm'
-CANON=HERE/'canon_masks.json'
+CANON=REPO/'design/NPC_REFERENCE_8x9_masks.json'
 old=BASE.read_text()
 assert hashlib.sha1(b'blob '+str(len(BASE.read_bytes())).encode()+b'\x00'+BASE.read_bytes()).hexdigest()=='a25c92adb4ca5087eeace674e371be98b273ae5b'
 ref=json.loads(CANON.read_text())
@@ -71,11 +71,11 @@ for k,(c1,c2) in positions.items():
     n1=(c1-28)//2
     n_between=(c2-c1-8)//2
     assert n1>=0 and n_between>=0
-    body=[' ALIGN 256','R1Kernel'+k+':',' LDY #8','R1Line'+k+':',' STA WSYNC',' LDX FemaleRows,Y',' LDA PlayerRows,Y',' STA GRP0',' LDA ShotEnable,Y',' STA ENAM0',' LDA MaleRows,Y',' BIT FRAMELO']
+    body=[' ALIGN 256','R1Kernel'+k+':',' LDY #0','R1Line'+k+':',' STA WSYNC',' LDX FemaleRows,Y',' LDA PlayerRows,Y',' STA GRP0',' LDA ShotEnable,Y',' STA ENAM0',' LDA MaleRows,Y',' BIT FRAMELO']
     body+=[' NOP']*n1
     body+=[' STA RESP1',' NOP',' STA GRP1']
     body+=[' NOP']*n_between
-    body+=[' STA RESP1',' STX GRP1',' DEY',' BPL R1Line'+k,' JMP R1ProbeEnd']
+    body+=[' STA RESP1',' STX GRP1',' INY',' CPY #9',' BNE R1Line'+k,' JMP R1ProbeEnd']
     select+='\n'.join(body)+'\n'
     notes[k]={'first_RESP1_end_cycle':c1,'second_RESP1_end_cycle':c2,'first_GRP1_end_cycle':c1+5,'second_GRP1_end_cycle':c2+3,'remaining_after_last_RESP1':76-c2}
 s=pre+select+'R1ProbeEnd:\n'+end.lstrip('\n')+tail

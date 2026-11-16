@@ -10,7 +10,7 @@ from collections import Counter
 import json,hashlib,sys,csv
 R=Path(__file__).resolve().parent
 REPO=R.parents[3]
-canon=json.loads((R/'canon_masks.json').read_text())['sprites']
+canon=json.loads((REPO/'design/NPC_REFERENCE_8x9_masks.json').read_text())['sprites']
 files=sorted((R/'evidence/pilot/raw').glob('frame_*.png'))
 assert len(files)==24,len(files)
 # Native source array is top to bottom in JSON; prior R1af code selects Y 8 down to 0.
@@ -44,7 +44,7 @@ for index,p in enumerate(files,1):
             mx=[x for x in range(0,320) if shift(m,x,y0).issubset(whites)]
             fx=[x for x in range(0,320) if shift(f,x,y0).issubset(whites)]
             matches.extend([(orient,xm,xf) for xm in mx for xf in fx
-                            if shift(m,xm,y0)|shift(f,xf,y0)==whites and xm!=xf])
+                            if shift(m,xm,y0)|shift(f,xf,y0)==whites and xm!=xf and orient=='literal'])
     # Yellow: 9-row original player plus one 2-pixel single-shot.
     yellow_matches=[]
     for orient,template in PLAYER.items():
@@ -79,6 +79,7 @@ summary={
  'real_Stella_GUI_frames':len(rows),
  'source_blob':'058800a4c1904d1ff289e7e61b3902aa111ba16d',
  'two_full_original_masks_frames':sum(r['both_complete_original_masks'] for r in rows),
+ 'upright_source_orientation_required':True,
  'two_exact_independently_set_X_combinations':X_pairs,
  'all_2_by_2_independent_factor_crossproduct':len({a for a,b in X_pairs})>=2 and len({b for a,b in X_pairs})>=2 and len(X_pairs)==len({a for a,b in X_pairs})*len({b for a,b in X_pairs}),
  'full_yellow_P0_M0_frames':sum(r['yellow_full_p0_and_1_m0'] for r in rows),
