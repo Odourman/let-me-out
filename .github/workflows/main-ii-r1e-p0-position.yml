@@ -1,0 +1,36 @@
+name: MAIN II R1e calibrate RESP0 eight coarse X delay loops
+on:
+  push:
+    branches:
+      - research/main-ii-r1e-p0-position-calibration-20261116
+    paths:
+      - .github/workflows/main-ii-r1e-p0-position.yml
+      - rom/v018/experiments/main_ii_p0_position/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  calibrate-p0:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella Xvfb Pillow
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build eight standard F6 ROMs at P0Delay 4-15
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_p0_position/build_calibration.py
+      - name: Record eight actual Stella frame13 raw GUI screenshots
+        run: bash rom/v018/experiments/main_ii_p0_position/ci_capture.sh
+      - name: Calculate all actual P0 X mask matches per delay
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_p0_position/analyze.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1e-p0-position-calibration-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_p0_position/
+          if-no-files-found: ignore
