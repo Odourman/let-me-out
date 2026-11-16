@@ -26,7 +26,8 @@ for label,(times,replacement) in cycles.items():
         # Pin the ONLY allowed edited locus after SECOND RESP1.
         stamps=[p for p in range(len(chunk)) if chunk.startswith(' STA RESP1\n',p)]
         assert len(stamps)==6,(row,len(stamps))
-        j=chunk.index(orig,stamps[1],stamps[3])
+        j=chunk.index(orig,stamps[1])
+        assert stamps[1]<j<stamps[2]
         assert j+len(orig)<=stamps[3]+len(' STA RESP1\n')
         chunk=chunk[:j]+replacement+chunk[j+len(orig):]
         source=source[:a]+chunk+source[b:]
