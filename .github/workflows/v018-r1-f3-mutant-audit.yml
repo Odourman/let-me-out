@@ -1,0 +1,38 @@
+name: R1-F3 read-only F2 baseline double-audit and four negative mutants
+on:
+  push:
+    branches: [rom-dev/v018-r1-f3-two-independent-x-20261116]
+    paths: [.github/workflows/v018-r1-f3-mutant-audit.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  readonly-two-checkers-and-four-negative-mutants:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ONLY Pillow (NO Stella, NO DASM)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pil
+      - name: Download original F2 green 6B baseline raw evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: letmeout-r1-f2-g0-g1-stella-exact-x
+          run-id: 43926065656
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: frozen_F2_real_evidence
+      - name: Verify all authentic baseline raw PNG SHA-256, run both checkers and mutants
+        run: |
+          cd frozen_F2_real_evidence/rom/v018/experiments/r1_free_xy
+          sha256sum -c evidence/r1_f2_g1/BASE/RAW_PNG_SHA256SUMS.txt
+          cd ../../../../..
+          /usr/bin/python3 rom/v018/experiments/r1_free_xy/r1_f3_validator_readonly.py frozen_F2_real_evidence/rom/v018/experiments/r1_free_xy/evidence/r1_f2_g1/BASE/raw f3_mutant_audit_only
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f3-readonly-source-correct-f2-baseline-and-four-rejected-mutants
+          path: f3_mutant_audit_only/
+          if-no-files-found: ignore
