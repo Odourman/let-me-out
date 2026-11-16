@@ -51,7 +51,7 @@ R1hDoorBottom:
  BNE R1hDoorBottom
  LDA #$10
  STA PF0
- LDX #{91+(height-9)}
+ LDX #91
 BottomLines:"""
     source=source.replace(original_doorbottom,adjusted)
     appendix="\n; RESEARCH-ONLY derived display rows from original 8x9 byte tables.\n"
