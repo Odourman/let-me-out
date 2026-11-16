@@ -3,6 +3,10 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN V – källkontrollerad mottagning 2026-11-16
+
+[MAIN V intake och första R3-/VERIFICATION-arbetsorder](MAIN_V_INTAKE_R3_AND_VERIFICATION_ORDERS_2026-11-16.md) med [läsbar Google Drive-kopia](https://docs.google.com/document/d/10-aZ48bTCaa0szyLm7LRouMGuCTZbmzwfa0bL_xY78g/edit). HEAD och PR/Issues har kontrollerats live; de 57 ursprungliga besluten i Drive-ZIP har granskats. **Full v0.18 fortsatt BLOCKED/NOT ACCEPTED; R1ba är enbart lokal forsknings-PASS; PR #7 är draft/unmerged; fryst Issue #8 kräver egen VERIFICATION.** Detta är MAIN-dokumentation, inte auktorisation av kod utanför v0.18 eller av ny fas. Chattuppdragen är förberedda och ska lämnas till separata chattar av användaren.
+
 ## MAIN V – överlämningsläge 2026-11-16
 
 **Nytt datumstämplat överlämningspaket från MAIN IV:** [Handoff](MAIN_IV_TO_MAIN_V_HANDOFF_2026-11-16.md) · [Startprompt MAIN V](MAIN_V_STARTPROMPT_2026-11-16.md) · [ROM DEVELOPMENT/VERIFICATION rollprompter](MAIN_V_ROM_DEV_AND_VERIFICATION_STARTPROMPTS_2026-11-16.md). Identiskt sakmaterial finns som tre Google Docs i [Let Me Out!-mappen](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u). Denna historikfil fortsätter att innehålla äldre avsnitt; bedöm auktoritet och kronologi, och verifiera live commit/PR/Actions/Drive vid ny MAIN-start. **Full v0.18 fortsatt BLOCKED; PR #7 draft/unmerged; Issue #8 fryst äldre baseline.** Handoffen låser inte upp ny fas.
