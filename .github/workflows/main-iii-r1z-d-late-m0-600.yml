@@ -1,0 +1,45 @@
+name: MAIN III R1z Berzerk timed D M0 late shutdown 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1z-berzerk-timing-late-d-m0-20261116
+    paths:
+      - .github/workflows/main-iii-r1z-d-late-m0-600.yml
+      - rom/v018/experiments/main_iii_r1z_d_late_off/build_r1z.py
+      - rom/v018/experiments/main_iii_r1z_d_late_off/analyze_600.py
+      - rom/v018/experiments/main_iii_r1z_d_late_off/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  d-late-m0:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and X11 capture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned R1y with D-only late M0 off retaining RESP0
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1z_d_late_off/build_r1z.py
+      - name: Capture 600 real consecutive Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1z_d_late_off/ci_framewalk_600.sh
+      - name: Strict 600-frame 5 NPC mask + 8 bullet X + 4 fourth NPC X + 2 door + real CXM0P
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1z_d_late_off/analyze_600.py
+      - name: Validate standard F6 exact ROM hash and 600 screenshots
+        run: |
+          cd rom/v018/experiments/main_iii_r1z_d_late_off
+          test "$(stat -c %s r1z_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1z-berzerk-timed-D-late-m0-600-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1z_d_late_off/
+          if-no-files-found: ignore
