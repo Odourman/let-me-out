@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        batch: [0, 1, 2, 3]
+        batch: [4, 5, 6, 7]
     env:
       R1AF_BATCH: ${{ matrix.batch }}
     steps:

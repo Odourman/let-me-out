@@ -9,9 +9,11 @@ PIN="05606a5fd7426df00941be5621ca46c113df794c4ac3fa0f00f0e15cca66a993"
 assert hashlib.sha256((PARENT/"r1ae_F6.bin").read_bytes()).hexdigest()==PIN
 old=(PARENT/"r1ae.asm").read_text()
 batch=int(os.environ.get("R1AF_BATCH","0"))
-assert batch in range(4),batch
+assert batch in range(8),batch
 pairs=[((28,30),(40,42)),((32,34),(44,46)),
-       ((36,38),(48,50)),((40,42),(52,54))]
+       ((36,38),(48,50)),((40,42),(52,54)),
+       ((28,30),(52,54)),((32,34),(48,50)),
+       ((36,38),(52,54)),((28,30),(46,48))]
 first,second=pairs[batch]
 modes={"C":(first[0],second[0]),"D":(first[1],second[0]),
        "E":(first[0],second[1]),"F":(first[1],second[1])}
