@@ -25,8 +25,8 @@ b=a.replace(
     " ; Attempt fourth original mask on the third reset's medium copy.\n"
     " LDA SmallFemaleRows,Y\nR1dSmallFemaleWrite:\n STA GRP1\n DEY")
 b=b.replace(" LDA ShotRows,Y\n STA ENAM0\n","")
-b=b.replace(" LDX #12\nP0Delay:"," LDX #5\nP0Delay:")
-b=b.replace(" LDX #80\nTopLines:"," LDX #79\nTopLines:")
+b=b.replace(" LDX #12\nP0Delay:"," LDX #11\nP0Delay:")
+b=b.replace(" LDX #80\nTopLines:"," LDX #80\nTopLines:")
 b=b.replace(
   "TopLines:\n STA WSYNC\n DEX\n BNE TopLines\n LDY #8",
   "TopLines:\n STA WSYNC\n DEX\n BNE TopLines\n"
@@ -38,7 +38,7 @@ b=b.replace(
  "SmallFemaleRows:\n BYTE "+",".join("$%02X"%v for v in smf[::-1])+
  "\nPlayerRows:\n BYTE")
 assert "R1dSmallFemaleWrite" in b and b.count("SmallFemaleRows:")==1
-assert " LDX #79\nTopLines:" in b and " LDA #2\n STA ENAM0\n STA WSYNC" in b
+assert " LDX #80\nTopLines:" in b and " LDA #2\n STA ENAM0\n STA WSYNC" in b
 results={}
 for name,variant in [
     ("nusiz3_only",a),
