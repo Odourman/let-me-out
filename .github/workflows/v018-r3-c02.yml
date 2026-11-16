@@ -1,0 +1,47 @@
+name: v018 R3 C02 right door isolated DASM-Stella diagnostic
+
+on:
+  push:
+    branches:
+      - rom-dev/v018-r3-c02-20261116
+    paths:
+      - .github/workflows/v018-r3-c02.yml
+      - rom/v018/experiments/r3_c02/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r3:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install genuine DASM and Stella debugger
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee tool_versions.txt
+      - name: Reproduce v018 original baseline before R3 changes
+        run: bash rom/v018/experiments/r3_c02/baseline_build.sh
+      - name: Build isolated C02 door ROM, source-pin map, hash
+        run: bash rom/v018/experiments/r3_c02/build.sh
+      - name: Capture original and new C02 orange/black/locked/open scenes in REAL Stella
+        timeout-minutes: 5
+        run: bash rom/v018/experiments/r3_c02/capture.sh
+      - name: Verify deliverables exist and checksums
+        run: |
+          cd rom/v018/experiments/r3_c02
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          test "$(stat -c %s dist/LetMeOut_v018_R3_C02_F6_NTSC.bin)" = 16384
+          for x in old_brown old_orange old_open new_brown new_orange new_open; do test -s "evidence/$x/stella_full.png"; done
+      - name: Upload all real Stella raw images, assembler listings and ROMs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: letmeout-v018-R3-C02-original-and-new
+          path: |
+            tool_versions.txt
+            rom/v018/experiments/r3_c02/
+          if-no-files-found: ignore
