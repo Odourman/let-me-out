@@ -1,0 +1,33 @@
+name: MAIN II trick 25 stack PHA writes mirrored TIA COLUPF
+on:
+  push:
+    branches:
+      - research/main-ii-trick25-stack-tia-20261116
+    paths:
+      - .github/workflows/main-ii-trick25-stack-tia.yml
+      - rom/v018/experiments/main_ii_trick25_stack_tia/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stack-pha:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 and X11
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+      - name: Build conventional STA and stack PHA COLUPF F6 diagnostics
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_trick25_stack_tia/build_variants.py
+      - name: Capture four true Stella locked/open screenshots
+        run: bash rom/v018/experiments/main_ii_trick25_stack_tia/ci_capture.sh
+      - name: Check exact TIA pixel equivalence and 262NTSC
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_trick25_stack_tia/audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-trick25-stack-pha-TIA-mirror-evidence
+          path: rom/v018/experiments/main_ii_trick25_stack_tia/
+          if-no-files-found: ignore
