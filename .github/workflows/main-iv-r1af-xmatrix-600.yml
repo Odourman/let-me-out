@@ -1,0 +1,49 @@
+name: MAIN IV R1af P1 wider X matrix 600 Stella per batch
+on:
+  push:
+    branches:
+      - research/main-iv-r1af-xmatrix-20261116
+    paths:
+      - .github/workflows/main-iv-r1af-xmatrix-600.yml
+      - rom/v018/experiments/main_iv_r1af_xmatrix/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  x-matrix:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0, 1, 2, 3]
+    env:
+      R1AF_BATCH: ${{ matrix.batch }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and real X11 screenshot tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Assemble four cycle-pair variants from PINNED R1ae baseline
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1af_xmatrix/build_r1af.py
+      - name: Capture 600 sequential authentic Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1af_xmatrix/ci_framewalk_600.sh
+      - name: Fail-closed pixel audit and measured P1 X positions
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1af_xmatrix/analyze_600.py
+      - name: Check ROM format and digest
+        run: |
+          cd rom/v018/experiments/main_iv_r1af_xmatrix
+          test "$(stat -c %s r1af_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1af-batch-${{ matrix.batch }}-600-real-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1af_xmatrix/
+          if-no-files-found: ignore
