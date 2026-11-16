@@ -105,8 +105,8 @@ R1cRow:
  NOP
 R1cFirstRESP1:
  STA RESP1
- ; 57cc two-mask latch spacing, proven for earlier fixed 2-NPC test.
- NOP
+ ; Three CPU cycles to preserve all 8 pixels of first P1 mask.
+ BIT FRAMELO
  LDA FemaleRows,Y
 R1cFemaleWrite:
  STA GRP1
@@ -116,8 +116,8 @@ R1cSecondDelay:
  BNE R1cSecondDelay
 R1cSecondRESP1:
  STA RESP1
- ; Attempt third same-line retrigger with a third, different original mask.
- NOP
+ ; Three CPU cycles to preserve all 8 pixels of second P1 mask.
+ BIT FRAMELO
  LDA SmallMaleRows,Y
 R1cSmallMaleWrite:
  STA GRP1
