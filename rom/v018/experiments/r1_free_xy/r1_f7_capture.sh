@@ -27,7 +27,29 @@ for t in $(seq 1 18);do
  sleep 1
 done
 if [[ -z "$wid" ]];then echo "F7_INFRA_STELLA_WINDOW_MISSING";cat "$out/stella.log";exit 5;fi
+# The first Xvfb window with "Stella" in its title can be TRANSIENT/BLACK.
+# Do not press Ctrl+F until the true debugger GUI is visible (same positive
+# readiness check used by successful F6 and F7 genuine register trap scripts).
+gui_ready=0
+for t in $(seq 1 22);do
+ if ! kill -0 "$pid" 2>/dev/null;then echo "F7_STELLA_DIED_BEFORE_VISIBLE_GUI";cat "$out/stella.log";exit 5;fi
+ import -window root "$out/GUI_READINESS_PROBE.png"
+ if /usr/bin/python3 - "$out/GUI_READINESS_PROBE.png" <<'PY'
+from PIL import Image
+import sys
+im=Image.open(sys.argv[1]).convert("RGB")
+assert im.size==(1366,900)
+r,g,b=im.getpixel((800,100))
+assert r>100 and g>85 and b>50,(r,g,b)
+PY
+ then gui_ready=1;echo "F7_REAL_DEBUGGER_GUI_PIXELS_READY $t";break;fi
+ sleep 1
+done
+if [[ "$gui_ready" != 1 ]];then echo "F7_INFRA_GUI_BLACK_NO_VALID_CAPTURE";exit 5;fi
+wid="$(xdotool search --onlyvisible --name Stella 2>/dev/null | head -n1 || true)"
+test -n "$wid"
 xdotool windowfocus --sync "$wid"
+sleep 0.3
 import -window root "$out/initial_uncropped_GUI.png"
 for ((i=1;i<=160;i++));do
  xdotool key --window "$wid" --clearmodifiers ctrl+f
