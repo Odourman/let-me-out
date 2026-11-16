@@ -9,7 +9,7 @@ import hashlib,json,subprocess,re
 HERE=Path(__file__).resolve().parent
 REPO=HERE.parents[3]
 BASE=REPO/'rom/v018/experiments/venetian_blinds/vb_9_interleave.asm'
-CANON=REPO/'design/NPC_REFERENCE_8x9_masks.json'
+CANON=HERE/'canon_masks.json'
 old=BASE.read_text()
 assert hashlib.sha1(b'blob '+str(len(BASE.read_bytes())).encode()+b'\x00'+BASE.read_bytes()).hexdigest()=='a25c92adb4ca5087eeace674e371be98b273ae5b'
 ref=json.loads(CANON.read_text())
