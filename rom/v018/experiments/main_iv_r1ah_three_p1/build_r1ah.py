@@ -49,7 +49,7 @@ rom=four*4;sha=hashlib.sha256(rom).hexdigest()
 (R/"r1ah_F6.bin").write_bytes(rom)
 (R/"ROM_SHA256.txt").write_text(sha+"  r1ah_F6.bin\n")
 manifest={"status":"BUILT_UNVERIFIED_R1AH_RESEARCH","batch":batch,
- "order":"LargeMale,LargeFemale,SmallMale",
+ "order":"LargeMale,LargeFemale,SmallMale","mask_order":"M->F",
  "original_small_male_topdown":sm,
  "pinned_R1ag_ROM_SHA256":PIN,
  "cycle_schedule":timings,"ROM_SHA256":sha,
