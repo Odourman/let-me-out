@@ -1,0 +1,41 @@
+name: MAIN II R1c three distinct original masks at 57cc
+on:
+  push:
+    branches:
+      - research/main-ii-r1c-three-masks-57cc-20261116
+    paths:
+      - .github/workflows/main-ii-r1c-three-masks-57cc.yml
+      - rom/v018/experiments/main_ii_three_masks/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  three-mask-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella Xvfb PIL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build 16KB standard F6 ROM
+        run: bash rom/v018/experiments/main_ii_three_masks/build.sh
+      - name: Capture live Stella frame and five instruction stops
+        run: bash rom/v018/experiments/main_ii_three_masks/ci_stella.sh
+      - name: Compare all three original 8x9 masks to actual Stella pixels
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_three_masks/audit.py
+      - name: Confirm actual F6 size and SHA
+        run: |
+          cd rom/v018/experiments/main_ii_three_masks
+          test "$(stat -c %s r1c_F6.bin)" -eq 16384
+          sha256sum -c SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1c-three-masks-57cc-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_three_masks/
+          if-no-files-found: ignore
