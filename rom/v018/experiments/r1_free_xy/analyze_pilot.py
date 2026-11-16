@@ -10,7 +10,7 @@ from collections import Counter
 import json,hashlib,sys,csv
 R=Path(__file__).resolve().parent
 REPO=R.parents[3]
-canon=json.loads((REPO/'design/NPC_REFERENCE_8x9_masks.json').read_text())['sprites']
+canon=json.loads((R/'canon_masks.json').read_text())['sprites']
 files=sorted((R/'evidence/pilot/raw').glob('frame_*.png'))
 assert len(files)==24,len(files)
 # Native source array is top to bottom in JSON; prior R1af code selects Y 8 down to 0.
