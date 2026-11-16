@@ -46,7 +46,7 @@ def inspect(name):
         for i,bits in enumerate(masks[n]):
             for bit in range(8):
                 if bits & (1<<(7-bit)):
-                    known_white.update((x+2*bit,Y0+i),(x+2*bit+1,Y0+i))
+                    known_white.add((x+2*bit,Y0+i)); known_white.add((x+2*bit+1,Y0+i))
     # If a second P0 is white, include its exact pixel mask when counting ghosts.
     second_x=second_white[0][1] if second_white[0][0]==0 else None
     if second_x is not None:
