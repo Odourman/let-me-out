@@ -125,10 +125,6 @@ def measure(img,idx,templates):
     mode=matches[0] if len(matches)==1 else "ambiguous"
     expected=EXPECTED_FIXED_WHITE|FOURTH_POINTS.get(mode,set())|DOUBLE_FEMALE_POINTS
     other={name:maskerror(img,x,MASKS[name],white) for name,(sym,x) in NPCS.items()}
-    female_checks=[female_maskerror_with_real_missile_overlap(
-         img,x,MASKS["large_female"],shot_points) for x in FEMALE_XS]
-    female_errs=[item[0] for item in female_checks]
-    first_female_yellow_missile_overlay_pixels=female_checks[0][1]
     player_errors=maskerror(img,PLAYERX,PLAYER,yellow)
     # Count yellow projectile pixels OUTSIDE the complete original player.
     # Fail closed if a second missile copy, a third pixel, or a wrong X exists.
@@ -138,6 +134,10 @@ def measure(img,idx,templates):
             and raw_m0_xs[1]==raw_m0_xs[0]+1
             and raw_m0_xs[0] in M0_LOCAL_XS else None)
     shot_points=({(shot_x,M0Y),(shot_x+1,M0Y)} if shot_x is not None else set())
+    female_checks=[female_maskerror_with_real_missile_overlap(
+         img,x,MASKS["large_female"],shot_points) for x in FEMALE_XS]
+    female_errs=[item[0] for item in female_checks]
+    first_female_yellow_missile_overlay_pixels=female_checks[0][1]
     extra_white=0;extra_yellow=0
     for y in range(Y,Y+HEIGHT):
         for x in range(0,336):
