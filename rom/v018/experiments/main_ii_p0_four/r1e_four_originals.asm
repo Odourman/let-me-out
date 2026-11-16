@@ -61,7 +61,7 @@ Frame:
  STA GRP0
  STA GRP1
  STA ENAM0
- LDX #15
+ LDX #4
 P0Delay:
  DEX
  BNE P0Delay
@@ -81,7 +81,7 @@ P1Delay:
  BNE P1Delay
  STA RESP1
  STA WSYNC
- LDX #33
+ LDX #34
 BlankLines:
  STA WSYNC
  DEX
@@ -93,6 +93,7 @@ TopLines:
  STA WSYNC
  DEX
  BNE TopLines
+ ; Calibrated P0=GUI-X186 using delay 4; extra VBLANK line restores 262.
  ; Missile line: NUSIZ0=0 prevents a second M0 shot, restores P0 wide.
  ; 79 top lines plus this one = 80.
  STA NUSIZ0
