@@ -61,7 +61,7 @@ rom=raw*4;sha=hashlib.sha256(rom).hexdigest()
 (R/"ROM_SHA256.txt").write_text(sha+"  r1ay_F6.bin\n")
 meta={
  "status":"BUILT_UNVERIFIED_R1AY_SIX_STAGGERED_CANONICAL_MASKS",
- "batch":batch,"small_male_offset":sm_dy,"small_female_offset":sf_dy,
+ "batch":batch,"NUSIZ1_value":3,"small_male_offset":sm_dy,"small_female_offset":sf_dy,
  "pinned_R1aq_600_PASS_SHA256":PIN,"source_builder_git_blob":"c3cd9f7f893f499957306cd1f2b60316eb13c028",
  "four_source_8x9_mask_tables":"byte-identical originals",
  "only_change":"source-immediate bitmap values selected on 9 physical raster rows with zero padding",
