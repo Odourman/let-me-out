@@ -1,0 +1,33 @@
+name: MAIN II trick 08 two-line original 8x9 fidelity probe
+on:
+  push:
+    branches:
+      - research/main-ii-trick08-two-line-20261116
+    paths:
+      - .github/workflows/main-ii-trick08-two-line.yml
+      - rom/v018/experiments/main_ii_trick08_two_line/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-line-comparison:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and X11
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+      - name: Compile original one-line and two-line variant into F6 ROMs
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_trick08_two_line/build.py
+      - name: Capture two real Stella screens
+        run: bash rom/v018/experiments/main_ii_trick08_two_line/ci_stella.sh
+      - name: Analyze actual 8x9 original mask preservation and 262 scanlines
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_trick08_two_line/audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-trick08-two-line-control-versus-variant
+          path: rom/v018/experiments/main_ii_trick08_two_line/
+          if-no-files-found: ignore
