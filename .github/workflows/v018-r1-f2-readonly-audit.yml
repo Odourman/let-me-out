@@ -1,0 +1,43 @@
+name: R1-F2 audit-only readback of 32 frozen REAL Stella frames (no emulator)
+on:
+  push:
+    branches: [rom-dev/v018-r1-f2-independent-x-20261116]
+    paths: [.github/workflows/v018-r1-f2-readonly-audit.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  readonly-stella-png-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ONLY Pillow and zip (not Stella or DASM)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pil zip
+          /usr/bin/python3 -c 'from PIL import Image; print("PIL_READY")'
+      - name: Download frozen completed runtime evidence from same-repo run 43926447975
+        uses: actions/download-artifact@v4
+        with:
+          name: letmeout-r1-f2-single-kernel-32-real-frames-and-register-traps
+          run-id: 43926447975
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: frozen_runtime_artifact
+      - name: Verify exact SHA256 of the 32 authentic original screenshot files
+        run: |
+          cd frozen_runtime_artifact/rom/v018/experiments/r1_free_xy
+          sha256sum -c evidence/r1_f2_runtime/RAW_PNG_SHA256SUMS.txt
+          test "$(find evidence/r1_f2_runtime/raw -name 'frame_*.png' | wc -l)" -eq 32
+      - name: Reaudit old raw screenshot bytes with corrected debugger frame/RAM phase
+        run: |
+          (cd frozen_runtime_artifact && zip -qr ../frozen_runtime_artifact_repacked.zip .)
+          /usr/bin/python3 rom/v018/experiments/r1_free_xy/r1_f2_runtime_reaudit.py frozen_runtime_artifact_repacked.zip --csv r1_f2_reaudit/R1_F2_RUNTIME_32_FRAME_SOURCE_EXACT.csv --json r1_f2_reaudit/R1_F2_RUNTIME_32_FRAME_SOURCE_EXACT.json
+          sha256sum r1_f2_reaudit/* > r1_f2_reaudit/RE_AUDIT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: letmeout-r1-f2-32-frame-corrected-re-audit-NO-STELLA-RERUN
+          path: r1_f2_reaudit/
+          if-no-files-found: ignore
