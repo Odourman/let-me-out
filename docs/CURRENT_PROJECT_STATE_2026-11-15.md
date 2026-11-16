@@ -3,6 +3,10 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN V – överlämningsläge 2026-11-16
+
+**Nytt datumstämplat överlämningspaket från MAIN IV:** [Handoff](MAIN_IV_TO_MAIN_V_HANDOFF_2026-11-16.md) · [Startprompt MAIN V](MAIN_V_STARTPROMPT_2026-11-16.md) · [ROM DEVELOPMENT/VERIFICATION rollprompter](MAIN_V_ROM_DEV_AND_VERIFICATION_STARTPROMPTS_2026-11-16.md). Identiskt sakmaterial finns som tre Google Docs i [Let Me Out!-mappen](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u). Denna historikfil fortsätter att innehålla äldre avsnitt; bedöm auktoritet och kronologi, och verifiera live commit/PR/Actions/Drive vid ny MAIN-start. **Full v0.18 fortsatt BLOCKED; PR #7 draft/unmerged; Issue #8 fryst äldre baseline.** Handoffen låser inte upp ny fas.
+
 ## MAIN IV – nytt integrerat teknikbevis och R3-granskning 2026-11-16
 
 - [R1ba: verkligt Stella-resultat 600/600](https://github.com/Odourman/let-me-out/actions/runs/43884511590). En ROM visar 2 stora män, 2 stora kvinnor, liten man och liten kvinna i byte-oförändrade originalmasker med tre **kopplade** runtime-X/Y-profiler, två bruna PF-sidoväggar, gul P0 och M0-testsymbol; 262 NTSC och 0 saknade/extra vita pixlar. SHA256 `41fdb87969a20d40fee8cde5673792201663860c2d1e08c8d93f9172ede82361`. [Alla 600 Stella-bilder, ROM, source och manifest i rätt Google Drive-mapp](https://drive.google.com/file/d/1c2Sd68dvQsmb_MJcQOLU8dbiMc5YgbsJ/view?usp=drivesdk).
