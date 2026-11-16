@@ -1,0 +1,45 @@
+name: MAIN III R1w 8 coarse M0 X 4 NPC X real CXM0P 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1w-resm0-coarse-window-timing-20261116
+    paths:
+      - .github/workflows/main-iii-r1w-m0-reorder-600.yml
+      - rom/v018/experiments/main_iii_r1w_retimed_m0/build_r1w.py
+      - rom/v018/experiments/main_iii_r1w_retimed_m0/analyze_600.py
+      - rom/v018/experiments/main_iii_r1w_retimed_m0/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retimed-shot-all-four-npc-modes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and X11 capture
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build cycle-neutral R1w from R1v pinned SHA
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1w_retimed_m0/build_r1w.py
+      - name: Capture 600 consecutive real Stella 6.7.1 GUI frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1w_retimed_m0/ci_framewalk_600.sh
+      - name: Strict 8 missile X x 4 NPC X x two door and real CXM0P audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1w_retimed_m0/analyze_600.py
+      - name: Validate SHA F6 16K and 600 images
+        run: |
+          cd rom/v018/experiments/main_iii_r1w_retimed_m0
+          test "$(stat -c %s r1w_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1w-retimed-m0-p1-real-collision-stella-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1w_retimed_m0/
+          if-no-files-found: ignore
