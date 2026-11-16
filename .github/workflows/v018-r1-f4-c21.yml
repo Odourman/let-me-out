@@ -1,0 +1,46 @@
+name: R1-F4 G1 final allowed c21 phase probe after clean c18 NO_RESPONSE
+on:
+  push:
+    branches: [rom-dev/v018-r1-f4-early-copy-phase-20261116]
+    paths: [.github/workflows/v018-r1-f4-c21.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  second-and-final-c21-geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real DASM and Stella 6.7.1
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella python3-pil > r1_f4_c21_versions.txt
+      - name: Check G0 source timing and pinned frozen F2 and compile ONLY second NEW c21 F4 variant
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f4_source_preflight.py
+          /usr/bin/python3 build_six_sweep.py
+          printf '%s  %s\n' 36e588b7211be9dfe6afc534117823f6540aa6d3b753c2816a22c5828d0b60b4 dist/r1_individual_6B_F6.bin | sha256sum -c
+          /usr/bin/python3 r1_f2_build_runtime.py
+          printf '%s  %s\n' 941c943e9000ca062cc5430cf28bcd34ca92beb70257f4dd84109c487b7c3e2b dist/r1_f2_6B_I2_RUNTIME_F6.bin | sha256sum -c
+          /usr/bin/python3 r1_f4_build.py --phase 21
+          test "$(stat -c %s dist/r1_f4_6B_I0_C21_I2_FIXED_F6.bin)" -eq 16384
+          sha256sum dist/r1_f4_6B_I0_C21_I2_FIXED_F6.bin > r1_f4_c21_rom_sha256.txt
+      - name: Capture 16 sequential real Stella 6.7.1 full and crop images plus independent mask/P0/M0/PF audit
+        run: bash rom/v018/experiments/r1_free_xy/r1_f4_capture.sh 21
+      - name: Measure real CPU scanline index0 and subsequent index1/index2 registers, late GRP1/WSYNC
+        if: success()
+        run: bash rom/v018/experiments/r1_free_xy/r1_f4_trace.sh 21
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f4-c21-second-final-copy-16-real-stella-plus-register-traps
+          path: |
+            r1_f4_c21_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f4_source_preflight.json
+            rom/v018/experiments/r1_free_xy/r1_f4_c21_rom_sha256.txt
+            rom/v018/experiments/r1_free_xy/r1_f4_6B_I0_C21_I2_FIXED.asm
+            rom/v018/experiments/r1_free_xy/dist/r1_f4_6B_I0_C21_I2_FIXED*
+            rom/v018/experiments/r1_free_xy/evidence/r1_f4_c21/
+          if-no-files-found: ignore
