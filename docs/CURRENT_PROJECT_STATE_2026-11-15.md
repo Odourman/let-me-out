@@ -3,6 +3,10 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN V – R3/C02 utvecklarleverans mottagen, R1 nästa arbetsorder 2026-11-16
+
+[MAIN V:s källgranskade R3-mottagning och avgränsade nya R1-arbetsorder](MAIN_V_R3_RECEIPT_AND_R1_WORK_ORDER_2026-11-16.md). R3 på commit `000b6f2a579e4aa96995229b2174884fb7c565e2`, ROM SHA256 rapporterad `991cea24f67accb2128743bba5722a87ee8cec08c00f6e39e4df1e07c3826e9c`, är **MOTTAGEN SOM AVSLUTAD ISOLERAD DEVELOPER_LOCAL_PASS**, inte oberoende eller integrerad acceptans. 600/600 Stella GUI-frames 262, 7 verkliga registertraps i en kritisk scanline, T09–T12/T14/T16 lokal PASS; T01/T07 globalt INCONCLUSIVE; resterande NOT_RUN. Drive-evidens 3 420 134 byte metadata kontrollerat; utvecklarens SHA/729-manifestposter har inte oberoende omkontrollerats av MAIN. **Nästa och enda aktiva uppdrag är nu R1 inom v0.18 NTSC** med sex individuellt X/Y-positionerbara källkorrekta androider + P0/M0 och bruna PF-väggar. Ingen R2/R4 eller R1+R3-integration utan ny MAIN-arbetsorder. R3-bankens P1-port och statiska 74/76 cykler är integrationsrisker. VERIFICATION fortsätter STANDBY; Issue #8 fryst; PR #7 draft/unmerged, main enbart dokument.
+
 ## MAIN V – ROM DEVELOPMENT startprompt och första R3-uppdrag, 2026-11-16
 
 [Komplett operativ ROM DEVELOPMENT-startprompt](MAIN_V_ROM_DEVELOPMENT_STARTPROMPT_2026-11-16.md) samt [Google Drive-kopia](https://docs.google.com/document/d/1aHAq7ZZ7Kw2zEhXXISA1aomocOY6xYOW4H2epdHG360/edit). ROM DEVELOPMENT får självständigt experimentera, implementera, felsöka och egenkontrollera inom **det enda aktiva R3/C02-uppdraget** men inte automatiskt gå till R1/R2/R4 eller senare fas. VERIFICATION förblir vilande till MAIN beställer en större fryst batch. Ingen produktionsmerge, ny spelcanon eller bredare kodauktorisation.
