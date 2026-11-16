@@ -1,0 +1,43 @@
+name: MAIN II R1c three distinct original masks 600 Stella frames
+on:
+  push:
+    branches:
+      - research/main-ii-r1c-three-600-20261116
+    paths:
+      - .github/workflows/main-ii-r1c-three-600.yml
+      - rom/v018/experiments/main_ii_three_masks/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  three-static-600:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real DASM Stella X11 PIL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build reproducible 16KB F6 three-mask ROM
+        run: bash rom/v018/experiments/main_ii_three_masks/build.sh
+      - name: Capture 600 consecutive real Stella debugger frames
+        timeout-minutes: 10
+        run: bash rom/v018/experiments/main_ii_three_masks/ci_framewalk_600.sh
+      - name: Validate three originals P0 M0 ghost and scanline each frame
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_three_masks/analyze_600.py
+      - name: Validate binary and raw evidence count
+        run: |
+          cd rom/v018/experiments/main_ii_three_masks
+          sha256sum -c SHA256SUMS.txt
+          test "$(stat -c %s r1c_F6.bin)" -eq 16384
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1c-3-distinct-masks-600-frame-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_three_masks/
+          if-no-files-found: ignore
