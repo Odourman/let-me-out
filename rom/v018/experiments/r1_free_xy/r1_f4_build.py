@@ -66,6 +66,11 @@ for y in range(9):
     a=s.index(f'R1N6BRow{y:02d}:')
     b=s.index(f'R1N6BRow{y+1:02d}:') if y<8 else s.index('BottomBlank:')
     row=s[a:b]
+    # Row08 view includes original AFTER-kernel BottomBlank LDX #102;
+    # exclude that one immutable instruction from the nine visible rows.
+    if y==8:
+        assert row.count(' LDX #102\n')==1
+        row=row.replace(' LDX #102\n','',1)
     assert not any(f' {op} ' in row for op in ['LDX','TAX','INX','DEX','TXA'])
     assert row.count(' STA RESP1\n')+row.count(' STA RESP1,X\n')==6
     assert row.count(' STA GRP1\n')==(5 if y==8 else 4)
