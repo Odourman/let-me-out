@@ -15,7 +15,19 @@ stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PW
 PID=$!
 sleep 5
 kill -0 "$PID" || { cat evidence/two_xy/stella.log; exit 1; }
-WID="$(xdotool search --onlyvisible --name Stella | head -1)"
+WID=""
+for attempt in $(seq 1 15); do
+  WID="$(xdotool search --onlyvisible --name Stella 2>/dev/null | head -1 || true)"
+  if test -n "$WID"; then break; fi
+  sleep 1
+done
+if test -z "$WID"; then
+  echo 'FAIL no visible Stella window in 20s'
+  xwininfo -root -tree >evidence/two_xy/window_tree.txt 2>&1 || true
+  ps aux >evidence/two_xy/process_tree.txt
+  cat evidence/two_xy/stella.log || true
+  exit 2
+fi
 xdotool windowfocus --sync "$WID"
 import -window root evidence/two_xy/full_initial.png
 for ((i=1;i<=48;i++)); do
