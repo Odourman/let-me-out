@@ -48,3 +48,9 @@ MAIN:s forskning och koordination återstartar inte ROM DEVELOPMENT automatiskt 
 [MAIN:s nya cykel- och pixeldeadlineprotokoll](MAIN_III_R1_RESP1_RETRIGGER_DUAL_MASK_FEASIBILITY_GATE_2026-11-16.md) preciserar nästa forskningsfråga: med `NUSIZ1=$01` två `RESP1`-skrivningar kring CPU c30/c38 i samma scanline kan två close-kopior hypotetiskt börja runt TIA-X 39/63. Om andra originalbitmapraden redan finns i X kan `STX GRP1` efter andra reseten, runt CPU c41, ligga efter den första 8-pixelkopian men före den andra. **Detta är en statiskt härledd kandidat, inte en mätt Stella-ROM och inte ett bevis på två fria NPC.** 
 
 R0 instrumentering, R1a kalibrering (identiska enkla masker) och R1b två fullständiga OLIKA 8×9-masker har separata FAIL/PASS-kriterier. R1c sex NPC får inte startas från detta delresultat utan egen auktorisationskontroll. Ingen ändring av projektcanon, `main`, PR #7 eller oberoende VERIFICATION.
+
+## MAIN teknisk kontroll: Stella 6.7.1 och exakt tvåmaskers-timing
+
+[**Korrigerad, direkt källkontrollerad RESP1-rapport**](MAIN_III_R1_RESP1_DUAL_MASK_STELLA_671_SOURCE_AUDIT_AND_8_CYCLE_VARIANTS_2026-11-16.md) har lästs mot `stella-emu/stella` **tagg 6.7.1**, inte senaste master. Åtta 6502-kandidater är kostnadsberäknade i [CSV](MAIN_III_R1_RESP1_DUAL_MASK_STATIC_6502_CYCLE_MATRIX_2026-11-16.csv), men **ingen ny ROM har körts**.
+
+**Korrigering av prioritet:** c30/c38 är gränsnära och inte primär längre, eftersom andra `RESP1`-skrivningen nominellt inträffar vid första 8-pixelkopians sista pixel. **Första kalibrering c30/c40**, därefter fyra varianter **c30/c42, c32/c42, c30/c44 och c32/c44** med oberoende X-växling. Beräknade spritepar (39,75), (45,75), (39,81), (45,81) visar testbar separation, **inte** redan verkligt fri rörelse eller två kompletta masker. Modellens 53–55 cykler inkluderar spelaren och radstyrt skott, men **inte** all integrerad PF-/dörrbudget eller sex NPC. ROM-artifact- och VERIFICATION-status förblir oförändrade.
