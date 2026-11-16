@@ -3,6 +3,12 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN IV – nytt integrerat teknikbevis och R3-granskning 2026-11-16
+
+- [R1ba: verkligt Stella-resultat 600/600](https://github.com/Odourman/let-me-out/actions/runs/43884511590). En ROM visar 2 stora män, 2 stora kvinnor, liten man och liten kvinna i byte-oförändrade originalmasker med tre **kopplade** runtime-X/Y-profiler, två bruna PF-sidoväggar, gul P0 och M0-testsymbol; 262 NTSC och 0 saknade/extra vita pixlar. SHA256 `41fdb87969a20d40fee8cde5673792201663860c2d1e08c8d93f9172ede82361`. [Alla 600 Stella-bilder, ROM, source och manifest i rätt Google Drive-mapp](https://drive.google.com/file/d/1c2Sd68dvQsmb_MJcQOLU8dbiMc5YgbsJ/view?usp=drivesdk).
+- [R3 högerdörr: aktuell källgranskning](MAIN_IV_R3_RIGHT_DOOR_SOURCE_AUDIT_2026-11-16.md). PR#7 har ospeglade vänster-/högerskrivningar och portfärgkod, men ingen godkänd riktig D01–D03-Stella-/kollisions-/nyckelhålgrind.
+- **Inga nya accepterade testfall i produktions-PR**, ingen oberoende VERIFICATION; `main` har endast dokumentändringar. Enbart v0.18 diagnostik auktoriserad, full R1 och senare faser fortsatt blockerade.
+
 ## MAIN IV – daterad projektkontroll 2026-11-16
 
 **Aktuellt besluts- och bevisdelta:** [MAIN IV CHECKPOINT 2026-11-16](MAIN_IV_CHECKPOINT_2026-11-16.md). Detta tillägg är MAIN:s samordnade status efter ny GH-/Drive-kontroll och ersätter inte denna fil som historik, de 57 ursprungliga besluten eller separat VERIFICATION.
