@@ -1,5 +1,7 @@
 # LET ME OUT! – MAIN III: exakt Stella 6.7.1-källgranskning och åtta 6502-tidsvarianter för RESP1 + två olika P1-masker
 
+> **MAIN:s senare verifierade forskningsuppföljning 2026-11-16:** Denna rapport var tidigare en statisk hypotes utan ny ROM. Därefter testades **R1ac → R1ad → R1ae** med verklig Stella 6.7.1. **R1ae nådde 600/600 lokalt PASS** för TVÅ fullständiga olika original-8×9-P1-masker på samma Y, fyra separat varierade X-par, gul originalspelare och en aktiv M0 utan ghost. Läs [MAIN:s senare R1ae-intag](MAIN_III_R1AE_TWO_FULL_P1_MASKS_INDEPENDENT_X_600_LOCAL_RESEARCH_PASS_DECISION_2026-11-16.md). Det ändrar INTE full R1: sex NPC och fri-X över hela spelplanen återstår, liksom oberoende VERIFICATION. Denna äldre rapport behålls som historisk statisk timinganalys; modellen är **inte** bevis i sig.
+
 **Datum:** 2026-11-16. **Status:** `SOURCE_AUDIT_COMPLETE; STATIC_CYCLE_TABLE_VALIDATED; ROM_NOT_BUILT; STELLA_TEST_NOT_RUN; FULL_R1_BLOCKED`. Detta är MAIN:s forsknings- och beslutsunderlag, ingen ROM DEVELOPMENT-kodorder, inget VERIFICATION-godkännande. Ändra inte sex-androidkravet eller 8x9-originalmaskerna.
 
 ## Vad är nytt jämfört med MAIN:s första rapport?
