@@ -8,7 +8,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parent
 REPO=R.parents[3]
 ORIGINAL=REPO/"rom/v018/experiments/venetian_blinds/vb_9_interleave.asm"
-CANON=REPO/"design/NPC_REFERENCE_8x9_masks.json"
+CANON=R/"canon_masks.json"
 assert ORIGINAL.exists() and CANON.exists()
 def gitblob(p):
     b=p.read_bytes()
