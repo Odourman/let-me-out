@@ -8,7 +8,7 @@ from pathlib import Path
 from PIL import Image
 R=Path(__file__).resolve().parent
 ROOT=R.parents[3]
-J=json.loads((ROOT/"design/NPC_REFERENCE_8x9_masks.json").read_text())
+J=json.loads((R/"canon_masks.json").read_text())
 M=J["sprites"]["large_male"];F=J["sprites"]["large_female"]
 assert [int(b,2) for b in M]==[0x3c,0x3c,0x18,0xff,0x18,0x24,0x24,0x42,0x42]
 assert [int(b,2) for b in F]==[0x3c,0x3c,0x18,0xff,0x3c,0x7e,0x7e,0x24,0x24]
