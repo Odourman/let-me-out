@@ -15,7 +15,7 @@
 | 07 | Asymmetric Playfield | Studerat logiskt, EJ EGET självständigt rastertest | Vänster vägg konstant, höger dörröppning med 2× PF-data per rad, verkligt NTSC-ROI |
 | 08 | Two-Line Kernel | EJ EGET TEST | Tvåraders-kärna med 9/9 olika ursprungsrader pixel-exakta; inga dubblade eller tappade rader |
 | 09 | VDEL / Delayed Graphics | NEGATIV VARIANT, tidigare 9-raders VDEL | Separat enbitars latchprov före dynamiskt objektprov |
-| 10 | HMOVE Fine Positioning | EJ EGET TEST innan denna gren | 4 HM-värden: flytta P0 och dess wide-kopia; P1/M0 oflyttade, 262 NTSC, exakt pixelmatch |
+| 10 | HMOVE Fine Positioning | **LOKALT DELBEVIS**, [4/4 HMOVE Stella-PASS](MAIN_II_TRICK10_HMOVE_REAL_STELLA_LOCAL_PASS_2026-11-16.md); P0+wide-kopia flyttas gemensamt ±3 CC, P1/M0 orörda | Utöka till −8..+7, kantfall och kombinationer; HMOVE frigör inte fjärde NPC:s X från P0 |
 | 11 | Late HMOVE Trick | EJ EGET TEST | Isolerat tidigt/sent strobe-A/B, vänsterkanteffekter, flera Stella-TIA-lägen |
 | 12 | Raster Color Changes | LOKALT DELBEVIS, R1e gul P0 och vit P0-wide-copy | Färgfas/skrivdeadline över flera X-positioner, oförändrade originalmasker |
 | 13 | 48-Pixel / Six-Digit Score Kernel | EJ EGET TEST | Sexsiffrig diagnostisk HUD och mätbar 48px mask, fast geometri deklarerad |
