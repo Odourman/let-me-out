@@ -1,0 +1,43 @@
+name: MAIN II R1h four NPC X plus BALL-left PF-right-door same raster
+on:
+  push:
+    branches:
+      - research/main-ii-r1h-ball-left-asym-pf-four-x-20261116
+    paths:
+      - .github/workflows/main-ii-r1h-integrated-two-frames.yml
+      - rom/v018/experiments/main_ii_r1h_integrated/build_integrated.py
+      - rom/v018/experiments/main_ii_r1h_integrated/ci_capture_two.sh
+      - rom/v018/experiments/main_ii_r1h_integrated/audit_two.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  combined-NTSC:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 actual X11 and Pillow
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella >versions.txt
+      - name: Build integrated BALL-left 32-line right-door four-NPC ROM
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1h_integrated/build_integrated.py
+      - name: Capture actual locked/open Stella debugger frames
+        run: bash rom/v018/experiments/main_ii_r1h_integrated/ci_capture_two.sh
+      - name: Fail-closed audit of BALL x0, right door 32 lines and four original 8x9 masks
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1h_integrated/audit_two.py
+      - name: Verify standard F6 16KB and ROM SHA
+        run: |
+          cd rom/v018/experiments/main_ii_r1h_integrated
+          test "$(stat -c %s r1h_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1h-four-NPC-ball-left-right-door-two-frames
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_r1h_integrated/
+          if-no-files-found: ignore
