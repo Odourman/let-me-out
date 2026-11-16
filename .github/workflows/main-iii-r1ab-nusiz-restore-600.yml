@@ -1,0 +1,45 @@
+name: MAIN III R1ab Berzerk NUSIZ0 restore at row edge 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1ab-berzerk-nusiz-restore-boundary-20261116
+    paths:
+      - .github/workflows/main-iii-r1ab-nusiz-restore-600.yml
+      - rom/v018/experiments/main_iii_r1ab_nusiz_restore/build_r1ab.py
+      - rom/v018/experiments/main_iii_r1ab_nusiz_restore/analyze_600.py
+      - rom/v018/experiments/main_iii_r1ab_nusiz_restore/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  restore-nusiz-before-next-row:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and X11 graphics tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned R1aa with byte-exact NUSIZ0 transition at 76-cycle boundary
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1ab_nusiz_restore/build_r1ab.py
+      - name: Capture 600 consecutive authentic Stella 6.7.1 frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1ab_nusiz_restore/ci_framewalk_600.sh
+      - name: Strict audit 5 NPC original masks and 64 combinations, yellow single M0, true collision
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1ab_nusiz_restore/analyze_600.py
+      - name: Validate NTSC standard F6 16 KB, SHA and screenshot count
+        run: |
+          cd rom/v018/experiments/main_iii_r1ab_nusiz_restore
+          test "$(stat -c %s r1ab_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1ab-berzerk-nusiz0-row-edge-600-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1ab_nusiz_restore/
+          if-no-files-found: ignore
