@@ -27,7 +27,12 @@ first_good=None
 for i,path in enumerate(fns,1):
     # autoexec "frame #10" + exactly i consecutive debugger Ctrl-F:
     expected_actual_fCount=10+i
-    seqstep=(expected_actual_fCount//16)%7
+    # Stella debugger Frame is one ahead of program RAM FRAMELO: confirmed
+    # by ORIGINAL immutable four-mode screenshots frame12=>$80=0B,
+    # frame20=>$80=13, frame52=>$80=33, frame68=>$80=43.
+    # Correct trace provenance without modifying preregistered X targets.
+    observed_source_FRAMELO_from_real_trap_relation=expected_actual_fCount-1
+    seqstep=(observed_source_FRAMELO_from_real_trap_relation//16)%7
     mode=seq[seqstep]
     x0,x1=[int(v) for v in mode]
     with Image.open(path) as im:
@@ -38,6 +43,7 @@ for i,path in enumerate(fns,1):
       "true_unmodified_stella_PNG":path.name,
       "actual_raw_PNG_sha256":hashlib.sha256(path.read_bytes()).hexdigest(),
       "debugger_frameindex_source_expected":expected_actual_fCount,
+      "RAM_FRAMELO_source_expected_and_real_debugger_trace_relation":observed_source_FRAMELO_from_real_trap_relation,
       "source_RAM_step_expected":seqstep,
       "source_RAM_X0_SELECT_expected":x0,
       "source_RAM_X1_SELECT_expected":x1,
