@@ -73,7 +73,7 @@ def audit_image(im,requested):
                 PF_brown_left=wall_left,PF_brown_right=wall_right,
                 ntsc262=ntsc262,hud_sha256=hud_hash)
 def run(mode,raw,output,mutants):
-    req=EXPECTED[mode]
+    req=EXPECTED.get(mode,BASE)
     paths=sorted(raw.glob('frame_*.png'))
     expected_count=32 if mode=='RUNTIME' else 16
     assert len(paths)==expected_count,(mode,'frame_count',len(paths),expected_count)
