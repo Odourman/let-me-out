@@ -3,6 +3,16 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN IV – daterad projektkontroll 2026-11-16
+
+**Aktuellt besluts- och bevisdelta:** [MAIN IV CHECKPOINT 2026-11-16](MAIN_IV_CHECKPOINT_2026-11-16.md). Detta tillägg är MAIN:s samordnade status efter ny GH-/Drive-kontroll och ersätter inte denna fil som historik, de 57 ursprungliga besluten eller separat VERIFICATION.
+
+- **Fortfarande endast v0.18 NTSC R1–R4 auktoriserat.** Produktions-PR #7 är DRAFT, ej mergad; oberoende Issue #8 avser fryst äldre baseline.
+- Forskning i separata grenar har demonstrerat samma-Y sex originalmasker, förkompilerade begränsade X-uppställningar samt senare tre faktiska runtime-växlande små-NPC-Y-profiler ([R1az 600/600](https://github.com/Odourman/let-me-out/actions/runs/43871769128)). R1ay:s tre statiska Y-profiler klarade [1 800/1 800](https://github.com/Odourman/let-me-out/actions/runs/43871126664).
+- Dessa resultat **upphäver inte R1-blockeringen**: sex individuellt fria X, integrerat X+Y+PF i ett bevis, R2-nyckel/O1, R3-högerdörr/nyckelhål, T07-cykeltrace och oberoende VERIFICATION återstår.
+- Bruna PF-sidoväggar R1ax är separat forskningsprov; efter lokal auditorfärgkorrektion körs nytt 600-frame-test. Se [latest R1ax workflow](https://github.com/Odourman/let-me-out/actions/workflows/main-iv-r1ax-mirrored-brown-pf-600.yml) innan något PASS uttalas.
+- **Google Drive har en ny MAIN IV-checkpoint i projektmappen**, daterad 16 november 2026; tidigare arkiv och beslut lämnas intakta.
+
 ## Beslutsstatus
 
 ## MAIN – 16 november: NUSIZ1-close retriggering, nytt snävt forskningsfynd
