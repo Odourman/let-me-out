@@ -10,7 +10,7 @@
 - **Fortfarande endast v0.18 NTSC R1–R4 auktoriserat.** Produktions-PR #7 är DRAFT, ej mergad; oberoende Issue #8 avser fryst äldre baseline.
 - Forskning i separata grenar har demonstrerat samma-Y sex originalmasker, förkompilerade begränsade X-uppställningar samt senare tre faktiska runtime-växlande små-NPC-Y-profiler ([R1az 600/600](https://github.com/Odourman/let-me-out/actions/runs/43871769128)). R1ay:s tre statiska Y-profiler klarade [1 800/1 800](https://github.com/Odourman/let-me-out/actions/runs/43871126664).
 - Dessa resultat **upphäver inte R1-blockeringen**: sex individuellt fria X, integrerat X+Y+PF i ett bevis, R2-nyckel/O1, R3-högerdörr/nyckelhål, T07-cykeltrace och oberoende VERIFICATION återstår.
-- Bruna PF-sidoväggar R1ax är separat forskningsprov; efter lokal auditorfärgkorrektion körs nytt 600-frame-test. Se [latest R1ax workflow](https://github.com/Odourman/let-me-out/actions/workflows/main-iv-r1ax-mirrored-brown-pf-600.yml) innan något PASS uttalas.
+- **R1ax:** [senaste forskningstestet](https://github.com/Odourman/let-me-out/actions/runs/43883269341) klarade **600/600** lokala Stella-bildrutor med sex originalmasker, P0/M0, tre X-uppställningar och **två speglade bruna PF-sidoväggar**. ROM SHA256 `64ba6cd5152a395737b2c41607b0a9e54c7836319bbed2bfee9bfdc6af1f81d1`. Två negativa väggkontroller underkändes som avsett; hela workflowt är därför rött trots positivt mode-0-jobb. Detta bevisar **inte** enbart högerdörr eller full R1.
 - **Google Drive har en ny MAIN IV-checkpoint i projektmappen**, daterad 16 november 2026; tidigare arkiv och beslut lämnas intakta.
 
 ## Beslutsstatus
