@@ -4,7 +4,7 @@ Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin o
 
 ## MAIN IV – statusuppdatering 2026-11-16
 
-Den nya [MAIN IV-checkpointen](docs/MAIN_IV_CHECKPOINT_2026-11-16.md) samlar aktuell auktorisation, kod-/evidensläget och nästa steg från GitHub och Google Drive. Nya R1aq–R1az-forskningsprov har uppnått pixelkorrekta **sex originalsilhuetter**, avgränsade förkompilerade X-lägen och tre små-NPC Y-profiler växlande i samma NTSC-ROM. **Detta är positiva lokala diagnostikdelprov, inte godkänd full R1 eller R1–R4 och inte oberoende VERIFICATION.** R1ax:s brunväggsprov måste fortfarande bedömas separat. PR #7 är draft och fullspelsutveckling saknar tillstånd.
+Den nya [MAIN IV-checkpointen](docs/MAIN_IV_CHECKPOINT_2026-11-16.md) samlar aktuell auktorisation, kod-/evidensläget och nästa steg från GitHub och Google Drive. Nya R1aq–R1az-forskningsprov har uppnått pixelkorrekta **sex originalsilhuetter**, avgränsade förkompilerade X-lägen och tre små-NPC Y-profiler växlande i samma NTSC-ROM. **Detta är positiva lokala diagnostikdelprov, inte godkänd full R1 eller R1–R4 och inte oberoende VERIFICATION.** R1ax har nu klarat **600/600** lokal Stella-pixelkontroll med **två speglade bruna sidoväggar**; det är fortfarande inte R3:s asymmetriska högerdörr eller full R1. PR #7 är draft och fullspelsutveckling saknar tillstånd.
 
 ## Status – 2026-11-15
 
