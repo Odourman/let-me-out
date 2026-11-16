@@ -1,0 +1,45 @@
+name: MAIN III R1i P1 second X plus P0 fourth X 600 real Stella frames
+on:
+  push:
+    branches:
+      - research/main-iii-r1i-p1-independent-x-20261116
+    paths:
+      - .github/workflows/main-iii-r1i-p1-600.yml
+      - rom/v018/experiments/main_iii_r1i_p1shift/build_r1i.py
+      - rom/v018/experiments/main_iii_r1i_p1shift/ci_framewalk_600.sh
+      - rom/v018/experiments/main_iii_r1i_p1shift/analyze_600.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r1i-2-axes-600:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 and X11 screen capture
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Derive cycle-neutral eight P1/P0 R1i kernels from exact successful R1h ROM
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1i_p1shift/build_r1i.py
+      - name: Capture 600 consecutive authentic Stella 6.7.1 debugger frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1i_p1shift/ci_framewalk_600.sh
+      - name: Fail-closed original mask and both independent X-axis audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1i_p1shift/analyze_600.py
+      - name: Check 16KiB exact standard F6 ROM and evidence count
+        run: |
+          cd rom/v018/experiments/main_iii_r1i_p1shift
+          test "$(stat -c %s r1i_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1i-two-independent-npc-X-600-stella-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1i_p1shift/
+          if-no-files-found: ignore
