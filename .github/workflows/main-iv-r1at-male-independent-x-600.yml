@@ -1,0 +1,49 @@
+name: MAIN IV R1at independent early male duplicated P1 X while female fixed
+on:
+  push:
+    branches:
+      - research/main-iv-r1at-male-independent-x-20261116
+    paths:
+      - .github/workflows/main-iv-r1at-male-independent-x-600.yml
+      - rom/v018/experiments/main_iv_r1at_male_early/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-male-X:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0, 1]
+    env:
+      R1AT_BATCH: ${{ matrix.batch }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 X11 audit
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned six-perfect-mask R1aq with only male position earlier
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1at_male_early/build_r1at.py
+      - name: Record 600 consecutive authentic Stella screenshots
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1at_male_early/ci_framewalk_600.sh
+      - name: Fail closed exactly 2 M, 2 F, SM, SF, yellow P0 and M0
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1at_male_early/analyze_600.py
+      - name: Check ROM SHA256 and 600 saved screenshots
+        run: |
+          cd rom/v018/experiments/main_iv_r1at_male_early
+          test "$(stat -c %s r1at_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1at-male-only-batch-${{ matrix.batch }}-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1at_male_early/
+          if-no-files-found: ignore
