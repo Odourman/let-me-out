@@ -58,8 +58,10 @@ def check(name):
                 recognized=True;break
         if not recognized:unexplained.append((x,y))
     # P0 can move in the four-mask variant. M0 may be on prior scanline.
-    ypc=sum(yellow(im.getpixel((x,y))) for y in range(160,171) for x in range(102,157))
-    ym0=sum(yellow(im.getpixel((x,y))) for y in range(146,173) for x in range(225,260))
+    ypc=sum(yellow(im.getpixel((x,y))) for y in range(162,171) for x in range(102,355))
+    # Earlier in 3-copy control: M0 is at GUI x240-241 Y166; in 4-copy probe
+    # it is a separate one-scanline shot at Y160. Avoid counting yellow P0.
+    ym0=sum(yellow(im.getpixel((x,y))) for y in range(157,169) for x in range(238,243))
     sha=hashlib.sha256(im.crop((661,90,697,111)).tobytes()).hexdigest()
     scans=262 if sha in (
         "04f59d7fbc17d360e0cea738d4e512ab7208118b9b4d4b4743f3a702d96f1fdb",
