@@ -79,14 +79,14 @@ for i,suffix in enumerate("ABCD"):
     if suffix=="C":
         needle=" LDA #$0E\n STA RESP0\n STA COLUP0\n"
         assert shot.count(needle)==1,(suffix,shot[-300:])
-        shot=shot.replace(needle," LDA #$0E\n STY ENAM0\n STA RESP0\n STA COLUP0\n")
+        shot=shot.replace(needle," STY ENAM0\n LDA #$0E\n STA RESP0\n STA COLUP0\n")
     else:
         assert shot.count(" LDA #$0E\n STA COLUP0\n")==1,(suffix,shot[-300:])
-        shot=shot.replace(" LDA #$0E\n STA COLUP0\n"," LDA #$0E\n STY ENAM0\n STA COLUP0\n")
+        shot=shot.replace(" LDA #$0E\n STA COLUP0\n"," STY ENAM0\n LDA #$0E\n STA COLUP0\n")
     # R1n14 white small-male and small-female pixels are identical on Y8:
     # TXA exactly matches original LDA SmallMaleRows14,Y, saving two cycles.
-    assert shot.count(" LDA SmallMaleRows14,Y\n")==1
-    shot=shot.replace(" LDA SmallMaleRows14,Y\n"," TXA\n")
+    assert shot.count(" LDA SmallMaleRows14,Y\n STA GRP1\n")==1
+    shot=shot.replace(" LDA SmallMaleRows14,Y\n STA GRP1\n"," STX.w GRP1\n")
     # Some kernels use alternative color order; with those variants the
     # insertion will need equivalent repositioning before the white copy.
     shot+=f" DEY\n JMP R1oLower{suffix}\n"
