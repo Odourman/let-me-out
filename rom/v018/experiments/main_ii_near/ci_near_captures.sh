@@ -15,12 +15,12 @@ sleep 2
 # Prime the actual ROM in the actual mode, discard first GUI initialization.
 echo 'base #10' >"$ACTUAL_HOME/.config/stella/autoexec.script"
 echo 'frame #13' >>"$ACTUAL_HOME/.config/stella/autoexec.script"
-stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$ROOT/near60/proof_F6.bin" > evidence/warmup.log 2>&1 &
+stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$ROOT/near57/proof_F6.bin" > evidence/warmup.log 2>&1 &
 warm=$!
 sleep 7
 kill "$warm" 2>/dev/null || true
 wait "$warm" 2>/dev/null || true
-for variant in near60 near51; do
+for variant in near57; do
   folder="$ROOT/$variant"
   for pair in 0:13 1:29 2:45 3:61; do
     name="${pair%%:*}"; frame="${pair##*:}"
