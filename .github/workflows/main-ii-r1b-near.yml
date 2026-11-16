@@ -1,0 +1,47 @@
+name: MAIN II R1b close-spacing 60cc versus 51cc
+on:
+  push:
+    branches:
+      - research/main-ii-r1b-near-copy-20261116
+    paths:
+      - .github/workflows/main-ii-r1b-near.yml
+      - rom/v018/experiments/main_ii_near/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  near:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and capture dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build two independent 16KB F6 original-mask variants
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_near/build_variants.py
+      - name: Capture 4 frames and actual PC stops per variant
+        timeout-minutes: 8
+        run: bash rom/v018/experiments/main_ii_near/ci_near_captures.sh
+      - name: Exact pixel masks plus individual X for both variants
+        run: |
+          set +e
+          /usr/bin/python3 rom/v018/experiments/main_ii_near/near60/pixel_audit.py > rom/v018/experiments/main_ii_near/near60/audit_stdout.json
+          a=$?
+          /usr/bin/python3 rom/v018/experiments/main_ii_near/near51/pixel_audit.py > rom/v018/experiments/main_ii_near/near51/audit_stdout.json
+          b=$?
+          echo "near60 AUDIT EXIT $a"
+          echo "near51 AUDIT EXIT $b"
+          cat rom/v018/experiments/main_ii_near/near60/audit_stdout.json
+          cat rom/v018/experiments/main_ii_near/near51/audit_stdout.json
+          test "$a" -eq 0 && test "$b" -eq 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1b-near-60-51-stella-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_near/
+          if-no-files-found: ignore
