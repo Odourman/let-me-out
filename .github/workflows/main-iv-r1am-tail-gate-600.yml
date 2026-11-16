@@ -1,0 +1,43 @@
+name: MAIN IV R1am NUSIZ3 late extra copy gate original 6 mask feasibility
+on:
+  push:
+    branches:
+      - research/main-iv-r1am-tail-copy-gate-20261116
+    paths:
+      - .github/workflows/main-iv-r1am-tail-gate-600.yml
+      - rom/v018/experiments/main_iv_r1am_tail_gate/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  late-copy-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 and X11 screenshot tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned R1al and cycle-neutral zero GRP1 tail gate
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1am_tail_gate/build_r1am.py
+      - name: Capture 600 consecutive authentic Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1am_tail_gate/ci_framewalk_600.sh
+      - name: Strict six original source masks and P0 M0 one shot
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1am_tail_gate/analyze_600.py
+      - name: Check ROM SHA, bytes, raw frames
+        run: |
+          cd rom/v018/experiments/main_iv_r1am_tail_gate
+          test "$(stat -c %s r1am_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1am-late-copy-gate-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1am_tail_gate/
+          if-no-files-found: ignore
