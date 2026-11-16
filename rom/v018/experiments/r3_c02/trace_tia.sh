@@ -13,7 +13,7 @@ VPID=$!
 trap 'kill "$VPID" 2>/dev/null || true' EXIT
 export DISPLAY=:111
 sleep 1
-for item in left_pf0:PF0:small right_pf2:PF2:large keyhole_grp1:GRP1:large; do
+for item in left_pf0:PF0:small left_pf1:PF1:small left_pf2:PF2:small right_pf0:PF0:large right_pf1:PF1:large right_pf2:PF2:large keyhole_grp1:GRP1:large; do
   IFS=: read -r name reg pos <<<"$item"
   d="$OUT/$name"
   mkdir -p "$d"
