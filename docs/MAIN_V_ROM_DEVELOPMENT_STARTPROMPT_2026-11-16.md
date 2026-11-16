@@ -1,5 +1,8 @@
 # MAIN V - ROM DEVELOPMENT: bindande rollstart och isolerad R3-arbetsorder
 
+> **ROM DEVELOPMENT II MIGRATION (2026-11-16):** Den förra utvecklar-chatten nådde maxlängd och har redan levererat fryst R1 på `b02ee3fe9e1ffe4bd77460ff43263a35e1f544e0`. R1 är **tekniskt BLOCKED**, trots positiva tvåmask-delprov. Använd den nya [migrationsrapporten och ROM DEVELOPMENT II-startprompten](MAIN_V_ROM_DEVELOPMENT_MIGRATION_R1_BLOCKER_2026-11-16.md) (https://docs.google.com/document/d/1PYDcMtckYD5Fq4xyd7DOlEVVeXBUGPl8vCe-xo3XXh0/edit) vid start av ny chatt. Ingen automatisk omstart av äldre R3/R1-testkampanj; efter mottagningskontroll inväntas separat MAIN-arbetsorder. Denna senare migrationsstatus ersätter äldre "börja R3" som startorder.
+
+
 **Beslutsstatus 2026-11-16:** Konkret MAIN V-uppdragsinstruktion inom användarens befintliga v0.18-auktorisation enligt Issue #6, inte ett nytt gameplay-/designbeslut eller ytterligare implementationstillstånd. Hänvisningen till VERIFICATION bygger på användarens senare uttryckliga beslut om sällsynta samlade verifieringsbatcher. Användaren skapar själv en separat ROM DEVELOPMENT-chatt och överför denna instruktion. Att denna fil finns betyder inte att en annan chatt har påbörjat arbetet.
 
 ## Startprompt för separat ROM DEVELOPMENT-chatt
