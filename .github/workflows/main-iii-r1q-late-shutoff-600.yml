@@ -1,0 +1,45 @@
+name: MAIN III R1q late M0 shutoff four P0 positions 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1q-late-m0-disable-4x-20261116
+    paths:
+      - .github/workflows/main-iii-r1q-late-shutoff-600.yml
+      - rom/v018/experiments/main_iii_r1q_late_shutoff/build_r1q.py
+      - rom/v018/experiments/main_iii_r1q_late_shutoff/analyze_600.py
+      - rom/v018/experiments/main_iii_r1q_late_shutoff/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r1q:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM and Stella 6.7.1 debugger
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build R1q from immutable R1o ROM hash
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1q_late_shutoff/build_r1q.py
+      - name: Capture 600 real consecutive frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1q_late_shutoff/ci_framewalk_600.sh
+      - name: Four-mode fail-closed source-mask, shot, wall and exact pixel audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1q_late_shutoff/analyze_600.py
+      - name: SHA and raw capture count
+        run: |
+          cd rom/v018/experiments/main_iii_r1q_late_shutoff
+          sha256sum -c ROM_SHA256.txt
+          test "$(stat -c %s r1q_F6.bin)" -eq 16384
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1q-late-M0-shutoff-stella-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1q_late_shutoff/
+          if-no-files-found: ignore
