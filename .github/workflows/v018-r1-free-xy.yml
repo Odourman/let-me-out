@@ -1,0 +1,46 @@
+name: v018 R1 independent XY two-original-mask pilot (DASM + Stella)
+on:
+  push:
+    branches:
+      - rom-dev/v018-r1-independent-xy-20261116
+    paths:
+      - .github/workflows/v018-r1-free-xy.yml
+      - rom/v018/experiments/r1_free_xy/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two_full_original_masks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install genuine DASM Stella and image tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella python3-pil | tee r1_tool_versions.txt
+      - name: Assemble original-source-exact male/female with independent 2x2 X and P0/M0/PF
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_two.py
+          test "$(stat -c %s dist/LetMeOut_R1_TWO_2x2_F6.bin)" = 16384
+          sha256sum dist/LetMeOut_R1_TWO_2x2_F6.bin > dist/ROM_SHA256SUMS.txt
+          sha256sum -c dist/ROM_SHA256SUMS.txt
+      - name: Save 24 consecutive real Stella debugger screenshots
+        run: bash rom/v018/experiments/r1_free_xy/capture_pilot.sh
+      - name: Strict source-mask, yellow shot and PF-wall pixel audit (fail closed)
+        continue-on-error: true
+        run: /usr/bin/python3 rom/v018/experiments/r1_free_xy/analyze_pilot.py
+      - name: Capture REAL early/late RESP1 GRP1 NUSIZ1 HMOVE write traps in Stella debugger
+        if: always()
+        run: bash rom/v018/experiments/r1_free_xy/trace_pilot.sh
+      - name: Upload source, DASM listings, ROM and unedited actual Stella evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: letmeout-r1-two-source-exact-original-masks-pilot
+          path: |
+            r1_tool_versions.txt
+            rom/v018/experiments/r1_free_xy/
+          if-no-files-found: ignore
