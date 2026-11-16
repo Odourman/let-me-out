@@ -1,71 +1,140 @@
-variant,step,instruction,cycles,end_cpu_cycle,nominal_tia_x_if_relevant,note
-A_30_40,1,"LDA MaleRows,Y",4,4,,4 CPU cycles only if indexed lookup does not cross page
-A_30_40,2,STA GRP1,3,7,,
-A_30_40,3,"LDX FemaleRows,Y",4,11,,
-A_30_40,4,"LDA PlayerRows,Y",4,15,,4 CPU cycles only if indexed lookup does not cross page
-A_30_40,5,STA GRP0,3,18,,
-A_30_40,6,"LDA ShotEnable,Y",4,22,,4 CPU cycles only if indexed lookup does not cross page
-A_30_40,7,STA ENAM0,3,25,,diagnostic M0 row enable; shot X must be later than this write
-A_30_40,8,NOP,2,27,,
-A_30_40,9,STA RESP1 #1,3,30,39,"close-copy start model ±TIA phase, NOT measured"
-A_30_40,10,BIT FRAMELO,3,33,,
-A_30_40,11,NOP,2,35,,
-A_30_40,12,NOP,2,37,,
-A_30_40,13,STA RESP1 #2,3,40,69,"close-copy start model ±TIA phase, NOT measured"
-A_30_40,14,STX GRP1 #female,3,43,61,new GRP bit propagation +1CC in Stella 6.7.1
-A_30_40,15,DEY,2,45,,
-A_30_40,16,BPL Row,3,48,,"taken branch=3 CPU cycles, assumes no page crossing"
-A_30_40,17,STA WSYNC(next),3,51,,
-B_32_40,1,"LDA MaleRows,Y",4,4,,4 CPU cycles only if indexed lookup does not cross page
-B_32_40,2,STA GRP1,3,7,,
-B_32_40,3,"LDX FemaleRows,Y",4,11,,
-B_32_40,4,"LDA PlayerRows,Y",4,15,,4 CPU cycles only if indexed lookup does not cross page
-B_32_40,5,STA GRP0,3,18,,
-B_32_40,6,"LDA ShotEnable,Y",4,22,,4 CPU cycles only if indexed lookup does not cross page
-B_32_40,7,STA ENAM0,3,25,,diagnostic M0 row enable; shot X must be later than this write
-B_32_40,8,NOP,2,27,,
-B_32_40,9,NOP,2,29,,
-B_32_40,10,STA RESP1 #1,3,32,45,"close-copy start model ±TIA phase, NOT measured"
-B_32_40,11,BIT FRAMELO,3,35,,
-B_32_40,12,NOP,2,37,,
-B_32_40,13,STA RESP1 #2,3,40,69,"close-copy start model ±TIA phase, NOT measured"
-B_32_40,14,STX GRP1 #female,3,43,61,new GRP bit propagation +1CC in Stella 6.7.1
-B_32_40,15,DEY,2,45,,
-B_32_40,16,BPL Row,3,48,,"taken branch=3 CPU cycles, assumes no page crossing"
-B_32_40,17,STA WSYNC(next),3,51,,
-C_30_42,1,"LDA MaleRows,Y",4,4,,4 CPU cycles only if indexed lookup does not cross page
-C_30_42,2,STA GRP1,3,7,,
-C_30_42,3,"LDX FemaleRows,Y",4,11,,
-C_30_42,4,"LDA PlayerRows,Y",4,15,,4 CPU cycles only if indexed lookup does not cross page
-C_30_42,5,STA GRP0,3,18,,
-C_30_42,6,"LDA ShotEnable,Y",4,22,,4 CPU cycles only if indexed lookup does not cross page
-C_30_42,7,STA ENAM0,3,25,,diagnostic M0 row enable; shot X must be later than this write
-C_30_42,8,NOP,2,27,,
-C_30_42,9,STA RESP1 #1,3,30,39,"close-copy start model ±TIA phase, NOT measured"
-C_30_42,10,BIT FRAMELO,3,33,,
-C_30_42,11,NOP,2,35,,
-C_30_42,12,NOP,2,37,,
-C_30_42,13,NOP,2,39,,
-C_30_42,14,STA RESP1 #2,3,42,75,"close-copy start model ±TIA phase, NOT measured"
-C_30_42,15,STX GRP1 #female,3,45,67,new GRP bit propagation +1CC in Stella 6.7.1
-C_30_42,16,DEY,2,47,,
-C_30_42,17,BPL Row,3,50,,"taken branch=3 CPU cycles, assumes no page crossing"
-C_30_42,18,STA WSYNC(next),3,53,,
-D_32_42,1,"LDA MaleRows,Y",4,4,,4 CPU cycles only if indexed lookup does not cross page
-D_32_42,2,STA GRP1,3,7,,
-D_32_42,3,"LDX FemaleRows,Y",4,11,,
-D_32_42,4,"LDA PlayerRows,Y",4,15,,4 CPU cycles only if indexed lookup does not cross page
-D_32_42,5,STA GRP0,3,18,,
-D_32_42,6,"LDA ShotEnable,Y",4,22,,4 CPU cycles only if indexed lookup does not cross page
-D_32_42,7,STA ENAM0,3,25,,diagnostic M0 row enable; shot X must be later than this write
-D_32_42,8,NOP,2,27,,
-D_32_42,9,NOP,2,29,,
-D_32_42,10,STA RESP1 #1,3,32,45,"close-copy start model ±TIA phase, NOT measured"
-D_32_42,11,BIT FRAMELO,3,35,,
-D_32_42,12,NOP,2,37,,
-D_32_42,13,NOP,2,39,,
-D_32_42,14,STA RESP1 #2,3,42,75,"close-copy start model ±TIA phase, NOT measured"
-D_32_42,15,STX GRP1 #female,3,45,67,new GRP bit propagation +1CC in Stella 6.7.1
-D_32_42,16,DEY,2,47,,
-D_32_42,17,BPL Row,3,50,,"taken branch=3 CPU cycles, assumes no page crossing"
-D_32_42,18,STA WSYNC(next),3,53,,
+variant,test_intent,step,instruction,cycles,end_cpu_cycle,approx_screen_x,note
+A_30_40,calibration_low_risk,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+A_30_40,calibration_low_risk,2,STA GRP1,3,7,,
+A_30_40,calibration_low_risk,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+A_30_40,calibration_low_risk,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+A_30_40,calibration_low_risk,5,STA GRP0,3,18,,
+A_30_40,calibration_low_risk,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+A_30_40,calibration_low_risk,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+A_30_40,calibration_low_risk,8,NOP,2,27,,
+A_30_40,calibration_low_risk,9,STA RESP1 #1,3,30,39,"close-start approximation only, phase/HMOVE unverified"
+A_30_40,calibration_low_risk,10,BIT FRAMELO,3,33,,
+A_30_40,calibration_low_risk,11,NOP,2,35,,
+A_30_40,calibration_low_risk,12,NOP,2,37,,
+A_30_40,calibration_low_risk,13,STA RESP1 #2,3,40,69,"close-start approximation only, phase/HMOVE unverified"
+A_30_40,calibration_low_risk,14,STX GRP1 #female,3,43,61,effective after ~1 CC in Stella 6.7.1
+A_30_40,calibration_low_risk,15,DEY,2,45,,
+A_30_40,calibration_low_risk,16,BPL Row,3,48,,taken 3 cycles only if branch does not cross page
+A_30_40,calibration_low_risk,17,STA WSYNC(next),3,51,,
+B_32_40,tight_boundary_probe,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+B_32_40,tight_boundary_probe,2,STA GRP1,3,7,,
+B_32_40,tight_boundary_probe,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+B_32_40,tight_boundary_probe,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+B_32_40,tight_boundary_probe,5,STA GRP0,3,18,,
+B_32_40,tight_boundary_probe,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+B_32_40,tight_boundary_probe,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+B_32_40,tight_boundary_probe,8,NOP,2,27,,
+B_32_40,tight_boundary_probe,9,NOP,2,29,,
+B_32_40,tight_boundary_probe,10,STA RESP1 #1,3,32,45,"close-start approximation only, phase/HMOVE unverified"
+B_32_40,tight_boundary_probe,11,BIT FRAMELO,3,35,,
+B_32_40,tight_boundary_probe,12,NOP,2,37,,
+B_32_40,tight_boundary_probe,13,STA RESP1 #2,3,40,69,"close-start approximation only, phase/HMOVE unverified"
+B_32_40,tight_boundary_probe,14,STX GRP1 #female,3,43,61,effective after ~1 CC in Stella 6.7.1
+B_32_40,tight_boundary_probe,15,DEY,2,45,,
+B_32_40,tight_boundary_probe,16,BPL Row,3,48,,taken 3 cycles only if branch does not cross page
+B_32_40,tight_boundary_probe,17,STA WSYNC(next),3,51,,
+C_30_42,preferred_independence,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+C_30_42,preferred_independence,2,STA GRP1,3,7,,
+C_30_42,preferred_independence,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+C_30_42,preferred_independence,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+C_30_42,preferred_independence,5,STA GRP0,3,18,,
+C_30_42,preferred_independence,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+C_30_42,preferred_independence,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+C_30_42,preferred_independence,8,NOP,2,27,,
+C_30_42,preferred_independence,9,STA RESP1 #1,3,30,39,"close-start approximation only, phase/HMOVE unverified"
+C_30_42,preferred_independence,10,BIT FRAMELO,3,33,,
+C_30_42,preferred_independence,11,NOP,2,35,,
+C_30_42,preferred_independence,12,NOP,2,37,,
+C_30_42,preferred_independence,13,NOP,2,39,,
+C_30_42,preferred_independence,14,STA RESP1 #2,3,42,75,"close-start approximation only, phase/HMOVE unverified"
+C_30_42,preferred_independence,15,STX GRP1 #female,3,45,67,effective after ~1 CC in Stella 6.7.1
+C_30_42,preferred_independence,16,DEY,2,47,,
+C_30_42,preferred_independence,17,BPL Row,3,50,,taken 3 cycles only if branch does not cross page
+C_30_42,preferred_independence,18,STA WSYNC(next),3,53,,
+D_32_42,preferred_independence,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+D_32_42,preferred_independence,2,STA GRP1,3,7,,
+D_32_42,preferred_independence,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+D_32_42,preferred_independence,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+D_32_42,preferred_independence,5,STA GRP0,3,18,,
+D_32_42,preferred_independence,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+D_32_42,preferred_independence,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+D_32_42,preferred_independence,8,NOP,2,27,,
+D_32_42,preferred_independence,9,NOP,2,29,,
+D_32_42,preferred_independence,10,STA RESP1 #1,3,32,45,"close-start approximation only, phase/HMOVE unverified"
+D_32_42,preferred_independence,11,BIT FRAMELO,3,35,,
+D_32_42,preferred_independence,12,NOP,2,37,,
+D_32_42,preferred_independence,13,NOP,2,39,,
+D_32_42,preferred_independence,14,STA RESP1 #2,3,42,75,"close-start approximation only, phase/HMOVE unverified"
+D_32_42,preferred_independence,15,STX GRP1 #female,3,45,67,effective after ~1 CC in Stella 6.7.1
+D_32_42,preferred_independence,16,DEY,2,47,,
+D_32_42,preferred_independence,17,BPL Row,3,50,,taken 3 cycles only if branch does not cross page
+D_32_42,preferred_independence,18,STA WSYNC(next),3,53,,
+E_30_44,preferred_independence,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+E_30_44,preferred_independence,2,STA GRP1,3,7,,
+E_30_44,preferred_independence,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+E_30_44,preferred_independence,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+E_30_44,preferred_independence,5,STA GRP0,3,18,,
+E_30_44,preferred_independence,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+E_30_44,preferred_independence,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+E_30_44,preferred_independence,8,NOP,2,27,,
+E_30_44,preferred_independence,9,STA RESP1 #1,3,30,39,"close-start approximation only, phase/HMOVE unverified"
+E_30_44,preferred_independence,10,BIT FRAMELO,3,33,,
+E_30_44,preferred_independence,11,NOP,2,35,,
+E_30_44,preferred_independence,12,NOP,2,37,,
+E_30_44,preferred_independence,13,NOP,2,39,,
+E_30_44,preferred_independence,14,NOP,2,41,,
+E_30_44,preferred_independence,15,STA RESP1 #2,3,44,81,"close-start approximation only, phase/HMOVE unverified"
+E_30_44,preferred_independence,16,STX GRP1 #female,3,47,73,effective after ~1 CC in Stella 6.7.1
+E_30_44,preferred_independence,17,DEY,2,49,,
+E_30_44,preferred_independence,18,BPL Row,3,52,,taken 3 cycles only if branch does not cross page
+E_30_44,preferred_independence,19,STA WSYNC(next),3,55,,
+F_32_44,preferred_independence,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+F_32_44,preferred_independence,2,STA GRP1,3,7,,
+F_32_44,preferred_independence,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+F_32_44,preferred_independence,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+F_32_44,preferred_independence,5,STA GRP0,3,18,,
+F_32_44,preferred_independence,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+F_32_44,preferred_independence,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+F_32_44,preferred_independence,8,NOP,2,27,,
+F_32_44,preferred_independence,9,NOP,2,29,,
+F_32_44,preferred_independence,10,STA RESP1 #1,3,32,45,"close-start approximation only, phase/HMOVE unverified"
+F_32_44,preferred_independence,11,BIT FRAMELO,3,35,,
+F_32_44,preferred_independence,12,NOP,2,37,,
+F_32_44,preferred_independence,13,NOP,2,39,,
+F_32_44,preferred_independence,14,NOP,2,41,,
+F_32_44,preferred_independence,15,STA RESP1 #2,3,44,81,"close-start approximation only, phase/HMOVE unverified"
+F_32_44,preferred_independence,16,STX GRP1 #female,3,47,73,effective after ~1 CC in Stella 6.7.1
+F_32_44,preferred_independence,17,DEY,2,49,,
+F_32_44,preferred_independence,18,BPL Row,3,52,,taken 3 cycles only if branch does not cross page
+F_32_44,preferred_independence,19,STA WSYNC(next),3,55,,
+G_30_38,tight_boundary_probe,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+G_30_38,tight_boundary_probe,2,STA GRP1,3,7,,
+G_30_38,tight_boundary_probe,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+G_30_38,tight_boundary_probe,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+G_30_38,tight_boundary_probe,5,STA GRP0,3,18,,
+G_30_38,tight_boundary_probe,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+G_30_38,tight_boundary_probe,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+G_30_38,tight_boundary_probe,8,NOP,2,27,,
+G_30_38,tight_boundary_probe,9,STA RESP1 #1,3,30,39,"close-start approximation only, phase/HMOVE unverified"
+G_30_38,tight_boundary_probe,10,BIT FRAMELO,3,33,,
+G_30_38,tight_boundary_probe,11,NOP,2,35,,
+G_30_38,tight_boundary_probe,12,STA RESP1 #2,3,38,63,"close-start approximation only, phase/HMOVE unverified"
+G_30_38,tight_boundary_probe,13,STX GRP1 #female,3,41,55,effective after ~1 CC in Stella 6.7.1
+G_30_38,tight_boundary_probe,14,DEY,2,43,,
+G_30_38,tight_boundary_probe,15,BPL Row,3,46,,taken 3 cycles only if branch does not cross page
+G_30_38,tight_boundary_probe,16,STA WSYNC(next),3,49,,
+H_30_36,expected_phase_sensitivity_negative_control,1,"LDA MaleRows,Y",4,4,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+H_30_36,expected_phase_sensitivity_negative_control,2,STA GRP1,3,7,,
+H_30_36,expected_phase_sensitivity_negative_control,3,"LDX FemaleRows,Y",4,11,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+H_30_36,expected_phase_sensitivity_negative_control,4,"LDA PlayerRows,Y",4,15,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+H_30_36,expected_phase_sensitivity_negative_control,5,STA GRP0,3,18,,
+H_30_36,expected_phase_sensitivity_negative_control,6,"LDA ShotEnable,Y",4,22,,"4 cycles only if abs,Y ROM table lookup has no page crossing"
+H_30_36,expected_phase_sensitivity_negative_control,7,STA ENAM0,3,25,,diagnostic shot must be right of this beam timing
+H_30_36,expected_phase_sensitivity_negative_control,8,NOP,2,27,,
+H_30_36,expected_phase_sensitivity_negative_control,9,STA RESP1 #1,3,30,39,"close-start approximation only, phase/HMOVE unverified"
+H_30_36,expected_phase_sensitivity_negative_control,10,BIT FRAMELO,3,33,,
+H_30_36,expected_phase_sensitivity_negative_control,11,STA RESP1 #2,3,36,57,"close-start approximation only, phase/HMOVE unverified"
+H_30_36,expected_phase_sensitivity_negative_control,12,STX GRP1 #female,3,39,49,effective after ~1 CC in Stella 6.7.1
+H_30_36,expected_phase_sensitivity_negative_control,13,DEY,2,41,,
+H_30_36,expected_phase_sensitivity_negative_control,14,BPL Row,3,44,,taken 3 cycles only if branch does not cross page
+H_30_36,expected_phase_sensitivity_negative_control,15,STA WSYNC(next),3,47,,
