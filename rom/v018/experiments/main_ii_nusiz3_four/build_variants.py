@@ -38,7 +38,7 @@ b=b.replace(
  "SmallFemaleRows:\n BYTE "+",".join("$%02X"%v for v in smf[::-1])+
  "\nPlayerRows:\n BYTE")
 assert "R1dSmallFemaleWrite" in b and b.count("SmallFemaleRows:")==1
-assert b.count(" LDY #8")==1 and "LDX #79" in b
+assert " LDX #79\nTopLines:" in b and " LDA #2\n STA ENAM0\n STA WSYNC" in b
 results={}
 for name,variant in [
     ("nusiz3_only",a),
