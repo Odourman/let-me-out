@@ -43,6 +43,7 @@ rom=four*4;sha=hashlib.sha256(rom).hexdigest()
 (R/"ROM_SHA256.txt").write_text(sha+"  r1au_F6.bin\n")
 meta={
  "status":"BUILT_UNVERIFIED_R1AU_EARLY_MALE_GRP1_RESEARCH",
+ "NUSIZ1_value":3,
  "R1at_parent_builder_git_blob_SHA":"94aa43107b7ca41247ef4b6ca21a3f28de8e73ca",
  "variant":variant,"parent_batch":parent_batch,
  "original_R1at_failed_ROM_SHA256":ROM_PINS[parent_batch],
