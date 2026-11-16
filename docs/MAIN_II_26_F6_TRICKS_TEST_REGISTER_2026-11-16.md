@@ -13,7 +13,7 @@
 | 05 | Dynamic Playfield Sprites | NEGATIV VARIANT för full NPC via sex_x; inte isolerat enklare PF-objekt | PF-hjälpsymbol + befintlig vägg samma rasterrad med explicit 4-CC/PF-pixel-limit |
 | 06 | Mid-frame Sprite Resizing | EJ EGET TEST | Riktig NUSIZ-strobe mellan rader, observera normal/dubbel/quad och bevarad originalmask |
 | 07 | Asymmetric Playfield | Studerat logiskt, EJ EGET självständigt rastertest | Vänster vägg konstant, höger dörröppning med 2× PF-data per rad, verkligt NTSC-ROI |
-| 08 | Two-Line Kernel | EJ EGET TEST | Tvåraders-kärna med 9/9 olika ursprungsrader pixel-exakta; inga dubblade eller tappade rader |
+| 08 | Two-Line Kernel | **NEGATIV VARIANT**, [Stella 262-linjers dubbel-WSYNC-test](https://github.com/Odourman/let-me-out/blob/research/main-ii-trick08-two-line-20261116/docs/MAIN_II_TRICK08_TWO_LINE_REAL_STELLA_NEGATIVE_VARIANT_2026-11-16.md). Alla bitmaprader finns men utspridda över 18 fysiska rader i stället för 9 | Nästa: separat VDEL-/förberedelsepipeline som bevarar exakt 9-radersgeometri; ingen generell omöjlighet påstås |
 | 09 | VDEL / Delayed Graphics | NEGATIV VARIANT, tidigare 9-raders VDEL | Separat enbitars latchprov före dynamiskt objektprov |
 | 10 | HMOVE Fine Positioning | **LOKALT DELBEVIS**, [4/4 HMOVE Stella-PASS](MAIN_II_TRICK10_HMOVE_REAL_STELLA_LOCAL_PASS_2026-11-16.md); P0+wide-kopia flyttas gemensamt ±3 CC, P1/M0 orörda | Utöka till −8..+7, kantfall och kombinationer; HMOVE frigör inte fjärde NPC:s X från P0 |
 | 11 | Late HMOVE Trick | EJ EGET TEST | Isolerat tidigt/sent strobe-A/B, vänsterkanteffekter, flera Stella-TIA-lägen |
