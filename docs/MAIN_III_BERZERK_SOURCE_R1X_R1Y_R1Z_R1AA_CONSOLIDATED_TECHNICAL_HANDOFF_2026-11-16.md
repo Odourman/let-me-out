@@ -36,3 +36,9 @@
 **C. Berzerk-inspirerad logik när teknisk sprite-kernel väl klarar det:** håll aktiv kula som `x,y,direction,lifetime` i RAM, flytta under VBLANK med coarse/finpositionering, använd radbaserad `ENAM0`-aktivering, och kombinera `CXM0P`/Tia-latch med ett logiskt fiende-ID. Gör ingen produktionskoppling innan oberoende VERIFICATION.
 
 **Projektgrind:** `main`, ROM DEVELOPMENT:s draft PR #7 och separat VERIFICATION issue #8 inte ändrade av forskningen. Full R1 fortsatt **BLOCKED/FAIL**; fjärde P0 endast fyra diskreta X, två stora kvinnor inte fri-X, sjätte stor man saknas. Forskningsfiler får inte slås ihop med produktion utan separat MAIN-beslut.
+
+## Kompakt sammanställd MAIN-överlämningsfil
+
+Lokalt förseglad handoff ZIP: `Let_Me_Out_Berzerk_Source_And_R1x_R1y_R1z_R1aa_MAIN_Handoff.zip`; **SHA256 `b6e3c34810e663659560e57c52ae019eca3580c075988f293e088837f0c71bb7`**, 99 967 byte, **ZIP CRC PASS** med 27 poster. Paketet innehåller egna isolerade R1x/R1y/R1z/R1aa-ROM:ar, assemblerkällor, 600-raders test-CSV:er, sammanfattningar och autentiska Stella-stillbilder jämte källhänvisningar till Berzerks disassembly. Upphovsrättsligt skyddad extern Berzerk-assembler har **inte** kopierats till paketet.
+
+Jämförande faktiska Stella-PNG: `Let_Me_Out_Berzerk_R1y_R1z_R1aa_Three_Ways_Actual_Stella.png`, SHA256 `e0a5e402a3985a67abbd84b60f9c173d94678957793f17d56b435f97bbebfe75`.
