@@ -15,7 +15,7 @@ PIN="486dca4b574d9a394075788bc974232d3b7452282f282e46c7dd3fca454d2c0a"
 assert hashlib.sha256((P/"r1at_F6.bin").read_bytes()).hexdigest()==PIN
 old=(P/"r1at.asm").read_text()
 assert old.count("COLUBK=$09\n")==1 and "COLUPF=$08" not in old and "CTRLPF=$0A" not in old
-assert old.count(" LDA #0\n STA COLUBK\n LDA #145\n")==1
+assert old.count(" STA COLUBK\n")==1
 src=old.replace("COLUBK=$09\n","COLUBK=$09\nCOLUPF=$08\nCTRLPF=$0A\n",1)
 mode=int(__import__("os").environ.get("R1AX_MODE","0"))
 assert mode in (0,1,2)
@@ -28,8 +28,8 @@ ctrl=[0x01,0x01,0x00][mode]
 addition=(" LDA #$26\n STA COLUPF\n"
           " LDA #$"+format(ctrl,"02X")+"\n STA CTRLPF\n"
           " LDA #$"+format(pfval,"02X")+"\n STA PF0\n")
-src=src.replace(" LDA #0\n STA COLUBK\n LDA #145\n",
-                " LDA #0\n STA COLUBK\n"+addition+" LDA #145\n",1)
+src=src.replace(" STA COLUBK\n",
+                " STA COLUBK\n"+addition,1)
 # No changes to source sprite masks or critical 9-row four P1 RESP schedule:
 for name in ("MaleRows","FemaleRows","SmallMaleRows","SmallFemaleRows","PlayerRows","ShotEnable"):
  mark="\n"+name+":\n"
