@@ -3,6 +3,10 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN V – 30 Atari-trick värderade för pågående R1, 2026-11-16
+
+[Ny källkritisk R1-tillämpningsbedömning av alla 30 trick](MAIN_V_R1_30_TRICKS_APPLICABILITY_REVIEW_2026-11-16.md). Forskningsrekommendation, **inte** ytterligare utvecklingsorder: prioritera verklig Stella-RESP1/GRP1-trace, trick **02** mid-scanline GRP, **15** NUSIZ-close same-scanline retriggering, **10** HMOVE och **24** förberäknad cykelexakt kernel. Först två **olika exakta** 8×9-masker med faktiskt oberoende X, därefter eventuell sex-NPC-uppskalning. R3:s trick **07** asymmetrisk PF är redan isolerat utvecklarvisat, ej R1-fix. Trick 03/04 var negativt prövade; 27–30 kräver annan mapper och är inte auktoriserade. **Inga av de 30 är bevisad fullständig R1-lösning**, R1 fortsatt aktivt, VERIFICATION STANDBY.
+
 ## MAIN V – R3/C02 utvecklarleverans mottagen, R1 nästa arbetsorder 2026-11-16
 
 [MAIN V:s källgranskade R3-mottagning och avgränsade nya R1-arbetsorder](MAIN_V_R3_RECEIPT_AND_R1_WORK_ORDER_2026-11-16.md). R3 på commit `000b6f2a579e4aa96995229b2174884fb7c565e2`, ROM SHA256 rapporterad `991cea24f67accb2128743bba5722a87ee8cec08c00f6e39e4df1e07c3826e9c`, är **MOTTAGEN SOM AVSLUTAD ISOLERAD DEVELOPER_LOCAL_PASS**, inte oberoende eller integrerad acceptans. 600/600 Stella GUI-frames 262, 7 verkliga registertraps i en kritisk scanline, T09–T12/T14/T16 lokal PASS; T01/T07 globalt INCONCLUSIVE; resterande NOT_RUN. Drive-evidens 3 420 134 byte metadata kontrollerat; utvecklarens SHA/729-manifestposter har inte oberoende omkontrollerats av MAIN. **Nästa och enda aktiva uppdrag är nu R1 inom v0.18 NTSC** med sex individuellt X/Y-positionerbara källkorrekta androider + P0/M0 och bruna PF-väggar. Ingen R2/R4 eller R1+R3-integration utan ny MAIN-arbetsorder. R3-bankens P1-port och statiska 74/76 cykler är integrationsrisker. VERIFICATION fortsätter STANDBY; Issue #8 fryst; PR #7 draft/unmerged, main enbart dokument.
