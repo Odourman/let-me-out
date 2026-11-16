@@ -1,0 +1,57 @@
+# LET ME OUT! – MAIN IV – kontroll och samordning 2026-11-16
+
+**Projekt:** Atari 2600-spel `Let Me Out!`; repository [Odourman/let-me-out](https://github.com/Odourman/let-me-out); [dedikerad Google Drive-mapp](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u).  
+**Rapporttyp:** MAIN-kontroll, bevisinventering och nästa avgränsade diagnostikarbete. **Ej ny spelcanon, ej utvecklarens fullständiga leverans, ej oberoende VERIFICATION.**
+
+## 1. Auktoritet och nuvarande fas
+
+1. Direkt användarbeslut och originalhandoffens 57 beslut är fortfarande styrande. [MAIN:s kompletterande 11 besluts-/statusposter](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_DECISION_LEDGER_SUPPLEMENT_2026-11-15.md) kompletterar, inte ersätter, dem.
+2. [Uttrycklig auktorisation 2026-11-15](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md) / [Issue #6](https://github.com/Odourman/let-me-out/issues/6): **endast NTSC/F6 vid behov, diagnostik v0.18 R1–R4**. Ingen full spelkod, AI, ljud, poängsystem, ny mapper, PAL eller senare implementeringsfas. Äldre Drive-scope eller status som säger ”kod ännu inte auktoriserad” beskriver ett historiskt läge och får inte överstyra den senare uttryckliga auktorisationen.
+3. [Acceptanskriterier](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_ACCEPTANCE.md) A01–E04, [testmatris](https://github.com/Odourman/let-me-out/blob/main/planning/ROM_GATE_V018_TEST_MATRIX.csv) T01–T16 och [VERIFICATION-kontrakt](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_VERIFICATION.md) står kvar utan sänkta krav.
+4. Det tidigare valda kartsetet **A01/B01/C02/D01** är kvar som planerad bas. `A_OPEN_01`–`D_OPEN_01` från designstudie v0.19 är **kandidater**, inte godkänd kartcutover. Sex humanoider: 2 stora män, 2 stora kvinnor, liten man, liten kvinna. Gul spelare lika stor som de stora. Endast höger utgång, orange port och svart nyckelhål som visuella mål. O1-nyckelskymning, K1/E1 och RESET-regeln består.
+5. Repo `main` var vid pre-write-kontroll `f6b3fc76c59161e04e583dc8c0787332d2f261c7`. [Produktionsutkast PR #7](https://github.com/Odourman/let-me-out/pull/7) var fortfarande **draft/open, ej mergad** på `82667dae033f70570dce903f8e1d4866528be02a`. Detta MAIN-dokument ändrar **bara dokumentation**, inte ROM-kod.
+6. [Oberoende VERIFICATION Issue #8](https://github.com/Odourman/let-me-out/issues/8) gäller äldre fryst commit `561d3baf00c6c4c4bd9bc46599a91dc693abdeba` och får inte användas som PASS för senare forsknings-ROM:er.
+
+## 2. Verifierade lokala forskningsprov 2026-11-16
+
+**Här betyder PASS endast egen CI-/Stella-pixelkontroll på exakt angivet, avgränsat research-scope.** Det är aldrig liktydigt med full C01/C04, T01–T16, oberoende verifiering eller merge-tillstånd.
+
+| Forskningsserie | Faktiskt uppmätt resultat | Viktig begränsning |
+|---|---|---|
+| [R1aq, run 43866445424](https://github.com/Odourman/let-me-out/actions/runs/43866445424) | 2 × 600/600 autentiska Stella-bildrutor: 2 stora man-masker, 2 stora kvinna-masker, 1 liten man, 1 liten kvinna; full gul P0 + en M0; original 8×9 helt intakta; NTSC 262 | Fasta NUSIZ-relaterade X-separationer |
+| [R1at runtime-three, run 43868138075](https://github.com/Odourman/let-me-out/actions/runs/43868138075) | 600/600; samma ROM växlar mellan 3 X-uppställningar; separata förflyttningar för stor mansgrupp respektive stor kvinnogrupp | Gruppförflyttning, inte 6 individuellt fria X |
+| [R1au one-group walk, run 43869049214](https://github.com/Odourman/let-me-out/actions/runs/43869049214) | 600/600 kontrollerade steg A–B–C–B–A, bara en stor grupp byter X per övergång | Begränsade förkompilerade positioner |
+| [R1ay, run 43871126664](https://github.com/Odourman/let-me-out/actions/runs/43871126664) | 3 × 600/600, totalt **1 800/1 800** real-Stella-bilder med olika intilliggande Y-profiler för småmasker; noll vita pixelavvikelser | Olika statiska ROM-varianter; inte allas fria Y |
+| [R1az, run 43871769128](https://github.com/Odourman/let-me-out/actions/runs/43871769128) | 600/600, **en** ROM med tre växlande små-NPC Y-profiler. 297/151/152 bilder per profil, alla sex 8×9 originalmasker hela, P0/M0 och 262 NTSC | Y via 3 förberäknade lägen, stora NPC står kvar, PF saknas |
+| [R1ax, brown PF walls, latest run](https://github.com/Odourman/let-me-out/actions/workflows/main-iv-r1ax-mirrored-brown-pf-600.yml) | Första fulla körningen 43871116845: 600/600 **vita maskrader** och **brun speglad PF sidovägg i 600/600** i läge 0, men testerna underkändes då brun PF felklassades som gul P0/M0. Färgseparationsbugg korrigerad i auditorcommit `7e66b2ac721eec009a39753adbee267c80cd3c37`; omkörning 43883269341 måste avgöras separat. | **Ingen godkänd R1ax ännu tills ett nytt fullständigt auditutlåtande finns.** PF0-speglad vägg räcker inte för ensidig högerdörr eller svart nyckelhål. |
+
+Originalgrafiken har inte förenklats för dessa delprov. De upprepade F6-experimentfilerna består av fyra lika 4 KiB-banker; de bevisar **inte** att F6-bankswitching i full diagnostik är löst.
+
+Mer detaljer: [R1ay-överlämning](https://github.com/Odourman/let-me-out/blob/research/main-iv-r1ay-neighbor-y-six-source-masks-20261116/docs/MAIN_IV_R1AY_SIX_ORIGINAL_NPC_STAGGERED_Y_1800_STELLA_2026-11-16.md) och [R1az-överlämning](https://github.com/Odourman/let-me-out/blob/research/main-iv-r1az-runtime-three-y-profiles-20261116/docs/MAIN_IV_R1AZ_RUNTIME_THREE_Y_PROFILES_SIX_ORIGINALS_600_2026-11-16.md).
+
+## 3. Faktiska öppna blockerare enligt accepterade testkrav
+
+- **R1/C01, individuell X:** Målet kräver sex oberoende logiska X-positioner och samtidigt synliga, läsbara originalmasker. Kopplade NUSIZ-kopior i flera begränsade uppställningar är positiv teknikforskning, men inte full fri X eller riktig original-ROM-belastning med väggar och aktivt spelflöde. Kombinerat X+Y+PF i **en och samma ROM** måste provas.
+- **R1/B02/T07:** Ingen komplett, oberoende verifierad register-write-trace för de senaste experimenten med scanline, STA RESP1/GRP1, CPU-cykel och samlad budget på 76 CPU-cykler per linje. 262-scanline-HUD och skärm-PASS ersätter inte cykelspår.
+- **R2/C02:** Fem androidmasker plus guldnyckel, P0 och M0 på samma Y, O1 skymning och oförändrat logiskt nyckel-X/Y med återkomst: ej visat i de aktuella R1aq–R1az-delproven.
+- **R3/D01–D03:** Asymmetrisk **endast höger**-öppning, vänstervägg stängd, orange port och svart nyckelhål i faktisk Stella: ej visat. Speglad brun sidovägg är högst ett tidigt PF-basprov.
+- **R4/T08:** Färre förkompilerade X- och Y-lägen ger rasterbelastningsdata; inte full belastad scen med samtidiga positionskorsningar, nyckelåterkomst och PF.
+- **E01–E03/T14–T16:** Komplett leverans för R1–R4, ren separat rebuild och signerat oberoende VERIFICATION saknas. Utvecklarens gamla 5 PASS / 5 FAIL / 5 INCONCLUSIVE / 1 NOT_RUN är historiskt för PR #7 och får inte överföras till forskningskärnorna.
+
+**MAIN-beslut:** v0.18 är **BLOCKED / NOT ACCEPTED** som full diagnostik. Ingen automatisk waiver, kartändring eller produktionsmerge.
+
+## 4. Prioriterat arbete inom oförändrad befintlig auktorisation
+
+1. Avsluta och klassificera R1ax-omkörningen med skild gul/brun färganalys och negativa kontroller. Bevara även misslyckade originalkörningar.
+2. Inom avgränsat R1/R4-forskningsscope: ett nytt, isolerat Stella-prov som kombinerar de **tre** bevisade runtime-X-lägena med **tre** runtime-Y-profiler och en brun vägg-PF i samma ROM. Kräv exakt sex originalmasker, full gul P0+M0, alla 262 linjer, kontroll av väggar och **minst 600** verkliga bilder. Rapportera tydligt om 4 KiB-bankstorlek eller 76 cykler stoppar detta. Det blir ett delprov, inte full R1.
+3. Därefter förbered separata **R2**- och **R3**-teknikscener på det redan beviljade diagnostikuppdraget, men låt ROM DEVELOPMENT utföra och egenkontrollera sin kod. MAIN prioriterar och mottagningsgranskar; VERIFICATION gör senare självständig ombyggnad och test.
+4. Stoppa förslaget om samma-R1-acceptans ifall sex självständiga X eller riktig scenvisning inte kan uppnås: dokumentera blockerare och högst två tekniska alternativ utan att ändra objektantal eller grafiska mål.
+
+## 5. Käll- och systemintegritet
+
+- GitHub är versionskontroll och källspårning. Google Drive är beslut-/rapportarkiv. Samma MAIN IV-checkpoint bör finnas i båda; äldre rapporter skall inte skrivas över.
+- Beslut måste återföras till separat explicit beslutslogg först vid faktiskt användarbeslut. Detta dokument **ändrar inga användarbeslut**.
+- Endast `Odourman/let-me-out` och dess dedikerade Drive-mapp omfattas; ändra inte The Cabin, I Love a Fish eller Linear.
+- R1ax är **research-evidens med pre-audit-diagnos**, inte bekräftad positiv väggverifikation förrän aktuell omkörning är klar.
+
+**MAIN IV, koordineringsnotering 2026-11-16.**
