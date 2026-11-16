@@ -1,0 +1,77 @@
+name: R1-F7 G1 THE ONE F6 ROM 2x2 independent RAM selectors 160 true Stella frames
+on:
+  push:
+    branches: [rom-dev/v018-r1-f7-two-binary-runtime-selectors-20261116]
+    paths: [.github/workflows/v018-r1-f7-one-rom.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  one-ROM-four-modes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install true DASM and Stella 6.7.1 with GUI screenshot dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W dasm stella python3-pil > r1_f7_tools_versions.txt
+      - name: Re-run previously successful mandatory G0 pure source-only before ONE binary compilation
+        id: preflight
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f7_preflight.py
+          /usr/bin/python3 - <<'PY'
+          import json
+          d=json.load(open('r1_f7_g0_source_only.json'))
+          assert d['G0']=='F7_SOURCE_ONLY_FEASIBLE_FOUR_RUNTIME_PHASES'
+          assert list(d['plans'])==['c21_c32','c23_c32','c21_c33','c23_c33']
+          assert d['seven_step_16frame_sequence']['pairs']==['00','10','00','01','11','01','00']
+          assert all(r['next_WSYNC_source_end_cycle']<76 and r['cycle_margin']>0
+                     for v in d['plans'].values() for r in v['nine_rows'])
+          print('F7_CYCLE_AND_TWO_SEPARATE_RAM_BITS_FEASIBLE_SOURCE_ONLY')
+          PY
+      - name: Build one and ONLY one 16KB F6 NTSC ROM from 4 pre-registered 9-scanline schedules
+        id: build
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f7_build.py
+          test "$(stat -c%s dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin)" -eq 16384
+          sha256sum dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin > r1_f7_one_ROM_SHA256.txt
+      - name: Capture 160 uninterrupted unmodified genuine Stella 6.7.1 raw/full debugger frames, all four states, original masks and P0 M0 PF 262 plus mutant
+        id: captures
+        run: bash rom/v018/experiments/r1_free_xy/r1_f7_capture.sh
+      - name: Read-only register traps of BOTH RESP1 and BOTH GRP1 in EACH four RAM modes (same unchanged ROM)
+        if: always() && steps.build.outcome == 'success'
+        run: bash rom/v018/experiments/r1_free_xy/r1_f7_trace.sh
+      - name: Explicit fail-closed truth-table and no-new-variant runtime orthogonality gate
+        if: always() && steps.build.outcome == 'success'
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('evidence/r1_f7_one_rom/TRUE_160_FRAMES_2x2_SOURCE_CANON_PIXEL_AUDIT.json')
+          assert p.exists(),'NO_STELLA_AUDIT = INCONCLUSIVE; DO NOT BUILD ANOTHER ROM'
+          x=json.loads(p.read_text())
+          print('F7_FINAL_ONE_ROM_OUTCOME',x['classification'],'ACTUAL',x['actual_measured_single_pair_per_mode'])
+          assert x['one_synthetic_negative_mutant_not_stella']['executed']
+          assert len(x['per_frame_real_stella_audits'])==160
+          assert x['classification']=='F7_TWO_BINARY_RUNTIME_SELECTORS_LOCAL_PASS', 'F7_NEGATIVE_HARD_STOP_NO_REBUILD'
+          assert x['all_four_independent_orthogonality_pair_checks_PASS']
+          assert x['all_real_frames_TOP_DOWN_original_mask_AND_P0_M0_PF_NTSC']
+          traps=Path('evidence/r1_f7_one_rom/traps')
+          assert len(list(traps.glob('mode_*/*/stella_full.png')))==16
+          assert not list(traps.glob('mode_*/*/UNMEASURABLE.txt'))
+          print('F7_LIMITED_2X2_BINARY_RUNTIME_INDEPENDENCE_PASS_NOT_FREE_XY_OR_FULL_R1')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: LET_ME_OUT_R1_F7_ONE_ROM_160_REAL_STELLA_16_REGISTER_TRAPS_ALL_STATES
+          path: |
+            r1_f7_tools_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f7_*
+            rom/v018/experiments/r1_free_xy/dist/r1_f7_*
+            rom/v018/experiments/r1_free_xy/evidence/r1_f7_one_rom/
+          if-no-files-found: ignore
