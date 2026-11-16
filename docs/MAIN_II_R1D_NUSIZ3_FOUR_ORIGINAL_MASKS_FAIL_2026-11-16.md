@@ -13,7 +13,7 @@ Andrew Towers [TIA Hardware Notes](https://www.retroisle.com/atari/vcs/Technical
 - Evidence-artifact **14194230488**, `main-ii-r1d-nusiz3-four-originals-evidence`: 73 filer, två körbara 16KB standard-F6 ROM, källor, DASM .sym/.lst, sex faktiska `RESP1` PC-fångster, två Stella-råbilder och `evidence_audit.json`.
 - DASM 2.20.14.1 / Stella 6.7.1 / NTSC. Samtliga ursprungliga data hämtas från `main/design/NPC_REFERENCE_8x9_masks.json`, inklusive den fjärde `small_female`-maskens tomma rader.
 - `nusiz3_only` ROM SHA256: `504914be5fda016372dd4cd48a7b5a526a16acf12e4d4630a81543f3bc44e900`.
-- `four_mask_probe` ROM SHA256: `30207c5acc396dc6c6913bac500356ab44845d5931b48a42e9d75d54e93b3825`.
+- `four_mask_probe` ROM SHA256: `8e6960b07b33a1a6b18b66ce435235b5dcd268009e2e252ebf1baed8e3049f16`.
 
 ## Två varianter och verkliga pixelresultat
 
