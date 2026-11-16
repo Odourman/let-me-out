@@ -82,7 +82,7 @@ def analyze(im,frame,patterns):
         phase=((n-1)//16)%8
     expected=None
     if phase is not None:
-        expected=[196+30*(A[phase]-1),334+30*(A[phase]+B[phase]-2)]
+        expected=[196+30*(A[phase]-1),310+30*(A[phase]+B[phase]-2)]
     x_pair=[m["x_gui"] for m in masks]
     exact_masks=(len(masks)==2 and masks[0]["male_bit_errors"]==0 and masks[1]["female_bit_errors"]==0)
     expected_positions=(x_pair==expected)
