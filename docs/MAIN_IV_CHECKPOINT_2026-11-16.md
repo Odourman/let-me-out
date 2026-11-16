@@ -3,6 +3,16 @@
 **Projekt:** Atari 2600-spel `Let Me Out!`; repository [Odourman/let-me-out](https://github.com/Odourman/let-me-out); [dedikerad Google Drive-mapp](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u).  
 **Rapporttyp:** MAIN-kontroll, bevisinventering och nästa avgränsade diagnostikarbete. **Ej ny spelcanon, ej utvecklarens fullständiga leverans, ej oberoende VERIFICATION.**
 
+## 0. SENASTE MAIN IV-DELTA – integrerat R1ba, 2026-11-16
+
+**FORSKNING (ej full acceptans): [R1ba 600/600 Stella SUCCESS](https://github.com/Odourman/let-me-out/actions/runs/43884511590).** En **och samma ROM** visar sex fullständiga originalmasker (2 stora män, 2 stora kvinnor, 1 liten man, 1 liten kvinna), **tre växlande X-lägen**, **tre växlande Y-profiler**, **två bruna speglade PF-sidoväggar**, full gul P0-spelare, ett statiskt testsymbolskott M0 och 262 NTSC-scanlines under alla 600 verifierade lokala bildrutorna. **Noll saknade/extra vita maskpixlar.** ROM **16 384 byte**, SHA256 `41fdb87969a20d40fee8cde5673792201663860c2d1e08c8d93f9172ede82361`. X/Y-lägena är fortfarande **tre ihopkopplade, förberäknade uppställningar**, inte sex individuellt fria X/Y.
+
+- [Detaljerad R1ba-forskningsrapport i GitHub](https://github.com/Odourman/let-me-out/blob/research/main-iv-r1ba-integrated-xyz-pf-20261116/docs/MAIN_IV_R1BA_INTEGRATED_X_Y_PF_SIX_ORIGINALS_600_STELLA_2026-11-16.md).
+- [Komplett originalbevis: GitHub Actions ZIP, 600 Stella PNG](https://github.com/Odourman/let-me-out/actions/runs/43884511590/artifacts/14233733448).
+- [Verifierad Google Drive ZIP-kopia i projektmappen](https://drive.google.com/file/d/1c2Sd68dvQsmb_MJcQOLU8dbiMc5YgbsJ/view?usp=drivesdk), **3 930 298 byte** och lokalt kontrollerad ZIP SHA256 `f8dd41e62939aa1699d80f70df0c5b5081b87441a1e2c740ff2786139908f325`. Arkivets 622 poster och alla 600 original-Stella-bilder var läsbara; intern ROM-hash matchade manifestet.
+
+**Fortfarande BLOCKED full R1/v0.18:** individuellt fria X för sex NPC, fria Y och oberoende kombinationer, aktiv shot-/kollisionsstress, R2 nyckel + O1, asymmetrisk högerdörr R3 med orange markör och svart nyckelhål, T07 verklig write-cycle-trace och oberoende VERIFICATION. Inte ett godkänt fullspel, ingen waiver, ingen produktionsmerge eller ny implementeringsfas.
+
 ## 1. Auktoritet och nuvarande fas
 
 1. Direkt användarbeslut och originalhandoffens 57 beslut är fortfarande styrande. [MAIN:s kompletterande 11 besluts-/statusposter](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_DECISION_LEDGER_SUPPLEMENT_2026-11-15.md) kompletterar, inte ersätter, dem.
@@ -43,7 +53,7 @@ Mer detaljer: [R1ay-överlämning](https://github.com/Odourman/let-me-out/blob/r
 ## 4. Prioriterat arbete inom oförändrad befintlig auktorisation
 
 1. **R1ax slutförd som lokalt delprov:** bruna speglade sidoväggar, 600/600 i Stella med bevarad P0/M0 och alla sex masker. Både felklassade förtest och senare godkänd färgseparerad analys bevaras; inget R3-högerdörr-PASS följer.
-2. Inom avgränsat R1/R4-forskningsscope: ett nytt, isolerat Stella-prov som kombinerar de **tre** bevisade runtime-X-lägena med **tre** runtime-Y-profiler och en brun vägg-PF i samma ROM. Kräv exakt sex originalmasker, full gul P0+M0, alla 262 linjer, kontroll av väggar och **minst 600** verkliga bilder. Rapportera tydligt om 4 KiB-bankstorlek eller 76 cykler stoppar detta. Det blir ett delprov, inte full R1.
+2. **R1ba integrerat delprov slutfört med 600/600 local PASS.** Nästa inom befintlig v0.18 R1/R4-forskning: testa frikopplade X-/Y-profiler (minst en oberoende korsningskombination) eller dokumentera varför sex individuella X inte ryms utan visuell eller designmässig kompromiss. Mät en riktig TIA-register-/CPU-cykeltrace i Stella, inte enbart en statisk cykelbudget.
 3. Därefter förbered separata **R2**- och **R3**-teknikscener på det redan beviljade diagnostikuppdraget, men låt ROM DEVELOPMENT utföra och egenkontrollera sin kod. MAIN prioriterar och mottagningsgranskar; VERIFICATION gör senare självständig ombyggnad och test.
 4. Stoppa förslaget om samma-R1-acceptans ifall sex självständiga X eller riktig scenvisning inte kan uppnås: dokumentera blockerare och högst två tekniska alternativ utan att ändra objektantal eller grafiska mål.
 
