@@ -15,7 +15,9 @@ KNOWN262={
  "a169787b7bdcf465b5a1b7505dca83c31f60fa2c16337d39fea3e957ea13ace2"
 }
 def nonblack(p):
-    return max(p)>35 and max(p)-min(p)<135 # brown PF, not UI text
+    # Actual Stella NTSC COLUPF=$36 emits warm brown (192,97,47).
+    # Reject the permanent gray 1px debugger border at raw GUI x=103.
+    return p[0]>145 and 60<p[1]<p[0] and p[2]<p[1] and p[2]<100
 imgs={}
 results={}
 for name in ("locked","open"):
@@ -25,7 +27,7 @@ for name in ("locked","open"):
     imgs[name]=im
     colored_rows={}
     for y in range(80,285):
-        xs=[x for x in range(103,423) if nonblack(im.getpixel((x,y)))]
+        xs=[x for x in range(104,424) if nonblack(im.getpixel((x,y)))]
         if xs:colored_rows[y]=xs
     left_rows=[y for y,xs in colored_rows.items() if any(x<120 for x in xs)]
     right_rows=[y for y,xs in colored_rows.items() if any(x>=408 for x in xs)]
