@@ -13,7 +13,7 @@ import hashlib,json,re,csv,sys
 ROOT=Path(__file__).resolve().parent
 RAW=ROOT/"evidence_600"/"raw"
 REF=json.loads((ROOT.parent/"main_ii_three_masks"/"REFERENCE_8x9_MASKS_FROM_MAIN.json").read_text())
-SRC=(ROOT/"r1h_integrated.asm").read_text()
+SRC=(ROOT/"r1i.asm").read_text()
 Y=162-65
 NPCS={
  "large_male":("MaleRows",166-103),
