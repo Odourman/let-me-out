@@ -1,0 +1,66 @@
+{
+  "test": "R3 C02 original-map-and-separate-keyhole Stella screenshot pixel audit",
+  "status": "DEVELOPER_LOCAL_PASS limited visual requirements; not full R3/independent verification",
+  "map_176_scanlines_40_cells_samples_matched": 7040,
+  "map_samples_total": 7040,
+  "left_wall_columns_22_of_22": "CLOSED",
+  "right_door_only_rows": [
+    9,
+    10,
+    11,
+    12
+  ],
+  "R3_keyhole_source_mask_pixels_matching_real_stella": 256,
+  "mask_pixels_total": 256,
+  "orange_P1_on_pixels_in_8x32": 233,
+  "black_transparent_keyhole_pixels_in_8x32": 23,
+  "actual_port_bounds_GUI": [
+    406,
+    161,
+    421,
+    192
+  ],
+  "locked_brown_rgb": [
+    174,
+    72,
+    30
+  ],
+  "locked_orange_rgb": [
+    239,
+    162,
+    91
+  ],
+  "phase_diff": {
+    "new_brown_vs_new_orange": {
+      "changed_display_pixels": 466,
+      "bounding_box": [
+        406,
+        161,
+        421,
+        192
+      ],
+      "outside_expected_gate_pixels": 0
+    },
+    "new_orange_vs_new_open": {
+      "changed_display_pixels": 466,
+      "bounding_box": [
+        406,
+        161,
+        421,
+        192
+      ],
+      "outside_expected_gate_pixels": 0
+    }
+  },
+  "raw_evidence": {
+    "new_brown": "9012996d0371508b3a23a345a12ddb09c8cd2a53e28724a7d12cc2eb105d5e2c",
+    "new_orange": "5bf20997f5d0fcc1a13aa21f0c283938a2e5f11e681f0ffe74935b843d99b5f2",
+    "new_open": "0bc0bc61a303ed3d623da710a925c1809099e2e3a7a57d4e858f2ea19da02dc5"
+  },
+  "limitations": [
+    "Pixel grid and door masks checked in Stella Debugger GUI, not standalone CRT output",
+    "Full 600 frames must be assessed separately",
+    "Full TIA write-cycle trace must be assessed separately",
+    "Recognition of keyhole shape is visual/human and cannot be established by mask exactness alone"
+  ]
+}

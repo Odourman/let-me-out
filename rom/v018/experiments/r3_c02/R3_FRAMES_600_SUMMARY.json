@@ -1,0 +1,24 @@
+{
+  "capture": "600 genuine consecutive frame advance images from real Stella debugger",
+  "frames_total": 600,
+  "first_observed_frame_id": 11,
+  "last_observed_frame_id": 610,
+  "frame_sequence_exact_11_through_610": true,
+  "scanline_hud_262_count": 600,
+  "other_scanline_hud": 0,
+  "262_reference_hash_sha256": "04f59d7fbc17d360e0cea738d4e512ab7208118b9b4d4b4743f3a702d96f1fdb",
+  "phase_counts": {
+    "LOCKED_BROWN": 231,
+    "LOCKED_ORANGE": 189,
+    "OPEN": 180
+  },
+  "left_wall_22_of_22_frames": 600,
+  "right_wall_elsewhere_18_of_18_frames": 600,
+  "pixel_phase_unclassified_frames": 0,
+  "unique_raster_gui_frames": 600,
+  "result": "NOT INDEPENDENT VERIFICATION; T07 per-register write-cycle still separate",
+  "warnings": [
+    "Pixel HUD 262 is not full TIA-cycle proof",
+    "The phase is classified by actually rendered pixel color, not inferred from RAM or a Python model"
+  ]
+}

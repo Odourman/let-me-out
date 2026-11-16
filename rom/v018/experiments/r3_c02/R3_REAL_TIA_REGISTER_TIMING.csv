@@ -1,0 +1,8 @@
+register_write_site,TIA_register,actual_Stella_scanline,actual_Stella_CPU_cycle,actual_Stella_beam_pixel_position,approx_first_relevant_pixel_deadline_cycle,evidence_path,notes
+left_pf0,PF0,134,7,-47,22.7,source/rom/v018/experiments/r3_c02/evidence/register_traps/left_pf0/trace_full.png,"map LEFT0,Y / STA PF0, left PF0 data before first visible pixels"
+left_pf1,PF1,134,15,-23,28.0,source/rom/v018/experiments/r3_c02/evidence/register_traps/left_pf1/trace_full.png,"map LEFT1,Y / STA PF1"
+left_pf2,PF2,134,22,-2,38.7,source/rom/v018/experiments/r3_c02/evidence/register_traps/left_pf2/trace_full.png,"map LEFT2,Y / STA PF2"
+right_pf0,PF0,134,37,43,49.3,source/rom/v018/experiments/r3_c02/evidence/register_traps/right_pf0/trace_full.png,right PF0 before physical x80 / midline
+right_pf1,PF1,134,45,67,54.7,source/rom/v018/experiments/r3_c02/evidence/register_traps/right_pf1/trace_full.png,right PF1 before physical x96
+right_pf2,PF2,134,52,88,65.3,source/rom/v018/experiments/r3_c02/evidence/register_traps/right_pf2/trace_full.png,right PF2 before physical x128
+keyhole_grp1,GRP1,134,62,118,73.3,source/rom/v018/experiments/r3_c02/evidence/register_traps/keyhole_grp1/trace_full.png,P1 bitmap before physical door begins at x152

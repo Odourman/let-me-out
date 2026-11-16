@@ -1,0 +1,17 @@
+test_id,r3_developer_status,evidence_and_limitation
+T01,INCONCLUSIVE,R3 has 600 consecutive Stella frame IDs 11-610 with 262 HUD; full R1/R2/R4 scenes absent
+T02,NOT_RUN,R1 six androids not authorized in current single-task R3
+T03,NOT_RUN,R2 five androids plus key not run
+T04,NOT_RUN,R1 original humanoid mask stress not in R3
+T05,NOT_RUN,R2 key O1 overlap not run
+T06,NOT_RUN,R4 long-hold key overlap not run
+T07,INCONCLUSIVE,Real conditional TIA-write traps captured PF0/PF1/PF2 left/right and GRP1 at scanline 134; no full multi-scene multi-frame per-register trace
+T08,NOT_RUN,R4 raster stress not in single R3 task
+T09,DEVELOPER_LOCAL_PASS,Exact C02 map: left closed 22/22; right locked gate visible at x39 y9-12; 600 frames source-matched
+T10,DEVELOPER_LOCAL_PASS,Unlocked right-only opening in real Stella; left and other right rows unchanged; minimal logic permission positive/negative
+T11,DEVELOPER_LOCAL_PASS,Brown reference + bright orange gate in real Stella screenshot; observed RGB source and difference pixels
+T12,DEVELOPER_LOCAL_PASS,Original authored 8x32 orange P1 with 23 true black pixel samples; exact mask 256/256 in Stella; visual subject to independent review
+T13,NOT_RUN,R2 key K11 K09 comparison not in R3
+T14,DEVELOPER_LOCAL_PASS,DASM reproducible F6 16384-byte ROM; sha256sum manifest verified; original baseline binary reproduced exactly
+T15,NOT_RUN,No independent VERIFICATION requested. Historical Issue #8 remains separate and deferred.
+T16,DEVELOPER_LOCAL_PASS,Separate R3 branch touches only Let Me Out! repository; no full-game code or third-party ROM
