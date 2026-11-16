@@ -2,6 +2,10 @@
 
 Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin och **inte** I Love a Fish.
 
+## MAIN IV – integrerat forskningsprov R1ba, 2026-11-16
+
+[Reproducerbar R1ba-GitHub Actions-körning](https://github.com/Odourman/let-me-out/actions/runs/43884511590) fick **600/600 lokala Stella-PASS** med **sex hela originalandroider, tre sammankopplade runtime-X/Y-uppställningar, bruna speglade PF-sidoväggar, gul P0 och en statisk M0-symbol**. [MAIN IV:s uppdaterade projektcheckpoint](docs/MAIN_IV_CHECKPOINT_2026-11-16.md), [fullständigt forskningsbevis](https://drive.google.com/file/d/1c2Sd68dvQsmb_MJcQOLU8dbiMc5YgbsJ/view?usp=drivesdk) och [R3-dörrkällgranskning](docs/MAIN_IV_R3_RIGHT_DOOR_SOURCE_AUDIT_2026-11-16.md). **Inte full R1/R2/R3/R4 eller oberoende VERIFICATION.** Individuellt fria X/Y och R2-nyckel/R3-högerdörr är fortfarande olösta.
+
 ## MAIN IV – statusuppdatering 2026-11-16
 
 Den nya [MAIN IV-checkpointen](docs/MAIN_IV_CHECKPOINT_2026-11-16.md) samlar aktuell auktorisation, kod-/evidensläget och nästa steg från GitHub och Google Drive. Nya R1aq–R1az-forskningsprov har uppnått pixelkorrekta **sex originalsilhuetter**, avgränsade förkompilerade X-lägen och tre små-NPC Y-profiler växlande i samma NTSC-ROM. **Detta är positiva lokala diagnostikdelprov, inte godkänd full R1 eller R1–R4 och inte oberoende VERIFICATION.** R1ax har nu klarat **600/600** lokal Stella-pixelkontroll med **två speglade bruna sidoväggar**; det är fortfarande inte R3:s asymmetriska högerdörr eller full R1. PR #7 är draft och fullspelsutveckling saknar tillstånd.
