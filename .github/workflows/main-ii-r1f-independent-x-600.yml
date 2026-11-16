@@ -1,0 +1,42 @@
+name: MAIN II R1f independently alternating fourth NPC X 600 Stella frames
+on:
+  push:
+    branches:
+      - research/main-ii-r1f-independent-x-600-20261116
+    paths:
+      - .github/workflows/main-ii-r1f-independent-x-600.yml
+      - rom/v018/experiments/main_ii_r1f_dynamic/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r1f-independent-600:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM 6502, authentic Stella 6.7.1 and X11 capture
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Combine early and late exact R1f kernels with frame-selector outside 76-cycle row
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1f_dynamic/build_dynamic.py
+      - name: Capture 600 consecutive actual Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_ii_r1f_dynamic/ci_framewalk_600.sh
+      - name: Verify four original masks player M0 and dynamic independent-X all 600
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1f_dynamic/analyze_600.py
+      - name: Verify exact F6 bytes
+        run: |
+          cd rom/v018/experiments/main_ii_r1f_dynamic
+          test "$(stat -c %s r1f_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1f-independent-fourth-X-600-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_r1f_dynamic/
+          if-no-files-found: ignore
