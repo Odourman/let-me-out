@@ -1,0 +1,43 @@
+name: MAIN IV R1as dynamic six static original P1 masks two runtime X states
+on:
+  push:
+    branches:
+      - research/main-iv-r1as-runtime-six-mask-two-mode-20261116
+    paths:
+      - .github/workflows/main-iv-r1as-runtime-six-600.yml
+      - rom/v018/experiments/main_iv_r1as_runtime/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  runtime-six-mask:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and X11 captured pixel audit
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Assemble two pinned 600-PASS six NPC original mask kernels into one F6 ROM
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1as_runtime/build_r1as.py
+      - name: Capture 600 consecutive authentic Stella frames with runtime layout switching
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1as_runtime/ci_framewalk_600.sh
+      - name: Strict six source masks plus P0 M0 and exactly two X layouts
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1as_runtime/analyze_600.py
+      - name: ROM checksum size and 600 raw images
+        run: |
+          cd rom/v018/experiments/main_iv_r1as_runtime
+          test "$(stat -c %s r1as_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1as-runtime-two-six-mask-layouts-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1as_runtime/
+          if-no-files-found: ignore
