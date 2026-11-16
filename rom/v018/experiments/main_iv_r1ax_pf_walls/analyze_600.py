@@ -108,7 +108,7 @@ def audit(im,i,lookup):
  whites={(x,y) for y in range(50,195) for x in range(336)
   if min(p[x,y])>180 and max(p[x,y])-min(p[x,y])<40}
  yellows={(x,y) for y in range(50,195) for x in range(336)
-  if p[x,y][0]>120 and p[x,y][1]>100 and p[x,y][2]<100}
+  if p[x,y][0]>120 and p[x,y][1]>100 and p[x,y][2]<100 and not is_brown(p[x,y])}
  base=min((y for x,y in whites),default=None)
  groups,missing,extra=classify(whites,base) if base is not None else ([],999,999)
  yellow_ok,p0_x,p0_missing,shot_ok=yellow_check(yellows,base) if base is not None else (0,None,999,0)
