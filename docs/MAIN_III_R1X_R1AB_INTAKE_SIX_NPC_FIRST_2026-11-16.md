@@ -1,0 +1,44 @@
+# Let Me Out! – MAIN III: granskning och omprioritering efter R1x–R1ab
+
+**Datum:** 2026-11-16. **Typ:** MAIN mottagningsbeslut och teknisk forskningsplan. Inte godkänd ROM-implementation och inte oberoende VERIFICATION.
+
+## Kontrollerade auktoriteter
+- GitHub main vid granskning: f6b3fc76c59161e04e583dc8c0787332d2f261c7.
+- [Aktuellt projektläge](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_PROJECT_STATE_2026-11-15.md), [uttrycklig v0.18-auktorisation](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_AUTHORIZATION_2026-11-15.md), [scope](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_SCOPE.md), [acceptans](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_ACCEPTANCE.md) och [stoppregler](https://github.com/Odourman/let-me-out/blob/main/docs/ROM_GATE_V018_BLOCKERS.md).
+- [MAIN:s 30-trickgranskning](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_30_TRICKS_RESEARCH_REVIEW_2026-11-16.md) och [MAIN:s separata NUSIZ1-close-retrigger-studie](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_TIA_RETRIGGER_NUSIZ_CLOSE_RESEARCH_2026-11-16.md).
+- [PR #7](https://github.com/Odourman/let-me-out/pull/7) DRAFT/OPEN på 82667dae033f70570dce903f8e1d4866528be02a. [VERIFICATION Issue #8](https://github.com/Odourman/let-me-out/issues/8) OPEN men gäller en annan fryst historisk commit, inte de nya research-ROM:arna.
+
+## Status för mottagen research
+
+| Variant | Faktiska 600 Stella-frames | MAIN-bedömning |
+|---|---|---|
+| [R1x](https://github.com/Odourman/let-me-out/actions/runs/43847949395) | 600 lokalt PASS | Fem oförändrade ursprungs-NPC-maskinstanser som visas i 14-radspresentation, en gul M0 x268–282, fyra diskreta fjärde-P0-X och riktig CXM0P. **Inte full R1**. |
+| [R1y](https://github.com/Odourman/let-me-out/actions/runs/43848364350) | 474 PASS, 126 FAIL | Missilen försvinner i D-läget när M0 släcks för tidigt. |
+| [R1z](https://github.com/Odourman/let-me-out/actions/runs/43850116022) | 456 PASS, 144 FAIL | Senare avstängning räddar M0 men tidigare COLUP0-färgskrivning gör M0 vit. |
+| [R1aa](https://github.com/Odourman/let-me-out/actions/runs/43851081064) | 456 PASS, 144 FAIL | Berzerk-inspirerad ONE_COPY visar 600 gula missiler men förstör efterföljande P0/NPC-kopior. |
+| [R1ab](https://github.com/Odourman/let-me-out/actions/runs/43852230740) | 456 PASS, 144 FAIL | NUSIZ0 återställd kring c76. Förlorade gula spelar-maskpixlar återställda, men D-kopior fortfarande fel och 12 420 extra vita pixlar. |
+
+R1ab-ROM: 16 384 byte standard F6/NTSC, SHA-256 4fab355b651599278b7d397b1a85fa3bac2cc0bc9ebaf2e2f9818fa025995350. [R1ab fulla evidensartefakt #14218241250](https://github.com/Odourman/let-me-out/actions/runs/43852230740/artifacts/14218241250), 600 autentiska PNG och register-/källunderlag. Den separat nedladdade ZIP-filen har SHA-256 4f3183c84cc8056dbee6c3d8712c66931a5498a05a0531dc320fc9c3cba67959, kontrollerad CRC. **R1ab är FAIL** trots separata positiva delresultat.
+
+R1x saknar den andra stora mannen, visar bara fyra diskreta positioner för sista P0 och demonstrerar inte sex oberoende X. Att ursprungliga 8x9 maskdata återanvänds som 14 visade rader är inte automatiskt godkännande av ny figurhöjd. Inga av dessa experiment har oberoende VERIFICATION.
+
+## Varför Berzerk är användbart, men inte kopierbart
+
+[Berzerk, kommenterad rekonstruerad 6502-disassembly](https://github.com/TheAnsarya/multi-local/blob/480a5287c6aec61bad333a44de105e45cfed39ff/download-atari/asm-files/berzerk.asm) illustrerar RAM-baserat X/Y/riktning/livstid för projektil, horisontell coarse+HMOVE-positionering och ENAM0 med radtabell. Men Berzerk utnyttjar huvudsakligen P1 mellan vertikala robotsektioner och ONE_COPY för P0 i spelbilden. Let Me Out! kräver flera olika NPC på samma rasterhöjd, där NUSIZ-kopior redan nyttjas. R1aa och R1ab är därmed negativa integrationstester, inte skäl att byta till Berzerks kernel eller ändra maskerna.
+
+## MAIN:s prioriteringsbeslut
+
+**Sex individuellt placerbara, läsbara androider i R1 prioriteras framför ytterligare skottutbyggnad.** Enligt gällande v0.18-scope räcker ett aktivt **diagnostiskt testsymbolskott**; full eldknapp, kulans gameplay-livstid, skada och komplett hitboxfysik är inte del av uppdraget. Låt R1x vara lagrat tekniskt delbevis, inte marknadsfört som R1-pass.
+
+Viktigaste 30-trickskombination för nästa tekniska feasibility: **#01 sprite multiplexing + #02 mid-scanline GRP rewrite + #09 VDEL vid behov + #10 HMOVE + #15 NUSIZ close retrigger + #24 cykelprecis förberedning**. #14 särskilda regionkernlar som arkitekturstöd, #20 kollisionslatchar senare för gameplay. #27–30 kräver annan kassett, inte godkänd standard F6.
+
+### Nästa avgränsade R1-grind – teknisk plan, INTE ny kodorder
+
+1. **R0:** exakt mätt STA RESP1 PC/bank/scanline/cykel i Stella 6.7.1, korrekt breakpoint med run, före- och efterskrivningskontroll, exakt ROM-hash. Tidigare missade break;frame;step uppfyller inte spårkravet.
+2. **R1a:** minimal diagnostisk TWO RESP1 ON SAME SCANLINE med NUSIZ1 nära-kopia. Bekräfta två skilda fysiska P1-utmatningar och faktiskt X, inte två nominella RAM-X. Detta är inte ännu tvåmasker-PASS.
+3. **R1b:** två OLIKA, fullständiga original-8x9-NPC på gemensamt höjdband med oberoende X, både nära/långt avstånd, samt fullstor gul P0-spelare och aktiv M0-symbol. Pixel för pixel, 262 NTSC, exakt PC/cykel och verkligt datalager. Om någon ursprungsrad går förlorad: FAIL.
+4. **R1c:** först vid R1b PASS och gällande kodmandat kontrollerat: skalning tre till sex NPC och rörelsestress i 600 verkliga frames med kvalitativ flimmerbedömning, oförändrad originalmask och R1-grindens alla krav. Detta är inte automatisk auktorisation av R2–R4 eller fullspel.
+
+MAIN:s forskning och koordination återstartar inte ROM DEVELOPMENT automatiskt efter tidigare rapporterat STOPP. Nytt konkret implementeringsarbete går via separat användarauktorisation om tidigare mandats ram eller stoppförutsättningar kräver det. VERIFICATION måste vara organisatoriskt oberoende, pröva exakt ny ROM/commit/SHA och kan inte låna gamla Issue #8:s resultat.
+
+**Ingen ändring i live main, PR #7, VERIFICATION #8, grafikcanon, R1–R4-scope, NTSC/F6-format eller ett senare implementeringssteg genom detta dokument.**
