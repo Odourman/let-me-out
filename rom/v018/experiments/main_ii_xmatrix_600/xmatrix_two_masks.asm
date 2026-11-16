@@ -1,6 +1,6 @@
 ; MAIN II R1b: two DIFFERENT user-referenced 8x9 masks in same Y band.
 ; EXPLORATORY NTSC/F6. Not full R1. No copied third-party assembler.
-; Six cycle-safe A/B delay combinations each 16 frames. P0 yellow, M0 projectile.
+; Eight A/B delay combinations with shortened 2-cycle GRP1 settle. P0 yellow, M0 projectile.
  processor 6502
 VSYNC=$00
 VBLANK=$01
@@ -59,14 +59,14 @@ Frame:
  LDA #2
  STA VBLANK
  INC FRAMELO
- ; Phase cycles 0..5 at every 16th frame (RAM index survives
+ ; Phase cycles 0..7 at every 16th frame (RAM index survives
  ; 8-bit frame count wrap). Only combinations fitting 76 cycles are used.
  LDA FRAMELO
  AND #$0F
  BNE PhaseReady
  INC PHASEIDX
  LDA PHASEIDX
- CMP #6
+ CMP #8
  BNE PhaseReady
  LDA #0
  STA PHASEIDX
@@ -129,10 +129,8 @@ R1bDelayA:
 R1bFirstRESP1:
  STA RESP1
  ; Wait until first eight pixels SHOULD be finished before GRP1 changes.
- LDX #1
-R1bPostFirst:
- DEX
- BNE R1bPostFirst
+ ; Exactly two cycles after first RESP1 before loading next original mask.
+ NOP
  LDA FemaleRows,Y
 R1bFemaleWrite:
  STA GRP1
@@ -175,9 +173,9 @@ PlayerRows:
 ShotRows:
  BYTE $00,$00,$00,$00,$02,$00,$00,$00,$00
 FirstDelayTable:
- BYTE 1,2,3,1,2,1
+ BYTE 1,2,3,1,2,3,1,2
 SecondDelayTable:
- BYTE 1,1,1,2,2,3
+ BYTE 1,1,1,2,2,2,3,3
  ORG $FFFA
  WORD Reset
  WORD Reset
