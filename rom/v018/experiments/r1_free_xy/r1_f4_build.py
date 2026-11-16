@@ -42,7 +42,7 @@ for y in range(8,-1,-1):
     b=s.index(f'R1N6BRow{y+1:02d}:') if y<8 else s.index('BottomBlank:')
     row=s[a:b]
     assert row.count(old)==1,(y,'early first P1 copy not unique')
-    assert row.count(' STA GRP0\n')==1 and row.count(' STA ENAM0\n')==1
+    assert row.count(' STA GRP0\n')==(2 if y==8 else 1) and row.count(' STA ENAM0\n')==(2 if y==8 else 1)
     assert row.count(' STA RESP1\n')==6
     # The only bitmap source change is NONE: no LDA immediate/GRP0/M0/PF alterations.
     row=row.replace(old,new,1)
@@ -68,7 +68,7 @@ for y in range(9):
     row=s[a:b]
     assert not any(f' {op} ' in row for op in ['LDX','TAX','INX','DEX','TXA'])
     assert row.count(' STA RESP1\n')+row.count(' STA RESP1,X\n')==6
-    assert row.count(' STA GRP1\n')==4
+    assert row.count(' STA GRP1\n')==(5 if y==8 else 4)
 stem=f'r1_f4_6B_I0_C{phase:02d}_I2_FIXED'
 src=R/f'{stem}.asm';src.write_text(s)
 (R/'dist').mkdir(exist_ok=True)
