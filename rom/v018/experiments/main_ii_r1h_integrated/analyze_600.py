@@ -168,9 +168,9 @@ def main():
     combination_counts={mode+"_"+state:sum(
         r["fourth_mode"]==mode and r["right_door_mode"]==state for r in records)
         for mode in FOURTH_MODES for state in ("locked","open")}
-    phase_ok=bool(phase_offsets) and all_modes_seen and counts["ambiguous"]==0 and
-             all(n>0 for n in door_counts.values()) and
-             all(n>0 for n in combination_counts.values())
+    phase_ok=(bool(phase_offsets) and all_modes_seen and counts["ambiguous"]==0 and
+              all(n>0 for n in door_counts.values()) and
+              all(n>0 for n in combination_counts.values()))
     with (ROOT/"evidence_600"/"frames_600.csv").open("w",newline="") as f:
         w=csv.DictWriter(f,fieldnames=list(records[0]))
         w.writeheader()
