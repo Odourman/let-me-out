@@ -1,0 +1,43 @@
+name: MAIN II R1e four distinct originals 600 real Stella frames
+on:
+  push:
+    branches:
+      - research/main-ii-r1e-four-originals-600-20261116
+    paths:
+      - .github/workflows/main-ii-r1e-four-originals-600.yml
+      - rom/v018/experiments/main_ii_p0_four/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  four-originals-600:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install actual DASM Stella X11 and Pillow
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build the unchanged R1e P0/P1 16KB standard-F6 candidate
+        run: bash rom/v018/experiments/main_ii_p0_four/build.sh
+      - name: Capture 600 consecutive actual Stella X11 debugger frames
+        timeout-minutes: 10
+        run: bash rom/v018/experiments/main_ii_p0_four/ci_framewalk_600.sh
+      - name: Fail-closed audit of four originals P0 single M0 and 262 lines for 600 frames
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_p0_four/analyze_600.py
+      - name: Reconfirm ROM size and SHA
+        run: |
+          cd rom/v018/experiments/main_ii_p0_four
+          sha256sum -c SHA256SUMS.txt
+          test "$(stat -c %s r1e_F6.bin)" -eq 16384
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1e-four-originals-600-frame-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_p0_four/
+          if-no-files-found: ignore
