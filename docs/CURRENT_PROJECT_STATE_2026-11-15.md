@@ -3,6 +3,10 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN V – användarbeslut om samlad VERIFICATION, 2026-11-16
+
+[Ny bindande verifieringspolicy och startprompt](MAIN_V_VERIFICATION_BATCH_POLICY_AND_STARTPROMPT_2026-11-16.md) med [kopia i Drive](https://docs.google.com/document/d/1ynrElK86xYZ5jy27ytyrxwxUL1qX7Vj8QWc4fjsswJs/edit). **Oberoende VERIFICATION är nu vilande som standard** och får inte köras automatiskt vid chattuppstart, varje ROM-ändring eller enskilda forsknings-PASS. MAIN ska vid verkligt behov lämna en uttrycklig, fryst och innehållsrik samlad batch. **Issue #8 bevaras i kö som separat historisk baseline, inte annullerad men ej beställd nu.** Ingen ändring av krav på slutlig oberoende granskning, v0.18-scope eller canon.
+
 ## MAIN V – källkontrollerad mottagning 2026-11-16
 
 [MAIN V intake och första R3-/VERIFICATION-arbetsorder](MAIN_V_INTAKE_R3_AND_VERIFICATION_ORDERS_2026-11-16.md) med [läsbar Google Drive-kopia](https://docs.google.com/document/d/10-aZ48bTCaa0szyLm7LRouMGuCTZbmzwfa0bL_xY78g/edit). HEAD och PR/Issues har kontrollerats live; de 57 ursprungliga besluten i Drive-ZIP har granskats. **Full v0.18 fortsatt BLOCKED/NOT ACCEPTED; R1ba är enbart lokal forsknings-PASS; PR #7 är draft/unmerged; fryst Issue #8 kräver egen VERIFICATION.** Detta är MAIN-dokumentation, inte auktorisation av kod utanför v0.18 eller av ny fas. Chattuppdragen är förberedda och ska lämnas till separata chattar av användaren.
