@@ -1,0 +1,33 @@
+name: R1-F1 one missing 6B first-RESP1 debugger trap
+on:
+  push:
+    branches: [rom-dev/v018-r1-f1-sixmask-forensics-20261116]
+    paths: [.github/workflows/v018-r1-f1-last-trap.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  one-missing-stella-trap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: DASM Stella Xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella > r1_f1_one_trap_versions.txt
+      - name: Rebuild original 6B binary and compare pinned hash
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          python3 build_six_sweep.py
+          printf '%s  %s\n' 36e588b7211be9dfe6afc534117823f6540aa6d3b753c2816a22c5828d0b60b4 dist/r1_individual_6B_F6.bin | sha256sum -c
+      - name: Capture ONLY missing real 6B RESP1 cycle 19 in mask row05
+        run: bash rom/v018/experiments/r1_free_xy/r1_f1_first_6b_resp.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f1-missing-first-6b-resp1
+          path: |
+            r1_f1_one_trap_versions.txt
+            rom/v018/experiments/r1_free_xy/evidence/r1_f1_first_6B_resp/
+          if-no-files-found: ignore
