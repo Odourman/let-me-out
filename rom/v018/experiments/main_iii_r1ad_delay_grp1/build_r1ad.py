@@ -74,6 +74,9 @@ for k,(c1,c2,n1,n2) in heads.items():
  for line in ins:
   line=line.strip()
   if not line or line.startswith(";"):continue
+  # WSYNC instruction is executed on preceding scanline; the visual row
+  # starts at cycle zero after its wait. Exclude it from row c0 timestamps.
+  if line=="STA WSYNC":continue
   if line in ("NOP","DEY"):cy=2
   elif line.startswith("BIT ") or line.startswith("STA ") or line.startswith("STX "):cy=3
   elif line.startswith("LDA ") and line.endswith(",Y"):cy=4
