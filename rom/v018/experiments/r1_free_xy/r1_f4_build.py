@@ -87,7 +87,7 @@ listing=(R/'dist'/f'{stem}.lst').read_text()
 if phase==21:
     # zero-page indexed assembler emits 95 [RESP1] (four cycles),
     # instead of 85 [RESP1] (three cycles); X fixed $00.
-    assert len([x for x in listing.splitlines() if 'STA RESP1,X' in x])==9
+    assert len([x for x in listing.splitlines() if '95 11' in x and 'RESP1,X' in x])==9
 meta={'phase':phase,'F4_one_compiled_probe':True,
     'base_F2_fixed_index2_first_resp':37,
     'first_RESP1_CPU_cycle_SOURCE_ONLY':phase,
