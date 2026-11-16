@@ -36,7 +36,7 @@ meta={
  "source_original_8x9_masks":"All six original Android instances and original P0/M0 bytes unchanged",
  "three_preverified_P1_schedules":{"A":[28,40,56,66],"B":[28,42,56,66],"C":[30,42,56,66]},
  "runtime_sequence_every_eight_frames":"A,B,C,B; repeat, so one large pair changes per boundary",
- "NUSIZ1":3,
+ "NUSIZ1_value":3,
  "ROM_SHA256":sha,"bytes":16384,"mapper":"standard F6 four identical banks",
  "limits":"RESEARCH: three X layouts, NUSIZ duplicate pairs fixed relative spacing, no six independent X or full R1/R4, no independent VERIFICATION"}
 (R/"manifest.json").write_text(json.dumps(meta,indent=2)+"\n")
