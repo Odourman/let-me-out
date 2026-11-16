@@ -1,0 +1,34 @@
+name: R1-F7 G0 SOURCE ONLY four predeclared RAM selector phase plans NO ROM
+on:
+  push:
+    branches: [rom-dev/v018-r1-f7-two-binary-runtime-selectors-20261116]
+    paths: [.github/workflows/v018-r1-f7-g0.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  g0-source-only-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: SOURCE ONLY – no DASM, no Stella – prove 4 row timings, original blobs and 2 independent RAM selectors
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f7_preflight.py
+          /usr/bin/python3 - <<'PY'
+          import json
+          p=json.load(open('r1_f7_g0_source_only.json'))
+          assert p['G0']=='F7_SOURCE_ONLY_FEASIBLE_FOUR_RUNTIME_PHASES'
+          assert list(p['plans'])==['c21_c32','c23_c32','c21_c33','c23_c33']
+          assert all(all(0<row['cycle_margin'] and row['next_WSYNC_source_end_cycle']<76
+                    for row in z['nine_rows']) for z in p['plans'].values())
+          assert p['two_selectors']['X0_SELECT']['addr'] != p['two_selectors']['X1_SELECT']['addr']
+          assert p['per_frame_30_blank_slots_preserved']
+          print('F7_AUTHORITATIVE_G0_VALID_FOUR_CORNERS_SOURCE_ONLY')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f7-source-only-g0-four-corners-no-new-rom
+          path: rom/v018/experiments/r1_free_xy/r1_f7_g0_source_only.json
+          if-no-files-found: ignore
