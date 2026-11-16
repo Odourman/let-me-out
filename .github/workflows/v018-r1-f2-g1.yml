@@ -1,0 +1,43 @@
+name: R1-F2 G0 G1 genuine six-mask independent-index X feasibility
+on:
+  push:
+    branches: [rom-dev/v018-r1-f2-independent-x-20261116]
+    paths:
+      - .github/workflows/v018-r1-f2-g1.yml
+      - rom/v018/experiments/r1_free_xy/r1_f2_build_g1.py
+      - rom/v018/experiments/r1_free_xy/r1_f2_capture_g1.sh
+      - rom/v018/experiments/r1_free_xy/r1_f2_checker.py
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  g0-and-g1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install authentic DASM Stella Debugger
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella python3-pil > r1_f2_versions.txt
+      - name: Rebuild byte-identical frozen 6B from canonical source, and only two G1 offsets
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_six_sweep.py
+          printf '%s  %s\n' 36e588b7211be9dfe6afc534117823f6540aa6d3b753c2816a22c5828d0b60b4 dist/r1_individual_6B_F6.bin | sha256sum -c
+          /usr/bin/python3 r1_f2_build_g1.py
+          sha256sum dist/r1_individual_6B_F6.bin dist/r1_f2_6B_I2_{M2,P1}_F6.bin > r1_f2_g1_rom_sha256.txt
+          sha256sum -c r1_f2_g1_rom_sha256.txt
+      - name: Real Stella 16x3, exact source sprites, five static X, negative-mutant audit
+        run: bash rom/v018/experiments/r1_free_xy/r1_f2_capture_g1.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: letmeout-r1-f2-g0-g1-stella-exact-x
+          path: |
+            r1_f2_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f2_g1_rom_sha256.txt
+            rom/v018/experiments/r1_free_xy/evidence/r1_f2_g1/
+            rom/v018/experiments/r1_free_xy/r1_f2_6B_I2_*.asm
+            rom/v018/experiments/r1_free_xy/dist/r1_f2_6B_I2_*
+          if-no-files-found: ignore
