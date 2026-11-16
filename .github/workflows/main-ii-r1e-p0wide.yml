@@ -1,0 +1,36 @@
+name: MAIN II R1e P0 wide-copy yellow-white color change
+on:
+  push:
+    branches:
+      - research/main-ii-r1e-p0-wide-recolor-20261116
+    paths:
+      - .github/workflows/main-ii-r1e-p0wide.yml
+      - rom/v018/experiments/main_ii_p0wide/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p0wide:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM 6502 and actual Stella 6.7.1 capture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Reproduce two standard F6 16KB probes
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_p0wide/build_variants.py
+      - name: Capture two Stella screens and true RESP1 PC stops per probe
+        run: bash rom/v018/experiments/main_ii_p0wide/ci_capture.sh
+      - name: Pixel-match first P0 yellow and second P0 white plus three originals
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_p0wide/audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1e-p0wide-recolor-stella-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_p0wide/
+          if-no-files-found: ignore
