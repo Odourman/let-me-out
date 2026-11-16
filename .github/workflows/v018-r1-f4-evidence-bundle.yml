@@ -1,0 +1,48 @@
+name: R1-F4 READ ONLY final immutable 32 Stella-frame evidence bundle and manifest
+on:
+  push:
+    branches: [rom-dev/v018-r1-f4-early-copy-phase-20261116]
+    paths: [.github/workflows/v018-r1-f4-evidence-bundle.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  combine-and-verify-unmodified-originals:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve only original successful authentic c18 Stella run, NO emulator
+        uses: actions/download-artifact@v4
+        with:
+          name: r1-f4-c18-first-copy-16-real-stella-plus-register-traps
+          run-id: 43954871755
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: source_c18
+      - name: Retrieve only original successful authentic c21 Stella run, NO emulator
+        uses: actions/download-artifact@v4
+        with:
+          name: r1-f4-c21-second-final-copy-16-real-stella-plus-register-traps
+          run-id: 43955699139
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: source_c21
+      - name: Confirm exact 16 crop+16 full+6 real traps per ROM, two real 16KiB F6 binaries, all SHA and source-audit status; bundle without modifications
+        run: |
+          /usr/bin/python3 rom/v018/experiments/r1_free_xy/r1_f4_evidence_bundle.py source_c18 source_c21 LETMEOUT_F4_EVIDENCE
+          cd LETMEOUT_F4_EVIDENCE
+          sha256sum -c MANIFEST_SHA256SUMS.txt
+          python3 - <<'PY'
+          import json, pathlib
+          a=json.load(open('BUNDLE_VALIDATION.json'))
+          assert len(a['probes'])==2
+          assert all(p['pixel_classification']=='F4_NO_SECOND_X_PHASE_RESPONSE' for p in a['probes'])
+          assert all(p['real_raw_crop_frames']==16 and p['real_full_debugger_frames']==16 and p['register_trap_screenshots']==6 for p in a['probes'])
+          assert len(json.load(open('EVIDENCE_FILE_INDEX.json')))>100
+          print('F4_ALL_ORIGINALS_READONLY_VERIFIED_AND_INDEXED_NO_NEW_STELLA')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r1-f4-complete-32-true-stella-32-full-12-traps-two-ROMs-with-manifest
+          path: LETMEOUT_F4_EVIDENCE/
+          if-no-files-found: error
