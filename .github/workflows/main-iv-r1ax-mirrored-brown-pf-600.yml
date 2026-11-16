@@ -35,7 +35,7 @@ jobs:
         run: /usr/bin/python3 rom/v018/experiments/main_iv_r1ax_pf_walls/analyze_600.py
       - name: ROM 16 KB SHA256 and 600 screenshot evidence
         run: |
-          cd rom/v018/experiments/main_iv_r1ax_runtime_three
+          cd rom/v018/experiments/main_iv_r1ax_pf_walls
           test "$(stat -c %s r1ax_F6.bin)" -eq 16384
           sha256sum -c ROM_SHA256.txt
           test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
