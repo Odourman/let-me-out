@@ -56,7 +56,7 @@ BottomLines:"""
     source=source.replace(original_doorbottom,adjusted)
     appendix="\n; RESEARCH-ONLY derived display rows from original 8x9 byte tables.\n"
     for label in LABELS:
-        appendix+=f"{label}{height}:\n BYTE "+",".join(f"\${b:02X}" for b in derived[label][::-1])+"\n"
+        appendix+=f"{label}{height}:\n BYTE "+",".join(f"{chr(36)}{b:02X}" for b in derived[label][::-1])+"\n"
     anchor=" ORG $FFFA\n"
     assert source.count(anchor)==1
     source=source.replace(anchor,appendix+anchor)
