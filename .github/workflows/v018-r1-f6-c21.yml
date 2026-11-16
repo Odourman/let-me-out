@@ -1,0 +1,78 @@
+name: R1-F6 G1 First ONLY c21/c32 two original TOP-DOWN masks Stella
+on:
+  push:
+    branches: [rom-dev/v018-r1-f6-two-mask-hblank-20261116]
+    paths: [.github/workflows/v018-r1-f6-c21.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  first-c21-original-two:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install known-true DASM/Stella 6.7.1 and capture tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W dasm stella python3-pil > r1_f6_c21_versions.txt
+      - name: G0 mandatory two-phase source-only preflight BEFORE any compilation
+        id: preflight
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f6_preflight.py
+          /usr/bin/python3 - <<'PY'
+          import json
+          p=json.load(open('r1_f6_g0_source_only.json'))
+          assert p['G0']=='F6_SOURCE_ONLY_FEASIBLE_BOTH_PHASES_9_ROWS'
+          for v in p['plans'].values():
+            assert len(v['nine_rows'])==9
+            assert all(x['next_WSYNC_end']==38 and x['cycle_margin']==38 for x in v['nine_rows'])
+          print('G0_VALID_BOTH_SOURCE_PLANS_BEFORE_ANY_DASM')
+          PY
+      - name: G1 build ONLY first c21/c32 standard 16KB F6 NTSC original M/F
+        id: build
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f6_build.py --first 21
+          stat -c '%n %s bytes' dist/r1_f6_two_correct_masks_C21_C32_F6.bin
+          sha256sum dist/r1_f6_two_correct_masks_C21_C32_F6.bin > r1_f6_c21_real_rom_sha256.txt
+      - name: Capture 16 original unmodified Stella 6.7.1 debugger frames + two independent direct canonical TOP-DOWN pixel oracles + synthetic mutant negative
+        id: capture
+        run: bash rom/v018/experiments/r1_free_xy/r1_f6_capture.sh 21
+      - name: Actually trap first/second RESP1 and GRP1 plus WSYNC in the same unchanged ROM
+        if: always() && steps.build.outcome == 'success'
+        run: bash rom/v018/experiments/r1_free_xy/r1_f6_trace.sh 21
+      - name: Fail-closed c21 baseline real-pixel and evidence-integrity gate
+        if: always() && steps.build.outcome == 'success'
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          f=Path('evidence/r1_f6_c21/STRICT_TRUE_16_TOP_DOWN_PIXEL_AUDIT.json')
+          assert f.exists(),'NO REAL STELLA AUDIT: BASELINE CANNOT AUTHORIZE SECOND ROM'
+          x=json.loads(f.read_text())
+          assert x['baseline_safe_to_authorize_second_compiled_variant']
+          assert x['all_16_masks_top_down_and_controls_exact']
+          assert x['stable_16_physical_X']
+          assert x['mutant_negative']['executed']
+          for r in x['real_Stella_frames']:assert r['strict']
+          t=Path('evidence/r1_f6_c21/traps')
+          assert len(list(t.glob('*/stella_full.png')))==5
+          assert not list(t.glob('*/UNMEASURABLE.txt'))
+          print('F6_C21_BASELINE_TWO_CORRECT_MASKS_PIXEL_AND_TIA_TRAP_EVIDENCE_PASS',
+                 x['observed_rendered_pairs'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f6-first-c21-c32-real-stella-16-full-crop-and-5-register-traps
+          path: |
+            r1_f6_c21_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f6_g0_source_only.json
+            rom/v018/experiments/r1_free_xy/r1_f6_c21_real_rom_sha256.txt
+            rom/v018/experiments/r1_free_xy/r1_f6_two_correct_masks_C21_C32.asm
+            rom/v018/experiments/r1_free_xy/dist/r1_f6_two_correct_masks_C21_C32*
+            rom/v018/experiments/r1_free_xy/evidence/r1_f6_c21/
+          if-no-files-found: ignore
