@@ -1,0 +1,43 @@
+name: MAIN IV R1an NUSIZ 3 close female second copy full window
+on:
+  push:
+    branches:
+      - research/main-iv-r1an-female-second-copy-20261116
+    paths:
+      - .github/workflows/main-iv-r1an-female-gap-600.yml
+      - rom/v018/experiments/main_iv_r1an_female_gap/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  female-second-copy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM and Stella X11
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned R1al with 28 40 54 64 RESP1 cycles
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1an_female_gap/build_r1an.py
+      - name: Capture 600 authentic consecutive Stella images
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1an_female_gap/ci_framewalk_600.sh
+      - name: Fail closed original six-mask, yellow P0 M0 pixel audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1an_female_gap/analyze_600.py
+      - name: Check SHA ROM bytes and exact 600 screenshots
+        run: |
+          cd rom/v018/experiments/main_iv_r1an_female_gap
+          test "$(stat -c %s r1an_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1an-female-second-copy-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1an_female_gap/
+          if-no-files-found: ignore
