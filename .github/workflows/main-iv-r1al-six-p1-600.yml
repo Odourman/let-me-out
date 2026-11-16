@@ -1,0 +1,43 @@
+name: MAIN IV R1al NUSIZ three close + 4 RESP P1 six full original masks
+on:
+  push:
+    branches:
+      - research/main-iv-r1al-six-original-p1-timing-20261116
+    paths:
+      - .github/workflows/main-iv-r1al-six-p1-600.yml
+      - rom/v018/experiments/main_iv_r1al_auto_copy_timing/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  six-static-original-P1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella X11 tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned four-mask source with 12 12 10 cycle P1 intervals
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1al_auto_copy_timing/build_r1al.py
+      - name: Capture 600 authentic consecutive Stella GUI frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1al_auto_copy_timing/ci_framewalk_600.sh
+      - name: Strict six original source masks and one P0 M0 test
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1al_auto_copy_timing/analyze_600.py
+      - name: ROM length SHA256 frame evidence
+        run: |
+          cd rom/v018/experiments/main_iv_r1al_auto_copy_timing
+          test "$(stat -c %s r1al_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1al-six-mask-fixed-x-research-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1al_auto_copy_timing/
+          if-no-files-found: ignore
