@@ -15,6 +15,11 @@ blob=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
 PIN="a25c92adb4ca5087eeace674e371be98b273ae5b"
 assert blob==PIN,(blob,PIN,"base Venetian source not authorized reference")
 s=raw.decode("utf-8")
+# NUSIZ1=$01 is essential: it enables P1 CLOSE copy decoding, not merely
+# the RESP1 positional counter reset.
+assert s.count(" STA COLUBK\n LDA #145\n")==1
+s=s.replace(" STA COLUBK\n LDA #145\n",
+            " STA COLUBK\n LDA #$01\n STA NUSIZ1\n LDA #145\n",1)
 assert s.count("Row00:\n")==1
 assert s.count("\n STA WSYNC\n LDA #0\n STA GRP0\n STA GRP1\n STA ENAM0\n LDX #102\nBottomBlank:")==1
 a,b=s.split("Row00:\n",1)
