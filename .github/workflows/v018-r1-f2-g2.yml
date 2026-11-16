@@ -1,0 +1,48 @@
+name: R1-F2 G2 single-kernel runtime independent X proof
+on:
+  push:
+    branches: [rom-dev/v018-r1-f2-independent-x-20261116]
+    paths: [.github/workflows/v018-r1-f2-g2.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  exactly-one-runtime-kernel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install reproducible DASM and actual Stella Debugger
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella python3-pil > r1_f2_runtime_versions.txt
+      - name: Build original source-pinned 6B, two G1 probes, ONE data-driven G2 ROM
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_six_sweep.py
+          printf '%s  %s\n' 36e588b7211be9dfe6afc534117823f6540aa6d3b753c2816a22c5828d0b60b4 dist/r1_individual_6B_F6.bin | sha256sum -c
+          /usr/bin/python3 r1_f2_build_g1.py
+          /usr/bin/python3 r1_f2_build_runtime.py
+          for rom in dist/r1_individual_6B_F6.bin dist/r1_f2_6B_I2_{M2,P1,RUNTIME}_F6.bin; do
+            test "$(stat -c %s "$rom")" -eq 16384
+          done
+          sha256sum dist/r1_individual_6B_F6.bin dist/r1_f2_6B_I2_{M2,P1,RUNTIME}_F6.bin > r1_f2_all_rom_sha256.txt
+          sha256sum -c r1_f2_all_rom_sha256.txt
+      - name: REAL Stella G2 single runtime F6 ROM, maximum 32 consecutive frames
+        run: bash rom/v018/experiments/r1_free_xy/r1_f2_capture_runtime.sh
+      - name: Actual Stella PC bank frame cycle P1 write traps for G1 and G2
+        if: always()
+        run: bash rom/v018/experiments/r1_free_xy/r1_f2_trace.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: letmeout-r1-f2-single-kernel-32-real-frames-and-register-traps
+          path: |
+            r1_f2_runtime_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f2_all_rom_sha256.txt
+            rom/v018/experiments/r1_free_xy/evidence/r1_f2_runtime/
+            rom/v018/experiments/r1_free_xy/evidence/r1_f2_traps/
+            rom/v018/experiments/r1_free_xy/r1_f2_6B_I2_RUNTIME.asm
+            rom/v018/experiments/r1_free_xy/dist/r1_f2_6B_I2_RUNTIME.*
+            rom/v018/experiments/r1_free_xy/dist/r1_f2_6B_I2_RUNTIME_F6.bin
+          if-no-files-found: ignore
