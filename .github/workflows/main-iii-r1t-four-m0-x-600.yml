@@ -1,0 +1,45 @@
+name: MAIN III R1t M0 HMOVE four X four P0 X 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1t-four-missile-x-hmove-20261116
+    paths:
+      - .github/workflows/main-iii-r1t-four-m0-x-600.yml
+      - rom/v018/experiments/main_iii_r1t_four_m0_x/build_r1t.py
+      - rom/v018/experiments/main_iii_r1t_four_m0_x/analyze_600.py
+      - rom/v018/experiments/main_iii_r1t_four_m0_x/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  four-missile-x:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and graphical X11 tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build four-phase HMM0 dynamic projectile research pinned R1s
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1t_four_m0_x/build_r1t.py
+      - name: Capture 600 consecutive real Stella 6.7.1 frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1t_four_m0_x/ci_framewalk_600.sh
+      - name: Audit 600 frames four M0-X independently four P0-X and two doors
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1t_four_m0_x/analyze_600.py
+      - name: Check 16KiB standard F6 ROM SHA and exact 600 screenshots
+        run: |
+          cd rom/v018/experiments/main_iii_r1t_four_m0_x
+          test "$(stat -c %s r1t_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1t-four-missile-x-600-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1t_four_m0_x/
+          if-no-files-found: ignore
