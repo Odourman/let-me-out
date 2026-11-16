@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Authorized R1: two original 8x9 silhouettes in 16 factorized X0/X1/Y0/Y1
 combinations, exactly same nine-line raster masks, no sprite scaling or turn-taking.
-TIA P1 close copies; each Y profile is a source-exact ROM table selected
-with independent pre-raster zero-page pointers (no per-row branches). 6502 P1 raster cycles remain same as source-exact
+TIAs P1 close copies; each independent source Y row is preloaded into RIOT RAM
+during top visible blank. 6502 P1 raster cycles remain same as source-exact
 2x2 pilot; no third party ROM code.
 """
 from pathlib import Path
@@ -33,44 +33,61 @@ s=s.replace(' STA COLUBK\n LDA #145\n',''' STA COLUBK
 ''',1)
 s=s.replace(' STA VBLANK\n ; Vblank scanline3:', ' STA VBLANK\n LDA #1\n STA NUSIZ1\n ; Vblank scanline3:',1)
 s=s.replace(' ORG $F300\n',' ORG $F800\n',1)
-# Two independent ROM table pointers; choose each before raster in two of the
-# 80 existing visible blank scanlines (no visible row or VSYNC count added).
-# Rather than copying ROM bitmaps into RAM on startup, this arrangement avoids
-# CPU-per-frame copy overhead and stays under 76 cycles per setup line.
-s=s.replace('FRAMELO=$80\n','FRAMELO=$80\nMALE_PTR_LO=$94\nMALE_PTR_HI=$95\nFEMALE_PTR_LO=$96\nFEMALE_PTR_HI=$97\n',1)
+# Replace standard 80 visible top blank lines with 18 precomputed 6502-RAM
+# sprite-row update lines and 62 full blank lines, preserving exact raster height.
 special=''' LDA #0
  STA VBLANK
- STA WSYNC
+ ; Independent male Y: FRAMELO & 4, zero or one top blank row.
  LDA FRAMELO
  AND #$04
- BEQ MalePointerZero
- LDA #<MaleDy1Rows
- STA MALE_PTR_LO
- LDA #>MaleDy1Rows
- STA MALE_PTR_HI
- JMP MalePointerDone
-MalePointerZero:
- LDA #<MaleDy0Rows
- STA MALE_PTR_LO
- LDA #>MaleDy0Rows
- STA MALE_PTR_HI
-MalePointerDone:
+ BEQ MaleDy0
+ LDA #0
+ STA $A0
+ LDY #8
+MaleDy1Copy:
  STA WSYNC
+ LDA MaleRows,Y
+ STA $A1,Y
+ DEY
+ BPL MaleDy1Copy
+ JMP FemaleDySelect
+MaleDy0:
+ LDA #0
+ STA $A9
+ LDY #8
+MaleDy0Copy:
+ STA WSYNC
+ LDA MaleRows,Y
+ STA $A0,Y
+ DEY
+ BPL MaleDy0Copy
+FemaleDySelect:
+ ; Independent female Y: FRAMELO & 8.
  LDA FRAMELO
  AND #$08
- BEQ FemalePointerZero
- LDA #<FemaleDy1Rows
- STA FEMALE_PTR_LO
- LDA #>FemaleDy1Rows
- STA FEMALE_PTR_HI
- JMP FemalePointerDone
-FemalePointerZero:
- LDA #<FemaleDy0Rows
- STA FEMALE_PTR_LO
- LDA #>FemaleDy0Rows
- STA FEMALE_PTR_HI
-FemalePointerDone:
- LDX #78
+ BEQ FemaleDy0
+ LDA #0
+ STA $B0
+ LDY #8
+FemaleDy1Copy:
+ STA WSYNC
+ LDA FemaleRows,Y
+ STA $B1,Y
+ DEY
+ BPL FemaleDy1Copy
+ JMP TopBlankTail
+FemaleDy0:
+ LDA #0
+ STA $B9
+ LDY #8
+FemaleDy0Copy:
+ STA WSYNC
+ LDA FemaleRows,Y
+ STA $B0,Y
+ DEY
+ BPL FemaleDy0Copy
+TopBlankTail:
+ LDX #62
 TopBlank:
  STA WSYNC
  DEX
@@ -84,7 +101,7 @@ anchor='Row00:\n';end='\n STA WSYNC\n LDA #0\n STA GRP0\n STA GRP1\n STA ENAM0\n
 assert s.count(anchor)==s.count(end)==1
 pre,rest=s.split(anchor,1);_,tail=rest.split(end,1)
 # Use original X mode 2x2 factorized kernel, independent of Y bits2 and3.
-positions={'A':(32,56),'B':(34,56),'C':(32,58),'D':(34,58)}
+positions={'A':(28,52),'B':(30,52),'C':(28,54),'D':(30,54)}
 select='''R1ProbeSelect:
  LDA FRAMELO
  AND #3
@@ -102,10 +119,10 @@ R1PickC:
  JMP R1KernelC
 '''
 for key,(c1,c2) in positions.items():
-    n1=(c1-32)//2;n_between=(c2-c1-8)//2
+    n1=(c1-28)//2;n_between=(c2-c1-8)//2
     body=[' ALIGN 256','R1Kernel'+key+':',' LDY #0','R1Line'+key+':',' STA WSYNC',
-          ' LDA (FEMALE_PTR_LO),Y',' TAX',' LDA PlayerDraw10,Y',' STA GRP0',
-          ' LDA ShotDraw10,Y',' STA ENAM0',' LDA (MALE_PTR_LO),Y',' BIT FRAMELO']
+          ' LDX $B0,Y',' LDA PlayerDraw10,Y',' STA GRP0',
+          ' LDA ShotDraw10,Y',' STA ENAM0',' LDA $A0,Y',' BIT FRAMELO']
     body+=[' NOP']*n1
     body+=[' STA RESP1',' NOP',' STA GRP1']
     body+=[' NOP']*n_between
@@ -118,12 +135,7 @@ for label in ('MaleRows','FemaleRows','PlayerRows'):
     assert old.split('\n'+label+':\n',1)[1].split('\n',1)[0]==s.split('\n'+label+':\n',1)[1].split('\n',1)[0]
 player=[0x3c,0x7e,0x18,0x7e,0x1e,0x3c,0x18,0x24,0x42,0]
 shot=[0,0,0,0,2,0,0,0,0,0]
-extra=' ORG $F900\nPlayerDraw10:\n BYTE '+','.join('$%02X'%x for x in player)+'\nShotDraw10:\n BYTE '+','.join('$%02X'%x for x in shot)+'\n'
-for tag,name,dy in [('MaleDy0Rows','large_male',0),('MaleDy1Rows','large_male',1),('FemaleDy0Rows','large_female',0),('FemaleDy1Rows','large_female',1)]:
-    original=[int(z,2) for z in ref[name]]
-    rows=original+[0] if dy==0 else [0]+original
-    assert len(rows)==10
-    extra+=tag+':\n BYTE '+','.join('$%02X'%x for x in rows)+'\n'
+extra='PlayerDraw10:\n BYTE '+','.join('$%02X'%x for x in player)+'\nShotDraw10:\n BYTE '+','.join('$%02X'%x for x in shot)+'\n'
 s=s.replace(' ORG $FFFA\n',extra+' ORG $FFFA\n',1)
 HERE.joinpath('dist').mkdir(exist_ok=True)
 (HERE/'r1_two_xy.asm').write_text(s)
@@ -135,7 +147,7 @@ meta={'16_runtime_combinations':16,'two_NPC_X_c1c2':positions,
       'independent_male_dy_bit2':[0,1],'independent_female_dy_bit3':[0,1],
       'ROM_SHA256':hashlib.sha256(rom).hexdigest(),'size':len(rom),
       'original_source_mask_reference_blob':'058800a4c1904d1ff289e7e61b3902aa111ba16d',
-      'cpu_row_reset_cycle_STATIC':{'c1':[32,34],'c2':[56,58]},
+      'cpu_row_reset_cycle_STATIC':{'c1':[28,30],'c2':[52,54]},
       'claim':'UNTESTED UNTIL REAL STELLA CANONICAL ALL-PIXEL AUDIT',
       'not_full_R1':True}
 (HERE/'dist/xy_metadata.json').write_text(json.dumps(meta,indent=2)+'\n')
