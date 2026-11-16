@@ -23,6 +23,8 @@ jobs:
         run: /usr/bin/python3 rom/v018/experiments/main_ii_trick05_dynamic_pf/build.py
       - name: Capture real Stella 262NTSC graphic variants
         run: bash rom/v018/experiments/main_ii_trick05_dynamic_pf/ci_stella.sh
+      - name: Validate true PF 4cc movement, 80cc duplicate, four original masks and 262 NTSC
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_trick05_dynamic_pf/audit.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
