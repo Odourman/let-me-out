@@ -1,0 +1,49 @@
+name: MAIN IV R1ax one F6 ROM three different six-Android runtime X states
+on:
+  push:
+    branches:
+      - research/main-iv-r1ax-reflected-brown-pf-walls-20261116
+    paths:
+      - .github/workflows/main-iv-r1ax-mirrored-brown-pf-600.yml
+      - rom/v018/experiments/main_iv_r1ax_pf_walls/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mirrored-brown-pf-layouts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [0, 1, 2]
+    env:
+      R1AX_MODE: ${{ matrix.mode }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 and real X11 screenshot dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build three distinct PINNED 600 PASS original six-mask kernels into one F6 ROM
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1ax_pf_walls/build_r1ax.py
+      - name: Capture 600 consecutive genuine Stella 6.7.1 X11 frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1ax_pf_walls/ci_framewalk_600.sh
+      - name: Strict six original full source masks plus 3 actual runtime X signatures
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1ax_pf_walls/analyze_600.py
+      - name: ROM 16 KB SHA256 and 600 screenshot evidence
+        run: |
+          cd rom/v018/experiments/main_iv_r1ax_runtime_three
+          test "$(stat -c %s r1ax_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1ax-mirrored-brown-pf-original-six-mask-layouts-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1ax_pf_walls/
+          if-no-files-found: ignore
