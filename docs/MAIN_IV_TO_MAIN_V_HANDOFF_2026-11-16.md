@@ -1,6 +1,14 @@
 # Let Me Out! – MAIN IV till MAIN V: verifierad överlämning 2026-11-16
 **Status:** MAIN IV överlämnar ledningsansvaret. Detta är ett DATUMSTÄMPLAT statusdokument och skapar inte ny auktorisation, nytt gameplay eller oberoende VERIFICATION.
 
+## Google Drive – kontrollerade kopior av detta överlämningspaket
+
+- [MAIN IV → MAIN V handoff i Drive](https://docs.google.com/document/d/1jSQfXtjKRwA1Vxwsu_frEJhucsEM9HJqfB48en7BXvM/edit)
+- [Fullständig startprompt för MAIN V i Drive](https://docs.google.com/document/d/196oB7ki3L9ZTej6uv8r9Rm7W9A3ERbKOVlO0VX2LfJY/edit)
+- [Rollprompter ROM DEVELOPMENT + VERIFICATION i Drive](https://docs.google.com/document/d/1c5FiE6jDoyoubo95SScynu4JSkvVlIk9_LSyip0OVf8/edit)
+
+Dokumenten ligger i den dedikerade `Let Me Out!`-mappen. Innehåll och placering kontrollerades efter skrivning. Den versionsstyrda GitHub-kopian är huvudunderlag för nästa källkontroll; bekräfta ändå källordning och aktuell HEAD innan arbetet fortsätter.
+
 ## Sammanfattning för nästa huvudchat
 Skapa tre separata chattar: `MAIN V` (ledning), `LET ME OUT! – ROM DEVELOPMENT` (DASM/6502/Stella-kod och egenkontroll), `LET ME OUT! – VERIFICATION` (självständig ombyggnad och bedömning). MAIN V ska inte själv agera kodare eller verifierare; rollerna överlämnar artefakter via GitHub/Drive. Färdiga prompttexter ligger i [MAIN V startprompt](MAIN_V_STARTPROMPT_2026-11-16.md) och [rom-/verifieringsprompter](MAIN_V_ROM_DEV_AND_VERIFICATION_STARTPROMPTS_2026-11-16.md). Användaren måste själv skapa chattarna; detta är bara förberedda instruktioner.
 
