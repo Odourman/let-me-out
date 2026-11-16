@@ -2,6 +2,10 @@
 
 Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin och **inte** I Love a Fish.
 
+## MAIN IV → MAIN V – överlämning 2026-11-16
+
+**MAIN IV har förberett projektöverlämningen till MAIN V.** [Fullständigt handoffpaket](docs/MAIN_IV_TO_MAIN_V_HANDOFF_2026-11-16.md) · [MAIN V:s färdiga startprompt](docs/MAIN_V_STARTPROMPT_2026-11-16.md) · [separata startprompter för ROM DEVELOPMENT och VERIFICATION](docs/MAIN_V_ROM_DEV_AND_VERIFICATION_STARTPROMPTS_2026-11-16.md). Alla tre finns även i [projektets Google Drive-mapp](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u). **Ingen ny kodauktorisation eller full R1–R4-acceptans följer av överlämningen.** ROM DEVELOPMENT och VERIFICATION ska arbeta i olika chattar, med faktisk verifiering oberoende av kodaren.
+
 ## MAIN IV – integrerat forskningsprov R1ba, 2026-11-16
 
 [Reproducerbar R1ba-GitHub Actions-körning](https://github.com/Odourman/let-me-out/actions/runs/43884511590) fick **600/600 lokala Stella-PASS** med **sex hela originalandroider, tre sammankopplade runtime-X/Y-uppställningar, bruna speglade PF-sidoväggar, gul P0 och en statisk M0-symbol**. [MAIN IV:s uppdaterade projektcheckpoint](docs/MAIN_IV_CHECKPOINT_2026-11-16.md), [fullständigt forskningsbevis](https://drive.google.com/file/d/1c2Sd68dvQsmb_MJcQOLU8dbiMc5YgbsJ/view?usp=drivesdk) och [R3-dörrkällgranskning](docs/MAIN_IV_R3_RIGHT_DOOR_SOURCE_AUDIT_2026-11-16.md). **Inte full R1/R2/R3/R4 eller oberoende VERIFICATION.** Individuellt fria X/Y och R2-nyckel/R3-högerdörr är fortfarande olösta.
