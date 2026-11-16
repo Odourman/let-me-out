@@ -1,0 +1,43 @@
+name: MAIN IV R1ap nine unrolled immediate mask rows potential six NPC
+on:
+  push:
+    branches:
+      - research/main-iv-r1ap-immediate-nine-rows-six-20261116
+    paths:
+      - .github/workflows/main-iv-r1ap-six-immediate-600.yml
+      - rom/v018/experiments/main_iv_r1ap_immediate/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  six-original-nine-row:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 and real X11 image capture
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build source-pinned nine-row per-line precomputed P1 ROM
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1ap_immediate/build_r1ap.py
+      - name: Capture 600 authentic consecutive Stella screenshots
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1ap_immediate/ci_framewalk_600.sh
+      - name: Strict 2M 2F SM SF original masks and full P0 M0 pixel audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1ap_immediate/analyze_600.py
+      - name: ROM SHA256 length and 600 PNG evidence
+        run: |
+          cd rom/v018/experiments/main_iv_r1ap_immediate
+          test "$(stat -c %s r1ap_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1ap-six-original-static-source-masks-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1ap_immediate/
+          if-no-files-found: ignore
