@@ -31,7 +31,7 @@ for label,(times,replacement) in cycles.items():
         chunk=chunk[:j]+replacement+chunk[j+len(orig):]
         source=source[:a]+chunk+source[b:]
     assert source.count(' STA RESP1\n')==54
-    assert source.count(' STA GRP1\n')==9*4+1  # final clear
+    assert source.count(' STA GRP1\n')==base.count(' STA GRP1\n')
     stem=f'r1_f2_6B_I2_{label}'
     (R/f'{stem}.asm').write_text(source)
     subprocess.run(['dasm',f'{stem}.asm','-f3',f'-odist/{stem}.bank.bin',f'-ldist/{stem}.lst',f'-sdist/{stem}.sym'],cwd=R,check=True)
