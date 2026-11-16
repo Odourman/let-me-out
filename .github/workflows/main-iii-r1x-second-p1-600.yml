@@ -1,0 +1,45 @@
+name: MAIN III R1x second P1 M0 coarse shot collision 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1x-second-p1-m0-coarse-20261116
+    paths:
+      - .github/workflows/main-iii-r1x-second-p1-600.yml
+      - rom/v018/experiments/main_iii_r1x_second_p1/build_r1x.py
+      - rom/v018/experiments/main_iii_r1x_second_p1/analyze_600.py
+      - rom/v018/experiments/main_iii_r1x_second_p1/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  second-p1-600:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and X11 capture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned-R1w F6 with additional three-cycle coarse M0 reset delay
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1x_second_p1/build_r1x.py
+      - name: Capture 600 real consecutive Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1x_second_p1/ci_framewalk_600.sh
+      - name: Strict 600 frame four NPC modes eight shot X two doors and second P1 hardware collision
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1x_second_p1/analyze_600.py
+      - name: Confirm standard F6 16KiB, exact ROM hash, all captured frames
+        run: |
+          cd rom/v018/experiments/main_iii_r1x_second_p1
+          test "$(stat -c %s r1x_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1x-second-P1-coarse-missile-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1x_second_p1/
+          if-no-files-found: ignore
