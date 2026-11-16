@@ -42,3 +42,9 @@ Viktigaste 30-trickskombination för nästa tekniska feasibility: **#01 sprite m
 MAIN:s forskning och koordination återstartar inte ROM DEVELOPMENT automatiskt efter tidigare rapporterat STOPP. Nytt konkret implementeringsarbete går via separat användarauktorisation om tidigare mandats ram eller stoppförutsättningar kräver det. VERIFICATION måste vara organisatoriskt oberoende, pröva exakt ny ROM/commit/SHA och kan inte låna gamla Issue #8:s resultat.
 
 **Ingen ändring i live main, PR #7, VERIFICATION #8, grafikcanon, R1–R4-scope, NTSC/F6-format eller ett senare implementeringssteg genom detta dokument.**
+
+## Tillägg 16 november: konkret dual-mask-lucka i RESP1-close-raster
+
+[MAIN:s nya cykel- och pixeldeadlineprotokoll](MAIN_III_R1_RESP1_RETRIGGER_DUAL_MASK_FEASIBILITY_GATE_2026-11-16.md) preciserar nästa forskningsfråga: med `NUSIZ1=$01` två `RESP1`-skrivningar kring CPU c30/c38 i samma scanline kan två close-kopior hypotetiskt börja runt TIA-X 39/63. Om andra originalbitmapraden redan finns i X kan `STX GRP1` efter andra reseten, runt CPU c41, ligga efter den första 8-pixelkopian men före den andra. **Detta är en statiskt härledd kandidat, inte en mätt Stella-ROM och inte ett bevis på två fria NPC.** 
+
+R0 instrumentering, R1a kalibrering (identiska enkla masker) och R1b två fullständiga OLIKA 8×9-masker har separata FAIL/PASS-kriterier. R1c sex NPC får inte startas från detta delresultat utan egen auktorisationskontroll. Ingen ändring av projektcanon, `main`, PR #7 eller oberoende VERIFICATION.
