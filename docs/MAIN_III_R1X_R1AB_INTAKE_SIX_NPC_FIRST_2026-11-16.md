@@ -1,5 +1,7 @@
 # Let Me Out! – MAIN III: granskning och omprioritering efter R1x–R1ab
 
+> **MAIN:s nya delresultat 2026-11-16:** [R1ae – två olika fullständiga original-P1-masker, fyra separat varierade X-par, 600/600 verkliga Stella-frames](MAIN_III_R1AE_TWO_FULL_P1_MASKS_INDEPENDENT_X_600_LOCAL_RESEARCH_PASS_DECISION_2026-11-16.md) är nu ett **lokalt forsknings-PASS** efter R1ac 300/600 och R1ad 487/600. Den tidigare prioriteringen sex NPC framför projektilpolering är oförändrad. Full R1 och självständig Verification fortfarande blockerade. Denna äldre intake ska läsas med detta senare faktiska forskningsbevis.
+
 **Datum:** 2026-11-16. **Typ:** MAIN mottagningsbeslut och teknisk forskningsplan. Inte godkänd ROM-implementation och inte oberoende VERIFICATION.
 
 ## Kontrollerade auktoriteter
