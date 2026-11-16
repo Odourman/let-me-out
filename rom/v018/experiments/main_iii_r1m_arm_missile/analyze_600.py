@@ -153,7 +153,7 @@ def measure(img,idx,templates):
     result["local_pass"]=(result["stella_frame_id"]==result["expected_frame_id"] and
         result["ntsc_262"] and mode!="ambiguous" and
         all(v==0 for v in other.values()) and female_errs==[0,0] and player_errors==0 and
-        extra_white==0 and extra_yellow==0 and shot==2 and shot_row==2 and old_head_shot==0 and
+        extra_white==0 and extra_yellow==0 and shot==2 and shot_row==len({x for (x,y) in (PLAYER_POINTS|SHOT_POINTS) if y==M0Y}) and old_head_shot==0 and
         left_exact and right_outside and gap_pass)
     return result
 def main():
