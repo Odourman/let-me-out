@@ -22,7 +22,27 @@ stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$ro
 pid=$!
 sleep 4
 if ! kill -0 "$pid";then cat "$out/stella.log";exit 1;fi
-wid="$(xdotool search --onlyvisible --name Stella | head -n1)"
+# Stella GUI may appear later than four seconds on an unloaded Xvfb worker.
+# A missing window is an INFRA failure, never a geometry failure.
+wid=""
+for t in $(seq 1 15);do
+  if ! kill -0 "$pid" 2>/dev/null;then
+    echo "F4_STELLA_PROCESS_DIED_BEFORE_CAPTURE"
+    cat "$out/stella.log"
+    exit 1
+  fi
+  wid="$(xdotool search --onlyvisible --name Stella 2>/dev/null | head -n1 || true)"
+  if [[ -n "$wid" ]];then
+    echo "F4_STELLA_GUI_WINDOW_FOUND attempt=$t wid=$wid"
+    break
+  fi
+  sleep 1
+done
+if [[ -z "$wid" ]];then
+  echo "F4_INFRA_FAIL_STELLA_GUI_NOT_VISIBLE"
+  cat "$out/stella.log"
+  exit 1
+fi
 xdotool windowfocus --sync "$wid"
 import -window root "$out/initial_full.png"
 for ((i=1;i<=16;i++));do
