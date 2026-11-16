@@ -9,8 +9,8 @@ Andrew Towers [TIA Hardware Notes](https://www.retroisle.com/atari/vcs/Technical
 ## Reproducerbara bevis
 
 - Källa i grenen `research/main-ii-r1d-nusiz-triple-20261116`, katalog `rom/v018/experiments/main_ii_nusiz3_four/`, utan ändring av `main`, PR #7 eller oberoende verifieringsbaslinje.
-- [GitHub Actions run 43794063598 (DASM-build och Stella-fångst PASS, fyra-originalmaskers pixelgrind FAIL)](https://github.com/Odourman/let-me-out/actions/runs/43794063598), commit `c63780088d72fa4213d3acdd0afb43497761ee09`.
-- Evidence-artifact **14194230488**, `main-ii-r1d-nusiz3-four-originals-evidence`: 73 filer, två körbara 16KB standard-F6 ROM, källor, DASM .sym/.lst, sex faktiska `RESP1` PC-fångster, två Stella-råbilder och `evidence_audit.json`.
+- [GitHub Actions run 43794517045 (DASM-build och Stella-fångst PASS, fyra-originalmaskers pixelgrind FAIL)](https://github.com/Odourman/let-me-out/actions/runs/43794517045), commit `b4411d2fe7fd5274033a00460a0bd1303147722c`.
+- Evidence-artifact **14193628087**, `main-ii-r1d-nusiz3-four-originals-evidence`: 73 filer, två körbara 16KB standard-F6 ROM, källor, DASM .sym/.lst, sex faktiska `RESP1` PC-fångster, två Stella-råbilder och `evidence_audit.json`.
 - DASM 2.20.14.1 / Stella 6.7.1 / NTSC. Samtliga ursprungliga data hämtas från `main/design/NPC_REFERENCE_8x9_masks.json`, inklusive den fjärde `small_female`-maskens tomma rader.
 - `nusiz3_only` ROM SHA256: `504914be5fda016372dd4cd48a7b5a526a16acf12e4d4630a81543f3bc44e900`.
 - `four_mask_probe` ROM SHA256: `8e6960b07b33a1a6b18b66ce435235b5dcd268009e2e252ebf1baed8e3049f16`.
@@ -33,8 +33,8 @@ Håller P0/9-radersspelaren och M0-skottet i ursprungliga testpositioner. Ändra
 Försöker ladda `SmallFemaleRows` direkt efter tredje `STA RESP1`. För att frigöra 7 CPU-cykler per NPC-rad ligger M0-projektilen på en separat föregående rasterrad. Denna skillnad är **ett forskningsavsteg från full R1-belastning**, inte en tillåten gameplay-ändring.
 
 - Efter korrigerad NTSC-radbudget har ROM:en **262 rasterlinjer**.
-- Gul spelare P0 finns faktiskt vid raw GUI X400–411, och gult M0-testskott vid X240–241/Y160. Den första automatiska auditens P0-region var för snäv och rapporterade felaktigt noll P0; detta är ett **testinstrumenteringsfel**, inte bevis för saknad spelare. Audit korrigerad därefter för att söka den exakta gula P0-masken över hela skärmen.
-- Stor man: **0 fullständiga originalmasker**, bästa möjliga maskmatch 36 bit-/pixelavvikelser i scanregionen (inte godkänd).
+- Gul spelare P0 finns faktiskt vid raw GUI X400–411, och gult M0-testskott vid X240–241/Y160. Den första automatiska auditens P0-region var för snäv och rapporterade felaktigt noll P0. I den slutliga CI-körningen validerades däremot P0:s **exakta gula 8×9-mask vid X398** och M0:s två GUI-pixlar samtidigt; detta skiljer säkert ett tidigare instrumenteringsfel från ett verkligt maskfel.
+- Stor man: **0 fullständiga originalmasker**, bästa möjliga maskmatch 36 pixelavvikelser i den valda sökregionen (inte godkänd).
 - Stor kvinna: tre exakt återgivna kopior (X142, 174, 238).
 - Liten man: en exakt kopia (X270).
 - Liten kvinna: två exakta kopior (X352, 384).
