@@ -1,4 +1,7 @@
 # LET ME OUT! – separata startprompter för ROM DEVELOPMENT och VERIFICATION
+
+> **ROM DEVELOPMENT II MIGRATION (2026-11-16):** Den förra utvecklar-chatten nådde maxlängd och har redan levererat fryst R1 på `b02ee3fe9e1ffe4bd77460ff43263a35e1f544e0`. R1 är **tekniskt BLOCKED**, trots positiva tvåmask-delprov. Använd den nya [migrationsrapporten och ROM DEVELOPMENT II-startprompten](MAIN_V_ROM_DEVELOPMENT_MIGRATION_R1_BLOCKER_2026-11-16.md) (https://docs.google.com/document/d/1PYDcMtckYD5Fq4xyd7DOlEVVeXBUGPl8vCe-xo3XXh0/edit) vid start av ny chatt. Ingen automatisk omstart av äldre R3/R1-testkampanj; efter mottagningskontroll inväntas separat MAIN-arbetsorder. Denna senare migrationsstatus ersätter äldre "börja R3" som startorder.
+
 **Datum:** 2026-11-16. **Dessa är praktiska rollinstruktioner, inte nya användarbeslut eller ett nytt implementationsmandat.** MAIN V ansvarar för att samordna dem.
 
 > **VIKTIG MAIN V-UPPDATERING 2026-11-16, DIREKT ANVÄNDARBESLUT:** VERIFICATION ska inte starta full granskning vid chattuppstart eller efter varje liten leverans. Samlad oberoende verifiering sker först när MAIN uttryckligen lämnar en stor, fryst och nödvändig batch. Den nya [bindande verifieringsstartprompten och batchprincipen](MAIN_V_VERIFICATION_BATCH_POLICY_AND_STARTPROMPT_2026-11-16.md) ersätter nedanstående äldre "PROMPT 2" i fråga om när verifiering startas. Issue #8 kvarstår fryst och öppet, men är **vilande och inte beställt för körning nu**. ROM DEVELOPMENT:s uppdrag ändras inte.
