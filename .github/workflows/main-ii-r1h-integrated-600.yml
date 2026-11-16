@@ -1,0 +1,45 @@
+name: MAIN II R1h four original NPCs BALL left right door 600 Stella frames
+on:
+  push:
+    branches:
+      - research/main-ii-r1h-ball-left-asym-pf-four-x-20261116
+    paths:
+      - .github/workflows/main-ii-r1h-integrated-600.yml
+      - rom/v018/experiments/main_ii_r1h_integrated/build_integrated.py
+      - rom/v018/experiments/main_ii_r1h_integrated/ci_framewalk_600.sh
+      - rom/v018/experiments/main_ii_r1h_integrated/analyze_600.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r1h-four-NPC-door-600:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 and X11 screen capture
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Rebuild same 16KB standard-F6 integrated R1h assembly
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1h_integrated/build_integrated.py
+      - name: Capture 600 consecutive authentic Stella debugger X11 frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_ii_r1h_integrated/ci_framewalk_600.sh
+      - name: Fail-closed 600-frame pixel audit all 8 fourth-X/door combinations
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1h_integrated/analyze_600.py
+      - name: Reconfirm exact F6 image and ROM hash
+        run: |
+          cd rom/v018/experiments/main_ii_r1h_integrated
+          test "$(stat -c %s r1h_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1h-integrated-4NPC-BALL-PF-rightdoor-600-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_r1h_integrated/
+          if-no-files-found: ignore
