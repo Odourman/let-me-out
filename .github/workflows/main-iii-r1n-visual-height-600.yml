@@ -1,0 +1,56 @@
+name: MAIN III R1n 14 or 15 displayed sprite rows 600 real Stella frames
+on:
+  push:
+    branches:
+      - research/main-iii-r1n-14-15-row-aspect-20261116
+    paths:
+      - .github/workflows/main-iii-r1n-visual-height-600.yml
+      - rom/v018/experiments/main_iii_r1n_height/build_r1n.py
+      - rom/v018/experiments/main_iii_r1n_height/ci_framewalk_600.sh
+      - rom/v018/experiments/main_iii_r1n_height/analyze_600.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r1n-real-stella-height:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    strategy:
+      fail-fast: false
+      matrix:
+        height: [14,15]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM and actual Stella GUI with X11
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Derive real 14 and 15 scanline bitmaps from R1k five-NPC reference
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1n_height/build_r1n.py
+      - name: Capture 600 consecutive Stella frames at ${{ matrix.height }} display lines
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1n_height/ci_framewalk_600.sh ${{ matrix.height }}
+      - name: Fail-closed original bitmap and height-expanded five-NPC mask audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1n_height/analyze_600.py ${{ matrix.height }}
+      - name: Validate standard 16KiB F6 + 600 actual screenshots
+        run: |
+          cd rom/v018/experiments/main_iii_r1n_height
+          test "$(stat -c %s r1n_${{ matrix.height }}_F6.bin)" -eq 16384
+          sha256sum -c ROM_${{ matrix.height }}_SHA256.txt
+          test "$(find height${{ matrix.height }}/evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1n-height-${{ matrix.height }}-stella-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1n_height/build_r1n.py
+            rom/v018/experiments/main_iii_r1n_height/r1n_${{ matrix.height }}.asm
+            rom/v018/experiments/main_iii_r1n_height/r1n_${{ matrix.height }}.lst
+            rom/v018/experiments/main_iii_r1n_height/r1n_${{ matrix.height }}.sym
+            rom/v018/experiments/main_iii_r1n_height/r1n_${{ matrix.height }}_F6.bin
+            rom/v018/experiments/main_iii_r1n_height/ROM_${{ matrix.height }}_SHA256.txt
+            rom/v018/experiments/main_iii_r1n_height/manifest_${{ matrix.height }}.json
+            rom/v018/experiments/main_iii_r1n_height/height${{ matrix.height }}/
+          if-no-files-found: ignore
