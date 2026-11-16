@@ -58,3 +58,7 @@ När bilderna jämförs sida vid sida i ungefär **NTSC 4:3** är **14 visade ra
 - **Full R1 = FAIL/BLOCKED**, andra stora mannen saknas, sex fritt styrbara X saknas, komplett karta, orange dörr och nyckelhål saknas, skottet felplacerat, spelaren en temporär bitmap, ingen full R2–R4.
 - F6/NTSC oförändrat; **ingen F6SC/DPC+/ARM/PAL, inget tillåtet scopebyte**, inga ändringar på `main`, ROM DEVELOPMENT:s draft PR #7 eller VERIFICATION issue #8. Detta är ännu inte oberoende verifiering.
 - Nästa grind efter separat MAIN-godkännande: undersök **14-raders armrad y167** och en ensam korrekt färgad projektil med **samtliga fem** originalNPC intakta; fortsatt forskning om sjätte stor man och fria X görs separat.
+
+## Extra bytebaserad dubbelkontroll efter nedladdning
+
+MAIN III öppnade de **två nedladdade** evidens-ZIP-filerna lokalt och beräknade åter bildhashar från var och en av **600 råa PNG-bildrutor per höjd** med spelområdet separat från debugger-HUD. För både 14 och 15 rader var **600/600** CSV-framekontroller PASS; området hade **8 olika, stabila SHA-256-bilder**, exakt en per fjärde-NPC-position (4) × högerdörrens läge (2), och aldrig olika bilder för samma läge. Kontrollen bekräftar scenens determinism men är **inte** oberoende formell VERIFICATION.
