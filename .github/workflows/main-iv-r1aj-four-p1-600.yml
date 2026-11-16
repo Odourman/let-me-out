@@ -1,0 +1,49 @@
+name: MAIN IV R1aj four canonical original P1 sprites Stella
+on:
+  push:
+    branches:
+      - research/main-iv-r1aj-four-full-original-p1-20261116
+    paths:
+      - .github/workflows/main-iv-r1aj-four-p1-600.yml
+      - rom/v018/experiments/main_iv_r1aj_four_p1/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fourth-mask:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0, 1]
+    env:
+      R1AJ_BATCH: ${{ matrix.batch }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella X11 image tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build four different canonical source-mask P1 sprites
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1aj_four_p1/build_r1aj.py
+      - name: Capture 600 authentic Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1aj_four_p1/ci_framewalk_600.sh
+      - name: Strict four-original-mask and one-yellow-P0-M0 audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1aj_four_p1/analyze_600.py
+      - name: Check ROM size and SHA and raw screenshot count
+        run: |
+          cd rom/v018/experiments/main_iv_r1aj_four_p1
+          test "$(stat -c %s r1aj_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1aj-batch-${{ matrix.batch }}-four-original-p1-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1aj_four_p1/
+          if-no-files-found: ignore
