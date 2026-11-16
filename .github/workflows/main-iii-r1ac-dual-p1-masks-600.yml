@@ -1,0 +1,45 @@
+name: MAIN III R1ac two distinct P1 original 8x9 masks close RESP1 four X 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1ac-dual-p1-mask-close-resp-stella-20261116
+    paths:
+      - .github/workflows/main-iii-r1ac-dual-p1-masks-600.yml
+      - rom/v018/experiments/main_iii_r1ac_dual_p1_close/build_r1ac.py
+      - rom/v018/experiments/main_iii_r1ac_dual_p1_close/analyze_600.py
+      - rom/v018/experiments/main_iii_r1ac_dual_p1_close/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-tia-same-y-dual-mask-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella and GUI capture + Pillow
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Compile 16KiB F6 research-only C/D/E/F RESP1 dual original masks
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1ac_dual_p1_close/build_r1ac.py
+      - name: Capture 600 consecutive actual Stella debugger frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1ac_dual_p1_close/ci_framewalk_600.sh
+      - name: Fail closed on P1 full 8x9 original masks and independent X, yellow P0 and M0, 262 scanlines
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1ac_dual_p1_close/analyze_600.py
+      - name: Validate actual F6 ROM checksum and 600 PNGs
+        run: |
+          cd rom/v018/experiments/main_iii_r1ac_dual_p1_close
+          test "$(stat -c %s r1ac_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1ac-dual-p1-8x9-original-600-real-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1ac_dual_p1_close/
+          if-no-files-found: ignore
