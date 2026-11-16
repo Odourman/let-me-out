@@ -1,0 +1,45 @@
+name: MAIN III R1u eight M0 X x four P0 X 600 real Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1u-eight-m0-x-window-20261116
+    paths:
+      - .github/workflows/main-iii-r1u-eight-m0-x-600.yml
+      - rom/v018/experiments/main_iii_r1u_eight_m0_x/build_r1u.py
+      - rom/v018/experiments/main_iii_r1u_eight_m0_x/analyze_600.py
+      - rom/v018/experiments/main_iii_r1u_eight_m0_x/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  eight-fine-x:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella real X11 and capture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build eight M0-X mode 16K F6 from fixed R1t SHA
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1u_eight_m0_x/build_r1u.py
+      - name: Capture 600 consecutive Stella 6.7.1 frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1u_eight_m0_x/ci_framewalk_600.sh
+      - name: Fail-closed 8 projectile X × 4 original NPC X × 2 door states
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1u_eight_m0_x/analyze_600.py
+      - name: Validate F6 ROM sha 16K and exactly 600 actual images
+        run: |
+          cd rom/v018/experiments/main_iii_r1u_eight_m0_x
+          test "$(stat -c %s r1u_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1u-eight-m0-x-600-real-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1u_eight_m0_x/
+          if-no-files-found: ignore
