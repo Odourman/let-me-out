@@ -17,6 +17,9 @@
 - R1ba (research/main-iv-r1ba-integrated-xyz-pf-20261116; Actions run 43884511590, success) locally audited 600/600 genuine Stella frames in one 16384-byte NTSC F6 ROM with all six source-exact original masks, yellow P0, one static M0, three LINKED X/Y layouts, and two mirrored brown PF walls, 262 scanlines; ROM SHA256 41fdb87969a20d40fee8cde5673792201663860c2d1e08c8d93f9172ede82361. This is LOCAL RESEARCH PASS, NOT six individual free X/Y, complete R1, real T07 write-cycle trace, R2, R3 or R4 acceptance, and NOT independent verification. All four F6 banks repeat one program.
 - Overall full v0.18 diagnostic: BLOCKED / NOT ACCEPTED. PR #7 remains draft; no other step authorized.
 
+## ROM DEVELOPMENT operational prompt, 2026-11-16
+The [new complete ROM DEVELOPMENT role instruction](MAIN_V_ROM_DEVELOPMENT_STARTPROMPT_2026-11-16.md) and [matching Google Doc](https://docs.google.com/document/d/1aHAq7ZZ7Kw2zEhXXISA1aomocOY6xYOW4H2epdHG360/edit) restate R3/C02 as the one active first task, empower independent implementation and developer testing within that task, and defer independent VERIFICATION until an explicitly commissioned substantial frozen batch. This does not broaden the existing authorization.
+
 ## 3. First and ONLY immediately issued ROM DEVELOPMENT work order - R3-C02
 **Status:** Prepared for the user to start the separate ROM DEVELOPMENT chat. No claim is made that a chat has received or started it.
 **Purpose:** Isolated, executable, reproducible R3/NTSC test of only-right-hand door, with separate evidence for orange gate and recognizable black keyhole. Do not implement R1/R2/R4 as part of this order.
