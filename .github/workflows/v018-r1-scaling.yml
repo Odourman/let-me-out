@@ -1,0 +1,47 @@
+name: v018 R1 independent X 3-4-5-6 original masks (real Stella)
+on:
+  push:
+    branches:
+      - rom-dev/v018-r1-independent-xy-20261116
+    paths:
+      - .github/workflows/v018-r1-scaling.yml
+      - rom/v018/experiments/r1_free_xy/build_scaling.py
+      - rom/v018/experiments/r1_free_xy/capture_scaling.sh
+      - rom/v018/experiments/r1_free_xy/analyze_scaling.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scaling:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM, Stella 6.7.1 and raw screenshot tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella python3-pil > r1_tool_versions.txt
+      - name: Build 4 actual ROMs with 3 through 6 independent P1 reset requests
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_scaling.py
+          for n in 3 4 5 6; do
+            test "$(stat -c %s dist/r1_individual_${n}_F6.bin)" -eq 16384
+          done
+          sha256sum dist/r1_individual_*_F6.bin > dist/scaling_SHA256SUMS.txt
+          sha256sum -c dist/scaling_SHA256SUMS.txt
+      - name: Capture sixteen consecutive real Stella frames for each N
+        run: bash rom/v018/experiments/r1_free_xy/capture_scaling.sh
+      - name: Strict no-ghost, source-exact 8x9, P0/M0, wall, 262 HUD analysis
+        continue-on-error: true
+        run: /usr/bin/python3 rom/v018/experiments/r1_free_xy/analyze_scaling.py
+      - name: Upload all negative and positive evidence including real Stella GUI pictures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: letmeout-r1-scaling-3-4-5-6-original-masks
+          path: |
+            r1_tool_versions.txt
+            rom/v018/experiments/r1_free_xy/
+          if-no-files-found: ignore
