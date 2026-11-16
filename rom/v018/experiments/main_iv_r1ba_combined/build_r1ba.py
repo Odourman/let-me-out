@@ -46,7 +46,7 @@ SF=[int(x,2) for x in canon["sprites"]["small_female"]]
 assert SM==[0,0,60,60,24,126,24,36,0]
 assert SF==[0,0,60,60,24,126,60,36,0]
 profiles={"A":(1,-1),"B":(-1,1),"C":(-2,-1)}
-pSM=re.compile(r"( LDX #0\n LDA #)\$([0-9A-F]{2})(\n(?: NOP\n){3} STA RESP1\n STA GRP1\n)")
+pSM=re.compile(r"( LDX #0\n LDA #)\$([0-9A-F]{2})(\n(?: NOP\n){2,3} STA RESP1\n STA GRP1\n)")
 pSF=re.compile(r"( STA GRP1\n LDA #)\$([0-9A-F]{2})(\n NOP\n STA RESP1\n STA GRP1\n)")
 def shift_body(z,regex,arr,dy):
  n=[0]
