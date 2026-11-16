@@ -26,10 +26,12 @@ def check_one(root,phase,expected_sha):
     for d in ('raw','raw_full'):
         files=sorted((raw/d).glob('frame_*.png'))
         assert len(files)==16,(phase,d,len(files))
-        from PIL import Image
+        import struct
         for file in files:
-            with Image.open(file) as im:
-                assert im.size==((900,300) if d=='raw' else (1366,900))
+            data=file.read_bytes()[:24]
+            assert data[:8]==bytes([137,80,78,71,13,10,26,10])
+            width,height=struct.unpack('>II',data[16:24])
+            assert (width,height)==((900,300) if d=='raw' else (1366,900))
     # Each raw pair and each trap image must match its independently
     # recorded SHA-256: all names are paths from base, NOT from sum-file dir.
     for f in ('RAW_CROP_SHA256SUMS.txt','RAW_FULL_SHA256SUMS.txt','traps/REAL_TIA_TRAP_PNG_SHA256.txt'):
