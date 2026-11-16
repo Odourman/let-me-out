@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""R1ah experimental third complete original P1 mask on same nine raster rows."""
+"""R1ah experimental third complete original P1 mask on same nine raster rows.\nCanonical registry pinned in this research branch, exact blob 058800a4c1904d1ff289e7e61b3902aa111ba16d.\n"""
 from pathlib import Path
 import hashlib,subprocess,os,sys,json
 R=Path(__file__).resolve().parent
