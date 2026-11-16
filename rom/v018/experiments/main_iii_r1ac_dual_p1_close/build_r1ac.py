@@ -30,6 +30,9 @@ for name,expected in {
 # Source line order is bottom->top because visible kernel uses Y=8..0.
 # No change to approved 8x9 bitmap data. Add a separate one-row shot-enable table.
 assert "ShotEnable:" not in s
+# Keep ROM data clear of four separate ALIGN 256 kernel pages.
+assert s.count(" ORG $F300\n")==1
+s=s.replace(" ORG $F300\n"," ORG $F800\n",1)
 assert "\nMaleRows:\n" in s
 s=s.replace("\nMaleRows:\n","\n ALIGN 256\nMaleRows:\n",1)
 # Additional control bits have no graphic mask meaning.
@@ -76,12 +79,18 @@ for key,c1,c2,n1,n2 in heads:
 dispatcher="""R1acSelect:
  LDA FRAMELO
  AND #$03
- BEQ R1acKernelC
+ BEQ R1acPickC
  CMP #$01
- BEQ R1acKernelD
+ BEQ R1acPickD
  CMP #$02
- BEQ R1acKernelE
+ BEQ R1acPickE
  JMP R1acKernelF
+R1acPickC:
+ JMP R1acKernelC
+R1acPickD:
+ JMP R1acKernelD
+R1acPickE:
+ JMP R1acKernelE
 """
 # All four aligned kernels: make placement absolute and BPL within same page.
 part=a+dispatcher+"\n".join(kernels)+"R1acAfterRows:\n"
