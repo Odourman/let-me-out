@@ -1,5 +1,7 @@
 # Let Me Out! – MAIN III: konkret feasibility-grind för två fullständiga P1-masker på samma rasterrad
 
+> **MAIN korrigering 2026-11-16:** Denna första rapport behandlar c30/c38 som primär skiss. Efter direkt granskning av **Stella 6.7.1** har c30/c38 **nedgraderats till ett gränsfall**: den andra resetten kan inträffa när den första 8-pixelkopian visar sin sista pixel. **Den nya föredragna ordningen är c30/c40 för kalibrering och c30/c42, c32/c42, c30/c44, c32/c44 för faktiskt oberoende tvåmaskers-X-test.** Se den [nyare källkodskontrollen med exakt cykelmatris](MAIN_III_R1_RESP1_DUAL_MASK_STELLA_671_SOURCE_AUDIT_AND_8_CYCLE_VARIANTS_2026-11-16.md). Alla X-värden är fortsatt BERÄKNADE, inte uppmätta i en ny ROM.
+
 **Datum:** 2026-11-16. **Disposition:** statisk teknisk studie och snävt experimentkontrakt. **INGEN ny ROM har byggts eller körts i detta dokument.** Ingen automatisk återstart av ROM DEVELOPMENT, inget R1-PASS och ingen oberoende VERIFICATION.
 
 ## A. Gällande styrning, exakt baseline
