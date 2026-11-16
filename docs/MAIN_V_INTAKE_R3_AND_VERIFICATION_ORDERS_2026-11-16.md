@@ -1,6 +1,8 @@
 # Let Me Out! - MAIN V intake, R3 order and independent verification intake
 **Date:** 2026-11-16. **Role:** MAIN V project coordination only. **Authority:** status delta and task dispatch within existing v0.18 authorization, not a new user decision, design waiver, ROM acceptance, merge authorization or new implementation phase.
 
+> **SUPERCEDING TIMING DECISION (user, 2026-11-16):** The initial historical Issue #8 verification order recorded below is NOT an instruction to run full verification immediately upon chat creation. It is **deferred** until MAIN explicitly commissions a necessary substantial frozen batch. The governing new [verification policy](MAIN_V_VERIFICATION_BATCH_POLICY_AND_STARTPROMPT_2026-11-16.md) supersedes only the activation/timing described here, not the frozen commit, technical criteria, or independent-review obligation.
+
 ## 1. Verified source access and authority
 - GitHub repository: https://github.com/Odourman/let-me-out (connected read/write). Google Drive project folder: https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u (connected read/write).
 - Read MAIN IV handoff in both GitHub and Google Docs, MAIN V start and both role prompts; current state, checkpoint, 11-decision supplement, authorization, scope, acceptance, blockers, verification contract, T01-T16 matrix, R3 audit and R1ba technical report.
