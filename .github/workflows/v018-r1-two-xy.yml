@@ -1,0 +1,41 @@
+name: v018 R1 two canon NPC independent 2x2 X and 2x2 Y same ROM
+on:
+  push:
+    branches: [rom-dev/v018-r1-independent-xy-20261116]
+    paths:
+      - .github/workflows/v018-r1-two-xy.yml
+      - rom/v018/experiments/r1_free_xy/build_two_xy.py
+      - rom/v018/experiments/r1_free_xy/capture_two_xy.sh
+      - rom/v018/experiments/r1_free_xy/analyze_two_xy.py
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  factor16:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install genuine DASM Stella PIL X11 tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella > r1xy_versions.txt
+      - name: Build single valid F6 ROM from canonical two-mask independently shifted RAM pixel rows
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_two_xy.py
+          test "$(stat -c %s dist/LetMeOut_R1_TWO_INDEPENDENT_XY_F6.bin)" = 16384
+          sha256sum dist/LetMeOut_R1_TWO_INDEPENDENT_XY_F6.bin | tee dist/R1_TWO_XY_ROM_SHA256SUMS.txt
+      - name: Capture 48 real Stella debugger GUI images for 16 factorized X/Y combos
+        run: bash rom/v018/experiments/r1_free_xy/capture_two_xy.sh
+      - name: Fail-closed compare all source pixels, independently variable X/Y, brown walls and NTSC
+        continue-on-error: true
+        run: /usr/bin/python3 rom/v018/experiments/r1_free_xy/analyze_two_xy.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: letmeout-r1-two-original-independent-XY-16-combos
+          path: |
+            r1xy_versions.txt
+            rom/v018/experiments/r1_free_xy/
+          if-no-files-found: ignore
