@@ -26,7 +26,9 @@ Detta är **statisk källgranskning plus en statisk 6502-cykelmodell**, INTE emu
 Villkor: v0.18-originalmasker `MaleRows`, `FemaleRows`, `PlayerRows` (exakt 9 byte vardera), deras index Y i **samma ROM-page för varje index**, `ShotEnable` per originalrad, `NUSIZ1=$01`, `NUSIZ0=0`, `VDEL0=VDEL1=0`, `COLUP1=white`, `COLUP0=yellow`, vald P0- och M0-basposition förberedda under VBLANK. `WSYNC` har just släppt CPU vid scanline c0. `BPL` tas inom samma ROM-page; inga indexed-page-crossing eller cache-beroenden får ändra cykelkostnaden. OBS: detta är en **skiss**, inte körbar ROM.
 
 ```asm
-Row:                       ; first row enters from a prior STA WSYNC
+RowSync:
+    STA WSYNC              ; +3 on the preceding line; resumes at new row c0
+Row:
     LDA MaleRows,Y         ; +4, end c04
     STA GRP1               ; +3, end c07, first mask
     LDX FemaleRows,Y       ; +4, end c11, preload second mask
@@ -42,11 +44,11 @@ Row:                       ; first row enters from a prior STA WSYNC
     STA RESP1              ; +3, end c40, close #2 ≈ x69
     STX GRP1               ; +3, end c43, new mask effective approx x62
     DEY                    ; +2, end c45
-    BPL Row                ; +3, end c48 (taken and same ROM-page)
+    BPL RowSync            ; +3, end c48 (taken and same ROM-page)
     ; next invocation executes WSYNC before beginning Row again
 ```
 
-**Kontrollera loopskelettet vid kodning:** Lägg `STA WSYNC` **före** `Row:`-instruktionerna så att varje tagen `BPL RowSync` går till `RowSync: STA WSYNC; Row: ...`. `STA WSYNC` kostar ytterligare 3 CPU-cykler (c51), därefter förblir CPU väntande tills nästa scanline. Den sista originalraden har otagen BPL och kräver egen säker exit. Tabellen och originalrapporten räknar `STA WSYNC` som slutet på den upprepade sekvensen; den representerar inte en redan körbar assemblerfil.
+**Loopskalet ovan är schematiskt:** `BPL RowSync` återgår till nästa `STA WSYNC`, och `STA WSYNC` kostar ytterligare 3 CPU-cykler (c51), därefter väntar CPU till följande scanline. Den sista originalraden har otagen BPL och kräver egen säker exit. Exakt källplacering och index/page-cross måste kontrolleras i byggd DASM-listning; snutten är ingen fristående körbar ROM.
 
 ### Modellerade pixeldeadlines och varför c30/c38 är riskabelt
 
