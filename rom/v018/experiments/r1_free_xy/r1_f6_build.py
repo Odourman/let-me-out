@@ -4,7 +4,7 @@ One invocation builds EXACTLY ONE of only two authorized phases (21 or 23).
 HARD G0 source preflight MUST have succeeded first; no 6-NPC build or R1ba.
 """
 from pathlib import Path
-import subprocess,hashlib,json,argparse
+import subprocess,hashlib,json,argparse,re
 R=Path(__file__).resolve().parent
 ROOT=R.parents[3]
 TEMPLATE=ROOT/"rom/v018/experiments/venetian_blinds/vb_9_interleave.asm"
@@ -86,7 +86,7 @@ assert lst.count("RESP1")>=18
 if phase==23:
     assert len([line for line in lst.splitlines() if "95 11" in line and "RESP1,X" in line])==9
 else:
-    assert len([line for line in lst.splitlines() if "BIT FRAMELO" in line])==9
+    assert len([line for line in lst.splitlines() if re.search(r"\bBIT\s+FRAMELO\b",line)])==9
 manifest={
  "status":"BUILT_BUT_NOT_YET_STELLA_PASSED","source_preflight":"SOURCE_ONLY_FEASIBLE_BOTH",
  "F6_phase_first_RESP1":phase,"second_RESP1":32,"first_GRP1":phase+3,"second_GRP1":35,
