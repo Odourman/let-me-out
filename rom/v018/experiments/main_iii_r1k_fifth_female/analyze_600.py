@@ -19,7 +19,7 @@ NPCS={
  "large_male":("MaleRows",166-103),
  "small_male":("SmallMaleRows",406-103)
 }
-FEMALE_XS=(244-103,280-103)  # predicted 18CC apart; BOTH must display original 8x9
+FEMALE_XS=(248-103,280-103)  # measured raw Stella x248 (+2 TIA CC first-copy shift at 18CC double RESP1), x280; BOTH original 8x9 exact
 FOURTH=("SmallFemaleRows",330-103,348-103,360-103,378-103)
 PLAYERX=216-103
 M0Y=160-65
