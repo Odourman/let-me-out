@@ -1,0 +1,49 @@
+name: MAIN IV R1ar six-source-mask constrained independent P1 X variation
+on:
+  push:
+    branches:
+      - research/main-iv-r1ar-six-mask-two-x-windows-20261116
+    paths:
+      - .github/workflows/main-iv-r1ar-six-x-windows-600.yml
+      - rom/v018/experiments/main_iv_r1ar_x_variants/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  six-mask-x:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0, 1, 2]
+    env:
+      R1AR_BATCH: ${{ matrix.batch }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella X11 and pixel audit libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned R1aq six masks with selected M F X cycles
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1ar_x_variants/build_r1ar.py
+      - name: Capture 600 authentic consecutive Stella X11 frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iv_r1ar_x_variants/ci_framewalk_600.sh
+      - name: Strict 2M 2F SM SF original masks P0 M0 NTSC audit
+        run: /usr/bin/python3 rom/v018/experiments/main_iv_r1ar_x_variants/analyze_600.py
+      - name: Check exact F6 ROM bytes and SHA and 600 screenshots
+        run: |
+          cd rom/v018/experiments/main_iv_r1ar_x_variants
+          test "$(stat -c %s r1ar_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iv-r1ar-batch-${{ matrix.batch }}-six-mask-X-600
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iv_r1ar_x_variants/
+          if-no-files-found: ignore
