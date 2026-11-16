@@ -42,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: main-iv-r1ax-mirrored-brown-pf-original-six-mask-layouts-600
+          name: main-iv-r1ax-pf-mode-${{ matrix.mode }}-six-originals-600
           path: |
             versions.txt
             rom/v018/experiments/main_iv_r1ax_pf_walls/
