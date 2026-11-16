@@ -20,7 +20,6 @@ subprocess.run([sys.executable,str(PARENT/"build_dynamic.py")],check=True)
 BASE=(PARENT/"r1g_four_dynamic.asm").read_text()
 assert BASE.count(" STA RESP1\n STA WSYNC\n LDX #34\nBlankLines:")==1
 assert BASE.count(" STA COLUP1\nFrame:")==1
-assert BASE.count(" PF0")==0
 assert BASE.count(" STA PF0")==1
 assert BASE.count(" STA COLUP0")==4*2+1 or BASE.count(" STA COLUP0")>=5
 source=BASE.replace("COLUP1=$07","COLUP1=$07\nCOLUPF=$08\nCTRLPF=$0A")
