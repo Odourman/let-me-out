@@ -1,0 +1,41 @@
+name: R1-F3 bounded G0 first-index geometry feasibility (16 Stella frames)
+on:
+  push:
+    branches: [rom-dev/v018-r1-f3-two-independent-x-20261116]
+    paths: [.github/workflows/v018-r1-f3-g0.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  one-geometry-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM and genuine Stella 6.7.1 plus pixel tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella python3-pil > r1_f3_g0_versions.txt
+      - name: Freeze 6B and F2 ROM source hashes, build exactly one early-index offset
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_six_sweep.py
+          printf '%s  %s\n' 36e588b7211be9dfe6afc534117823f6540aa6d3b753c2816a22c5828d0b60b4 dist/r1_individual_6B_F6.bin | sha256sum -c
+          /usr/bin/python3 r1_f2_build_runtime.py
+          printf '%s  %s\n' 941c943e9000ca062cc5430cf28bcd34ca92beb70257f4dd84109c487b7c3e2b dist/r1_f2_6B_I2_RUNTIME_F6.bin | sha256sum -c
+          /usr/bin/python3 r1_f3_build.py
+          test "$(stat -c %s dist/r1_f3_6B_I0_P1_I2_FIXED_F6.bin)" -eq 16384
+          sha256sum dist/r1_f3_6B_I0_P1_I2_FIXED_F6.bin > r1_f3_g0_rom_sha256.txt
+      - name: Run 16 genuine Stella 6.7.1 frames with both strict audit paths and four mutant negatives
+        run: bash rom/v018/experiments/r1_free_xy/r1_f3_capture_g0.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f3-g0-real-16-frame-second-index-geometry
+          path: |
+            r1_f3_g0_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f3_g0_rom_sha256.txt
+            rom/v018/experiments/r1_free_xy/evidence/r1_f3_g0/
+            rom/v018/experiments/r1_free_xy/r1_f3_6B_I0_P1_I2_FIXED.asm
+            rom/v018/experiments/r1_free_xy/dist/r1_f3_6B_I0_P1_I2_FIXED*
+          if-no-files-found: ignore
