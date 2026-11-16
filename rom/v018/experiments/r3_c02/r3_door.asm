@@ -39,6 +39,7 @@ TEST_Y=$85
 TEST_PASS=$86
 TEST_LEFT=$87
 R3_MAGIC=$88
+DOOR_VISIBLE=$89
 
  ORG $F000
 Reset:
@@ -107,12 +108,15 @@ StateOpen:
  LDA #1
  STA DOOR_OPEN
  LDA #0
+ STA DOOR_VISIBLE
  STA COLUP1
  JMP StateChosen
 StateBrown:
  LDA #0
  STA DOOR_PHASE
  STA DOOR_OPEN
+ LDA #$FF
+ STA DOOR_VISIBLE
  LDA #$34
  STA COLUP1
  JMP StateChosen
@@ -121,6 +125,8 @@ StateOrange:
  STA DOOR_PHASE
  LDA #0
  STA DOOR_OPEN
+ LDA #$FF
+ STA DOOR_VISIBLE
  LDA #$3C
  STA COLUP1
 StateChosen:
@@ -176,7 +182,8 @@ VisibleTop:
  BNE VisibleTop
  ; 176 C02 lines. Each row has separate left/right PF bits.
  ; LDA absolute,Y crosses pages unpredictably: up to 6 extra cycles,
- ; but worst <=70 before NEXT WSYNC. This is STATIC, not Stella timing.
+ ; worst 71 incl three indexed page crossings before NEXT WSYNC.
+ ; This is STATIC, not a Stella debugger trace.
 MapLine:
  STA WSYNC
  LDA LEFT0,Y
@@ -195,13 +202,8 @@ MapLine:
  STA PF1
  LDA RIGHT2,Y
  STA PF2
- LDA DOOR_OPEN
- BNE DoorInvisible
  LDA DOORROWS,Y
- JMP StoreDoor
-DoorInvisible:
- LDA #0
-StoreDoor:
+ AND DOOR_VISIBLE
  STA GRP1
  INY
  CPY #176
