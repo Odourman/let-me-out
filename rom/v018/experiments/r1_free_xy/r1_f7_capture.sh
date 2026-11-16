@@ -39,8 +39,8 @@ from PIL import Image
 import sys
 im=Image.open(sys.argv[1]).convert("RGB")
 assert im.size==(1366,900)
-r,g,b=im.getpixel((800,100))
-assert r>100 and g>85 and b>50,(r,g,b)
+r,g,b=im.getpixel((250,450))  # positive debugger prompt panel, not variable red CPU box
+assert r>200 and g>200 and b>160 and abs(r-g)<30,(r,g,b)
 PY
  then gui_ready=1;echo "F7_REAL_DEBUGGER_GUI_PIXELS_READY $t";break;fi
  sleep 1
