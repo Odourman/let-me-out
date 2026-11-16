@@ -1,0 +1,35 @@
+name: R1-F3 G0 read-only genuine Stella traps after index0 pixel FAIL
+on:
+  push:
+    branches: [rom-dev/v018-r1-f3-two-independent-x-20261116]
+    paths: [.github/workflows/v018-r1-f3-g0-traps.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  failed-geometry-source-row05-traps:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install authentic DASM and Stella 6.7.1
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella > f3_g0_trap_versions.txt
+      - name: Reproduce unchanged G0 FAIL ROM exactly, no second code family
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_six_sweep.py
+          /usr/bin/python3 r1_f2_build_runtime.py
+          /usr/bin/python3 r1_f3_build.py
+          printf '%s  %s\n' 1ed9cd9f735dcbf4cd2dc731da607d84a9c4f85f3c894a4dbd48d2d3fc50c286 dist/r1_f3_6B_I0_P1_I2_FIXED_F6.bin | sha256sum -c
+      - name: Capture targeted real Stella RESP1/GRP1 PC and cycles at failing row05
+        run: bash rom/v018/experiments/r1_free_xy/r1_f3_trace_g0.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f3-g0-failing-index0-source-row05-real-stella-traps
+          path: |
+            f3_g0_trap_versions.txt
+            rom/v018/experiments/r1_free_xy/evidence/r1_f3_g0_traps/
+          if-no-files-found: ignore
