@@ -33,6 +33,12 @@ s=s.replace(' STA COLUBK\n LDA #145\n',
  STA NUSIZ1
  LDA #145
 ''',1)
+s=s.replace(' STA VBLANK\n ; Vblank scanline3: independent delays based on separate tables.\n',
+''' STA VBLANK
+ LDA #1
+ STA NUSIZ1  ; repeat each frame to allow authentic Stella TIA trap
+ ; Vblank scanline3: independent delays based on separate tables.
+''',1)
 s=s.replace(' ORG $F300\n',' ORG $F800\n',1)
 s=s.replace(' ORG $FFFA\n','ShotEnable:\n BYTE $00,$00,$00,$00,$02,$00,$00,$00,$00\n ORG $FFFA\n',1)
 anchor='Row00:\n'
@@ -77,6 +83,7 @@ s=pre+select+'R1ProbeEnd:\n'+end.lstrip('\n')+tail
 assert s.count(' STA RESP1\n')==8  # two sites per 4 mode loops
 for name in ('MaleRows','FemaleRows','PlayerRows'):
     assert old.split('\n'+name+':\n',1)[1].split('\n',1)[0]==s.split('\n'+name+':\n',1)[1].split('\n',1)[0]
+(HERE/'dist').mkdir(exist_ok=True)
 HERE.joinpath('r1_two.asm').write_text(s)
 subprocess.run(['dasm','r1_two.asm','-f3','-odist/r1_two.bank.bin','-ldist/r1_two.lst','-sdist/r1_two.sym'],cwd=HERE,check=True)
 bank=(HERE/'dist/r1_two.bank.bin').read_bytes();assert len(bank)==4096,len(bank)
