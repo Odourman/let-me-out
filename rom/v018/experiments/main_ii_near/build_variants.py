@@ -19,8 +19,7 @@ R1bPostFirst:
 """
 assert src.count(old)==1, "Unexpected source structure - abort"
 variants={
-  "near60": " BIT $00\n",   # replace six-cycle loop with 3-cycle BIT
-  "near51": "",             # eliminate six-cycle loop altogether
+  "near57": " NOP\n",      # replace six-cycle loop with two-cycle NOP
 }
 results={}
 for name,replacement in variants.items():
