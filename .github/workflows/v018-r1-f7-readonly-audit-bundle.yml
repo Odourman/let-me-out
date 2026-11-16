@@ -1,0 +1,127 @@
+name: R1-F7 READ ONLY 160 authentic Stella frames two-RAM selector audit and SHA manifest
+on:
+  push:
+    branches: [rom-dev/v018-r1-f7-two-binary-runtime-selectors-20261116]
+    paths: [.github/workflows/v018-r1-f7-readonly-audit-bundle.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-only-audit-of-already-captured-real-frames:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch immutable ORIGINAL F7 one-ROM 160 genuine Stella frames and 16 genuine debugger traps from existing CI, no rerun
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F7_ONE_ORIGINAL_ROM_160_TRUE_STELLA_RECOVERY_16_OLD_TRAPS
+          run-id: 43967693889
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed/
+      - name: Restore actual old original evidence only, check ROM SHA, raw image counts, prior real register captures
+        run: |
+          R=rom/v018/experiments/r1_free_xy
+          S=seed/$R
+          mkdir -p "$R/dist" "$R/evidence/r1_f7_one_rom"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin" "$R/dist/"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM.json" "$R/dist/"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM.lst" "$R/dist/"
+          cp "$S/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM.sym" "$R/dist/"
+          cp "$S/r1_f7_2x2_independent_RAM_X_ONE_ROM.asm" "$R/"
+          cp -a "$S/evidence/r1_f7_one_rom/." "$R/evidence/r1_f7_one_rom/"
+          printf '%s  %s\n' ede93075c3c2c88b6cca226f52958fbbcb9117a068edca01d4d83ff30e4677df "$R/dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin" | sha256sum -c
+          test "$(find "$R/evidence/r1_f7_one_rom/raw/" -name 'frame_*.png' | wc -l)" -eq 160
+          test "$(find "$R/evidence/r1_f7_one_rom/raw_full/" -name 'frame_*.png' | wc -l)" -eq 160
+          test "$(find "$R/evidence/r1_f7_one_rom/traps/" -name 'stella_full.png' | wc -l)" -eq 16
+          cd "$R"
+          sha256sum -c evidence/r1_f7_one_rom/TRUE_160_CROP_SHA256SUMS.txt >/dev/null
+          sha256sum -c evidence/r1_f7_one_rom/TRUE_160_FULL_SHA256SUMS.txt >/dev/null
+          echo "F7_ORIGINAL_CAPTURE_SOURCE_SHA_160_160_16_VERIFIED_NO_STELLA_NO_DASM"
+      - name: Install Pillow ONLY – no DASM, no Stella, no ROM or screenshot mutation
+        run: sudo apt-get update && sudo apt-get install -y python3-pil
+      - name: Reconstruct G0 JSON from untouched source, then offline audit 160 REAL Stella images and the two distinct canon oracles
+        id: audit
+        continue-on-error: true
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f7_preflight.py
+          /usr/bin/python3 r1_f7_audit.py --raw evidence/r1_f7_one_rom/raw \
+            --out evidence/r1_f7_one_rom/TRUE_160_FRAMES_2x2_SOURCE_CANON_PIXEL_AUDIT.json \
+            --mutants evidence/r1_f7_one_rom/SYNTHETIC_MUTANTS_NOT_REAL_STELLA
+      - name: Make complete SHA256 per-file evidence manifest, verify ZIP content inputs and actual classification (READ ONLY)
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          R=Path('rom/v018/experiments/r1_free_xy')
+          B=Path('bundle')
+          B.mkdir()
+          # Collect exactly the F7 new files and all real evidence, no older experimental ROMs.
+          import shutil
+          for f in R.glob('r1_f7_*'):
+            if f.is_file():shutil.copyfile(f,B/f.name)
+          for f in (R/'dist').glob('r1_f7_*'):
+            if f.is_file():
+              x=B/'dist';x.mkdir(exist_ok=True)
+              shutil.copyfile(f,x/f.name)
+          shutil.copytree(R/'evidence/r1_f7_one_rom',B/'evidence')
+          def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+          rom=B/'dist/r1_f7_2x2_independent_RAM_X_ONE_ROM_F6.bin'
+          assert sha(rom)=='ede93075c3c2c88b6cca226f52958fbbcb9117a068edca01d4d83ff30e4677df'
+          assert rom.stat().st_size==16384
+          assert len(list((B/'evidence/raw').glob('frame_*.png')))==160
+          assert len(list((B/'evidence/raw_full').glob('frame_*.png')))==160
+          assert len(list((B/'evidence/traps').glob('mode_*/*/stella_full.png')))==16
+          audit=B/'evidence/TRUE_160_FRAMES_2x2_SOURCE_CANON_PIXEL_AUDIT.json'
+          if audit.exists():
+              j=json.loads(audit.read_text())
+              category=j['classification']
+              actual=j['actual_measured_single_pair_per_mode']
+              print('F7_REAL_EVIDENCE_CLASSIFICATION',category,'ACTUAL',actual,'INDEPENDENCE',j['all_four_independent_orthogonality_pair_checks_PASS'])
+          else:
+              category='F7_INCONCLUSIVE'
+              actual=None
+          meta={'one_original_ROM_SHA256':sha(rom),
+                'original_160_capture_run':43967693889,
+                'original_16_mode_register_trap_run':43966843507,
+                'source_only_G0_run':43966545190,
+                'genuine_Stella_crop_frames':160,'genuine_full_GUI_frames':160,
+                'genuine_TIA_register_traps':16,
+                'classification':category,'measured_X_pairs':actual,
+                'preregistered_targets':{'00':[39,99],'10':[45,99],'01':[39,105],'11':[45,105]},
+                'F7_only_two_original_masks':True,
+                'ARBITRARY_TWO_X_NOT_PROVEN':True,'SIX_FREE_XY_NOT_PROVEN':True,
+                'FULL_R1_BLOCKED_NOT_ACCEPTED':True,'no_new_rom_in_readonly_audit':True}
+          (B/'F7_EVIDENCE_SUMMARY.json').write_text(json.dumps(meta,indent=2)+'\n')
+          files=sorted(p for p in B.rglob('*') if p.is_file() and p.name not in ['EVIDENCE_FILE_INDEX.json','SHA256SUMS.txt'])
+          idx={str(p.relative_to(B)):{'sha256':sha(p),'bytes':p.stat().st_size} for p in files}
+          (B/'EVIDENCE_FILE_INDEX.json').write_text(json.dumps(idx,indent=2)+'\n')
+          (B/'SHA256SUMS.txt').write_text(''.join(d['sha256']+'  '+n+'\n' for n,d in sorted(idx.items())))
+          print('F7_EVIDENCE_INDEX_HASHES',len(idx))
+          PY
+          cd bundle
+          sha256sum -c SHA256SUMS.txt >/dev/null
+          echo 'F7_EVIDENCE_ALL_INPUT_SHA256_VERIFIED'
+      - name: Upload FULL SHA256-indexed raw evidence including fail cases, original ROM, true Stella images, original TIA traps
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: LET_ME_OUT_R1_F7_FULL_SOURCE_TRUE_160_STELLA_16_TRAPS_SHA256_2026-11-16
+          path: bundle/
+          if-no-files-found: ignore
+      - name: Final fail-closed physical orthogonality classification only, NO new ROM or emulator
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('bundle/F7_EVIDENCE_SUMMARY.json')
+          assert p.exists()
+          x=json.loads(p.read_text())
+          print('FINAL_R1_F7_STATUS',x['classification'])
+          assert x['classification']=='F7_TWO_BINARY_RUNTIME_SELECTORS_LOCAL_PASS','PHYSICAL_2X2_NOT_PROVEN_BUT_ALL_REAL_EVIDENCE_PRESERVED'
+          PY
