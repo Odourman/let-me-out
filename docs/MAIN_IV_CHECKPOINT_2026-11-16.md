@@ -11,6 +11,8 @@
 - [Komplett originalbevis: GitHub Actions ZIP, 600 Stella PNG](https://github.com/Odourman/let-me-out/actions/runs/43884511590/artifacts/14233733448).
 - [Verifierad Google Drive ZIP-kopia i projektmappen](https://drive.google.com/file/d/1c2Sd68dvQsmb_MJcQOLU8dbiMc5YgbsJ/view?usp=drivesdk), **3 930 298 byte** och lokalt kontrollerad ZIP SHA256 `f8dd41e62939aa1699d80f70df0c5b5081b87441a1e2c740ff2786139908f325`. Arkivets 622 poster och alla 600 original-Stella-bilder var läsbara; intern ROM-hash matchade manifestet.
 
+- **Separat R3-källgranskning:** [MAIN IV R3 högerdörr och svart nyckelhål – status och testgrind](https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_IV_R3_RIGHT_DOOR_SOURCE_AUDIT_2026-11-16.md). En äldre v0.18 PR#7-kärna har ospeglad PF-kod med separata vänster-/högerskrivningar och en P1-dörrfärgsekvens, men **inget av D01–D03 är verifierat som godkänd fysisk Stella-dörr**. Inga nya designbeslut.
+
 **Fortfarande BLOCKED full R1/v0.18:** individuellt fria X för sex NPC, fria Y och oberoende kombinationer, aktiv shot-/kollisionsstress, R2 nyckel + O1, asymmetrisk högerdörr R3 med orange markör och svart nyckelhål, T07 verklig write-cycle-trace och oberoende VERIFICATION. Inte ett godkänt fullspel, ingen waiver, ingen produktionsmerge eller ny implementeringsfas.
 
 ## 1. Auktoritet och nuvarande fas
