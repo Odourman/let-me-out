@@ -40,7 +40,7 @@ for name in types:
     expected=masks[name]
     lo,hi=windows[name]
     scored=[]
-    for x0 in range(lo,hi):
+    for x0 in range(lo+(lo%2),hi,2):
         errors=sum(white(x0+2*b,Y+i)!=bool((v>>(7-b))&1)
                    for i,v in enumerate(expected) for b in range(8))
         if errors<=24:scored.append((errors,x0))
