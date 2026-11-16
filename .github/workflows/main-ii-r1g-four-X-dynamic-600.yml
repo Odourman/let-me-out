@@ -1,0 +1,42 @@
+name: MAIN II R1g four-position independent fourth NPC X 600 Stella frames
+on:
+  push:
+    branches:
+      - research/main-ii-r1g-four-X-dynamic-600-20261116
+    paths:
+      - .github/workflows/main-ii-r1g-four-X-dynamic-600.yml
+      - rom/v018/experiments/main_ii_r1g_dynamic/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  r1g-four-dynamic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella 6.7.1 GUI and X11 evidence tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build one F6 ROM with four specialized independent fourth P0 kernels
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1g_dynamic/build_dynamic.py
+      - name: Capture 600 consecutive real Stella debugger frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_ii_r1g_dynamic/ci_framewalk_600.sh
+      - name: Verify all four original masks, player, M0, four X states and NTSC 262
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1g_dynamic/analyze_600.py
+      - name: Recheck 16KB F6 SHA
+        run: |
+          cd rom/v018/experiments/main_ii_r1g_dynamic
+          test "$(stat -c %s r1g_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1g-four-independent-fourth-X-dynamic-600-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_r1g_dynamic/
+          if-no-files-found: ignore
