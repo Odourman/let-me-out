@@ -1,0 +1,89 @@
+name: R1-F6 G2 SECOND AND FINAL c23/c32 phase after true c21 pixel gate
+on:
+  push:
+    branches: [rom-dev/v018-r1-f6-two-mask-hblank-20261116]
+    paths: [.github/workflows/v018-r1-f6-c23.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  last-c23-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install same DASM and Stella 6.7.1 for final authorized phase
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W dasm stella python3-pil > r1_f6_c23_versions.txt
+      - name: Recheck G0 both modes and pinned real c21 16-frame+5-trap hard baseline BEFORE any final DASM build
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f6_preflight.py
+          /usr/bin/python3 - <<'PY'
+          import json
+          p=json.load(open('r1_f6_g0_source_only.json'))
+          x=json.load(open('r1_f6_c21_baseline_gate.json'))
+          assert p['G0']=='F6_SOURCE_ONLY_FEASIBLE_BOTH_PHASES_9_ROWS'
+          assert x['gate']=='F6_C21_C32_BASELINE_REAL_STELLA_PIXEL_AND_TIA_GATE_PASS'
+          assert x['first_compiled_ROM_sha256']=='d0572896ed47bf8e75264d1eb33d5e11f640b2390dc42b6565bdac42af86dc32'
+          assert x['first_successful_actual_ci_run']==43963655377
+          assert x['first_observed_from_all_16_raw_frames']==[39,99]
+          assert x['raw_crop_frame_count']==x['uncropped_frame_count']==16
+          assert x['top_down_male_and_female_source_exhaustive_mask_match_16_of_16']
+          assert x['P0_M0_PF_NTSC_16_of_16']
+          assert x['Stella_6_7_1_traps']==5
+          assert x['no_override_to_preregistered_c23_model']==[45,99]
+          print('F6_SECOND_COMPILE_CONDITION_AUTHORIZED_FROM_TRUE_C21_BASELINE')
+          PY
+      - name: Build ONLY second and final F6 c23/c32 16KB with 95 11 indexed RESP1 X0
+        id: build
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f6_build.py --first 23
+          stat -c '%n %s bytes' dist/r1_f6_two_correct_masks_C23_C32_F6.bin
+          sha256sum dist/r1_f6_two_correct_masks_C23_C32_F6.bin > r1_f6_c23_real_rom_sha256.txt
+      - name: Capture 16 consecutive original Stella PNG+full, two independent actual TOP-DOWN mask oracles, P0 M0 PF 262 and mutant
+        id: capture
+        run: bash rom/v018/experiments/r1_free_xy/r1_f6_capture.sh 23
+      - name: Capture real PC CPU scanline bank and colorclocks for two RESP1 and two GRP1 plus WSYNC
+        if: always() && steps.build.outcome == 'success'
+        run: bash rom/v018/experiments/r1_free_xy/r1_f6_trace.sh 23
+      - name: Hard classify second final phase independently from predicted X45
+        if: always() && steps.build.outcome == 'success'
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('evidence/r1_f6_c23/STRICT_TRUE_16_TOP_DOWN_PIXEL_AUDIT.json')
+          assert p.exists(),'NO F6 C23 REAL PIXEL EVIDENCE'
+          x=json.loads(p.read_text())
+          base=json.loads(Path('r1_f6_c21_baseline_gate.json').read_text())
+          assert x['mutant_negative']['executed']
+          t=Path('evidence/r1_f6_c23/traps')
+          assert len(list(t.glob('*/stella_full.png')))==5
+          assert not list(t.glob('*/UNMEASURABLE.txt'))
+          assert x['all_16_masks_top_down_and_controls_exact'] and x['stable_16_physical_X'],'F6 PIXEL_OR_ORIENTATION_OR_GHOST_FAIL'
+          obs=x['observed_rendered_pairs']
+          assert len(obs)==1,obs
+          first,second=obs[0]
+          print('F6_ACTUAL_COMPARE:',base['first_observed_from_all_16_raw_frames'],'VS',obs[0],
+                'ORIGINAL_PREDICTIONS_C21',[43,99],'C23',[45,99])
+          assert second==99,'F6_SECOND_MOVED: second X not preserved'
+          assert first!=39,'F6_NO_RESPONSE: first X unchanged from observed c21 baseline'
+          print('F6_TWO_MASK_HBLANK_PHASE_LOCAL_PASS_ONLY; FULL_R1_STILL_BLOCKED')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f6-second-c23-c32-real-stella-16-full-crop-and-5-register-traps
+          path: |
+            r1_f6_c23_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f6_g0_source_only.json
+            rom/v018/experiments/r1_free_xy/r1_f6_c21_baseline_gate.json
+            rom/v018/experiments/r1_free_xy/r1_f6_c23_real_rom_sha256.txt
+            rom/v018/experiments/r1_free_xy/r1_f6_two_correct_masks_C23_C32.asm
+            rom/v018/experiments/r1_free_xy/dist/r1_f6_two_correct_masks_C23_C32*
+            rom/v018/experiments/r1_free_xy/evidence/r1_f6_c23/
+          if-no-files-found: ignore
