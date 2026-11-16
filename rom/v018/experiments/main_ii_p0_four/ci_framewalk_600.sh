@@ -57,4 +57,4 @@ wait "$PID" 2>/dev/null || true
 count="$(find "$OUT/raw" -name 'frame_*.png' -type f | wc -l)"
 echo "Saved raw frame crops: $count"
 test "$count" -eq 600
-sha256sum xmatrix_F6.bin >"$OUT/ROM_SHA256.txt"
+sha256sum r1e_F6.bin >"$OUT/ROM_SHA256.txt"
