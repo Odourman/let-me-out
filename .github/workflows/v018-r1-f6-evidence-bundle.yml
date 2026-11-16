@@ -1,0 +1,106 @@
+name: R1-F6 READ ONLY combine 32 authentic Stella crops 32 full 10 traps, no ROM work
+on:
+  push:
+    branches: [rom-dev/v018-r1-f6-two-mask-hblank-20261116]
+    paths: [.github/workflows/v018-r1-f6-evidence-bundle.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  read-only-bundle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the original c21 verified evidence artifact from successful preexisting workflow run (NO rerun)
+        uses: actions/download-artifact@v4
+        with:
+          name: r1-f6-first-c21-c32-real-stella-16-full-crop-and-5-register-traps
+          run-id: 43963655377
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: bundle/C21
+      - name: Download the original c23 verified evidence artifact from successful preexisting workflow run (NO rerun)
+        uses: actions/download-artifact@v4
+        with:
+          name: r1-f6-second-c23-c32-real-stella-16-full-crop-and-5-register-traps
+          run-id: 43963975072
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: bundle/C23
+      - name: Read-only validate 2 unchanged ROMs, all 32 Stella raw/full and 10 original traps, source-only G0, two negative mutants; generate per-file hash manifest
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib,shutil
+          B=Path('bundle')
+          def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+          expected={
+           21:("d0572896ed47bf8e75264d1eb33d5e11f640b2390dc42b6565bdac42af86dc32",[39,99]),
+           23:("eaed3faa87c496b08c50725f931096d69687385bcd75257d3dd63164dc36baef",[45,99])
+          }
+          audit={}
+          for phase in (21,23):
+            R=B/f'C{phase:02d}'/'rom/v018/experiments/r1_free_xy'
+            assert R.exists(),(phase,R)
+            stem=f'r1_f6_two_correct_masks_C{phase:02d}_C32'
+            rom=R/'dist'/f'{stem}_F6.bin'
+            raw=R/'evidence'/f'r1_f6_c{phase:02d}'/'raw'
+            full=R/'evidence'/f'r1_f6_c{phase:02d}'/'raw_full'
+            traps=R/'evidence'/f'r1_f6_c{phase:02d}'/'traps'
+            summary=R/'evidence'/f'r1_f6_c{phase:02d}'/'STRICT_TRUE_16_TOP_DOWN_PIXEL_AUDIT.json'
+            x=json.loads(summary.read_text())
+            b=rom.read_bytes()
+            assert len(b)==16384 and sha(rom)==expected[phase][0]
+            assert all(b[:4096]==b[k*4096:(k+1)*4096] for k in range(4))
+            assert x['observed_rendered_pairs']==[expected[phase][1]]
+            assert x['all_16_masks_top_down_and_controls_exact']
+            assert x['stable_16_physical_X']
+            assert x['mutant_negative']['executed']
+            assert len(list(raw.glob('frame_*.png')))==16
+            assert len(list(full.glob('frame_*.png')))==16
+            assert len(list(traps.glob('*/stella_full.png')))==5
+            assert not list(traps.glob('*/UNMEASURABLE.txt'))
+            assert (R/f'{stem}.asm').exists()
+            assert (R/'dist'/f'{stem}.lst').exists()
+            assert (R/'dist'/f'{stem}.sym').exists()
+            for row in x['real_Stella_frames']:
+              f=raw/row['genuine_unmodified_Stella_PNG']
+              assert sha(f)==row['png_SHA256'],(phase,f)
+              assert row['strict'] and row['rendered_x']==expected[phase][1]
+              assert row['P0_M0_PF_NTSC']['NTSC_262']
+            audit[str(phase)]={'ROM_SHA256':sha(rom),'actual_X':expected[phase][1],
+                'crop_frames':16,'full_GUI_frames':16,'register_trap_GUI_frames':5,
+                'synthetic_mutant_accepted_as_true':False}
+          S=B/'SOURCE_SCRIPTS';S.mkdir()
+          repo=Path('rom/v018/experiments/r1_free_xy')
+          for name in ['r1_f6_preflight.py','r1_f6_build.py','r1_f6_audit.py',
+                      'r1_f6_capture.sh','r1_f6_trace.sh','r1_f6_c21_baseline_gate.json']:
+            shutil.copyfile(repo/name,S/name)
+          (B/'F6_READ_ONLY_COMBINED_EVIDENCE.json').write_text(json.dumps({
+           'source_only_bundle':True,'no_new_DASM_Stella_or_ROM':True,
+           'original_workflow_runs':[43963655377,43963975072],
+           'classification':'F6_TWO_MASK_HBLANK_PHASE_LOCAL_PASS',
+           'overall_R1':'BLOCKED_NOT_ACCEPTED',
+           'two_phase_evidence':audit,
+           'preregistered_phase_predictions':{'21':[43,99],'23':[45,99]},
+           'untouched_original_canon_blob':'058800a4c1904d1ff289e7e61b3902aa111ba16d'
+          },indent=2)+'\n')
+          files=sorted(p for p in B.rglob('*') if p.is_file() and p.name not in
+                       ('EVIDENCE_FILE_INDEX.json','SHA256SUMS.txt'))
+          idx={str(p.relative_to(B)):{'sha256':sha(p),'size':p.stat().st_size} for p in files}
+          (B/'EVIDENCE_FILE_INDEX.json').write_text(json.dumps(idx,indent=2)+'\n')
+          (B/'SHA256SUMS.txt').write_text(''.join(
+             d['sha256']+'  '+name+'\n' for name,d in sorted(idx.items())))
+          assert len(idx)>=120,len(idx)
+          print('F6_READ_ONLY_BUNDLE_PASS original_sources 2 ROMs 32 real crops 32 real full 10 real traps',len(idx),'hashed files')
+          PY
+          cd bundle
+          sha256sum -c SHA256SUMS.txt
+      - name: Upload one combined RAW-EVIDENCE artifact ZIP, zero new ROM builds or Stella runs
+        uses: actions/upload-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F6_COMBINED_32_REAL_STELLA_10_TRAPS_SHA256_2026-11-16
+          path: bundle/
+          if-no-files-found: error
