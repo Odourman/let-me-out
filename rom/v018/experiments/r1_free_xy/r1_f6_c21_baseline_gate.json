@@ -1,0 +1,60 @@
+{
+  "gate": "F6_C21_C32_BASELINE_REAL_STELLA_PIXEL_AND_TIA_GATE_PASS",
+  "work_order": "docs/MAIN_V_TO_ROM_DEV_II_R1_F6_TWO_MASK_HBLANK_COPY_GATE_AUTHORIZED_2026-11-16.md",
+  "G0": "SOURCE_ONLY_FEASIBLE_C21_AND_C23",
+  "first_compiled_ROM_sha256": "d0572896ed47bf8e75264d1eb33d5e11f640b2390dc42b6565bdac42af86dc32",
+  "first_compiled_ROM_bytes": 16384,
+  "first_successful_actual_ci_run": 43963655377,
+  "original_action_artifact_id": 14274653553,
+  "artifact_zip_original_sha256": "e55c7fb75944106b6c9d9f9cdd0e3d48e893d5b7e4c479224138777b7653972c",
+  "raw_crop_frame_count": 16,
+  "uncropped_frame_count": 16,
+  "Stella_6_7_1_traps": 5,
+  "first_model_prediction_prior_to_test": [
+    43,
+    99
+  ],
+  "first_observed_from_all_16_raw_frames": [
+    39,
+    99
+  ],
+  "first_model_discrepancy_x0_pixels": -4,
+  "top_down_male_and_female_source_exhaustive_mask_match_16_of_16": true,
+  "P0_M0_PF_NTSC_16_of_16": true,
+  "independent_set_and_bitfield_masks_16_of_16": true,
+  "mutant_synthetic_negative_both_detected": true,
+  "observed_register_write_traps_scanline_123": [
+    {
+      "TIA": "RESP1",
+      "cpu_cycle": 21,
+      "colorclock": 63,
+      "PC_after": "F147"
+    },
+    {
+      "TIA": "GRP1",
+      "cpu_cycle": 24,
+      "colorclock": 72,
+      "PC_after": "F149"
+    },
+    {
+      "TIA": "RESP1",
+      "cpu_cycle": 32,
+      "colorclock": 96,
+      "PC_after": "F14F"
+    },
+    {
+      "TIA": "GRP1",
+      "cpu_cycle": 35,
+      "colorclock": 105,
+      "PC_after": "F151"
+    }
+  ],
+  "WSYNC_source_cpu_end_cycle": 38,
+  "WSYNC_actual_trap": "STELLA_NEXT_SCANLINE_124_CYCLE0_NOT_CPU_C38_DIRECT",
+  "permission": "A SINGLE final c23/c32 variant may be compiled and observed, no other phase or full R1",
+  "no_override_to_preregistered_c23_model": [
+    45,
+    99
+  ],
+  "no_GITHUB_merge": true
+}
