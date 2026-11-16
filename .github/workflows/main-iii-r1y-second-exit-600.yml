@@ -1,0 +1,45 @@
+name: MAIN III R1y second P1 exit M0 x286-300 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1y-second-p1-exit-m0-20261116
+    paths:
+      - .github/workflows/main-iii-r1y-second-exit-600.yml
+      - rom/v018/experiments/main_iii_r1y_second_exit/build_r1y.py
+      - rom/v018/experiments/main_iii_r1y_second_exit/analyze_600.py
+      - rom/v018/experiments/main_iii_r1y_second_exit/ci_framewalk_600.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  second-p1-exit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella X11 tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build pinned R1x 3-cycle extended coarse M0 shift
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1y_second_exit/build_r1y.py
+      - name: Capture 600 consecutive authentic Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1y_second_exit/ci_framewalk_600.sh
+      - name: Strict 8 projectile X x 4 fourth NPC X x 2 door states plus hardware P1 collision
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1y_second_exit/analyze_600.py
+      - name: Verify standard F6, exact hash and 600 raw frames
+        run: |
+          cd rom/v018/experiments/main_iii_r1y_second_exit
+          test "$(stat -c %s r1y_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1y-second-P1-exit-600-stella
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1y_second_exit/
+          if-no-files-found: ignore
