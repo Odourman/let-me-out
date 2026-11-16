@@ -1,0 +1,41 @@
+name: MAIN II trick 10 HMOVE fine-X with four original NPCs
+on:
+  push:
+    branches:
+      - research/main-ii-26-tricks-hmove10-20261116
+    paths:
+      - .github/workflows/main-ii-trick10-hmove.yml
+      - rom/v018/experiments/main_ii_trick10_hmove/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  hmove-four-masks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real DASM Stella Xvfb and Pillow
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build isolated 16KB standard-F6 HMOVE diagnostic
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_trick10_hmove/build.py
+      - name: Capture four actual Stella fine-position phases and HMOVE PC
+        run: bash rom/v018/experiments/main_ii_trick10_hmove/ci_stella.sh
+      - name: Compare original four masks P0 color M0 and independent P1 positions
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_trick10_hmove/audit.py
+      - name: Check F6 image bytes and hash
+        run: |
+          cd rom/v018/experiments/main_ii_trick10_hmove
+          test "$(stat -c %s trick10_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-trick10-hmove-four-original-mask-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_trick10_hmove/
+          if-no-files-found: ignore
