@@ -1,0 +1,35 @@
+name: R1-F3 retry sole missing G0 first RESP1 real Stella PC/cycle trap
+on:
+  push:
+    branches: [rom-dev/v018-r1-f3-two-independent-x-20261116]
+    paths: [.github/workflows/v018-r1-f3-g0-first-resp-retry.yml]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  one-readonly-trap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real Stella and DASM
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella > f3_g0_one_trap_versions.txt
+      - name: Rebuild same existing F3 G0 failed ROM and confirm exact SHA
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          python3 build_six_sweep.py
+          python3 r1_f2_build_runtime.py
+          python3 r1_f3_build.py
+          printf '%s  %s\n' 1ed9cd9f735dcbf4cd2dc731da607d84a9c4f85f3c894a4dbd48d2d3fc50c286 dist/r1_f3_6B_I0_P1_I2_FIXED_F6.bin | sha256sum -c
+      - name: Capture one authentic missing first RESP1 at source Row05
+        run: bash rom/v018/experiments/r1_free_xy/r1_f3_g0_first_resp_retry.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f3-g0-recovered-first-RESP1-only
+          path: |
+            f3_g0_one_trap_versions.txt
+            rom/v018/experiments/r1_free_xy/evidence/r1_f3_g0_first_resp_retry/
+          if-no-files-found: ignore
