@@ -8,7 +8,7 @@
 
 - **R1u-körbar ROM SHA256:** `ba06c63fd2247a4dfd47b5baa5619271c3ac851859c3ba3ca516bd4c227fc2e7`.
 - [**Evidens från Actions #14215210636**](https://github.com/Odourman/let-me-out/actions/runs/43844430592/artifacts/14215210636); nedladdad ZIP SHA256 `b10022569866468268c1d1fce490ceae4c52d6b96309f380c3c905d9718cddf2`, ZIP CRC godkänd, **600 autentiska Stella 6.7.1-X11-skärmbilder**, ROM, DASM-källa/listing/symboler, CSV och `summary.json`.
-- **Kompakt handoff-ZIP**: `Let_Me_Out_R1u_Research_To_MAIN.zip` SHA256 kommer att registreras separat, med ROM, hela källunderlaget, 600-raders audit-CSV, summary och skärmbild.
+- **Kompakt handoff-ZIP**: `Let_Me_Out_R1u_Research_To_MAIN.zip`, **SHA256 `1a30dbe7c72b991e9a709e9bde78932a3b934091a785db53183813529c3a3645`**, med ROM, hela källunderlaget, 600-raders audit-CSV, summary och skärmbild.
 - Användarens designkrav: ingen skjutanimation; skott ska börja vid spelarens arm och vara en enda projektil.
 
 ## Testade åtta X-positioner
