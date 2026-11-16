@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN V: 30 Atari-trick omprövade EFTER R1-F4
+
+> **SENARE KÄLLKORRIGERING 2026-11-16 – läs före c23/c28-resonemanget:** [F5-korsgranskning med TIA-latch-pipeline och faktiskt R1ba-researchbevis](MAIN_V_F5_SOURCE_ONLY_CROSSCHECK_HBLANK_R1BA_AND_30_TRICKS_2026-11-16.md). En annan `RESP1`-CPU-skrivning vid c28 kan inte utan vidare behandlas som **omedelbar intern reset** vid cc84. Towers beskriver ~4 colorclocks intern counter-reset och särskild START-latch/decode, som ibland fördröjs eller tappas. Det är därför **INTE BEVISAT** att första `RESP1 c23` med nästa c28 måste tappa kopian bara för att en idealiserad START beräknas runt cc86. Modellen för c18–21:s HBLANK-låsning står kvar som stark förklaring men full intern signalproveniens är fortfarande **HYPOTES**. Inget nytt c23/c28 Stella-test har gjorts och ingen ROM-order utfärdas av denna rättelse.
+
 ## Ny HBLANK-förklaring för index0, 6B / NUSIZ1=$01
 
 **Datum:** 2026-11-16. **Status:** **KÄLLRESEARCH / MAIN-INFERENS, EJ NY ROM, EJ VERIFICATION, EJ NY F5-KODORDER**. Detta tillägg ska läsas före den redan avgränsade [R1-F5 P1 copy provenance SOURCE ONLY](MAIN_V_TO_ROM_DEV_II_R1_F5_P1_COPY_PROVENANCE_SOURCE_ONLY_2026-11-16.md). Alla originalmasker, frysta ROM-grenar och MAIN-canon oförändrade.
