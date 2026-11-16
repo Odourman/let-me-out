@@ -1,0 +1,38 @@
+name: MAIN II R1h BALL-left PF rightdoor calibration with R1g four NPC
+on:
+  push:
+    branches:
+      - research/main-ii-r1h-ball-left-asym-pf-four-x-20261116
+    paths:
+      - .github/workflows/main-ii-r1h-ball-pf-calibration.yml
+      - rom/v018/experiments/main_ii_r1h_ball_wall/calibrate_build.py
+      - rom/v018/experiments/main_ii_r1h_ball_wall/ci_calibrate.sh
+      - rom/v018/experiments/main_ii_r1h_ball_wall/calibrate_audit.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ball-left-pf-calibrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real DASM Stella 6.7.1 X11 and Pillow
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella >versions.txt
+      - name: Build eight RESBL timings on same R1g four-original ROM
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1h_ball_wall/calibrate_build.py
+      - name: Capture eight authentic Stella 6.7.1 phase frames
+        run: bash rom/v018/experiments/main_ii_r1h_ball_wall/ci_calibrate.sh
+      - name: Identify precise 4CC BALL x0 and open right PF edge
+        run: /usr/bin/python3 rom/v018/experiments/main_ii_r1h_ball_wall/calibrate_audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-ii-r1h-ball-left-asym-pf-calibration
+          path: |
+            versions.txt
+            rom/v018/experiments/main_ii_r1h_ball_wall/
+          if-no-files-found: ignore
