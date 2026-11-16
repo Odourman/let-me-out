@@ -12,8 +12,8 @@ ROOT=Path(__file__).resolve().parent
 RAWDIR=ROOT/"evidence_600"/"raw"
 MALE=[0x3c,0x3c,0x18,0xff,0x18,0x24,0x24,0x42,0x42]
 FEMALE=[0x3c,0x3c,0x18,0xff,0x3c,0x7e,0x7e,0x24,0x24]
-A=[1,2,3,1,2,1]
-B=[1,1,1,2,2,3]
+A=[1,2,3,1,2,3,1,2]
+B=[1,1,1,2,2,2,3,3]
 SCAN_262_NORMAL="04f59d7fbc17d360e0cea738d4e512ab7208118b9b4d4b4743f3a702d96f1fdb"
 SCAN_262_HIGHLIGHT="a169787b7bdcf465b5a1b7505dca83c31f60fa2c16337d39fea3e957ea13ace2"
 SCAN_270_NORMAL="fc2474f98591f368a880e257df39fadf893dd673512a37535f8df9c41789f142"
@@ -79,7 +79,7 @@ def analyze(im,frame,patterns):
     if n is None:
         phase=None
     else:
-        phase=((n-1)//16)%6
+        phase=((n-1)//16)%8
     expected=None
     if phase is not None:
         expected=[196+30*(A[phase]-1),334+30*(A[phase]+B[phase]-2)]
@@ -148,8 +148,8 @@ def main():
         "status":"LOCAL_PASS_600" if
            frame_sequential and scans==600 and masks==600 and
            positions==600 and ghost==0 and p0==600 and m0==600 and
-           len(histogram)==6 else "FAIL_OR_INCONCLUSIVE",
-        "limitations":"Only six selected cycle-safe coarse A/B timings, no overlap/near-X, no full six NPC, no PF walls, no independent VERIFICATION."
+           len(histogram)==8 else "FAIL_OR_INCONCLUSIVE",
+        "limitations":"Eight selected coarse A/B timing combinations with shorter 57cc GRP1 settle, no overlap/near-X, no full six NPC, no PF walls, no independent VERIFICATION."
     }
     (ROOT/"evidence_600"/"summary.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n")
     print(json.dumps({k:v for k,v in summary.items() if k!="frame_errors"},indent=2,ensure_ascii=False))
