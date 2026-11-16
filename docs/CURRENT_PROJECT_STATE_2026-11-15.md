@@ -3,6 +3,10 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN V – ROM DEVELOPMENT startprompt och första R3-uppdrag, 2026-11-16
+
+[Komplett operativ ROM DEVELOPMENT-startprompt](MAIN_V_ROM_DEVELOPMENT_STARTPROMPT_2026-11-16.md) samt [Google Drive-kopia](https://docs.google.com/document/d/1aHAq7ZZ7Kw2zEhXXISA1aomocOY6xYOW4H2epdHG360/edit). ROM DEVELOPMENT får självständigt experimentera, implementera, felsöka och egenkontrollera inom **det enda aktiva R3/C02-uppdraget** men inte automatiskt gå till R1/R2/R4 eller senare fas. VERIFICATION förblir vilande till MAIN beställer en större fryst batch. Ingen produktionsmerge, ny spelcanon eller bredare kodauktorisation.
+
 ## MAIN V – användarbeslut om samlad VERIFICATION, 2026-11-16
 
 [Ny bindande verifieringspolicy och startprompt](MAIN_V_VERIFICATION_BATCH_POLICY_AND_STARTPROMPT_2026-11-16.md) med [kopia i Drive](https://docs.google.com/document/d/1ynrElK86xYZ5jy27ytyrxwxUL1qX7Vj8QWc4fjsswJs/edit). **Oberoende VERIFICATION är nu vilande som standard** och får inte köras automatiskt vid chattuppstart, varje ROM-ändring eller enskilda forsknings-PASS. MAIN ska vid verkligt behov lämna en uttrycklig, fryst och innehållsrik samlad batch. **Issue #8 bevaras i kö som separat historisk baseline, inte annullerad men ej beställd nu.** Ingen ändring av krav på slutlig oberoende granskning, v0.18-scope eller canon.
