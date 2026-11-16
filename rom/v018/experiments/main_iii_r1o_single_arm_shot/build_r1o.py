@@ -76,8 +76,13 @@ for i,suffix in enumerate("ABCD"):
     assert shot.count(needle)==1,suffix
     shot=shot.replace(needle," STA RESP1\n STA ENAM0\n STA RESP1\n")
     # We must disable the duplicate before it begins 32 TIA CC after primary.
-    assert shot.count(" LDA #$0E\n STA COLUP0\n")==1,(suffix,shot[-300:])
-    shot=shot.replace(" LDA #$0E\n STA COLUP0\n"," LDA #$0E\n STY ENAM0\n STA COLUP0\n")
+    if suffix=="C":
+        needle=" LDA #$0E\n STA RESP0\n STA COLUP0\n"
+        assert shot.count(needle)==1,(suffix,shot[-300:])
+        shot=shot.replace(needle," LDA #$0E\n STY ENAM0\n STA RESP0\n STA COLUP0\n")
+    else:
+        assert shot.count(" LDA #$0E\n STA COLUP0\n")==1,(suffix,shot[-300:])
+        shot=shot.replace(" LDA #$0E\n STA COLUP0\n"," LDA #$0E\n STY ENAM0\n STA COLUP0\n")
     # R1n14 white small-male and small-female pixels are identical on Y8:
     # TXA exactly matches original LDA SmallMaleRows14,Y, saving two cycles.
     assert shot.count(" LDA SmallMaleRows14,Y\n")==1
