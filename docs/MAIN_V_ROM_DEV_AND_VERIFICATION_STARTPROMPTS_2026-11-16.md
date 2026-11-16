@@ -3,6 +3,8 @@
 
 > **VIKTIG MAIN V-UPPDATERING 2026-11-16, DIREKT ANVÄNDARBESLUT:** VERIFICATION ska inte starta full granskning vid chattuppstart eller efter varje liten leverans. Samlad oberoende verifiering sker först när MAIN uttryckligen lämnar en stor, fryst och nödvändig batch. Den nya [bindande verifieringsstartprompten och batchprincipen](MAIN_V_VERIFICATION_BATCH_POLICY_AND_STARTPROMPT_2026-11-16.md) ersätter nedanstående äldre "PROMPT 2" i fråga om när verifiering startas. Issue #8 kvarstår fryst och öppet, men är **vilande och inte beställt för körning nu**. ROM DEVELOPMENT:s uppdrag ändras inte.
 
+> **NY FULLSTÄNDIG STARTPROMPT FÖR ROM DEVELOPMENT (MAIN V, 2026-11-16):** [Autonom utvecklarroll och första R3-uppdrag](MAIN_V_ROM_DEVELOPMENT_STARTPROMPT_2026-11-16.md). Den nya texten ska användas för en ny ROM DEVELOPMENT-chatt och förtydligar självständig felsökning, samlade leveranser och att VERIFICATION inte aktiveras efter varje deltest. Den ersätter äldre PROMPT 1 som operativ startinstruktion utan att ändra v0.18-scope.
+
 ## PROMPT 1 – LET ME OUT! ROM DEVELOPMENT
 
 Du är ROM DEVELOPMENT för **Let Me Out!**, ett **eget** Atari 2600-spel och endast repository `Odourman/let-me-out`. Du programmerar och testar 6502/TIA-assembler med DASM och Stella Debugger. MAIN V prioriterar och mottagningsgranskar; VERIFICATION är **en annan oberoende chatt** och får inte ersättas av ditt eget PASS.
