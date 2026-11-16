@@ -12,16 +12,22 @@ ROOT=Path(__file__).resolve().parent
 RAWDIR=ROOT/"evidence_600"/"raw"
 MALE=[0x3c,0x3c,0x18,0xff,0x18,0x24,0x24,0x42,0x42]
 FEMALE=[0x3c,0x3c,0x18,0xff,0x3c,0x7e,0x7e,0x24,0x24]
-A=[1,2,3,1,2,3,1,2]
-B=[1,1,1,2,2,2,3,3]
-SCAN_262="a169787b7bdcf465b5a1b7505dca83c31f60fa2c16337d39fea3e957ea13ace2"
+A=[1,2,3,1,2,1]
+B=[1,1,1,2,2,3]
+SCAN_262_NORMAL="04f59d7fbc17d360e0cea738d4e512ab7208118b9b4d4b4743f3a702d96f1fdb"
+SCAN_262_HIGHLIGHT="a169787b7bdcf465b5a1b7505dca83c31f60fa2c16337d39fea3e957ea13ace2"
+SCAN_270_NORMAL="fc2474f98591f368a880e257df39fadf893dd673512a37535f8df9c41789f142"
+SCAN_270_HIGHLIGHT="15dc4da891cb0c3aa06529efafc56ebae4c165928b72ab9d4e0a36f9bc83528c"
 
 def white(p):
     return min(p)>180 and max(p)-min(p)<40
 def yellow(p):
     return p[0]>120 and p[1]>100 and p[2]<100
 def glyph(im,x):
-    return tuple(yellow(im.getpixel((xx,yy))) for yy in range(9,19) for xx in range(x,x+7))
+    # Stella debugger HUD digits are pale yellow with blue ~= 128.
+    # Do NOT apply the game's stricter P0/M0 yellow-color predicate.
+    return tuple((lambda p:p[0]>210 and p[1]>150 and p[2]<180)(im.getpixel((xx,yy)))
+                 for yy in range(9,19) for xx in range(x,x+7))
 def digit_templates(files):
     out={}
     for j in range(1,11):
@@ -73,7 +79,7 @@ def analyze(im,frame,patterns):
     if n is None:
         phase=None
     else:
-        phase=(n//16)%8
+        phase=((n-1)//16)%6
     expected=None
     if phase is not None:
         expected=[196+30*(A[phase]-1),334+30*(A[phase]+B[phase]-2)]
@@ -81,6 +87,8 @@ def analyze(im,frame,patterns):
     exact_masks=(len(masks)==2 and masks[0]["male_bit_errors"]==0 and masks[1]["female_bit_errors"]==0)
     expected_positions=(x_pair==expected)
     scanhash=hashlib.sha256(im.crop((558,25,594,46)).tobytes()).hexdigest()
+    scanvalue=262 if scanhash in (SCAN_262_NORMAL,SCAN_262_HIGHLIGHT) else (
+        270 if scanhash in (SCAN_270_NORMAL,SCAN_270_HIGHLIGHT) else None)
     return {
         "expected_image_index":frame,
         "expected_frame_id":10+frame,
@@ -97,7 +105,8 @@ def analyze(im,frame,patterns):
         "extra_white_pixel_count":len(unexplained),
         "yellow_player_pixel_count":yellow_player,
         "yellow_missile_pixel_count":yellow_missile,
-        "scan_262_exact_hud":scanhash==SCAN_262,
+        "scan_262_exact_hud":scanvalue==262,
+        "scanline_read_from_hud":scanvalue,
         "scan_hud_sha256":scanhash
     }
 
@@ -139,8 +148,8 @@ def main():
         "status":"LOCAL_PASS_600" if
            frame_sequential and scans==600 and masks==600 and
            positions==600 and ghost==0 and p0==600 and m0==600 and
-           len(histogram)==8 else "FAIL_OR_INCONCLUSIVE",
-        "limitations":"Only eight coarse A/B timings, no overlap/near-X, no full six NPC, no PF walls, no independent VERIFICATION."
+           len(histogram)==6 else "FAIL_OR_INCONCLUSIVE",
+        "limitations":"Only six selected cycle-safe coarse A/B timings, no overlap/near-X, no full six NPC, no PF walls, no independent VERIFICATION."
     }
     (ROOT/"evidence_600"/"summary.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n")
     print(json.dumps({k:v for k,v in summary.items() if k!="frame_errors"},indent=2,ensure_ascii=False))
