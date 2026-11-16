@@ -1,0 +1,39 @@
+name: v018 R1 600 exact two source-original independent X Stella frames
+on:
+  push:
+    branches: [rom-dev/v018-r1-independent-xy-20261116]
+    paths:
+      - .github/workflows/v018-r1-two-600.yml
+      - rom/v018/experiments/r1_free_xy/capture_600_two.sh
+      - rom/v018/experiments/r1_free_xy/analyze_600_two.py
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  source_mask_600:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real DASM and Stella
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella python3-pil > r1_600_versions.txt
+      - name: Assemble two source-exact original masks using proven XY phase-1 builder
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 build_two.py
+          test "$(stat -c %s dist/LetMeOut_R1_TWO_2x2_F6.bin)" = 16384
+          sha256sum dist/LetMeOut_R1_TWO_2x2_F6.bin | tee dist/ROM_600_SHA256SUMS.txt
+      - name: Capture 600 consecutive original Stella 6.7.1 debugger frames
+        run: bash rom/v018/experiments/r1_free_xy/capture_600_two.sh
+      - name: Fail-closed actual pixel-perfect upright 8x9, P0, M0, PF walls, 262 HUD every frame
+        run: /usr/bin/python3 rom/v018/experiments/r1_free_xy/analyze_600_two.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: letmeout-r1-two-independent-x-600-full-originals
+          path: |
+            r1_600_versions.txt
+            rom/v018/experiments/r1_free_xy/
+          if-no-files-found: ignore
