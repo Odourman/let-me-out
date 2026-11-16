@@ -1,0 +1,45 @@
+name: MAIN III R1m move M0 from head to torso row 600 Stella
+on:
+  push:
+    branches:
+      - research/main-iii-r1m-arm-height-m0-20261116
+    paths:
+      - .github/workflows/main-iii-r1m-shot-height-600.yml
+      - rom/v018/experiments/main_iii_r1m_arm_missile/build_r1m.py
+      - rom/v018/experiments/main_iii_r1m_arm_missile/ci_framewalk_600.sh
+      - rom/v018/experiments/main_iii_r1m_arm_missile/analyze_600.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  projectile-height:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DASM Stella X11 capture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella | tee versions.txt
+      - name: Build projectile-height 16K research ROM on exact R1k base
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1m_arm_missile/build_r1m.py
+      - name: Capture 600 real Stella frames
+        timeout-minutes: 11
+        run: bash rom/v018/experiments/main_iii_r1m_arm_missile/ci_framewalk_600.sh
+      - name: Pixel audit five original NPC and M0 same-band y167
+        run: /usr/bin/python3 rom/v018/experiments/main_iii_r1m_arm_missile/analyze_600.py
+      - name: Check ROM SHA and frame count
+        run: |
+          cd rom/v018/experiments/main_iii_r1m_arm_missile
+          test "$(stat -c %s r1m_F6.bin)" -eq 16384
+          sha256sum -c ROM_SHA256.txt
+          test "$(find evidence_600/raw -name 'frame_*.png' | wc -l)" -eq 600
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: main-iii-r1m-shot-height-600-evidence
+          path: |
+            versions.txt
+            rom/v018/experiments/main_iii_r1m_arm_missile/
+          if-no-files-found: ignore
