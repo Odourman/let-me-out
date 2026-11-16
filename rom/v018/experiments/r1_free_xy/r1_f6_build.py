@@ -8,7 +8,7 @@ import subprocess,hashlib,json,argparse
 R=Path(__file__).resolve().parent
 ROOT=R.parents[3]
 TEMPLATE=ROOT/"rom/v018/experiments/venetian_blinds/vb_9_interleave.asm"
-CANON=ROOT/"design/NPC_REFERENCE_8x9_masks.json"
+CANON=R/"canon_masks.json"
 p=argparse.ArgumentParser();p.add_argument("--first",type=int,choices=[21,23],required=True)
 args=p.parse_args();phase=args.first
 pre=json.loads((R/"r1_f6_g0_source_only.json").read_text())
