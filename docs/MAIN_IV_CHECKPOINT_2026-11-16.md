@@ -23,7 +23,7 @@
 | [R1au one-group walk, run 43869049214](https://github.com/Odourman/let-me-out/actions/runs/43869049214) | 600/600 kontrollerade steg A–B–C–B–A, bara en stor grupp byter X per övergång | Begränsade förkompilerade positioner |
 | [R1ay, run 43871126664](https://github.com/Odourman/let-me-out/actions/runs/43871126664) | 3 × 600/600, totalt **1 800/1 800** real-Stella-bilder med olika intilliggande Y-profiler för småmasker; noll vita pixelavvikelser | Olika statiska ROM-varianter; inte allas fria Y |
 | [R1az, run 43871769128](https://github.com/Odourman/let-me-out/actions/runs/43871769128) | 600/600, **en** ROM med tre växlande små-NPC Y-profiler. 297/151/152 bilder per profil, alla sex 8×9 originalmasker hela, P0/M0 och 262 NTSC | Y via 3 förberäknade lägen, stora NPC står kvar, PF saknas |
-| [R1ax, brown PF walls, latest run](https://github.com/Odourman/let-me-out/actions/workflows/main-iv-r1ax-mirrored-brown-pf-600.yml) | Första fulla körningen 43871116845: 600/600 **vita maskrader** och **brun speglad PF sidovägg i 600/600** i läge 0, men testerna underkändes då brun PF felklassades som gul P0/M0. Färgseparationsbugg korrigerad i auditorcommit `7e66b2ac721eec009a39753adbee267c80cd3c37`; omkörning 43883269341 måste avgöras separat. | **Ingen godkänd R1ax ännu tills ett nytt fullständigt auditutlåtande finns.** PF0-speglad vägg räcker inte för ensidig högerdörr eller svart nyckelhål. |
+| [R1ax, corrected run 43883269341](https://github.com/Odourman/let-me-out/actions/runs/43883269341) | **600/600 local PASS** for mirrored brown PF side walls, all six source-exact white masks, yellow P0 and one M0, 262 NTSC; three observed runtime-X layouts, zero missing/extra white. ROM SHA256 `64ba6cd5152a395737b2c41607b0a9e54c7836319bbed2bfee9bfdc6af1f81d1`. Controls PF-off and nonreflected PF each FAIL side-wall criterion, as expected. | Real measured **PF technical baseline** only: does not prove R3 right-only unlocked opening, orange port or black keyhole, and does not solve six independently free X. |
 
 Originalgrafiken har inte förenklats för dessa delprov. De upprepade F6-experimentfilerna består av fyra lika 4 KiB-banker; de bevisar **inte** att F6-bankswitching i full diagnostik är löst.
 
@@ -42,7 +42,7 @@ Mer detaljer: [R1ay-överlämning](https://github.com/Odourman/let-me-out/blob/r
 
 ## 4. Prioriterat arbete inom oförändrad befintlig auktorisation
 
-1. Avsluta och klassificera R1ax-omkörningen med skild gul/brun färganalys och negativa kontroller. Bevara även misslyckade originalkörningar.
+1. **R1ax slutförd som lokalt delprov:** bruna speglade sidoväggar, 600/600 i Stella med bevarad P0/M0 och alla sex masker. Både felklassade förtest och senare godkänd färgseparerad analys bevaras; inget R3-högerdörr-PASS följer.
 2. Inom avgränsat R1/R4-forskningsscope: ett nytt, isolerat Stella-prov som kombinerar de **tre** bevisade runtime-X-lägena med **tre** runtime-Y-profiler och en brun vägg-PF i samma ROM. Kräv exakt sex originalmasker, full gul P0+M0, alla 262 linjer, kontroll av väggar och **minst 600** verkliga bilder. Rapportera tydligt om 4 KiB-bankstorlek eller 76 cykler stoppar detta. Det blir ett delprov, inte full R1.
 3. Därefter förbered separata **R2**- och **R3**-teknikscener på det redan beviljade diagnostikuppdraget, men låt ROM DEVELOPMENT utföra och egenkontrollera sin kod. MAIN prioriterar och mottagningsgranskar; VERIFICATION gör senare självständig ombyggnad och test.
 4. Stoppa förslaget om samma-R1-acceptans ifall sex självständiga X eller riktig scenvisning inte kan uppnås: dokumentera blockerare och högst två tekniska alternativ utan att ändra objektantal eller grafiska mål.
@@ -52,6 +52,6 @@ Mer detaljer: [R1ay-överlämning](https://github.com/Odourman/let-me-out/blob/r
 - GitHub är versionskontroll och källspårning. Google Drive är beslut-/rapportarkiv. Samma MAIN IV-checkpoint bör finnas i båda; äldre rapporter skall inte skrivas över.
 - Beslut måste återföras till separat explicit beslutslogg först vid faktiskt användarbeslut. Detta dokument **ändrar inga användarbeslut**.
 - Endast `Odourman/let-me-out` och dess dedikerade Drive-mapp omfattas; ändra inte The Cabin, I Love a Fish eller Linear.
-- R1ax är **research-evidens med pre-audit-diagnos**, inte bekräftad positiv väggverifikation förrän aktuell omkörning är klar.
+- R1ax är **nu 600/600 LOCAL_RESEARCH_PASS** för speglad brun PF-sidovägg, inte för full R1 eller asymmetrisk högerdörr. Oväntade PF-väggspixlar klassades om korrekt i pixelgranskaren utan att ROM-koden ändrades.
 
 **MAIN IV, koordineringsnotering 2026-11-16.**
