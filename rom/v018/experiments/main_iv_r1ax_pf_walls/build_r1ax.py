@@ -48,7 +48,7 @@ rom=four*4;sha=hashlib.sha256(rom).hexdigest()
 meta={"status":"BUILT_UNVERIFIED_R1AX_REFLECTED_BROWN_PF_RESEARCH",
  "source_builder_git_blob":"db04b19994969bcb52ce50c294a698bb0ddb6924",
  "pinned_successful_three_runtime_ROM_SHA256":PIN,
- "mode":mode,"PF0":pfval,"PF1":0,"PF2":0,
+ "mode":mode,"NUSIZ1_value":3,"PF0":pfval,"PF1":0,"PF2":0,
  "CTRLPF":ctrl,"COLUPF":0x26,
  "brown_wall_hypothesis":mode==0,
  "source_masks":"all six 8x9 original silhouettes unchanged",
