@@ -1,88 +1,107 @@
 #!/usr/bin/env python3
-"""R1ad research-only cycle-neutral TIA P1 first-row ghost correction.
-R1ac 600-image audit proved 300 exact 9-row two-mask frames, but 300
-with 4 extra white pixels on row0 to the LEFT of the first mask. Their
-locations are the initial base P1 MAIN copy of MaleRows[8]=$42.
-Delay first male GRP1 load from CPU c7 to c1+7 after first RESP1:
- for c1=30 => c37 (intended close starts ~c39)
- for c1=32 => c39 (intended close starts ~c41)
-Replace early 7-cycle load+store with 3+2+2 neutral BIT,NOP,NOP;
-replace between-RESP BIT+NOPs with new male load+STA and remainder NOPs.
-All RESP1 endcycle pairs and Y rows remain exactly unchanged.
+"""R1ad research-only: eliminate four first-row stray white P1 pixels.
+
+Measured R1ac images: 300/600 exact, 300/600 have exactly four white
+ghost pixels on top (row0), LEFT of intentional male. All 600 original
+P1 mask pixels are PRESENT, and the two P1 X coordinates vary separately.
+
+Potential cause: GRP1 first male pattern written c7 activates the initial
+P1 main copy before first RESP1 close reset. Instead, keep GRP1=0 until
+AFTER first RESP1 at c30/c32, writing male bitmap at c33/c35. The P1
+first close pixels start near CPU c37/c39 (from ACTUAL Stella x87/x99).
+This leaves ~4 CPU cycles for GRP1=1 TIA-CC delay.
+
+Cycle-neutral restructuring:
+ original c0..25: LDA male; STA GRP1; LDX female; LDA player;
+                 STA GRP0; LDA shot; STA ENAM0
+ revised  c0..25: LDX female; LDA player; STA GRP0; LDA shot;
+                 STA ENAM0; LDA male; BIT FRAMELO
+ BOTH exactly 25 cycles.
+ original after first RESP1: BIT FRAMELO (3), NOP ... second RESP1
+ revised:                   STA GRP1 (3), NOP ... second RESP1
+ Maintains four exact CPU reset pairs (30,42),(32,42),(30,44),(32,44).
+ Only horizontal graphics enable phase is altered. No mask bytes change.
 """
 from pathlib import Path
-import hashlib,subprocess,json,re,sys
+import hashlib,subprocess,json
 ROOT=Path(__file__).resolve().parent
 PARENT=ROOT.parent/"main_iii_r1ac_dual_p1_close"
-subprocess.run([sys.executable,str(PARENT/"build_r1ac.py")],check=True)
+subprocess.run(["/usr/bin/python3",str(PARENT/"build_r1ac.py")],check=True)
 pin="af47683fccff5fa48546de9c81032502ccf2ea7a980de90ed1880812789a7f30"
-assert hashlib.sha256((PARENT/"r1ac_F6.bin").read_bytes()).hexdigest()==pin
+assert hashlib.sha256((PARENT/"r1ac_F6.bin").read_bytes()).hexdigest()==pin, "Wrong R1ac baseline"
 old=(PARENT/"r1ac.asm").read_text()
 s=old
-counts={"C":(30,42,3),"D":(32,42,2),"E":(30,44,4),"F":(32,44,3)}
-for mode,(c1,c2,n) in counts.items():
- a=f"R1acRowSync{mode}:\n";b=f" BPL R1acRowSync{mode}\n"
- assert s.count(a)==s.count(b)==1
- head,rest=s.split(a,1);part,tail=rest.split(b,1)
- early=""" STA WSYNC
+heads={"C":(30,42,1,3),"D":(32,42,2,2),"E":(30,44,1,4),"F":(32,44,2,3)}
+for k,(a,b,n1,n2) in heads.items():
+ label=f"R1acRowSync{k}:\n";end=f" BPL R1acRowSync{k}\n"
+ assert s.count(label)==1 and s.count(end)==1
+ pre,rest=s.split(label,1);body,tail=rest.split(end,1)
+ old_start=""" STA WSYNC
  LDA MaleRows,Y
  STA GRP1
- LDX FemaleRows,Y"""
- late=""" STA WSYNC
- ; Delay male GRP1 until AFTER first RESP1, prevent early main P1 ghost.
+ LDX FemaleRows,Y
+ LDA PlayerRows,Y
+ STA GRP0
+ LDA ShotEnable,Y
+ STA ENAM0
+"""
+ new_start=""" STA WSYNC
+ LDX FemaleRows,Y
+ LDA PlayerRows,Y
+ STA GRP0
+ LDA ShotEnable,Y
+ STA ENAM0
+ ; First male GRP1 byte delayed until just after RESP1.
+ LDA MaleRows,Y
  BIT FRAMELO
- NOP
- NOP
- LDX FemaleRows,Y"""
- assert part.count(early)==1,(mode,"early")
- part=part.replace(early,late,1)
- before=" STA RESP1\n BIT FRAMELO\n"+" NOP\n"*n+" STA RESP1\n"
- m=(3+2*n-7)//2
- assert 3+2*n==7+2*m and m>=0
- after=" STA RESP1\n LDA MaleRows,Y\n STA GRP1\n"+" NOP\n"*m+" STA RESP1\n"
- assert part.count(before)==1,(mode,"mid",repr(part))
- part=part.replace(before,after,1)
- s=head+a+part+b+tail
-for name in ("MaleRows","FemaleRows","PlayerRows"):
- label=f"\n{name}:\n"
- assert old.count(label)==s.count(label)==1
- assert old.split(label,1)[1].split("\n",1)[0]==s.split(label,1)[1].split("\n",1)[0]
-for mode,(c1,c2,n) in counts.items():
- # independent static schedule audit in the actual source text
- a=f"R1acRowSync{mode}:\n";b=f" BPL R1acRowSync{mode}\n"
- p=s.split(a,1)[1].split(b,1)[0].splitlines()
- cycles=0;writes=[];load_end=None
- for line in p:
-  ins=line.strip().split(" ;")[0].strip()
-  if not ins or ins.startswith(";"):continue
-  if ins.startswith("LDA ") and ",Y" in ins: ncy=4
-  elif ins.startswith("LDX ") and ",Y" in ins:ncy=4
-  elif ins.startswith("BIT "):ncy=3
-  elif ins.startswith("STA "):ncy=3
-  elif ins=="NOP":ncy=2
-  elif ins=="DEY":ncy=2
-  else:raise ValueError(("uncosted",mode,ins))
-  cycles+=ncy
-  if ins=="STA RESP1":writes.append(cycles)
-  if ins=="STA GRP1":load_end=cycles
- assert writes==[c1,c2],(mode,writes,c1,c2)
- assert load_end==c1+7,(mode,load_end,c1)
- assert cycles==c2+5,(mode,cycles,c2)
+"""
+ assert body.count(old_start)==1,("start",k)
+ body=body.replace(old_start,new_start)
+ first=" STA RESP1\n BIT FRAMELO\n"
+ second=" STA RESP1\n STA GRP1\n"
+ assert body.count(first)==1,("middle",k)
+ body=body.replace(first,second,1)
+ s=pre+label+body+end+tail
+for nm in ("MaleRows","FemaleRows","PlayerRows"):
+ lab=f"\n{nm}:\n"
+ assert old.count(lab)==s.count(lab)==1
+ assert old.split(lab,1)[1].split("\n",1)[0]==s.split(lab,1)[1].split("\n",1)[0]
+timing={}
+for k,(c1,c2,n1,n2) in heads.items():
+ a=f"R1acRowSync{k}:\n";b=f" BPL R1acRowSync{k}\n"
+ ins=s.split(a,1)[1].split(b,1)[0].splitlines()
+ clk=0;resp=[];grp=[]
+ for line in ins:
+  line=line.strip()
+  if not line or line.startswith(";"):continue
+  if line in ("NOP","DEY"):cy=2
+  elif line.startswith("BIT ") or line.startswith("STA "):cy=3
+  elif line.startswith("LDA ") and line.endswith(",Y"):cy=4
+  elif line.startswith("LDX ") and line.endswith(",Y"):cy=4
+  else:raise ValueError(("cycle_unknown",k,line))
+  clk+=cy
+  if line=="STA RESP1":resp.append(clk)
+  if line=="STA GRP1":grp.append(clk)
+ assert resp==[c1,c2] and grp==[c1+3] and clk==c2+5,(k,resp,grp,clk)
+ timing[k]={"resp_end_cycles":resp,"first_grp1_male_end_cycle":grp[0],
+  "second_grp1_female_end_cycle":c2+3}
 (ROOT/"r1ad.asm").write_text(s)
 subprocess.run(["dasm","r1ad.asm","-f3","-or1ad_4k.bin","-lr1ad.lst","-sr1ad.sym"],cwd=ROOT,check=True)
-b=(ROOT/"r1ad_4k.bin").read_bytes()
-assert len(b)==4096
-rom=b*4;sha=hashlib.sha256(rom).hexdigest()
+four=(ROOT/"r1ad_4k.bin").read_bytes()
+assert len(four)==4096
+rom=four*4
+sha=hashlib.sha256(rom).hexdigest()
 (ROOT/"r1ad_F6.bin").write_bytes(rom)
 (ROOT/"ROM_SHA256.txt").write_text(sha+"  r1ad_F6.bin\n")
-info={
- "status":"BUILT_UNVERIFIED_R1AD_DELAYED_GRP1_P1_GHOST_REMOVAL_TEST",
- "pinned_R1ac_ROM_sha256":pin,"ROM_sha256":sha,"bytes":16384,
- "independent_P1_X_modes":{k:{"first_resp1_cpu_end":a,"second_resp1_cpu_end":b,"first_male_grp1_cpu_end":a+7} for k,(a,b,_) in counts.items()},
- "specific_hypothesis":"Suppress 4 ghost WHITE pixels at first scanline left of male by not enabling P1 GRP1 bitmap until after first RESP1; no cycle count change.",
- "original_bitmaps":"male/female/player all 9 source bytes exactly unchanged",
- "needs":"600 genuine Stella frames 262 NTSC all source masks exact every 9 rows, independent two-X, full player, one M0, ZERO extra white",
- "limits":"research only; not six NPC; not independent Verification; no production changes"
+manifest={
+ "status":"BUILT_UNVERIFIED_R1AD_FIRST_GRP1_DELAYED_AFTER_RESP1",
+ "pinned_R1ac_rom_sha256":pin,"ROM_SHA256":sha,"bytes":16384,
+ "architecture":"original two 9-row full P1 mask close retriggers + yellow P0 player + one M0; 4 independent positional pairs",
+ "timetable":timing,
+ "novelty":"defer FIRST male GRP1 c7 to c33/c35 using 6502 cycle-neutral reorder; second female GRP1 unchanged",
+ "hypothesis":"remove exact 4 first-row ghost pixels on 300 R1ac frames; no P1 mask byte may be omitted",
+ "expected_strict_result":"600 real Stella images, 262 lines, two full different male/female masks every original row, no ghost, one yellow shot",
+ "limitations":"research-only; no six NPC, no full gameplay, no independent Verification, no changes to production"
 }
-(ROOT/"manifest.json").write_text(json.dumps(info,indent=2)+"\n")
-print(json.dumps(info,indent=2))
+(ROOT/"manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
+print(json.dumps(manifest,indent=2))
