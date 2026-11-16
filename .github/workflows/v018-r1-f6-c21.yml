@@ -1,4 +1,4 @@
-name: R1-F6 G1 First ONLY c21/c32 two original TOP-DOWN masks Stella (pinned canon path)
+name: R1-F6 G1 First ONLY c21/c32 two original TOP-DOWN masks Stella (pinned same ROM and listing regex)
 on:
   push:
     branches: [rom-dev/v018-r1-f6-two-mask-hblank-20261116]
@@ -35,6 +35,7 @@ jobs:
         run: |
           cd rom/v018/experiments/r1_free_xy
           /usr/bin/python3 r1_f6_build.py --first 21
+          printf '%s  %s\n' d0572896ed47bf8e75264d1eb33d5e11f640b2390dc42b6565bdac42af86dc32 dist/r1_f6_two_correct_masks_C21_C32_F6.bin | sha256sum -c
           stat -c '%n %s bytes' dist/r1_f6_two_correct_masks_C21_C32_F6.bin
           sha256sum dist/r1_f6_two_correct_masks_C21_C32_F6.bin > r1_f6_c21_real_rom_sha256.txt
       - name: Capture 16 original unmodified Stella 6.7.1 debugger frames + two independent direct canonical TOP-DOWN pixel oracles + synthetic mutant negative
