@@ -13,7 +13,7 @@ XVPID=$!
 trap 'kill "$XVPID" 2>/dev/null || true' EXIT
 export DISPLAY=:110
 sleep 1
-for sample in old_brown:historical_v018_F6.bin:1225 old_orange:historical_v018_F6.bin:1335 old_open:historical_v018_F6.bin:1420 new_brown:LetMeOut_v018_R3_C02_F6_NTSC.bin:30 new_orange:LetMeOut_v018_R3_C02_F6_NTSC.bin:90 new_open:LetMeOut_v018_R3_C02_F6_NTSC.bin:150 new_denied_left:LetMeOut_v018_R3_C02_F6_NTSC.bin:151 new_denied_above:LetMeOut_v018_R3_C02_F6_NTSC.bin:152 new_denied_below:LetMeOut_v018_R3_C02_F6_NTSC.bin:153; do
+for sample in old_brown:historical_v018_F6.bin:1225 old_orange:historical_v018_F6.bin:1335 old_open:historical_v018_F6.bin:1420 new_brown:LetMeOut_v018_R3_C02_F6_NTSC.bin:30 new_orange:LetMeOut_v018_R3_C02_F6_NTSC.bin:90 new_open:LetMeOut_v018_R3_C02_F6_NTSC.bin:150 new_locked_right_denied:LetMeOut_v018_R3_C02_F6_NTSC.bin:89 new_denied_left:LetMeOut_v018_R3_C02_F6_NTSC.bin:151 new_denied_above:LetMeOut_v018_R3_C02_F6_NTSC.bin:152 new_denied_below:LetMeOut_v018_R3_C02_F6_NTSC.bin:153; do
   IFS=: read -r name rom frame <<<"$sample"
   d="$OUT/$name"
   mkdir -p "$d"
