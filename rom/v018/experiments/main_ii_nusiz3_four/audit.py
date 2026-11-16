@@ -59,7 +59,7 @@ def check(name):
         if not recognized:unexplained.append((x,y))
     # Discover P0 across the entire scene using its exact 8x9 yellow
     # bitmap; P0 can be moved far right in the experimental variant.
-    source_player=re.search(r"^PlayerRows:\\s*\\n\\s+BYTE (.+)$",text,re.M)
+    source_player=re.search(r"^PlayerRows:\s*\n\s+BYTE (.+)$",text,re.M)
     assert source_player
     player_bytes=[int(v.strip().replace("$","0x"),16) for v in source_player.group(1).split(",")][::-1]
     player_exact=[]
