@@ -3,6 +3,10 @@
 
 Detta är en styrning av vad *inte* får påbörjas till följd av teknisk feasibility-granskning. [Fullständiga käll-/risk- och vägvalsbedömningen](G5_CANDID_FEASIBILITY_ASSESSMENT_AND_DECISION_BRIEF_2026-11-17.md) är separat och normativ som **MAIN:s rekommendation**, men **inte ett nytt användarbeslut**.
 
+## 0D. G5H 24/36 ordningar, gräns för direkt-GRP/RESP-kernel (2026-11-17)
+
+[GitHub G5H käll-/registeranalys](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5H_START_GRP_RESP_NUSIZ_SAME_Y_SOURCE_ONLY_DECISION_2026-11-17.md) · [Google Drive fulltext plus CSV](https://docs.google.com/document/d/1rsRlR4BOjXnY9Wtsp1N3Oq_02yGVMiAKD6Z3UhFa4Q4/edit). Vid fem fiender med originalmasker och orange P1-port räcker source-only direkt `GRP/RESP`-sekvens inte i fria worst-case-X: originalrad6 A 79/76 i alla 24 P1-ordningar, B bästa 74/76 bara om samma M-M intill, B 79/76 när player mellan två M, upp till 89/76 i uttryckligt hypotetiskt gult M0-stressfall. Ingen fysisk G0/ROM-pass, inga ROM-ändringar. Varken tidigare R1 sex, R2 fem + key eller G5 användarens slutliga designval har reviderats. Ytterligare experiment/implementation G6/F12 kräver separat uttrycklig auktorisation; RESEARCH II kan enligt MAIN studera NY kernelfamilj source-only.
+
 ## 0C. G5G ny teknikforskningskandidat; källmässigt naiv 6507-direktsekvens FAIL
 
 [GitHub hela G5G-rapporten](../gates/G5G_BALL_LEFT_WALL_AND_FIVE_NPC_OPCODE_CENSUS_SOURCE_ONLY_2026-11-17.md) · [maskinläsbar 9-scenario CSV](../gates/G5G_DIRECT_EVENT_CPU_CYCLE_CENSUS_2026-11-17.csv) · [Google Drive-kopia i projektmappen](https://docs.google.com/document/d/14sNkAi8gdLqz2wo6OtR9jrpTggrcXB0cv-BCO3onaWY/edit). Teknik: reflektions-PF plus `Ball` 4CC i brunt vid x0 **endast på dörrbandet** när PF0=0, P1 samma orange bitmask med negativt svart keyhole, COLUBK svart. PF+BL 3520/3520 logiska kartceller PASS **endast offline**; BL-positionering, door P1+vit NPC same-Y, M0 och X/Y START-tider INTE mätta.
