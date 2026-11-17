@@ -1,5 +1,12 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+## MAIN VII G5N – source-only kontroll av fem Y-separerade NPC-starter (2026-11-17)
+
+**NYTT KÄLLRESULTAT, INTE G5-PASS ELLER SPELCANON:** [G5N:s reproducerbara v0.11-startanalys och score-rekommendation](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5N_MAIN_VII_S1_FIVE_NPC_LANE_START_AUDIT_AND_SCORE_PROPOSAL_2026-11-17.md); [Drive-kopia](https://docs.google.com/document/d/1oVeMuwiwUrvzQrNBBd-aMUVHxnj5HiGgDWBPesy1CTQ/edit). Alla fyra äldre A01/B01/C02/D01-kartor har 2×2-offline-tillgängliga mängder om fem startpunkter med minst två gridraders (16 rasterlinjers) startavstånd: A01 **2 208**, B01 **48**, C02 **1 248**, D01 **420** giltiga femmängder. Dessa är **endast statiska, pre-rendering/kollision-schematiska** startkombinationer, inte godkänd femfiendersspawn, dynamisk AI, livereachability eller Atari 2600-kernel-PASS. De äldre exempel-sexstarterna i A/B/C går inte att anpassa till fem separata band genom att bara ta bort en enda NPC.
+
+**Huvudkandidat G5-S1** (Berzerk-liknande Y-separation) rekommenderas för vidare G5-beslutsbedömning; kräver fortfarande uttryckligt policybeslut om begränsad Y/jakt. G5-S0/S2 är inte stängda. G5N föreslår **-30 per kill** som en enkel fem-NPC-balansering av gamla beslut 043/047 (med k=5 långsiktigt delta 0 i stället för +25); **det är inte godkänt**. Uniform 1/5-key-bärare och ny femspawn kräver ny beslutad baslinje. **O1 fortsatt begränsat godkänd. S05 (key+door+white) olöst. G5 formellt öppet. G6/F12, ROM, verification och PR-merge ej auktoriserade.**
+
+
 ## MAIN VII – PROJECT SOURCES V2, 2026-11-17
 
 **Aktuell rekommendation:** använd endast [V2 med sex projektkällor](https://drive.google.com/file/d/1R6rvwwYwDIfXOMcbi1CrHIRN5YgR8o7-/view), läs [anvisningen](project_sources/PROJECT_SOURCES_MAIN_VII_V2_USAGE_2026-11-17.md) för när projektet ska kontrollera originalkällor live. Arkiverad niofilsversion är inte avsedd att laddas upp parallellt. Det här är källorientering, **inte ny canon, G5-PASS eller G6/F12-auktorisation**.
