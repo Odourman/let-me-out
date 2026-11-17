@@ -1,5 +1,12 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+## MAIN VII G5T – källa-baserad kartjämförelse och GRAPHICS II source-only uppdrag (2026-11-17)
+
+**NYTT, KARTVAL INTE GODKÄNT:** [G5T källtroget 40×22 jämförelseunderlag](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5T_MAIN_VII_V011_V019_ROOM_MAP_COMPARISON_AND_NEXT_USER_GATE_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1rWQP-gbll83mAQFQZe_b_PVCeYEx5KkSzxyMR07ul9g/edit) · [GRAPHICS II source-only uppdrag #10](https://github.com/Odourman/let-me-out/issues/10). De nya luftiga v0.19-kandidaterna har öppna interiörceller A/B/C/D **95,3/93,7/91,6/92,1 %** mot v0.11 **91,6/79,5/83,7/77,9 %**; 40×22-data och historisk source-bas oförändrade. B_OPEN_01 har endast nio för geometrin återanvändbara historiska spawnkandidater mot tretton i B01. **Detta avgör inte fem giltiga starter eller fysisk TIA-rendering.**
+
+MAIN har **utfärdat** en uttryckligt avgränsad icke-canon kartvisualiseringsstudie för GRAPHICS II i issue #10 (fyra par). **Inget specialistarbete har ännu påståtts levererat eller automatiskt startat**. Efter faktiskt grafikunderlag krävs uttryckligt användarbeslut för exakta v0.19 kartor. **LM-D12/13/14/15/16 godkända framtida mål/regler**, G5 formellt OPEN, G6/F12/ROM/ny Verification/PR-merge spärrade.
+
+
 ## MAIN VII G5S – C1+D1+E1 nu användargodkända för framtida fem-NPC-spel (2026-11-17)
 
 **SENARE GILTIGA ANVÄNDARBESLUT LM-D14/15/16:** Efter direkt fråga om **"Godkänner du uttryckligen C1, D1 och E1 som framtida spel- och testregler?"** svarade användaren **"Fortsätt Följ dina egna rekommendationer"**. [Exakt G5S-beslutsprotokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1UboARrqu3sFHQgeV1y5C0IWoRkSlvAY_6b6RMLWwbnE/edit). Därmed är **C1** framtida versionssatt R1 fem M,M,F,SM,SF och R2 fyra kvar+key, **D1** -30/kill med fem men alla andra poängregler inklusive per-event nollgolv oförändrade, och **E1** fem distinkta förhandsvaliderade starter samt uniform 1/5 key-bärare per NPC-instans nu **GODKÄNDA SOM FRAMTIDA KRAV**, inte längre enbart förslag. Tidigare G5R/G5Q-text i denna växande historiska statussamling som säger "C/D/E obeslutade" är supersederad inom just dessa avgränsade punkter av detta senare beslut.
