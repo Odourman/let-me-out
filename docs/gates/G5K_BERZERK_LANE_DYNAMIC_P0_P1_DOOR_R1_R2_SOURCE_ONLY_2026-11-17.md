@@ -62,6 +62,9 @@ Oförändrade jämförelseantaganden från G5G/H: en synlig 8bitarsaktör med `L
 - **G6**: När användaren senare uttryckligen godkänner en tillräckligt precis ROM-mikroorder och dess Y-policy, är första fysiska preflight **P0 gul ↔ vit same-Y X-order + en M0 och äkta brun PF**, och separat P1 statisk låst orange-door mellan band, före full kombination; **ingen ny G6 beställd nu**.
 - **G7–G10**: Senare, *separata* rättningar av ursprunglig sex-NPC-grind till formellt auktoriserad femfiendersversion, R2 key/O1, R3 door, R4/E02 och gameplay. Research II rådgivande; ROM DEVELOPMENT III endast authorized coding; VERIFICATION II oberoende på fryst commit.
 
+## 4A. Officiellt arkiv och fullständig rad-/kanalbilaga
+- [Google Drive – G5K, full text och 176-raders R1/R2-kanal-CSV](https://docs.google.com/document/d/1OuqluwyUycObf-tB27SoN-kKaqvwVUWbdmUal7oqB60/edit), lagrad i officiell projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u` och läst tillbaka; kontrollerat 37/76, 62/76, key+door 9 rader och sista rad 175. GitHub originalkälla är versionsstyrd och inte en implementationsorder.
+
 ## 5. Källa, leverans och stopp
 - [G5K logisk 176-scanline/6-fält-ägarlista](G5K_LANE_DOOR_DYNAMIC_CHANNEL_R1_R2_176_ROW_OFFLINE_ASSIGNMENT_2026-11-17.csv).
 - [G5J Berzerk primärkälla/24+36 vs lane](G5J_BERZERK_PRIMARY_SOURCE_LANE_KERNEL_AND_FIVE_NPC_SCOPE_OPTIONS_SOURCE_ONLY_2026-11-17.md), [G5H direkt-test FAIL](G5H_START_GRP_RESP_NUSIZ_SAME_Y_SOURCE_ONLY_DECISION_2026-11-17.md), [G5I kanonisk planavstämning](G5I_PLAN_RECONCILIATION_FIVE_NPC_DECISION_READY_NOT_G6_2026-11-17.md).
