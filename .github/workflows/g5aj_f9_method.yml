@@ -1,0 +1,71 @@
+name: G5AJ LM-D24 F9 ONLY Stella debugger prompt-break-step method (NO ROM BUILD)
+on:
+  push:
+    branches:
+      - rom-dev-iii/g5aj-lm-d24-f9-debugger-method-20261118
+    paths:
+      - .github/workflows/g5aj_f9_method.yml
+permissions:
+  contents: read
+  actions: read
+jobs:
+  capture-frozen-F9-A-B-C:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install exact Stella 6.7.1 with debugger and X11 (never DASM)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y stella xvfb xdotool x11-utils imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' stella xvfb xdotool python3-pil
+          dpkg-query -W -f='${Version}\n' stella | grep -q '^6\.7\.1'
+      - name: Download exact historical immutable 16KiB F9 source/bin/list/sym
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+          run-id: 44050126727
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed_f9/
+      - name: Test A baseline trap then B real bank-specific breakpoint and C one step, fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 -m py_compile rom/g5aj_f9_method_2026-11-18/check_f9_frozen.py
+          /usr/bin/python3 -m py_compile rom/g5aj_f9_method_2026-11-18/audit_f9_method.py
+          bash -n rom/g5aj_f9_method_2026-11-18/run_f9_method.sh
+          bash rom/g5aj_f9_method_2026-11-18/run_f9_method.sh
+      - name: Preserve actual raw evidence even after fail-closed stop
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G5AJ_LM_D24_FROZEN_F9_METHOD_RAW_A_B_C
+          path: rom/g5aj_f9_method_2026-11-18/evidence/
+          if-no-files-found: warn
+          retention-days: 90
+  independent-archive-readback:
+    if: always()
+    needs: capture-frozen-F9-A-B-C
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: G5AJ_LM_D24_FROZEN_F9_METHOD_RAW_A_B_C
+          path: archive_readback/
+      - name: Re-hash ALL archival files AFTER original process teardown
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd archive_readback
+          test -s SHA256SUMS.txt
+          sha256sum -c SHA256SUMS.txt
+          test -s G5AJ_EVIDENCE.csv
+          test -s G5AJ_AUDIT.json
+          test -s G5AJ_STATUS.txt
+          echo 'G5AJ_ARCHIVE_D_INDEPENDENT_READBACK_SHA256_PASS'
+          cat G5AJ_STATUS.txt
+          cat G5AJ_EVIDENCE.csv
