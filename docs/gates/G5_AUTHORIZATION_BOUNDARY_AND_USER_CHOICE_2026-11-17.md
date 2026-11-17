@@ -3,6 +3,12 @@
 
 Detta är en styrning av vad *inte* får påbörjas till följd av teknisk feasibility-granskning. [Fullständiga käll-/risk- och vägvalsbedömningen](G5_CANDID_FEASIBILITY_ASSESSMENT_AND_DECISION_BRIEF_2026-11-17.md) är separat och normativ som **MAIN:s rekommendation**, men **inte ett nytt användarbeslut**.
 
+## 0C. G5G ny teknikforskningskandidat; källmässigt naiv 6507-direktsekvens FAIL
+
+[GitHub hela G5G-rapporten](../gates/G5G_BALL_LEFT_WALL_AND_FIVE_NPC_OPCODE_CENSUS_SOURCE_ONLY_2026-11-17.md) · [maskinläsbar 9-scenario CSV](../gates/G5G_DIRECT_EVENT_CPU_CYCLE_CENSUS_2026-11-17.csv) · [Google Drive-kopia i projektmappen](https://docs.google.com/document/d/14sNkAi8gdLqz2wo6OtR9jrpTggrcXB0cv-BCO3onaWY/edit). Teknik: reflektions-PF plus `Ball` 4CC i brunt vid x0 **endast på dörrbandet** när PF0=0, P1 samma orange bitmask med negativt svart keyhole, COLUBK svart. PF+BL 3520/3520 logiska kartceller PASS **endast offline**; BL-positionering, door P1+vit NPC same-Y, M0 och X/Y START-tider INTE mätta.
+
+A/B:s enkla direkta 6507-instruktionsmodell på stadig dörrrad **79/76** (PF0-right toggle tidigare **89/76**); själva Ball/PF-radövergången ökar modellen till **89/76**. **NAIVE PLAN FAIL**, inte 2600 hardware NO-GO; full fysisk G0 ej godkänd och ROM IMPLEMENTATION EJ AUKTORISERAD. Befintlig användarcanon för historiska R1/R2 testantal samt övriga G5-val förblir spärrad i avvaktan på separat explicit användarbeslut.
+
 ## 0B. G5F source-only fem-NPC/REF PF baserad på faktisk källanalys, INTE en kodorder
 
 Efter användarens "Ok, fortsätt" färdigställde MAIN VI [G5F source-only arkitekturrevision](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5F_FIVE_ANDROID_REFLECTED_PF_DOOR_SOURCE_ONLY_ARCHITECTURE_2026-11-17.md) och [Drive fullständigt underlag](https://docs.google.com/document/d/1PAELvVABaDAVuhZILC1Czo5kEIiRGQV2IaZ1bdtKRNw/edit). Alla fyra kartor speglar vänsterhalvan på 18/22 rader, endast dörr x39/y9–12 avviker. Förslaget är `CTRLPF.REF`, latched återbruk av väggdata, eventuellt PF0-only högersidig override på dörrlinjerna samt befintligt P1-dörrmotiv med svart utskuret nyckelhål. 5-NPC-maskradlast 3/3/5/5/5/5/5/5/3; F11 och P0/M0-färgkonflikter kvarstår. **Ingen G6/ROM-implementationsorder, ändrad v0.18-acceptans eller ny teknisk PASS följer av denna dokumentation.** Formellt G5-beslut, fem-NPC cutover av historisk R1/R2 och eventuella visuella waivers är fortfarande användarägt.
