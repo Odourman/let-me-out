@@ -47,6 +47,11 @@ Nyckeln till jämförelsen är **renderingens samspel med robotgrafik, spawn/rö
 4. **Lägg fram en ny fråga till användaren** före varje förändring av sex→fem, visuella waivers eller acceptanskriterier. Håll Atari 2600 standard-F6 som levande researchkandidat, men utlovas inte som färdig produkt förrän verklig full scen kan visas.
 5. Ingen ny G6/F12/ROM-, GRAPHICS-implementation eller oberoende E02-verification genom detta dokument.
 
+## 5A. Officiell Google Drive-arkivkopia
+
+- [Läsbar Drive-kopia i projektmappen](https://docs.google.com/document/d/1Iv9XrYt3CvkPNhiCGxSgEQSe0M91SHa4CHIjqP6YAA8/edit) av samma forskningskandidat. Kopian skapades, flyttades till projektmapp 1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u och lästes tillbaka med kontrollerat innehåll (fördelningen 2M/1F/SM/SF, Berzerk, Venetian Blinds, explicit NOT CANON).
+- GitHub är denna filens maskinläsbara och versionsstyrda primärkälla; Drive kompletterar den.
+
 ## 6. Auktoritetsordning och källor
 - Projektets aktuella [CURRENT_PROJECT_STATE](CURRENT_PROJECT_STATE_2026-11-15.md) och [G5 decision boundary](gates/G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md) är fortfarande statuskällor.
 - [ROM_GATE_V018_ACCEPTANCE](ROM_GATE_V018_ACCEPTANCE.md) C01–C04, [R1–R4 scope](ROM_GATE_V018_SCOPE.md) och [NPC originalmasker](../design/NPC_REFERENCE_8x9_masks.json) är **inte ändrade**.
