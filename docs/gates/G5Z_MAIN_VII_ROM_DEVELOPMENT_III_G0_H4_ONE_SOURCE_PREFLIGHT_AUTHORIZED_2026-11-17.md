@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII G5Z: uttryckligt användargodkänd ENDAST G0 H4-ONE, SOURCE-ONLY arbetsorder till ROM DEVELOPMENT III
+
+> **HISTORISK ARBETSORDER – UTFÖRD OCH STÄNGD, INTE FORTFARANDE AKTIV.** Orden `AUTHORIZED_NOT_YET_EXECUTED` nedan beskriver när detta dokument upprättades. ROM DEVELOPMENT III har därefter levererat och stoppat `G0_INCONCLUSIVE_NO_ROM`, MAIN mottog i G5AA och Issue #12 stängdes. **Denna källa får inte återanvändas för G0, G1/G6 eller ROM-bygge.** Se [aktuell status](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
+
 **Datum:** 2026-11-17
 **Status:** `G5Z_G0_H4_ONE_SOURCE_PREFLIGHT_AUTHORIZED_NOT_YET_EXECUTED`
 **Beställare:** MAIN VII. **Utförare:** ROM DEVELOPMENT III. **Beslutsfattare:** användaren. **Leveransmottagare:** MAIN VII.
