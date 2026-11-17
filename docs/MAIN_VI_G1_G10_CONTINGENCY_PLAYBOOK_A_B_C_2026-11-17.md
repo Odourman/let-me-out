@@ -65,6 +65,8 @@ Ingen grind är automatiskt auktorisation för nästa. **G1–G4** tillåter nu 
 
 **Preppade leverabler:** G2_EVIDENCE_LEDGER.csv (status RAW_VERIFIED / SOURCE_ONLY / LOCAL_REPORTED / FAIL / INCONCLUSIVE), G2_OLD_TESTS_NOT_TO_REPEAT.md och G2_SOURCE_HOLES.md. **PASS/exit:** varje kritisk byggsten har uppmätt eller tydligt markerad obevisad omfattning. Viktiga researchkällor: R1e, R1f, R1g och F11 enligt källindex nedan.
 
+> **G3 genomförd (SOURCE-ONLY) 2026-11-17:** [sammanhållet R1–R4 TIA-/colorclock-/RAM-/F6-kontrakt](gates/G3_RESOURCE_CONTRACT_COMPLETION_RECEIPT_2026-11-17.md), [TIA-ägarskap](gates/G3_TIA_OBJECT_OWNERSHIP_2026-11-17.csv), [CPU/F6-matris](gates/G3_CYCLE_AND_F6_BYTE_LEDGER_2026-11-17.csv), [färg-/deadline](gates/G3_COLOR_CLOCK_DEADLINES_2026-11-17.csv), [stresstest](gates/G3_R1_R4_MAX_STRESS_MATRIX_2026-11-17.csv). Drive [rapport](https://docs.google.com/document/d/1LkxaDVCiuvPGtWmOCHgAMwUoeQKZE4BiPIu6Tv7XHHg/edit) och [data](https://docs.google.com/document/d/1XaY5rgWL19h6ogKjzfkRodZlC88BDU20IKzRWoT8V_Q/edit). Status `G3_SOURCE_ONLY_RESOURCE_CONTRACT_COMPLETE_WITH_UNPROVEN_PHYSICAL_SCHEDULE`: **korrekt resurskontrakt, men full fysisk schedule och same-Y P0/M0/R3-integration är OBEVISADE**. G4 SOURCE-ONLY är nästa *möjliga* steg, **inte påbörjad eller automatiskt auktoriserad**. Ingen ROM- eller designwaiver-order.
+
 ## 3. G3 – gemensamt R1–R4 objekt-, färg-, CPU-, RAM- och bankkontrakt
 **Läge nu:** SOURCE-ONLY. **Ansvar:** RESEARCH II/MAIN, senare ROM DEVELOPMENT III teknisk rådgivning om särskilt ombedd. **Mål:** innan en enda ny registersekvens prövas veta den maximala samtidiga resursbelastningen.
 
