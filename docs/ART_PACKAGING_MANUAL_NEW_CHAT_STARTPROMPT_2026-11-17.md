@@ -7,6 +7,7 @@ Läs innan du drar slutsatser:
 - Fullständig överlämning: https://github.com/Odourman/let-me-out/blob/main/docs/ART_PACKAGING_MANUAL_MIGRATION_2026-11-17.md
 - Repo: https://github.com/Odourman/let-me-out
 - Projektets Drive: https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u
+- Drive-spegeln av **denna ART-migration med två inbäddade bilder**: https://docs.google.com/document/d/1NcXHSFfd_PiAFtumegSY43hJg6GVyMe-eDtt7B23b54/edit
 - MAIN V:s GRAPHICS-paus och H1/H2: https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_V_SCORE_LIVES_HUD_VISUAL_V01_RECEIPT_AND_GRAPHICS_PAUSE_2026-11-16.md
 - GRAPHICS ursprungliga, tekniskt separata roll: https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_V_GRAPHICS_CHAT_STARTPROMPT_2026-11-16.md
 - Senaste MAIN-status och tekniska beslut: kontrollera GitHub/Drive LIVE, anta inte att ett äldre dokument är aktuellt.
