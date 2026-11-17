@@ -1,0 +1,11 @@
+case_id,requirement,actual_observation,result,evidence,scope_note
+G5AH-A-SOURCE,F9 ROM size/hash/source-lst-sym,16384 bytes and exact F9 original hash and original list/sym present,SOURCE_STATIC_PASS,F9_SOURCE_LIST_SYM_MASK_STATIC_CHECK.json,Historical F9 only no new ROM
+G5AH-A-OPCODE,F9 source-bank assembly at F1EE,85 11 STA RESP1 matching frozen binary and listing,SOURCE_STATIC_PASS,original_f9.lst,Source only not actual executed STA phase
+G5AH-A-MASK,Nine M 8x9 TOP-DOWN original rows,3C 3C 18 FF 18 24 24 42 42,SOURCE_STATIC_PASS,F9_SOURCE_LIST_SYM_MASK_STATIC_CHECK.json,Not measured C0 pixel rows
+G5AH-A-SNAPSHOT,Native 320x228 TIA image at a paused pre/post STA debugger stop,NO_FILE,NOT_DETERMINABLE,PHASE_A_ACTUAL_AUDIT.json,GUI screenshot is gameplay not native TIA
+G5AH-A-DEBUGGER,Interactive real pre/post PC cycle frame scan bank RAM-X,TWO_SESSION_FILES_MISSING,NOT_DETERMINABLE,PHASE_A_ACTUAL_AUDIT.json,Stella window was ROM play title not Debugger mode
+G5AH-A-STA,Actual STOP at F9 PC F1EE before and after step,NO_ACTUAL_CPU_VALUES,NOT_DETERMINABLE,commands_sent.txt,Source addresses are not runtime evidence
+G5AH-A-PX,Actual 0..159 CC mapping and frame-linked raw pixel rows,PIXEL_PAIR_MAPPING_ONLY_FROM_STELLA_SOURCE,NOT_DETERMINABLE,Stella_6_7_1_TiaOutputWidget_source,Source 2x and overlay not actual C0 pixels
+TIA-C0-X40,P0 original M 8x9 fixed Y numeric RAM-X 40,NOT_BUILT_NOT_RUN,NOT_DETERMINABLE,G5AH_C0_NO_BUILD_INSTRUMENTATION_BLOCKER,No C0 ROM
+TIA-C0-X104,P0 original M 8x9 fixed Y numeric RAM-X 104,NOT_BUILT_NOT_RUN,NOT_DETERMINABLE,G5AH_C0_NO_BUILD_INSTRUMENTATION_BLOCKER,No C0 ROM
+G5AH-ARCHIVE,Archived CI artifact independent SHA readback,Original manifest mismatches stella_stdout.txt changed during cleanup,FAIL_ARCHIVE_MANIFEST,readback-hashes job 134430694476,Actual file digests recovered separately not original PASS
