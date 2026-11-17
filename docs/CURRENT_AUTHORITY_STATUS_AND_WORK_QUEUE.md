@@ -1,4 +1,7 @@
 # LET ME OUT! – CURRENT AUTHORITY, STATUS & WORK QUEUE
+
+**PROJECT SOURCES CURRENT V4:** [Sex verifierade Markdown-filer + SHA-manifest i GitHub](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V4) · [officiell Drive-guiden](https://docs.google.com/document/d/19EU_PLT5fDXI41u4kA3rWMU6FOVKPjsAYCwbvVLRlpA/edit). Användaren måste manuellt ersätta de sex faktiskt anslutna V2 Project Sources. **Äldre V1/V2/V3 och en historisk Drive-ZIP märkt FINAL är ARKIV, inte aktiva källfiler.** GitHub-ärendena #3 (historiska spawns) och #6 (v0.18 order) är nu administrativt **CLOSED/not_planned** som supersederade, utan att gamla ROM-prov godkänts. Issue #8 är fortsatt **OPEN men DEFERRED** enligt batchpolicyn.
+
 **Aktuell MAIN VII-ingång · upprättad 2026-11-17 efter G5AA.** Detta är en **daterad, versionskontrollerad navigations- och statusguide**, inte en ersättning för användarens originalbeslut, Master Spec, frysta ROM/bytefiler eller oberoende verifiering. **Kontrollera GitHub/Drive live vid framtida beslut.** Bevara och citera originalkällorna när en konflikt uppstår.
 
 ## 1. Läsordning och auktoritet
@@ -33,8 +36,8 @@
 | [PR #7](https://github.com/Odourman/let-me-out/pull/7) | Äldre **OPEN DRAFT BLOCKED**, **ej mergad**, negativa rendererresultat bevaras |
 | [Issue #8](https://github.com/Odourman/let-me-out/issues/8) | **OPEN MEN DEFERRED / HISTORISKT** enligt användarens batchpolicy, inte aktiv Verification-åtgärd och inget oberoende PASS |
 | [Issue #5](https://github.com/Odourman/let-me-out/issues/5) | Framtida key/door-verifieringsgrind **inte** en aktuell ROM-kodorder |
-| [Issue #3](https://github.com/Odourman/let-me-out/issues/3) | v0.11 sex-NPC S0/S1-kandidater, **HISTORISKT** och supersederat för framtida fem-NPC/kartor; inte aktiv testorder |
-| [Issue #6](https://github.com/Odourman/let-me-out/issues/6) | Äldre specifik v0.18 6/5-diagnostik och dess uppföljningar, **HISTORISKT**, inte mandat för framtida fem-NPC-system |
+| [Issue #3](https://github.com/Odourman/let-me-out/issues/3) | **CLOSED/not_planned – HISTORISK** v0.11 sex-NPC S0/S1-kandidat, ersatt som framtida speltest; inga nya prov körda |
+| [Issue #6](https://github.com/Odourman/let-me-out/issues/6) | **CLOSED/not_planned – HISTORISK** v0.18 6/5-diagnostikorder och tidigare delresultat. Ingen ny fem-NPC-kodorder; inte full v0.18 PASS |
 
 **Grindspärr:** `G5_FORMAL_OPEN`; `G1/G6/F12/NEW_ROM/FIVE_NPC_IMPL/S05_IMPL/NEW_INDEPENDENT_VERIFICATION/PR_MERGE=NOT_AUTHORIZED`. User requests such as "fortsätt" authorize **continued MAIN documentation/research/decision preparation** only within prior scope, never specialist ROM/cutover.
 
