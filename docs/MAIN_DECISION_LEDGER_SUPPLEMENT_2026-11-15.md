@@ -1,5 +1,14 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D20: endast G0 H4-ONE källgranskning auktoriserad till ROM DEVELOPMENT III (2026-11-17)
+
+**Senare, avgränsat användargodkännande:** Omedelbart efter MAIN VII:s tydliga förslag *"Auktorisera enbart G0-källgranskningen av H4-ONE till ROM DEVELOPMENT III, med ovanstående tre utfall och hård stoppgräns"* svarade användaren **"Ok, fortsätt. Följ dina rekommendationer"**. Detta är uttryckligt **LM-D20** om exakt **EN source-only G0-preflight**. [G5Z komplett auktoriserad order](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Z_MAIN_VII_ROM_DEVELOPMENT_III_G0_H4_ONE_SOURCE_PREFLIGHT_AUTHORIZED_2026-11-17.md) · [öppet G0 specialistissue #12](https://github.com/Odourman/let-me-out/issues/12) · [officiell Drive-kopia](https://docs.google.com/document/d/15cWPUaLAzo-LP131WjTNCmHNsCrOWY9Ii9EAZ2hbmz0/edit).
+
+**GÄLLANDE:** `G0_H4_ONE_SOURCE_ONLY_AUTHORIZED_NOT_YET_EXECUTED`; ROM DEVELOPMENT III får läsa originalkällor och skapa en källbaserad full H4-ONE 6507/cycle/CC/RESP/GRP/NUSIZ/M0/PF/RIOT/F6-plan för alla nio originalmaskrader, båda datastyrda P0 X-ordningarna, två P1 vita originalmasker och **EN M0 på samma Y**, med 76c/rad; N0 bara intern hjälp. Specialist ska leverera **ett** av `G0_SOURCE_PLAUSIBLE`, `G0_FAIL_NO_ROM` eller `G0_INCONCLUSIVE_NO_ROM` och STOPP. Eventuella luckor för fem fritt rörliga NPC samt S05 key+door ska redovisas kort, inte ny forskning.
+
+**EJ GODKÄNT:** ny `.asm`, `.bin`, DASM-/Stella-test, G1/fysisk ROM, G6/F12/later-step, nya fiende-/flicker-/kartregler, PR-merge eller oberoende VERIFICATION II. G5 FORMAL fortsatt ÖPPEN. Äldre G5Y-frasen "G0 inte auktoriserad" är historiskt korrekt **före LM-D20** men supersederas nu **endast för source-only G0**; alla andra stopp kvarstår. Issue #12 är formellt beställt, **men annan chatt körs inte automatiskt av en GitHub-issue**.
+
+
 ## MAIN VII – LM-D19: B_OPEN_02 exakt framtida rum B godkänd; framtida fyrkartdesign komplett (2026-11-17)
 
 **Senare användarbeslut:** Direkt efter frågan "Godkänner du B_OPEN_02 som exakt framtida rum B?" svarade användaren **"Är bra ut. Följ dina rekommendationer"**. Därför är **LM-D19 = B_OPEN_02 GODKÄND SOM EXAKT FRAMTIDA 40×22-KARTLAYOUT**. [Bindande snävt beslutsprotokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_B_OPEN_02_EXACT_USER_APPROVAL_AND_FOUR_MAP_BASELINE_DECISION_2026-11-17.md) · [källpinnat fyrkartsmanifest](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_APPROVED_FUTURE_FOUR_MAPS_SOURCE_MANIFEST_2026-11-17.json) · [Drive](https://docs.google.com/document/d/1nRG3gmoP1Y8VRy5mu6xk3nRRGLVHntf4tRzWHzYOClQ/edit). Beslutet supersederar historiska formuleringar "B_OPEN_02 är ej godkänd" **endast för framtida kartgeometrins status**, utan att radera själva forsknings-/studiehistoriken.
