@@ -31,6 +31,14 @@
 - [AtariAge forum om flicker på riktig Atari](https://forums.atariage.com/topic/347643-flickering-sprites-is-there-more-than-one-way-to-do-this/): flimmer kan bli påtagligt eller artefaktfullt; 1/6-frame objektvisning ≈10Hz (om det är ett enda av sex i 60Hz) är **inte en godkänd tolkning** av användarens "lite kort flimmer". Vi kan inte tyst tvinga ett sådant spel att vara acceptabelt.
 - [Atari 7800 MARIA Software Guide](https://7800.8bitdev.org/index.php/7800_Software_Guide) ger en helt annan display-list-grafikmodell med flera bitmappssprites per rad; det är objektivt mer lämpligt för den här spelgrafiken, men **är en annan plattform och kräver ny implementation**.
 
+## 3C. G5G: nytt konkret Ball/PF-trick och skarpare femfiendersbudget (2026-11-17)
+
+[Source-only detaljer med exakt 3520/3520 kartceller samt A/B/C 6507-instruktionspaket](../gates/G5G_BALL_LEFT_WALL_AND_FIVE_NPC_OPCODE_CENSUS_SOURCE_ONLY_2026-11-17.md) · [Google Drive spegel med full CSV](https://docs.google.com/document/d/14sNkAi8gdLqz2wo6OtR9jrpTggrcXB0cv-BCO3onaWY/edit).
+
+**Uppdatera G5:s kvalifikation, inte grundbevisen:** Alla fyra rum kan i en 40x22 **offline PF+BL-bitmodell** ritas med speglad PF, PF0=0 på door y9..12 och en exakt 4CC bred brun `Ball` på x0. Det bevarar vänster yttre vägg och öppnar höger PF för P1-orange dörr med transparent svart keyhole. Den tidigare G5F PF0-right-only togglingen kräver två registerskrivningar per dörr-scanline; BL-metoden kan flytta dem till endast bandets gränser, under förutsättning att Ball x0/4CC och kollisionspolicy fysiskt fungerar. **Ingen Stella-video/ROM eller G0 fysisk deadlinepass.**
+
+Direkta opcodepaket för värsta dörr-same-Y med fem NPC+gul player+R3-orange: 89/76 c PF0 per-linje, **79/76 c med BL** (A/B, förenklade immediate+STA-kostnader, ingen ROM-M0/AI/dynamisk X eller branch). **Fail för just den naiva sekvensen.** R1 fem fri X/Y och full spelplan fortfarande obestyrkt. Nya NUSIZ/RESP/GRP-plans måste käll-/fysikmotiveras; inte hävda universal NO-GO. Ingen canon-/G6/F12-auktorisation.
+
 ## 3B. G5F ny verifierbar kartsymmetri och fem-maskradbudget – ny source-only forskning (2026-11-17)
 
 [Detaljerad G5F-källanalys, jämförelse av PF-mirror/door och 5-NPC kanaler](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5F_FIVE_ANDROID_REFLECTED_PF_DOOR_SOURCE_ONLY_ARCHITECTURE_2026-11-17.md) · [Google Drive-kopia](https://docs.google.com/document/d/1PAELvVABaDAVuhZILC1Czo5kEIiRGQV2IaZ1bdtKRNw/edit).
