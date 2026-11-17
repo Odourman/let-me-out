@@ -1,0 +1,7 @@
+case_id,preregistered_requirement,verdict,g5ad_rom_sha256,actual_6507_PC,actual_STA_end_CPU_c,actual_scanline,actual_visible_CC,raw_pixel,why
+TIA-C0,"P0 original M X40/X104 numeric RAM; pixel and RESP0 timestamps",NOT_DETERMINABLE,NO_ROM,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,"NO_BUILD_INSTRUMENTATION_BLOCKER; saveSes preflight file zero bytes"
+TIA-C1,"P0 yellow-white and white-yellow active RESP0; close control",NOT_DETERMINABLE,NO_ROM,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,"NO_BUILD_INSTRUMENTATION_BLOCKER; no synchronized PC/colorclock trace"
+TIA-C2,"NUSIZ0=00 vs 02 and M0 copies same 9-row Y as original P0",NOT_DETERMINABLE,NO_ROM,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,"NO_BUILD_INSTRUMENTATION_BLOCKER; no new M0 measurement"
+TIA-C3,"Short vs long ENAM0 gating around same C2 M0 start",NOT_DETERMINABLE,NO_ROM,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,"NO_BUILD_INSTRUMENTATION_BLOCKER; no new register measurement"
+TIA-C4,"GRP0/GRP1 early vs near START with explicit VDEL",NOT_DETERMINABLE,NO_ROM,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,"NO_BUILD_INSTRUMENTATION_BLOCKER; no actual delayed latch trace"
+TIA-N1,"White P0 M row3 FF at X40..47 and M0 X43 yellow demand",NOT_DETERMINABLE,NO_ROM,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,NOT_RUN,"NO_BUILD_INSTRUMENTATION_BLOCKER; theoretical COLUP0 shared color is not new observation"
