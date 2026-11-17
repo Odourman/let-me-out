@@ -48,6 +48,14 @@ Se två separata permanenta styrdokument:
 
 **Nästa lämpliga grind är G3, men den har INTE genomförts eller implicit auktoriserats genom detta G2-uppdrag:** källa-/rasterbudget där sex NPC + gul player + M0 + bruna PF och R2/guldnyckel/R3 högerdörr delar den **samma** 76-cykels-, 128B-RAM- och P0/P1/COLUP0-resursplanen. G3 är en SOURCE-ONLY teknisk analys; eventuella senare ROM-test (G6 och framåt) kräver helt separata arbetsorder, liksom varje oberoende VERIFICATION II E02.
 
+## G2 arkiveringskvittens – Google Drive och GitHub (2026-11-17)
+
+- **Drive full G2-rapport, negativa tester och bevisluckor:** https://docs.google.com/document/d/1cACUkd5D8vQQloFQ0Onou5I-7jDG9GX7TvtrRt7HGGs/edit
+- **Drive sökbart bevisregister (16 poster) och råarkiv/SHA-manifest:** https://docs.google.com/document/d/1ccxYkE5egsdq3WPBmBS7VNuv2qebmFRs6v72MJ4CUjg/edit
+- Båda originaldokumenten skapades i officiell projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u` och lästes tillbaka efter skrivning. Maskinläsbara original är GitHub `G2_EVIDENCE_LEDGER_2026-11-17.csv` och `G2_RAW_REAUDIT_MANIFEST_2026-11-17.json`.
+- Fem historiska GitHub-Actions-ZIP kopierades direkt till samma projektmapp; samtliga fem Drive-kopior lästes tillbaka och jämfördes byte-för-byte med de nedladdade originalen (samma SHA256). F9 och R1ba originalarkiv fanns redan i Drive.
+- **Verifieringsgräns:** endast MAIN VI:s oberoende läsande byte-/pixelkontroll av historisk evidens. INGEN ny Stella-/DASM-/ROM-körning eller fristående VERIFICATION II/E02. G3 INTE påbörjad.
+
 ## 7. Bevarande och signatur
 - **Endast dokumentationsfiler på `main` i G2**, plus fem rå ZIP uppladdade till projektets officiella Drive-mapp. Ingen ändring av gammal ROM-branch eller PR #7.
 - MAIN VI utförde en oberoende **offline-råbyte-/pixelgranskning**, **inte** oberoende emulatorkörning och **inte** det separata VERIFICATION II-uppdraget.
