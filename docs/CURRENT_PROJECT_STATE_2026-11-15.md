@@ -3,6 +3,16 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – G1 KRAV- OCH AUKTORITETSBASLINJE AVSLUTAD (2026-11-17)
+
+**G1-MOTTAGNING:** `G1_DOCUMENTATION_COMPLETE_WITH_DOCUMENTED_OPEN_ITEMS`. Endast den av användaren i detta uppdrag beställda **nästa grinden G1** har genomförts. Originalet [LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip](https://drive.google.com/file/d/1mqU07Q7xTgU5t5lYQhCOyI7wRQl6vD7o/view) öppnades och ZIP-integritet samt **20/20 original-SHA256-manifestposter** kontrollerades; originalregistret har exakt **57/57 konsekutiva ID** och tre originalskisser bevarade. Original 8x9-mask-Git-blob är byteidentisk med ZIP. Nytt normaliserat källregister innehåller **102 spårade poster**: 57 original, 11 senare LM-D-beslut, 18 acceptans A–E, 16 T01–T16 diagnos-ID.
+
+- [**G1 slutkvittens och full redovisning**](gates/G1_COMPLETION_RECEIPT_2026-11-17.md), [**kravregister 102 poster**](gates/G1_REQUIREMENTS_TRACE_2026-11-17.csv), [**auktoritetsdifferens och öppna frågor**](gates/G1_AUTHORITY_DIFF_2026-11-17.md), [**käll-/SHA-manifest**](gates/G1_BASELINE_MANIFEST_2026-11-17.json).
+- Google Drive: [**G1 mottagning och authority**](https://docs.google.com/document/d/1t41LBeuSLCxe-zpIwBgZJxMf11ZpUVXGL1BP2uQoPwQ/edit) · [**G1 102 krav och källmanifest**](https://docs.google.com/document/d/1gQv8njPYULlPGdeFPsKF-Olm6gSVGlq6I_egVRyu-0s/edit). Två Google Docs ligger verifierat i Let Me Out!:s projektmapp.
+- **Viktiga försoningar:** originalbeslut 053 om kodpaus gäller historiskt, supersederades **endast för v0.18 NTSC R1–R4** av användaren i Issue #6; inget fullspel/PAL/F12. v0.11 A01/B01/C02/D01 bevarade som tidigare kartbas; fyra v0.19 OPEN-kartor är **inte slutgiltigt godkända**. Orange/svart högra dörren + guldnyckel är godkända *visuella mål*, inte godkända ROM-pixelmasker. Android 8x9 originalmasker är oförändrad **diagnostisk referens** och inte fullspelssprite-PASS. O1/K1/E1 och RESET-only enligt senaste userbeslut. Odefinierade detaljer har markerats öppna utan egen designwaiver.
+- **Teknisk status OFÖRÄNDRAD:** R1/v0.18 BLOCKED/NOT ACCEPTED; F11 G0 FAIL/G1 NOT RUN; PR #7 DRAFT/UNMERGED, Issue #8 gäller äldre fryst baseline; ingen ny ROM/DASM/Stella, E02, gameplay, PAL, mapper eller PR-merge.
+- **Nästa föreslagna grind G2 är inte påbörjad av denna G1-order.** Kan endast göras vid nästa uttryckligt avgränsade uppdrag till MAIN/RESEARCH. G1 är administrativ dokumentations-PASS, **inte ROM-E03 PASS**.
+
 ## MAIN VI – G1–G10 OPERATIV BEREDSKAP A/B/C OCH 16 SCENARIER (2026-11-17)
 
 **Nyaste planeringskomplement (INGEN KODORDER):** [MAIN VI:s kompletta operativa G1–G10-beredskapsplan med risker, plan A/B/C, reservvägar, stoppvillkor, framtida leverabler och SC01–SC16](MAIN_VI_G1_G10_CONTINGENCY_PLAYBOOK_A_B_C_2026-11-17.md) · [Verifierad Google Drive-kopia](https://docs.google.com/document/d/1JzEnTD5iZCUOTui_qCY0wiSsoiOtSB-YHuTaoZhkeo0/edit).
