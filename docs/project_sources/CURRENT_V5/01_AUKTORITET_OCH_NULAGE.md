@@ -8,7 +8,7 @@
 
 | Område | Gällande beslut för framtida spel | Gräns |
 |---|---|---|
-| Ursprung | [Master Spec och 57 beslut](https://drive.google.com/file/d/1mqU07Q7xTgU5t5lYQhCOyI7wRQl6vD7o/view) och [G1-källgranskning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G1_AUTHORITY_DIFF_2026-11-17.md) | Historiska ursprungsfiler ändras inte retroaktivt |
+| Ursprung | [Originalpaket: Master Spec + 57 beslut](https://drive.google.com/file/d/1mqU07Q7xTgU5t5lYQhCOyI7wRQl6vD7o/view) och [G1-källgranskning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G1_AUTHORITY_DIFF_2026-11-17.md) | Historiska ursprungsfiler ändras inte retroaktivt |
 | Färger och dörr | Svart spelbakgrund, bruna väggar, gul spelare, vita människolika NPC, guldnyckel; orange ENDAST högerdörr med svart utskuret nyckelhål i **dörrens bitmap**, ingen ny nyckelhålssprite | Färg-/registertiming inte fullständigt TIA-verifierad |
 | LM-D06/O1 | Tillfällig skymning av nyckeln tillåten **vid faktisk NPC/key-pixelöverlapp** | Ingen allmän same-Y-osynlighet eller 10Hz-waiver |
 | LM-D12–13 | Fem NPC individuellt fri logisk X/Y, fyra riktningar, begriplig fara och key-synlighet. [Beslut](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) | Inga permanent tvingade Y-banor, inga dolda rendererkompromisser |
