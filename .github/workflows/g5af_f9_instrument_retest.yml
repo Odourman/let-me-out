@@ -1,4 +1,7 @@
 name: G5AF LM-D22 frozen F9 instrument repair - two preregistered stops NO ROM BUILD
+# SECOND AND FINAL AUTHORIZED ACTIONS MEASUREMENT RUN ONLY.
+# Targeted fixes after first run 44177844355: poll cold Stella GUI 24s;
+# parse Stella print values from trailing #decimal, not register address $70.
 on:
   push:
     branches:
