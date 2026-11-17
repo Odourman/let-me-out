@@ -1,6 +1,8 @@
 # LET ME OUT! — MAIN VI: fördjupad feasibility-revision, 30 Atari-trick och omarbetad tiogrindsplan
 **Datum:** 17 november 2026 (Stockholm). **Klass:** MAIN VI, read-only-källanalys och strategisk planberedning. **Ingen kodauktorisation**, ingen F12, ingen gameplay-/PAL-/mapper-/grafik-/VERIFICATION-order, inget PR-merge och ingen designwaiver. Ingen ROM, DASM eller Stella har körts inom denna nya rapport.
 
+> **OPERATIVT BEREDSKAPSTILLÄGG (2026-11-17):** Denna strategiska analys gäller fortfarande som underlag för de tio villkorade grindarna. För de praktiska förutsedda felen, tre alternativa planer A/B/C per G1–G10, 16 testscenarier, resultat-/stoppvillkor och leverabelmallar, se [MAIN VI G1–G10 Contingency Playbook](MAIN_VI_G1_G10_CONTINGENCY_PLAYBOOK_A_B_C_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1JzEnTD5iZCUOTui_qCY0wiSsoiOtSB-YHuTaoZhkeo0/edit). Ny kompletterande hårdvarurisk: COLUP0 delas mellan gul P0/vit P0-NPC och M0-skottet; alla framtida rasterprover måste bevara skottets färg på samma colorclocks. Detta är endast en plan, inte F12/ROM- eller användarwaiver-auktorisation.
+
 ## 0. Utgångsfrågan och skärpt slutsats
 Målet är **ett faktiskt spel som bevarar användarens Let Me Out!-idé**, inte en oändlig följd av positiva mikrodemos. Den föregående tiostegsplanen (MAIN_VI_LAST_10_CURRENT_NEXT_10_ROADMAP_2026-11-17.md) var rimlig som grov riktning, men **för linjär och otillräckligt riskstyrd**. Det var fel att låta R2 och R3 komma först efter R1 som om deras resursbehov vore gratis. Den nya ordningen prövar ett **sammanhängande resurskontrakt för R1/R2/R3/R4 redan före ny ROM**, och separerar sedan varje kodleverans.
 
