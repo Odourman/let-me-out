@@ -8,7 +8,7 @@ mkdir -p "$out"
 home="$(getent passwd "$(id -un)" | cut -d: -f6)"
 mkdir -p "$home/.config/stella"
 export SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=x11 DISPLAY=:154
-src="$PWD/../../../../seed_readonly"
+src="$PWD/../../seed_readonly"
 rom="$(find "$src" -type f -name 'r1_f9_three_masks_three_binary_ram_x_ONE_ROM_F6.bin' | head -n1)"
 test -n "$rom"
 test "$(stat -c %s "$rom")" -eq 16384
