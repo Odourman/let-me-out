@@ -3,6 +3,12 @@
 
 Detta är en styrning av vad *inte* får påbörjas till följd av teknisk feasibility-granskning. [Fullständiga käll-/risk- och vägvalsbedömningen](G5_CANDID_FEASIBILITY_ASSESSMENT_AND_DECISION_BRIEF_2026-11-17.md) är separat och normativ som **MAIN:s rekommendation**, men **inte ett nytt användarbeslut**.
 
+## 0A. Ny användarinitierad fem-NPC- och Video Chess-forskningskandidat (2026-11-17)
+
+[GitHub dokument med användarens femandroidsförslag, Berzerk-jämförelse, och Video Chess/Venetian Blinds för guldnyckel + högerdörr](../MAIN_VI_FIVE_ANDROID_BERZERK_VIDEO_CHESS_RESEARCH_DIRECTION_2026-11-17.md) · [arkiverad Google Drive-kopia](https://docs.google.com/document/d/1Iv9XrYt3CvkPNhiCGxSgEQSe0M91SHa4CHIjqP6YAA8/edit). Exakt kandidat: **2 large M + 1 large F + 1 small M + 1 small F = 5** (mot frysta 2M+2F+SM+SF=6). R2 blir hypotetiskt 4 kvarvarande NPC + nyckel om antalet ändras. Kandidat för nyckel/dörr: pröva omväxlande scanlines NÄR de ligger på samma höjd; jämför först med enkel Y-separerad spriteåteranvändning och PF-buren dörr. Tidigare android-Venetian-negativfall är inte automatiskt key/door-negativfall.
+
+**Auktoritet:** användaren bad att minnas och arkivera förslagen, **INTE** uttryckligen att fastställa ny canon eller utfärda kodorder. Originalantal 6, R1/R2 acceptans, fyra 8×9 TOP-DOWN-masker och G5 PENDING USER kvarstår. Varken G6 eller någon annan implementation är beslutad.
+
 ## 1. De två möjliga framtida produktbesluten
 **A – Atari 2600, ny visuell renderingspolicy.** Behåll sex logiska individuell X/Y NPC, fyra typers originalidentiteter, gul spelare, en projektil, fyra rum, högernyckeldörr, O1/K1/E1, poäng, liv, RESET-only och spelkänsla **som mål**. Användaren måste *se och uttryckligen godkänna* den föreslagna policyn för hur många NPC som får saknas/flickra/occluderas på överbelastad same-Y-rad och exakt vad original8×9-krav ska betyda för en överlagrad grafisk framställning. Varken ändrade exakta rumsrutor, begränsad NPC Y-mobilitet, annan dörrfärg eller reducerat antal NPC följer automatiskt.
 
