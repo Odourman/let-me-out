@@ -1,5 +1,14 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D22 nytt precist användarmandat: F9-instrumentering en gång (2026-11-17)
+
+**Uttryckligt användarbeslut:** Efter MAIN VII:s konkret föreslagna, mycket lilla rättning/återkontroll av Stella-instrumenteringen med den **redan frysta F9-ROM:en**, svarade användaren **"Ok, fortsätt med din rekommendation"**. **LM-D22** är **ett eget nytt avgränsat tillstånd för ROM DEVELOPMENT III:s testharness**, INTE återöppning av förbrukat LM-D21/G5AD och inte ett nytt spel-/graphics-/TIAscope. [Bindande G5AF-arbetsorder](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AF_MAIN_VII_LM_D22_F9_INSTRUMENTATION_ONLY_REPAIR_RETEST_AUTHORIZED_2026-11-17.md) · [Issue #14](https://github.com/Odourman/let-me-out/issues/14) · [Drive-kopia](https://docs.google.com/document/d/1qRX0t1RRn2bZG3dS4-9NAnrnbHZbd1wRVfeAorEbVAc/edit).
+
+**Enbart tillåtet:** på isolerad gren justera arbetsflöde/Python/loggning och återköra oförändrad **F9** ROM (SHA-256 `6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b`) i Stella, dokumentera två faktiska numeriska CPU/PC/scanline/registerstopp tillsammans med native pixelbild och filhashar; **högst två mätkörningar**. Slutstatus en av `G5AF_INSTRUMENTATION_READY_BOUNDED`, `G5AF_PARTIAL_INSTRUMENTATION_NOT_READY`, `G5AF_INSTRUMENTATION_BLOCKED` och sedan STOPP.
+
+**Ej tillåtet:** ny `.asm/.bin`, DASM-build/F9-ändring, G5AD C0–C4/N1, full H4/G1/G6/F12/S05/fem-NPC, ny oberoende Verification eller merge, ny canon. G5Z/G5AD historiska tekniska utfall förblir oändrade; **G5 formellt OPEN**. G5AF är ännu **inte** utförd.
+
+
 ## MAIN VII – LM-D21 avrapporterat: G5AD instrumenteringsspärr, NO BUILD (2026-11-17)
 
 **LM-D21** godkände en villkorad enda TIA-kalibrerings-ROM men **är nu förbrukat och avslutat vid den förregistrerade hårda förbyggsgrinden**. [G5AE MAIN-mottagning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AE_MAIN_VII_G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER_RECEIPT_AND_STELLA_SAVESES_SOURCE_REVIEW_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1hJZJa11HB5pKV1k1nBn9YACnmEJHlNLj9klyXUV-usE/edit) · [fryst specialistresultat](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/TO_MAIN_G5AD_TIA_CALIBRATION.md) · [Issue #13](https://github.com/Odourman/let-me-out/issues/13). **Verkligt resultat `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER`: ingen ny ROM, ingen TIA-C0/C1/C2/C3/C4/N1-mätning**. Sex `NOT_DETERMINABLE` betyder **NOT_RUN_NO_NEW_ROM**, inte "TIA omöjlig". Loggarna visar tools PASS, gammal F9 PNG 320×228, `saveSes` 0 byte och separat Python `IndentationError`. Main har sedan läst Stella 6.7.1-kod och funnit stark orsakshypotes om `saveSes` inuti `autoexec` före färdig promptbuffer; ingen ny CI-körning eller kodändring gjord.
