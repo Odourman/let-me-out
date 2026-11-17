@@ -1,5 +1,8 @@
 # Let Me Out! – MAIN VI till MAIN VII: mottagningskvitto 2026-11-17
 
+> **HISTORISK HUVUDROLLSMIGRERING OCH KÄLLRELEASE.** Detta dokuments tidigare "ENDA REKOMMENDERADE" niofils-/V2-paket är *inte* aktuell Project Sources-rekommendation. Se [aktuellt index](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). Inga äldre formuleringar om G5-beslut får överskugga LM-D12..20 eller G5AA:s `INCONCLUSIVE_NO_ROM`.
+
+
 ## MAIN VII – SLUTLIG PROJECT SOURCES-VERSION, 2026-11-17
 
 **ENDA REKOMMENDERADE VERSION FÖR NY UPPLADDNING:** [LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_FINAL_2026-11-17.zip](https://drive.google.com/file/d/1mLSqMZZx_j7g8ha6Mje4PyBsjiwZ6V6F/view), SHA256 `2c20ea7a5dbc9ae6809d2731fecfbc12acd6be279acb2d9255ba49d723fd792d`, 9 individuella källfiler, 35 spårbara källreferenser. Den nedladdade Drive-kopian har bytejämförts med originalet; ZIP CRC och alla 8 SHA256-filposter kontrollerades utan avvikelse.
