@@ -85,6 +85,10 @@ Denna SUMMA är **inte ett universellt omöjlighetsbevis** för Ball-lösningen 
 
 **Rekommendation MAIN VI:** Den nya `REF + BL vänster 4CC + PF0=0 i dörrband + svart BK + gamla orange P1 door`-lösningen är en **starkare SOURCE-ONLY-arkitekturkandidat** än PF0-toggle på var och en av 32 rader, just för att det bevarar alla fyra faktiska rum utan att byta grafiskt designmål. **Nästa steg bör vara en enda separat source-only fysisk START/GRP-/Ball-x0-tidslinje** som antingen visar verklig tidsvinst genom att ta bort något av de 7 `RESP/GRP`-händelseparen per rad, eller tydligt slår fast stoppspärr. Villkorlig framtida faktisk ROM-beställning får bara komma efter explicit användarbeslut och G0 med verkliga opcodes/deadlines; inte från denna analys.
 
+## 3A. Google Drive-kopia och versionsstyrd CSV
+- [Officiell Drive: hela G5G-rapporten plus CSV-bilagan](https://docs.google.com/document/d/14sNkAi8gdLqz2wo6OtR9jrpTggrcXB0cv-BCO3onaWY/edit), lagrad i projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`. Native-dokumentet skapades, flyttades och lästes tillbaka. 3520/3520, 79/76, 89/76, status och full CSV-bilaga verifierades.
+- [Cykel-CSV i GitHub](G5G_DIRECT_EVENT_CPU_CYCLE_CENSUS_2026-11-17.csv) är maskinläsbar kontroll av denna direktsekvenskostnad, med alla antaganden explicit.
+
 ## 4. Beviskällor / versionskontroll
 - [G5F tidigare femfiendersförstudie](G5F_FIVE_ANDROID_REFLECTED_PF_DOOR_SOURCE_ONLY_ARCHITECTURE_2026-11-17.md), originalkartor och NPC-masker på `main`.
 - [R3 isolated original code, pinned commit, R3 JSON all bytes](https://github.com/Odourman/let-me-out/blob/000b6f2a579e4aa96995229b2174884fb7c565e2/rom/v018/experiments/r3_c02/r3_door.asm): faktiskt `CTRLPF=0`, **sex PF-table writes per rasterrad** samt P1 `GRP1` door; full R3 är ej ny kombination.
