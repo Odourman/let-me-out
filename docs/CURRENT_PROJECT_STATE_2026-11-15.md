@@ -1,5 +1,12 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+## MAIN VII G5Q – beslutsklart förslag, inget användarbeslut ännu (2026-11-17)
+
+[Fullt G5Q-beslutsunderlag](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_DECISION_READY_DESIGN_TARGET_AND_PRE_G6_BOUNDARY_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1_bB-F6pvwEehRP09F1jdfyYnUtKo4c6mie4QD3c9YGw/edit). **STATUS `G5Q_USER_DECISION_PENDING_NO_CANON_CHANGE`**. G5P forsknings-/reproduktionsfas avslutad, G5:s nästa sakliga åtgärd är att lägga fram ett avgränsat uttryckligt designbeslut. MAIN rekommenderar **A1**: fri logisk individuellt rörlig fem-NPC-X/Y och bibehållen jakt som önskat spelmål, utan permanent hård Y-lane eller automatiskt godkänd flimmer-/osynlighetspolicy. MAIN rekommenderar **B1**: spelaren måste kunna följa farliga NPC; key får endast skymmas vid faktisk pixelöverlapp enligt redan godkända O1, inte vid blott samma rasterhöjd. Ingen kvantifierad flimmerwaiver har beslutats. Användarens allmänna "Fortsätt" är inte ett godkännande av A1 eller B1.
+
+Separata beslut **väntar fortfarande** om framtida R1=5/R2=4+key (historisk v0.18 oförändrad), -30 kontra -25 per kill, fem valida spawn och 1/5 bärare, samt v0.19-exakta kartor kontra historisk v0.11. **G5 formellt ÖPPEN, inga nya spelregler, inga nya test-PASS. G6/F12/G7–G10, ROM, oberoende VERIFICATION och PR-merge EJ auktoriserade.**
+
+
 ## MAIN VII G5P – RESEARCH II levererad, offline självständigt reproducerad, G5 fortfarande öppen (2026-11-17)
 
 **STATUS:** `G5P_ADVISORY_DELIVERY_RECEIVED_REPRODUCED_OFFLINE`. [MAIN VII-mottagningsrapport](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5P_MAIN_VII_RESEARCH_DELIVERY_INTAKE_AND_REPRODUCTION_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1HzRq0wJlX8iZPZsxeDRWpQenMI5eveAr9lIgfTNICSA/edit) · [RESEARCH II-originalrapport](https://github.com/Odourman/let-me-out/blob/research/g5p-adaptive-y-offline-20261117/docs/research/G5P_RESEARCH_II_FULL_REPORT_2026-11-17.md) · [Issue #9](https://github.com/Odourman/let-me-out/issues/9). Forskningsfilerna mottogs på en **isolerad, ej mergad researchbranch**, originalrapport och ZIP finns i officiell Drive-mapp. ZIP 10 filer/42 568 byte, SHA256 `696701bc728a15871c31cdf59b0237bad2a7f7cf68796978e4fbbc6258cced14`, CRC och nio interna hashposter PASS.
