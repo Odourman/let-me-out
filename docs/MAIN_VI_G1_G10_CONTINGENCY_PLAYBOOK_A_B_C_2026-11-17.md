@@ -80,6 +80,8 @@ Ingen grind är automatiskt auktorisation för nästa. **G1–G4** tillåter nu 
 
 **Preppade leverabler:** G3_TIA_OBJECT_OWNERSHIP.csv, G3_COLOR_CLOCK_DEADLINES.csv, G3_CYCLE_LEDGER.csv, G3_RIOT_STACK_BANK.md, G3_R1_R4_MAX_STRESS.csv. **PASS/exit:** minst en plausibel kompletterad resurskontraktshypotes OCH en explicit lista av risker som bara verklig Stella kan avgöra. Om ej: NO-GO/INCONCLUSIVE till G4/G5.
 
+> **G4 SOURCE-ONLY avslutad 2026-11-17 – VILLKORAD GO FÖR EN ENDA FRAMTIDA MIKROPRIMITIV, INTE för G6-kod:** [G4 beslutsrapport](gates/G4_ONE_EXPERIMENT_GO_NOGO_DECISION_2026-11-17.md) · [förregistrerad H4-ONE P0/P1/M0/PF](gates/G4_PREREGISTERED_PHYSICAL_HYPOTHESIS_2026-11-17.md) · [registertiming, 21 käll-/hypoteshändelser](gates/G4_REGISTER_TIMELINE_2026-11-17.csv) · [framtida utkast som INTE ÄR UTFÄRDAT](gates/G4_FUTURE_SINGLE_MICROPROBE_ORDER_DRAFT_NOT_AUTHORIZED_2026-11-17.md). Drive-kopia [beslut/hypotes](https://docs.google.com/document/d/1dCYnzJmI5osXGgcGVygIHX8cfgbYDuVOpvfZbKnBsb4/edit) · [tider/utkast](https://docs.google.com/document/d/1KGcTovnA9XgSBmqm8aVHSjhoBYguGda5A02arBS-8w0/edit). Bevisad hard limit för P0 white och M0 yellow på exakt samma pixel; fysisk speler–NPC sortbyte+NUSIZ0 single-M0 på samma nio rader är ännu obevist. Nästa framtida ROM-uppdrag kräver separat uttrycklig användarauktorisation och G0 source-cycle preflight (FAIL→NO ROM). **G5 utlöses inte automatiskt. R1 fortsatt BLOCKED.**
+
 ## 4. G4 – minsta falsifierbara källplan och GO/NO-GO
 **Läge nu:** SOURCE-ONLY beslut; **INTE** ett nytt F12-prov. **Ansvar:** MAIN med RESEARCH II och eventuellt ROM DEVELOPMENT III som läsande teknisk rådgivare.
 
