@@ -10,11 +10,11 @@
 
 **MOTTAGET inom scope:** `G5AF_INSTRUMENTATION_READY_BOUNDED` = avslutad, enbart fungerande testinstrumentering. De två gamla statusrubrikerna nedan om att G5AF ännu inte är utförd är **historiska snapshots och inte aktiva uppdrag**. `G5Z_G0_INCONCLUSIVE_NO_ROM`; `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER` bevaras som tidigare utfall. **`G5_FORMAL_OPEN`** och **`NEW_ROM/H4/G1/G6/F12/S05/FIVE_NPC/NEW_VERIFICATION/PR_MERGE_NOT_AUTHORIZED`**. Nya TIA-C0..N1/H4-prov kräver ny separat uttrycklig användarauktorisation. Ingen tredje G5AF-körning.
 
-## 0B. AKTUELLT SENARE LM-D22 – G5AF F9 instrumenteringsreparation uttryckligen auktoriserad (2026-11-17)
+## 0B. HISTORISKT VID UTFÄRDANDET – LM-D22/G5AF auktoriserad (ersatt som aktivt av G5AG)
 
 **NYTT, AKTUELLT ANVÄNDARBESLUT:** På MAIN VII:s specifika förslag om **minimal korrigering och återkontroll av instrumenteringen på den existerande frysta F9-ROM:en** svarade användaren **"Ok, fortsätt med din rekommendation"**. Beslut **LM-D22** gäller **ENDAST** denna testharness-reparation och begränsade nya Stella/F9-körningar, som separata specialistenheten ROM DEVELOPMENT III får utföra. [G5AF fullständig bindande auktorisation](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AF_MAIN_VII_LM_D22_F9_INSTRUMENTATION_ONLY_REPAIR_RETEST_AUTHORIZED_2026-11-17.md) · [GitHub Issue #14 aktiv F9-instrumentorder](https://github.com/Odourman/let-me-out/issues/14) · [Drive-kopia i officiell mapp](https://docs.google.com/document/d/1qRX0t1RRn2bZG3dS4-9NAnrnbHZbd1wRVfeAorEbVAc/edit).
 
-**Nu:** `G5AF_F9_INSTRUMENTATION_REPAIR_RETEST_AUTHORIZED_NOT_YET_RUN`. Max två Actions-mätkörningar efter korrigering av `saveSes` som tidigare användes under `autoexec`-initiering, plus separat Python-indenteringsfel. **BARA** F9:s ursprungliga 16 384-byte ROM (SHA256 `6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b`), ingen ny ASM/BIN/DASM-build. Instrumentation READY förutsätter två reproducerbara PC-/CPU-/scanline-/registerstopp och hashad native TIA-bild i samma korrelerade artefakt. Även `READY` är inte TIA H4/S05/fem-NPC/G5-PASS.
+**Status då ordern utfärdades, INTE nu:** `G5AF_F9_INSTRUMENTATION_REPAIR_RETEST_AUTHORIZED_NOT_YET_RUN`. Max två Actions-mätkörningar efter korrigering av `saveSes` som tidigare användes under `autoexec`-initiering, plus separat Python-indenteringsfel. **BARA** F9:s ursprungliga 16 384-byte ROM (SHA256 `6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b`), ingen ny ASM/BIN/DASM-build. Instrumentation READY förutsätter två reproducerbara PC-/CPU-/scanline-/registerstopp och hashad native TIA-bild i samma korrelerade artefakt. Även `READY` är inte TIA H4/S05/fem-NPC/G5-PASS.
 
 **Tidigare G5AD/LM-D21 förblir slutligt `NO_BUILD_INSTRUMENTATION_BLOCKER`** och skall inte omklassificeras av detta nya beslut. **`G5_FORMAL_OPEN`**, `NEW_ROM/H4/G1/G6/F12/S05/FIVE_NPC/NEW_VERIFICATION/PR_MERGE_NOT_AUTHORIZED`. Issue #14 startar inte specialchatten automatiskt. Alla äldre spärrtexter nedan från före LM-D22 är historiska om och endast om de avser denna nu godkända F9-instrumenteringsreparation.
 
@@ -28,11 +28,11 @@
 **G5 FORMAL OPEN**, G5Z G0 `INCONCLUSIVE_NO_ROM`, LM-D21 `USED_AND_CLOSED_NO_BUILD`; `FULL_H4/G1/G6/F12/S05/FIVE_NPC_IMPL/NEW_VERIFICATION/PR#7_MERGE=NOT_AUTHORIZED`. Det äldre LM-D21/G5AD-avsnittet längre ned är dokumentation av **tidpunkten då ordern just gavs**, inte ett fortfarande aktivt specialistuppdrag.
 
 
-## 0. SENARE BESLUT LM-D21 – G5AD enda TIA-kalibrerings-ROM uttryckligen godkänd (2026-11-17)
+## 0. HISTORISKT VID UTFÄRDANDET – LM-D21/G5AD, senare stoppad utan ROM
 
 **NYTT OCH AKTUELLT:** Användaren citerade MAIN:s rekommendation om **ett enda instrumenterat TIA-mätprov** av `RESP`, `GRP`, `NUSIZ0`, `M0` och `ENAM0`, och svarade **"Gör så"**. Detta är ett **uttryckligt positivt LM-D21-beslut** som supersederar de äldre globala formuleringarna `NEW_ROM_NOT_AUTHORIZED` **endast för en separat G5AD-diagnostik-ROM**. [G5AD komplett bindande arbetsorder](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) · [sex förregistrerade mätfall](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_TIA_CALIBRATION_PREREGISTERED_CASES_2026-11-17.csv) · [GitHub Issue #13 till ROM DEVELOPMENT III](https://github.com/Odourman/let-me-out/issues/13) · [arkivkopia i Drive](https://docs.google.com/document/d/163Xtt4ygxQD7eM4AfPwZgAN6JktF8DcEQjKK43JNF-g/edit).
 
-**Aktuell orderstatus: `G5AD_SINGLE_TIA_MEASUREMENT_ROM_AUTHORIZED_NOT_YET_RUN`.** Specialist får bygga **en** 16 KiB standard-F6 NTSC diagnos-ROM på isolerad branch och köra DASM/Stella/Debugger för C0–C4/N1, sedan lämna råa CPU-/TIA-/colorclock-/pixelbevis och stoppa. Detta **är inte full H4 G1**, inte S05/fem NPC och inte ny spelversion. `G5Z_G0=COMPLETE_INCONCLUSIVE_NO_ROM` förblir oförändrat. **`G5_FORMAL_OPEN`**, `FULL_H4/G6/F12/S05/FIVE_NPC_IMPL/INDEPENDENT_VERIFICATION/PR_MERGE=NOT_AUTHORIZED`.
+**Status då ordern utfärdades, INTE nu: `G5AD_SINGLE_TIA_MEASUREMENT_ROM_AUTHORIZED_NOT_YET_RUN`.** Specialist får bygga **en** 16 KiB standard-F6 NTSC diagnos-ROM på isolerad branch och köra DASM/Stella/Debugger för C0–C4/N1, sedan lämna råa CPU-/TIA-/colorclock-/pixelbevis och stoppa. Detta **är inte full H4 G1**, inte S05/fem NPC och inte ny spelversion. `G5Z_G0=COMPLETE_INCONCLUSIVE_NO_ROM` förblir oförändrat. **`G5_FORMAL_OPEN`**, `FULL_H4/G6/F12/S05/FIVE_NPC_IMPL/INDEPENDENT_VERIFICATION/PR_MERGE=NOT_AUTHORIZED`.
 
 **Övriga historiska avsnitt längre ned** talar om läget före LM-D21 och är inte ett upphävande av denna enskilda beställning. GitHub-issue kan inte automatiskt starta en separat specialistchatt.
 
@@ -69,7 +69,7 @@
 |---|---|
 | G5 designval | Framtida spel- och kartmål är till stor del fastställda; **G5_FORMAL_OPEN** på grund av teknisk avsaknad av full bevisning |
 | G5Z/LM-D20 | **SLUTFÖRD / INCONCLUSIVE / NO_ROM**, order förbrukad och inte kvar som aktivt utvecklaruppdrag |
-| [G5AC instrumenterad TIA-kalibrering](gates/G5AC_MAIN_VII_TIA_PHASE_CALIBRATION_DECISION_READY_NOT_AUTHORIZED_2026-11-17.md) | **FÖRSLAG / SOURCE-ONLY BEREDSKAP – EJ beställd**. Eventuellt ett enda framtida småskaligt ROM-/Stella-prov av RESP/START/GRP/NUSIZ0-M0/ENAM0; kräver separat uttryckligt användargodkännande |
+| [G5AC historiskt förslag](gates/G5AC_MAIN_VII_TIA_PHASE_CALIBRATION_DECISION_READY_NOT_AUTHORIZED_2026-11-17.md) | **Historisk beredskap**. Senare LM-D21/G5AD gav en snäv order som **avslutades före ROM med instrumenteringsblockerare**; LM-D22/G5AF reparerade endast gammal F9-harness och är **levererad/slutförd**. Inget nytt C0–C4/N1-/ROM-prov är nu beställt. Ny order kräver separat explicit användarbeslut. |
 | [PR #7](https://github.com/Odourman/let-me-out/pull/7) | Äldre **OPEN DRAFT BLOCKED**, **ej mergad**, negativa rendererresultat bevaras |
 | [Issue #8](https://github.com/Odourman/let-me-out/issues/8) | **OPEN MEN DEFERRED / HISTORISKT** enligt användarens batchpolicy, inte aktiv Verification-åtgärd och inget oberoende PASS |
 | [Issue #5](https://github.com/Odourman/let-me-out/issues/5) | Framtida key/door-verifieringsgrind **inte** en aktuell ROM-kodorder |
@@ -79,6 +79,6 @@
 **Grindspärr:** `G5_FORMAL_OPEN`; `G1/G6/F12/NEW_ROM/FIVE_NPC_IMPL/S05_IMPL/NEW_INDEPENDENT_VERIFICATION/PR_MERGE=NOT_AUTHORIZED`. User requests such as "fortsätt" authorize **continued MAIN documentation/research/decision preparation** only within prior scope, never specialist ROM/cutover.
 
 ## 5. Projektrollen och nulägeskontroll
-MAIN VII samordnar, gör egen mottagnings-/källkontroll, låser endast riktiga användarbeslut. ROM DEVELOPMENT III får implementera endast separat uttryckligen beordrat scope. RESEARCH II är rådgivande. GRAPHICS II gör endast särskilt beställda visuella studier. VERIFICATION II granskar oberoende efter separat batchorder. ART/PACKAGING & MANUAL II skapar omslag/manual, inte ROM-canon.
+MAIN VIII samordnar, gör egen mottagnings-/källkontroll, låser endast riktiga användarbeslut. ROM DEVELOPMENT III får implementera endast separat uttryckligen beordrat scope. RESEARCH II är rådgivande. GRAPHICS II gör endast särskilt beställda visuella studier. VERIFICATION II granskar oberoende efter separat batchorder. ART/PACKAGING & MANUAL II skapar omslag/manual, inte ROM-canon.
 
 [GitHub huvudrepo](https://github.com/Odourman/let-me-out), [officiell Drive-mapp](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u), [G5AB inventory/method](project_sources/PROJECT_SOURCES_MAIN_VII_V3_CURRENT_AUDIT_AFTER_G5AA_2026-11-17.md). Vid varje faktisk status- eller versionfråga: **fetch latest GitHub HEAD, originaldokument/branch/issue och relevanta Drive-original**. Detta index får uppdateras för korrekt navigering, men inga äldre omstridda källor ska skrivas om som om ett historiskt FAIL aldrig hände.
