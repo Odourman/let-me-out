@@ -1,4 +1,13 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
+
+## MAIN VII RÄTTELSE TILL G5:s O1-FORMULERINGAR, 2026-11-17
+
+**Det senare uttryckliga användarbeslutet O1 är redan giltigt**, trots att några nedanstående MAIN VI/G5L-avsnitt felaktigt benämner det preliminärt. Se [O1-beslutet med ordagrant användarsvar](../MAIN_STATUS_NEXT_10_2026-11-15.md), [LM-D06 GODKÄNT](../MAIN_DECISION_LEDGER_SUPPLEMENT_2026-11-15.md) och [korrigendum](../project_sources/PROJECT_SOURCES_MAIN_VII_CORRIGENDUM_2026-11-17.md).
+
+O1 tillåter tillfällig skymning av nyckel **vid verkligt android/nyckelöverlapp** utan ändrad logisk position/upptagning. Mindre, tillfälligt flimmer är acceptabelt kvalitativt; **inte** kvantifierad 10Hz, systematisk same-Y-occlusion eller dold nyckel när ingen verklig överlappning finns. Godkänd O1 får **inte** användas som ersättning för den fortfarande olösta G5-S0/G5-S1/G5-S2-kernelpolicyn.
+
+**Övriga G5-spärrar fortsätter oförändrat:** formellt val av Y-rörelse/synlighetsgarantier utöver O1 och femfiendersscore/spawn saknas. Ingen G6/F12/ROM/ny verifiering/PR-merge är auktoriserad av denna rättelse.
+
 **2026-11-17 · MAIN VI. Status: `G5_USER_DECISION_PENDING_NO_CANON_CHANGE`.**
 
 Detta är en styrning av vad *inte* får påbörjas till följd av teknisk feasibility-granskning. [Fullständiga käll-/risk- och vägvalsbedömningen](G5_CANDID_FEASIBILITY_ASSESSMENT_AND_DECISION_BRIEF_2026-11-17.md) är separat och normativ som **MAIN:s rekommendation**, men **inte ett nytt användarbeslut**.
