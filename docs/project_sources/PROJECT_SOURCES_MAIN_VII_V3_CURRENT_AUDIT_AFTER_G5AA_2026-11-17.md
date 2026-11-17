@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII V3: samlad GitHub-, Google Drive- och Project Sources-revision
+
+> **G5AB INVENTERINGS-/REVISIONSSNAPSHOT, INTE EN STÄNDIGT LEVANDE STATUSKÄLLA.** Kontroller 174 main-trädposter och 247 Drive-objekt gällde vid granskningstillfället, före senare dokumenttillägg. Aktuell ingång är [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). Detta dokument behålls för metod/proveniens och går inte att läsa som ett nytt ROM-mandat.
+
 **Datum:** 2026-11-17, efter MAIN:s mottagning av G5Z/G5AA.
 **Klassning:** `MAIN_VII_G5AB_SOURCE_AUDIT_COMPLETED_SOURCE_ONLY`. **Ej** ny spelcanon, ROM-kod, testkörning, G1/G6/F12-auktorisation, merge eller oberoende Verification II.
 **Fortsättning inom MAIN:s befintliga source-only-mandat:** [G5AC – förregistrerad framtida TIA-kalibreringsfråga, EJ AUKTORISERAD](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AC_MAIN_VII_TIA_PHASE_CALIBRATION_DECISION_READY_NOT_AUTHORIZED_2026-11-17.md). Inga nya ROM- eller specialistordrar.
