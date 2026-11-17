@@ -28,6 +28,19 @@
 
 **Källstödd men EJ avgjord felorsaksrangordning:** (A) bristfällig detektion/val av faktiskt debuggerfönster och prompt, (B) PC-breakpointens aktiverings-/bank-/persistensvillkor, (C) `dbg.logbreaks`-inställning; andra orsaker kan finnas. Ingen av dessa är verifierad genom ny runtime. `break` kontra `trapWriteIf` är inte i sig bevis att `break` är felaktig.
 
+## Fördjupad MAIN VIII-källkontroll – bevisbar skillnad mellan standardinställning och G5AH-observation
+
+Stellas [Settings.cxx 6.7.1](https://github.com/stella-emu/stella/blob/6.7.1/src/emucore/Settings.cxx#L208-L217) definierar `dbg.logbreaks = false` som **standard**. Samma [Settings.cxx](https://github.com/stella-emu/stella/blob/6.7.1/src/emucore/Settings.cxx#L694-L702) dokumenterar argumentet **`-dbg.logbreaks <1|0>`** för att uttryckligen sätta beteendet. Därför är hypotesen `LOG_ONLY` **mindre sannolik än de två övriga** om runnern var ny och standardinställningen gällde. Den är däremot inte utesluten, eftersom **det faktiska** G5AH-konfigurationsvärdet saknas. Detta nyanserar punkt 3 ovan; det ändrar inte historiskt verdict.
+
+Den [interaktiva `logBreaks`-funktionen](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/DebuggerParser.cxx#L1683-L1691) **växlar** också läge: kör inte kommandot blint för att försöka "stänga av" loggning, eftersom det kan slå *på* loggning i en ny runner. En eventuell framtida strikt metod bör använda explicit, värdesatt `-dbg.logbreaks 0` vid emulatorsstart **och arkivera faktisk konfigurering**, inte påstå att kommandots frånvaro bevisar inställningen.
+
+Ytterligare två semantiska förgrindar är källbevisade:
+
+- [`executeBreak`](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/DebuggerParser.cxx#L817-L870) returnerar **"set" eller "cleared"** och är bankmedvetet; ett enda inskickat `break`-kommando är *inte* bevis för ett aktivt PC-stopp. Om separat auktoriserad metod skulle användas, måste faktisk `set breakpoint at ... in bank #...`-kvittens läsas ur en redan aktiv prompt **före** ett separat, kontrollerat `run`. Om "cleared", avbryt och registrera det istället för att försöka reparera tyst genom fler kommandon.
+- [`executeRun`](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/DebuggerParser.cxx#L1809-L1816) lämnar debuggerläge, medan [CPU:s breakpointcheck](https://github.com/stella-emu/stella/blob/6.7.1/src/emucore/M6502.cxx#L259-L281) endast kan åstadkomma nytt debuggerläge om *PC och bank faktiskt matchar*. I G5AH syntes spelfönstret och ingen interaktiv post-`run`-prompt verifierades. Det är ett **stopptillstånds- eller observationsfel**, inte ett belagt TIA-positionsfel.
+
+**Konkret framtida acceptans utan ROM-/spelutveckling:** få först bevis för fungerande prompt i en helt frusen F9-körning; få därefter exakt bankbunden breakpoint-`set`-kvittens, ställ in `dbg.logbreaks=0` genom dokumenterad programflagga, `run` först efter kvittens, verifiera *återinträde i debugger*, PC/bank och bevarad session innan `step` och `saveSnap`. Avbryt direkt vid utebliven prompt. Slutligen döda och invänta Stella/Xvfb **före** SHA256SUMS och readback-jobb. Detta är **acceptanskriterier för ett möjligt nytt uppdrag**, inte att uppdraget redan exekverats.
+
 ## En möjlig framtida metodreparation – EJ BESTÄLLD
 
 Detta är *beslutsunderlag*, inte kod som MAIN beställer:
