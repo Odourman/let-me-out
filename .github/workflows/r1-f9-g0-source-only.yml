@@ -1,0 +1,44 @@
+name: R1-F9 G0 SOURCE ONLY frozen F7 provenance and 72 source timing rows NO ROM
+on:
+  push:
+    branches: [rom-dev/v018-r1-f9-three-binary-x-one-rom-20261117]
+    paths: [.github/workflows/r1-f9-g0-source-only.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  mandatory-G0-before-single-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch unchanged ORIGINAL F7 source, real .lst/.sym and the pinned original F7 ROM from prior successful run
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F7_FULL_SOURCE_TRUE_160_STELLA_16_TRAPS_SHA256_2026-11-16
+          run-id: 43968481385
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed/
+      - name: G0 Python source-only NO DASM NO Stella NO ROM, fail closed any source budget or parent hash
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f9_preflight.py
+          /usr/bin/python3 - <<'PY'
+          import json
+          x=json.load(open('r1_f9_g0_source_only.json'))
+          assert x['G0']=='F9_G0_SOURCE_ONLY_FEASIBLE_EIGHT_STATES_NO_ROM'
+          assert x['F9_eight_nine_row_kernel_source_bytes']==2670
+          assert x['F9_source_max_CODE_budget_before_FE00']==3108
+          assert len(x['all_72_rows_SOURCE_ONLY'])==8
+          assert all(len(v['rows'])==9 for v in x['all_72_rows_SOURCE_ONLY'].values())
+          assert x['ONE_ROM_NOT_BUILT'] and x['HARDWARE_P1_START_GRPLATCH_WRAP_NOT_MEASURED']
+          print('F9_STANDALONE_G0_SOURCE_ONLY_GREEN_DOES_NOT_AUTHORIZE_SECOND_ROM')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r1-f9-mandatory-source-only-g0-72-timing-cells-frozen-f7-provenance
+          path: rom/v018/experiments/r1_free_xy/r1_f9_g0_source_only.json
+          if-no-files-found: ignore
