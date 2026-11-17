@@ -101,6 +101,10 @@ Det saknas anledning att genomföra 67 separata teknikexperiment. De mappas till
 **VBLANK:** kan beräkna actor sort och händelser på förhand, men löser inte midscanline deadline. 76-cykelgränsen kvarstår även för ARM/dyr mapper, eftersom TIA inte ändras.
 **Färgkonflikt:** P0:s vit/gul-retrigger fungerar hittills bara med låst vänster-/högerordning. Player–NPC-korsning måste förregistreras och bevisas; senare GOLD-key och orange dörr kan kräva ännu fler färgbyten.
 
+### Aktualitet 2026-11-17 efter G5L – 30 tekniktrick, riktiga Berzerk-y och G5 användarspärr
+
+[GitHub G5L – fullständig teknikexit för G5 inklusive 30/30-trick och 10 key/door-stressfall](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5L_FINAL_TECHNICAL_EXIT_30_TRICKS_R1_R2_DOOR_KEY_AND_USER_DECISION_2026-11-17.md) · [Drive fulltext och CSV](https://docs.google.com/document/d/1zbusyasMrLlO4zIp3iq8iplr8cvjvlAvbcgkDATOi38/edit). G1–G4 klara som source-only/read-only, G5 technical `COMPLETE` men G5 design/acceptance `USER_DECISION_PENDING`. En föreslagen Berzerk Y-lane + P0 player+white under P1-orange door kan minska same-Y grafikkostnad, men kravet att fienders 9-radersband inte överlappar ändrar deras fri Y/AI och är inte godkänt. Gold key+white NPC+door samma Y har ännu ingen genomförbar verifierad G0-uppgift. Original sex-NPC/scope och E02 skall bevaras. **Kör inte G6 utan separat expressauktorisation; G7–G10 endast efter respektive senare authorization**. Planens ursprungliga sexfienders-PASS får inte i smyg användas som de nya femfienders-kriterierna.
+
 ## 7. Korrigerade NÄSTA TIO: grindar, inte tio utlovade implementationssteg
 Alla punkter är **beredda beslut/arbetsmoment**. Endast 1–4 är rimliga att göra nu som read-only-källarbete. För 5–10 gäller villkor; de kan **aldrig** utföras bara därför att de finns här. På NO-GO avslutas planen, övriga punkter utförs inte.
 
