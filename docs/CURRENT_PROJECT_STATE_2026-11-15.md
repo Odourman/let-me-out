@@ -3,6 +3,16 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – G5F KÄLLSTUDIE FEM ANDROIDER, SPEGEL-PF OCH BEFINTLIG P1-DÖRR (2026-11-17)
+
+**Status: G5F_SOURCE_ONLY_ARCHITECTURE_REVIEW_COMPLETE_PHYSICAL_RENDERER_NOT_PROVEN.** Användaren sade "Ok, fortsätt" efter att fem fiender (2M,1F,SM,SF), svart bakgrund och nyckelhål som transparent del av den orange dörrens grafik diskuterats. MAIN VI gjorde NY källbaserad kart-/mask-/resursrevision. [GitHub – fullständig G5F-analys](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5F_FIVE_ANDROID_REFLECTED_PF_DOOR_SOURCE_ONLY_ARCHITECTURE_2026-11-17.md) · [Google Drive – samma fullständiga underlag, verifierat i officiell projektmapp](https://docs.google.com/document/d/1PAELvVABaDAVuhZILC1Czo5kEIiRGQV2IaZ1bdtKRNw/edit).
+
+**Ny faktisk observation:** Samtliga A01/B01/C02/D01-kartor är vänster-höger-symmetriska i **18 av 22 rader**. De enda avvikelserna är `#` till vänster x0 mot `D` till höger x39 på y9–12. Därför kan `CTRLPF.REF` användas som huvudkandidat, och den enda höger-only väggcellen i dörrbandet kräver kanske bara ett sena `PF0`-byte per scanline, snarare än att alltid skriva om hela PF0/PF1/PF2 för högerhalvan. TIA PF-register stannar latched mellan rader, vilket ger särskilt stor besparing över de befintliga åtta fysiska rasterraderna per kartcell. Ny **PF0-only/REF-kernel är INTE ROM-/timingbevisad** och dess svart nyckelhåls-PF-clear måste valideras.
+
+**Originalmaskanalys:** Vid fem NPC med samma y ligger de tre stora på alla nio 8×9-rader; små originalmasker har noll på rader 0,1,8. Belastning per originalrad **3/3/5/5/5/5/5/5/3** vita NPC, plus gul fullstor spelare, ett skott och brun PF. Den verkliga flaskhalsen kvarstår sex kritiska rader, inklusive lägena där dörrens orange **P1** också konkurrerar med vita **P1**. Även F11 fyra P1 numeriska START föll på G0 tidigare. Detta är **påtagligt bättre huvudspår men ingen fullspels-garanti**.
+
+**Auktoritet:** Fem fiender används som **användaruttryckt arbetsinriktning i G5F**; historiska v0.18 R1=sex, R2=fem+nyckel och alla gamla ACCEPTANCE-filer ändras inte retroaktivt. G5/F6 canon-/waiver-/senare implementationsbeslut fortfarande PENDING USER; ROM DEVELOPMENT III har inte fått kodorder och VERIFICATION II har inte fått en verifieringsbatch. G5F är source-only, inga binärer/kod/designmasker ändrade.
+
 ## MAIN VI – ANVÄNDARENS SVARTA BAKGRUND SOM VISUELLT RIKTMÄRKE (2026-11-17)
 
 **Direkt användarformulering:** "Bakgrunden bör vara svart." MAIN VI har dokumenterat detta som **aktuell användarstyrd färgriktning**: spelplanens fria bakgrund ska upplevas som svart bakom bruna PF-väggar, vita androider, gul spelare, guldnyckel och orange högerdörr med svart nyckelhål. Tidigare v0.14 RGB-mockup `#080A0D` var **illustrativt nästan svart**, inte en fastställd Atari-färgkod; användarens nyare svart-riktning ska beaktas framöver utan att ändra gamla bevis/artefakter.
