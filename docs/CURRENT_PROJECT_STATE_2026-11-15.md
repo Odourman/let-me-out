@@ -3,6 +3,12 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – INITIAL KÄLLGRANSKNING OCH R1 HOLD 2026-11-17
+
+MAIN VI har livegranskat aktuell GitHub och projektets Google Drive, hämtat och granskat originalets 57 beslut, originalspecifikation och tre handskisser, samt jämfört F9/F10/F11 med versionspinnad Stella 6.7.1 TIA-kod och samtliga 30 ursprungliga Atari-trick. **Formellt beslut: fortsätt bevara `FULL R1/v0.18 = BLOCKED / NOT ACCEPTED`; `F11_SOURCE_ONLY_INFEASIBLE` är avslutat G0-stopp med 0 nya ROM/Stella/DASM; ingen R1-F12 eller annan ny ROM-order, PAL, mapper, fullspel, grafikförändring, PR-merge eller separat Verification auktoriseras.** Detta är varken ett fysikaliskt universalomöjlighetsbevis eller någon ändring av sex NPC/ursprunglig pixelcanon. En ny falsifierbar arkitektur kräver en faktisk numerisk-X/Y-till-START-/GRP-cykelplan med originalmasker, närfallsöverlevnad, P0/M0/PF och resident standard-F6 inom 76 CPU-cykler före separat beslut. F9:s åtta inbrända binära profiler eller extra F6-banker uppfyller inte kravet. Eventuell RAM-exekverad patchad mikrokernel är endast källbaserad forskningsidé, inte nytt bevis.
+
+[MAIN VI:s kompletta daterade granskningsrapport](MAIN_VI_INITIAL_R1_FEASIBILITY_REVIEW_AND_HOLD_DECISION_2026-11-17.md) · [Google Drive-kopia](https://docs.google.com/document/d/1VjF_K7MeFeLK4WXZYYpf6zMBImJNiIVkdaI6geVXFdY/edit). Denna övre delta går före äldre tidsbundna ”enda aktiva uppdrag”-rubriker nedan; originaldokumenten och frysta ROM-commits förblir oförändrade.
+
 ## MAIN V → MAIN VI – MIGRATIONSSTATUS / F11 G0 HARD STOP 2026-11-17
 
 **MAIN V AVSLUTAR ROLLEN OCH LÄMNAR ÖVER TILL MAIN VI när användaren skapar den nya rena MAIN-chatten.** [Fullständigt källkontrollerat handoff](MAIN_V_TO_MAIN_VI_VERIFIED_HANDOFF_2026-11-17.md) · [MAIN VI startprompt](MAIN_VI_STARTPROMPT_2026-11-17.md) · [Google Drive handoff](https://docs.google.com/document/d/1LDPLBPdaHiBHgeWwuBSHvsv-jNrA3ZS8KQX-nsEav3g/edit) · [Google Drive prompt](https://docs.google.com/document/d/1ryS3abq-xt93VlRhklCBHiHyLdbWIag8Mo2_bjBK_Qs/edit). Dessa texter är **överföring och källindex, inte ny scope-/gameplay-/ROM-auktorisation**. Efterträdaren ska läsa VERKLIGA aktuella källor/live HEAD själv; texten längre ner i denna 2026-11-15-fil är historiska snapshot även om den säger "enda aktiva".
