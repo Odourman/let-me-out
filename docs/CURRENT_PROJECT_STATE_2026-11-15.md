@@ -1,5 +1,8 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+> **PROJECT SOURCES V4 ERSÄTTER V2/V3 FÖR AKTUELL ORIENTERING:** [verifierade sexfilsreleasen](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V4) · [Drive-instruktion](https://docs.google.com/document/d/19EU_PLT5fDXI41u4kA3rWMU6FOVKPjsAYCwbvVLRlpA/edit). Detta 2026-11-15-dokument är historiskt ackumulerad logg med äldre tidssnitt. Äldre rader om öppna kart-/femfienders-/G0-beslut är inte aktivt nuläge. [Gällande aktuellt index](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md) visar LM-D12..20 och G5Z `G0_INCONCLUSIVE_NO_ROM`; inga ROM-test eller framtida steg beställda.
+
+
 > **STATUS: HISTORISK KRONOLOGISK PROJEKTLOGG – INTE EN FRISTÅENDE AKTUELL SAMMANFATTNING.** Läs först [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). Detta långa dokument bevarar tidigare skiftande "nu"-uppgifter som *historiska statusögonblick*. Nyast giltiga spelbeslut LM-D12..19 och G5Z/LM-D20 avslutad `G0_INCONCLUSIVE_NO_ROM`; G5 OPEN, ingen G1/G6/F12/ny ROM/merge. **Radera inte äldre FAIL eller gör om dem till PASS.**
 
 
