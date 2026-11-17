@@ -3,6 +3,14 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – G5L FINAL G5 SOURCE-ONLY: 30/30 TRICKS OCH TIO KEY/DOOR-SAMTIDIGHETSFALL (2026-11-17)
+
+**Status:** `G5_TECHNICAL_SOURCE_ONLY_DOSSIER_COMPLETE`; **formell G5-design-/acceptansgrind** `G5_USER_RENDERING_POLICY_AND_SCOPE_DECISION_PENDING`; **G6/F12** `NOT AUTHORIZED`; G0 fysisk `NOT PASSED`; inga nya ROM/stella/E02. [GitHub: full G5L slutrapport och 30/30 tekniker](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5L_FINAL_TECHNICAL_EXIT_30_TRICKS_R1_R2_DOOR_KEY_AND_USER_DECISION_2026-11-17.md) · [GitHub: tio R1/R2/R3-nyckel/dörr same-Y-kombinationer](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5L_SAME_Y_KEY_DOOR_ENEMY_RENDERING_STRESS_2026-11-17.csv) · [Google Drive fulltext+CSV läst tillbaka i officiella projektmappen](https://docs.google.com/document/d/1zbusyasMrLlO4zIp3iq8iplr8cvjvlAvbcgkDATOi38/edit).
+
+MAIN har för första gången sammanfört Berzerks faktiska 1982 original-Y-lane-kernel, G4 P0 gul/vit + M0-mikrohypotes, G5G Ball/speglad PF, R3:s isolerade P1-orange dörr med NEGATIVT svart keyhole och ALLA exakt 30 ursprungliga Atari-tricken mot en konkret femfienders-design. Tio scenfall blottlägger **S05: aktiv vit NPC + guldkey + orange door på samma Y** (plus P0 gul player, M0 aktiv shot) med enkel P1=door/1-other-P1-policy → **P0 kräver tre 8bitars events** i modellen, ej testad G0. `O1` key-skymning från `KEY_OCCLUSION_LOGIC_V015.md` är fortfarande **preliminär/rekommenderad, EJ formellt godkänd canon**; key kan inte godtyckligt döljas bara för att same-Y. De 30 tricken kan omfördela arbete men skapar ingen tredje 8bitars TIA-spelarkanal.
+
+**Faktiskt formellt kvar:** användarens uttryckta produktmål 2600 + fem M,M,F,SM,SF + svart bakgrund + orange door/svart inmaskat hål är klart; **det är oklart om fiender får få BEGRÄNSAD Y-frihet (Berzerk Y-band) eller MÅSTE få fri Y utan reducerad samtidig synlighet**. MAIN kan inte anta detta. Utan Y-/flicker-acceptans kvarstår femfreeY S0 utan fungerande kernel. **G5 som research är tekniskt slutbedömd; formell USER G5 PASS återstår; G6 får inte startas av villkorat "fortsätt"**. Gamla sex-NPC C01/fem+key C02, 57 originalbeslut, originalmasker, PR7/E02 och senare grindar oförändrade.
+
 ## MAIN VI – G5J/G5K: BERZERK ORIGINALSOURCE OCH DYNAMISK P0/P1-ÄGARMODELL (2026-11-17)
 
 **Status: G5J source-only historian review complete, G5K 176-line OFFLINE channel ownership PASS conditionally, G5 FORMAL DESIGN/Y_POLICY PENDING, G0+G6 NOT AUTHORIZED/NOT PASSED.** Efter användarens "Varför avbröt du? Fortsätt" fortsatte MAIN med ny faktisk källa, inte en ny efterfrågan om tidigare designval.
