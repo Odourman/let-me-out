@@ -1,0 +1,91 @@
+name: R1-F9 G1 EXACT ONE new 16KB standard F6 ROM 3 P1 masks 8 RAM X modes
+on:
+  push:
+    branches: [rom-dev/v018-r1-f9-three-binary-x-one-rom-20261117]
+    paths: [.github/workflows/r1-f9-ONE-ROM-G1.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-one-F9-NTSC-ROM:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download REAL immutable F7 source+compiler listing/symbols/ROM from previously approved run
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F7_FULL_SOURCE_TRUE_160_STELLA_16_TRAPS_SHA256_2026-11-16
+          run-id: 43968481385
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed/
+      - name: MANDATORY G0 PURE SOURCE again before any DASM install/compilation, independent G0 run previously GREEN 44049671587
+        id: source
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f9_preflight.py
+          /usr/bin/python3 - <<'PY'
+          import json
+          g=json.load(open('r1_f9_g0_source_only.json'))
+          assert g['G0']=='F9_G0_SOURCE_ONLY_FEASIBLE_EIGHT_STATES_NO_ROM'
+          assert len(g['all_72_rows_SOURCE_ONLY'])==8
+          assert all(len(q['rows'])==9 for q in g['all_72_rows_SOURCE_ONLY'].values())
+          assert g['F9_eight_nine_row_kernel_source_bytes']==2670
+          assert g['F9_source_max_CODE_budget_before_FE00']==3108
+          print('F9_BUILD_PRECONDITION_ALL_72_SOURCE_AND_4K_BANK_GREEN')
+          PY
+      - name: Install pinned standard Ubuntu DASM and Stella 6.7.1, Xvfb and Pillow
+        if: steps.source.outcome == 'success'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W dasm stella python3-pil > r1_f9_tools_versions.txt
+      - name: THE ONE AND ONLY ONE permitted F9 build; freeze SHA and exact 4KiB banks BEFORE any Stella
+        id: build
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 r1_f9_build.py
+          test "$(stat -c %s dist/r1_f9_three_masks_three_binary_ram_x_ONE_ROM_F6.bin)" -eq 16384
+          sha256sum dist/r1_f9_three_masks_three_binary_ram_x_ONE_ROM_F6.bin | tee r1_f9_ONE_ROM_FROZEN_SHA256.txt
+          stat -c 'F9_ROM %n %s bytes' dist/r1_f9_three_masks_three_binary_ram_x_ONE_ROM_F6.bin
+      - name: FIRST authentic Stella frame hard gate; if passes collect 9x16 REAL frameindex, original 3 masks, P0 M0 PF NTSC, 12 contrasts
+        id: captures
+        run: bash rom/v018/experiments/r1_free_xy/r1_f9_capture.sh
+      - name: Actual 48 genuine Stella PC/scanline/CPU/TIA register trap GUI images over all 8 RAM states
+        id: traps
+        if: steps.captures.outcome == 'success'
+        run: bash rom/v018/experiments/r1_free_xy/r1_f9_trace.sh
+      - name: Final hard stop gate on exactly one ROM 144 authentic source images and 12 independent X contrasts
+        if: steps.captures.outcome == 'success' && steps.traps.outcome == 'success'
+        run: |
+          cd rom/v018/experiments/r1_free_xy
+          /usr/bin/python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('evidence/r1_f9_one_rom/TRUE_144_ALL_THREE_MASK_8_STATE_12_CONTRAST_AUDIT.json')
+          assert p.exists(),'F9_NO_PIXEL_AUDIT_HARD_STOP'
+          j=json.loads(p.read_text())
+          assert j['classification']=='F9_THREE_BINARY_RUNTIME_SELECTORS_LOCAL_PASS','F9_FALSE_PASS_FORBIDDEN'
+          assert j['real_frame_count_actually_analyzed']==144
+          assert j['all_source_oriented_mask_and_other_controls_exact']
+          assert j['all_eight_preregistered_X_exact']
+          assert len(j['all_twelve_independent_X_orthogonality_contrasts'])==12
+          assert j['twelve_of_twelve_pass']
+          assert j['synthetic_negative_not_real']['both_independent_oracles_rejected']
+          assert len(list(Path('evidence/r1_f9_one_rom/traps').glob('mode_*/*/stella_full.png')))==48
+          assert not list(Path('evidence/r1_f9_one_rom/traps').glob('mode_*/*/UNMEASURABLE.txt'))
+          print('F9_3_BINARY_RAM_X_8_MODES_144_REAL_IMAGES_12_ORTHOGONAL_CONTRAST_LOCAL_PASS_ONLY')
+          print('FULL_R1_BLOCKED_NOT_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+          path: |
+            r1_f9_tools_versions.txt
+            rom/v018/experiments/r1_free_xy/r1_f9_*
+            rom/v018/experiments/r1_free_xy/dist/r1_f9_*
+            rom/v018/experiments/r1_free_xy/evidence/r1_f9_one_rom/
+          if-no-files-found: ignore
