@@ -1,5 +1,8 @@
 # Let Me Out! – MAIN VII Project Sources V2, 2026-11-17
 
+> **ARKIV / ERSATT – LÄS INTE DETTA SOM AKTIV UPPLADDNINGSANVISNING.** V2 var korrekt vid skapandet men ersätts som aktiv Project Sources-ingång av den senare aktuella sexfilsreleasen. Läs [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md) och dess hänvisning till senaste publicerade paket. **Öppna äldre ZIP eller meningar "enda rekommenderade" nedan endast för historisk revision.**
+
+
 Status: source-only konsolidering, inte ändrad canon, tekniskt ROM-bevis eller ny G6-auktorisation.
 
 ## Vad ska användaren ladda upp?
