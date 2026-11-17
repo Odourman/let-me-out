@@ -3,6 +3,12 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – FEMANDROIDSFÖRSLAG / BERZERK / VIDEO CHESS ARKIVERAT (2026-11-17)
+
+**Klassning: RECORDED_CANDIDATE_DIRECTION_NOT_CANON_NOT_IMPLEMENTATION_AUTHORIZATION.** Användaren ifrågasatte korrekt om ett mycket enklare spel än Berzerk verkligen är orealistiskt på original-Atari 2600 utan Supercharger och föreslog **fem** androider (2 stora M, 1 stor F, 1 liten M, 1 liten F) i stället för sex samt **Video Chess/Venetian Blinds** varannan rasterrad för **nyckeln och dörren** när deras Y-band kräver samma sprite. Huvudchatten rekommenderade en källbunden Berzerk-jämförelse och prövning av nyckel/dörr som annan problemkategori än tidigare negativ androidinterleave. Ingen allmän gameplay- eller 6507/TIA-genomförbarhet är bevisad genom detta.
+
+**Läs först:** [GitHub – permanent komplett forsknings-/förslagsnotering](MAIN_VI_FIVE_ANDROID_BERZERK_VIDEO_CHESS_RESEARCH_DIRECTION_2026-11-17.md) · [Google Drive – samma dokument](https://docs.google.com/document/d/1Iv9XrYt3CvkPNhiCGxSgEQSe0M91SHa4CHIjqP6YAA8/edit). Google Drive-kopian är verifierad i officiell projektmapp. Fem-NPC-alternativet är **prioriterad researchkandidat, inte ändrad canon**: v0.18 R1 C01/C04 är fortfarande **SEX** androider, R2 C02 fortfarande **FEM + nyckel**, NPC originalmasker och R3 orange/svart högerdörr oförändrade. **G5 användarbeslut PENDING**, ingen G6, F12, gameplay, Graphics- eller ROM-implementation, ingen E02, ingen PAL/mapper/PR7 merge. Separat explicit userauktorisation krävs för antalsändring, flimmer-/occlusion-policy och senare kodtest.
+
 ## MAIN VI – G5 GENOMFÖRBARHETSBEDÖMNING: RAK NO-GO PRODUKTPLAN, ANVÄNDARVAL VÄNTAR (2026-11-17)
 
 **Teknisk G5-analys:** `G5_FEASIBILITY_REVIEW_COMPLETE_USER_DESIGN_DECISION_PENDING`. Efter frågan "är vårat spel möjligt ... piskar vi en död häst?" utförde MAIN VI en källbaserad konstruktions-/produktbedömning. **Ett Berzerk-liknande spel med våra grundläggande spelregler på Atari 2600 är sannolikt möjligt; samtliga nu låsta samtidiga originalgrafikkrav på standard-F6 bör däremot INTE behandlas som en trovärdig fullspels-produktplan. Detta är teknisk prognos, inte ett universellt TIA-omöjlighetsteorem.**
