@@ -2,6 +2,8 @@
 
 **AKTIV PROJECT SOURCES-VERSION:** [CURRENT_V5, MAIN VIII efter G5AG](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V5) · [officiell Drive-installationsguide](https://docs.google.com/document/d/1ixFG1C4ky5c1cFj0U7B9V5UmMal627IqsxTUpcyktf0/edit). V4/V3/V2 är arkiv och inte parallella aktiva källfiler. Byte i ChatGPT Projects sker manuellt, exakt sex filer.
 
+**MAIN VIII BESLUTSBEREDNING EFTER G5AF (ENBART SOURCE-ONLY):** [Källavstämd TIA-beslutsbrief](https://github.com/Odourman/let-me-out/blob/main/docs/gates/MAIN_VIII_G5AF_TO_NEXT_TIA_DECISION_BRIEF_SOURCE_ONLY_2026-11-17.md). Den tydliggör skillnaden mellan fungerande F9-instrumentering och fortfarande saknade fysiska RESP/GRP/NUSIZ/M0/colorclock-mätningar. **Inget nytt tekniskt uppdrag eller användarmandat**; G5AG:s status och spärrarna nedan är oförändrade.
+
 ## 0C. MAIN VIII G5AG – G5AF levererad och källkontrollerat mottagen (2026-11-17)
 
 **SENASTE GÄLLANDE STATUS:** ROM DEVELOPMENT III har levererat den uttryckligt godkända **LM-D22/G5AF F9-only-instrumenteringsreparationen**. [MAIN VIII G5AG källkontrollerade mottagning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md) · [fryst specialistcommit c56b522](https://github.com/Odourman/let-me-out/blob/c56b52284e7322fdf1c41812ae407429d8fb0f20/rom/g5af_f9_instrumentation_2026-11-17/TO_MAIN_G5AF_F9_INSTRUMENTATION.md) · [Issue #14](https://github.com/Odourman/let-me-out/issues/14) · [officiell Drive-arkivkopia](https://docs.google.com/document/d/1MvpvQEAwQRlPr_CH2VVy-gY5LYjebzkPxcUDh0Rk71g/edit).
