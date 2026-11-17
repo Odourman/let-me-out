@@ -3,6 +3,14 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – G1–G10 OPERATIV BEREDSKAP A/B/C OCH 16 SCENARIER (2026-11-17)
+
+**Nyaste planeringskomplement (INGEN KODORDER):** [MAIN VI:s kompletta operativa G1–G10-beredskapsplan med risker, plan A/B/C, reservvägar, stoppvillkor, framtida leverabler och SC01–SC16](MAIN_VI_G1_G10_CONTINGENCY_PLAYBOOK_A_B_C_2026-11-17.md) · [Verifierad Google Drive-kopia](https://docs.google.com/document/d/1JzEnTD5iZCUOTui_qCY0wiSsoiOtSB-YHuTaoZhkeo0/edit).
+
+För varje G1–G10 finns nu uttryckligen **PLAN A** (huvudväg inom canon), **PLAN B** (begränsad teknisk reservväg inom faktiskt auktoriserat scope) och **PLAN C** (kontrollerat stopp eller tydligt användarbeslut). Inga A/B/C är förhandstillstånd för senare kod eller designkompromisser. Särskilt **COLUP0 delas mellan P0 och M0**, så P0 gul/vit NPC-multiplex kan göra M0-skottet vitt under samma rasterrad. Detta är en ny identifierad hårdvarukonflikt som MÅSTE budgeteras tillsammans med sex-NPC-korsning, R2 key-guld, R3 orange/svart högerdörr, PF-vägg, 76 CPU/scanline och 128B RIOT-RAM. R1g:s RUNTIME-succé gäller endast en fjärde NPC i fyra **förkompilerade diskreta** X-lägen, inte fri numerisk all-NPC-X.
+
+**Tillstånd:** endast G1–G4 READ-ONLY/SOURCE-ONLY kan förberedas på befintligt mandat. G5 är villkorad beslutsgrind, G6–G9 kräver separata MAIN-ordrar och G10 kräver ny uttrycklig användarauktorisation för gameplay. **F11 G0 FAIL/G1 NOT RUN, R1 BLOCKED/NOT ACCEPTED, ingen F12/ROM/Stella/PR-merge/E02/mapper/PAL eller waiver via denna dokumentation.** F2–F11-historik, originalkanon, frysta commits och äldre handoff bevaras.
+
 ## MAIN VI – FÖRDJUPAD FEASIBILITY, 30 TRICK OCH REVIDERAD TIOGRINDSPLAN 2026-11-17
 
 **Gällande senaste MAIN VI-revidering.** MAIN VI har på nytt läst live GitHub och projektets Drive, ursprunglig canon/57 beslut och v0.19-designbegränsning, R1–R4 kontraktet, frysta F9/F10/F11, primärkod Stella 6.7.1, samtliga 30 ursprungliga trick, den 52-posters tekniköversikten och den 67-punkters riskavhandlingen. **Tidigare MAIN VI "nästa tio"-ordning nedan är historisk och är ERSATT SOM PLAN, ej raderad som historik.** Dess verkliga avslutade F2–F11-historik förblir giltig. Ny fördjupad källgranskning: [MAIN VI – 30 trick/52 mönster/67 risker, feasibility och villkorade G1–G10](MAIN_VI_DEEP_REASSESSMENT_30_TRICKS_FEASIBILITY_AND_TEN_GATES_2026-11-17.md) · [Drive-spegel](https://docs.google.com/document/d/13hW5xRwlcClMCNKn2j-iQ3BBBHOf48Y4drfzFz4-uhM/edit).
