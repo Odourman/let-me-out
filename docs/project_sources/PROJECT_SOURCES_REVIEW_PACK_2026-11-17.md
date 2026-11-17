@@ -1,5 +1,8 @@
 # LET ME OUT! – Project Sources review-pack receipt (2026-11-17)
 
+> **ARKIV / RECENSION AV TIDIGARE PAKET, INTE AKTUELL KÄLLREKOMMENDATION.** Denna fil innehåller flera tidsbundna "ENDA REKOMMENDERADE" för historiska V1/V2-releaser. Nuvarande navigationspunkt: [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). Inga äldre release-noteringar får sätta dagens spel-, kart- eller ROM-status.
+
+
 ## MAIN VII – PROJECT SOURCES V2, 2026-11-17
 
 **Aktuell rekommendation:** använd endast [V2 med sex projektkällor](https://drive.google.com/file/d/1R6rvwwYwDIfXOMcbi1CrHIRN5YgR8o7-/view), läs [anvisningen](PROJECT_SOURCES_MAIN_VII_V2_USAGE_2026-11-17.md) för när projektet ska kontrollera originalkällor live. Arkiverad niofilsversion är inte avsedd att laddas upp parallellt. Det här är källorientering, **inte ny canon, G5-PASS eller G6/F12-auktorisation**.
