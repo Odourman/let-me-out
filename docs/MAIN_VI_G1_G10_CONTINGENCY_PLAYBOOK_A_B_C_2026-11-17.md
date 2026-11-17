@@ -35,6 +35,8 @@ Ingen grind är automatiskt auktorisation för nästa. **G1–G4** tillåter nu 
 5. Lägg inte till nästa implementationssteg vid ny upptäckt. Stanna, skapa besluts-/riskdelta och begär rätt uttrycklig auktorisation.
 6. Spara granskning och beslut i GitHub under docs/ samt Drive i projektmappen, länka från CURRENT_PROJECT_STATE, kontrollera readback. Behåll föregående källor och nederlag; ändra inte fryst original.
 
+> **G1 genomförd och avslutad som dokumentation 2026-11-17:** [G1 completion receipt](gates/G1_COMPLETION_RECEIPT_2026-11-17.md), [102 kravposter](gates/G1_REQUIREMENTS_TRACE_2026-11-17.csv), [integritetsmanifest](gates/G1_BASELINE_MANIFEST_2026-11-17.json), [auktoritetsdiff](gates/G1_AUTHORITY_DIFF_2026-11-17.md). Google Drive-kopior: [rapport](https://docs.google.com/document/d/1t41LBeuSLCxe-zpIwBgZJxMf11ZpUVXGL1BP2uQoPwQ/edit) och [register+manifest](https://docs.google.com/document/d/1gQv8njPYULlPGdeFPsKF-Olm6gSVGlq6I_egVRyu-0s/edit). **G1 dokumentationsgrind = COMPLETE WITH KNOWN OPEN ITEMS, inte ROM/E02 PASS. G2 inte påbörjad.**
+
 ## 1. G1 – fastställ revisionsbar krav-, design- och bevisbaseline
 **Läge nu:** READ-ONLY. **Ansvar:** MAIN VI. **Mål:** ett entydigt körbart beslutsunderlag innan något tekniskt lösningsförslag blir en arbetsorder.
 
