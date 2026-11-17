@@ -3,6 +3,15 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – G5I G1–G10 PLANAVSTÄMNING OCH FEMFIENDERS BESLUTSDELTA (2026-11-17)
+
+**Status: G5I_SOURCE_ONLY_PLAN_RECONCILIATION_COMPLETE_G5_FORMAL_CUTOVER_PENDING_G6_NOT_AUTHORIZED.** Efter "om vi klara med nuvarande steg fortsätt då till nästa; annars gör klart nuvarande" gjorde MAIN live-auktoritetskontroll mot reviderad G1–G10-plan, G4/G5 beslutsspärr, aktuella G5F/G5G/G5H och Google Drive-kopior. **G5 forskning/feasibility är färdig, men G5 som FORMELL användar-/acceptansgrind är INTE godkänd. G6/F12 är därför INTE påbörjad.**
+- [GitHub: G5I full planavstämning, färdig fem-NPC scope-delta och 7-grind-uppställning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5I_PLAN_RECONCILIATION_FIVE_NPC_DECISION_READY_NOT_G6_2026-11-17.md) · [Officiell Google Drive: fullständig kopia kontrollerad](https://docs.google.com/document/d/1Zc-n5K-RHRZ5YriInxyQBqmb99siXl44547cVteT1YI/edit).
+- **Användaren har redan valt arbetsriktning:** original Atari 2600/F6, fem vita M,M,F,SM,SF, svart bakgrund och orange P1-dörr med svart transparent nyckelhål i samma mask; ingen extra keyhole sprite. Behandla INTE nyckelhål/PF Ball-ideer som färdig integrerad teknik. Inget nytt flicker-/occlusion-/specialformation-waiver.
+- **Framtida kandidatacceptans:** R1 6→**5**; R2 5+key→**4+key**, all fyra ursprungliga topdown 8×9-masktyper, gul player+aktiv projektil+brun PF+svart BK+enbart högerorange door. **Historisk** `docs/ROM_GATE_V018_ACCEPTANCE.md` och R1–R4 inrapporterade bevis oförändrade. Först särskilt formellt godkänd cutover får göra ny acceptans auktoritativ.
+- **Varför G5 ej PASS:** G5H visade A 79/76 c och B 79/76 c för vissa spelar-X-korsningar i DIREKTSEKVENS; ingen full source-G0/START-latch-lösning eller Stella-fem-NPC. G5F/G5G framsteg är väggmodeller, inte sprite-PASS. Ytterligare kosmetiska källcykeliterationer bör stoppas utan ny fysisk teknik.
+- **Nästa i plan:** färdigställ G5-grafik-/samtidighets-/testkriterieval genom användarens uttryckliga beslut; därefter, endast på separat ROM DEVELOPMENT III-mikroauktorisation med G0 stopp, kan G6 övervägas. G7–G10 fortsatt spärrade och VERIFICATION II oberoende.
+
 ## MAIN VI – G5H RESP/GRP/NUSIZ SOURCE-ONLY WORST-CASE AUDIT, INGEN FYSISK G0-PASS (2026-11-17)
 
 **Status: G5H_SOURCE_ONLY_DIRECT_KERNEL_FAIL_FOR_UNRESTRICTED_FIVE_NO_PHYSICAL_G0_PASS.** Följande faktiskt källstyrda resultat har dokumenterats efter användarens "Ok fortsätt": [Fullständig GitHub-rapport med originalmask/ordningsanalys](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5H_START_GRP_RESP_NUSIZ_SAME_Y_SOURCE_ONLY_DECISION_2026-11-17.md) · [9-raders mask/cykel-CSV](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5H_ROW_MASK_RUNS_AND_COLOR_STRESS_2026-11-17.csv) · [Google Drive läst-tillbaka, komplett analys + CSV](https://docs.google.com/document/d/1rsRlR4BOjXnY9Wtsp1N3Oq_02yGVMiAKD6Z3UhFa4Q4/edit).
