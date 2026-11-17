@@ -9,6 +9,8 @@ Det historiska, äldre Project Sources-paketet LET_ME_OUT_PROJECT_SOURCES_2026-1
 
 Det korrigerade niofilspaketet som MAIN VII levererar i sin chatt heter LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_CORRECTED_2026-11-17.zip, SHA256 1d749df02d74b8fa1c41f8160e5ca2ae15d41eff32bdb3fac6be895915653cb0. Det har 29 källreferenser, verifierad ZIP CRC och SHA256 per fil. Den gamla ZIP:en i Google Drive bevaras som historik; den är inte den rekommenderade uppladdningsversionen.
 
+**Ny, verifierad officiell Drive-kopia av det rättade paketet:** https://drive.google.com/file/d/1fxexRLz9fE8egW9bFnA1zA3x3j7f9AYj/view (28 001 byte, SHA256 1d749df02d74b8fa1c41f8160e5ca2ae15d41eff32bdb3fac6be895915653cb0). Detta är versionen att lägga till i Project Sources; den äldre Drive-ZIP:en ska bevaras enbart som historik.
+
 ## Konflikt 1: O1 var redan godkänt
 Den äldre studien docs/KEY_OCCLUSION_LOGIC_V015.md kallar O1 preliminär. Men docs/MAIN_STATUS_NEXT_10_2026-11-15.md återger det efterföljande direkta användarsvaret "Lite flimmer i spelet är ok. Men följ din rekommendation", och gör O1 till ett godkänt beslut. Docs/MAIN_DECISION_LEDGER_SUPPLEMENT_2026-11-15.md bekräftar detta uttryckligen under LM-D06.
 
