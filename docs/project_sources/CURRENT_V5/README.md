@@ -3,6 +3,8 @@
 **Version:** MAIN VIII / V5, 2026-11-17 after G5AF developer handoff and MAIN source-level receipt.
 **Purpose:** exactly six independently attachable source-navigation Markdown files. Neither canonical game spec, physical hardware test nor ROM implementation authority. Never treat old source summaries as live synchronized repository state.
 
+**Officiell Google Drive V5-installationsguide:** https://docs.google.com/document/d/1ixFG1C4ky5c1cFj0U7B9V5UmMal627IqsxTUpcyktf0/edit
+
 ## Manual installation in ChatGPT Projects
 **REPLACE** the six old Project Sources with exactly these six updated files; do not append duplicates. The six files in the current chat originally uploaded as source material were V2, not the V4 release MAIN VII described and not V5. Only install the six Markdown files below (not this README nor checksum list).
 
