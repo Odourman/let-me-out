@@ -76,6 +76,9 @@ Anta idealiserat `LDA #bitmap (2c); STA GRP (3c); STA RESP (3c)` = 8c per synlig
 ## 6A. Fullständig Drive-arkivering
 - [G5J i officiella Google Drive – hela rapporten och 176-raders CSV](https://docs.google.com/document/d/1yV_4qJdesdrN1d8IbOVA9kbjY-KjCR9zba8wuBzjpDM/edit), native dokument skapat i projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, läst tillbaka och kontrollerat för `MAX_ROBOTS=8`, G5J-status, 37/76-modellen och full CSV inkl. sista scanline 175. GitHub-originalversionen ovan är fortsatt primär source-only artefakt.
 
+## 6B. Komplett Google Drive-referens
+- [G5J i officiella Google Drive](https://docs.google.com/document/d/1yV_4qJdesdrN1d8IbOVA9kbjY-KjCR9zba8wuBzjpDM/edit) innehåller fullständig source-only rapport och full 176-raders CSV-kopia; mapp och readback verifierade. [Nästa source-only G5K P0/P1 dörrhybrid](G5K_BERZERK_LANE_DYNAMIC_P0_P1_DOOR_R1_R2_SOURCE_ONLY_2026-11-17.md) använder samma Berzerk-evidens för mer konkret registerägande.
+
 ## 7. Käll- och granskningsspår
 1. Extern [Berzerk disassembly, pinned](https://github.com/TheAnsarya/multi-local/blob/480a5287c6aec61bad333a44de105e45cfed39ff/download-atari/asm-files/berzerk.asm), GitHub blob `e00c50a718d96ffcbfa4e6270c87a037d2758cf3` (ursprunglig extern research, read-only).
 2. [G5I plan/mandat/rebaseline](G5I_PLAN_RECONCILIATION_FIVE_NPC_DECISION_READY_NOT_G6_2026-11-17.md), [G5H unrestricted budget](G5H_START_GRP_RESP_NUSIZ_SAME_Y_SOURCE_ONLY_DECISION_2026-11-17.md), [G5G left Ball & PF](G5G_BALL_LEFT_WALL_AND_FIVE_NPC_OPCODE_CENSUS_SOURCE_ONLY_2026-11-17.md), [176-line model CSV](G5J_LANE_RENDERING_176_SCANLINE_OCCUPANCY_OFFLINE_2026-11-17.csv).
