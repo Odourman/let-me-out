@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VI G5M: FEM-FIENDERS FÖLJDBEROENDEN I POÄNG, NYCKEL OCH SPAWN
+
+**MAIN VII rättelse 2026-11-17:** Denna G5M-rapport upprepar äldre G5L:s felklassificering av O1 som preliminär. Det finns ett senare **uttryckligt godkänt O1-beslut**, dokumenterat i docs/MAIN_STATUS_NEXT_10_2026-11-15.md och LM-D06: faktisk tillfällig android/key-skymning ja, litet flimmer kvalitativt accepterat, men inte generellt same-Y-key-hide, 10Hz eller ändrade poängregler. G5:s övriga användarval och G6 spärrade. Se docs/project_sources/PROJECT_SOURCES_MAIN_VII_CORRIGENDUM_2026-11-17.md.
+
 **Datum:** 2026-11-17. **Klass:** `NEW_SOURCE_ONLY_DESIGN_DEPENDENCY_REVIEW_NOT_APPROVED`. **G5 formal user decision pending, G6 NOT AUTHORIZED.** Denna fil är ett **nytt kompletterande sakfynd** efter kontroll av fullständiga ursprungsarkivet och 30 trick/research. Ändrar inte canon, kod, source-baslinje, historiska v0.18 acceptance eller officiell E02.
 
 ## 1. Ny kontroll av originalet, inte ett minne
