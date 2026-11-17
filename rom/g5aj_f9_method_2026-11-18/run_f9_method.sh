@@ -183,6 +183,7 @@ case_dir="$out/A_TRAP"
 cat > "$home/.config/stella/autoexec.script" <<'AUTO_A'
 base #10
 frame #136
+dump $fff6 $fff6
 trapWriteIf {_scan == #123 && _sCycles > #19 && _sCycles < #23} RESP1
 run
 AUTO_A
@@ -213,6 +214,8 @@ copy_session B_HANDSHAKE
 verify_session B_HANDSHAKE
 # Match source G5AF's pre-registered frame; no run so debugger remains present.
 send 'frame #136'
+# Targeted RUN-2 fixture: F6 bank0 hotspot read, not a new ROM or test case.
+send 'dump $fff6 $fff6'
 send 'print _fCount';send 'print _bank';send 'print pc'
 copy_session B_AFTER_FRAME
 verify_session B_AFTER_FRAME
