@@ -129,6 +129,13 @@ G3:s planeringsgrind bedöms på **korrekt komplett ägarskap och transparens om
 
 **Slutligt G3-beslut:** `G3_SOURCE_ONLY_RESOURCE_CONTRACT_COMPLETE_WITH_UNPROVEN_PHYSICAL_SCHEDULE`. Nästa naturliga sak är **G4:s separata SOURCE-ONLY GO/NO-GO för EN minimalt falsifierbar fysisk P0/P1-M0-PF-hypotes**, inte en F11-repetition och inte G6-build. Om ingen konkret fysikplan för den minsta scenen är plausibel ska G4 säga NO-GO och föreslå stopp/G5-beslut, inte skapa generiska fler-ROM-svep.
 
+## 10A. Arkiveringskvittens – Google Drive-kopior kontrollerade (2026-11-17)
+
+- **Full G3-rapport och RAM/F6-avsnitt:** [Google Drive](https://docs.google.com/document/d/1LkxaDVCiuvPGtWmOCHgAMwUoeQKZE4BiPIu6Tv7XHHg/edit).
+- **Sammanhållen rådata-/tidmatris:** [Google Drive](https://docs.google.com/document/d/1XaY5rgWL19h6ogKjzfkRodZlC88BDU20IKzRWoT8V_Q/edit).
+- Bägge är **Google Docs i officiell projektmapp** `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, skrivna och lästa tillbaka. GitHub är maskinläsbar och revisionsbar primärkälla för G3:s fyra semikolonskiljda CSV-/Markdown-underlag.
+- Verifieringsgräns: historiska c-cykler/source-kalkyler samt genomförd G3-källanalys. **INGEN ny ROM, DASM, Stella, CI eller VERIFICATION II/E02**. Inget G4 påbörjat.
+
 ## 10. Proveniens, integrationsregler och slutattest
 - Detta G3 skapade **enbart** Markdown-/CSV-dokument på `main` med källhänvisningar. Ingen data från ett separat spelprojekt, ingen kod i `rom/`, ingen exekverad Stella, ingen senare implementation.
 - [R1-F9 rapport (fryst commit)](https://github.com/Odourman/let-me-out/blob/c36982aef770af6cd3f68c2da37b8ed14aee2393/rom/v018/experiments/r1_free_xy/TO_MAIN_R1_F9.md), [R1-F10 source (fryst)](https://github.com/Odourman/let-me-out/blob/ef854d7436f1e1650827e2e19cc1b3d33a17f054/docs/ROM_DEV_R1_F10_SIX_FREE_XY_ARCHITECTURE_SOURCE_ONLY_TO_MAIN_2026-11-17.md), [R1-F11 source G0 FAIL (fryst)](https://github.com/Odourman/let-me-out/blob/dfe21c80b7cbdcdd20138ebf5eadf4b89dbf0cc4/rom/v018/experiments/r1_free_xy/TO_MAIN_R1_F11.md).
