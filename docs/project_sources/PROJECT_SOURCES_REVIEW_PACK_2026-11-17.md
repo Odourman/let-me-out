@@ -30,6 +30,9 @@ Five NPC change real gameplay math: original six all-kill long-run net = `-25*6+
 ## Correct next step
 G5 source research dossier complete, formal G5 render/Y/score acceptance PENDING. **G6 NOT AUTHORIZED**, no F12, no change to original six-R1/five+key-R2 acceptance history, no independent VERIFICATION. User can download this ZIP and add the **individual Markdown/CSV files** to ChatGPT Project Sources. The currently available connectors do **not** expose a Project Source attachment operation; uploading to Drive or committing a README is **not** the same as directly attaching files to Project Sources.
 
+## Google Drive: även en native Doc med källöversikt och G5M
+- [Google Doc Project Sources-index + G5M, kontrollerad efter skapande](https://docs.google.com/document/d/1D57YgJd0qo1OD-4V-vvDNOARLhF08YPZhW_CBCxkdXE/edit), i samma officiella projektmapp som ZIP. Det är en läsbar länk för att ansluta som Projektkälla, men användaren behöver själv lägga till källan i ChatGPT Project Sources; Drive-arkivering är inte automatisk källanslutning.
+
 ## Authoritative entrypoints
 - [Current Project State](../CURRENT_PROJECT_STATE_2026-11-15.md)
 - [Original 57-decision handoff](https://drive.google.com/file/d/1mqU07Q7xTgU5t5lYQhCOyI7wRQl6vD7o/view)
