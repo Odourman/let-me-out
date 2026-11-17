@@ -27,7 +27,7 @@ large_female 3C 3C 18 FF 3C 7E 7E 24 24
 small_male   00 00 3C 3C 18 7E 18 24 00
 ```
 
-Den förregistrerade RAM Gray-sekvensen av NIO på varandra följande 16-frame-avsnitt: `000→001→011→010→110→111→101→100→000`. **144/144 pixel-EXAKTA** bilder, **172 vita skärmpixlar per bild**, **0 miss/0 extra** i hela det analyserade området inklusive efterföljande rasterrader. Inga felvända stora masker, ingen nollradsförskjutning och ingen vit spökkopia inom denna region. **Alla 144 raw-PNG har olika filhash**. När de förväntade vita NPC-pixlarna nollas i bilderna återstår exakt **EN identisk 900×336 statisk icke-vit bild** över alla 144 – stark pixelindikation på att P0-gul, M0-synligt och PF-brunt inte ändras mellan tillstånden; detta är inte fullst. separat TIA-register-/NTSC-fullframe-reexecution.
+Den förregistrerade RAM Gray-sekvensen av NIO på varandra följande 16-frame-avsnitt: `000→001→011→010→110→111→101→100→000`. **144/144 pixel-EXAKTA** bilder, **172 vita skärmpixlar per bild**, **0 miss/0 extra** i hela det analyserade området inklusive efterföljande rasterrader. Inga felvända stora masker, ingen nollradsförskjutning och ingen vit spökkopia inom denna region. **Alla 144 raw-PNG har olika filhash**. När de förväntade vita NPC-pixlarna nollas i bilderna återstår exakt **EN identisk 300×336 statisk icke-vit bild** över alla 144 – stark pixelindikation på att P0-gul, M0-synligt och PF-brunt inte ändras mellan tillstånden; detta är inte fullst. separat TIA-register-/NTSC-fullframe-reexecution.
 
 | RAM-väljare `A0,A1,A4` | F9:s förregistrerade och MAIN uppmätta crop-X (M,F,SM) | Verkliga råbilder | Exakt match |
 |---|---|---:|---:|
