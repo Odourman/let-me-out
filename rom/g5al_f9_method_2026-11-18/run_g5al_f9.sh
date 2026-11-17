@@ -26,6 +26,11 @@ teardown() {
   set +e
   if [[ -n "$spid" ]]; then kill "$spid" 2>/dev/null; wait "$spid" 2>/dev/null; echo "stella_final_exit_status=$?" >> "$out/runner_metadata.txt"; spid=""; fi
   if [[ -n "$xpid" ]]; then kill "$xpid" 2>/dev/null; wait "$xpid" 2>/dev/null; echo "Xvfb_final_exit_status=$?" >> "$out/runner_metadata.txt"; xpid=""; fi
+  # Only after Stella + Xvfb have terminated: frozen input ROM post SHA.
+  if [[ -s "$rom" ]]; then
+    printf '%s  %s\n' "$expected" "$rom" | sha256sum -c > "$out/F9_ROM_SHA_POST.txt" 2>&1
+    echo "ROM_post_sha_check_exit=$?" >> "$out/runner_metadata.txt"
+  fi
   printf '%s\n' "$code" > "$out/script_exit_code.txt"
   python3 "$root/audit_g5al.py" "$out"
   local auditcode="$?"
@@ -43,7 +48,7 @@ PY
   if [[ "$code" != "0" || "$auditcode" != "0" ]]; then
     echo "G5AL_FAILURE script=$code audit=$auditcode"; exit 8
   fi
-  echo 'G5AL_F9_METHOD_READY_BOUNDED'
+  echo 'G5AL_A_B_C_PASSED_D_ARCHIVE_READBACK_PENDING'
   exit 0
 }
 trap teardown EXIT
