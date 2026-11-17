@@ -31,6 +31,10 @@
 - [AtariAge forum om flicker på riktig Atari](https://forums.atariage.com/topic/347643-flickering-sprites-is-there-more-than-one-way-to-do-this/): flimmer kan bli påtagligt eller artefaktfullt; 1/6-frame objektvisning ≈10Hz (om det är ett enda av sex i 60Hz) är **inte en godkänd tolkning** av användarens "lite kort flimmer". Vi kan inte tyst tvinga ett sådant spel att vara acceptabelt.
 - [Atari 7800 MARIA Software Guide](https://7800.8bitdev.org/index.php/7800_Software_Guide) ger en helt annan display-list-grafikmodell med flera bitmappssprites per rad; det är objektivt mer lämpligt för den här spelgrafiken, men **är en annan plattform och kräver ny implementation**.
 
+## 3A. Viktig uppdatering: användarens femandroids- och Video Chess-kandidat (2026-11-17)
+
+**Observera: Denna nya idé omvärderar en del av tidigare G5:s pessimism, men upphäver INTE R1:s tekniska BLOCKED eller gör G5 PASS.** Användaren pekade på Berzerks verkliga original-Atari 2600-komplexitet och föreslog **fem** (2 stora M, 1 stor F, SM, SF) i stället för sex samt **Venetian Blinds specifikt för guldnyckel och högerdörr**. Main rekommenderar att studera Berzerks faktiska rendering/objektregler och jämföra en fem-NPC-case med key/door via a) separat Y, b) Venetian, c) PF-buren högerdörr; inte använda ännu ett 4-läges-ärvda ROM-trick som bevis. [Fullständig GitHub-förslagsnotering](../MAIN_VI_FIVE_ANDROID_BERZERK_VIDEO_CHESS_RESEARCH_DIRECTION_2026-11-17.md) · [Google Drive-kopia](https://docs.google.com/document/d/1Iv9XrYt3CvkPNhiCGxSgEQSe0M91SHa4CHIjqP6YAA8/edit). **Ingen canonändring eller ROM-order**; användarens uttryckliga beslut återstår.
+
 ## 4. KONKRET G5-VÄGVAL: högst två verkliga produktalternativ, inga automatiska avsteg
 
 ### Alternativ A – Atari 2600 förblir målmaskin; REDESIGNA grafisk samtidighet (MAIN:s pragmatiska rekommendation om 2600 är det centrala)
