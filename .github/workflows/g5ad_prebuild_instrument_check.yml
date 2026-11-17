@@ -7,6 +7,7 @@ on:
       - .github/workflows/g5ad_prebuild_instrument_check.yml
 permissions:
   contents: read
+  actions: read
 jobs:
   instrument-readiness:
     runs-on: ubuntu-24.04
@@ -36,6 +37,71 @@ jobs:
           echo "EXTERNAL_STELLA_REFERENCE=https://stella-emu.github.io/docs/debugger.html"
           echo "PREBUILD_CONTRACT: versioned Stella debugger supports autoexec.script, runToPc, saveSes, saveSnap, _sCycles, _scan"
           echo "G5AD_PREFLIGHT_TOOLS_READY_NO_ROM"
+      - name: Download already-frozen F9 16KiB ROM as READ-ONLY instrument probe (no new ROM)
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+          run-id: 44050126727
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed_readonly
+      - name: Prove autoexec debugger session and native TIA screenshot using old ROM
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "G5AD_PROBE_ONLY_PREEXISTING_F9_ROM_NO_ASSEMBLY"
+          find seed_readonly -type f -name '*.bin' -printf '%p %s bytes\n'
+          readonly_rom="$(find seed_readonly -type f -name '*.bin' -size 16k | head -n1)"
+          test -n "$readonly_rom" || { echo "NO_FROZEN_16K_ROM_IN_ARTIFACT"; exit 6; }
+          echo "READONLY_SEED_SHA256 $(sha256sum "$readonly_rom")"
+          mkdir -p "$HOME/.config/stella" preflight_data
+          printf 'base #10\nframe #3\nprint _fCount\nprint _scan\nprint _sCycles\nprint _bank\ntia\nsaveSes\nsaveSnap\n' > "$HOME/.config/stella/autoexec.script"
+          cp "$HOME/.config/stella/autoexec.script" preflight_data/autoexec.script
+          Xvfb :153 -screen 0 1366x900x24 -ac >preflight_data/xvfb.log 2>&1 &
+          xp=$!
+          export DISPLAY=:153 SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=x11
+          sleep 2
+          stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$PWD/$readonly_rom" >preflight_data/stella_stdout.txt 2>&1 &
+          sp=$!
+          trap 'kill "$sp" "$xp" 2>/dev/null || true' EXIT
+          sleep 8
+          if ! kill -0 "$sp"; then cat preflight_data/stella_stdout.txt; exit 7; fi
+          import -window root preflight_data/debugger_full_GUI.png
+          find "$HOME" -type f \( -iname '*.png' -o -iname '*.txt' \) -mmin -3 -not -path '*/work/let-me-out/*' > preflight_data/fresh_files.txt
+          cat preflight_data/fresh_files.txt
+          cp preflight_data/stella_stdout.txt /tmp/g5ad_preflight_stdout_copy || true
+          echo "G5AD_SAVESES_OUTPUT_LINES_BEGIN"
+          while IFS= read -r f; do
+            case "$f" in *.txt)
+              echo "$f"
+              grep -i -E '_sCycles|_scan|_fCount|_bank|tia|session|saved' "$f" | head -45 || true
+              ;;
+            esac
+          done < preflight_data/fresh_files.txt
+          echo "G5AD_SAVESES_OUTPUT_LINES_END"
+          /usr/bin/python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          files=Path('preflight_data/fresh_files.txt').read_text().splitlines()
+          snapshots=[]
+          sessions=[]
+          for n in files:
+              p=Path(n)
+              if p.suffix.lower()=='.png':
+                  try:
+                      with Image.open(p) as im:
+                          z=(str(p),im.size,im.mode)
+                      snapshots.append(z)
+                  except Exception: pass
+              if p.suffix.lower()=='.txt':
+                  c=p.read_text(errors='replace')
+                  if '_scan' in c and '_sCycles' in c:
+                      sessions.append((str(p),len(c)))
+          print("G5AD_SAVED_NATIVE_SNAPSHOTS", snapshots)
+          print("G5AD_SAVED_DEBUGGER_SESSIONS", sessions)
+          assert snapshots and sessions, "NO_MACHINE_READABLE_DEBUGGER_AND_NATIVE_PIXELS; STOP_NO_ROM"
+          print("G5AD_PREBUILD_INSTRUMENTATION_READY_NO_NEW_ROM")
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -43,4 +109,5 @@ jobs:
           path: |
             /tmp/g5ad_stella_help.txt
             /tmp/g5ad_xvfb.log
+            preflight_data/
           if-no-files-found: ignore
