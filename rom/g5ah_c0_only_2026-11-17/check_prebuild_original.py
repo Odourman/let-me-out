@@ -18,7 +18,7 @@ assert len(old)==4096
 assert rom==old*4, "F9 image is not exact 4x repeated original F6 bank"
 for address,bytes2,label in ((0xF1EE,b"\x85\x11","RESP1"),(0xF1F0,b"\x85\x1c","GRP1"),
                              (0xF1F6,b"\x85\x11","RESP1"),(0xF1F8,b"\x85\x1c","GRP1")):
-    assert old[address&0xFFF:address&0xFFF+2]==bytes2,(hex(address),label)
+    assert old[(address & 0xFFF):((address & 0xFFF)+2)]==bytes2,(hex(address),label)
     matches=[line for line in lst.splitlines() if re.search(r"\b"+f"{address:04x}"+r"\b",line)]
     assert any("STA" in line.upper() and label in line.upper() for line in matches), (hex(address),matches)
 assert re.search(r"(?m)^X0_SELECT\s+00a0\b",sym)
