@@ -1,8 +1,11 @@
-# LET ME OUT! – Project Sources
-**ENDA AKTUELLA PROJECT SOURCES-RELEASEN:** [CURRENT_V4 – sex verifierade Markdown-filer](CURRENT_V4/README.md) (2026-11-17). [Google Drive spegel/instruktion](https://docs.google.com/document/d/19EU_PLT5fDXI41u4kA3rWMU6FOVKPjsAYCwbvVLRlpA/edit) · [GitHub aktuellt auktoritets-/arbetsköindex](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
+# LET ME OUT! – Project Sources (aktuell ingång)
 
-**Manuell åtgärd krävs:** V4-zip finns som nedladdningsbar fil i MAIN VII-chatten och har exakt sex namngivna .md-filer + `SHA256SUMS.txt`. Användaren måste ta bort/ersätta de **sex individuella** gamla Project Sources 00–05 och ladda upp de sex V4-filerna, ingen extra parallell kopia. ZIP och manifest är **inte** separata Project Sources. V4:s SHA kontrolleras mot GitHub-filerna (Git-blobs som matchar de lokala sex filerna).
+**ENDA AKTUELLA RELEASEN:** [CURRENT_V5 – sex konsoliderade Markdown-filer](CURRENT_V5/README.md), MAIN VIII efter G5AG, 2026-11-17. [Officiell Google Drive-installationsguide](https://docs.google.com/document/d/1ixFG1C4ky5c1cFj0U7B9V5UmMal627IqsxTUpcyktf0/edit) · [Levande status- och auktoritetsindex](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
 
-**Tidigare filer i denna katalog är historisk revision:** `PROJECT_SOURCES_MAIN_VII_V2_USAGE`, `PROJECT_SOURCES_MAIN_VII_CORRIGENDUM`, `PROJECT_SOURCES_REVIEW_PACK`, `PROJECT_SOURCES_MAIN_VII_V3_CURRENT_AUDIT_AFTER_G5AA`. Deras "ENDA REKOMMENDERADE" var sant vid respektive publikation men är inte aktiva rekommendationer. Behåll dem för proveniens.
+**Installation:** Ta bort/ersätt de sex gamla individuella Project Sources 00–05 i ChatGPT Projects och ladda upp **exakt sex filer från CURRENT_V5**. Lägg inte till parallella V2/V4-filer, ZIP, README eller manifest som Project Sources. GitHub-/Drive-uppdateringar ändrar inte bilagor i Projects automatiskt.
 
-**Aktuell arbetsgräns:** G5Z fullbordad G0 `INCONCLUSIVE_NO_ROM`, G5 OPEN; framtida fem NPC och fyra exakta rum är godkända designmål; inget G1/G6/F12/ny ROM/Verification/PR-merge. Master Spec/57 ursprungliga beslut och senare uttrycklig LM-D-supersession styr, inte dessa källguider.
+**Versionsstatus:** [CURRENT_V4](CURRENT_V4/README.md) och äldre V1/V2/V3, liksom äldre dokument i denna katalog, är **historiskt källmaterial**; original och negativa prov bevaras. Den tidigare instruktionen om V4 som enda release är supersederad. V5 är omredigerad av MAIN VIII för att undvika dubbla aktiva statusavsnitt, inte för att införa ny spelcanon.
+
+**Dagens arbetsgräns:** G5Z G0 `INCONCLUSIVE_NO_ROM`; G5AD `NO_BUILD_INSTRUMENTATION_BLOCKER`; G5AF `INSTRUMENTATION_READY_BOUNDED` developer instrumentering levererad, ingen ny ROM. `G5_FORMAL_OPEN` och ingen H4/G1/G6/F12/S05/femfienders-ROM/oberoende Verification/PR-merge auktoriserad. [MAIN VIII mottagning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md). Framtida spelmål med fem NPC och fyra exakta kartor är godkända som design men inte tekniskt implementerade.
+
+**Auktoritet:** originalets 57 användarbeslut och senare uttryckliga snäva LM-D-supersession styr, inte dessa källguider eller ChatGPT Memory.
