@@ -5,7 +5,7 @@ import {readFileSync,writeFileSync,mkdirSync} from "node:fs";
 import {createHash} from "node:crypto";
 const sourceCommit="80bf072ee0e8a9a84905a29d70771a7cc6be7820", shaOld="820a74e5fb77c818ffb1286c5b23698d4374e771",shaOpen="0e449f97f87bd9b403476fd1435398042eaee285";
 const oldPath="design/PLANERADE_RUMSKARTOR_V011.json",openPath="design/OPEN_ROOMS_V019_40x22_CANDIDATES.json";
-function gitBlob(data){return createHash("sha1").update("blob "+Buffer.byteLength(data)+"\\0").update(data).digest("hex");}
+function gitBlob(data){return createHash("sha1").update("blob "+Buffer.byteLength(data)+"\0").update(data).digest("hex");}
 const oldText=readFileSync(oldPath,"utf8"),openText=readFileSync(openPath,"utf8");
 if(gitBlob(oldText)!==shaOld||gitBlob(openText)!==shaOpen)throw Error("Original source Git blob mismatch: use the recorded pinned source");
 const old=JSON.parse(oldText).rooms.find(x=>x.selected_layout_id==="B01");
@@ -70,13 +70,13 @@ function diffSvg(a,b){
 }
 const {grid,rects}=derive(prior.grid);cellsCheck(grid);
 const mOld=checkModel(old.grid,old.candidate_positions),mPrior=checkModel(prior.grid,old.candidate_positions),mNew=checkModel(grid,old.candidate_positions);
-if(fnv32(grid.join("\\n"))!=="c9e29f45"||mNew.interior_walls!==72||mNew.free_2x2_anchors!==565||mNew.reachable_2x2_anchors!==565)throw Error("B_OPEN_02 reproduction mismatch");
+if(fnv32(grid.join("\n"))!=="c9e29f45"||mNew.interior_walls!==72||mNew.free_2x2_anchors!==565||mNew.reachable_2x2_anchors!==565)throw Error("B_OPEN_02 reproduction mismatch");
 const chosen=[[9,3],[29,3],[19,9],[9,15],[29,15]];
 const proposed={"project":"LET ME OUT!","study_id":"G5V","map_id":"B_OPEN_02","room":"B","status":"GRAPHICS_SOURCE_ONLY_CANDIDATE_NOT_APPROVED_NOT_STELLA_NOT_ROM","date":"2026-11-17","source_commit":"80bf072ee0e8a9a84905a29d70771a7cc6be7820","sources":[{"path":"design/PLANERADE_RUMSKARTOR_V011.json","git_blob_sha":"820a74e5fb77c818ffb1286c5b23698d4374e771"},{"path":"design/OPEN_ROOMS_V019_40x22_CANDIDATES.json","git_blob_sha":"0e449f97f87bd9b403476fd1435398042eaee285"}],"derived_from":"B_OPEN_01 (room B, v0.19 JSON); changed only the new in-study candidate matrix","coordinate_system":{"origin":"top-left","x":"right","y":"down","columns":40,"rows":22,"symbols":{"#":"wall",".":"open","D":"right-door marker"},"preview_cell_colorclocks":4,"preview_cell_scanlines":8},"design_note":"Four mirrored staggered posts with unequal inward/outward short shelves, plus two tiny central islands. Center rows 9..12 kept completely open. Left-right mirror preserved; top-bottom intentionally varied. 2x2 geometry only; no AI / ROM.","player_start_anchor":[2,10],"door":{"x":39,"rows":[9,10,11,12],"marker":"D","lock_visual":"orange with negative black keyhole is separate future graphic target, not a map glyph"},"grid":["########################################","#......................................#","#......................................#","#..........##..............##..........#","#..........##..............##..........#","#..........######......######..........#","#..........##..............##..........#","#........####......##......####........#","#..................##..................#","#......................................D","#......................................D","#......................................D","#......................................D","#..................##..................#","#..........##......##......##..........#","#..........#####........#####..........#","#..........##..............##..........#","#.......#####..............#####.......#","#..........##..............##..........#","#......................................#","#......................................#","########################################"],"geometry_only_reusable_B01_candidates":[[9,3],[19,3],[29,3],[14,9],[19,9],[24,9],[34,9],[9,15],[19,15],[29,15],[35,4],[35,13],[35,17]],"geometry_only_illustrative_five_anchors":[[9,3],[29,3],[19,9],[9,15],[29,15]],"not_validated":["actual 8x9 sprites","5 NPC dynamic collisions","AI/pathfinding","key-carrier drops","NTSC TIA PF/BL/P1 timing","ROM","Stella","independent verification"]};
 if(JSON.stringify(proposed.grid)!==JSON.stringify(grid))throw Error("Frozen JSON disagrees with regenerated grid");
 const files={
- "B_OPEN_02.json":JSON.stringify(proposed,null,2)+"\\n",
- "B_OPEN_02.grid.txt":grid.map((s,i)=>String(i).padStart(2,"0")+" "+s).join("\\n")+"\\n",
+ "B_OPEN_02.json":JSON.stringify(proposed,null,2)+"\n",
+ "B_OPEN_02.grid.txt":grid.map((s,i)=>String(i).padStart(2,"0")+" "+s).join("\n")+"\n",
  "B01.svg":svgWrap(560,528,drawGrid(old.grid)),
  "B_OPEN_01.svg":svgWrap(560,528,drawGrid(prior.grid)),
  "B_OPEN_02.svg":svgWrap(560,528,drawGrid(grid)),
