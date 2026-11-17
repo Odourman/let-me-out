@@ -1,5 +1,19 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D19: B_OPEN_02 exakt framtida rum B godkänd; framtida fyrkartdesign komplett (2026-11-17)
+
+**Senare användarbeslut:** Direkt efter frågan "Godkänner du B_OPEN_02 som exakt framtida rum B?" svarade användaren **"Är bra ut. Följ dina rekommendationer"**. Därför är **LM-D19 = B_OPEN_02 GODKÄND SOM EXAKT FRAMTIDA 40×22-KARTLAYOUT**. [Bindande snävt beslutsprotokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_B_OPEN_02_EXACT_USER_APPROVAL_AND_FOUR_MAP_BASELINE_DECISION_2026-11-17.md) · [källpinnat fyrkartsmanifest](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_APPROVED_FUTURE_FOUR_MAPS_SOURCE_MANIFEST_2026-11-17.json) · [Drive](https://docs.google.com/document/d/1nRG3gmoP1Y8VRy5mu6xk3nRRGLVHntf4tRzWHzYOClQ/edit). Beslutet supersederar historiska formuleringar "B_OPEN_02 är ej godkänd" **endast för framtida kartgeometrins status**, utan att radera själva forsknings-/studiehistoriken.
+
+| Framtida rum | Godkänd exakt layout | Beslut | Pin |
+|---|---|---|---|
+| **A** | `A_OPEN_01` | LM-D17 | `design/OPEN_ROOMS_V019_40x22_CANDIDATES.json` blob `0e449f97f87bd9b403476fd1435398042eaee285` |
+| **B** | `B_OPEN_02` | **LM-D19** | `studies/graphics/G5V_B_OPEN_02_2026-11-17/B_OPEN_02.json` graphics-commit `2991a94a4d92a0ee75a5de8e8c5302d549734e1e`, blob `c32fc656fb5c60d16a5b73e4cea75f86df3e9621` |
+| **C** | `C_OPEN_01` | LM-D17 | Samma A/C/D blob |
+| **D** | `D_OPEN_01` | LM-D17 | Samma A/C/D blob |
+
+**Den fullständiga fyrkartans exakta framtida DESIGNBAS är vald; ingen ROM-/PF-/G6-cutover har genomförts.** Original v0.11 A01/B01/C02/D01, äldre beslut/ROM-bevis och metadata `NOT APPROVED` i gamla studie-JSON bevaras oförändrade. G5:s 8×9-spawnkollisioner, fri fem-NPC-jakt, key-drop och S05 TIA-kanalkonflikt är olösta. **G5 FORMAL OPEN; G0/G6/F12/ROM/VERIFICATION/PR MERGE INTE AUKTORISERADE.**
+
+
 ## MAIN VII – LM-D17/LM-D18: exakt A/C/D-kartbeslut och G5V B-grafikuppdrag GODKÄNDA (2026-11-17)
 
 **Direkt senare användarsvar:** MAIN frågade om användaren godkänner **exakt `A_OPEN_01`, `C_OPEN_01`, `D_OPEN_01` som framtida kartbaser** och ett **separat begränsat GRAPHICS II-uppdrag att förbättra B till `B_OPEN_02`**. Svaret var **"Ser bra ut"**, ett direkt avgränsat godkännande av dessa två delar. [Fullt G5V-beslutsprotokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5V_MAIN_VII_A_C_D_EXACT_OPEN_MAPS_USER_APPROVAL_AND_B_OPEN_02_GRAPHICS_ORDER_2026-11-17.md) · [Drive](https://docs.google.com/document/d/11BAB8skxf1EJH7PFXo1mdlZ7MDGMevmRS_eDlhPYikw/edit) · [GRAPHICS II-uppdrag Issue #11](https://github.com/Odourman/let-me-out/issues/11).
