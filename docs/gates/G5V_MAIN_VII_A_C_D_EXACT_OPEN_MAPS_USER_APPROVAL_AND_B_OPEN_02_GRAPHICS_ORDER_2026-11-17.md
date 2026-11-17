@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII G5V: användarbeslut om tre exakta OPEN-kartor, B_OPEN_02 beställd
+
+> **HISTORISK ORDERSTATUS – G5V-GRAFIKUPPDRAGET HAR SENARE SLUTFÖRTS.** A/C/D godkändes som framtida layouter vid detta dokument, medan B02 ännu bara beställdes som studie. Efter G5W + LM-D19/G5X är **även B_OPEN_02 godkänd som exakt framtida designlayout**. **Issue #11 slutförd, ingen aktiv ny grafikorder**. Se [aktuellt index](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
+
 **Datum:** 2026-11-17. **Status:** `G5V_ACD_FUTURE_EXACT_MAP_TARGETS_APPROVED_B02_GRAPHICS_STUDY_AUTHORIZED`. **Scope:** senare explicit användarbeslut, inte en implementerad karta/ROM, G5-PASS eller G6/F12-ordning.
 
 ## 1. Exakt samtalsreferens och beslut
