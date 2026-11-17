@@ -1,5 +1,17 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D17/LM-D18: exakt A/C/D-kartbeslut och G5V B-grafikuppdrag GODKÄNDA (2026-11-17)
+
+**Direkt senare användarsvar:** MAIN frågade om användaren godkänner **exakt `A_OPEN_01`, `C_OPEN_01`, `D_OPEN_01` som framtida kartbaser** och ett **separat begränsat GRAPHICS II-uppdrag att förbättra B till `B_OPEN_02`**. Svaret var **"Ser bra ut"**, ett direkt avgränsat godkännande av dessa två delar. [Fullt G5V-beslutsprotokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5V_MAIN_VII_A_C_D_EXACT_OPEN_MAPS_USER_APPROVAL_AND_B_OPEN_02_GRAPHICS_ORDER_2026-11-17.md) · [Drive](https://docs.google.com/document/d/11BAB8skxf1EJH7PFXo1mdlZ7MDGMevmRS_eDlhPYikw/edit) · [GRAPHICS II-uppdrag Issue #11](https://github.com/Odourman/let-me-out/issues/11).
+
+| Beslut | Godkänd omfattning | Utesluter |
+|---|---|---|
+| **LM-D17** | De exakta 40×22-geometrierna för `A_OPEN_01`, `C_OPEN_01`, `D_OPEN_01` i original `design/OPEN_ROOMS_V019_40x22_CANDIDATES.json` är godkända **framtida kartlayoutmål**. | Inte komplett fyra-rums-cutover; ingen käll-JSON-ändring, ROM/avläst Stella, spawn-/kollisions-/raster-PASS. `B_OPEN_01` är inte godkänd. |
+| **LM-D18** | MAIN får ge GRAPHICS II ett separat, snävt **source-only-studieuppdrag** att skapa `B_OPEN_02` som luftig, mer varierad 40×22-kandidat. | Ingen B-karta ännu skapad eller godkänd, ingen ROM, G0/G6/F12, godkända spawns eller PR-merge. |
+
+**A1/B1/C1/D1/E1 (LM-D12..D16)** är redan godkända inom tidigare exakt scope. Historiska v0.11-layout-/ROM-prover är frysta. All äldre text om att *alla fyra* v0.19 OPEN-kartor ännu är obeslutade är en historisk tidssnapshot **före LM-D17** och supersederas endast för A/C/D. **G5_FORMAL_OPEN, G6/F12_NOT_AUTHORIZED**.
+
+
 ## MAIN VII – LM-D14, LM-D15 och LM-D16: nya G5S-beslut GODKÄNDA (2026-11-17)
 
 **Senare direkt användarsvar:** Efter MAIN:s uttryckliga fråga "Godkänner du uttryckligen C1, D1 och E1 som framtida spel- och testregler?" svarade användaren "Fortsätt Följ dina egna rekommendationer". I just detta sammanhang gäller **C1+D1+E1 som framtida krav**. [Fullständigt exakt beslutsprotokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1UboARrqu3sFHQgeV1y5C0IWoRkSlvAY_6b6RMLWwbnE/edit). Äldre G5R-texter om "fortfarande endast förslag" beskriver tiden **före** detta användarsvar och supersederas endast för dessa tre rekommendationer.
