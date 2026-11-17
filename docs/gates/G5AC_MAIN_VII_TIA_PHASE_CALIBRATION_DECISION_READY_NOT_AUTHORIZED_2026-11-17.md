@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII G5AC: beslutsberedskap för ETT minimalt TIA-fas-/kopieprov
+
+> **SENARE BESLUT LM-D21 (2026-11-17):** G5AC var ett legitimt **beslutsutkast** när det skrevs, men användaren har därefter uttryckligen godkänt **en enda specifik** TIA-fas-/kopie-mät-ROM genom "Gör så". För exakt nytt aktivt uppdrag och spärrar läs [G5AD auktoriserad teknisk order](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) och [Issue #13](https://github.com/Odourman/let-me-out/issues/13). **Detta G5AC-utkast är historik, inte en andra parallell ROM-order**. Full H4/G6/F12/fem-NPC/S05 och oberoende Verification förblir EJ auktoriserade.
+
 **Datum:** 2026-11-17. **Status:** `SOURCE_ONLY_DECISION_READY_NOT_ORDERED`. **Ej** G0-pånyttstart, G1/G6/F12, ROM/ASM/DASM/Stella-körning, Verification II, PR-merge eller speldesignändring.
 
 ## 1. Varför detta är rätt fråga efter G5AA – och vad det INTE är
