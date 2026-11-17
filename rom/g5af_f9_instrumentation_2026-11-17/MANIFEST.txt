@@ -1,0 +1,66 @@
+LET ME OUT! – ROM DEVELOPMENT III G5AF LM-D22 – FINAL DELIVERY MANIFEST
+Date: 2026-11-17
+STATUS: G5AF_INSTRUMENTATION_READY_BOUNDED
+ROLE: ROM DEVELOPMENT III to MAIN VII
+AUTHORITY: https://github.com/Odourman/let-me-out/issues/14
+BASE MAIN PINNED: 9063a5ad8f725093e57c1a6e5c6848e2a9d60518
+BRANCH: rom-dev-iii/g5af-lm-d22-f9-instrument-only-20261117
+NO NEW ROM / NO NEW ASM / NO DASM REBUILD / NO GAMEPLAY / NO MERGE
+
+GIT FILE INDEX – actual Git blob SHA-1 verified by connector fetch_file:
+6e11477ce796c79d8bf85dd7763ee4a7dadb4153  .github/workflows/g5af_f9_instrument_retest.yml
+49a3507386877f87bb4029f0eafdb2921ef3d350  rom/g5af_f9_instrumentation_2026-11-17/run_f9_instrument.sh
+268cc49bf0f46b5039da7dbe560399a09fed52dd  rom/g5af_f9_instrumentation_2026-11-17/audit_evidence.py
+f3fa2ad578c9578c37e0cd2510023bbdc8cfbdc6  rom/g5af_f9_instrumentation_2026-11-17/PREREGISTERED_STOPS_AND_SCOPE.md
+1ec5e145faf4fe3d84ff3f6c2df280bcf1709b6d  rom/g5af_f9_instrumentation_2026-11-17/G5AF_INSTRUMENTATION_EVIDENCE.csv
+6c0ea4eb47a74520a93a78517cf0679eb47badda  rom/g5af_f9_instrumentation_2026-11-17/REPRODUCE_AND_RAW_EVIDENCE.md
+82d7a6f2b3dc91ace656586a425e71e8ef089956  rom/g5af_f9_instrumentation_2026-11-17/TO_MAIN_G5AF_F9_INSTRUMENTATION.md
+SELF_MANIFEST: NOT INCLUDED IN OWN GIT SHA-1 INDEX; read GitHub fetch_file to verify the manifest Git blob separately.
+
+FROZEN HISTORICAL F9 ROM:
+Original G1 Actions run: 44050126727
+Artifact name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+ROM size: 16384 bytes, F6 NTSC
+ROM SHA256 (verified before and after final G5AF run):
+6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b
+This ROM was NEVER changed or rebuilt by G5AF.
+
+EXACTLY TWO NEW MEASUREMENT RUNS, WITH NEGATIVES RETAINED:
+ATTEMPT1: https://github.com/Odourman/let-me-out/actions/runs/44177844355
+ATTEMPT1_CAPTURE_JOB: 134373876852
+ATTEMPT1_RESULT: G5AF_PARTIAL_INSTRUMENTATION_NOT_READY (cold window timeout; parser read address)
+ATTEMPT1_ARCHIVE: https://github.com/Odourman/let-me-out/actions/runs/44177844355/artifacts/14369464567
+ATTEMPT1_ARCHIVE_SHA256: d1e9b8a33b6fdebbde03ce26b4229883c83d948dbcf37f92670e8f7092a0da58
+ATTEMPT2_FINAL: https://github.com/Odourman/let-me-out/actions/runs/44178247577
+ATTEMPT2_CAPTURE_JOB: 134375317996
+ATTEMPT2_ARCHIVE_RECHECK_JOB: 134376162352
+ATTEMPT2_RESULT: G5AF_INSTRUMENTATION_READY_BOUNDED
+FINAL_ARCHIVE: https://github.com/Odourman/let-me-out/actions/runs/44178247577/artifacts/14370213586
+FINAL_ARCHIVE_SHA256: a5d80efa75cc7948cf29fd8cd5ea21620176d0844d9db9e433ecd97298da3ad9
+FINAL_ARCHIVE_COUNT: 33 real files, 32 file hashes + SHA256SUMS.txt; verified both CI re-download and independently after connector artifact download
+FINAL_CSV_GIT_COPY: byte-identical to archived CSV; Git blob SHA1 1ec5e145faf4fe3d84ff3f6c2df280bcf1709b6d
+
+ACTUAL REAL STELLA CONTROL STOPS, REG=RESP1, frame 136, scanline 123, bank 0:
+F9_000_M_RESP1: CPU PC F1F0/61936, CPU _sCycles=21, transcript bytes=1709
+  session_SHA256=1ea943b27a58a218bb1215117a055cab45c98d8c099b97e9029726801c8a15f9
+  original_native_TIA_320x228_PNG_SHA256=078c9c1ce249cb8c9ef6a45dc322647db2e1a869b3f60635c9e27436f38c016a
+F9_000_F_RESP1: CPU PC F1F8/61944, CPU _sCycles=32, transcript bytes=1707
+  session_SHA256=3b63819f04303f154cb54b72dd1cc25edcbffb3d2f5688e8612dca30da97e24f
+  original_native_TIA_320x228_PNG_SHA256=1797454e84c23662ba35101ee479b435a792ac774f8ea089dffac8e286bcdc2d
+
+CURRENT GOOGLEDOC DRIVE ARCHIVE:
+https://docs.google.com/document/d/1MvpvQEAwQRlPr_CH2VVy-gY5LYjebzkPxcUDh0Rk71g/edit
+Drive parent ID: 1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u
+Google Doc is an archival Markdown-and-CSV transcript, NOT byte-identical to Git files.
+RAW TRACE FILES ARE IN ACTIONS ZIP, not individually committed to Git history; actual archive was downloaded and checked.
+
+ORIGINAL PINNED AUTHORITIES:
+G5AF order blob a518648d7eaa820bce5983d84eeea22c732fa194
+G5AE receipt blob e7f107a813f7ca8337b002e128b443c6ca4865c1
+F9 original trace blob adfd24b2d0109ab665b5f65a594eec965886599b
+Stella 6.7.1 PromptWidget blob ea5897160504e9f1308b46fcb10613b5eed4ac57
+Stella 6.7.1 Debugger blob 1d943b0408fbce2b528e047a3552780ac90c30c5
+Stella 6.7.1 DebuggerParser blob 6dfa63dfaff70f803529a9be075617ed2784f805
+
+UNSOLVED BEYOND SCOPE: exact RESP1 strobe/STA end hardware cycle, START/P0/P1 delayed timing, raw per-colorclock register timeline, H4/G5_AD, original hardware. The archived .lst/.sym was not alongside ROM path; session explicitly reports source mapping file missing.
+STOP: NO FURTHER MEASUREMENT RUN, H4, G1/G6/F12/S05, FIVE_NPC, NEW_ROM, MERGE OR VERIFICATION.
