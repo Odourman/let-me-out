@@ -1,5 +1,12 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+## MAIN VII G5AD – LM-D21 auktoriserar EN TIA-diagnostisk ROM, ingen full H4/G6 (2026-11-17)
+
+**Senare direkt användarbeslut:** på den exakta rekommendationen om **ett enda begränsat TIA-mätprov av RESP/GRP/NUSIZ0/M0/ENAM0** svarade användaren **"Gör så"**. [G5AD fullständig avgränsad order](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) · [förregistrerade C0–C4/N1](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_TIA_CALIBRATION_PREREGISTERED_CASES_2026-11-17.csv) · [Issue #13 ROM DEVELOPMENT III](https://github.com/Odourman/let-me-out/issues/13) · [Drive-kopia](https://docs.google.com/document/d/163Xtt4ygxQD7eM4AfPwZgAN6JktF8DcEQjKK43JNF-g/edit). **G5AD EN standard-F6/NTSC 16 KiB kalibrerings-ROM är därmed UTTRYCKLIGT AUKTORISERAD, ÄNNU INTE BYGGD/VERIFIERAD**. RAM-X-scener och egna DASM/Stella/Debugger-mätningar ingår; uppdraget slutar med en fryst binär, raw TIA/write-/pixelspår, ärlig `OBSERVED_EXPECTED/OBSERVED_UNEXPECTED/NOT_DETERMINABLE` per fall och stopp.
+
+**Alla tidigare `NEW_ROM/G1_NOT_AUTHORIZED`-texter nedan är historiska *före detta specifika LM-D21-mandat*.** H4-ONE G0 från G5Z är fortfarande slutförd `G0_INCONCLUSIVE_NO_ROM`, inte H4 PASS. **Ingen full H4 G1, G6, F12, S05/fem-NPC-ROM, ändrad spel-/kartcanon, oberoende Verification II eller PR#7-merge har tillåtits. G5 FORMAL OPEN.** Den separata ROM DEVELOPMENT III-chatten kör inte automatiskt genom att MAIN skapar Issue #13.
+
+
 > **PROJECT SOURCES V4 ERSÄTTER V2/V3 FÖR AKTUELL ORIENTERING:** [verifierade sexfilsreleasen](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V4) · [Drive-instruktion](https://docs.google.com/document/d/19EU_PLT5fDXI41u4kA3rWMU6FOVKPjsAYCwbvVLRlpA/edit). Detta 2026-11-15-dokument är historiskt ackumulerad logg med äldre tidssnitt. Äldre rader om öppna kart-/femfienders-/G0-beslut är inte aktivt nuläge. [Gällande aktuellt index](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md) visar LM-D12..20 och G5Z `G0_INCONCLUSIVE_NO_ROM`; inga ROM-test eller framtida steg beställda.
 
 
