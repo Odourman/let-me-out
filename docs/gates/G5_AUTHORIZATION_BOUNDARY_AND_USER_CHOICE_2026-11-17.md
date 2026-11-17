@@ -1,5 +1,8 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+> **STATUS: HISTORIKBEVARANDE G5-GRINDLOGG; AKTUELL ORDERSTATUS HÄMTAS FRÅN** [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). G0 LM-D20 är redan avslutad INCONCLUSIVE, inte väntande; G5 fortsatt OPEN. G1/G6/F12/ny ROM/S05/fem-NPC-implementation/Verification/merge är INTE auktoriserade. Äldre avsnitt nedan visar vad som gällde före senare användarbeslut och ska **inte återaktivera** en order.
+
+
 ## MAIN VII G5AA – senare avslutsstatus för godkänd G0; ingen ny ROM-/G6-order (2026-11-17)
 
 [MAIN G5AA mottagning och begränsat INCONCLUSIVE-resultat](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AA_MAIN_VII_G5Z_G0_INCONCLUSIVE_SOURCE_ONLY_RECEIPT_AND_NEXT_DECISION_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1OTIdsk8JX0K3GDOkFQSKHCgFWNKoWaz4iRklItxUqSQ/edit) · [ROM DEVELOPMENT III:s frysta G5Z leverans](https://github.com/Odourman/let-me-out/blob/8c7cef622ebaa6543a3f044ddf50d21024b1b978/rom/g5z_g0_h4_one/TO_MAIN_G5Z_G0_H4_ONE.md) · [Issue #12 G0](https://github.com/Odourman/let-me-out/issues/12). **LM-D20:s ENDA source-only G0 av H4-ONE har utförts och avslutats `G0_INCONCLUSIVE_NO_ROM`**, mottaget som scope-korrekt efter MAIN:s käll-/72-raders-kontroll. 58/68c är nominell ofullständig direkt-opcodekostnad, 74/79c en villkorlig *append-only* variant, inte en säker körbar RESP/GRP/ENAM/NUSIZ/M0/PF-schema. R1f/R1g och F9 från olika kärnor, tidigare F11 G0 FAIL och G5H 79/76 bevaras som separat negativa/positiva historik. **H4 EJ SOURCE-PLAUSIBLE/EJ FYSISK-PASS**, **inte** universellt bevisad omöjlig.
