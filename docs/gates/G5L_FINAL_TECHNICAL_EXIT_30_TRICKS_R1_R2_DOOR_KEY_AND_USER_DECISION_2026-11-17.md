@@ -92,6 +92,10 @@ G5:s testplan måste härifrån skilja på **fysikprimitive** och **spelbar vers
 - **MAIN:s rekommendation för en Atari 2600-produktion:** S1 som **conditional first candidate**, INTE som beslut. Den har en faktisk 1982 originalkällan som inspiration och betydligt mindre ägarlast än S0, men med märkbar spel-/designkostnad och fortfarande P0/M0/key/door risk. För en spelare som prioriterar full vertikal rörelse är S0 fortsatt mål, men tekniken är ej klar för G6-produktionsstart.
 - **Stopp:** G5 `TECHNICAL_COMPLETE_FORMAL_PENDING`, G6 `NOT_AUTHORIZED`, G7–G10 `BLOCKED`. Avsluta **inte** denna granskning med fler självupprepande 79/76-cykeltabeller; enda meningsfulla nästa steg är det **verkliga användarvalet** eller en *helt ny konkret* extern kernelarkitektur som source-only kan falsifiera S0:s blockering.
 
+## 5A. Fullständig arkivkopia i officiell Google Drive
+- [Google Drive – G5L hela slutliga G5-teknikrapporten med 30/30-trick, 10-case-CSV och exakt öppen användarfråga](https://docs.google.com/document/d/1zbusyasMrLlO4zIp3iq8iplr8cvjvlAvbcgkDATOi38/edit), native Google Doc som skapades i den officiella projektmappen `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, lästes tillbaka och kontrollträffade fullständig trickpost 30, scen S05, O1-beslutsgräns, G5 pending/G6 spärr och CSV:s fullständiga rubriker. Denna GitHub-fil är versionsstyrt källoriginal; Drive är läsbar kopia.
+- [GitHub full original-CSV med samtliga 10 testscenarier](G5L_SAME_Y_KEY_DOOR_ENEMY_RENDERING_STRESS_2026-11-17.csv). Inga ROM-/designfiler har ändrats.
+
 ## 6. Käll- och registermanifest
 1. [Ten-Gate-ledningsplan G1–G10](../MAIN_VI_DEEP_REASSESSMENT_30_TRICKS_FEASIBILITY_AND_TEN_GATES_2026-11-17.md), [G1–G10 detailed playbook](../MAIN_VI_G1_G10_CONTINGENCY_PLAYBOOK_A_B_C_2026-11-17.md), [G5 boundary](G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md).
 2. [Originals 30 techniques](../RESEARCH_30_ORIGINAL_ATARI_TRICKS_2026-11-16.md), [all30 object cross-eval](../MAIN_VI_30_TRICKS_CROSS_OBJECT_REASSESSMENT_2026-11-17.md).
