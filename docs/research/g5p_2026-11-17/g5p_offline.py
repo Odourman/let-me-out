@@ -217,7 +217,7 @@ def g5o_reproduce():
   for z in range(0,len(cs),2):
    a,b=cs[z:z+2];rows.append([n,a[1],a[2],180,a[4],b[4],a[5],a[6],a[7],a[9],a[8]])
  with (ROOT/'g5o_replay.csv').open('w',newline='') as f:
-  w=csv.writer(f);w.writerow(header);w.writerows(rows)
+  w=csv.writer(f,lineterminator='\n');w.writerow(header);w.writerows(rows)
  return rows
 
 def key_s05():
@@ -235,7 +235,7 @@ def key_s05():
   o1=count>0
   result.append(dict(scene=label,white_x_cc=60,key_x_cc=60+dx,y_grid=10,bitmap_pixel_overlaps=count,approved_O1_occlusion_allowed=o1,required_bitmap_events='player+white+key+lockeddoor',p1_reserved_for_orange_door=True,p0_nominal_bitmap_events=3,key_logical_position_fixed=True,door_hole_must_remain_black=True,hardware_result='NOT_TESTED_G0'))
  with (ROOT/'s05_logical_stress.csv').open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=result[0]);w.writeheader();w.writerows(result)
+  w=csv.DictWriter(f,fieldnames=result[0],lineterminator='\n');w.writeheader();w.writerows(result)
  return result
 
 def main():
@@ -252,14 +252,14 @@ def main():
      for t in tr:traces.append({**{k:d[k] for k in ('map','scenario','mode','spawn_index')},**t})
  for file,data in [('g5p_scenarios.csv',cases),('g5p_traces.csv',traces)]:
   with (ROOT/file).open('w',newline='') as f:
-   w=csv.DictWriter(f,fieldnames=list(data[0]));w.writeheader();w.writerows(data)
+   w=csv.DictWriter(f,fieldnames=list(data[0]),lineterminator='\n');w.writeheader();w.writerows(data)
  summary=[]
  for typ in ('v011','v019_candidate'):
   for mode in ('strict_greedy','strict_adaptive','soft','free'):
    vals=[x for x in cases if x['map_set']==typ and x['mode']==mode]
    summary.append(dict(map_set=typ,mode=mode,n=len(vals),mean_unique_threats=round(statistics.mean(x['unique_threats'] for x in vals),3),zero_threat_cases=sum(x['unique_threats']==0 for x in vals),first_threat_not_seen=sum(x['first_threat_tick']<0 for x in vals),mean_first_threat_given_seen=round(statistics.mean(x['first_threat_tick'] for x in vals if x['first_threat_tick']>0),2) if any(x['first_threat_tick']>0 for x in vals) else '',mean_move_rate=round(statistics.mean(x['movement_rate'] for x in vals),3),cases_with_30tick_stall=sum(x['stalled_npcs_30']>0 for x in vals),mean_y_overlap_frames=round(statistics.mean(x['y_overlap_frames'] for x in vals),1),mean_soft_hidden_npc_ticks=round(statistics.mean(x['soft_hidden_npc_ticks'] for x in vals),1),mean_key_carriers_reachable_without_occupancy=round(statistics.mean(x['logical_key_to_door_5_carriers_no_occupancy'] for x in vals),2),mean_key_carriers_reachable_with_occupancy=round(statistics.mean(x['logical_key_to_door_5_carriers_with_snapshot_occupancy'] for x in vals),2),door_blocked_snapshots=sum(x['door_snapshot_blocked'] for x in vals)))
  with (ROOT/'g5p_summary.csv').open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=list(summary[0]));w.writeheader();w.writerows(summary)
+  w=csv.DictWriter(f,fieldnames=list(summary[0]),lineterminator='\n');w.writeheader();w.writerows(summary)
  s05=key_s05()
  # manifest covers direct original map git blob names but input hex is our own encoding.
  manifest={'tested_maps':list(MAPDATA),'map_sha_github_blob':{'v011':'pending_external','v019':'pending_external'},'seed':SEED,'ticks':TICKS,'scenario_count':len(cases),'g5o_replay_rows':len(rows),'model':'2x2 anchor approximation','modes':['strict_greedy','strict_adaptive','soft','free'],'scenario_names':['static_left','static_middle','static_right','horizontal','vertical','escape_door','walls'],'source_file_hashes':{}}
