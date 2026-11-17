@@ -1,5 +1,8 @@
 # Let Me Out! (Atari 2600)
 
+> **AKTUELL STATUS / STARTA HÄR (MAIN VII, 2026-11-17):** [Ett enda gällande käll-/auktoritets-/arbetsköindex](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md) ([Drive-spegel](https://docs.google.com/document/d/13ROb1ZXjPjQh7g6xDSGfxIrquhD6xtWI-LCloF9BMPA/edit)). G5Z H4-ONE G0 är avslutad `INCONCLUSIVE_NO_ROM`, G5 OPEN; framtida A_OPEN_01/B_OPEN_02/C_OPEN_01/D_OPEN_01 och fem NPC mål är beslutade, **inte ROM-implementerade**. **Ingen G1/G6/F12/ny ROM/ny Verification/PR-merge är beställd.** Nedanstående äldre MAIN V–VII-paketnotiser, i synnerhet "ENDA REKOMMENDERADE"/"väntar på designbeslut", är **HISTORISKA RELEASE-SNAPSHOTS, INTE AKTIV PROJEKTSTATUS**.
+
+
 ## MAIN VII aktuell navigationskorrigering efter G5AA – Project Sources V3 (2026-11-17)
 
 **Aktuell källbaserad revision:** [G5AB samlad Github/Drive/Project Sources-kontroll](https://github.com/Odourman/let-me-out/blob/main/docs/project_sources/PROJECT_SOURCES_MAIN_VII_V3_CURRENT_AUDIT_AFTER_G5AA_2026-11-17.md) och [officiell Drive-kopia](https://docs.google.com/document/d/1QYg8xZwp58w0eZe6CsGaO4mEONwseHHVNHoDRCcEJKI/edit). MAIN har inventerat GitHub, projektets Drive och sex faktiskt anslutna Project Sources. De sex äldre V2-filerna innehåller historiska statusrader som är supersederade av LM-D12–20 och G5AA. Ett **sexfilers V3-ersättningspaket** är skapat i MAIN-chatten, men **har inte automatiskt bytts in i ChatGPT Project Sources**. Användaren ska ersätta de sex gamla individuella projektfilerna när paketet tas i bruk, inte lägga parallella kopior. Äldre "ENDA SLUTLIGA" nio-/sexfilsarkiv nedan är historiska release-snapshots, inte aktuella projektbeslut.
