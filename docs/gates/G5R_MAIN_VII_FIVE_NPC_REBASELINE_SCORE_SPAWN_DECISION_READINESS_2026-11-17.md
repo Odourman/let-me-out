@@ -1,4 +1,9 @@
 # LET ME OUT! – MAIN VII G5R: fem-NPC-rebaseline, poängbalans, nyckelbärare och startpositioner
+
+## MAIN VII senare G5S-godkännande – supersession av förslagsstatus för C1/D1/E1 (2026-11-17)
+
+**Nyare användarsvar på uttryckligen namngiven fråga godkände C1 + D1 + E1 som framtida spel-/testkrav.** [G5S fullständigt protokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1UboARrqu3sFHQgeV1y5C0IWoRkSlvAY_6b6RMLWwbnE/edit). Det ursprungliga G5R-underlaget nedan är historisk **förslags-/forskningsstatus före godkännandet**. Från och med G5S är **C1 framtida R1=5/R2=4+key**, **D1 -30/kill vid fem NPC med originalets övriga scoring**, och **E1 fem förhandsvaliderade spawns och uniform 1/5 bärare** godkända inom avgränsat framtida scope. **Ingen exakta kartor, spawnkoordinater, ROM, G0/G6, ny Verification, kvantifierad flickerwaiver eller PR-merge godkänd.** Gamla v0.18-test-/hashbevis oförändrade.
+
 **Datum:** 2026-11-17. **Klass:** `G5R_SOURCE_ONLY_DECISION_READINESS_NOT_APPROVED`.
 **Gräns:** Ingen ny spelcanon, testacceptans, ändrad gameplay-/poängkod, kartcutover, G0/G6/F12/ROM, PR-merge eller oberoende VERIFICATION. Äldre G5Q A1+B1 är redan avgränsat användargodkända designmål; den nya användartexten "Fortsätt Följ dina egna rekommendationer" auktoriserar fortsatt **förberedelse**, men är inte ett entydigt, separat uttryckligt numeriskt beslut om originalets -25-poäng eller ny R1/R2-bas.
 
