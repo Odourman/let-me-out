@@ -3,6 +3,16 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – DE 30 URSPRUNGLIGA ATARI-TRICKSEN OMPRÖVADE PER OBJEKT (2026-11-17)
+
+**Status: ADVISORY_CROSS_OBJECT_REASSESSMENT_ALL_30_SOURCE_ONLY.** Efter användarens relevanta invändning att Venetian Blinds borde ha föreslagits även för nyckel och dörr, har MAIN VI läst om 30/30 originalposter från `docs/RESEARCH_30_ORIGINAL_ATARI_TRICKS_2026-11-16.md` (samma låsta originalrapport; inget RESEARCH II-underlag ersatt). Slutsats: tidigare prioritering var för ensidigt fixerad vid sex rörliga vita NPC samtidigt. Ny tvärfunktionell rangordning med objekt/färg/cykel/visuell risk:
+- [**GitHub: alla 30 omvärderade, 30-raders riskmatris + sex kombinationspaket**](MAIN_VI_30_TRICKS_CROSS_OBJECT_REASSESSMENT_2026-11-17.md) · [**Google Drive: fullständig kopia, läst tillbaka i officiell projektmapp**](https://docs.google.com/document/d/1lC3rz6VF8orv4W1rHSHqAFWZnOlAR5UWcmVfnphGcys/edit).
+- **Först källpröva PF-högerdörr (#05+#07+#12+#14+#19+#24)** med brun vägg och eventuellt negativt svart keyhole; alternativ **nyckel via M1/BL (#17+#12+#09+#24)** med exakt färgkoppling O1; därefter **Venetian (#03+#01+#08+#09+#14)** bara när nyckel och dörr faktiskt behöver samma rasterband. **Venetian ≠ generell G6-R1-fysikbevis** och måste ge läsbar form (4/5 av 9 rader risk).
+- **Femandroidsversionen är fortsatt en föreslagen 2600-researchkandidat**, sedan sorterad 6507/TIA X/Y-händelseplan (#01+#02+#10+#14+#15+#21+#24), inte en användargodkänd ändring från sex; R1/R2 nuvarande acceptanskriterier oförändrade.
+- **Separat HUD-kernel (#13+#14+#18)** kan isolera SCORE-färgläget från bruna väggars P0/P1-färgkonflikter; värdefull framtida självständig del men inte svar på sex-NPC-same-Y.
+- **No-go/varning:** dubbel färg kan inte visas på samma TIA pixel, PF/BL delar `COLUPF`, P1/M1 delar `COLUP1`, P0/M0 delar `COLUP0`, 76c/scanline, 128B RAM, en aktiv F6-4KB bank. Specialkassett #27–30 är EJ tillåten och ej magiskt grafikhjälp.
+- **G1–G4 tidigare evidensstatus oförändrad, full R1 fortsatt BLOCKED/NOT ACCEPTED, G5 design-/antalsval PENDING USER, G6/F12 ej auktoriserad.** Inga ROM, DASM, Stella, Graphics-implementation, canon, PAL/mapper, PR merge eller E02 ändrade.
+
 ## MAIN VI – FEMANDROIDSFÖRSLAG / BERZERK / VIDEO CHESS ARKIVERAT (2026-11-17)
 
 **Klassning: RECORDED_CANDIDATE_DIRECTION_NOT_CANON_NOT_IMPLEMENTATION_AUTHORIZATION.** Användaren ifrågasatte korrekt om ett mycket enklare spel än Berzerk verkligen är orealistiskt på original-Atari 2600 utan Supercharger och föreslog **fem** androider (2 stora M, 1 stor F, 1 liten M, 1 liten F) i stället för sex samt **Video Chess/Venetian Blinds** varannan rasterrad för **nyckeln och dörren** när deras Y-band kräver samma sprite. Huvudchatten rekommenderade en källbunden Berzerk-jämförelse och prövning av nyckel/dörr som annan problemkategori än tidigare negativ androidinterleave. Ingen allmän gameplay- eller 6507/TIA-genomförbarhet är bevisad genom detta.
