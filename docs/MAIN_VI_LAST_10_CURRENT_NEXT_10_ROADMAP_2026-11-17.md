@@ -1,4 +1,7 @@
 # LET ME OUT! — MAIN VI: senaste 10 tekniska steg, nuläge och nästa 10
+
+> **HISTORISK PLAN — ERSATT SOM FRAMÅTRIKTAD PLANERING 2026-11-17.** De tio genomförda tekniska stegen F2–F11 och dokumenterade historiska fakta nedan är bevarade. Den första föreslagna `nästa 10`-sekvensen är **inte längre MAIN VI:s rekommenderade genomförandeordning**: R1, R2 och R3 måste budgeteras som ett gemensamt TIA-resursproblem och skiljas i separata kodorder först efter källgrindar. **Aktuell fördjupad prövning och villkorade G1–G10:** [MAIN VI – 30-tricks/52 tekniker/67 risker, genomförbarhet, reviderad tio-grindsplan](MAIN_VI_DEEP_REASSESSMENT_30_TRICKS_FEASIBILITY_AND_TEN_GATES_2026-11-17.md) · [Drive-spegel](https://docs.google.com/document/d/13hW5xRwlcClMCNKn2j-iQ3BBBHOf48Y4drfzFz4-uhM/edit). Ingen F12/ROM, gameplay, mapper, PAL, E02, PR-merge eller designwaiver är auktoriserad.
+
 Datum: 2026-11-17 (Sverige). Projekt: endast Odourman/let-me-out.
 Dokumentklass: källgranskad MAIN-plan, EJ genomförandeorder, EJ ny ROM-/PAL-/mapper-/gameplay-/VERIFICATION-auktorisation. Ingen F12 utfärdas.
 
