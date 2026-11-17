@@ -62,6 +62,9 @@ Följande tabell är **förhandsspecificerade ändringar som skulle behövas OM 
 
 **Main rekommenderar inte** att fortsätta med G5J/G5K och fler kosmetiska cycle-censuses utan en ny konkret kernelarkitektur eller ett användarägt visuellt kompromissbeslut. Bevara forskning, stoppa falska PASS, håll normal Atari 2600 som mål så länge användaren så önskar. Inget datum eller tidsuppskattning för att "vara klar" kan legitimt utlovas.
 
+## 6A. Bekräftad Drive-kopia i officiella projektmappen
+- [Google Drive: G5I plan- och beslutsavstämning, fullständigt läst tillbaka](https://docs.google.com/document/d/1Zc-n5K-RHRZ5YriInxyQBqmb99siXl44547cVteT1YI/edit). Native-dokumentet skapades, flyttades till `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, lästes tillbaka och kontrollerades för G5I-status, G1–G10, R1-acceptansdelta och spärren mot G6/ROM. GitHub är versionsstyrt källoriginal. Ingen ROM, ingen canonändring.
+
 ## 7. Fil- och auktoritetsmanifest
 - G5I är **en source-only MAIN VI-grindavstämning**. Det är **inte** en ROM DEVELOPMENT III-prompt, inte en ändring av `ROM_GATE_V018_ACCEPTANCE.md`, `design/NPC_REFERENCE_8x9_masks.json`, original 57 beslut, Issue #6 scope eller E02-fryst baseline.
 - Vid senare faktisk userbeslut skall en ny explicit versions- och kravdelta skrivas, följd av separat G6-uppdragsorder med pass/fail. Inga andra projekt eller repo påverkas.
