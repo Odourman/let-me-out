@@ -45,5 +45,12 @@ Det finns **en konkret, forskningsförankrad och falsifierbar fysisk hypotes** s
 **G5:** ingen utlösande tvingande användarwaiver eller extra beslut nu; endast om G0/nytt prov visar faktiskt designblock.
 **G6:** `NOT_AUTHORIZED`. Inga extra ROM- eller forskningssteg startade här.
 
+## G4-arkiveringskvittens – fullständiga Drive-kopior 2026-11-17
+
+- **Sökbar Google Drive-kopia av fullt GO/NO-GO-beslut och förregistrerad hypotes:** [G4 beslut och teknisk hypotes](https://docs.google.com/document/d/1dCYnzJmI5osXGgcGVygIHX8cfgbYDuVOpvfZbKnBsb4/edit).
+- **Sökbar Google Drive-kopia av 21 rad-händelser och framtida uttryckligen EJ UTFÄRDAD G6-order:** [G4 register och endast utkast](https://docs.google.com/document/d/1KGcTovnA9XgSBmqm8aVHSjhoBYguGda5A02arBS-8w0/edit).
+- Bägge native Google Docs **skapades i och lästes tillbaka från** officiell projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`. GitHub-filerna är primär auktoritet för råa tidsrader och source text; Drive är extra bevarande.
+- **Ingen** bokad eller inledd G6-ROM, Stella, DASM, F12, eller E02. Det finns bara en villkorad rekommendation om en framtida G0-stoppstyrd mikrofysikgrind.
+
 ## 5. Slutlig styrning
 Den tekniska prioriteringen är **EN** datastyrd mikroskopisk falsifiering framför fler fyra-mode-kodprofiler eller en sex-NPC-kernel på gissning. **Ingen** ny ROM, DASM, Stella, CI, oberoende E02, F12, gameplay, PAL, cartridge/mapperändring, PR-merge eller canon waiver är avsedd eller utförd i G4. Source-only GO är en forskningsrekommendation; teknisk verklighet avgörs först i separat godkänt experiment.
