@@ -1,0 +1,55 @@
+name: R1-F9 READ ONLY frozen one-ROM true 144 Stella 48 traps SHA256 ZIP packaging
+on:
+  push:
+    branches: [rom-dev/v018-r1-f9-three-binary-x-one-rom-20261117]
+    paths: [.github/workflows/r1-f9-READONLY-EVIDENCE-BUNDLE.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  read-only-complete-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download ORIGINAL successful G1 one ROM and raw 144 Stella + 48 real GUI traps, DO NOT RERUN EMULATOR
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+          run-id: 44050126727
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed_g1/
+      - name: Download frozen previously verified F7 actual ASM LST SYM (source provenance only, not another ROM build)
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F7_FULL_SOURCE_TRUE_160_STELLA_16_TRAPS_SHA256_2026-11-16
+          run-id: 43968481385
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed_f7/
+      - name: READ ONLY verify one original ROM, 144 genuine raw+full snapshots, 48 genuine traps, 12 actual contrasts; create per-file SHA manifest
+        run: |
+          python3 rom/v018/experiments/r1_free_xy/r1_f9_bundle.py
+          cd bundle
+          sha256sum -c SHA256SUMS.txt >/dev/null
+          python3 - <<'PY'
+          import json
+          a=json.load(open('EVIDENCE_FILE_INDEX.json'))
+          j=json.load(open('F9_EVIDENCE_SUMMARY.json'))
+          assert len(a)>360,len(a)
+          assert j['classification']=='F9_THREE_BINARY_RUNTIME_SELECTORS_LOCAL_PASS'
+          assert j['REAL_STELLA_CROP_COUNT']==144 and j['REAL_STELLA_FULL_GUI_COUNT']==144
+          assert j['REAL_STELLA_PC_TIA_REGISTER_TRAPS']==48
+          assert j['TWELVE_ORTHOGONALITY_CONTRASTS_PASS']==12
+          assert j['F9_ONE_NEW_EXECUTABLE_ROM_SHA256']=='6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b'
+          print('F9_SOURCES_ONE_ROM_144_REAL_PNG_144_REAL_GUI_48_ACTUAL_TRAPS_12_X_CONTRASTS_SHA256_MANIFEST_PASS',len(a))
+          PY
+      - name: Upload original-source immutable full evidence. This job runs NO DASM NO Stella NO ROM
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: LET_ME_OUT_R1_F9_COMBINED_ONE_F6_ROM_144_REAL_STELLA_48_TRAPS_SHA256_2026-11-17
+          path: bundle/
+          if-no-files-found: error
