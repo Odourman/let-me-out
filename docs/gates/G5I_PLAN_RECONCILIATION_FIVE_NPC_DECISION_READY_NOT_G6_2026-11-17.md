@@ -65,6 +65,10 @@ Följande tabell är **förhandsspecificerade ändringar som skulle behövas OM 
 ## 6A. Bekräftad Drive-kopia i officiella projektmappen
 - [Google Drive: G5I plan- och beslutsavstämning, fullständigt läst tillbaka](https://docs.google.com/document/d/1Zc-n5K-RHRZ5YriInxyQBqmb99siXl44547cVteT1YI/edit). Native-dokumentet skapades, flyttades till `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, lästes tillbaka och kontrollerades för G5I-status, G1–G10, R1-acceptansdelta och spärren mot G6/ROM. GitHub är versionsstyrt källoriginal. Ingen ROM, ingen canonändring.
 
+## 6B. Nya konkreta G5J/G5K-underlag efter användarens "fortsätt"
+
+[G5J extern primärkälla Berzerk och 176-raders occupancy](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5J_BERZERK_PRIMARY_SOURCE_LANE_KERNEL_AND_FIVE_NPC_SCOPE_OPTIONS_SOURCE_ONLY_2026-11-17.md) · [Drive med full G5J](https://docs.google.com/document/d/1yV_4qJdesdrN1d8IbOVA9kbjY-KjCR9zba8wuBzjpDM/edit); [G5K ny 176-raders dynamisk P0/P1-ägarallokering, vit robot flyttas till P0 under orange dörr](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5K_BERZERK_LANE_DYNAMIC_P0_P1_DOOR_R1_R2_SOURCE_ONLY_2026-11-17.md) · [Drive G5K fulltext och CSV](https://docs.google.com/document/d/1OuqluwyUycObf-tB27SoN-kKaqvwVUWbdmUal7oqB60/edit). G5I slut­satsen att **formell G5-cutover återstår** gäller, men forskningsstatus har förbättrats: en faktisk historisk 8-robotars vertikal-lane-spelmekanik och en **conditionally cheaper** P0/P1-door-kandidat finns. G5K:s 37/47/62c är inte källmask-/registerfysiska pass utan naiva direktopcodes. Ingen användarwaiver för begränsad Y, O1/shot/color eller en G6-ROM-order har skapats.
+
 ## 7. Fil- och auktoritetsmanifest
 - G5I är **en source-only MAIN VI-grindavstämning**. Det är **inte** en ROM DEVELOPMENT III-prompt, inte en ändring av `ROM_GATE_V018_ACCEPTANCE.md`, `design/NPC_REFERENCE_8x9_masks.json`, original 57 beslut, Issue #6 scope eller E02-fryst baseline.
 - Vid senare faktisk userbeslut skall en ny explicit versions- och kravdelta skrivas, följd av separat G6-uppdragsorder med pass/fail. Inga andra projekt eller repo påverkas.
