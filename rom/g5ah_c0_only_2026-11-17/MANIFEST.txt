@@ -1,0 +1,43 @@
+LET ME OUT! ROM DEVELOPMENT III / G5AH LM-D23 C0-ONLY NO-BUILD ARCHIVE
+Date: 2026-11-17
+STATUS: G5AH_C0_NO_BUILD_INSTRUMENTATION_BLOCKER
+PARENT MAIN: 63ad3d43bd10e8a4bce644fedc949e0542c8c17a
+ISOLATED BRANCH: rom-dev-iii/g5ah-lm-d23-c0-only-20261117
+NEW C0 ASM/BIN/LST/SYM: NONE.
+NEW C0 ROM SHA256: DOES_NOT_EXIST.
+C0 X40 and X104: BOTH NOT_RUN_NO_ROM.
+NEW ACTIONS MEASUREMENT COUNT: 1 only. No second run. Hard stop after failed phase A.
+
+BINDING ORDER: https://github.com/Odourman/let-me-out/blob/63ad3d43bd10e8a4bce644fedc949e0542c8c17a/docs/gates/G5AH_MAIN_VIII_LM_D23_C0_ONLY_TIA_MEASUREMENT_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md
+GITHUB ISSUE: https://github.com/Odourman/let-me-out/issues/15
+GITHUB ONE REAL RUN: https://github.com/Odourman/let-me-out/actions/runs/44193946233
+CAPTURE JOB ID: 134430286409 [FAIL]
+ARTIFACT READBACK JOB ID: 134430694476 [FAIL, stella_stdout.txt modified on teardown]
+RAW ARTIFACT: https://github.com/Odourman/let-me-out/actions/runs/44193946233/artifacts/14378620744
+RAW ARTIFACT EXACT SIZE: 23368 bytes
+RAW ARTIFACT EXACT SHA256: e9966c7cbdc17e62484cbc7775f9c8f031dc936c76f37e8c9c3cc4466306453e
+RAW ARTIFACT MEMBERS: 18 (17 listed in SHA256SUMS.txt + original SHA256SUMS.txt)
+ORIGINAL MANIFEST PROBLEM: stella_stdout.txt SHA256 empty-string e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ACTUALLY ARCHIVED stella_stdout.txt SHA256: de0db306e362a36d1b20e1a92dd88116e4e9d3b993b04064f1da07adb6e9cb1e
+REAL ARCHIVE REHASH: all 17 actual member SHA256 verified after download. Corrected postmortem digest file is NOT a successful original Actions readback.
+ORIGINAL F9 ROM (read-only) 16,384 bytes: 6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b
+ORIGINAL F9 .LST SHA256: b47924e8bd3b4771b13bde05146f67591a994bcae45e2b8422f41f39dc0107f6
+ORIGINAL F9 .SYM SHA256: bb0941c7278f58605c96a270eedb4a48fe703bf5717d6f5c848e1f62c12a12a7
+
+EIGHT ORIGINAL NEW GIT FILES, GIT BLOB SHA-1:
+71c9cdcadf7d629d89596da8feba7c958ff70cf0  .github/workflows/g5ah_c0_hard_preflight.yml
+e2fe7b11e4b2eb3f030c2e6f5e3b37bc3ecfa799  rom/g5ah_c0_only_2026-11-17/PREFLIGHT_SCOPE_AND_CASE.md
+73b5a22f21efbf448554a37db7744bbbf151f3e3  rom/g5ah_c0_only_2026-11-17/check_prebuild_original.py
+aafadbaf47bfee3258c02a9ad5db6f68c6115a3f  rom/g5ah_c0_only_2026-11-17/audit_phase_a.py
+abe044937e31b12a6ee63f47993be8e4f78b8b1b  rom/g5ah_c0_only_2026-11-17/preflight_f9.sh
+1e9515c5d8c2f10e35f2cbeb65705526e16089fc  rom/g5ah_c0_only_2026-11-17/G5AH_C0_EVIDENCE.csv
+bb810b61b748f47f6e860708d9cc82fc05b366a9  rom/g5ah_c0_only_2026-11-17/RECOVERED_ACTUAL_ARTIFACT_SHA256SUMS.txt
+00445004bce7dfde10a10bb6f5d470f97b71b869  rom/g5ah_c0_only_2026-11-17/TO_MAIN_G5AH_C0_ONLY.md
+
+OFFICIAL DRIVE DOCUMENT (native text archive, NOT byte-identical):
+https://docs.google.com/document/d/11np9DbDxTMeaz58Z2DNalmPNlpB-_9Jgow_MvvMpC2U/edit
+PARENT DRIVE FOLDER: 1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u
+
+SOURCE STATUS V6: all six GitHub CURRENT_V6 checked and authoritative MAIN VIII decision source checked.
+NO MERGE, NO NEW ROM, NO H4 G1 G6 F12 S05 FIVE_NPC OR NEW C1-C4/N1.
+STOP AFTER FAILED PHASE A. NO SECOND RUN INITIATED.
