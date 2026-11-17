@@ -1,5 +1,11 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN VIII G5AH / LM-D23 – SENARE AVGRÄNSAT C0-UNDANTAG (2026-11-17)
+
+**SENARE DIREKT ANVÄNDARBESLUT:** På MAIN VIII:s specifika förslag att först bevisa **C0-mätbarheten** och behandla C1–C4/N1 i en **separat, senare godkänd testorder**, svarade användaren "Ok, fortsätt med det du rekommenderar. Använd dig av GitHub, Google Drive och Project sources". MAIN VIII har därmed utfärdat **LM-D23/G5AH** **endast för C0-baslinjen**, med hård instrumenterbarhetsgrind och högst **en** minimal 16KiB F6/NTSC C0-ROM efter godkänd grind samt högst två Actions-mätkörningar. [Bindande fullorder](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AH_MAIN_VIII_LM_D23_C0_ONLY_TIA_MEASUREMENT_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) · [Issue #15](https://github.com/Odourman/let-me-out/issues/15). **`G5AH_C0_AUTHORIZED_NOT_YET_EXECUTED`** – inte redan mätt eller byggt.
+
+**Den generella äldre spärren "ingen ny ROM" har ett ENDA senare uttryckligt undantag: detta G5AH-C0-prov.** G5Z/LM-D20, G5AD/LM-D21 och G5AF/LM-D22 är fortfarande avslutade; G5AF får ingen tredje körning; G5AD:s sexfallsmatris öppnas inte på nytt. **C1/C2/C3/C4/N1 kräver ett NYTT separat användarbeslut**, liksom H4/G1, G6/F12, S05, full fem-NPC/spelimplementation, independent Verification II och PR-merge. **`G5_FORMAL_OPEN`**. Det nya C0-undantaget är *inte* ett tekniskt PASS.
+
 ## MAIN VIII G5AG – AKTUELL SENARE BINDANDE STOPPSPÄRR (2026-11-17)
 
 **SENARE ÄN G5AF-ORDERTEXTEN NEDAN:** [MAIN VIII:s G5AG mottagningsrapport](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md) visar att LM-D22/G5AF är **LEVERERAD OCH AVSLUTAD**, endast utvecklarverifierad fryst F9/Stella-instrumentering `G5AF_INSTRUMENTATION_READY_BOUNDED`. [Issue #14](https://github.com/Odourman/let-me-out/issues/14) är CLOSED/COMPLETED endast för instrumenteringen. Det tidigare `G5AF_AUTHORIZED_NOT_EXECUTED` nedan är status **vid orderns utfärdande**, inte aktivt mandat. De två tillåtna Actions-mätkörningarna har förbrukats. **Ingen tredje körning.**
