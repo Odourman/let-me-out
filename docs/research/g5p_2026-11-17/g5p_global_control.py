@@ -31,7 +31,7 @@ def main():
     d,_=q.trial(m,spawns,scen,'strict_adaptive')
     d['mode']='strict_global';vals.append(d)
  with (q.ROOT/'g5p_global_control.csv').open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=list(vals[0]));w.writeheader();w.writerows(vals)
+  w=csv.DictWriter(f,fieldnames=list(vals[0]),lineterminator='\n');w.writeheader();w.writerows(vals)
  for typ in ['v011','v019_candidate']:
   x=[a for a in vals if a['map_set']==typ]
   print(typ,'count',len(x),'unique',round(statistics.mean(a['unique_threats'] for a in x),3),'rate',round(statistics.mean(a['movement_rate'] for a in x),3),'stall',sum(a['stalled_npcs_30']>0 for a in x),'y-overlap',max(a['y_overlap_frames'] for a in x),'zero-threat',sum(a['unique_threats']==0 for a in x))
