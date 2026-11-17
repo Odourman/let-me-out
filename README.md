@@ -2,6 +2,16 @@
 
 Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin och **inte** I Love a Fish.
 
+## GRAPHICS - ren chattmigrering 2026-11-17
+
+**MAIN V har avslutat sex GRAPHICS-kandidatstudier.** Alla är mottagna som dokumenterade grafiska underlag, men **ingen är slutgodkänd eller Stella-testad**. Ingen ny GRAPHICS-version/studie är auktoriserad. Nästa dedikerade GRAPHICS-chatt ska läsa aktuell MAIN-status och invänta en separat avgränsad designorder.
+
+- [GRAPHICS -> ny chatt: fullständig, källstyrd handoff](docs/GRAPHICS_HANDOFF_TO_NEW_CHAT_2026-11-17.md)
+- [GRAPHICS II: fristående startprompt](docs/GRAPHICS_NEW_CHAT_STARTPROMPT_2026-11-17.md)
+- [Verifierbart migreringspaket i Google Drive](https://drive.google.com/file/d/1fEAW-oCkGWUq02yJ_klIFChQ5rSENHgT/view)
+
+**Migreringen gäller enbart dokumentation och chattroll.** Den auktoriserar inte nya grafikmasker, ändringar i canon, ROM-kod, teknisk gate eller PR-merge. För aktuell ROM-status gäller alltid översta tillämpliga avsnitt i [CURRENT_PROJECT_STATE](docs/CURRENT_PROJECT_STATE_2026-11-15.md).
+
 ## MAIN IV → MAIN V – överlämning 2026-11-16
 
 **MAIN IV har förberett projektöverlämningen till MAIN V.** [Fullständigt handoffpaket](docs/MAIN_IV_TO_MAIN_V_HANDOFF_2026-11-16.md) · [MAIN V:s färdiga startprompt](docs/MAIN_V_STARTPROMPT_2026-11-16.md) · [separata startprompter för ROM DEVELOPMENT och VERIFICATION](docs/MAIN_V_ROM_DEV_AND_VERIFICATION_STARTPROMPTS_2026-11-16.md). Alla tre finns även i [projektets Google Drive-mapp](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u). **Ingen ny kodauktorisation eller full R1–R4-acceptans följer av överlämningen.** ROM DEVELOPMENT och VERIFICATION ska arbeta i olika chattar, med faktisk verifiering oberoende av kodaren.
