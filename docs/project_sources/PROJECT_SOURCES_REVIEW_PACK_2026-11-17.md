@@ -1,5 +1,9 @@
 # LET ME OUT! – Project Sources review-pack receipt (2026-11-17)
 
+## MAIN VII – PROJECT SOURCES V2, 2026-11-17
+
+**Aktuell rekommendation:** använd endast [V2 med sex projektkällor](https://drive.google.com/file/d/1R6rvwwYwDIfXOMcbi1CrHIRN5YgR8o7-/view), läs [anvisningen](PROJECT_SOURCES_MAIN_VII_V2_USAGE_2026-11-17.md) för när projektet ska kontrollera originalkällor live. Arkiverad niofilsversion är inte avsedd att laddas upp parallellt. Det här är källorientering, **inte ny canon, G5-PASS eller G6/F12-auktorisation**.
+
 ## MAIN VII – SLUTLIG PROJECT SOURCES-VERSION, 2026-11-17
 
 **ENDA REKOMMENDERADE VERSION FÖR NY UPPLADDNING:** [LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_FINAL_2026-11-17.zip](https://drive.google.com/file/d/1mLSqMZZx_j7g8ha6Mje4PyBsjiwZ6V6F/view), SHA256 `2c20ea7a5dbc9ae6809d2731fecfbc12acd6be279acb2d9255ba49d723fd792d`, 9 individuella källfiler, 35 spårbara källreferenser. Den nedladdade Drive-kopian har bytejämförts med originalet; ZIP CRC och alla 8 SHA256-filposter kontrollerades utan avvikelse.
