@@ -1,0 +1,99 @@
+{
+  "schema": "let-me-out.g5x.future-four-map-selection.v1",
+  "project": "LET ME OUT!",
+  "recorded_at": "2026-11-17",
+  "decision": "LM-D19",
+  "status": "APPROVED_EXACT_FUTURE_MAP_GEOMETRIES_ONLY",
+  "note": "User approval of B_OPEN_02 immediately after MAIN's precise question. A/C/D previously approved via LM-D17. Original source JSONs remain unmodified; B02 still carries historical candidate status from before user's approval. This selection manifest is authority navigation, NOT a ROM/implementation or test PASS.",
+  "original_four_room_source": "design/PLANERADE_RUMSKARTOR_V011.json",
+  "original_four_room_source_blob": "820a74e5fb77c818ffb1286c5b23698d4374e771",
+  "selection_order": [
+    {
+      "room": "A",
+      "map_id": "A_OPEN_01",
+      "grid_dimensions": {
+        "columns": 40,
+        "rows": 22
+      },
+      "grid_fingerprint_fnv1a32": "f8529fc5",
+      "interior_wall_cells": 36,
+      "interior_open_cells": 724,
+      "source": {
+        "repository": "Odourman/let-me-out",
+        "commit": "80bf072ee0e8a9a84905a29d70771a7cc6be7820",
+        "path": "design/OPEN_ROOMS_V019_40x22_CANDIDATES.json",
+        "blob_sha": "0e449f97f87bd9b403476fd1435398042eaee285",
+        "selector": "maps[id=A_OPEN_01].grid"
+      }
+    },
+    {
+      "room": "B",
+      "map_id": "B_OPEN_02",
+      "grid_dimensions": {
+        "columns": 40,
+        "rows": 22
+      },
+      "grid_fingerprint_fnv1a32": "c9e29f45",
+      "interior_wall_cells": 72,
+      "interior_open_cells": 688,
+      "source": {
+        "repository": "Odourman/let-me-out",
+        "commit": "2991a94a4d92a0ee75a5de8e8c5302d549734e1e",
+        "path": "studies/graphics/G5V_B_OPEN_02_2026-11-17/B_OPEN_02.json",
+        "blob_sha": "c32fc656fb5c60d16a5b73e4cea75f86df3e9621",
+        "selector": "grid"
+      }
+    },
+    {
+      "room": "C",
+      "map_id": "C_OPEN_01",
+      "grid_dimensions": {
+        "columns": 40,
+        "rows": 22
+      },
+      "grid_fingerprint_fnv1a32": "84612e29",
+      "interior_wall_cells": 64,
+      "interior_open_cells": 696,
+      "source": {
+        "repository": "Odourman/let-me-out",
+        "commit": "80bf072ee0e8a9a84905a29d70771a7cc6be7820",
+        "path": "design/OPEN_ROOMS_V019_40x22_CANDIDATES.json",
+        "blob_sha": "0e449f97f87bd9b403476fd1435398042eaee285",
+        "selector": "maps[id=C_OPEN_01].grid"
+      }
+    },
+    {
+      "room": "D",
+      "map_id": "D_OPEN_01",
+      "grid_dimensions": {
+        "columns": 40,
+        "rows": 22
+      },
+      "grid_fingerprint_fnv1a32": "16317f3d",
+      "interior_wall_cells": 60,
+      "interior_open_cells": 700,
+      "source": {
+        "repository": "Odourman/let-me-out",
+        "commit": "80bf072ee0e8a9a84905a29d70771a7cc6be7820",
+        "path": "design/OPEN_ROOMS_V019_40x22_CANDIDATES.json",
+        "blob_sha": "0e449f97f87bd9b403476fd1435398042eaee285",
+        "selector": "maps[id=D_OPEN_01].grid"
+      }
+    }
+  ],
+  "not_authorized": [
+    "merge_graphics_branch",
+    "update_original_room_files",
+    "ROM_code_or_build",
+    "G0_or_G6_or_F12",
+    "independent_VERIFICATION_claim",
+    "change_8x9_sprite_masks",
+    "specific_spawn_coordinates",
+    "new_flicker_waiver"
+  ],
+  "outstanding": [
+    "actual five NPC 8x9 collision/spawn validation",
+    "S05 same Y player white NPC key orange door M0 PF hardware conflict",
+    "future exact technical working order and independent ROM verification"
+  ]
+}
