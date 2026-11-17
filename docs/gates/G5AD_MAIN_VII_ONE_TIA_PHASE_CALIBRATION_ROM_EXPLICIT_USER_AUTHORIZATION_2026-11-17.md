@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII G5AD: EN enda TIA-fas-/kopiekalibrerings-ROM – uttryckligen auktoriserad
+
+> **SENARE AVSLUT LM-D21/G5AE (2026-11-17):** Denna order var uttryckligen auktoriserad men har sedan genomförts till förbyggsgrinden och korrekt STOPPATS `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER` innan ROM-bygge. Ingen TIA-C0–C4/N1 mätt, ingen ny ASM/BIN/DASM/STELLA G5AD-case. [MAIN:s G5AE granskning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AE_MAIN_VII_G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER_RECEIPT_AND_STELLA_SAVESES_SOURCE_REVIEW_2026-11-17.md) · [fryst ROM DEVELOPMENT III leverans](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/TO_MAIN_G5AD_TIA_CALIBRATION.md) · [Issue #13](https://github.com/Odourman/let-me-out/issues/13). **Den här historiska LM-D21-ordern är inte fortfarande aktiv och får inte starta om automatiskt.** Full H4/G1/G6/F12/S05/fem-NPC/ny Verification/PRmerge fortsatt ej auktoriserad.
+
 **Datum:** 2026-11-17. **Besluts-ID:** `LM-D21`. **Status:** `G5AD_SINGLE_TIA_MEASUREMENT_ROM_AUTHORIZED_NOT_YET_EXECUTED`.
 **Beställare:** MAIN VII. **Utförare:** ROM DEVELOPMENT III. **Mottagare:** MAIN VII för käll-/artefaktkontroll. **Oberoende Verification II:** EJ beställd.
 **Mandatets avgränsning:** ett tekniskt instrumenterat, isolerat Atari 2600 standard-F6 NTSC-kalibreringsförsök för bestämda TIA-registerfaser, **inte H4-ONE fullt, inte G6/F12, ingen spelimplementation, inget PF/S05-/femfienders-PASS eller PR-merge**.
