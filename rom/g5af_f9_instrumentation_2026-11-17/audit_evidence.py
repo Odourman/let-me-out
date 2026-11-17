@@ -31,9 +31,15 @@ def extracted(text, name):
             val = later.strip()
             if re.search(r"(?i)\b(print|saveSes|saveSnap|tia)\b", val):
                 break
-            m = re.search(r"(?<![\w])(?:\$([0-9A-Fa-f]+)|#(\d+)|(\d+))(?![\w])", val)
+            # Stella 6.7.1: "INPT3|$70(R): $7b %... #123".
+            # $70 is a register address, not the numeric print result.
+            decimals = re.findall(r"#(\d+)\b", val)
+            if decimals:
+                result.append(int(decimals[-1]))
+                break
+            m = re.search(r"(?<![\w])(?:\$([0-9A-Fa-f]+)|(\d+))(?![\w])", val)
             if m:
-                result.append(int(m.group(1), 16) if m.group(1) else int(m.group(2) or m.group(3)))
+                result.append(int(m.group(1), 16) if m.group(1) else int(m.group(2)))
                 break
     return result
 
