@@ -1,5 +1,10 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN VII G5N – nya initiala start-/spelsystemfynd, utan auktorisation (2026-11-17)
+
+[Full G5N source-only-rapport](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5N_MAIN_VII_S1_FIVE_NPC_LANE_START_AUDIT_AND_SCORE_PROPOSAL_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1oVeMuwiwUrvzQrNBBd-aMUVHxnj5HiGgDWBPesy1CTQ/edit). **G5-S1 prövas som rekommenderad huvudkandidat**, inte som beslutad Y-lane gameplay. En deterministisk 2×2-grid-/BFS-enumerering av *endast v0.11:s historiska A01/B01/C02/D01* visar 2 208/48/1 248/420 möjligheter till fem startpunkter med parvis skilda 9-raders grafikband. Ingen dynamisk jakt, nyckelåtkomst, 8×9-hårdvarugeometri eller 2600-kernel är därmed verifierad. G5N föreslår -30 per kill för att undvika framtida +25 all-kill-farming, och fem validerade spawns/1/5 key-bärare; allt väntar på särskilt användarbeslut. **O1:s godkända faktiska överlappningsscope och alla G5/G6-spärrar oförändrade.**
+
+
 ## MAIN VII RÄTTELSE TILL G5:s O1-FORMULERINGAR, 2026-11-17
 
 **Det senare uttryckliga användarbeslutet O1 är redan giltigt**, trots att några nedanstående MAIN VI/G5L-avsnitt felaktigt benämner det preliminärt. Se [O1-beslutet med ordagrant användarsvar](../MAIN_STATUS_NEXT_10_2026-11-15.md), [LM-D06 GODKÄNT](../MAIN_DECISION_LEDGER_SUPPLEMENT_2026-11-15.md) och [korrigendum](../project_sources/PROJECT_SOURCES_MAIN_VII_CORRIGENDUM_2026-11-17.md).
