@@ -82,6 +82,10 @@ Varken M1, ball eller PF är 8-bitars humanoidbitmap; de kan inte ersätta någo
 Fortsätt **på Atari 2600** och använd nu kartornas faktiska symmetri till att minska PF-kostnaden; **håll den fungerande P1-dörrens bitmap + utskuret svart hål som baslinje** i stället för att obestyrkt ersätta den med grovt PF-nyckelhål. Det nya PF0-only/speglingsspåret bör först göra en **ren SOURCE-ONLY G0-fas-/opcodetabell**, för allokering A och B och för verklig dörr/hard same-Y.
 Detta är en arkitektur- och stopprekommendation till MAIN; **G6/F12/ROM DEVELOPMENT III får INTE implicit uppdrag** av denna fil. Separat uttrycklig startorder krävs för varje assembly-/Stella-ROM-mikro och för historiska testkriteriers ändring. Ingen automatisk ny canon/mapper/PR7/PAL/E02.
 
+## 7A. Officiell Google Drive-kopia och versionshantering
+- [Google Drive: G5F komplett source-only arkitekturanalys](https://docs.google.com/document/d/1PAELvVABaDAVuhZILC1Czo5kEIiRGQV2IaZ1bdtKRNw/edit), skapad som native Google Doc, flyttad till officiell projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u` och läst tillbaka med checks för 18/22, 3/3/5/5/5/5/5/5/3, PF0 och att ingen ROM byggts.
+- Denna GitHub-fil är versionsstyrt original och projektets CURRENT_PROJECT_STATE samt G5 beslutsspärr pekar på båda. G5F tillåter bara research/planering, inte code-start.
+
 ## 8. Primärkällor
 - [Exact 40×22 rooms](../../design/PLANERADE_RUMSKARTOR_V011.json).
 - [Original 8×9 NPC masks](../../design/NPC_REFERENCE_8x9_masks.json).
