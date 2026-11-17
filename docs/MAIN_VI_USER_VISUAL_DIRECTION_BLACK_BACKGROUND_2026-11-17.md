@@ -22,6 +22,10 @@
 - `Venetian Blinds` #03 är **inte relevant som nyckel–dörr-överlappsdelning om de ligger på olika Y**; vanlig rasterhöjdsseparerad reuse #01 är då enklare. Andra tricks #12 färgväxling och #14 skilda kernels kan användas för HUD och rum, men inte som ursäkt att ändra bakgrund till mörkgrå/gradient utan userbeslut.
 - Testa kontrast/läsbarhet av guldnyckel, vit android, gul spelare, bruna väggar och orange dörr mot **svart** bakgrund när grafik-/ROM-prover senare får separat tillstånd.
 
+## 3A. Drive-arkivering 2026-11-17
+- [Google Drive – svart bakgrund som visuellt riktmärke](https://docs.google.com/document/d/1Ak5ocPfPARJ8xCxg3kbMYbxXs9Pjhb1ix-BzaDC3PuQ/edit), skapad som native Google Doc, flyttad till officiell projektmapp och läst tillbaka; behåller användarens exakta formulering och TIA/PF-konsekvenser.
+- Denna GitHub-fil är den versionsstyrda kopian och aktuell status pekar hit. Ingen ny binär/ROM.
+  
 ## 4. Projektstatus och avgränsningar
 **Dokumentation och framtida designriktning mottagen.** Varken ny ROM, DASM, Stella, GRAPHICS-värdeskifte, originalmasker, R1/R2-antal, mapper, PAL eller oberoende E02 verifiering har gjorts. G1–G4 tidigare dokumentationsstatus består, full R1/R2–R4 `BLOCKED/NOT ACCEPTED`, G5 användarval om antal/scope `PENDING`, G6 `NOT AUTHORIZED`.
 
