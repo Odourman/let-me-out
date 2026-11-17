@@ -1,5 +1,12 @@
 # Let Me Out! (Atari 2600)
 
+## MAIN VII aktuell navigationskorrigering efter G5AA – Project Sources V3 (2026-11-17)
+
+**Aktuell källbaserad revision:** [G5AB samlad Github/Drive/Project Sources-kontroll](https://github.com/Odourman/let-me-out/blob/main/docs/project_sources/PROJECT_SOURCES_MAIN_VII_V3_CURRENT_AUDIT_AFTER_G5AA_2026-11-17.md) och [officiell Drive-kopia](https://docs.google.com/document/d/1QYg8xZwp58w0eZe6CsGaO4mEONwseHHVNHoDRCcEJKI/edit). MAIN har inventerat GitHub, projektets Drive och sex faktiskt anslutna Project Sources. De sex äldre V2-filerna innehåller historiska statusrader som är supersederade av LM-D12–20 och G5AA. Ett **sexfilers V3-ersättningspaket** är skapat i MAIN-chatten, men **har inte automatiskt bytts in i ChatGPT Project Sources**. Användaren ska ersätta de sex gamla individuella projektfilerna när paketet tas i bruk, inte lägga parallella kopior. Äldre "ENDA SLUTLIGA" nio-/sexfilsarkiv nedan är historiska release-snapshots, inte aktuella projektbeslut.
+
+**Faktiskt slutläge:** framtida exakt A_OPEN_01/B_OPEN_02/C_OPEN_01/D_OPEN_01-layoutmål godkända; fem individuella NPC M,M,F,SM,SF, fri logisk X/Y, −30/kill och 1/5 nyckelbärare godkända som framtida designmål. Source-only G5Z full H4-ONE G0 levererad och mottagen som **`G0_INCONCLUSIVE_NO_ROM`**, inte tekniskt PASS eller generellt NO-GO. **G5 formellt OPEN; ingen ny G1/G6/F12/ROM/VERIFICATION eller PR#7-merge auktoriserad.** [G5AC eventuellt framtida smalt TIA-kalibreringsprov – endast beslutsförslag](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AC_MAIN_VII_TIA_PHASE_CALIBRATION_DECISION_READY_NOT_AUTHORIZED_2026-11-17.md).
+
+
 ## MAIN VII – SLUTLIG PROJECT SOURCES-VERSION, 2026-11-17
 
 **ENDA REKOMMENDERADE VERSION FÖR NY UPPLADDNING:** [LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_FINAL_2026-11-17.zip](https://drive.google.com/file/d/1mLSqMZZx_j7g8ha6Mje4PyBsjiwZ6V6F/view), SHA256 `2c20ea7a5dbc9ae6809d2731fecfbc12acd6be279acb2d9255ba49d723fd792d`, 9 individuella källfiler, 35 spårbara källreferenser. Den nedladdade Drive-kopian har bytejämförts med originalet; ZIP CRC och alla 8 SHA256-filposter kontrollerades utan avvikelse.
