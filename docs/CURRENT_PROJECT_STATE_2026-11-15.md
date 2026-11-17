@@ -3,6 +3,13 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – ANVÄNDARENS SVARTA BAKGRUND SOM VISUELLT RIKTMÄRKE (2026-11-17)
+
+**Direkt användarformulering:** "Bakgrunden bör vara svart." MAIN VI har dokumenterat detta som **aktuell användarstyrd färgriktning**: spelplanens fria bakgrund ska upplevas som svart bakom bruna PF-väggar, vita androider, gul spelare, guldnyckel och orange högerdörr med svart nyckelhål. Tidigare v0.14 RGB-mockup `#080A0D` var **illustrativt nästan svart**, inte en fastställd Atari-färgkod; användarens nyare svart-riktning ska beaktas framöver utan att ändra gamla bevis/artefakter.
+- [GitHub: fullständig svart-bakgrund-direktiv/teknisk PF/TIA-analys](MAIN_VI_USER_VISUAL_DIRECTION_BLACK_BACKGROUND_2026-11-17.md) · [Google Drive: samma text arkiverad och kontrollerad](https://docs.google.com/document/d/1Ak5ocPfPARJ8xCxg3kbMYbxXs9Pjhb1ix-BzaDC3PuQ/edit). Google Doc finns i officiell projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`.
+- **Fysisk precisering:** `COLUBK` svart ger inte automatiskt svart nyckelhål om brun `PF` ligger bakom en genomskinlig P1-dörrbit; fysisk PF-pixel måste också vara avstängd eller annan separat verifierad metod används. Nyckelhålet skall fortsatt vara del av dörrens grafiska mask och inte ett separat 8-bitars spriteobjekt.
+- **Gräns:** inga exakta PAL-/NTSC-registervärden, inga nyritade bilder, inget nytt G6/F12-ROM-/GRAPHICS-arbete eller R1-v0.18-ändrad canon. Fem-NPC-förslaget och teknisk vägval `G5 PENDING USER`, full R1 `BLOCKED/NOT ACCEPTED`.
+
 ## MAIN VI – DE 30 URSPRUNGLIGA ATARI-TRICKSEN OMPRÖVADE PER OBJEKT (2026-11-17)
 
 **Status: ADVISORY_CROSS_OBJECT_REASSESSMENT_ALL_30_SOURCE_ONLY.** Efter användarens relevanta invändning att Venetian Blinds borde ha föreslagits även för nyckel och dörr, har MAIN VI läst om 30/30 originalposter från `docs/RESEARCH_30_ORIGINAL_ATARI_TRICKS_2026-11-16.md` (samma låsta originalrapport; inget RESEARCH II-underlag ersatt). Slutsats: tidigare prioritering var för ensidigt fixerad vid sex rörliga vita NPC samtidigt. Ny tvärfunktionell rangordning med objekt/färg/cykel/visuell risk:
