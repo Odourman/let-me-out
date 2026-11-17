@@ -50,6 +50,8 @@ Ingen grind är automatiskt auktorisation för nästa. **G1–G4** tillåter nu 
 
 **Preppade leverabler:** G1_REQUIREMENTS_TRACE.md, G1_AUTHORITY_DIFF.md, BASELINE_MANIFEST.json (planerade dokumentnamn, inte redan skapade). **PASS/exit:** varje blockerande acceptans C01–C04, D01–D03, E02 och aktuell designreferens har entydig status och länk. **Fortsättning:** G2 read-only, inte G6-ROM.
 
+> **G2 genomförd som READ-ONLY-ursprungs- och råevidensgranskning 2026-11-17:** [G2 slutrapport](gates/G2_COMPLETION_RECEIPT_AND_FEASIBILITY_BOUNDARY_2026-11-17.md) · [16 evidensklasser](gates/G2_EVIDENCE_LEDGER_2026-11-17.csv) · [SHA/ROM/PNG-manifest](gates/G2_RAW_REAUDIT_MANIFEST_2026-11-17.json) · [tidigare negativa tester](gates/G2_NEGATIVE_TESTS_AND_NONREPEAT_RULES_2026-11-17.md) · [G3-käll-/riskluckor](gates/G2_SOURCE_HOLES_AND_NEXT_INPUTS_2026-11-17.md). [Verifierad Drive-rapport](https://docs.google.com/document/d/1cACUkd5D8vQQloFQ0Onou5I-7jDG9GX7TvtrRt7HGGs/edit) och [Drive-evidensregister](https://docs.google.com/document/d/1ccxYkE5egsdq3WPBmBS7VNuv2qebmFRs6v72MJ4CUjg/edit). R1ba-originalorientering FAIL 600/600; R1g/F9 är endast begränsade positiva bevis. **G2 klar = dokumentationsgrind, ej full R1 eller E02. G3 har INTE startat.**
+
 ## 2. G2 – oberoende proveniensgranskning av befintlig research
 **Läge nu:** READ-ONLY. **Ansvar:** RESEARCH II, MAIN som oberoende granskare. **Mål:** veta vilken kod/ROM/evidens vi faktiskt kan bygga vidare på.
 
