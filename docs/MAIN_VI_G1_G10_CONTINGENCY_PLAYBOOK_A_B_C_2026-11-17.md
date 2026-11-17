@@ -101,6 +101,8 @@ Ingen grind är automatiskt auktorisation för nästa. **G1–G4** tillåter nu 
 
 **Preppade leverabler:** G4_PREREGISTERED_HYPOTHESIS.md, G4_REGISTER_TIMELINE.csv, G4_ONE_EXPERIMENT_GO_NOGO.md. **PASS/exit:** en fysisk variabel och ett kontrolltest är falsifierbara utan efterhandsändrade mål, och MAIN har ett separat risk- och beställningsunderlag. G4 är inte auktorisation för G6.
 
+> **G5 feasibility-analys genomförd 2026-11-17, men G5 användarbeslut VÄNTAR:** MAIN VI bedömer [full exakt standard-F6 v0.18-visualspelspec](gates/G5_CANDID_FEASIBILITY_ASSESSMENT_AND_DECISION_BRIEF_2026-11-17.md) som **inte trovärdig för produktion utan avsteg**; det är INTE ett allmänt omöjlighetsteorem. Förslag till precis användarstyrd omprövning [G5 beslutsspärr](gates/G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md). Drive [rapport](https://docs.google.com/document/d/1cvqzHlt84ZhHqN2JJSkJBJOIa2D_Au8uTFgFkTR5Kpk/edit) och [decision boundary](https://docs.google.com/document/d/1edsIPO9EVwc9b3ds9nmUCk_VLA6tWSkiwwOeL9Blrg0/edit). **Alternativ A**: Atari 2600 med sex logiska NPC men uttryckligen ändrad rendering vid same-Y-belastning. **Alternativ B**: oförändrade visuella designmål men Atari 7800-plattform. Inget val/waiver gjort. **Starta INTE G6/F12 automatiskt**; G4 source-only GO är forskningsmöjlighet, inte produktplan. G5 status `G5_FEASIBILITY_REVIEW_COMPLETE_USER_DESIGN_DECISION_PENDING`, full R1 BLOCKED.
+
 ## 5. G5 – beslut om teknisk väg, nödvändiga avsteg eller stopp
 **Läge:** FUTURE DECISION. **Ansvar:** MAIN lägger fram; **användaren** beslutar om varje design-/hårdvarukompromiss.
 
