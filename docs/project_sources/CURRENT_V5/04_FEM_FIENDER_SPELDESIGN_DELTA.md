@@ -1,6 +1,6 @@
 # LET ME OUT! – FEM FIENDER, FRAMTIDA SPELDESIGN OCH KARTOR / V5
 
-**Klass:** godkända framtida användarbeslut med tekniska öppna frågor; inte en godkänd ROM-version, ny mapper eller implementation. Original [Master Spec/57 beslut](https://drive.google.com/file/d/1mqU07Q7xTgU5t5lYQhCOyI7wRQl6vD7o/view) gäller i andra frågor. Vid konflikt läs de exakta [LM-D12/13](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md), [LM-D14/15/16](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) och [LM-D17/19 kartmanifest](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_APPROVED_FUTURE_FOUR_MAPS_SOURCE_MANIFEST_2026-11-17.json).
+**Klass:** godkända framtida användarbeslut med tekniska öppna frågor; inte en godkänd ROM-version, ny mapper eller implementation. Originalpaketet [Master Spec/57 beslut](https://drive.google.com/file/d/1mqU07Q7xTgU5t5lYQhCOyI7wRQl6vD7o/view) gäller i andra frågor. Vid konflikt läs de exakta [LM-D12/13](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md), [LM-D14/15/16](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) och [LM-D17/19 kartmanifest](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_APPROVED_FUTURE_FOUR_MAPS_SOURCE_MANIFEST_2026-11-17.json).
 
 ## Nu godkänt, inte längre bara förslag
 
