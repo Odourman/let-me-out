@@ -1,5 +1,14 @@
 # Let Me Out! (Atari 2600)
 
+## MAIN VII – SLUTLIG PROJECT SOURCES-VERSION, 2026-11-17
+
+**ENDA REKOMMENDERADE VERSION FÖR NY UPPLADDNING:** [LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_FINAL_2026-11-17.zip](https://drive.google.com/file/d/1mLSqMZZx_j7g8ha6Mje4PyBsjiwZ6V6F/view), SHA256 `2c20ea7a5dbc9ae6809d2731fecfbc12acd6be279acb2d9255ba49d723fd792d`, 9 individuella källfiler, 35 spårbara källreferenser. Den nedladdade Drive-kopian har bytejämförts med originalet; ZIP CRC och alla 8 SHA256-filposter kontrollerades utan avvikelse.
+
+Denna slutgranskning rättar en saknad direkt källregisterpost till G5M samt bevarar två kartauktoritetsnivåer: luftiga rum är godkänd riktning (LM-D04), men v0.19:s exakta `*_OPEN_01`-kartor är fortfarande förslag, medan `A01/B01/C02/D01` fortsatt är källvald äldre baseline. O1:s tidigare dokumenterade begränsade godkännande bevaras. Inga spelregler, originalmasker eller tidigare ROM-/Stella-evidens har ändrats.
+
+**Tidigare paket är nu historiska, inte parallella Project Sources:** `LET_ME_OUT_PROJECT_SOURCES_2026-11-17.zip` (MAIN VI) och `LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_CORRECTED_2026-11-17.zip` (första MAIN VII-rättelsen). Det som följer i äldre text beskriver sina respektive historiska revisionsögonblick. **G5:s formella användarbeslut återstår och G6/F12 är inte auktoriserat.**
+
+
 Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin och **inte** I Love a Fish.
 
 ## MAIN VII – kontrollerad migration och korrigerat Project Sources-paket
