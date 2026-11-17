@@ -1,6 +1,7 @@
 # LET ME OUT! – MAIN VII V3: samlad GitHub-, Google Drive- och Project Sources-revision
 **Datum:** 2026-11-17, efter MAIN:s mottagning av G5Z/G5AA.
 **Klassning:** `MAIN_VII_G5AB_SOURCE_AUDIT_COMPLETED_SOURCE_ONLY`. **Ej** ny spelcanon, ROM-kod, testkörning, G1/G6/F12-auktorisation, merge eller oberoende Verification II.
+**Fortsättning inom MAIN:s befintliga source-only-mandat:** [G5AC – förregistrerad framtida TIA-kalibreringsfråga, EJ AUKTORISERAD](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AC_MAIN_VII_TIA_PHASE_CALIBRATION_DECISION_READY_NOT_AUTHORIZED_2026-11-17.md). Inga nya ROM- eller specialistordrar.
 
 ## 1. Faktiskt granskade ytor och vad granskningen INTE är
 - **GitHub:** https://github.com/Odourman/let-me-out. Trädet på main var **`ad84d142fcda58048ccef7418ff3e03b6bcad1ab`**, **174 tree-poster**, `truncated=false` vid inventeringen. Jag läste direkt relevanta original i `docs/gates`, `design`, historiska MAIN-källor, roller/överlämningar, grafik-/ljudstatus och PR/Issue-metadata. Källinnehåll och specialistresultat i frysta branches kontrollerades separat där de var avgörande för senaste läget. **Jag hävdar inte manuell djupgranskning av varje GitHub-dokument**.
