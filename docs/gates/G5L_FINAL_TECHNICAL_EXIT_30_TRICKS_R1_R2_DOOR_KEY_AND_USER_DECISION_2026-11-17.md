@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VI G5L: slutlig G5-teknikavstämning mot ALLA 30 TRICKS, BERZERK, G4 och R1/R2/R3
+
+**MAIN VII rättelse 2026-11-17:** Denna source-only G5L-rapport beskriver O1 som preliminär, vilket är fel i förhållande till senare dokumenterat uttryckligt O1-godkännande, se https://github.com/Odourman/let-me-out/blob/main/docs/MAIN_STATUS_NEXT_10_2026-11-15.md och LM-D06. O1 tillåter endast verklig tillfällig nyckelskymning vid androidöverlapp och litet kortvarigt flimmer; ingen generell same-Y-waiver eller kvantifierad frekvens. G5-formal och G6-spärrar är oförändrade. Läs https://github.com/Odourman/let-me-out/blob/main/docs/project_sources/PROJECT_SOURCES_MAIN_VII_CORRIGENDUM_2026-11-17.md .
+
 **Datum:** 2026-11-17
 **Teknisk status:** `G5_TECHNICAL_SOURCE_ONLY_DOSSIER_COMPLETE`.
 **Formell grindstatus:** `G5_USER_RENDERING_POLICY_AND_SCOPE_DECISION_PENDING`.
