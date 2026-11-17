@@ -1,5 +1,12 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN VII G5Q A1+B1 – godkända mål men G5 tekniska/övriga grindar fortfarande öppna (2026-11-17)
+
+[Användarbeslut LM-D12/13](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1Yh5XfKZ8f9rm97sG7jY8tAjuGiV-0o9O-d9oy-BkP2s/edit). Användaren godkände genom omedelbart svar "Följ dina egna rekommendationer" **endast G5Q A1+B1 som fortsatta designmål**. **A1:** fri **logisk** fem-NPC X/Y och trovärdig fyrvägs-jakt utan tyst permanent Y-lane. **B1:** identifierbara NPC, rättvist synliga hot, synlig key när ingen verklig pixelöverlapp föreligger. O1/LM-D06:s begränsade giltiga tillfälliga pixelöverlapp står kvar. **Ingen** generell flicker-/occlusion-waiver, 10Hz, ny faktisk TIA-kernel eller full 2600-feasibility påstås här.
+
+G5Q:s nedanstående tidigare avsnitt "förslag, inget godkännande" beskriver läget **före detta direkta användarsvar** och får inte användas för att förneka A1+B1. **Separata C/D/E-punkter är fortsatt obeslutade** (framtida R1/R2-rebaseline, score, spawn/key-bärare och karta). S05 och G4/G5P:s G0-inkonsistens återstår. **G5_FORMAL_OPEN, G6/F12_NOT_AUTHORIZED, NO_ROM, NO_VERIFICATION, NO_PR_MERGE.**
+
+
 ## MAIN VII G5Q – uttryckligt G5-designmål krävs; förslag är inte canon (2026-11-17)
 
 [G5Q-beslutsförslag](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_DECISION_READY_DESIGN_TARGET_AND_PRE_G6_BOUNDARY_2026-11-17.md) · [officiell Drive-kopia](https://docs.google.com/document/d/1_bB-F6pvwEehRP09F1jdfyYnUtKo4c6mie4QD3c9YGw/edit). **G5Q är en användarbeslutsberedning, inget nytt godkännande.** MAIN rekommenderar A1 (fri logisk NPC-X/Y med ursprunglig jakt och utan hård permanent Y-lane) och B1 (kvalitetsmål: fem ursprungliga NPC läsbara, farliga NPC ej systematiskt dolda, key aldrig dold enbart för same-Y utan faktisk bitpixelöverlapp). G5P:s mjuka/fri-modellers ~498,6/900 bortprioritering är **syntetisk köbelastning, inte fysisk flicker** och ger ingen generell waiver. O1/LM-D06 redan godkänt men begränsat. Separata userbeslut återstår om formell fem-NPC R1/R2-bas, -30 kontra -25, 1/5 bärare/femspawn och exakta v0.19-kartor. G4 H4-ONE och G5P:s snävare G0-proposal är ännu inte samma definierade testorder. **Ingen G5-PASS, inga ändrade spelregler, ingen G6/F12/ROM/VERIFICATION/PR-merge.**
