@@ -1,5 +1,14 @@
 # LET ME OUT! – CURRENT AUTHORITY, STATUS & WORK QUEUE
 
+## 0. SENARE BESLUT LM-D21 – G5AD enda TIA-kalibrerings-ROM uttryckligen godkänd (2026-11-17)
+
+**NYTT OCH AKTUELLT:** Användaren citerade MAIN:s rekommendation om **ett enda instrumenterat TIA-mätprov** av `RESP`, `GRP`, `NUSIZ0`, `M0` och `ENAM0`, och svarade **"Gör så"**. Detta är ett **uttryckligt positivt LM-D21-beslut** som supersederar de äldre globala formuleringarna `NEW_ROM_NOT_AUTHORIZED` **endast för en separat G5AD-diagnostik-ROM**. [G5AD komplett bindande arbetsorder](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) · [sex förregistrerade mätfall](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_TIA_CALIBRATION_PREREGISTERED_CASES_2026-11-17.csv) · [GitHub Issue #13 till ROM DEVELOPMENT III](https://github.com/Odourman/let-me-out/issues/13) · [arkivkopia i Drive](https://docs.google.com/document/d/163Xtt4ygxQD7eM4AfPwZgAN6JktF8DcEQjKK43JNF-g/edit).
+
+**Aktuell orderstatus: `G5AD_SINGLE_TIA_MEASUREMENT_ROM_AUTHORIZED_NOT_YET_RUN`.** Specialist får bygga **en** 16 KiB standard-F6 NTSC diagnos-ROM på isolerad branch och köra DASM/Stella/Debugger för C0–C4/N1, sedan lämna råa CPU-/TIA-/colorclock-/pixelbevis och stoppa. Detta **är inte full H4 G1**, inte S05/fem NPC och inte ny spelversion. `G5Z_G0=COMPLETE_INCONCLUSIVE_NO_ROM` förblir oförändrat. **`G5_FORMAL_OPEN`**, `FULL_H4/G6/F12/S05/FIVE_NPC_IMPL/INDEPENDENT_VERIFICATION/PR_MERGE=NOT_AUTHORIZED`.
+
+**Övriga historiska avsnitt längre ned** talar om läget före LM-D21 och är inte ett upphävande av denna enskilda beställning. GitHub-issue kan inte automatiskt starta en separat specialistchatt.
+
+
 **PROJECT SOURCES CURRENT V4:** [Sex verifierade Markdown-filer + SHA-manifest i GitHub](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V4) · [officiell Drive-guiden](https://docs.google.com/document/d/19EU_PLT5fDXI41u4kA3rWMU6FOVKPjsAYCwbvVLRlpA/edit). Användaren måste manuellt ersätta de sex faktiskt anslutna V2 Project Sources. **Äldre V1/V2/V3 och en historisk Drive-ZIP märkt FINAL är ARKIV, inte aktiva källfiler.** GitHub-ärendena #3 (historiska spawns) och #6 (v0.18 order) är nu administrativt **CLOSED/not_planned** som supersederade, utan att gamla ROM-prov godkänts. Issue #8 är fortsatt **OPEN men DEFERRED** enligt batchpolicyn.
 
 **Aktuell MAIN VII-ingång · upprättad 2026-11-17 efter G5AA.** Detta är en **daterad, versionskontrollerad navigations- och statusguide**, inte en ersättning för användarens originalbeslut, Master Spec, frysta ROM/bytefiler eller oberoende verifiering. **Kontrollera GitHub/Drive live vid framtida beslut.** Bevara och citera originalkällorna när en konflikt uppstår.
