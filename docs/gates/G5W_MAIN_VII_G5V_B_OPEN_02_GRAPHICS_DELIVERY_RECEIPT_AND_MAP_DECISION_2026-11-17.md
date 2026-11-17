@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII G5W: G5V/GRAPHICS II B_OPEN_02 mottagen och offline-reproducerad
+
+> **HISTORISKT BESLUTSLÄGE – B-KARTVAL ÄR INTE LÄNGRE ÖPPET.** Vid G5W-mottagningen var B_OPEN_02 en icke-godkänd studie; **efterföljande användarbeslut LM-D19 har godkänt exakt B_OPEN_02 som framtida designlayout för rum B**. Ingen ROM/PF/8×9-acceptans följer. Se [G5X-beslutet](G5X_MAIN_VII_B_OPEN_02_EXACT_USER_APPROVAL_AND_FOUR_MAP_BASELINE_DECISION_2026-11-17.md) och [aktuell status](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
+
 **Datum:** 2026-11-17. **Status:** `G5V_GRAPHICS_SOURCE_ONLY_DELIVERED_MAIN_RECEIPT_PASS_B_OPEN_02_USER_DECISION_PENDING`. **Inte:** B-kartgodkännande, grafik- eller ROM/Stella-pass, ny PR-merge, G0/G6/F12, oberoende VERIFICATION.
 
 ## 1. Leveransens provenance, gränser och original
