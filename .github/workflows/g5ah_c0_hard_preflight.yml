@@ -1,0 +1,68 @@
+name: G5AH LM-D23 C0-only PHASE A HARD PREBUILD GATE no new ROM
+on:
+  push:
+    branches:
+      - rom-dev-iii/g5ah-lm-d23-c0-only-20261117
+    paths:
+      - .github/workflows/g5ah_c0_hard_preflight.yml
+permissions:
+  contents: read
+  actions: read
+jobs:
+  phase-a-frozen-f9-no-rom:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Stella 6.7.1 debugger and X11 (no DASM build)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y stella xvfb xdotool x11-utils imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' stella xvfb xdotool python3-pil
+          dpkg-query -W -f='${Version}\n' stella | grep -q '^6\.7\.1'
+      - name: Download immutable source/list/sym and 16 KiB F9 ROM from historical original
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+          run-id: 44050126727
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed_original_f9
+      - name: Read-only F9 original source / instruction-step / native 2x pixel gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile rom/g5ah_c0_only_2026-11-17/check_prebuild_original.py
+          python3 -m py_compile rom/g5ah_c0_only_2026-11-17/audit_phase_a.py
+          bash -n rom/g5ah_c0_only_2026-11-17/preflight_f9.sh
+          bash rom/g5ah_c0_only_2026-11-17/preflight_f9.sh
+      - name: Archive all REAL raw evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G5AH_PHASE_A_F9_NO_ROM_HARD_GATE_RAW
+          path: rom/g5ah_c0_only_2026-11-17/evidence/phase_a/
+          if-no-files-found: warn
+          retention-days: 90
+  readback-hashes:
+    if: always()
+    needs: phase-a-frozen-f9-no-rom
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: G5AH_PHASE_A_F9_NO_ROM_HARD_GATE_RAW
+          path: archive_readback/
+      - name: Recheck raw archived bytes no ROM build
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd archive_readback
+          test -s SHA256SUMS.txt
+          sha256sum -c SHA256SUMS.txt
+          cat PHASE_A_VERDICT.txt
+          grep -qx PASS_CAPABILITY_ONLY PHASE_A_VERDICT.txt
+          echo "G5AH_PHASE_A_ARTIFACT_READBACK_PASS"
