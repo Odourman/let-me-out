@@ -1,0 +1,239 @@
+{
+  "title": "LET_ME_OUT_G2_INDEPENDENT_OFFLINE_RAW_ARCHIVE_RECHECK_2026-11-17",
+  "date": "2026-11-17",
+  "gate": "G2",
+  "classification": "READ_ONLY_REAUDIT_OF_HISTORICAL_RAW_EVIDENCE_NOT_INDEPENDENT_ROM_VERIFICATION",
+  "scope": "No new ROM, DASM, Stella run, ROM source edits, or independent E02; original archived PNG and ZIP bytes directly rechecked using separate simple pixel-set program",
+  "main_before_g2": "c01e0b730876fd6ed40c9a8ea30e42b0cfa149f8",
+  "original_sprite_reference": {
+    "origin": "Drive 2026-11-15 original handoff ZIP assets/NPC_REFERENCE_8x9_masks.json",
+    "sha256": "1ace693e093be62d256b2d1f573e5ef8bc540e8ec8daae1b245ebdfb435c8e38",
+    "github_blob": "058800a4c1904d1ff289e7e61b3902aa111ba16d",
+    "topdown": true
+  },
+  "method": {
+    "kind": "separate offline reimplementation of direct PNG per-pixel color sets; no developer audit script was executed",
+    "input": "Original archived 900x300 PNG (or 1366x900 full screenshot for R1E/R1F static)",
+    "white_rgb": "min(rgb)>180 and max(rgb)-min(rgb)<40",
+    "player_yellow_rgb": "red>120 green>100 blue<100",
+    "bitmap": "Each original 8x9 bit expands to 2 horizontal GUI pixels, 1 vertical GUI row",
+    "f9_y_rows": "96..104",
+    "r1e_r1f_r1g_y_rows": "97..105",
+    "r1ba_y_rows": "96..104",
+    "m0_separate_y": 95,
+    "frame_identity": "Reported historical CSV and embedded Stella HUD as archived. No fresh emulator execution. Independent per-pixel mask comparisons do not establish new runtime provenance."
+  },
+  "archives": {
+    "R1E_STATIC": {
+      "action_artifact_id": 14201175454,
+      "run_id": 43811912249,
+      "job_status": "success",
+      "drive_id": "1nq5QcaeKxHR94mvtTKTK8s9TTQ2cdOUo",
+      "bytes": 177552,
+      "zip_sha256": "8979016fe64aba3850fd0acb450f22bde8d457142631f0bfa754b54d7e894567",
+      "members": 57,
+      "crc": "PASS",
+      "rom_sha256": [
+        "84083e1c01de7ab0347ac18e85bdf36f37a6a7a201dd060f1f5248020459e24a"
+      ],
+      "four_canonical_static_pixel_union": "1/1 PASS",
+      "debug_screenshots": 6,
+      "limitations": "four NPC static, M0 preceding row, no real PF"
+    },
+    "R1F_STATIC": {
+      "action_artifact_id": 14201569326,
+      "run_id": 43815070386,
+      "job_status": "success",
+      "drive_id": "1srogtJQa6Zs7PCUx2IdG5f10XbFA35X1",
+      "bytes": 293463,
+      "zip_sha256": "d1c0ae4461fdc5667261fc2807f161049669029914855207d4e2167a2b15cd73",
+      "members": 88,
+      "crc": "PASS",
+      "rom_sha256": [
+        "cb57ba5adeb2da5f4a51f64262ac443196a1d31ca1d894989622dd08c4f9f72b",
+        "f25dda5c57454d86cb58d17e93a6a1e25768e4115a170a98d4ccd0e3b0b965fa"
+      ],
+      "four_canonical_static_pixel_union": "2/2 PASS",
+      "variant_fourth_gui_x": [
+        330,
+        348
+      ],
+      "limitations": "two different STATIC ROM builds, not one general numeric-X ROM"
+    },
+    "R1F_600": {
+      "action_artifact_id": 14201559185,
+      "run_id": 43815510141,
+      "job_status": "success",
+      "drive_id": "1td8ZK5fMyqo1OUqGK00xMXcobJug0a1o",
+      "bytes": 3744860,
+      "zip_sha256": "c60e8c11628ce7bc11c0222680abd475e860c6d58e806e268ff4729adabf5af6",
+      "members": 622,
+      "crc": "PASS",
+      "rom_sha256": [
+        "795dd4d0b8e6255facdb528a1fd4008b38047a5e84c4883d34e2f82f73c5bbb3"
+      ],
+      "raw_frames": 600,
+      "original_four_canonical_masks_exact": 600,
+      "mode_counts": {
+        "early": 296,
+        "late": 304
+      },
+      "m0_yellow_preceding_row": 600,
+      "mode_switch": "FRAMELO & $10",
+      "limitations": "two precompiled kernels in one ROM; not general numeric-X"
+    },
+    "R1G_STATIC": {
+      "action_artifact_id": 14202424404,
+      "run_id": 43816935556,
+      "job_status": "success",
+      "drive_id": "1ksWm-a-9RBpUe86m-FslZQlEOhnUWemj",
+      "bytes": 246528,
+      "zip_sha256": "5332ca4f4be1aed5b64c06215a15d49738f3c0b7649187b4f809ac61969243cf",
+      "members": 84,
+      "crc": "PASS",
+      "rom_sha256": [
+        "88d1026e6d6455854877fe88fa0054ef3ebe76eb6ff72b2b6f401cc3f9402f91",
+        "91da920891ab9f7273f4caed63ad56fbeb9436cf0929794da3a6917557556e96",
+        "cb57ba5adeb2da5f4a51f64262ac443196a1d31ca1d894989622dd08c4f9f72b",
+        "f25dda5c57454d86cb58d17e93a6a1e25768e4115a170a98d4ccd0e3b0b965fa"
+      ],
+      "limitations": "four distinct fixed-mode ROMs; not same ROM"
+    },
+    "R1G_600": {
+      "action_artifact_id": 14202444990,
+      "run_id": 43817440347,
+      "job_status": "success",
+      "drive_id": "1BUA6KE7AJRmHNb1XugxbpSx6P3VgJTVM",
+      "bytes": 3744234,
+      "zip_sha256": "3a09484165a88e521fb7b3171274af7ee2eb25ee3bf6c65b37b9a9525a47e05c",
+      "members": 622,
+      "crc": "PASS",
+      "rom_sha256": [
+        "a2cef3a6cf63bd1f0139f041d08e71c1a70e6569b298082aeb23e94b1776802b"
+      ],
+      "raw_frames": 600,
+      "canonical_four_original_masks_exact": 600,
+      "three_fixed_crop_x": [
+        63,
+        177,
+        303
+      ],
+      "fourth_crop_x_by_mode": {
+        "pre_mask": 227,
+        "post_mask": 245,
+        "post_lda": 257,
+        "post_color": 275
+      },
+      "mode_counts": {
+        "pre_mask": 150,
+        "post_mask": 160,
+        "post_lda": 146,
+        "post_color": 144
+      },
+      "mode_vs_csv_disagreement": 0,
+      "shot_yellow_preceding_row": 600,
+      "mode_switch": "FRAMELO & $30",
+      "limitations": "only fourth moves discretely between 4 compiled kernels, other 3 white NPC and player static; no same-Y M0, PF or six NPC"
+    },
+    "F9": {
+      "run_id": 44050126727,
+      "job_status": "success",
+      "drive_id": "15NquSf1pXcLnSKBzU1fjypDl7RASFR6b",
+      "bytes": 5587328,
+      "zip_sha256": "fd0127ecba3997a624a74dd1d357f6b2638543f9fc31de120d4968067213c4da",
+      "members": 501,
+      "crc": "PASS",
+      "indexed_files": 499,
+      "indexed_SHA256_correct": 499,
+      "rom_sha256": [
+        "6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b"
+      ],
+      "raw_crops": 144,
+      "raw_full_gui": 144,
+      "three_canonical_mask_exact": 144,
+      "observed_binary_modes": {
+        "100": 16,
+        "101": 16,
+        "110": 16,
+        "111": 16,
+        "000": 32,
+        "001": 16,
+        "010": 16,
+        "011": 16
+      },
+      "twelve_binary_orthogonality_edges_direct": 12,
+      "mode_triplets_crop_x": {
+        "100": [
+          45,
+          99,
+          195
+        ],
+        "101": [
+          45,
+          99,
+          207
+        ],
+        "110": [
+          45,
+          105,
+          195
+        ],
+        "111": [
+          45,
+          105,
+          207
+        ],
+        "000": [
+          39,
+          99,
+          195
+        ],
+        "001": [
+          39,
+          99,
+          207
+        ],
+        "010": [
+          39,
+          105,
+          195
+        ],
+        "011": [
+          39,
+          105,
+          207
+        ]
+      },
+      "limitations": "3 binary RAM-X selectors and 8 precompiled kernel modes; neither 3 arbitrary numeric X nor 6 NPC"
+    },
+    "R1BA": {
+      "drive_id": "1c2Sd68dvQsmb_MJcQOLU8dbiMc5YgbsJ",
+      "bytes": 3930298,
+      "zip_sha256": "f8dd41e62939aa1699d80f70df0c5b5081b87441a1e2c740ff2786139908f325",
+      "members": 622,
+      "crc": "PASS",
+      "rom_sha256": [
+        "41fdb87969a20d40fee8cde5673792201663860c2d1e08c8d93f9172ede82361"
+      ],
+      "raw_frames": 600,
+      "canonical_big_M_M_F_F_topdown_exact_frames": 0,
+      "reversed_big_M_M_F_F_match_frames": 600,
+      "source_audit_CSV_claiming_original_integrity": true,
+      "source_audit_CSV_all_600_wrongly_claimed_original": true,
+      "total_big_upright_mask_xor_pixels": 153600,
+      "reversed_big_mask_xor_pixels": 0,
+      "limitations": "four large mask orientations reversed versus canonical; historical 600/600 claim cannot count as canonical R1"
+    },
+    "F11": {
+      "frozen_commit": "dfe21c80b7cbdcdd20138ebf5eadf4b89dbf0cc4",
+      "class": "SOURCE_ONLY_G0_FAIL_G1_NOT_RUN",
+      "new_ROM_produced": false,
+      "limitations": "fails precise preregistered 4 numeric P1 X START/GRP timing preflight, not universal Atari impossibility"
+    }
+  },
+  "drive_preservation": {
+    "r1e_r1f_r1f600_r1gstatic_r1g600": "All 5 copied from GitHub Actions into official project Drive and then fetched back byte-for-byte identical to downloaded GitHub ZIP.",
+    "actions_artifact_expiration": "2027-02-14 (individual artifact times differ); Drive preserved copies independent of expiration"
+  },
+  "general_result": "G2 documentary/evidence classification complete. FULL_R1_BLOCKED_NOT_ACCEPTED; no independent E02. Next G3 read-only combined TIA/CPU/RAM/color budget, no ROM authorization."
+}
