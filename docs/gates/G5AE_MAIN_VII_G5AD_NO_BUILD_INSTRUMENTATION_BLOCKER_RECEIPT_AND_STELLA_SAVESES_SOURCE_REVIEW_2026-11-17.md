@@ -1,0 +1,46 @@
+# LET ME OUT! – MAIN VII G5AE: G5AD stoppad i förinstrumenteringen, oberoende källmottagning
+**Datum:** 2026-11-17
+**Mottagningsstatus:** `G5AE_G5AD_DELIVERY_RECEIVED_SCOPE_COMPLIANT`
+**Slutligt utfört G5AD-resultat:** `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER`
+**Faktiska tekniska G5AD-kontroller:** `TIA-C0/C1/C2/C3/C4/N1 = NOT_DETERMINABLE; NOT_RUN_NO_NEW_ROM`.
+**Inget nytt användarbeslut, ingen ny teknisk order:** G5AE är MAIN:s käll-/leveransgranskning, **inte** ny ROM, H4, G1, G6/F12, S05, fem-NPC, merge eller oberoende Verification.
+
+## 1. Auktoritet, uppdrag och spårbar leverans
+- **LM-D21:** användaren auktoriserade **en enda instrumenterad NTSC/F6 TIA-kalibrerings-ROM**, förbehållet *hård NO-BUILD-grind* om rå CPU-/TIA-/pixelinstrumentering inte kan styrkas. [G5AD ursprunglig avgränsad arbetsorder](G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) och [förregistrerade sex fall](G5AD_MAIN_VII_TIA_CALIBRATION_PREREGISTERED_CASES_2026-11-17.csv).
+- [ROM DEVELOPMENT III:s överlämning i Issue #13](https://github.com/Odourman/let-me-out/issues/13#issuecomment-6958709311), specialistens isolerade gren `rom-dev-iii/g5ad-tia-calibration-lm-d21-20261117`, fryst leveranscommit **`1fe92438c3aa0d9f41cca0066f0a95e6c0335acc`**, bas **`aaaeef0522a746cf4f23faee9fcf2c49dd572d02`**.
+- [TO_MAIN – fryst blockerarrapport](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/TO_MAIN_G5AD_TIA_CALIBRATION.md), [sex fall CSV](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/G5AD_CASE_DISPOSITION.csv), [reproduktionsunderlag](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/PREBUILD_REPRODUCTION.md), [filmanifest](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/MANIFEST.txt), [versionerat prebuild-workflow](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/.github/workflows/g5ad_prebuild_instrument_check.yml).
+- **GitHub commit-compare:** specialistgren från bas `aaaeef052` är **ahead 8/behind 0**, **exakt 5 NYA filer**: ett Actions-workflow + fyra analysfiler, **ingen ändrad befintlig originalfil**. Ingen ny `.asm/.bin/.lst/.sym`, ingen merge. GitHub main saknade specialistens `rom/g5ad_tia_calibration_2026-11-17/` vid mottagningen.
+- [Officiell Drive-rapport – specialistens arkivkopia](https://docs.google.com/document/d/11ckgzQ07vv9TikL3RYNG2aFy0Qj_6KOB3dW74oIwRCU/edit) har bekräftat föräldra-ID `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, innehåller rapport och reproduktionsunderlag, återläst. Drive native Doc är **inte byteidentisk** med GitHub-Markdown.
+
+## 2. MAIN:s egna återlästa positiva och negativa bevis
+| Händelse | Ursprunglig Actions-körning | MAIN:s kontrollerade betydelse |
+|---|---|---|
+| Första smoke-fail | [44158684786](https://github.com/Odourman/let-me-out/actions/runs/44158684786) | `xdpyinfo` saknades; ett isolerat testmiljöfel, inte TIA-fel |
+| Verktygsinstallation godkänd | [44158817619](https://github.com/Odourman/let-me-out/actions/runs/44158817619) | Ubuntu med DASM, Stella 6.7.1, Xvfb och PIL fungerade |
+| F9 read-only raw bild, session saknas | [44159089329](https://github.com/Odourman/let-me-out/actions/runs/44159089329) | Tidigare fryst 16KiB F9 användes utan kompilering; native TIA-bild **320×228** i runner, men inga synchroniserade register-/CC-mätdokument |
+| Definitivt preflight-stopp | [44159356697](https://github.com/Odourman/let-me-out/actions/runs/44159356697), [faktisk jobblogg](https://github.com/Odourman/let-me-out/actions/runs/44159356697/job/134308674746) | MAIN läste **`SESSION_FILE_BYTES=0`**, seed F9 SHA256 `6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b`, därefter separat Python **`IndentationError`** och exit code 1. Arbetsflödet exporterade inte bevisligen native TIA-bilden till leveransarkivet. |
+
+**VIKTIG skillnad:** Förkontrollen visade verktygens närvaro och några bildfunktioner, men **ingen robust maskinläsbar reproducerbar kedja CPU PC/STA-write cycle → scanline → register state → raw visible pixel CC**. Nollbyte-sessionen är observerad. Postprocessens `IndentationError` är ett verkligt oberoende fel och får inte utplånas eller förklaras som följdeffekt av sessionsfilen. Det finns därför **0 nya faktiska TIA-C0–C4/N1-mätvärden**; en historisk F9-bild är inte ny G5AD-calibration. Ingen ny emulator-/fysik-PASS; originalspelregler och framtida kartor orörda.
+
+## 3. Ny MAIN-source-only-förklaring till 0 byte – mer precis än specialistens rapport
+Efter mottagningen läste MAIN VII dessutom den **faktiska Stella 6.7.1-källkoden**, inte bara allmän emulatorinformation:
+
+1. [`src/debugger/gui/PromptWidget.cxx` i tag 6.7.1 – `loadConfig`](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/gui/PromptWidget.cxx#L369-L410) kör `print(instance().debugger().autoExec(&history))` **innan** det sätter `_promptStartPos = _promptEndPos = _currentPos` på slutet av initieringen.
+2. [`src/debugger/Debugger.cxx` – `autoExec`](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/Debugger.cxx#L175-L199) läser `autoexec.script` och kör raderna via parsern.
+3. [`src/debugger/DebuggerParser.cxx` – `executeSaveSes`](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/DebuggerParser.cxx#L2027-L2057) anropar `debugger.prompt().saveBuffer(...)`.
+4. [`src/debugger/gui/PromptWidget.cxx` – `saveBuffer`](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/gui/PromptWidget.cxx#L931-L955) skriver endast färdiga prompt-rader fram till `_promptStartPos`; om detta ännu är noll/negativt skrivs **inget innehåll**.
+5. [`src/debugger/DebuggerParser.cxx` – `exec`](https://github.com/stella-emu/stella/blob/6.7.1/src/debugger/DebuggerParser.cxx#L135-L162) exekverar varje scriptkommando; prompten skriver i sin tur `autoExec`-resultat först efter att hela scriptet återvänt.
+
+**Källgrundad teknisk förklaring:** G5AD:s script kallade `saveSes` **inne i `autoexec.script` under promptens första initiering**, alltså innan det material som `saveBuffer` vill spara färdigställts. Detta är en **starkt underbyggd ordningsförklaring till 0-bytefilen** och en konkret brist i G5AD:s **testharness**. Det är **inte** belagt att Stella 6.7.1:s `saveSes` generellt inte fungerar; men ingen ny korrigerad körning har utförts här, så den mekaniska förklaringen har **inte validerats med en efterföljande Stella-mätning**.
+
+**Särskild begränsning:** även en non-empty `saveSes` skulle bara bevisa att promptens text kunde sparas. Det krävs ytterligare fallspecifika debuggerstopp, CPU-/TIA-registeravläsning och samtidigt bevarad native pixelbild för att **hela G5AD:s instrumenteringsgrind** ska kunna passeras. Korrigering av indenteringen är separat nödvändig för en tillförlitlig insamlingskedja. MAIN har **inte** gjort någon skript-/ROM-ändring eller CI-re-run.
+
+## 4. Scopebedömning, ärendeavslut och lämpligt framtida beslutsunderlag
+**ACCEPTERA `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER` som korrekt hårdstopp enligt §5.** Detta avslutar det **enda** explicit användargodkända LM-D21-uppdraget. G5AD:s stopp är **INTE** `G5_NOGO`, `H4_FAIL`, `STELLA_UNUSABLE` eller `TIA_NOGO`. Det berör **instrumenteringen i detta specifika automatiserade testupplägg**, inte spelvisionens principiella genomförbarhet.
+
+**Nu förbättrad, men ännu EJ auktoriserad rekommendation:** Nästa *eventuella* separat beslut bör vara **minimal korrigering och återprövning av ENBART instrumenteringen på den existerande frysta F9-ROM:en**, dvs. först säkerställa loggning **efter** promptinitieringen, avlägsna postprocessens IndentationError, få en **icke-tom och hashad** register-/CPU-avläsning samt hashad native pixelbild från samma repeterbara tidsläge. Den får ha en **ny mycket smal explicit order** endast om användaren beslutar detta. Sådan fix är **inte** en återaktivering av LM-D21, inte TIA-C0–C4/N1, inte ny G5AD-ROM och inte full H4. Alternativet är att utforma en annan verifierbar debugger-/trace-metod om prompttranskriptet inte stöder korrelationen.
+
+**STOPP efter denna MAIN-mottagning.** [Issue #13](https://github.com/Odourman/let-me-out/issues/13) kan stängas som *färdig förinstrumenteringsleverans*, inte som färdig kalibrerings-ROM. **`G5_FORMAL_OPEN`**; **`LM-D21_USED_AND_CLOSED_NO_ROM`**; **`FULL_H4/G1/G6/F12/S05/FIVE_NPC_IMPL/NEW_INDEPENDENT_VERIFICATION/PR_MERGE=NOT_AUTHORIZED`**. Alla sex G5AD-kontrollfall är `NOT_RUN`; tidigare G5Z `G0_INCONCLUSIVE_NO_ROM` kvarstår.
+
+## 5. Allmänt om project sources / status
+Detta senare G5AE är en **ny statusuppgift som ska kontrolleras live** vid framtida revision av ChatGPT:s 6 Project Sources. Den tidigare V4-paketeringen var korrekt vid sin tidpunkt, men uppgiften att `G5AD=AUTHORIZED_NOT_YET_RUN` i lägre prioriterade historiska texter blir ersatt av **`G5AD=STOPPED_NO_BUILD`**. Ändra inte originalspec eller historiska testfiler. Uppdatera navigationsindex/Project Sources **endast med korrekt tidssupersession**, aldrig som om ett TIA-pixeltest körts.
