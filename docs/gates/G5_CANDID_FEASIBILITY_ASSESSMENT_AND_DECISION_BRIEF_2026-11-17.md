@@ -62,6 +62,12 @@ Fryst [G4 H4-ONE](G4_PREREGISTERED_PHYSICAL_HYPOTHESIS_2026-11-17.md) och [G4 vi
 ### Disciplin vid framtida beslut
 Användaren får välja A, B, hålla exakt 2600-spår som forskning, eller avsluta. Ingen tyst kompromiss. Ett framtida ordagrant godkännande arkiveras i eget canon-/scopebeslut före någon utveckling. MAIN, ROM DEVELOPMENT III, GRAPHICS II, RESEARCH II och separat VERIFICATION II behåller sina roller; inga G6/G7/G8/G9/G10 eller senare cutover sker automatiskt.
 
+## 6A. G5 arkiveringskvitto – Google Drive-kopior verifierade
+
+- [**G5 hela genomförbarhetsrapport och två vägval**](https://docs.google.com/document/d/1cvqzHlt84ZhHqN2JJSkJBJOIa2D_Au8uTFgFkTR5Kpk/edit): native Google Doc, kontrollerad efter skrivning, arkiverad i officiell Let Me Out! Drive-mapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`.
+- [**G5 beslutsspärr och status PENDING USER**](https://docs.google.com/document/d/1edsIPO9EVwc9b3ds9nmUCk_VLA6tWSkiwwOeL9Blrg0/edit): native Google Doc, kontrollerad efter skrivning, samma officiella projektmapp.
+- GitHub `docs/gates/G5_...` är de revisionsbara källfilerna; Drive är bevarade läskopior och skapar INTE någon ny user-canon eller G6-auktorisation.
+
 ## 7. Källor
 - [G1 originalkällor och aktuellt canon](G1_COMPLETION_RECEIPT_2026-11-17.md).
 - [G2 riktig historisk råevidens, 16 klasser](G2_COMPLETION_RECEIPT_AND_FEASIBILITY_BOUNDARY_2026-11-17.md), [inklusive falsk R1ba-status](G2_RAW_REAUDIT_MANIFEST_2026-11-17.json).
