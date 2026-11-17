@@ -1,5 +1,8 @@
 # Let Me Out! – MAIN VII korrigering av Project Sources, 2026-11-17
 
+> **ARKIV / ERSATT – EJ AKTIV PROJECT SOURCES-RELEASE.** Den tidigare niofilsversionen och dess "ENDA REKOMMENDERADE" var ett korrekt historiskt releaseögonblick men skall inte laddas upp som aktiv bas. Se [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md) och den senaste sexfilerspakets publicerade instruktion. Senare LM-D12..20/G5AA har ändrat exakt kartstatus/fem-NPC/G0 sedan detta dokument skrevs.
+
+
 ## MAIN VII – SLUTLIG PROJECT SOURCES-VERSION, 2026-11-17
 
 **ENDA REKOMMENDERADE VERSION FÖR NY UPPLADDNING:** [LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_FINAL_2026-11-17.zip](https://drive.google.com/file/d/1mLSqMZZx_j7g8ha6Mje4PyBsjiwZ6V6F/view), SHA256 `2c20ea7a5dbc9ae6809d2731fecfbc12acd6be279acb2d9255ba49d723fd792d`, 9 individuella källfiler, 35 spårbara källreferenser. Den nedladdade Drive-kopian har bytejämförts med originalet; ZIP CRC och alla 8 SHA256-filposter kontrollerades utan avvikelse.
