@@ -1,18 +1,8 @@
-# LET ME OUT! – GRAFIKARKITEKTUR OCH TEKNISKA TESTGRÄNSER / V5
+# LET ME OUT! – GRAFIKARKITEKTUR, RASTER OCH TESTFALL / V5
 
-**G5AG-TIA-gräns:** Den verkliga F9-instrumenteringen har nu två läsbara Stella-debuggerstopp (PC `$F1F0`, `_sCycles=21` och PC `$F1F8`, `_sCycles=32`, båda frame 136/scanline 123) och hashade nativa 320×228-bilder enligt utvecklarens rå-CSV; MAIN VIII kontrollerade GitHub-källor och Actions-success men utförde inte egen fristående råartefaktshashning eller emulering. **Inte** en RESP/GRP/NUSIZ/ENAM0-colorclock-PASS, inte sex genomförda G5AD-kalibreringsfall. [G5AF-data](https://github.com/Odourman/let-me-out/blob/c56b52284e7322fdf1c41812ae407429d8fb0f20/rom/g5af_f9_instrumentation_2026-11-17/G5AF_INSTRUMENTATION_EVIDENCE.csv).
+**Klass:** källnavigering och daterad kunskap, inte självständig spelcanon, implementationsorder, ROM-PASS eller oberoende verifiering. Kontrollera alltid relevanta original i GitHub och Google Drive vid ändrad status, beslut eller tekniska påståenden.
 
-**G5AG – senare faktisk status:** LM-D21/G5AD gav ett enda avgränsat TIA-kalibreringsuppdrag men slutade `NO_BUILD_INSTRUMENTATION_BLOCKER`; de sex C0–C4/N1-proven kördes inte. LM-D22/G5AF tillät endast reparation och två Actions-kontroller på redan fryst F9. ROM DEVELOPMENT III levererade `G5AF_INSTRUMENTATION_READY_BOUNDED` (första Actions-rundan FAIL, andra SUCCESS); MAIN VIII har källgranskat och mottagit som utvecklarinstrumentering, inte oberoende verification. [Specialist-original](https://github.com/Odourman/let-me-out/blob/c56b52284e7322fdf1c41812ae407429d8fb0f20/rom/g5af_f9_instrumentation_2026-11-17/TO_MAIN_G5AF_F9_INSTRUMENTATION.md), [Issue #14 stängt som avgränsat instrumenteringsarbete](https://github.com/Odourman/let-me-out/issues/14). `G5Z_G0=INCONCLUSIVE_NO_ROM`, `G5_FORMAL_OPEN` och alla begränsningar för ny ROM, H4/G1/G6/F12/S05/fem-NPC/Verification/merge kvarstår. Inget nytt tekniskt prov får härledas från detta källpaket.
-
-> **V5-supersession:** Alla daterade formuleringar nedan från V4 som säger att G5AC ännu enbart är ett förslag, att G5AF är `NOT_YET_RUN`, att inga F9-körningar gjorts, eller att MAIN VII fortfarande leder är *historisk V4-status*. De upphäver inte LM-D21/LM-D22 och G5AG. Gamla negativa resultat behålls oförändrade. Hämta gällande originalkällor live.
-
-
-
-**LÄSANVISNING V5:** Tidigare versioners källangivelser, gamla GitHub Issues, initiala ROM-beställningar och äldre framtidsförslag är historiska vid sina respektive tidpunkter. Högre auktoritet och senare uttryckliga användarbeslut gäller inom exakt beslutat ämne. Ingen source-only-status är fysisk Atari/Stella-verifiering. Detta källpaket ger ingen ny teknisk auktorisation.
-
-**Läs alltid aktuell status:** [GitHub](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md) · [Drive](https://docs.google.com/document/d/13ROb1ZXjPjQh7g6xDSGfxIrquhD6xtWI-LCloF9BMPA/edit).
-
-**Klass:** tekniskt käll- och experimentsindex. **Inte** bevisad kernel, ROM-implementationsorder eller PASS.
+**Statusöversikt (MAIN VIII, 2026-11-17 efter G5AG):** G5Z H4-ONE G0 = `INCONCLUSIVE_NO_ROM`; G5AD LM-D21 = `NO_BUILD_INSTRUMENTATION_BLOCKER` (ingen ny ROM eller C0–C4/N1-mätning); G5AF LM-D22 = `INSTRUMENTATION_READY_BOUNDED`, genomfört på oförändrad äldre F9 och mottaget av MAIN VIII endast som utvecklaregenkontroll. **G5 FORMAL OPEN. Ingen ny ROM/H4/G1/G6/F12/S05/femfiender/oberoende Verification/PR-merge auktoriserad.** [MAIN VIII G5AG](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md) · [levande statusindex](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
 
 ## TIA-kontrakt att respektera
 
@@ -32,6 +22,7 @@
 | G5H | Naiv fem-NPC-direktsumma 79/76 worst och 74/76 gynnsamt (före extra kostnader) | H4 påvisad omöjlig / 5NPC möjlig |
 | G5T/G5V | Offline-kartvisualisering och 2×2-nåbarhet, MAIN återkörd | Riktig PF-bild, collision, fem spawns, AI och Stella |
 | **G5Z G0** | **72/72** mask-/CC-källrader korrekt och villkorlig **58/68c** opcodebudget | Komplett TIA START/GRP/RESP/NUSIZ/M0/PF-schema; slutklass **`G0_INCONCLUSIVE_NO_ROM`** |
+| G5AF | Fungerande utvecklarinstrumentering på fryst F9: två numeriska Stella-stopp och nativa TIA-bilder, [mottagna av MAIN VIII](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md) | Inte exakt `RESP1` write/START-fas, C0–C4/N1, H4, originalhårdvara eller oberoende Verification |
 | R3 | Isolerat orange P1-högerdörrprov med svart genomskinligt keyhole | S05 med gold key/white NPC/yellow player/M0/PF på samma rasterhöjd |
 
 ## Olösta kritiska belastningar
@@ -42,8 +33,6 @@
 
 **S05** = gul player + vit NPC + guldkey + orange högerdörr med transparent svart keyhole, samtidigt M0 och brun PF. Key måste vara synlig vid **0 faktisk pixelöverlapp**, och får skymmas endast tillfälligt vid *verklig* överlapp. [G5Y separat testplan](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Y_MAIN_VII_FALSIFIABLE_HARDWARE_TEST_PLAN_H4_ONE_S05_FIVE_NPC_NOT_AUTHORIZED_2026-11-17.md).
 
-## Vad som rimligen kan bli nästa test – EJ BESTÄLLT
+## Nästa tekniska frågeställning, ännu inte godkänd som arbetsorder
 
-En **enskilt instrumenterad minimal TIA-fas-/kopie-kalibrering** av underbyggda luckor **`RESP0` under aktiv rendering, `GRP` latch/fördröjning, `NUSIZ0=$02` påverkan på P0/M0 och exakt en M0 med tidsstyrd `ENAM0`-gate** kan eventuellt minska osäkerheten. **Det är ett förslag enligt G5AA, inte ett H4-PASS eller order att skapa en ROM**. Ingen G1/G6/F12, assemblerändring eller Verification får ske utan ett separat precist användarbeslut.
-
-Se [G3 resurser](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G3_RESOURCE_CONTRACT_COMPLETION_RECEIPT_2026-11-17.md), [G2 negativa resultat](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G2_NEGATIVE_TESTS_AND_NONREPEAT_RULES_2026-11-17.md), [G5Z fryst utvecklaroriginal](https://github.com/Odourman/let-me-out/blob/8c7cef622ebaa6543a3f044ddf50d21024b1b978/rom/g5z_g0_h4_one/TO_MAIN_G5Z_G0_H4_ONE.md).
+G5AD:s planerade separata C0–C4/N1-kalibreringsfall av `RESP/GRP/NUSIZ0/M0/ENAM0` har **inte exekverats** på grund av det historiska G5AD-förbyggsstoppet. G5AF bevisar att en begränsad F9-instrumenteringskedja kan fungera, inte att den nya kalibrerings-ROM som då var planerad har byggts eller är auktoriserad igen. Ett nytt tids-/rasterprov fordrar en separat, specificerad användarorder med förregistrerande stimuli och exakta stopp. Ingen full H4-ONE, fem-NPC, S05 eller G6 får startas automatiskt. [G5AE](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AE_MAIN_VII_G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER_RECEIPT_AND_STELLA_SAVESES_SOURCE_REVIEW_2026-11-17.md) · [G5AG](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md).
