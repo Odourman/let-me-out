@@ -1,0 +1,14 @@
+attempt,run_id,case,source_or_observation,actual_pc_hex,actual_frame,actual_scanline,actual_sCycles,actual_bank,session_bytes,session_SHA256,native_TIA_320x228,native_TIA_SHA256,actual_result,limit_note
+1,44198377885,F9_STATIC_ORIGINAL,SOURCE_VERIFIED,,,,,,0,,NOT_APPLICABLE,,SOURCE_STATIC_PASS,16384-byte unchanged historical F9 F6 banks all identical
+1,44198377885,A_TRAP,STELLA_OBSERVED,F1F0,136,123,21,3,1688,5f15a6ae7c8eaaffdf81108705a97c392ed29020145da3fdeebefc92c220706a,YES_RGB,078c9c1ce249cb8c9ef6a45dc322647db2e1a869b3f60635c9e27436f38c016a,FAIL_STRICT_BANK0_REFERENCE,Actual historical G5AF A bank0 differs from new bank3
+1,44198377885,B_BREAK_SET,NOT_RUN,,,,,,0,,NO,,NOT_DETERMINABLE,Stop after strict A FAIL
+1,44198377885,B_REENTRY,NOT_RUN,,,,,,0,,NO,,NOT_DETERMINABLE,No set/cleared acknowledgement or runtime pre-write PC
+1,44198377885,C_ONE_STEP,NOT_RUN,,,,,,0,,NO,,NOT_DETERMINABLE,No actual pre/post instruction timing
+1,44198377885,D_ARCHIVE_AFTER_TEARDOWN,STELLA_ARCHIVE_READBACK,,,,,,0,,NOT_APPLICABLE,,PASS_INTEGRITY_ONLY,27 actual members SHA256 verified in new independent Actions job 134449813202
+2,44199817228,F9_STATIC_ORIGINAL,SOURCE_VERIFIED,,,,,,0,,NOT_APPLICABLE,,SOURCE_STATIC_PASS,Same historical F9 ROM and source/list/sym original with no new build
+2,44199817228,A_TRAP,NOT_DETERMINABLE,,,,,,0,,NO,,FAIL_PROMPT_CHANGED_BEFORE_FIRST_COMMAND,Debugger title at poll2 not retained when send validated input
+2,44199817228,B_BREAK_SET,NOT_RUN,,,,,,0,,NO,,NOT_DETERMINABLE,Strict A failed; no break attempted
+2,44199817228,B_REENTRY,NOT_RUN,,,,,,0,,NO,,NOT_DETERMINABLE,No runtime PC F1EE pre-write
+2,44199817228,C_ONE_STEP,NOT_RUN,,,,,,0,,NO,,NOT_DETERMINABLE,No step executed
+2,44199817228,D_ARCHIVE_AFTER_TEARDOWN,STELLA_ARCHIVE_READBACK,,,,,,0,,NOT_APPLICABLE,,PASS_INTEGRITY_ONLY,21 actual members SHA256 verified in independent Actions job 134450997161
+FINAL,,G5AJ_F9_METHOD,DEVELOPMENT_SELF_CHECK,,,,,,0,,NOT_APPLICABLE,,G5AJ_F9_TRAP_CONTROL_FAIL,Two Actions measurement runs consumed no C0 or other ROM
