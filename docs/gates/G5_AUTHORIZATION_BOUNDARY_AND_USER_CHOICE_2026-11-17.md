@@ -1,5 +1,12 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN VII G5AD – ny begränsad användarauktorisation LM-D21 för exakt EN TIA-mät-ROM (2026-11-17)
+
+**SENARE och specifikt mandat:** Användaren citerade rekommendationen om ett enda begränsat TIA-mätprov av RESP/GRP/NUSIZ0/M0/ENAM0 och svarade **"Gör så"**. [G5AD ordalydelse/acceptans/stopp](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) · [G5AD fryst kontrollmatris](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_TIA_CALIBRATION_PREREGISTERED_CASES_2026-11-17.csv) · [aktivt Issue #13](https://github.com/Odourman/let-me-out/issues/13) · [Drive](https://docs.google.com/document/d/163Xtt4ygxQD7eM4AfPwZgAN6JktF8DcEQjKK43JNF-g/edit). Detta **supersederar bara det föregående generella `NEW_ROM/G1_NOT_AUTHORIZED`-förbudet för just detta instrumenterade NTSC F6-kalibreringsprov**. `G5AD_SINGLE_TIA_MEASUREMENT_ROM=AUTHORIZED_NOT_YET_EXECUTED`; ROM DEVELOPMENT III får DASM-bygga, köra Stella/Debugger och leverera EN ROM med sex separata kontrollmoder (C0–C4/N1). Raw timing/register/colorclock/pixel plus SHA256 obligatoriskt; om mätning ej kan avgöras ska utfallet märkas `NOT_DETERMINABLE`, inte PASS.
+
+**Kvarstående bindande grindar:** full H4-ONE/R1/R2, G6/F12, S05 key+door, fem-NPC fullspel, ny independent Verification II, PR #7-merge och nya bild/AI/poäng/y-lane/flicker-waivers **INTE godkända**; G5 FORMAL OPEN. Äldre text nedan om `G0/G1/ROM_NOT_AUTHORIZED` är tidsbunden före LM-D21; G5Z G0 var korrekt avslutad `INCONCLUSIVE_NO_ROM`. Detta öppnar **inte** någon G6 cutover family.
+
+
 > **STATUS: HISTORIKBEVARANDE G5-GRINDLOGG; AKTUELL ORDERSTATUS HÄMTAS FRÅN** [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). G0 LM-D20 är redan avslutad INCONCLUSIVE, inte väntande; G5 fortsatt OPEN. G1/G6/F12/ny ROM/S05/fem-NPC-implementation/Verification/merge är INTE auktoriserade. Äldre avsnitt nedan visar vad som gällde före senare användarbeslut och ska **inte återaktivera** en order.
 
 
