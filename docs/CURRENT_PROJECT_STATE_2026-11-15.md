@@ -3,6 +3,17 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – G5 GENOMFÖRBARHETSBEDÖMNING: RAK NO-GO PRODUKTPLAN, ANVÄNDARVAL VÄNTAR (2026-11-17)
+
+**Teknisk G5-analys:** `G5_FEASIBILITY_REVIEW_COMPLETE_USER_DESIGN_DECISION_PENDING`. Efter frågan "är vårat spel möjligt ... piskar vi en död häst?" utförde MAIN VI en källbaserad konstruktions-/produktbedömning. **Ett Berzerk-liknande spel med våra grundläggande spelregler på Atari 2600 är sannolikt möjligt; samtliga nu låsta samtidiga originalgrafikkrav på standard-F6 bör däremot INTE behandlas som en trovärdig fullspels-produktplan. Detta är teknisk prognos, inte ett universellt TIA-omöjlighetsteorem.**
+
+- [**G5 rak feasibility-/risk-/produktbedömning**](gates/G5_CANDID_FEASIBILITY_ASSESSMENT_AND_DECISION_BRIEF_2026-11-17.md) och [**explicit användarval/autorisation boundary**](gates/G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md).
+- Officiell Drive: [G5 hela rapporten](https://docs.google.com/document/d/1cvqzHlt84ZhHqN2JJSkJBJOIa2D_Au8uTFgFkTR5Kpk/edit) · [G5 beslutsspärren](https://docs.google.com/document/d/1edsIPO9EVwc9b3ds9nmUCk_VLA6tWSkiwwOeL9Blrg0/edit); bägge native Docs skapades och har lästs tillbaka i projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`.
+- **Konkret högrisk:** 6 vita numeriskt frirörliga rättvända 8×9 original NPC + gul fullstor player på samma rasterhöjd (7 8bitarsfigurer; TIA 2×P, 76c/rad); M0 delar `COLUP0`, `NUSIZ0` kan kopiera missil; riktiga bruna PF och R3 orange/svart P1 kräver samma cykler; R2 gold key tar ytterligare färg/mask; full 128B/stack/AI-status okänd. F9/R1g visar snäva positiva specialfall; F11 G0 FAIL; R1ba 0/600 originalstora mask TOPDOWN.
+- **Två jämförbara, ETT användarbeslut behövs:** **A. Behåll Atari 2600 och sex logiska NPC/spelregler, men godkänn i separat process en exakt policy för grafisk same-Y-prioritet/flicker/occlusion eller annan uttrycklig bildkompromiss.** **B. Behåll alla visuella samtidighetskrav som designmål, byt leveransplattform till Atari 7800/MARIA eller annan passande grafikplattform**, vilket inte längre är ett Atari 2600-spel. Inget av detta har valts.
+- **G4 mikro har ny prioritering:** tekniskt intressant om användaren vill ha ren grundforskning, men en mikro-PASS med bara 3 NPC + player + M0 + PF skulle ändå inte demonstrera sex NPC + gold key + orange door. Därför **starta INTE G6/F12 automatiskt**. Fler små specialfall utan slutspelsspec bör pausas.
+- **GRINDAR:** G1–G4 dokumentation klara; G5 rådgivande feasibility-analys klar, **men G5 design-/plattformbeslut PENDING USER, inte PASS**. Full R1 `BLOCKED/NOT ACCEPTED`; Issue #6 endast NTSC R1–R4 diagnostik; PR #7 DRAFT/UNMERGED; Issue #8 gammal E02. Inga nya ROM-/DASM-/Stella-körningar, inga gameplay-/PAL-/mapper-/canon-ändringar eller G6+/E02-uppdrag har gjorts.
+
 ## MAIN VI – G4 MINIMALT FYSIKPROV BESLUTAT SOM SOURCE-ONLY (2026-11-17)
 
 **G4 STATUS:** `G4_SOURCE_ONLY_COMPLETE_CONDITIONAL_GO_ONE_MICROPROBE_NOT_ORDERED` efter användarens "Ok, följ dina rekommendationer". Detta är **ENDAST ett source-only villkorat forskningsbeslut**, INTE auktorisation för G6-ROM och INTE GO för full sex-NPC R1. Ingen källkod, ROM, DASM, Stella, PR, VERIFICATION II/E02 eller designcanon ändrades.
