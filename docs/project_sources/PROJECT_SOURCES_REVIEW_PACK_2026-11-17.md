@@ -6,6 +6,8 @@ Detta dokument beskriver det **historiska MAIN VI-paketet**, som innehåller en 
 
 **Ny rekommenderad fil i MAIN VII-chatten:** `LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_CORRECTED_2026-11-17.zip`, SHA256 `1d749df02d74b8fa1c41f8160e5ca2ae15d41eff32bdb3fac6be895915653cb0`. Nio filer, 29 källrader, uppdaterat checksum-manifest. Den äldre Drive-ZIP:en nedan bevaras som historisk dokumentation, **inte rekommenderad som ny Project Sources-ingång**. Lägg inte till båda.
 
+**Korrigerad Drive-fil verifierad efter uppladdning:** https://drive.google.com/file/d/1fxexRLz9fE8egW9bFnA1zA3x3j7f9AYj/view. SHA256 byteidentisk vid läsåterkontroll. Använd denna fil, inte den gamla ZIP:en nedan.
+
 MAIN VII:s korrigering bevarar giltigt O1 (faktisk key/android-överlapp + kortvarigt litet flimmer), markerar att G5-synlighet/AI/poäng fortfarande kräver separat beslut och skiljer teknik-etiketterna `TK01–TK05` från spelets `K1`, samt `G5-S0/G5-S1/G5-S2` från äldre spawn-`S0/S1`.
 
 **Purpose:** source-navigation and decision-preparation bundle for addition to the ChatGPT Project's Sources. **Not a replacement of higher-authority original sources. No game canon update. No ROM/G6 authorization.**
