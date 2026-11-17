@@ -1,5 +1,8 @@
 # Let Me Out! (Atari 2600)
 
+> **CURRENT PROJECT SOURCES – V4 (2026-11-17):** [Sex rättade och byteverifierade Project Sources i GitHub](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V4) · [V4 install/arkivguide i Google Drive](https://docs.google.com/document/d/19EU_PLT5fDXI41u4kA3rWMU6FOVKPjsAYCwbvVLRlpA/edit). V4 är den enda rekommenderade uppsättningen att manuellt ersätta de sex nu anslutna V2-filerna med. Historiska "FINAL"/V1/V2/V3-zippar är inte längre aktuella uppladdningspaket. [Aktuellt status-/auktoritetsindex](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md): G5Z G0 genomfört `INCONCLUSIVE_NO_ROM`, G5 OPEN, ingen ny ROM/G1/G6/Verification/PR-merge. Issue #3/#6 är stängda som supersederad historik, #8 öppet endast DEFERRED.
+
+
 > **AKTUELL STATUS / STARTA HÄR (MAIN VII, 2026-11-17):** [Ett enda gällande käll-/auktoritets-/arbetsköindex](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md) ([Drive-spegel](https://docs.google.com/document/d/13ROb1ZXjPjQh7g6xDSGfxIrquhD6xtWI-LCloF9BMPA/edit)). G5Z H4-ONE G0 är avslutad `INCONCLUSIVE_NO_ROM`, G5 OPEN; framtida A_OPEN_01/B_OPEN_02/C_OPEN_01/D_OPEN_01 och fem NPC mål är beslutade, **inte ROM-implementerade**. **Ingen G1/G6/F12/ny ROM/ny Verification/PR-merge är beställd.** Nedanstående äldre MAIN V–VII-paketnotiser, i synnerhet "ENDA REKOMMENDERADE"/"väntar på designbeslut", är **HISTORISKA RELEASE-SNAPSHOTS, INTE AKTIV PROJEKTSTATUS**.
 
 
