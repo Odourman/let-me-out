@@ -1,0 +1,76 @@
+name: G5AF LM-D22 frozen F9 instrument repair - two preregistered stops NO ROM BUILD
+on:
+  push:
+    branches:
+      - rom-dev-iii/g5af-lm-d22-f9-instrument-only-20261117
+    paths:
+      - .github/workflows/g5af_f9_instrument_retest.yml
+permissions:
+  contents: read
+  actions: read
+jobs:
+  capture-original-f9:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Stella 6.7.1 Xvfb X11 and pixel validator (never DASM build)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y stella xvfb xdotool x11-utils imagemagick python3-pil
+          dpkg-query -W -f='${binary:Package} ${Version}\n' stella xvfb xdotool python3-pil
+          test "$(stella -version 2>&1 | head -1 | grep -o '6\.7\.1' || true)" = "6.7.1" || dpkg-query -W -f='${Version}\n' stella | grep -q '^6\.7\.1'
+      - name: Download original unchanged F9 16KiB ROM (historical run 44050126727)
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+          run-id: 44050126727
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed_readonly/
+      - name: Run exactly 2 preregistered original F9 trap/GUI cases in one CI run
+        shell: bash
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 -m py_compile rom/g5af_f9_instrumentation_2026-11-17/audit_evidence.py
+          bash -n rom/g5af_f9_instrumentation_2026-11-17/run_f9_instrument.sh
+          bash rom/g5af_f9_instrumentation_2026-11-17/run_f9_instrument.sh
+      - name: Preserve exact raw F9 debugger sessions, Stella PNGs and negative evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: G5AF_F9_ORIGINAL_READONLY_NATIVE_TIA_AND_DEBUGGER_EVIDENCE
+          path: rom/g5af_f9_instrumentation_2026-11-17/evidence/
+          if-no-files-found: warn
+          retention-days: 90
+  verify-preserved-artifact:
+    needs: capture-original-f9
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download raw artifact from THIS exact run for independent file-preservation check
+        uses: actions/download-artifact@v4
+        with:
+          name: G5AF_F9_ORIGINAL_READONLY_NATIVE_TIA_AND_DEBUGGER_EVIDENCE
+          path: verify_artifact/
+      - name: Re-hash actual archived native PNGs and Stella sessions
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd verify_artifact
+          test -s SHA256SUMS.txt
+          sha256sum -c SHA256SUMS.txt
+          for s in F9_000_M_RESP1 F9_000_F_RESP1; do
+            test -s "$s/debugger_session.txt"
+            test -s "$s/native_TIA_original.png"
+            grep -q 'print pc' "$s/debugger_session.txt"
+            grep -q 'COLUxx:' "$s/debugger_session.txt"
+          done
+          cat G5AF_INSTRUMENTATION_EVIDENCE.csv
+          cat G5AF_AUDIT_STATUS.txt
+          grep -qx 'G5AF_INSTRUMENTATION_READY_BOUNDED' G5AF_AUDIT_STATUS.txt
+          echo "G5AF_ARCHIVE_READBACK_NUMERIC_TIA_AND_PNG_SHA256_PASS"
