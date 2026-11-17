@@ -1,5 +1,12 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D21 avrapporterat: G5AD instrumenteringsspärr, NO BUILD (2026-11-17)
+
+**LM-D21** godkände en villkorad enda TIA-kalibrerings-ROM men **är nu förbrukat och avslutat vid den förregistrerade hårda förbyggsgrinden**. [G5AE MAIN-mottagning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AE_MAIN_VII_G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER_RECEIPT_AND_STELLA_SAVESES_SOURCE_REVIEW_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1hJZJa11HB5pKV1k1nBn9YACnmEJHlNLj9klyXUV-usE/edit) · [fryst specialistresultat](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/TO_MAIN_G5AD_TIA_CALIBRATION.md) · [Issue #13](https://github.com/Odourman/let-me-out/issues/13). **Verkligt resultat `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER`: ingen ny ROM, ingen TIA-C0/C1/C2/C3/C4/N1-mätning**. Sex `NOT_DETERMINABLE` betyder **NOT_RUN_NO_NEW_ROM**, inte "TIA omöjlig". Loggarna visar tools PASS, gammal F9 PNG 320×228, `saveSes` 0 byte och separat Python `IndentationError`. Main har sedan läst Stella 6.7.1-kod och funnit stark orsakshypotes om `saveSes` inuti `autoexec` före färdig promptbuffer; ingen ny CI-körning eller kodändring gjord.
+
+**Inget nytt användarbeslut finns efter LM-D21**, och ett senare instrumenteringsprov kräver **nytt separat uttryckligt godkännande**, ej "fortsätt". `G5_FORMAL_OPEN`, `G5Z_G0=INCONCLUSIVE_NO_ROM`, `FULL_H4/G1/G6/F12/S05/FIVE_NPC_IMPL/VERIFICATION/PR_MERGE=NOT_AUTHORIZED`. Äldre "G5AD auktoriserad, ännu ej körd" nedan är historisk tidssnapshot, inte gällande arbetsstatus.
+
+
 ## MAIN VII – LM-D21: EN instrumenterad TIA-kalibrerings-ROM godkänd (2026-11-17)
 
 **Direkt uttryckligt användarbeslut:** Användaren citerade MAIN:s rekommendation om **ett enda begränsat TIA-mätprov** av RESP, GRP, NUSIZ0, M0, ENAM0 och instruerade **"Gör så"**. [G5AD bindande ROM DEVELOPMENT III-arbetsorder](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) · [sex preregistrerade scenarier](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_TIA_CALIBRATION_PREREGISTERED_CASES_2026-11-17.csv) · [Issue #13](https://github.com/Odourman/let-me-out/issues/13) · [Drive](https://docs.google.com/document/d/163Xtt4ygxQD7eM4AfPwZgAN6JktF8DcEQjKK43JNF-g/edit).
