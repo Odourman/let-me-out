@@ -1,5 +1,14 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN VII G5Z – särskilt användargodkänd ENDAST G0 H4-ONE source-only preflight (2026-11-17)
+
+**Senare LM-D20 upphäver endast den tidigare spärren mot *källbaserad G0-granskning*.** På MAIN VII:s specifika fråga om endast G0 H4-ONE och tre möjliga utfall svarade användaren **"Ok, fortsätt. Följ dina rekommendationer"**. [G5Z tekniskt avgränsad auktoriserad specialistorder](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Z_MAIN_VII_ROM_DEVELOPMENT_III_G0_H4_ONE_SOURCE_PREFLIGHT_AUTHORIZED_2026-11-17.md) · [Issue #12 ROM DEVELOPMENT III](https://github.com/Odourman/let-me-out/issues/12) · [Google Drive-kopia](https://docs.google.com/document/d/15cWPUaLAzo-LP131WjTNCmHNsCrOWY9Ii9EAZ2hbmz0/edit). **`G0_AUTHORIZED_NOT_YET_EXECUTED`**. Ingen actually verifierad timing, kernel eller teknisk G0-PASS finns ännu; G5Y 17-falls testmatris har inte körts som fysisk ROM.
+
+Tillåtet en gång: full G4 H4-ONE source-only 6507/76c/START/GRP/RESP/NUSIZ/M0/PF-analys inklusive P0 gul/vit X-sort, två rättvända vita P1 F/SM originalmasker, numeriska separata RAM-X och en M0 på **samma rasterband**, och kort kvarvarande fem-NPC/S05-gap. Utfallet ska vara precis `G0_SOURCE_PLAUSIBLE`, `G0_FAIL_NO_ROM` eller `G0_INCONCLUSIVE_NO_ROM`. **STOPP efter leverans oavsett utfall.** G5P:s smalare N0 får aldrig ersätta H4. Historiska F11 negativ kvarstår.
+
+**Fortfarande bindande stopp:** `G5_FORMAL_OPEN`, `G1/G6/F12/ROM/ASM/DASM/STELLA/NEW_VERIFICATION/PR_MERGE_NOT_AUTHORIZED`. Inga nya flicker-/osynlighets-/X/Y-/AI-kompromisser eller nya kartlayouter, 5-NPC R1/R2 tekniskt fortfarande obevisat. Äldre "G0 inte auktoriserad" längre ned i denna historiska fil är tiden före LM-D20, medan alla andra spärrar gäller.
+
+
 ## MAIN VII G5Y – förregistrerad testordning upprättad, faktiskt G0/G6 fortfarande spärrade (2026-11-17)
 
 [MAIN:s fullständiga G5Y source-only testordning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Y_MAIN_VII_FALSIFIABLE_HARDWARE_TEST_PLAN_H4_ONE_S05_FIVE_NPC_NOT_AUTHORIZED_2026-11-17.md) · [17 `NOT_RUN` testfall](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Y_MAIN_VII_PREREGISTERED_TECHNICAL_TEST_MATRIX_NOT_AUTHORIZED_2026-11-17.csv) · [Drive-kopia](https://docs.google.com/document/d/1Un1kOcd4XqC0drnt3bJaHiS7BINw6YnpRTZuZ53ce-4/edit). **Framtida valda exakta kartlayout A_OPEN_01/B_OPEN_02/C_OPEN_01/D_OPEN_01** är redan godkända som designmål via G5X; inga fysiska spelkartor/collision/ROM har ändå implementerats. G4:s fulla `H4-ONE` (P0 gul+vit, **två P1 vita**, M0 EXAKT EN på samma Y, PF verkligt brunt, bägge X-ordningar och numeriskt RAM-X) har inte G0-PASS. G5P:s smalare två-P0-aktörsdiagnostik kan ej ersätta full H4. Historiska F11 `G0 FAIL`, G5H naiv 79/76 och S05 key+orange door risk förblir giltiga blockerare/negativa referenser.
