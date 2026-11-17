@@ -83,6 +83,10 @@ B med M1 vit M vid x16, M2 vit M x36, gul player x124; P1 F x56, SM x76, SF x96,
 
 **MAIN rekommenderar:** Spara Ball-left-wall-metoden och källanalysen; prioritera INTE flera kosmetiska opcode-besparingar på en direktsekvens som redan faller i row6 och player-middle-fallet. Nästa riktiga researchfråga är **en annan P0/P1-kernelarkitektur med register-/positionsevent som kan hantera täta och korsande numeriska X inklusive dörr utan ett GRP+RESP-par per aktör/rad**. Den frågan bör först granskas SOURCE-ONLY av RESEARCH II eller via specifikt separat MAIN-uppdrag. **Ingen ny G6 ROM-order**; om sådan source-arkitektur inte går att förregistrera med G0-scheman återstår explicit användarval om grafisk samtidighet/occlusion/flicker eller ett plattformsbyte, inte automatisk kompromiss.
 
+## 6A. Arkiverad Google Drive-mirror och ordningsmatris
+- [Google Drive: G5H fullständig native Doc och mask-/cykel-CSV i samma dokument](https://docs.google.com/document/d/1rsRlR4BOjXnY9Wtsp1N3Oq_02yGVMiAKD6Z3UhFa4Q4/edit). Kopian har skapats i officiell projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, lästs tillbaka och verifierats med kontroller av 24/36 ordningar, row6-masker, 74/76, 89/76, G0 NOT PASSED och hela CSV-bilagan.
+- GitHub-filens exakta versionsstyrda underlag och [G5H rad-/ordnings-CSV](G5H_ROW_MASK_RUNS_AND_COLOR_STRESS_2026-11-17.csv) är primärkällor. Drive speglar läsbar fulltext, inte en ny implementationsautorisation.
+
 ## 7. Källor
 - [G5G tidigare Ball x0 och 79/76](G5G_BALL_LEFT_WALL_AND_FIVE_NPC_OPCODE_CENSUS_SOURCE_ONLY_2026-11-17.md), [G5H CSV](G5H_ROW_MASK_RUNS_AND_COLOR_STRESS_2026-11-17.csv), [originala 8×9-masker](../../design/NPC_REFERENCE_8x9_masks.json), [C02 öppna y10–11](../../design/PLANERADE_RUMSKARTOR_V011.json).
 - [F11 G0 negativa bevisspärrar](G2_NEGATIVE_TESTS_AND_NONREPEAT_RULES_2026-11-17.md), [G3 deadlines](G3_COLOR_CLOCK_DEADLINES_2026-11-17.csv), [G4 Player vs M0](G4_PREREGISTERED_PHYSICAL_HYPOTHESIS_2026-11-17.md), [Historical v0.18 R1/R2/D03 criteria](../ROM_GATE_V018_ACCEPTANCE.md).
