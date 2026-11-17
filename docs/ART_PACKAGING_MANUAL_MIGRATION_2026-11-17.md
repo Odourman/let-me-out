@@ -6,6 +6,8 @@
 ## 1. Roll och gränser
 Den nya chatten äger arbetsytan för **illustrerade spelkartonger, handmålad reklam-/manualkonst, retroförpackningens layout och den korta bakgrundshistorien i manualen**. Uppgiften är att bevara användarens val och iterera bilder/text med tydlig proveniens. Den är **inte** projektledaren MAIN V, **inte** dedikerad GRAPHICS för 8×9/Atari-sprites, **inte** ROM DEVELOPMENT II och **inte** oberoende VERIFICATION. Den får inte auktorisera tekniska ändringar, flytta godkända kartor eller använda referensillustrationer som bevis för gameplay-kernel.
 
+**Google Drive-spegel med hela handoffen, startprompten och två verifierat inbäddade referensbilder:** https://docs.google.com/document/d/1NcXHSFfd_PiAFtumegSY43hJg6GVyMe-eDtt7B23b54/edit
+
 ## 2. Verkliga källor och auktoritet
 1. GitHub: https://github.com/Odourman/let-me-out
 2. Drive-projektmapp: https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u
@@ -20,7 +22,7 @@ Den nya chatten äger arbetsytan för **illustrerade spelkartonger, handmålad r
 Motiv: mörkröd vinröd kartongram i sent 70-/tidigt 80-tal Atari 2600-retrostil, stor krämvit "LET ME OUT!", gul "VIDEO COMPUTER SYSTEM / GAME PROGRAM", "ONE-PLAYER GAME" och underst "FOR ATARI 2600". Separat inramat detaljrikt, traditionellt handmålat motiv: en skräckslagen man i vit skjorta och slips håller mässingsnyckel; exakt fem hotfullt leende bakgrundsfigurer: **två vuxna kvinnor, två vuxna män, en pojke**; träpanelad förenings-/samlingslokal med ett hänglås på dörren. Inga bord eller stolar. Tidigare bortvalda ord: `1 GAME`, `FIND THE KEY`, `ESCAPE`.
 **BILD B — Door unlock, accepterad visuell riktning:** `02_DOOR_UNLOCK_SCENE_ACCEPTED_VISUAL_REFERENCE.png`, PNG SHA-256 `62aa281ade3f608b1d4e4b7b0d1422dd07ee1219a1ae784a0862675cb18202f0`. Användaren sade "Bra. Nu ser det bra ut" efter att monteringen av metallbeslaget korrigerats. Landskapsformat, **ingen kartongram eller titel**. Mannen gråter och försöker låsa upp ett mässingshänglås med korrekt avbildad nyckel. **Endast en vuxen kvinna i bakgrunden**, stort, hotfullt leende. Varm orange/röd 70–80-tals handmålad realism, hängande taklampa, träpanel. Låsöverfallet ska vara ordentligt skruvat plant mot träet och förankrat på dörr respektive karm/vägg, inte sväva ut. Nyckeln ska anatomiskt/mekaniskt passa handens grepp och låshålet; inte en för lång exponerad nyckel.
 
-**Viktigt:** originalbildbytes ingår i användarlevererat ZIP-paket från denna migration och bör överföras till ny chatt. Om den nya chatten inte kan öppna faktiska bildfiler måste den tydligt säga det och be användaren bifoga ZIP eller bilder. Beskrivningar ensamma ersätter inte pixelreferensen.
+**Viktigt:** båda PNG-originalen finns inbäddade i Google Drive-spegeln ovan och också i det lokala ZIP-överlämningspaketet från denna migration; de bör kontrolleras i nya chatten. Om den nya chatten inte kan öppna faktiska bildfiler måste den tydligt säga det och be användaren bifoga ZIP eller bilder. Beskrivningar ensamma ersätter inte pixelreferensen.
 **Proveniens:** användaraccepterade *illustrationsreferenser*, INTE tryckfärdiga masters, oberoende verifierade slutprodukter eller TIA-kompatibla spelobjekt.
 
 ## 4. Bildspråk, layout och återkommande korrigeringar
