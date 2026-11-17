@@ -1,5 +1,18 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D14, LM-D15 och LM-D16: nya G5S-beslut GODKÄNDA (2026-11-17)
+
+**Senare direkt användarsvar:** Efter MAIN:s uttryckliga fråga "Godkänner du uttryckligen C1, D1 och E1 som framtida spel- och testregler?" svarade användaren "Fortsätt Följ dina egna rekommendationer". I just detta sammanhang gäller **C1+D1+E1 som framtida krav**. [Fullständigt exakt beslutsprotokoll](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1UboARrqu3sFHQgeV1y5C0IWoRkSlvAY_6b6RMLWwbnE/edit). Äldre G5R-texter om "fortfarande endast förslag" beskriver tiden **före** detta användarsvar och supersederas endast för dessa tre rekommendationer.
+
+| ID | Godkänt beslut | Exakt giltighet och gräns |
+|---|---|---|
+| **LM-D14 / G5R C1** | Framtida versionerat R1-mål med **5 NPC M,M,F,SM,SF**, R2 med **4 kvarvarande + synlig key** efter dödsanimation. | **Testmål godkänt, INTE ett nytt ROM-PASS.** Originalmasker bevaras och v0.18 R1=6/R2=5+key förblir historiskt frysta. Ingen omedelbar teknisk cutover/implementation. |
+| **LM-D15 / G5R D1** | För **framtida fem-NPC-spelversion**: **-30 poäng per dödad NPC**, ursprunglig +50 pickup, +100 exit, +15 per överlevande, 0-golv per kill och extralivströsklar oförändrade. | **Framtida spelregel godkänd**; originalets sex-NPC/-25 historiskt oförändrad. För k=5 och ingen poänggolvseffekt blir netto 0 per rum. Ingen ROM-kod ändrad. |
+| **LM-D16 / G5R E1** | **5 distinkta, förhandsvaliderade NPC-spawnpositioner** per framtida rum och **uniform sannolikhet 1/5 för key-bärare bland de fem individuella NPC**, inte fyra masktyper. | **Policy godkänd**, men inga specifika startkoordinater/kartor, PRNG-implementation eller faktiska tester godkända. Key faller efter dödsanimation på fysisk/logisk fallplats; K1/O1/E1 fortsatt styrande. |
+
+**A1/B1 LM-D12/13 godkända sedan tidigare.** Fortfarande ÖPPET: exakt v0.19 kartbyte, framtida G0-S05/renderingskernel och uttrycklig G6/F12-arbetsorder. **G5 FORMAL OPEN, G6/F12 NOT AUTHORIZED, NO NEW ROM, NO VERIFICATION, NO PR MERGE.**
+
+
 ## MAIN VII – LM-D12 och LM-D13: godkända G5Q-designmål, 2026-11-17
 
 **Direkt användargodkännande via uttrycklig hänvisning:** På MAIN VII:s omedelbara fråga "Godkänner du G5Q:s rekommendation A1 + B1 som våra fortsatta designmål?" svarade användaren **"Följ dina egna rekommendationer"**. I just denna samtalskontext innebär det godkännande av A1+B1 som **mål**, inte av övriga förslag. [Fullständig spårbar beslutsregistrering](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1Yh5XfKZ8f9rm97sG7jY8tAjuGiV-0o9O-d9oy-BkP2s/edit).
