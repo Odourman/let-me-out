@@ -1,0 +1,46 @@
+name: G5AD LM-D21 PREBUILD instrumentability check (NO ROM)
+on:
+  push:
+    branches:
+      - rom-dev-iii/g5ad-tia-calibration-lm-d21-20261117
+    paths:
+      - .github/workflows/g5ad_prebuild_instrument_check.yml
+permissions:
+  contents: read
+jobs:
+  instrument-readiness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify compiler and exact Stella debugger toolchain (NO ROM)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick python3-pil
+          echo "G5AD_PREFLIGHT_BEGIN"
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella xvfb xdotool imagemagick
+          test -x /usr/bin/dasm && test -x /usr/bin/stella
+          test -x /usr/bin/Xvfb && test -x /usr/bin/xdotool
+          echo "python_pil $(/usr/bin/python3 -c 'from PIL import Image; print(Image.__version__)')"
+          Xvfb :152 -screen 0 1366x900x24 -ac >/tmp/g5ad_xvfb.log 2>&1 &
+          xvfbpid=$!
+          trap 'kill "$xvfbpid" 2>/dev/null || true' EXIT
+          export DISPLAY=:152 SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=x11
+          sleep 2
+          xdpyinfo -display :152 | grep 'dimensions:' || exit 1
+          stella -help > /tmp/g5ad_stella_help.txt 2>&1 || true
+          grep -i -E 'debug|bs|snapshot' /tmp/g5ad_stella_help.txt | head -25 || true
+          test -s /tmp/g5ad_stella_help.txt
+          echo "EXTERNAL_STELLA_REFERENCE=https://stella-emu.github.io/docs/debugger.html"
+          echo "PREBUILD_CONTRACT: versioned Stella debugger supports autoexec.script, runToPc, saveSes, saveSnap, _sCycles, _scan"
+          echo "G5AD_PREFLIGHT_TOOLS_READY_NO_ROM"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g5ad-prebuild-instrument-smoke-no-rom
+          path: |
+            /tmp/g5ad_stella_help.txt
+            /tmp/g5ad_xvfb.log
+          if-no-files-found: ignore
