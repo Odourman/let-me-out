@@ -1,5 +1,14 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+## MAIN VII G5Z – användaren har auktoriserat ENDAST H4-ONE G0 source-only, ej ROM/G6 (2026-11-17)
+
+**NYTT LM-D20:** Direkt efter MAIN VII:s specifika rekommendation om *en enda avgränsad H4-ONE G0-källgranskning* svarade användaren **"Ok, fortsätt. Följ dina rekommendationer"**. **Status nu `G0_H4_ONE_SOURCE_ONLY_AUTHORIZED_NOT_STARTED`**, dokumenterat i [G5Z bindande tekniska arbetsorder till ROM DEVELOPMENT III](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Z_MAIN_VII_ROM_DEVELOPMENT_III_G0_H4_ONE_SOURCE_PREFLIGHT_AUTHORIZED_2026-11-17.md) · [GitHub Issue #12](https://github.com/Odourman/let-me-out/issues/12) · [Google Drive-kopia](https://docs.google.com/document/d/15cWPUaLAzo-LP131WjTNCmHNsCrOWY9Ii9EAZ2hbmz0/edit). Det är en **giltig avgränsad source-only specialistbeställning**, men specialisten har ännu inte levererat sin analys och GitHub-issue kör inte den separata specialchatten automatiskt. Den historiska G5Y-texten nedan som beskriver G0 som ej auktoriserad avser **läget före detta användarbeslut**.
+
+**Exakt scope:** fulla G4 H4-ONE, 9-raders original-TOPDOWN 8×9, P0 gul player+vit M i båda numeriska X-ordningar, P1 vit F+SM, äkta brunt PF, **exakt en M0 på SAMMA Y**; 6507 opcode/cycles och TIA CC/registereffekt, 76c/rad, 128B RIOT inklusive stack, 4KiB aktiv F6-bank. Klassa `G0_SOURCE_PLAUSIBLE` eller `G0_FAIL_NO_ROM` eller `G0_INCONCLUSIVE_NO_ROM`; kort appendix om 5 NPC/S05 fortfarande olöst. Inget N0-resultat får kallas H4-PASS.
+
+**STOPP även efter G0-källbedömning:** **ingen** ny ROM/assembler, DASM/Stella, G1, G6/F12 eller S05-integration, ingen ny gameplay/flicker/AI/kartwaiver, ingen PR-merge, ingen oberoende Verification II utan *separat framtida uttrycklig auktorisation*. **G5 FORMAL OPEN.** Godkända framtida spelmål LM-D12..19 och valda exakta A_OPEN_01/B_OPEN_02/C_OPEN_01/D_OPEN_01 samt historisk sex-NPC v0.18-evidens oförändrade.
+
+
 ## MAIN VII G5Y – källgrundad falsifierbar G0/H4-ONE/S05-testplan FÄRDIG, INGEN NY TEKNISK ORDER (2026-11-17)
 
 [Fullständig MAIN G5Y-plan](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Y_MAIN_VII_FALSIFIABLE_HARDWARE_TEST_PLAN_H4_ONE_S05_FIVE_NPC_NOT_AUTHORIZED_2026-11-17.md) · [17 fall i preregistrerad NOT_RUN-matris](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Y_MAIN_VII_PREREGISTERED_TECHNICAL_TEST_MATRIX_NOT_AUTHORIZED_2026-11-17.csv) · [officiell Drive-kopia](https://docs.google.com/document/d/1Un1kOcd4XqC0drnt3bJaHiS7BINw6YnpRTZuZ53ce-4/edit). **STATUS `G5Y_TECHNICAL_TEST_PLAN_READY_SOURCE_ONLY`; `G5_FORMAL_OPEN`; `G6/F12/ROM_NOT_AUTHORIZED`.** Nu är **framtida fyrkartsgeometrin fastställd** A_OPEN_01/B_OPEN_02/C_OPEN_01/D_OPEN_01 enligt LM-D17+19 och källmanifest G5X; även LM-D12..16 om fem fiender, fri X/Y, rättvis synlighet, −30/kill, fem giltiga spawns och 1/5 keyholder gäller som framtida mål. **Inga gamla ROM- eller maskfiler ändrade.**
