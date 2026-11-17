@@ -1,0 +1,47 @@
+name: R1-F9 SAME original ROM supplemental eight actual Stella WSYNC after-write traps
+on:
+  push:
+    branches: [rom-dev/v018-r1-f9-three-binary-x-one-rom-20261117]
+    paths: [.github/workflows/r1-f9-WSYNC-SAME-ROM.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-ROM-WSYNC-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the one and only original F9 ROM binary from green G1 run (NO DASM)
+        uses: actions/download-artifact@v4
+        with:
+          name: LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+          run-id: 44050126727
+          repository: Odourman/let-me-out
+          github-token: ${{ github.token }}
+          path: seed_g1/
+      - name: Copy byte-identical SHA frozen 16KiB ROM only, NO BUILD
+        run: |
+          R=rom/v018/experiments/r1_free_xy
+          mkdir -p "$R/dist"
+          cp "seed_g1/$R/dist/r1_f9_three_masks_three_binary_ram_x_ONE_ROM_F6.bin" "$R/dist/"
+          printf '%s  %s\n' 6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b "$R/dist/r1_f9_three_masks_three_binary_ram_x_ONE_ROM_F6.bin" | sha256sum -c
+          test "$(stat -c%s "$R/dist/r1_f9_three_masks_three_binary_ram_x_ONE_ROM_F6.bin")" -eq 16384
+          echo 'F9_SAME_ONE_ROM_SHA_PASS_NO_NEW_ASSEMBLER'
+      - name: Install only Stella/X11/image tools, deliberately no DASM
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y stella xvfb xdotool imagemagick python3-pil
+          dpkg-query -W stella > r1_f9_same_rom_stella_version.txt
+      - name: Measure real WSYNC post-write state in 8 actual RAM modes at source c54/c56, same ORIGINAL ROM
+        run: bash rom/v018/experiments/r1_free_xy/r1_f9_wsync_trace.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: LET_ME_OUT_R1_F9_SAME_UNCHANGED_ROM_EIGHT_TRUE_WSYNC_AFTER_WRITE_TRAPS
+          path: |
+            r1_f9_same_rom_stella_version.txt
+            rom/v018/experiments/r1_free_xy/r1_f9_wsync_trace.sh
+            rom/v018/experiments/r1_free_xy/evidence/r1_f9_same_rom_wsync_after/
+          if-no-files-found: ignore
