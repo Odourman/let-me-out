@@ -73,10 +73,13 @@ Anta idealiserat `LDA #bitmap (2c); STA GRP (3c); STA RESP (3c)` = 8c per synlig
 
 **Planen G1→G10 respekteras:** Vi *fortsätter G5:s källförberedelser* och ger konkret villkorad S1-policy, men **börjar INTE G6/G7/G8**. Nästa legitimt tekniska forskningsarbete kan avgränsas till en SOURCE-ONLY Berzerk-style en-P1-robot + P1-orange-door + Ball-left x0 + aktiv M0/P0 statisk registerfasmodell, med särskild noga märkt designhypotes och utan ROM. En verklig ROM-order måste ha explicit separat userauktorisation och G0 stoppvillkor.
 
+## 6A. Fullständig Drive-arkivering
+- [G5J i officiella Google Drive – hela rapporten och 176-raders CSV](https://docs.google.com/document/d/1yV_4qJdesdrN1d8IbOVA9kbjY-KjCR9zba8wuBzjpDM/edit), native dokument skapat i projektmapp `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`, läst tillbaka och kontrollerat för `MAX_ROBOTS=8`, G5J-status, 37/76-modellen och full CSV inkl. sista scanline 175. GitHub-originalversionen ovan är fortsatt primär source-only artefakt.
+
 ## 7. Käll- och granskningsspår
 1. Extern [Berzerk disassembly, pinned](https://github.com/TheAnsarya/multi-local/blob/480a5287c6aec61bad333a44de105e45cfed39ff/download-atari/asm-files/berzerk.asm), GitHub blob `e00c50a718d96ffcbfa4e6270c87a037d2758cf3` (ursprunglig extern research, read-only).
 2. [G5I plan/mandat/rebaseline](G5I_PLAN_RECONCILIATION_FIVE_NPC_DECISION_READY_NOT_G6_2026-11-17.md), [G5H unrestricted budget](G5H_START_GRP_RESP_NUSIZ_SAME_Y_SOURCE_ONLY_DECISION_2026-11-17.md), [G5G left Ball & PF](G5G_BALL_LEFT_WALL_AND_FIVE_NPC_OPCODE_CENSUS_SOURCE_ONLY_2026-11-17.md), [176-line model CSV](G5J_LANE_RENDERING_176_SCANLINE_OCCUPANCY_OFFLINE_2026-11-17.csv).
 3. [External three stream 2025](https://8bitworkshop.com/docs/posts/2025/versatile-three-stream-kernel.html), [batari multisprite docs](https://www.randomterrain.com/atari-2600-memories-batari-basic-commands.html).
 4. [G5 authorization boundary](G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md), [G4 unissued physical-micro draft](G4_FUTURE_SINGLE_MICROPROBE_ORDER_DRAFT_NOT_AUTHORIZED_2026-11-17.md).
 
-**TOTALSTATUS:** G5J source-only fertig; G5 användardriven designcutover INTE klar; G6 och full R1/R2–R4 INTE auktoriserat/inte verifierat. Inga code/graphics/test-mask/ROM ändrade.
+**TOTALSTATUS:** G5J source-only färdig; G5 användardriven designcutover INTE klar; G6 och full R1/R2–R4 INTE auktoriserat/inte verifierat. Inga code/graphics/test-mask/ROM ändrade.
