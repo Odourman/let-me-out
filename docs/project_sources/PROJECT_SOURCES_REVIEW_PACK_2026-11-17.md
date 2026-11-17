@@ -1,4 +1,13 @@
 # LET ME OUT! – Project Sources review-pack receipt (2026-11-17)
+
+## MAIN VII: ANVÄND ENDAST KORRIGERAT PAKET VID NY PROJECT SOURCES-UPPLADDNING
+
+Detta dokument beskriver det **historiska MAIN VI-paketet**, som innehåller en konflikt om O1:s godkännande och två identifierarkrockar. [Fullständigt rättelsekvitto](PROJECT_SOURCES_MAIN_VII_CORRIGENDUM_2026-11-17.md).
+
+**Ny rekommenderad fil i MAIN VII-chatten:** `LET_ME_OUT_PROJECT_SOURCES_MAIN_VII_CORRECTED_2026-11-17.zip`, SHA256 `1d749df02d74b8fa1c41f8160e5ca2ae15d41eff32bdb3fac6be895915653cb0`. Nio filer, 29 källrader, uppdaterat checksum-manifest. Den äldre Drive-ZIP:en nedan bevaras som historisk dokumentation, **inte rekommenderad som ny Project Sources-ingång**. Lägg inte till båda.
+
+MAIN VII:s korrigering bevarar giltigt O1 (faktisk key/android-överlapp + kortvarigt litet flimmer), markerar att G5-synlighet/AI/poäng fortfarande kräver separat beslut och skiljer teknik-etiketterna `TK01–TK05` från spelets `K1`, samt `G5-S0/G5-S1/G5-S2` från äldre spawn-`S0/S1`.
+
 **Purpose:** source-navigation and decision-preparation bundle for addition to the ChatGPT Project's Sources. **Not a replacement of higher-authority original sources. No game canon update. No ROM/G6 authorization.**
 **Snapshot GitHub main before this sourcepack was written:** `2cbb600f6933f181b92e4180cf0c5eef97fd9919`. MAIN must always re-read current main and original design before any later action.
 
