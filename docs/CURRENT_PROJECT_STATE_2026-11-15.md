@@ -3,6 +3,14 @@
 **Datum:** 2026-11-15  
 **Omfattning:** endast Atari 2600-spelet *Let Me Out!*.
 
+## MAIN VI – SENASTE 10, NULÄGE OCH NÄSTA 10: VILLKORAD PLAN 2026-11-17
+
+MAIN VI:s separata direkta kontroll av main GitHub, Issue #6 (OPEN), PR #7 (OPEN/DRAFT/UNMERGED), Issue #8 (OPEN), dedikerad Drive-mapp, aktuella migrationsunderlag och frysta ROM F2–F11 visar fortfarande **FULL R1/v0.18 BLOCKED/NOT ACCEPTED**; **F11 G0 FAIL/G1 NOT RUN**, ingen ny ROM/F12-auktorisation eller fullspel. Den äldre [MAIN_STATUS_NEXT_10_2026-11-15.md](MAIN_STATUS_NEXT_10_2026-11-15.md) är historisk förv0.18-plan, inte dagens aktuella tio steg.
+
+**Källbaserat nytillkommet strategiskt fynd:** separata rådgivande researchgrenar R1e/R1f/R1g från 2026-11-16 demonstrerar via lokal Stella/DASM **fyra olika rättvända vita originalmasker med dual P0/P1**, inklusive gul P0-spelare; R1g växlade endast **fjärde** androidens fyra diskreta X-lägen i en ROM över 600 frames medan de andra var fasta och M0 på annan rasterrad. **Inte sex fria X/Y eller integrerat R1+R3.** P0/P1 är därför en meningsfull **SOURCE-ONLY forskningsfråga**, inte ny implementeringsauktorisation och ingen korrigering av F11:s snävt valda P1-only-stopp.
+
+[Ny fullständig MAIN VI-plan med tio avslutade tekniska F2–F11-steg, realt nuläge och tio explicit villkorade nästa milstolpar](MAIN_VI_LAST_10_CURRENT_NEXT_10_ROADMAP_2026-11-17.md) · [Drive-dokument i rätt projektmapp](https://docs.google.com/document/d/1uhplCBaPPIZp9psTafUub8vTTeMTCd7HBL2MFxOXGYk/edit). **Omedelbar prioritet endast read-only SOURCE-granskning av befintliga dual P0/P1-källor, fysisk worst-case-timing och GO/NO-GO.** F12, andra ROM, R2–R4-integration, E02, PR-merge, PAL, ny mapper, gameplay och designwaiver är **inte** beställda. Tidigare daterad historik nedan oförändrad.
+
 ## MAIN VI – INITIAL KÄLLGRANSKNING OCH R1 HOLD 2026-11-17
 
 MAIN VI har livegranskat aktuell GitHub och projektets Google Drive, hämtat och granskat originalets 57 beslut, originalspecifikation och tre handskisser, samt jämfört F9/F10/F11 med versionspinnad Stella 6.7.1 TIA-kod och samtliga 30 ursprungliga Atari-trick. **Formellt beslut: fortsätt bevara `FULL R1/v0.18 = BLOCKED / NOT ACCEPTED`; `F11_SOURCE_ONLY_INFEASIBLE` är avslutat G0-stopp med 0 nya ROM/Stella/DASM; ingen R1-F12 eller annan ny ROM-order, PAL, mapper, fullspel, grafikförändring, PR-merge eller separat Verification auktoriseras.** Detta är varken ett fysikaliskt universalomöjlighetsbevis eller någon ändring av sex NPC/ursprunglig pixelcanon. En ny falsifierbar arkitektur kräver en faktisk numerisk-X/Y-till-START-/GRP-cykelplan med originalmasker, närfallsöverlevnad, P0/M0/PF och resident standard-F6 inom 76 CPU-cykler före separat beslut. F9:s åtta inbrända binära profiler eller extra F6-banker uppfyller inte kravet. Eventuell RAM-exekverad patchad mikrokernel är endast källbaserad forskningsidé, inte nytt bevis.
