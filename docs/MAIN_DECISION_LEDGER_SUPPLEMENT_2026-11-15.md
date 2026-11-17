@@ -1,5 +1,17 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D12 och LM-D13: godkända G5Q-designmål, 2026-11-17
+
+**Direkt användargodkännande via uttrycklig hänvisning:** På MAIN VII:s omedelbara fråga "Godkänner du G5Q:s rekommendation A1 + B1 som våra fortsatta designmål?" svarade användaren **"Följ dina egna rekommendationer"**. I just denna samtalskontext innebär det godkännande av A1+B1 som **mål**, inte av övriga förslag. [Fullständig spårbar beslutsregistrering](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1Yh5XfKZ8f9rm97sG7jY8tAjuGiV-0o9O-d9oy-BkP2s/edit).
+
+| ID | Senare giltigt användarbeslut | Avgränsning |
+|---|---|---|
+| **LM-D12 (G5Q A1)** | Fem framtida NPC M,M,F,SM,SF ska **logiskt kunna röra sig individuellt fritt i X/Y**, fyrvägs-jakt och NPC/NPC-kollision bevaras som spelmål. | **Designmål godkänt.** Ingen permanent tyst Y-lane, ingen accepterad renderer eller generell synlighets-/AI-waiver. Framtida v0.18 R1/R2-cutover fortfarande obeslutad. |
+| **LM-D13 (G5Q B1)** | Fem fiender ska vara igenkännbara, farliga närliggande fiender får inte systematiskt försvinna; key ska synas när ingen NPC faktiskt pixelöverlappas. | **Kvalitetsmål godkänt.** Ingen numerisk flimmergräns, 10Hz-acceptans eller ny key-hide. **LM-D06/O1** fortsatt giltig enbart vid faktisk pixelöverlappning. |
+
+**Läsordning och auktoritet:** LM-D12/13 gäller senare **designmål** för den framtida femfiendersinriktningen; den äldre LM-D01 med sex fiender och frysta historiska R1/R2-romtester ska inte raderas eller retroaktivt märkas om. Övriga 57 beslut, Master Spec, K1/E1, originalmasker och tillämpliga restriktioner kvarstår. **C/D/E (test-baslinje, poäng -30 kontra -25, 1/5 key-bärare/femspawn, exakta v0.19-kartor) inte godkända; G5 formellt ÖPPEN och G6/F12 inte auktoriserade.**
+
+
 **Datum:** 2026-11-15  
 **Projekt:** enbart `Odourman/let-me-out` / Google Drive-mappen `Atari 2600 - Let Me Out!`.  
 **Syfte:** bevara nyare användarbeslut, precisera vad som *inte* är godkänt och ge nya MAIN-/ROM DEVELOPMENT-/VERIFICATION-chattar en entydig ingång.  
