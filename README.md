@@ -2,6 +2,10 @@
 
 Ett fristående Atari 2600-spel under design. Projektet är **inte** The Cabin och **inte** I Love a Fish.
 
+## MAIN VII – kontrollerad migration och korrigerat Project Sources-paket
+
+[MAIN VI → MAIN VII mottagningskvitto](docs/MAIN_VI_TO_MAIN_VII_RECEIPT_2026-11-17.md) · [Project Sources-rättelse och O1:s godkännandestatus](docs/project_sources/PROJECT_SOURCES_MAIN_VII_CORRIGENDUM_2026-11-17.md) · [Korrigerad niofilspaket-ZIP i officiell Drive](https://drive.google.com/file/d/1fxexRLz9fE8egW9bFnA1zA3x3j7f9AYj/view). **Original-MAIN VI-ZIP:en är historik, ladda inte båda.** G5-formal fortfarande öppet, G6/F12 ej auktoriserade, äldre PR #7 blockerat/draft.
+
 ## GRAPHICS - ren chattmigrering 2026-11-17
 
 **MAIN V har avslutat sex GRAPHICS-kandidatstudier.** Alla är mottagna som dokumenterade grafiska underlag, men **ingen är slutgodkänd eller Stella-testad**. Ingen ny GRAPHICS-version/studie är auktoriserad. Nästa dedikerade GRAPHICS-chatt ska läsa aktuell MAIN-status och invänta en separat avgränsad designorder.
