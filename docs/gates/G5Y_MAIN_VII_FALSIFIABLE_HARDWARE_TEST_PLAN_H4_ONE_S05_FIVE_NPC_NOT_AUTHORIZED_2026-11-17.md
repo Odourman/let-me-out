@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII G5Y: falsifierbar teknisk testordning efter fastslagen framtida fyrkartsdesign
+
+> **HISTORISK FÖRREGISTRERAD PLAN (G5Y).** Vid planens skapande var G0 inte auktoriserad; detta **har senare ändrats** genom LM-D20: endast G0 H4-ONE source-only beställdes och är redan **avslutad `G0_INCONCLUSIVE_NO_ROM` i G5AA**. Matrisen dokumenterar planerade scenarier, inte att 17 fall fysiskt utförts; ingen G1/G6/F12/ny ROM är auktoriserad. Se [aktuell status](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
+
 **Datum:** 2026-11-17. **Status:** `G5Y_TECHNICAL_TEST_PLAN_READY_SOURCE_ONLY_NO_NEW_TEST_AUTHORIZATION`.
 **Arbetets omfattning i denna MAIN-chatt:** söka och jämföra nuvarande original-/teknikkällor, välja en **testordning som förslag** och förregistrera tester med stoppvillkor. **Ingen** assembler, DASM-kompilering, ROM, Stella-fysiktest, G0 som faktiskt utfört experiment, G6/F12, PR-merge, nytt tillstånd till en specialist, nytt gameplaybeslut eller oberoende Verification har skett.
 
