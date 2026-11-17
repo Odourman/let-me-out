@@ -1,0 +1,43 @@
+LET ME OUT! – G5AD LM-D21, ROM DEVELOPMENT III
+Date: 2026-11-17
+GLOBAL_STATUS: G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER
+SOURCE_MAIN_BASE_COMMIT: aaaeef0522a746cf4f23faee9fcf2c49dd572d02
+BRANCH: rom-dev-iii/g5ad-tia-calibration-lm-d21-20261117
+G5AD_NEW_ROM: NONE
+G5AD_NEW_ASM: NONE
+G5AD_NEW_LST_SYM: NONE
+G5AD_DASM_BUILD: NOT_RUN
+G5AD_STELLA_TEST_CASES: NOT_RUN
+G5AD_COLORCLOCK_MEASUREMENTS: NONE
+G5AD_TEST_VERDICTS: TIA-C0 C1 C2 C3 C4 N1 = NOT_DETERMINABLE (NOT_RUN_NO_NEW_ROM)
+FINAL_DECISION: STOP_PER_G5AD_AUTHORIZATION_SECTION_5
+
+GIT FILE INDEX, SHA-1 Git blob as returned by actual readback:
+8221c2114b5d90fd2d9b139b953139519720fec1  .github/workflows/g5ad_prebuild_instrument_check.yml
+f225f63b338f1031e96065ae60a943ec3222ea83  rom/g5ad_tia_calibration_2026-11-17/TO_MAIN_G5AD_TIA_CALIBRATION.md
+7ea858fc4d3265a9bc46b684616b8894ee6171db  rom/g5ad_tia_calibration_2026-11-17/G5AD_CASE_DISPOSITION.csv
+2a825e9b9f7ef2e0167f98d607b1aac8a06a9523  rom/g5ad_tia_calibration_2026-11-17/PREBUILD_REPRODUCTION.md
+SELF_MANIFEST: not self-referential; Git blob SHA of this manifest obtainable through GitHub fetch_file.
+
+SOURCE_AUTHORITY:
+G5AD order sha1 4480314a2f51cc5569a4d72d5d58ce9d7a910f62
+G5AD prereg six cases sha1 ba56e95d1729afac0a0df2ce4993c2bfdaa996b2
+NPC original 8x9 mask sha1 058800a4c1904d1ff289e7e61b3902aa111ba16d
+Historical preexisting F9 ROM sha256 6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b
+F9 ROM explicitly READ ONLY and NOT G5AD output.
+
+CI PREFLIGHT (failed attempts kept, read original logs):
+https://github.com/Odourman/let-me-out/actions/runs/44158684786  FAIL missing xdpyinfo, installed X11 later
+https://github.com/Odourman/let-me-out/actions/runs/44158817619  SUCCESS toolchain + Xvfb NO ROM
+https://github.com/Odourman/let-me-out/actions/runs/44159089329  FAIL empty/nonmatching saveSes; native TIA snapshot 320x228 in runner
+https://github.com/Odourman/let-me-out/actions/runs/44159356697  FAIL actual SESSION_FILE_BYTES=0; separate postprocess IndentationError
+RAW_LAST_JOB: https://github.com/Odourman/let-me-out/actions/runs/44159356697/job/134308674746
+RAW_LAST_ARTIFACT: https://github.com/Odourman/let-me-out/actions/runs/44159356697/artifacts/14362582337
+RAW_LAST_ARTIFACT_ZIP_SHA256_REPORTED_BY_ACTIONS: 853d1887d108cd9fc1c5b895546558afe28e747c03e169ee007ee243f14f966a
+NOTE: native TIA screenshot was NOT shown to have been copied into any final artifact; only raw original job logs and workflow artifact evidence must be cited, not unarchived native PNG.
+
+DRIVE_MIRROR: https://docs.google.com/document/d/11ckgzQ07vv9TikL3RYNG2aFy0Qj_6KOB3dW74oIwRCU/edit
+DRIVE_PARENT: 1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u
+DRIVE_NOTE: native Google Doc Markdown text with archival header, not byte-identical GitHub Markdown. Read back and verified.
+
+NO MERGE, NO PR, NO FURTHER TEST AUTHORIZED.
