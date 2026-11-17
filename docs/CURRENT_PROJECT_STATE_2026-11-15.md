@@ -1,5 +1,12 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+## MAIN VII G5Q – A1+B1 godkända som designmål, separat G5 formell spärr kvar (2026-11-17)
+
+**NYTT GILTIGT, SNÄVT BESLUT:** Användaren svarade "Följ dina egna rekommendationer" direkt på frågan om att godkänna **A1+B1 som våra fortsatta designmål**. [Beslutsprotokoll LM-D12/13](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1Yh5XfKZ8f9rm97sG7jY8tAjuGiV-0o9O-d9oy-BkP2s/edit). **LM-D12/G5Q A1:** fem framtida NPC ska logiskt kunna röra sig individuellt fritt i X och Y med trovärdig fyrvägs-jakt; inga automatiskt påtvingade permanenta hårda Y-banor. **LM-D13/G5Q B1:** farliga NPC ska förbli igenkännbara, inga systematiska osynliga hot, nyckel får inte döljas enbart på grund av samma Y utan faktisk pixelöverlapp; **O1/LM-D06 gäller redan bara vid verklig key/androidöverlapp**.
+
+**A1+B1 är godkända mål, INTE visad teknisk genomförbarhet eller kvantifierad flicker-waiver.** Tidigare G5Q-avsnitt nedan med "beslut väntar" är **historisk snapshot före detta användarsvar**. **C/D/E** (framtida R1=5/R2=4+key versionerad bas, score -30 eller -25, fem startpositioner/1/5-bärare och exakta v0.19 kartor) kräver fortsatt separata uttryckliga användarbeslut. **Ingen ny ROM, ingen G5-PASS, ingen G6/F12/G7–G10, ingen Verification och ingen PR-merge har auktoriserats.**
+
+
 ## MAIN VII G5Q – beslutsklart förslag, inget användarbeslut ännu (2026-11-17)
 
 [Fullt G5Q-beslutsunderlag](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_DECISION_READY_DESIGN_TARGET_AND_PRE_G6_BOUNDARY_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1_bB-F6pvwEehRP09F1jdfyYnUtKo4c6mie4QD3c9YGw/edit). **STATUS `G5Q_USER_DECISION_PENDING_NO_CANON_CHANGE`**. G5P forsknings-/reproduktionsfas avslutad, G5:s nästa sakliga åtgärd är att lägga fram ett avgränsat uttryckligt designbeslut. MAIN rekommenderar **A1**: fri logisk individuellt rörlig fem-NPC-X/Y och bibehållen jakt som önskat spelmål, utan permanent hård Y-lane eller automatiskt godkänd flimmer-/osynlighetspolicy. MAIN rekommenderar **B1**: spelaren måste kunna följa farliga NPC; key får endast skymmas vid faktisk pixelöverlapp enligt redan godkända O1, inte vid blott samma rasterhöjd. Ingen kvantifierad flimmerwaiver har beslutats. Användarens allmänna "Fortsätt" är inte ett godkännande av A1 eller B1.
