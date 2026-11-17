@@ -36,6 +36,13 @@ Användaren gav MAIN VI fria händer för **nästa steg** i den redan överensko
 - **G1 resultat:** `DOCUMENTATION_COMPLETE_WITH_DOCUMENTED_OPEN_ITEMS`. Detta är administrativt, inte `E03 PASS` för en ROM.
 - **Avbryt efter G1.** Nästa separat uppdrag bör vara **G2: faktisk käll-/råevidensgranskning av R1e/R1f/R1g och F9/F11**, med R1ba-korrigering och skarpa bevisklasser; denna G1-leverans **startar inte G2**, F12, G6, gameplay, ny mapper, PAL eller oberoende E02.
 
+## G1 arkiveringskvittens (GitHub + projektets Drive, 2026-11-17)
+
+- **Drive huvudrapport och auktoritet:** https://docs.google.com/document/d/1t41LBeuSLCxe-zpIwBgZJxMf11ZpUVXGL1BP2uQoPwQ/edit
+- **Drive hela 102-postersregistret och fullständiga integritetsmanifestet:** https://docs.google.com/document/d/1gQv8njPYULlPGdeFPsKF-Olm6gSVGlq6I_egVRyu-0s/edit
+- Bägge filerna är lästa tillbaka efter skrivning; bägge ligger i projektmappen `1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`.
+- GitHub normativt maskinläsbart källformat: [G1 CSV](G1_REQUIREMENTS_TRACE_2026-11-17.csv), [manifest](G1_BASELINE_MANIFEST_2026-11-17.json), [differens](G1_AUTHORITY_DIFF_2026-11-17.md). Google Docs är bevarade sökbara speglar och skapar ingen ny användarcanon.
+
 ## 6. Signeringsgräns
 Författare MAIN VI, dokumentär källgranskning. Inget tekniskt ROM-PASS, ingen ny användarauktorisation och ingen oberoende VERIFICATION-underskrift. All verklig framtida implementation kräver **separat uttrycklig arbetsorder** med fryst scope och rätt projektroll.
 
