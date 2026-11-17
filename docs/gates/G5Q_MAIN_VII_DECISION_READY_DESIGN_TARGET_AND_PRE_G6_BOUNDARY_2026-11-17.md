@@ -1,4 +1,9 @@
 # LET ME OUT! – MAIN VII G5Q: G5-beslutsunderlag efter G5P
+
+## MAIN VII tillägg 2026-11-17 – senare avgränsat användargodkännande
+
+Efter detta beslutsutkast frågade MAIN VII uttryckligen om användaren godkände **G5Q A1+B1 som fortsatta designmål**. Användaren svarade **"Följ dina egna rekommendationer"**. Därmed är **A1 och B1 godkända som produkt-/kvalitetsmål** enligt [senare exakt beslutsregistrering LM-D12/13](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) och [Drive-kopia](https://docs.google.com/document/d/1Yh5XfKZ8f9rm97sG7jY8tAjuGiV-0o9O-d9oy-BkP2s/edit). De ursprungliga `DRAFT`-/`USER_DECISION_PENDING`-formuleringarna nedan är historiskt utkast, **supersedade endast för A1+B1**, inte för C/D/E. Ingen ROM-implementation, renderingswaiver, R1/R2-cutover, poängändring, kartbyte, G5-PASS eller G6/F12-uppdrag följer.
+
 **Datum:** 2026-11-17. **Status:** `G5Q_USER_DECISION_PACKAGE_DRAFT_NO_CANON_CHANGE`. **Inte:** användarbeslut, ny ROM-order, G0/G6/F12-auktorisation, grafikwaiver, PR-merge eller oberoende Verification.
 
 ## 1. Varför G5Q
