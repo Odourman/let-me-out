@@ -74,6 +74,9 @@ jobs:
           while IFS= read -r f; do
             case "$f" in *.txt)
               echo "$f"
+              stat -c "SESSION_FILE_BYTES=%s" "$f"
+              sed -n '1,140p' "$f" | head -c 8000
+              cp "$f" preflight_data/seed_debugger_session.txt
               grep -i -E '_sCycles|_scan|_fCount|_bank|tia|session|saved' "$f" | head -45 || true
               ;;
             esac
@@ -92,6 +95,8 @@ jobs:
                       with Image.open(p) as im:
                           z=(str(p),im.size,im.mode)
                       snapshots.append(z)
+                    import shutil
+                    shutil.copy2(p,Path("preflight_data/seed_native_TIA.png"))
                   except Exception: pass
               if p.suffix.lower()=='.txt':
                   c=p.read_text(errors='replace')
