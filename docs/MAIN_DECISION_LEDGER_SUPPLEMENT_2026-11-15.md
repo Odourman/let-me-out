@@ -1,5 +1,12 @@
 # Let Me Out! – MAIN:s kompletterande beslutsregister och aktuell auktoritet
 
+## MAIN VII – LM-D21: EN instrumenterad TIA-kalibrerings-ROM godkänd (2026-11-17)
+
+**Direkt uttryckligt användarbeslut:** Användaren citerade MAIN:s rekommendation om **ett enda begränsat TIA-mätprov** av RESP, GRP, NUSIZ0, M0, ENAM0 och instruerade **"Gör så"**. [G5AD bindande ROM DEVELOPMENT III-arbetsorder](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_ONE_TIA_PHASE_CALIBRATION_ROM_EXPLICIT_USER_AUTHORIZATION_2026-11-17.md) · [sex preregistrerade scenarier](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AD_MAIN_VII_TIA_CALIBRATION_PREREGISTERED_CASES_2026-11-17.csv) · [Issue #13](https://github.com/Odourman/let-me-out/issues/13) · [Drive](https://docs.google.com/document/d/163Xtt4ygxQD7eM4AfPwZgAN6JktF8DcEQjKK43JNF-g/edit).
+
+**LM-D21 – avgränsad ny ROM-auktorisation:** EN källa+slutlig fryst standard-F6 NTSC 16 384-byte diagnos-ROM med egna DASM/Stella/Debugger-instrumenterade mätningar av `TIA-C0/C1/C2/C3/C4/N1`. Ingen fullspels-H4, ingen allmän G1/F12/G6, ingen S05/goldkey/orange door eller femfienders-implementation. **G5Z G0-resultat `INCONCLUSIVE_NO_ROM` gäller fortsatt** som historiskt uttömd order. Endast framtida MÄTNING för C0–C4/N1 får nu utföras av ROM DEVELOPMENT III och därefter STOPP; inte oberoende Verification II. Inga senare spelregler/waivers godkända.
+
+
 > **STATUS: KRONOLOGISKT BESLUTSREGISTER MED HISTORISKA TIDSSNITT.** För exakt aktuellt nuläge använd [CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). Äldre "NOT APPROVED", "NOT ORDERED" eller "CURRENT" längre ned refererar till respektive beslutsdatum; de supersederas endast i motsvarande ämne av senare uttryckliga beslut LM-D12..20. G5Z G0 = COMPLETED INCONCLUSIVE; ingen ny ROM/G6.
 
 
