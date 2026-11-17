@@ -1,4 +1,7 @@
 # LET ME OUT! – MAIN VII G5AE: G5AD stoppad i förinstrumenteringen, oberoende källmottagning
+
+> **SENARE ANVÄNDARBESLUT LM-D22 (2026-11-17):** G5AE:s text nedan dokumenterar korrekt det historiska G5AD-stoppet och MAIN:s dåvarande rekommendation om en ny, särskilt beslutad F9-instrumentationskontroll. Användaren har **därefter** uttryckligen godkänt just denna begränsade åtgärd ("Ok, fortsätt med din rekommendation"). Se [aktivt G5AF-uppdrag](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AF_MAIN_VII_LM_D22_F9_INSTRUMENTATION_ONLY_REPAIR_RETEST_AUTHORIZED_2026-11-17.md) och [Issue #14](https://github.com/Odourman/let-me-out/issues/14). G5AD:s `NO_BUILD`-resultat kvarstår; G5AF tillåter **inga nya ROM/ASM**, H4/G6/F12/S05, fem fiender, Verification eller merge.
+
 **Datum:** 2026-11-17
 **Mottagningsstatus:** `G5AE_G5AD_DELIVERY_RECEIVED_SCOPE_COMPLIANT`
 **Slutligt utfört G5AD-resultat:** `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER`
