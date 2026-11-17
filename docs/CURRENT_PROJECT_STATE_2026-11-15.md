@@ -1,5 +1,14 @@
 # Let Me Out! – aktuellt projektläge (MAIN)
 
+## MAIN VII G5P – RESEARCH II levererad, offline självständigt reproducerad, G5 fortfarande öppen (2026-11-17)
+
+**STATUS:** `G5P_ADVISORY_DELIVERY_RECEIVED_REPRODUCED_OFFLINE`. [MAIN VII-mottagningsrapport](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5P_MAIN_VII_RESEARCH_DELIVERY_INTAKE_AND_REPRODUCTION_2026-11-17.md) · [Drive-kopia](https://docs.google.com/document/d/1HzRq0wJlX8iZPZsxeDRWpQenMI5eveAr9lIgfTNICSA/edit) · [RESEARCH II-originalrapport](https://github.com/Odourman/let-me-out/blob/research/g5p-adaptive-y-offline-20261117/docs/research/G5P_RESEARCH_II_FULL_REPORT_2026-11-17.md) · [Issue #9](https://github.com/Odourman/let-me-out/issues/9). Forskningsfilerna mottogs på en **isolerad, ej mergad researchbranch**, originalrapport och ZIP finns i officiell Drive-mapp. ZIP 10 filer/42 568 byte, SHA256 `696701bc728a15871c31cdf59b0237bad2a7f7cf68796978e4fbbc6258cced14`, CRC och nio interna hashposter PASS.
+
+**MAIN egen source-only mottagningskontroll:** båda Pythonoffline-skripten kördes om; **sex genererade CSV blev byteidentiska** med publicerade resultat; 8/8 hexkartgrider samt 4/4 v0.11-kandidatuppsättningar och 4/4 *geometrifiltrerade* v0.19-kandidatlistor motsvarar GitHub-original. 672+168 körningar, 12 G5O-replays. V0.11/84 fall per modell: strikt 2,869 / adaptiv 3,155 / mjuk/fri 4,048 unika hotande NPC. Strikt stall 84/84 men även mjuk/fri 67/84; `soft` och `free` delar samma logiska AI. Mjuk modell bortprioriterar 498,6 NPC×ticks/900 syntetiskt, **inte faktiskt mätt TIA-flicker**.
+
+**MAIN:s huvudrekommendation:** håll fri *logisk* X/Y som kvalitetsmål och en visuell hybrid som **forskningskandidat**, men **inga S0/S1/S2-renderingsregler eller kvalitetswaivers är godkända**. S05: NPC/key/door/player på samma rasterhöjd förblir hårdvaruolöst, O1 endast faktisk pixelöverlapp. **Formella G5-användarbeslut väntar** (Y/synlighet, femfienderscore, spawn/key/rum/R1–R2-rebaseline). G6/F12, ROM, oberoende VERIFICATION och PR-merge EJ auktoriserade; ingen av forskningsfilerna har mergats till main.
+
+
 ## MAIN VII G5P – RESEARCH II-uppdrag utfärdat, ännu inte specialistgenomfört (2026-11-17)
 
 **Aktuell fortsättning inom G5 – ENDAST RÅDGIVANDE:** [G5P preciserat researchkontrakt](https://github.com/Odourman/let-me-out/blob/main/docs/research/G5P_MAIN_VII_TO_RESEARCH_II_ADAPTIVE_Y_POLICY_STUDY_ORDER_2026-11-17.md) · [uppgift Issue #9](https://github.com/Odourman/let-me-out/issues/9) · [Drive-kopia](https://docs.google.com/document/d/1NHYV4EVnJyce19DCyFHFA_bEk5UMKHlN9okugkeyDxc/edit). MAIN VII har utfärdat ett source-only forskningsuppdrag till **RESEARCH II** att testa adaptiv strikt Y-separation, mjuk/synlig same-Y-hybrid, kontrollerad S2-flicker och S0 som hög-riskreferens mot riktiga kartor och originalbeslut. Uppdraget är **öppet och inte påstått utfört av specialistchatten**; ingen autonom specialistchatt har aktiverats genom att issue skapades.
