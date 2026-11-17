@@ -1,5 +1,13 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN VIII G5AG – AKTUELL SENARE BINDANDE STOPPSPÄRR (2026-11-17)
+
+**SENARE ÄN G5AF-ORDERTEXTEN NEDAN:** [MAIN VIII:s G5AG mottagningsrapport](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md) visar att LM-D22/G5AF är **LEVERERAD OCH AVSLUTAD**, endast utvecklarverifierad fryst F9/Stella-instrumentering `G5AF_INSTRUMENTATION_READY_BOUNDED`. [Issue #14](https://github.com/Odourman/let-me-out/issues/14) är CLOSED/COMPLETED endast för instrumenteringen. Det tidigare `G5AF_AUTHORIZED_NOT_EXECUTED` nedan är status **vid orderns utfärdande**, inte aktivt mandat. De två tillåtna Actions-mätkörningarna har förbrukats. **Ingen tredje körning.**
+
+**Historiskt oförändrat:** G5Z/LM-D20 H4-ONE G0 slutade `INCONCLUSIVE_NO_ROM`. G5AD/LM-D21 villkorad TIA-kalibrering slutade `NO_BUILD_INSTRUMENTATION_BLOCKER`; ingen ny G5AD-ROM och inga C0–C4/N1-tester. G5AF bevisar inte internt RESP/GRP/START eller full kernel. **`G5_FORMAL_OPEN`**, ingen ny ROM, H4/G1, G6/F12, S05, femfiendersimplementering, oberoende VERIFICATION II eller PR-merge auktoriserad. Nytt tekniskt steg fordrar separat uttrycklig användarauktorisation. [Levande aktuellt index](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md).
+
+**ALLT UNDER NEDANSTÅENDE HISTORISKA G5AF/G5AE/G5AD-AVSNITT MÅSTE LÄSAS MED DESS TIDPUNKT OCH OVANSTÅENDE LATER STATUS.** Ursprungligt mandat och negativa provresultat ändras inte retroaktivt.
+
 ## MAIN VII G5AF – LM-D22 specifikt godkänd F9 instrumenteringsreparation, utan ROM-bygge (2026-11-17)
 
 **Efter G5AE:s stängda G5AD-förkontroll:** MAIN föreslog enbart en mycket liten korrigering och ommätning av loggning med redan existerande fryst F9, och användaren svarade **"Ok, fortsätt med din rekommendation"**. Detta är **separat LM-D22**. [G5AF bindande arbetsomfattning och stopp](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AF_MAIN_VII_LM_D22_F9_INSTRUMENTATION_ONLY_REPAIR_RETEST_AUTHORIZED_2026-11-17.md) · [Issue #14 beställt enbart till ROM DEVELOPMENT III](https://github.com/Odourman/let-me-out/issues/14) · [Drive](https://docs.google.com/document/d/1qRX0t1RRn2bZG3dS4-9NAnrnbHZbd1wRVfeAorEbVAc/edit). **`G5AF_AUTHORIZED_NOT_EXECUTED`**, G5AD förblir `COMPLETED_NO_BUILD_INSTRUMENTATION_BLOCKER`.
