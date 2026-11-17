@@ -45,14 +45,24 @@ EOF
   touch "$dest/run_marker"
   stella -debug -bs F6 -format NTSC -video software -vsync 0 -audio.enabled 0 "$rom" > "$dest/stella_stdout.log" 2>&1 &
   spid=$!
-  sleep 6
+  # Source F9's original CI allowed 16s of GUI initialization.
+  # Old 6s blind delay failed on first (cold) Stella startup. Wait for
+  # actual window visibility, at most 24s, without changing any test data.
+  wid=""
+  for attempt in $(seq 1 24); do
+    if ! kill -0 "$spid" 2>/dev/null; then break; fi
+    wid="$(xdotool search --onlyvisible --name Stella 2>/dev/null | head -n1 || true)"
+    if [[ -n "$wid" ]]; then
+      echo "G5AF_STELLA_GUI_VISIBLE_AFTER_POLL $ident poll=$attempt" | tee "$dest/gui_ready_poll.txt"
+      break
+    fi
+    sleep 1
+  done
   if ! kill -0 "$spid" 2>/dev/null; then
     echo "G5AF_STELLA_PROCESS_EXITED $ident" | tee "$dest/FAIL.txt"
     cat "$dest/stella_stdout.log"
     fail=1; spid=""; continue
   fi
-
-  wid="$(xdotool search --onlyvisible --name Stella 2>/dev/null | head -n1 || true)"
   if [[ -z "$wid" ]]; then
     echo "G5AF_NO_VISIBLE_STELLA_PROMPT $ident" | tee "$dest/FAIL.txt"
     fail=1
