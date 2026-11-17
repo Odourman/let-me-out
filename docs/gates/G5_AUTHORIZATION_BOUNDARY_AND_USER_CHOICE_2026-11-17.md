@@ -1,5 +1,14 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN VII G5AF – LM-D22 specifikt godkänd F9 instrumenteringsreparation, utan ROM-bygge (2026-11-17)
+
+**Efter G5AE:s stängda G5AD-förkontroll:** MAIN föreslog enbart en mycket liten korrigering och ommätning av loggning med redan existerande fryst F9, och användaren svarade **"Ok, fortsätt med din rekommendation"**. Detta är **separat LM-D22**. [G5AF bindande arbetsomfattning och stopp](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AF_MAIN_VII_LM_D22_F9_INSTRUMENTATION_ONLY_REPAIR_RETEST_AUTHORIZED_2026-11-17.md) · [Issue #14 beställt enbart till ROM DEVELOPMENT III](https://github.com/Odourman/let-me-out/issues/14) · [Drive](https://docs.google.com/document/d/1qRX0t1RRn2bZG3dS4-9NAnrnbHZbd1wRVfeAorEbVAc/edit). **`G5AF_AUTHORIZED_NOT_EXECUTED`**, G5AD förblir `COMPLETED_NO_BUILD_INSTRUMENTATION_BLOCKER`.
+
+**Tillåtet:** en enda F9-instrument-harnessfamilj, högst två nya Actions-körningar efter korrigering, rätta `saveSes` i autoexec-startfas och Pythonindentering, mät och spara två verkliga F9 CPU/PC/register/scanline-stopp med native TIA-bild och hashad sessions- och artefaktkedja. **Inte** en ny G5AD-ROM och inte C0–C4/N1-test. Även framgång vore bara `INSTRUMENTATION_READY_BOUNDED`, inte H4-/G5-/S05-PASS.
+
+**Kvarvarande verkliga spärrar:** `G5_FORMAL_OPEN`, `NEW_ROM/H4/G1/G6/F12/S05/FIVE_NPC_IMPL/NEW_INDEPENDENT_VERIFICATION/PR_MERGE_NOT_AUTHORIZED`. Historiska textavsnitt om "inga nya testtillstånd" nedan gäller tiden före det specifika LM-D22-beslutet. Det nya tillståndet gäller **inte** ROM DEVELOPMENT III:s möjlighet att utfärda egen fortsättning.
+
+
 ## MAIN VII G5AE – senast giltiga status: G5AD NO-BUILD, ingen aktiv ROM-order (2026-11-17)
 
 [G5AE MAIN VII originalkontrollerad G5AD-mottagning](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AE_MAIN_VII_G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER_RECEIPT_AND_STELLA_SAVESES_SOURCE_REVIEW_2026-11-17.md) · [Drive](https://docs.google.com/document/d/1hJZJa11HB5pKV1k1nBn9YACnmEJHlNLj9klyXUV-usE/edit) · [fryst specialist-TO_MAIN](https://github.com/Odourman/let-me-out/blob/1fe92438c3aa0d9f41cca0066f0a95e6c0335acc/rom/g5ad_tia_calibration_2026-11-17/TO_MAIN_G5AD_TIA_CALIBRATION.md) · [Issue #13](https://github.com/Odourman/let-me-out/issues/13). **LM-D21:s enda särskilt godkända diagnos-ROM nådde `G5AD_NO_BUILD_INSTRUMENTATION_BLOCKER` i hård förkontroll, och är avslutad utan att någon G5AD-ROM byggdes**. Inget C0–C4/N1 scenario exekverades. DASM/Stella 6.7.1 fanns; fryst F9 gav native bild, men 0-byte `saveSes`, separat Python-indenteringsfel och saknad PC/STA/register/CC/råpixelkorrelation förhindrade verklig mätning. MAIN VII kontrollerade körloggar och Stella-källor; källa visar stark ordningsförklaring `saveSes` från `autoexec` före promptens färdigställning. Det bevisar inte generellt Stella-bug eller Atari-omöjlighet.
