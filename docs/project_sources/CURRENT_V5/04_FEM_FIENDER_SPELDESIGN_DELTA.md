@@ -1,18 +1,6 @@
-# LET ME OUT! – FEM FIENDER: GODKÄNDA FRAMTIDA REGLER / V5
+# LET ME OUT! – FEM FIENDER, FRAMTIDA SPELDESIGN OCH KARTOR / V5
 
-**Designbeslut oförändrade av G5AF:** Framtida fem NPC M,M,F,SM,SF, individuell fri logisk X/Y, synlighets-/O1-gräns, `-30` per kill, fem validerade spawnpunkter per godkänd kartlayout, 1/5 keyholder och exakt `A_OPEN_01/B_OPEN_02/C_OPEN_01/D_OPEN_01` gäller som **framtida designmål** enligt LM-D12–19. Inga källfiler/ROM-kartor eller tidigare v0.18 sexfiendersbevis skrivs om. Ny riktig fem-NPC 8×9-kollision, dynamisk AI, S05 och fysiskt körbar kernel är fortfarande obevisade.
-
-**G5AG – senare faktisk status:** LM-D21/G5AD gav ett enda avgränsat TIA-kalibreringsuppdrag men slutade `NO_BUILD_INSTRUMENTATION_BLOCKER`; de sex C0–C4/N1-proven kördes inte. LM-D22/G5AF tillät endast reparation och två Actions-kontroller på redan fryst F9. ROM DEVELOPMENT III levererade `G5AF_INSTRUMENTATION_READY_BOUNDED` (första Actions-rundan FAIL, andra SUCCESS); MAIN VIII har källgranskat och mottagit som utvecklarinstrumentering, inte oberoende verification. [Specialist-original](https://github.com/Odourman/let-me-out/blob/c56b52284e7322fdf1c41812ae407429d8fb0f20/rom/g5af_f9_instrumentation_2026-11-17/TO_MAIN_G5AF_F9_INSTRUMENTATION.md), [Issue #14 stängt som avgränsat instrumenteringsarbete](https://github.com/Odourman/let-me-out/issues/14). `G5Z_G0=INCONCLUSIVE_NO_ROM`, `G5_FORMAL_OPEN` och alla begränsningar för ny ROM, H4/G1/G6/F12/S05/fem-NPC/Verification/merge kvarstår. Inget nytt tekniskt prov får härledas från detta källpaket.
-
-> **V5-supersession:** Alla daterade formuleringar nedan från V4 som säger att G5AC ännu enbart är ett förslag, att G5AF är `NOT_YET_RUN`, att inga F9-körningar gjorts, eller att MAIN VII fortfarande leder är *historisk V4-status*. De upphäver inte LM-D21/LM-D22 och G5AG. Gamla negativa resultat behålls oförändrade. Hämta gällande originalkällor live.
-
-
-
-**LÄSANVISNING V5:** Tidigare versioners källangivelser, gamla GitHub Issues, initiala ROM-beställningar och äldre framtidsförslag är historiska vid sina respektive tidpunkter. Högre auktoritet och senare uttryckliga användarbeslut gäller inom exakt beslutat ämne. Ingen source-only-status är fysisk Atari/Stella-verifiering. Detta källpaket ger ingen ny teknisk auktorisation.
-
-**Aktuella källbeslut:** [Samlad status- och auktoritetsguide](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). Detta dokument beskriver *framtida design*, inte ett implementerat spel.
-
-**Klass:** källankrade beslutsgränser och återstående valideringsfrågor, inte implementation. Historisk originalspec/57 beslut får inte skrivas över utan uttrycklig supersession.
+**Klass:** godkända framtida användarbeslut med tekniska öppna frågor; inte en godkänd ROM-version, ny mapper eller implementation. Original [Master Spec/57 beslut](https://drive.google.com/file/d/1mqU07Q7xTgU5t5lYQhCOyI7wRQl6vD7o/view) gäller i andra frågor. Vid konflikt läs de exakta [LM-D12/13](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md), [LM-D14/15/16](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md) och [LM-D17/19 kartmanifest](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_APPROVED_FUTURE_FOUR_MAPS_SOURCE_MANIFEST_2026-11-17.json).
 
 ## Nu godkänt, inte längre bara förslag
 
@@ -38,3 +26,5 @@ Vid fem NPC och k dödade, **om inga nollgolv inträffar före exit**, blir fram
 | Spawn | Historiska 2×2-kandidater och S0/S1-filter | Nya fem 8×9-förhandsvaliderade platser per exakt karta (ej valda) |
 
 **Kvar att bevisa:** verklig 8×9 NPC/player/wall-/key-/door-kollision och fria AI-vägar, alla 5 keyholder-fall, K1-pickup först senare tick vid key under spelaren, E1 utgångs-/dödskollision, score 0-golv och extraslivströsklar, riktig samtidig 5NPC/P0/M0/PF och S05. Ingen generell Y-lane/flicker-waiver får införas utan nytt uttryckligt användarbeslut.
+
+**Senare instrumentstatus påverkar inte designen:** G5AF har avslutats med snävt lyckad F9/Stella-instrumenteringskontroll, medan fem-NPC, S05, spawns och verklig kernel ännu saknar ROM-PASS. [MAIN VIII G5AG](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AG_MAIN_VIII_G5AF_F9_INSTRUMENTATION_RECEIPT_2026-11-17.md) · [aktuell arbetskö](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md). Ingen ny spelregel, Y-lane, flickerwaiver eller kartcutover uppstod genom LM-D20–D22.
