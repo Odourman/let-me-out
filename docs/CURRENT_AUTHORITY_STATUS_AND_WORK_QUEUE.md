@@ -1,6 +1,6 @@
 # LET ME OUT! – CURRENT AUTHORITY, STATUS & WORK QUEUE
 
-**AKTIV PROJECT SOURCES-VERSION:** [CURRENT_V5, MAIN VIII efter G5AG](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V5) · [officiell Drive-installationsguide](https://docs.google.com/document/d/1ixFG1C4ky5c1cFj0U7B9V5UmMal627IqsxTUpcyktf0/edit). V4/V3/V2 är arkiv och inte parallella aktiva källfiler. Byte i ChatGPT Projects sker manuellt, exakt sex filer.
+**AKTIV SENASTE PROJECT SOURCES-RELEASE:** [CURRENT_V6, MAIN VIII efter LM-D23/G5AH](https://github.com/Odourman/let-me-out/tree/main/docs/project_sources/CURRENT_V6) · [officiell Drive-installationsguide](https://docs.google.com/document/d/1ixFG1C4ky5c1cFj0U7B9V5UmMal627IqsxTUpcyktf0/edit). **V5 och äldre är nu arkiv**. Den nuvarande ChatGPT-projektinstallationen förblir V5 tills användaren manuellt ersätter exakt sex `.md`-filer med V6 (inga dubbletter/ZIP/README/manifest).
 
 **MAIN VIII BESLUTSBEREDNING EFTER G5AF (ENBART SOURCE-ONLY):** [Källavstämd TIA-beslutsbrief](https://github.com/Odourman/let-me-out/blob/main/docs/gates/MAIN_VIII_G5AF_TO_NEXT_TIA_DECISION_BRIEF_SOURCE_ONLY_2026-11-17.md). Den tydliggör skillnaden mellan fungerande F9-instrumentering och fortfarande saknade fysiska RESP/GRP/NUSIZ/M0/colorclock-mätningar. **Inget nytt tekniskt uppdrag eller användarmandat**; G5AG:s status och spärrarna nedan är oförändrade.
 
