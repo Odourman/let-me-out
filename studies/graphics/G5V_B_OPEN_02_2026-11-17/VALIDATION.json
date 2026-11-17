@@ -1,0 +1,278 @@
+{
+  "status": "GRAPHICS SOURCE-ONLY / B_OPEN_02 NOT APPROVED / NO ROM",
+  "source_commit": "80bf072ee0e8a9a84905a29d70771a7cc6be7820",
+  "blob_sha_v011": "820a74e5fb77c818ffb1286c5b23698d4374e771",
+  "blob_sha_v019": "0e449f97f87bd9b403476fd1435398042eaee285",
+  "grid_check": {
+    "B01_fnv32": "d94133dd",
+    "B_OPEN_01_fnv32": "7746b1c9",
+    "B_OPEN_02_fnv32": "c9e29f45",
+    "B_OPEN_02_grid_sha256": "7ac4ce94398c098e5f1922afd8aa59d115fa33fac2e86ddc9c885f6a4c82995a",
+    "all_dimensions": "40x22",
+    "door": "x39,y9..12",
+    "player_anchor": [
+      2,
+      10
+    ],
+    "B_OPEN_02_72_interior_walls": true,
+    "central_rows_9_12_clear": true,
+    "interior_left_right_mirror": true
+  },
+  "offline_BFS": {
+    "B01": {
+      "interior_walls": 156,
+      "free_2x2_anchors": 439,
+      "reachable_2x2_anchors": 439,
+      "unreachable_2x2_anchors": 0,
+      "articulation_2x2_anchors": 0,
+      "player_exit_approach_steps": 40,
+      "reusable_historic_B01_candidates": 13,
+      "retained_candidate_coords": [
+        [
+          9,
+          3
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          29,
+          3
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          15
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          29,
+          15
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ],
+        [
+          35,
+          17
+        ]
+      ]
+    },
+    "B_OPEN_01": {
+      "interior_walls": 48,
+      "free_2x2_anchors": 619,
+      "reachable_2x2_anchors": 619,
+      "unreachable_2x2_anchors": 0,
+      "articulation_2x2_anchors": 0,
+      "player_exit_approach_steps": 35,
+      "reusable_historic_B01_candidates": 9,
+      "retained_candidate_coords": [
+        [
+          19,
+          3
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ],
+        [
+          35,
+          17
+        ]
+      ]
+    },
+    "B_OPEN_02": {
+      "interior_walls": 72,
+      "free_2x2_anchors": 565,
+      "reachable_2x2_anchors": 565,
+      "unreachable_2x2_anchors": 0,
+      "articulation_2x2_anchors": 0,
+      "player_exit_approach_steps": 35,
+      "reusable_historic_B01_candidates": 13,
+      "retained_candidate_coords": [
+        [
+          9,
+          3
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          29,
+          3
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          19,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          34,
+          9
+        ],
+        [
+          9,
+          15
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          29,
+          15
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          35,
+          13
+        ],
+        [
+          35,
+          17
+        ]
+      ]
+    }
+  },
+  "illustrative_five_2x2_anchors": [
+    [
+      9,
+      3
+    ],
+    [
+      29,
+      3
+    ],
+    [
+      19,
+      9
+    ],
+    [
+      9,
+      15
+    ],
+    [
+      29,
+      15
+    ]
+  ],
+  "rectangles": [
+    [
+      "upper posts",
+      11,
+      12,
+      3,
+      7
+    ],
+    [
+      "upper inward shelves",
+      13,
+      16,
+      5,
+      5
+    ],
+    [
+      "upper outward steps",
+      9,
+      10,
+      7,
+      7
+    ],
+    [
+      "lower posts",
+      11,
+      12,
+      14,
+      18
+    ],
+    [
+      "lower inward shelves",
+      13,
+      15,
+      15,
+      15
+    ],
+    [
+      "lower outward steps",
+      8,
+      10,
+      17,
+      17
+    ],
+    [
+      "top central islet",
+      19,
+      19,
+      7,
+      8
+    ],
+    [
+      "bottom central islet",
+      19,
+      19,
+      13,
+      14
+    ]
+  ],
+  "comparison_source_only": true,
+  "not_physical_8x9_or_TIA_proof": true
+}
