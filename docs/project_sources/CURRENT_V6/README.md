@@ -21,4 +21,4 @@ G5Z/G0 `INCONCLUSIVE_NO_ROM`, G5AD `NO_BUILD_INSTRUMENTATION_BLOCKER`, G5AF `INS
 
 ## Integritet och arkiv
 
-[GIT_BLOB_SHAS.txt](GIT_BLOB_SHAS.txt) anger sex GitHub **blob SHA-1**-objekt-ID:n för bytekontroll, inte SHA256-filhshar. GitHub V5 finns kvar i [CURRENT_V5](../CURRENT_V5/) enbart som historisk källversion; dess formuleringar "ingen ny ROM" är tidssnitt före det senare **LM-D23 C0-only-undantaget**. V4/V3/V2 är också arkiv. Befintliga originalbeslut, negativ evidens och tidigare ROM-kod har inte ändrats.
+[GIT_BLOB_SHAS.txt](GIT_BLOB_SHAS.txt) anger sex GitHub **blob SHA-1**-objekt-ID:n för bytekontroll, inte SHA-256-filhashar. GitHub V5 finns kvar i [CURRENT_V5](../CURRENT_V5/) enbart som historisk källversion; dess formuleringar "ingen ny ROM" är tidssnitt före det senare **LM-D23 C0-only-undantaget**. V4/V3/V2 är också arkiv. Befintliga originalbeslut, negativ evidens och tidigare ROM-kod har inte ändrats.
