@@ -1,0 +1,32 @@
++ set -euo pipefail
+++ realpath roms/baseline.bin
++ frozen=/workspace/work/g5bdi2-checkout/experiments/g5bd_iter2/roms/baseline.bin
+++ realpath roms/tailindex.bin
++ candidate=/workspace/work/g5bdi2-checkout/experiments/g5bd_iter2/roms/tailindex.bin
+++ realpath -m /workspace/work/g5bdi2/native
++ root=/workspace/work/g5bdi2/native
++ test '!' -e /workspace/work/g5bdi2/native
++ mkdir -p /workspace/work/g5bdi2/native/home /workspace/work/g5bdi2/native/cwd
++ export HOME=/workspace/work/g5bdi2/native/home XDG_CONFIG_HOME=/workspace/work/g5bdi2/native/home
++ HOME=/workspace/work/g5bdi2/native/home
++ XDG_CONFIG_HOME=/workspace/work/g5bdi2/native/home
++ cd /workspace/work/g5bdi2/native/cwd
++ gopher=/workspace/.g5ar-env01/bin/gopher2600
++ printf '%s  %s\n' 16301cd20952d1a101c4ea876d6a63a0ae147399f4342d386454ebf230c631da /workspace/work/g5bdi2-checkout/experiments/g5bd_iter2/roms/baseline.bin
++ sha256sum -c -
+/workspace/work/g5bdi2-checkout/experiments/g5bd_iter2/roms/baseline.bin: OK
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BD phaseprobe frozen positive boot' /workspace/work/g5bdi2-checkout/experiments/g5bd_iter2/roms/baseline.bin
+adding: [video] baseline [NTSC] frames=30 [G5BD phaseprobe frozen positive boot]adding: [video] baseline [NTSC] frames=30 [G5BD phaseprobe frozen positive boot] [16/30 (53.3%)][2Kadded: [video] baseline [NTSC] frames=30 [G5BD phaseprobe frozen positive boot]
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BD ITER2 tailindex positive boot' /workspace/work/g5bdi2-checkout/experiments/g5bd_iter2/roms/tailindex.bin
+adding: [video] tailindex [NTSC] frames=30 [G5BD ITER2 tailindex positive boot][2Kadded: [video] tailindex [NTSC] frames=30 [G5BD ITER2 tailindex positive boot]
++ /workspace/.g5ar-env01/bin/gopher2600 regress list
+000 [video] baseline [NTSC] frames=30 [G5BD phaseprobe frozen positive boot]
+001 [video] tailindex [NTSC] frames=30 [G5BD ITER2 tailindex positive boot]
++ db=/workspace/work/g5bdi2/native/home/gopher2600/regression/db
++ sha256sum /workspace/work/g5bdi2/native/home/gopher2600/regression/db
++ /workspace/.g5ar-env01/bin/gopher2600 regress run -concurrent=false -verbose
+[2Krunning: 000 [video] baseline [NTSC] frames=30 [G5BD phaseprobe frozen positive boot][2Ksucceed: 000 [video] baseline [NTSC] frames=30 [G5BD phaseprobe frozen positive boot]
+[2Krunning: 001 [video] tailindex [NTSC] frames=30 [G5BD ITER2 tailindex positive boot][2Ksucceed: 001 [video] tailindex [NTSC] frames=30 [G5BD ITER2 tailindex positive boot]
+regression tests: 2 success, 0 fail (elapsed 0s)
++ sha256sum -c /workspace/work/g5bdi2/native/database.sha256
+/workspace/work/g5bdi2/native/home/gopher2600/regression/db: OK
