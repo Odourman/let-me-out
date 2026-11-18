@@ -1,0 +1,49 @@
+# LET ME OUT! – ROM DEVELOPMENT IV / Codex readiness (2026-11-18)
+
+**Klass: dokumentation och miljöinventering, EJ programmeringsauktorisation.** Ingen Codex-agent får börja ändra kod, bygga ROM eller köra Stella/Gopher2600/Actions endast därför att denna text finns. MAIN VIII (eller senare formellt MAIN) ska först utfärda en separat exakt arbetsorder med G0/G1, ROM- och testtak samt stoppskäl. G5 är alltjämt `G5_FORMAL_OPEN`.
+
+## 1. Repositories, original och konton
+
+- GitHub: `https://github.com/Odourman/let-me-out`. Kontrollera i *mottagande sessionen* `git remote -v`, `git fetch`, `git status`, `git rev-parse origin/main`, `gh auth status` om `gh` finns, utan att ändra något. Vid migreringsgranskning 2026-11-18 var `main` `6927e7e280a3d920fb4c7d8beb815e04c3ed8c97`; detta är en **snapshot**. Repo-root `README.md` har historiska Project Sources V4-rader; det levande statusindexet under `docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md` vinner.
+- Officiell Drive: `https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u`. Här finns Master Spec ursprungligt `LET_ME_OUT_MAIN_HANDOFF_2026-11-15.zip` och stora originalråarkiv. GitHub/Drive anslutna i migrationschatten, men **inte garanterat i Codex**. Verifiera faktiskt API-/connector-/filåtkomst. En webbläsarlänk i sig bevisar inte läs-/skrivrätt eller byteidentisk nedladdning. Ingen användning av Memory/Library som projektauktoritet.
+- Läs första prioritet [G5AQ MAIN-receipt](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5AQ_MAIN_VIII_G5AP_OFF01_OFFLINE_ONLY_PASS_SOURCE_RECEIPT_2026-11-18.md), [CURRENT](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md), [G5 boundary](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md) och [III→IV handoff](ROM_DEVELOPMENT_III_TO_IV_MIGRATION_HANDOFF_2026-11-18.md). Varken senaste datum eller enklast tillgängliga README är ensam beslutskälla.
+- Historiska dokument och ROM-script ligger ofta på **frysta experimentbrancher**, inte `main` (t.ex. `handoff/rom-development-ii-to-iii-20261117`, `c36982aef770...` F9, `f16e1e4ac373...` G5AL, `cfef90529f53...` G5AP). Hämta exakt commit/fil, inte en namnlös lokal 'senaste' version. PR #7 är vid migrationen OPEN/DRAFT/UNMERGED och Issue #8 independent Verification DEFERRED.
+
+## 2. Faktisk miljö kontra historiska versionskrav
+
+| Verktyg | Historisk faktiskt använd version / miljö | I den här dokumentationscontainern | Nästa Codex-session |
+|---|---|---|---|
+| DASM | 6502 DASM-motor `2.20.14.1` via Ubuntu pkg `2.20.15~20201109+really2.20.14.1-2` i Actions | **Inte på PATH**, ej körd | Inventera och versionpin innan godkänt bygge |
+| Stella + Debugger | Stock Stella **6.7.1**, Ubuntu pkg `6.7.1+dfsg-1build2`, historiska F2–F9/G5-prover | **Inte på PATH**, ej körd | Inventera GUI/SDL/Xvfb samt debugger. Ingen mätning nu |
+| Python | Initial v0.18 offline assembler kördes med **Python 3.13.5**; senare Linux CI anropade system-Python 3 | `python3 3.13.5`, kontrollerad | Dokumentera faktisk `python3 --version` vid ny runtime |
+| Pillow | Historisk Ubuntu paket-/Pillow **10.2.0** i vissa pixelauditförsök | Ej versionspinnat i detta migrationsuppdrag | Pinna mot exakt vald historisk körning före bildjämförelse |
+| Xvfb/xdotool/ImageMagick | Användes för verkliga GUI-/TIA-bilder och skärmfångst i Actions på Ubuntu 24.04 | `xdotool` **inte på PATH**, ingen testkörning | Kontrollera kontrollerat X11-tillstånd; fönstertitel/sleep är inte ACK |
+| Git | Versionpin krävs på alla framtida leveranser | `git 2.47.3`, kontrollerad | Bekräfta remote, detached state, branch protection |
+| Gopher2600 HEADLESS | Endast källgranskad kandidat: [pin `74c544203378c1448a33c29bc8b4586079b050f4`](https://github.com/JetSetIlly/Gopher2600/tree/74c544203378c1448a33c29bc8b4586079b050f4); **aldrig körd i G5AP** | **Inte på PATH** | Separat användarmandat krävs innan klon/bygg/test |
+| Codex CLI/agent | Ingen etablerad historisk projektspecifik Codex-implementation här | `codex` **inte på PATH** | Kontrollera faktisk åtkomst; ingen automatisk agentkörning |
+
+**Varning:** exekveringsversioner per gammal run måste tas från den runens egna frysta `versions.txt`, `.lst`/toolmanifest; tabellen ovan är historisk profil, **inte verifierad framtida maskin**. En tidig v0.18-run använde också ett eget Python-assembler-verktyg, vilket inte ska likställas med efterföljande DASM. ROM-byggen från annan assembler får inte döpas om till byteidentiskt DASM utan hashprov.
+
+## 3. Mapp- och branchkontrakt
+
+`design/` innehåller låsta källmasker och rumskartor. `docs/` innehåller MAIN:s beslut/receipts; `docs/gates/` innehåller G0/G5/acceptans; `docs/research/` innehåller rådgivande forskning; `rom/v018/` historiska bygg-/testpaket; senare frysta `rom/g5*` finns på **respektive specialistbranch**. `docs/project_sources/CURRENT_V6/` är navigation. Inga historiska filer, v0.18 original, main, PR #7 eller gamla brancher ska skrivas över.
+
+**Efter EN separat uttrycklig ny arbetsorder** och bara då kan nästa session skapa isolerad branch från explicit pinned parent: t.ex. framtida namn `rom-dev-iv/<authorized-ticket>-<date>`; namn är förslag, ingen branch skapas här. Innan det dokumenteras: (a) user decision/MAIN ticket/issue, (b) exakt scope/target ROM/mapper/NTSC/PAL, (c) tillåten G0,G1 och antal builds/Actions/emulatorer, (d) acceptanskriterier och bedömningsklass, (e) STOP-condition, (f) vilka originalfiler/bytes inte får ändras, (g) verifieringsansvar. Kodgranskning mot `git diff --name-status <base>...HEAD` ska visa endast auktoriserade filer. `git push --force`, `git reset --hard` på delade brancher, ändring av `main`, `gh pr merge` utan ny uttrycklig MAIN/user-godkännande förbjudna.
+
+## 4. Reproducibel metod (endast framtida instruktion, INTE körorder)
+
+**Förkontroll G0** – frys originalref + GH blob SHA, ROM/bin hash, mask- och kartaorakel, källpreflight, 6502/76cykel/TIA kanalbudget, RAM/F6 bytes, faktiska START/RESP/GRP/NUSIZ färg- och deadline-hypoteser. Om G0 FAIL eller NOT_DETERMINABLE och arbetsordern har sådan stoppregel: STOPP innan ROM-bygge. Bygg inte reserv-variant för att kringgå. Frys preregistrerad testmatris **innan** runtime.
+
+**G1 endast om beordrat:** dokumentera exakta `dasm ...`-flaggor, miljön, compiler-output; lägg samtliga `source.asm`, `.lst`, `.sym`, `.bin` (och samtliga bankers bytes) i en oförändrad och hashad evidensbundle; 16 384 bytes bara om exakt standard-F6 var beställt. Kör verklig emulator endast inom uttrycklig run limit. Logga kommandon, verifierade svar och emulatortillstånd med **samma** frame, PC, scanline, CPU-cycle, bank, TIA-destination, kopierings-/GRP-state samt native TIA screenshot som rå bytes och deras per-fil SHA. `saveSes` är promptbuffer, inte autentisk machine-readable kvittens, och `xdotool type --window` med XSendEvent kan missas. Den reparerade G5AP-parsern är **syntetisk** och kan inte behandla en vanlig Stella session som betrodd proveniens; en riktig protokolladapter kräver nytt kontrakt och uttrycklig order. Intern colorclock/startskala ska **inte** härledas som mätt endast från `STA`-instruktionen eller 900×300 crop.
+
+**Stopp/arkiv:** vänta tills Stella/Gopher/Xvfb-processer faktiskt terminerat, jämför original-F9/ROM input SHA både före och efter, skriv icke-självrefererande `SHA256SUMS.txt`, bevara även negativa sessioner och missade filbevis. Om Actions är auktoriserat: separera capture jobb från read-only artifact readback-jobb (och behandla readback-PASS endast som integritet). Publicera final fryscommit och fullständig `TO_MAIN` med mätmatris, exakta referenser, negativtest, `STELLA_OBSERVED`/`GOPHER_OBSERVED`/`SOURCE_INFERRED`/`OFFLINE_SYNTHETIC`/`NOT_RUN`/`NOT_DETERMINABLE` rätt separerade. Arkivera originalrå ZIP i officiell Drive, kontrollera nedladdade bytes/SHA och länka exakt commit. En PASS för en isolerad diagnostik är **inte** G5 formell PASS eller oberoende Verification II.
+
+## 5. Möjliga framtida verktygsalternativ – INTE auktoriserade
+
+**Gopher2600 HEADLESS** i originalkodens [källgranskade pin](https://github.com/Odourman/let-me-out/blob/main/docs/research/G5AP_MAIN_VIII_WEB_VERIFIED_DEBUGGER_ALTERNATIVES_AND_NEXT_OFFLINE_GATE_2026-11-18.md) använder `stdin/stdout` utan xdotool/X11 och kan framöver lämna mer deterministisk terminaltransport, F6, steg/cykel/klocka; kräver uttrycklig ny pilotorder. `RUN` får inte antas tillåtet inne i `SCRIPT`; kvittens till kommandosekvens/entry måste korreleras. Det är en **annan emulator** vars data klassas separat som `GOPHER_OBSERVED` och inte är historisk Stella-PASS. **Stock Stella 6.7.1 C++-adapter** är endast forskningsreserv för senare explicit auktoriserad patch och rebuild; inga ändringar av emulator nu.
+
+**Framtida AGENTS.md-förslag** (får *inte* publiceras som permanent policy genom den här migrationen): en kort rotfil med projektisolation, auktoritetsordning, explicit ticket+G0/G1/limits, frysta 8×9-masker och senare fem-NPC beslut, förbud mot att göra offline-pixels till Stella-PASS, krav på att aldrig skriva om negativ evidens, separata roller MAIN/ROM DEV/RESEARCH/VERIFICATION, bytehash/final TO_MAIN, förbjudna merges och begränsning av Codex/CI-system. MAIN VIII och användaren får senare uttryckligen besluta om en sådan fil; ingen policy skapad här.
+
+## 6. Klar för mottagning, inte för implementation
+
+ROM DEVELOPMENT IV:s första insats efter prompten: kontrollera GitHub/Drive/versionsfakta och historiska source-only kontra verklig ROM/evidens, rapportera eventuella åtkomsthinder, aktuell PR/Issue/authority-status och en kort motiverad åtgärdsordning till MAIN VIII. **Stanna.** Den nya chatten/Codex kan inte exekvera tidigare run-budgetar på nytt. Varje ny fysisk/ROM-körning, även en liten Gopher2600 F9 HEADLESS-pilot, fordrar **separat uttrycklig användarauktorisation och en ny bindande arbetsorder**.
