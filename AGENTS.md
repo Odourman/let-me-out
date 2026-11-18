@@ -13,6 +13,16 @@ Dated handoffs and `docs/project_sources/` are navigation, not living authority.
 
 ## Roles and approval
 
+## Standing authorization for technical testing — user decision LM-D29, 2026-11-18
+
+The user explicitly corrected MAIN: **"Du behöver inte fråga om godkännande hela tiden. ... Du får så klart göra tester. Om du vill ändra något kreativt så kan du fråga om godkännande."** This later express decision **supersedes older per-test user-approval requirements** for routine technical investigation and diagnostics, **not** past results or the frozen scope of already-issued test orders.
+
+- MAIN may proactively commission and iterate **technical tests** without further user approval: source analysis, diagnostic builds/test-only ROMs, DASM/rebuild checks, emulator/debugger runs, TIA/raster timing, automated regression/negative tests, capture/trace experiments and tooling fixes **that do not change the approved game design**. Record a reasonable bounded test plan, safety/timeout limits, versions, hashes, raw evidence and negative outcomes. Do not create one approval gate per process, run, step or diagnostic family.
+- ROM DEVELOPMENT / Codex may execute those tests when a **concrete MAIN task** delegates them, including troubleshooting and bounded follow-up tests within its technical diagnostic scope; no need to return to the user for another test-only authorization. Preserve specialist-role ownership; an Issue itself does not automatically start a Codex task.
+- **Request user approval for creative/game-design changes**: rules, enemy count/appearance, sprites or graphical direction, map selection/geometry, story, sounds or intended gameplay. Don't silently turn research workarounds or technical compromises into canon.
+- **Still do not automatically start separately gated gameplay implementation stages, major cutovers, change frozen accepted source/ROM, merge PRs, release, or grant independent VERIFICATION acceptance.** A disposable test-only ROM is not a gameplay implementation authorization.
+- **Existing test orders keep their specific per-run safety/budget rules for those particular tests** (e.g. G5AX / Issue #23). When one order finishes, MAIN may authorize a **new bounded technical test** under this standing user permission, rather than asking the user again. Historical FAIL/NOT_RUN and G5_FORMAL_OPEN are not retroactively changed.
+
 - **MAIN** prioritizes, issues bounded work orders, checks developer receipts, records decisions and coordinates the user.
 - **ROM DEVELOPMENT IV / Codex** does source analysis, 6507/DASM/TIA code, builds, debugging and **developer self-tests only inside explicitly approved scope**.
 - **RESEARCH** advises; **GRAPHICS** supplies studies within its own design order.
