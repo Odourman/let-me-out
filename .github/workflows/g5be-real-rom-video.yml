@@ -21,7 +21,7 @@ jobs:
       - name: Install stock Stella and screen recorder
         run: |
           # Runner has preloaded Ubuntu package indexes; avoid a potentially hung apt update.
-          sudo DEBIAN_FRONTEND=noninteractive timeout 360 apt-get install -y --no-install-recommends stella xvfb xdotool
+          sudo DEBIAN_FRONTEND=noninteractive timeout 360 apt-get install -y --no-install-recommends stella xvfb xdotool ffmpeg
           command -v ffmpeg
           command -v stella
           stella -help > stella-help.txt 2>&1 || true
