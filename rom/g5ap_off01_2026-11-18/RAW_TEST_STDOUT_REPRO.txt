@@ -1,0 +1,99 @@
+PASS frozen G5AL original blob from checked GitHub connector metadata: expected='f159c1f8668c1f504fd9538a8d1ef17b2ddefafa' actual='f159c1f8668c1f504fd9538a8d1ef17b2ddefafa'
+PASS frozen original 8426 byte length verified in connector: expected=8426 actual=8426
+PASS canonical stage path writer includes debugger_session: expected='A_TRAP_debugger_session.txt' actual='A_TRAP_debugger_session.txt'
+PASS all fourteen positive stage --gate calls: expected=14 actual=14
+PASS all fourteen positive final stage checks: expected=14 actual=14
+PASS positive full ABC synthetic status: expected='OFFLINE_SYNTHETIC_A_B_C_CONTRACT_PASS' actual='OFFLINE_SYNTHETIC_A_B_C_CONTRACT_PASS'
+PASS positive full ABC actual synthetic flags: expected=(True, True, True) actual=(True, True, True)
+PASS positive image reference pixels equal: expected=True actual=True
+PASS positive C step from pre 18 to post21: expected=3 actual=3
+PASS reported provenance always OFFLINE_SYNTHETIC: expected='OFFLINE_SYNTHETIC' actual='OFFLINE_SYNTHETIC'
+PASS report historical G5AL remains FAIL: expected='G5AL_F9_TRAP_CONTROL_FAIL_UNCHANGED' actual='G5AL_F9_TRAP_CONTROL_FAIL_UNCHANGED'
+PASS reject wrong PC A_REENTRY_HANDSHAKE: expected=True actual=True
+PASS full audit rejects wrong PC A_REENTRY_HANDSHAKE: expected=False actual=False
+PASS reject wrong PC B_REENTRY_HANDSHAKE: expected=True actual=True
+PASS full audit rejects wrong PC B_REENTRY_HANDSHAKE: expected=False actual=False
+PASS correct A reentry PC gate: expected=0 actual=0
+PASS correct B reentry PC gate: expected=0 actual=0
+PASS A-only full status PARTIAL_NOT_DETERMINABLE: expected='OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE' actual='OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE'
+PASS A-only B/C false: expected=(False, False) actual=(False, False)
+PASS A-only full A true: expected=True actual=True
+PASS A-only full read same canonical filenames: expected=True actual=True
+PASS negative --gate rejects bank_4: expected=True actual=True
+PASS negative final stage rejects bank_4: expected=False actual=False
+PASS negative --gate rejects A_frame_135: expected=True actual=True
+PASS negative final stage rejects A_frame_135: expected=False actual=False
+PASS negative --gate rejects B_frame_135: expected=True actual=True
+PASS negative final stage rejects B_frame_135: expected=False actual=False
+PASS negative --gate rejects A_scan_122: expected=True actual=True
+PASS negative final stage rejects A_scan_122: expected=False actual=False
+PASS negative --gate rejects A_cycles_22: expected=True actual=True
+PASS negative final stage rejects A_cycles_22: expected=False actual=False
+PASS negative --gate rejects B_pre_scan_122: expected=True actual=True
+PASS negative final stage rejects B_pre_scan_122: expected=False actual=False
+PASS negative --gate rejects B_pre_bank_4: expected=True actual=True
+PASS negative final stage rejects B_pre_bank_4: expected=False actual=False
+PASS negative --gate rejects C_post_scan_122: expected=True actual=True
+PASS negative final stage rejects C_post_scan_122: expected=False actual=False
+PASS negative --gate rejects C_post_bank_4: expected=True actual=True
+PASS negative final stage rejects C_post_bank_4: expected=False actual=False
+PASS negative --gate rejects missing_pc: expected=True actual=True
+PASS negative final stage rejects missing_pc: expected=False actual=False
+PASS negative --gate rejects duplicated_pc: expected=True actual=True
+PASS negative final stage rejects duplicated_pc: expected=False actual=False
+PASS negative --gate rejects merged_print: expected=True actual=True
+PASS negative final stage rejects merged_print: expected=False actual=False
+PASS negative --gate rejects missing_saveses: expected=True actual=True
+PASS negative final stage rejects missing_saveses: expected=False actual=False
+PASS negative --gate rejects missing_tia_text: expected=True actual=True
+PASS negative final stage rejects missing_tia_text: expected=False actual=False
+PASS negative --gate rejects wrong_break_ack: expected=True actual=True
+PASS negative final stage rejects wrong_break_ack: expected=False actual=False
+PASS negative --gate rejects cleared_break: expected=True actual=True
+PASS negative final stage rejects cleared_break: expected=False actual=False
+PASS negative --gate rejects removed_trap: expected=True actual=True
+PASS negative final stage rejects removed_trap: expected=False actual=False
+PASS negative --gate rejects no_step_ack: expected=True actual=True
+PASS negative final stage rejects no_step_ack: expected=False actual=False
+PASS negative --gate rejects wrong_saveses_filename: expected=True actual=True
+PASS negative final stage rejects wrong_saveses_filename: expected=False actual=False
+PASS missing bank initial rejected: expected=True actual=True
+PASS stale session SHA rejected: expected=True actual=True
+PASS stale session detects SHA error: expected=True actual=True
+PASS old source archive marker rejected: expected=True actual=True
+PASS old entry marker rejected: expected=True actual=True
+PASS same initial entry reused for reentry rejected: expected=True actual=True
+PASS reused entry coherence flagged: expected=True actual=True
+PASS duplicated command sequence rejected: expected=True actual=True
+PASS noncanonical registered name rejected: expected=True actual=True
+PASS missing session rejected: expected=True actual=True
+PASS missing session final flagged: expected=True actual=True
+PASS missing capture registry rejected: expected=True actual=True
+PASS missing capture registry full fail: expected='OFFLINE_SYNTHETIC_METHOD_FAIL' actual='OFFLINE_SYNTHETIC_METHOD_FAIL'
+PASS STELLA_OBSERVED metadata rejected as offlinesynthetic: expected=True actual=True
+PASS missing A native makes A FAIL: expected=False actual=False
+PASS tampered native SHA rejected: expected=False actual=False
+PASS wrong native 160x228 rejected: expected=False actual=False
+PASS different native reference pixels rejected: expected=False actual=False
+PASS archive SHA true does not elevate method fail: expected='OFFLINE_SYNTHETIC_METHOD_FAIL' actual='OFFLINE_SYNTHETIC_METHOD_FAIL'
+PASS archive metadata pass retained separately: expected=True actual=True
+PASS B without A full FAIL: expected='OFFLINE_SYNTHETIC_METHOD_FAIL' actual='OFFLINE_SYNTHETIC_METHOD_FAIL'
+PASS B without A coherence error: expected=True actual=True
+PASS C without B full FAIL: expected='OFFLINE_SYNTHETIC_METHOD_FAIL' actual='OFFLINE_SYNTHETIC_METHOD_FAIL'
+PASS C without B coherence error: expected=True actual=True
+PASS A+B but missing C stays PARTIAL_NOT_DETERMINABLE: expected='OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE' actual='OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE'
+PASS A+B actual C flag false: expected=False actual=False
+PASS C +2 cycles not +3 rejected in fullaudit: expected=False actual=False
+PASS C +2 fails full simulated readiness: expected='OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE' actual='OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE'
+PASS C changed entry despite step without run rejected: expected=True actual=True
+PASS B --gate rejects missing prior A registry: expected=True actual=True
+PASS duplicate capture provenance marker rejected: expected=True actual=True
+PASS C step textual ACK without command rejected: expected=True actual=True
+PASS B set textual ACK without actual command rejected: expected=True actual=True
+PASS A trap textual ACK without actual trap command rejected: expected=True actual=True
+PASS real --gate CLI entry correctly accepted: expected=0 actual=0
+PASS real --fullaudit CLI full positive accepted: expected=0 actual=0
+PASS real --fullaudit CLI failed fixture rejected: expected=True actual=True
+PASS no unknown value type promoted to actual STELLA_OBSERVED: expected=True actual=True
+PASS historical G5AL failure never reclassified by synthetic success: expected=True actual=True
+G5AP_FINAL {"failed_assertions": 0, "g5ao_zip_original_available": false, "passed_assertions": 98, "result": "OFFLINE_ONLY_PASS", "total_assertions": 98}

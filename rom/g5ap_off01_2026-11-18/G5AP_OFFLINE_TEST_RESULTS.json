@@ -1,0 +1,818 @@
+{
+  "assertions": [
+    {
+      "assertion_pass": true,
+      "case": "frozen G5AL original blob from checked GitHub connector metadata",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "f159c1f8668c1f504fd9538a8d1ef17b2ddefafa",
+      "observed": "f159c1f8668c1f504fd9538a8d1ef17b2ddefafa"
+    },
+    {
+      "assertion_pass": true,
+      "case": "frozen original 8426 byte length verified in connector",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 8426,
+      "observed": 8426
+    },
+    {
+      "assertion_pass": true,
+      "case": "canonical stage path writer includes debugger_session",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "A_TRAP_debugger_session.txt",
+      "observed": "A_TRAP_debugger_session.txt"
+    },
+    {
+      "assertion_pass": true,
+      "case": "all fourteen positive stage --gate calls",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 14,
+      "observed": 14
+    },
+    {
+      "assertion_pass": true,
+      "case": "all fourteen positive final stage checks",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 14,
+      "observed": 14
+    },
+    {
+      "assertion_pass": true,
+      "case": "positive full ABC synthetic status",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_A_B_C_CONTRACT_PASS",
+      "observed": "OFFLINE_SYNTHETIC_A_B_C_CONTRACT_PASS"
+    },
+    {
+      "assertion_pass": true,
+      "case": "positive full ABC actual synthetic flags",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": [
+        true,
+        true,
+        true
+      ],
+      "observed": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "assertion_pass": true,
+      "case": "positive image reference pixels equal",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "positive C step from pre 18 to post21",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 3,
+      "observed": 3
+    },
+    {
+      "assertion_pass": true,
+      "case": "reported provenance always OFFLINE_SYNTHETIC",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC",
+      "observed": "OFFLINE_SYNTHETIC"
+    },
+    {
+      "assertion_pass": true,
+      "case": "report historical G5AL remains FAIL",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "G5AL_F9_TRAP_CONTROL_FAIL_UNCHANGED",
+      "observed": "G5AL_F9_TRAP_CONTROL_FAIL_UNCHANGED"
+    },
+    {
+      "assertion_pass": true,
+      "case": "reject wrong PC A_REENTRY_HANDSHAKE",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "full audit rejects wrong PC A_REENTRY_HANDSHAKE",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "reject wrong PC B_REENTRY_HANDSHAKE",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "full audit rejects wrong PC B_REENTRY_HANDSHAKE",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "correct A reentry PC gate",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 0,
+      "observed": 0
+    },
+    {
+      "assertion_pass": true,
+      "case": "correct B reentry PC gate",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 0,
+      "observed": 0
+    },
+    {
+      "assertion_pass": true,
+      "case": "A-only full status PARTIAL_NOT_DETERMINABLE",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE",
+      "observed": "OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE"
+    },
+    {
+      "assertion_pass": true,
+      "case": "A-only B/C false",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": [
+        false,
+        false
+      ],
+      "observed": [
+        false,
+        false
+      ]
+    },
+    {
+      "assertion_pass": true,
+      "case": "A-only full A true",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "A-only full read same canonical filenames",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects bank_4",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects bank_4",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects A_frame_135",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects A_frame_135",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects B_frame_135",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects B_frame_135",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects A_scan_122",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects A_scan_122",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects A_cycles_22",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects A_cycles_22",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects B_pre_scan_122",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects B_pre_scan_122",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects B_pre_bank_4",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects B_pre_bank_4",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects C_post_scan_122",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects C_post_scan_122",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects C_post_bank_4",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects C_post_bank_4",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects missing_pc",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects missing_pc",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects duplicated_pc",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects duplicated_pc",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects merged_print",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects merged_print",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects missing_saveses",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects missing_saveses",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects missing_tia_text",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects missing_tia_text",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects wrong_break_ack",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects wrong_break_ack",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects cleared_break",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects cleared_break",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects removed_trap",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects removed_trap",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects no_step_ack",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects no_step_ack",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative --gate rejects wrong_saveses_filename",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "negative final stage rejects wrong_saveses_filename",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "missing bank initial rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "stale session SHA rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "stale session detects SHA error",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "old source archive marker rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "old entry marker rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "same initial entry reused for reentry rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "reused entry coherence flagged",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "duplicated command sequence rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "noncanonical registered name rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "missing session rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "missing session final flagged",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "missing capture registry rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "missing capture registry full fail",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_METHOD_FAIL",
+      "observed": "OFFLINE_SYNTHETIC_METHOD_FAIL"
+    },
+    {
+      "assertion_pass": true,
+      "case": "STELLA_OBSERVED metadata rejected as offlinesynthetic",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "missing A native makes A FAIL",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "tampered native SHA rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "wrong native 160x228 rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "different native reference pixels rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "archive SHA true does not elevate method fail",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_METHOD_FAIL",
+      "observed": "OFFLINE_SYNTHETIC_METHOD_FAIL"
+    },
+    {
+      "assertion_pass": true,
+      "case": "archive metadata pass retained separately",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "B without A full FAIL",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_METHOD_FAIL",
+      "observed": "OFFLINE_SYNTHETIC_METHOD_FAIL"
+    },
+    {
+      "assertion_pass": true,
+      "case": "B without A coherence error",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "C without B full FAIL",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_METHOD_FAIL",
+      "observed": "OFFLINE_SYNTHETIC_METHOD_FAIL"
+    },
+    {
+      "assertion_pass": true,
+      "case": "C without B coherence error",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "A+B but missing C stays PARTIAL_NOT_DETERMINABLE",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE",
+      "observed": "OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE"
+    },
+    {
+      "assertion_pass": true,
+      "case": "A+B actual C flag false",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "C +2 cycles not +3 rejected in fullaudit",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "assertion_pass": true,
+      "case": "C +2 fails full simulated readiness",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": "OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE",
+      "observed": "OFFLINE_SYNTHETIC_PARTIAL_NOT_DETERMINABLE"
+    },
+    {
+      "assertion_pass": true,
+      "case": "C changed entry despite step without run rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "B --gate rejects missing prior A registry",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "duplicate capture provenance marker rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "C step textual ACK without command rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "B set textual ACK without actual command rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "A trap textual ACK without actual trap command rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "real --gate CLI entry correctly accepted",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 0,
+      "observed": 0
+    },
+    {
+      "assertion_pass": true,
+      "case": "real --fullaudit CLI full positive accepted",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": 0,
+      "observed": 0
+    },
+    {
+      "assertion_pass": true,
+      "case": "real --fullaudit CLI failed fixture rejected",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "no unknown value type promoted to actual STELLA_OBSERVED",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "assertion_pass": true,
+      "case": "historical G5AL failure never reclassified by synthetic success",
+      "classification": "OFFLINE_SYNTHETIC",
+      "details": "",
+      "expected": true,
+      "observed": true
+    }
+  ],
+  "classification": "OFFLINE_SYNTHETIC",
+  "exception": null,
+  "failed_assertions": 0,
+  "frozen_original_git_blob_expected": "f159c1f8668c1f504fd9538a8d1ef17b2ddefafa",
+  "g5": "G5_FORMAL_OPEN",
+  "g5ao_baseline_source": "GitHub G5AO report 18/18, not original unattached ZIP",
+  "g5ao_expected_original_zip_sha256_unverified": "c519555a974199a2c19e07583c179a2af32819af69d2b42ccdb00c4ba1aad633",
+  "g5ao_zip_original_available": false,
+  "historical_G5AL": "G5AL_F9_TRAP_CONTROL_FAIL_UNCHANGED",
+  "no_stella_gopher_actions_rom_dasm": true,
+  "not_emulator_measurement": true,
+  "passed_assertions": 98,
+  "project": "LET_ME_OUT",
+  "result": "OFFLINE_ONLY_PASS",
+  "task": "G5AP_OFF-01",
+  "total_assertions": 98
+}
