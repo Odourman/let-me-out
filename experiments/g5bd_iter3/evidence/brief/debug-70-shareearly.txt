@@ -1,0 +1,56 @@
+Stella 7.0
+> autoExec():
+script file '~/stella/autoexec.script' not found
+script file '~/probe.script' not found
+config file '~/stella/cfg/probe.cfg' not found
+list file '~/probe.lst' not found
+symbol file '~/probe.sym' not found
+> exec measure.script
+added trap 00
+Executed 2 commands from "measure.script"
+> listBreaks
+BreakIfs:
+00:  pc == $f098 && _bank == #0
+> listTraps
+traps:
+00:      write CXM1P|$10 (RESP1) + mirrors
+> help timer
+  Set a cycle counting timer from addresses xx to yy [banks a
+a bb]
+Example: timer, timer 1000 + *, timer f000 f800 1 +
+> clearTraps
+all traps cleared
+> clearBreaks
+all breakpoints cleared
+> runToPc $f034
+Set PC to $f034 in 433 instructions
+> ram $81 $7f $13 $49 $64 $2e $49 $48 $49 $47 $48
+changed 10 locations
+> ram $81
+changed 0 locations
+> runToPc $f098
+Set PC to $f098 in 2214 instructions
+> print _scan
+CXM0FB|$60(R) / HMBL|$40(W): $64 %01100100 #100
+> print _bank
+CXM0P(R) / VSYNC(W): $00 %00000000 #0
+> timer $ba $ef
+set timer 00 at $00ba, $00ef in bank #0
+> scanLine #4
+advanced 4 scanLine(s)
+> listTimers
+timers:
+ #|    From    /Bk|     To     /Bk| Execs| Avg. | Min. | Max.
+ |
+00|ram_BA      / 0|ram_EF      / 0|     3|    73|    73|    7
+3|
+> resetTimers
+all timers reset
+> trapWrite $11
+added trap 00
+> run
+> print pc
+ram_C9(R/W): $c9 %11001001 #201
+> print _scan
+INPT0|$60(R) / RESMP0|$40(W): $68 %01101000 #104
+> saveSes

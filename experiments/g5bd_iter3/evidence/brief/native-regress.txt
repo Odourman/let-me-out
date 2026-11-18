@@ -1,0 +1,32 @@
++ set -euo pipefail
+++ realpath roms/baseline.bin
++ frozen=/workspace/work/g5bd3-checkout/experiments/g5bd_iter3/roms/baseline.bin
+++ realpath roms/sharefour.bin
++ candidate=/workspace/work/g5bd3-checkout/experiments/g5bd_iter3/roms/sharefour.bin
+++ realpath -m /workspace/work/g5bd3/native
++ root=/workspace/work/g5bd3/native
++ test '!' -e /workspace/work/g5bd3/native
++ mkdir -p /workspace/work/g5bd3/native/home /workspace/work/g5bd3/native/cwd
++ export HOME=/workspace/work/g5bd3/native/home XDG_CONFIG_HOME=/workspace/work/g5bd3/native/home
++ HOME=/workspace/work/g5bd3/native/home
++ XDG_CONFIG_HOME=/workspace/work/g5bd3/native/home
++ cd /workspace/work/g5bd3/native/cwd
++ gopher=/workspace/.g5ar-env01/bin/gopher2600
++ printf '%s  %s\n' 479ba85f24c3d31345cf378baf1ca225229849a520add18e6524a2099888b2f7 /workspace/work/g5bd3-checkout/experiments/g5bd_iter3/roms/baseline.bin
++ sha256sum -c -
+/workspace/work/g5bd3-checkout/experiments/g5bd_iter3/roms/baseline.bin: OK
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BD ITER2 shadow frozen positive boot' /workspace/work/g5bd3-checkout/experiments/g5bd_iter3/roms/baseline.bin
+adding: [video] baseline [NTSC] frames=30 [G5BD ITER2 shadow frozen positive boot]adding: [video] baseline [NTSC] frames=30 [G5BD ITER2 shadow frozen positive boot] [19/30 (63.3%)][2Kadded: [video] baseline [NTSC] frames=30 [G5BD ITER2 shadow frozen positive boot]
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BD ITER3 sharefour positive boot' /workspace/work/g5bd3-checkout/experiments/g5bd_iter3/roms/sharefour.bin
+adding: [video] sharefour [NTSC] frames=30 [G5BD ITER3 sharefour positive boot][2Kadded: [video] sharefour [NTSC] frames=30 [G5BD ITER3 sharefour positive boot]
++ /workspace/.g5ar-env01/bin/gopher2600 regress list
+000 [video] baseline [NTSC] frames=30 [G5BD ITER2 shadow frozen positive boot]
+001 [video] sharefour [NTSC] frames=30 [G5BD ITER3 sharefour positive boot]
++ db=/workspace/work/g5bd3/native/home/gopher2600/regression/db
++ sha256sum /workspace/work/g5bd3/native/home/gopher2600/regression/db
++ /workspace/.g5ar-env01/bin/gopher2600 regress run -concurrent=false -verbose
+[2Krunning: 000 [video] baseline [NTSC] frames=30 [G5BD ITER2 shadow frozen positive boot][2Ksucceed: 000 [video] baseline [NTSC] frames=30 [G5BD ITER2 shadow frozen positive boot]
+[2Krunning: 001 [video] sharefour [NTSC] frames=30 [G5BD ITER3 sharefour positive boot][2Ksucceed: 001 [video] sharefour [NTSC] frames=30 [G5BD ITER3 sharefour positive boot]
+regression tests: 2 success, 0 fail (elapsed 2s)
++ sha256sum -c /workspace/work/g5bd3/native/database.sha256
+/workspace/work/g5bd3/native/home/gopher2600/regression/db: OK
