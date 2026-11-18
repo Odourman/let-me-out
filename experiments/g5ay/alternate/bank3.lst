@@ -1,0 +1,855 @@
+------- FILE alternate/bank3.asm LEVEL 1 PASS 2
+      1  fffa		       00 00	   NUSIZ_TEST =	0
+      2  10000 ????
+      3  10000 ????				       processor	6502
+      4  10000 ????		00 00	    VSYNC      =	$00
+      5  10000 ????		00 01	    VBLANK     =	$01
+      6  10000 ????		00 02	    WSYNC      =	$02
+      7  10000 ????		00 04	    NUSIZ0     =	$04
+      8  10000 ????		00 05	    NUSIZ1     =	$05
+      9  10000 ????		00 06	    COLUP0     =	$06
+     10  10000 ????		00 07	    COLUP1     =	$07
+     11  10000 ????		00 08	    COLUPF     =	$08
+     12  10000 ????		00 09	    COLUBK     =	$09
+     13  10000 ????		00 0a	    CTRLPF     =	$0a
+     14  10000 ????		00 0d	    PF0        =	$0d
+     15  10000 ????		00 0e	    PF1        =	$0e
+     16  10000 ????		00 0f	    PF2        =	$0f
+     17  10000 ????		00 10	    RESP0      =	$10
+     18  10000 ????		00 11	    RESP1      =	$11
+     19  10000 ????		00 12	    RESM0      =	$12
+     20  10000 ????		00 1b	    GRP0       =	$1b
+     21  10000 ????		00 1c	    GRP1       =	$1c
+     22  10000 ????		00 1d	    ENAM0      =	$1d
+     23  10000 ????		00 80	    FRAME      =	$80
+     24  f000					      ORG	$f000
+     25  f000				   Reset
+     26  f000		       78		      sei
+     27  f001		       d8		      cld
+     28  f002		       a2 ff		      ldx	#$ff
+     29  f004		       9a		      txs
+     30  f005		       a9 00		      lda	#0
+     31  f007		       a2 7f		      ldx	#$7f
+     32  f009				   Clear
+     33  f009		       95 80		      sta	$80,x
+     34  f00b		       ca		      dex
+     35  f00c		       10 fb		      bpl	Clear
+     36  f00e		       85 01		      sta	VBLANK
+     37  f010		       85 00		      sta	VSYNC
+     38  f012		       85 1b		      sta	GRP0
+     39  f014		       85 1c		      sta	GRP1
+     40  f016		       85 1d		      sta	ENAM0
+     41  f018		       85 04		      sta	NUSIZ0
+     42  f01a		       85 09		      sta	COLUBK
+     43  f01c		       85 0e		      sta	PF1
+     44  f01e		       85 0f		      sta	PF2
+     45  f020		       a9 1e		      lda	#$1e
+     46  f022		       85 06		      sta	COLUP0
+     47  f024		       a9 0e		      lda	#$0e
+     48  f026		       85 07		      sta	COLUP1
+     49  f028		       a9 26		      lda	#$26
+     50  f02a		       85 08		      sta	COLUPF
+     51  f02c		       a9 01		      lda	#$01
+     52  f02e		       85 0a		      sta	CTRLPF
+     53  f030		       a9 30		      lda	#$30
+     54  f032		       85 0d		      sta	PF0
+     55  f034		       a9 00		      lda	#NUSIZ_TEST
+     56  f036		       85 05		      sta	NUSIZ1
+     57  f038				   Frame
+     58  f038		       85 02		      sta	WSYNC
+     59  f03a		       a9 02		      lda	#2
+     60  f03c		       85 00		      sta	VSYNC
+     61  f03e		       85 01		      sta	VBLANK
+     62  f040		       a5 80		      lda	FRAME
+     63  f042		       4a		      lsr
+     64  f043		       4a		      lsr
+     65  f044		       4a		      lsr
+     66  f045		       4a		      lsr
+     67  f046		       29 03		      and	#3
+     68  f048		       aa		      tax
+     69  f049		       bd f6 ff 	      lda	$fff6,x
+     70  f04c				   BankSwitched
+     71  f04c		       85 02		      sta	WSYNC
+     72  f04e		       85 02		      sta	WSYNC
+     73  f050							; First of 37 VBLANK scanlines.
+     74  f050		       85 02		      sta	WSYNC
+     75  f052		       a9 00		      lda	#0
+     76  f054		       85 00		      sta	VSYNC
+     77  f056		       85 1b		      sta	GRP0
+     78  f058		       85 1c		      sta	GRP1
+     79  f05a		       85 1d		      sta	ENAM0
+     80  f05c							; Distinct right-side P0/M0 x. No HMOVE needed for these fixed witnesses.
+     81  f05c		       85 02		      sta	WSYNC
+     82  f05e		       a2 0d		      ldx	#13
+     83  f060				   PositionPlayer
+     84  f060		       ca		      dex
+     85  f061		       d0 fd		      bne	PositionPlayer
+     86  f063		       85 10		      sta	RESP0
+     87  f065		       85 02		      sta	WSYNC
+     88  f067		       a2 0e		      ldx	#14
+     89  f069				   PositionMissile
+     90  f069		       ca		      dex
+     91  f06a		       d0 fd		      bne	PositionMissile
+     92  f06c		       85 12		      sta	RESM0
+     93  f06e		       a2 22		      ldx	#34
+     94  f070				   BlankFill
+     95  f070		       85 02		      sta	WSYNC
+     96  f072		       ca		      dex
+     97  f073		       d0 fb		      bne	BlankFill
+     98  f075							; Visible line 0 is the following WSYNC.
+     99  f075
+    100  f075		       a5 80		      lda	FRAME
+    101  f077		       29 01		      and	#1
+    102  f079		       f0 03		      beq	EvenJump
+    103  f07b		       4c e6 f2 	      jmp	RasterOdd
+    104  f07e				   EvenJump
+    105  f07e		       4c 81 f0 	      jmp	RasterEven
+    106  f081				   RasterEven
+    107  f081		       a2 44		      ldx	#68
+    108  f083				   TopFillEven
+    109  f083		       85 02		      sta	WSYNC
+    110  f085		       a9 00		      lda	#0
+    111  f087		       85 01		      sta	VBLANK
+    112  f089		       ca		      dex
+    113  f08a		       d0 f7		      bne	TopFillEven
+    114  f08c				   LineEven_68
+    115  f08c		       85 02		      sta	WSYNC
+    116  f08e		       a9 00		      lda	#$00
+    117  f090		       85 1b		      sta	GRP0
+    118  f092		       a9 00		      lda	#$00
+    119  f094		       85 1d		      sta	ENAM0
+    120  f096		       a9 00		      lda	#0
+    121  f098		       85 1c		      sta	GRP1
+    122  f09a				   LineEven_69
+    123  f09a		       85 02		      sta	WSYNC
+    124  f09c		       a9 00		      lda	#$00
+    125  f09e		       85 1b		      sta	GRP0
+    126  f0a0		       a9 00		      lda	#$00
+    127  f0a2		       85 1d		      sta	ENAM0
+    128  f0a4		       a9 00		      lda	#0
+    129  f0a6		       85 1c		      sta	GRP1
+    130  f0a8				   LineEven_70
+    131  f0a8		       85 02		      sta	WSYNC
+    132  f0aa		       a9 00		      lda	#$00
+    133  f0ac		       85 1b		      sta	GRP0
+    134  f0ae		       a9 00		      lda	#$00
+    135  f0b0		       85 1d		      sta	ENAM0
+    136  f0b2		       a9 00		      lda	#0
+    137  f0b4		       85 1c		      sta	GRP1
+    138  f0b6				   LineEven_71
+    139  f0b6		       85 02		      sta	WSYNC
+    140  f0b8		       a9 00		      lda	#$00
+    141  f0ba		       85 1b		      sta	GRP0
+    142  f0bc		       a9 00		      lda	#$00
+    143  f0be		       85 1d		      sta	ENAM0
+    144  f0c0		       a9 00		      lda	#0
+    145  f0c2		       85 1c		      sta	GRP1
+    146  f0c4		       24 80		      bit	FRAME
+    147  f0c6		       ea		      nop
+    148  f0c7		       ea		      nop
+    149  f0c8		       ea		      nop
+    150  f0c9		       ea		      nop
+    151  f0ca		       ea		      nop
+    152  f0cb		       ea		      nop
+    153  f0cc		       ea		      nop
+    154  f0cd		       ea		      nop
+    155  f0ce		       ea		      nop
+    156  f0cf		       a9 00		      lda	#$00
+    157  f0d1		       85 11		      sta	RESP1
+    158  f0d3		       85 1c		      sta	GRP1
+    159  f0d5				   LineEven_72
+    160  f0d5		       85 02		      sta	WSYNC
+    161  f0d7		       a9 3c		      lda	#$3c
+    162  f0d9		       85 1b		      sta	GRP0
+    163  f0db		       a9 00		      lda	#$00
+    164  f0dd		       85 1d		      sta	ENAM0
+    165  f0df		       a9 00		      lda	#0
+    166  f0e1		       85 1c		      sta	GRP1
+    167  f0e3		       24 80		      bit	FRAME
+    168  f0e5		       ea		      nop
+    169  f0e6		       ea		      nop
+    170  f0e7		       ea		      nop
+    171  f0e8		       ea		      nop
+    172  f0e9		       ea		      nop
+    173  f0ea		       ea		      nop
+    174  f0eb		       ea		      nop
+    175  f0ec		       ea		      nop
+    176  f0ed		       ea		      nop
+    177  f0ee		       a9 00		      lda	#$00
+    178  f0f0		       85 11		      sta	RESP1
+    179  f0f2		       85 1c		      sta	GRP1
+    180  f0f4				   LineEven_73
+    181  f0f4		       85 02		      sta	WSYNC
+    182  f0f6		       a9 7e		      lda	#$7e
+    183  f0f8		       85 1b		      sta	GRP0
+    184  f0fa		       a9 00		      lda	#$00
+    185  f0fc		       85 1d		      sta	ENAM0
+    186  f0fe		       a9 00		      lda	#0
+    187  f100		       85 1c		      sta	GRP1
+    188  f102		       ea		      nop
+    189  f103		       a9 3c		      lda	#$3c
+    190  f105		       85 11		      sta	RESP1
+    191  f107		       85 1c		      sta	GRP1
+    192  f109		       24 80		      bit	FRAME
+    193  f10b		       ea		      nop
+    194  f10c		       ea		      nop
+    195  f10d		       ea		      nop
+    196  f10e		       ea		      nop
+    197  f10f		       a9 3c		      lda	#$3c
+    198  f111		       85 11		      sta	RESP1
+    199  f113		       85 1c		      sta	GRP1
+    200  f115				   LineEven_74
+    201  f115		       85 02		      sta	WSYNC
+    202  f117		       a9 18		      lda	#$18
+    203  f119		       85 1b		      sta	GRP0
+    204  f11b		       a9 00		      lda	#$00
+    205  f11d		       85 1d		      sta	ENAM0
+    206  f11f		       a9 00		      lda	#0
+    207  f121		       85 1c		      sta	GRP1
+    208  f123		       ea		      nop
+    209  f124		       a9 3c		      lda	#$3c
+    210  f126		       85 11		      sta	RESP1
+    211  f128		       85 1c		      sta	GRP1
+    212  f12a		       24 80		      bit	FRAME
+    213  f12c		       ea		      nop
+    214  f12d		       ea		      nop
+    215  f12e		       ea		      nop
+    216  f12f		       ea		      nop
+    217  f130		       a9 3c		      lda	#$3c
+    218  f132		       85 11		      sta	RESP1
+    219  f134		       85 1c		      sta	GRP1
+    220  f136				   LineEven_75
+    221  f136		       85 02		      sta	WSYNC
+    222  f138		       a9 7e		      lda	#$7e
+    223  f13a		       85 1b		      sta	GRP0
+    224  f13c		       a9 02		      lda	#$02
+    225  f13e		       85 1d		      sta	ENAM0
+    226  f140		       a9 00		      lda	#0
+    227  f142		       85 1c		      sta	GRP1
+    228  f144		       ea		      nop
+    229  f145		       a9 18		      lda	#$18
+    230  f147		       85 11		      sta	RESP1
+    231  f149		       85 1c		      sta	GRP1
+    232  f14b		       24 80		      bit	FRAME
+    233  f14d		       ea		      nop
+    234  f14e		       ea		      nop
+    235  f14f		       ea		      nop
+    236  f150		       ea		      nop
+    237  f151		       a9 18		      lda	#$18
+    238  f153		       85 11		      sta	RESP1
+    239  f155		       85 1c		      sta	GRP1
+    240  f157		       ea		      nop
+    241  f158		       ea		      nop
+    242  f159		       ea		      nop
+    243  f15a		       ea		      nop
+    244  f15b		       ea		      nop
+    245  f15c		       a9 3c		      lda	#$3c
+    246  f15e		       85 11		      sta	RESP1
+    247  f160		       85 1c		      sta	GRP1
+    248  f162				   LineEven_76
+    249  f162		       85 02		      sta	WSYNC
+    250  f164		       a9 1e		      lda	#$1e
+    251  f166		       85 1b		      sta	GRP0
+    252  f168		       a9 02		      lda	#$02
+    253  f16a		       85 1d		      sta	ENAM0
+    254  f16c		       a9 00		      lda	#0
+    255  f16e		       85 1c		      sta	GRP1
+    256  f170		       ea		      nop
+    257  f171		       a9 ff		      lda	#$ff
+    258  f173		       85 11		      sta	RESP1
+    259  f175		       85 1c		      sta	GRP1
+    260  f177		       24 80		      bit	FRAME
+    261  f179		       ea		      nop
+    262  f17a		       ea		      nop
+    263  f17b		       ea		      nop
+    264  f17c		       ea		      nop
+    265  f17d		       a9 7e		      lda	#$7e
+    266  f17f		       85 11		      sta	RESP1
+    267  f181		       85 1c		      sta	GRP1
+    268  f183		       ea		      nop
+    269  f184		       ea		      nop
+    270  f185		       ea		      nop
+    271  f186		       ea		      nop
+    272  f187		       ea		      nop
+    273  f188		       a9 3c		      lda	#$3c
+    274  f18a		       85 11		      sta	RESP1
+    275  f18c		       85 1c		      sta	GRP1
+    276  f18e				   LineEven_77
+    277  f18e		       85 02		      sta	WSYNC
+    278  f190		       a9 3c		      lda	#$3c
+    279  f192		       85 1b		      sta	GRP0
+    280  f194		       a9 00		      lda	#$00
+    281  f196		       85 1d		      sta	ENAM0
+    282  f198		       a9 00		      lda	#0
+    283  f19a		       85 1c		      sta	GRP1
+    284  f19c		       ea		      nop
+    285  f19d		       a9 3c		      lda	#$3c
+    286  f19f		       85 11		      sta	RESP1
+    287  f1a1		       85 1c		      sta	GRP1
+    288  f1a3		       24 80		      bit	FRAME
+    289  f1a5		       ea		      nop
+    290  f1a6		       ea		      nop
+    291  f1a7		       ea		      nop
+    292  f1a8		       ea		      nop
+    293  f1a9		       a9 3c		      lda	#$3c
+    294  f1ab		       85 11		      sta	RESP1
+    295  f1ad		       85 1c		      sta	GRP1
+    296  f1af		       ea		      nop
+    297  f1b0		       ea		      nop
+    298  f1b1		       ea		      nop
+    299  f1b2		       ea		      nop
+    300  f1b3		       ea		      nop
+    301  f1b4		       a9 18		      lda	#$18
+    302  f1b6		       85 11		      sta	RESP1
+    303  f1b8		       85 1c		      sta	GRP1
+    304  f1ba				   LineEven_78
+    305  f1ba		       85 02		      sta	WSYNC
+    306  f1bc		       a9 18		      lda	#$18
+    307  f1be		       85 1b		      sta	GRP0
+    308  f1c0		       a9 00		      lda	#$00
+    309  f1c2		       85 1d		      sta	ENAM0
+    310  f1c4		       a9 00		      lda	#0
+    311  f1c6		       85 1c		      sta	GRP1
+    312  f1c8		       ea		      nop
+    313  f1c9		       a9 7e		      lda	#$7e
+    314  f1cb		       85 11		      sta	RESP1
+    315  f1cd		       85 1c		      sta	GRP1
+    316  f1cf		       24 80		      bit	FRAME
+    317  f1d1		       ea		      nop
+    318  f1d2		       ea		      nop
+    319  f1d3		       ea		      nop
+    320  f1d4		       ea		      nop
+    321  f1d5		       a9 24		      lda	#$24
+    322  f1d7		       85 11		      sta	RESP1
+    323  f1d9		       85 1c		      sta	GRP1
+    324  f1db		       ea		      nop
+    325  f1dc		       ea		      nop
+    326  f1dd		       ea		      nop
+    327  f1de		       ea		      nop
+    328  f1df		       ea		      nop
+    329  f1e0		       a9 ff		      lda	#$ff
+    330  f1e2		       85 11		      sta	RESP1
+    331  f1e4		       85 1c		      sta	GRP1
+    332  f1e6				   LineEven_79
+    333  f1e6		       85 02		      sta	WSYNC
+    334  f1e8		       a9 24		      lda	#$24
+    335  f1ea		       85 1b		      sta	GRP0
+    336  f1ec		       a9 00		      lda	#$00
+    337  f1ee		       85 1d		      sta	ENAM0
+    338  f1f0		       a9 00		      lda	#0
+    339  f1f2		       85 1c		      sta	GRP1
+    340  f1f4		       ea		      nop
+    341  f1f5		       a9 7e		      lda	#$7e
+    342  f1f7		       85 11		      sta	RESP1
+    343  f1f9		       85 1c		      sta	GRP1
+    344  f1fb		       24 80		      bit	FRAME
+    345  f1fd		       ea		      nop
+    346  f1fe		       ea		      nop
+    347  f1ff		       ea		      nop
+    348  f200		       ea		      nop
+    349  f201		       a9 00		      lda	#$00
+    350  f203		       85 11		      sta	RESP1
+    351  f205		       85 1c		      sta	GRP1
+    352  f207		       ea		      nop
+    353  f208		       ea		      nop
+    354  f209		       ea		      nop
+    355  f20a		       ea		      nop
+    356  f20b		       ea		      nop
+    357  f20c		       a9 18		      lda	#$18
+    358  f20e		       85 11		      sta	RESP1
+    359  f210		       85 1c		      sta	GRP1
+    360  f212				   LineEven_80
+    361  f212		       85 02		      sta	WSYNC
+    362  f214		       a9 42		      lda	#$42
+    363  f216		       85 1b		      sta	GRP0
+    364  f218		       a9 00		      lda	#$00
+    365  f21a		       85 1d		      sta	ENAM0
+    366  f21c		       a9 00		      lda	#0
+    367  f21e		       85 1c		      sta	GRP1
+    368  f220		       ea		      nop
+    369  f221		       a9 24		      lda	#$24
+    370  f223		       85 11		      sta	RESP1
+    371  f225		       85 1c		      sta	GRP1
+    372  f227		       24 80		      bit	FRAME
+    373  f229		       ea		      nop
+    374  f22a		       ea		      nop
+    375  f22b		       ea		      nop
+    376  f22c		       ea		      nop
+    377  f22d		       ea		      nop
+    378  f22e		       ea		      nop
+    379  f22f		       ea		      nop
+    380  f230		       ea		      nop
+    381  f231		       ea		      nop
+    382  f232		       ea		      nop
+    383  f233		       ea		      nop
+    384  f234		       ea		      nop
+    385  f235		       ea		      nop
+    386  f236		       a9 24		      lda	#$24
+    387  f238		       85 11		      sta	RESP1
+    388  f23a		       85 1c		      sta	GRP1
+    389  f23c				   LineEven_81
+    390  f23c		       85 02		      sta	WSYNC
+    391  f23e		       a9 00		      lda	#$00
+    392  f240		       85 1b		      sta	GRP0
+    393  f242		       a9 00		      lda	#$00
+    394  f244		       85 1d		      sta	ENAM0
+    395  f246		       a9 00		      lda	#0
+    396  f248		       85 1c		      sta	GRP1
+    397  f24a		       ea		      nop
+    398  f24b		       a9 24		      lda	#$24
+    399  f24d		       85 11		      sta	RESP1
+    400  f24f		       85 1c		      sta	GRP1
+    401  f251		       24 80		      bit	FRAME
+    402  f253		       ea		      nop
+    403  f254		       ea		      nop
+    404  f255		       ea		      nop
+    405  f256		       ea		      nop
+    406  f257		       ea		      nop
+    407  f258		       ea		      nop
+    408  f259		       ea		      nop
+    409  f25a		       ea		      nop
+    410  f25b		       ea		      nop
+    411  f25c		       ea		      nop
+    412  f25d		       ea		      nop
+    413  f25e		       ea		      nop
+    414  f25f		       ea		      nop
+    415  f260		       a9 24		      lda	#$24
+    416  f262		       85 11		      sta	RESP1
+    417  f264		       85 1c		      sta	GRP1
+    418  f266				   LineEven_82
+    419  f266		       85 02		      sta	WSYNC
+    420  f268		       a9 00		      lda	#$00
+    421  f26a		       85 1b		      sta	GRP0
+    422  f26c		       a9 00		      lda	#$00
+    423  f26e		       85 1d		      sta	ENAM0
+    424  f270		       a9 00		      lda	#0
+    425  f272		       85 1c		      sta	GRP1
+    426  f274		       24 80		      bit	FRAME
+    427  f276		       ea		      nop
+    428  f277		       ea		      nop
+    429  f278		       ea		      nop
+    430  f279		       ea		      nop
+    431  f27a		       ea		      nop
+    432  f27b		       ea		      nop
+    433  f27c		       ea		      nop
+    434  f27d		       ea		      nop
+    435  f27e		       ea		      nop
+    436  f27f		       ea		      nop
+    437  f280		       ea		      nop
+    438  f281		       ea		      nop
+    439  f282		       ea		      nop
+    440  f283		       ea		      nop
+    441  f284		       ea		      nop
+    442  f285		       ea		      nop
+    443  f286		       ea		      nop
+    444  f287		       ea		      nop
+    445  f288		       a9 42		      lda	#$42
+    446  f28a		       85 11		      sta	RESP1
+    447  f28c		       85 1c		      sta	GRP1
+    448  f28e				   LineEven_83
+    449  f28e		       85 02		      sta	WSYNC
+    450  f290		       a9 00		      lda	#$00
+    451  f292		       85 1b		      sta	GRP0
+    452  f294		       a9 00		      lda	#$00
+    453  f296		       85 1d		      sta	ENAM0
+    454  f298		       a9 00		      lda	#0
+    455  f29a		       85 1c		      sta	GRP1
+    456  f29c		       24 80		      bit	FRAME
+    457  f29e		       ea		      nop
+    458  f29f		       ea		      nop
+    459  f2a0		       ea		      nop
+    460  f2a1		       ea		      nop
+    461  f2a2		       ea		      nop
+    462  f2a3		       ea		      nop
+    463  f2a4		       ea		      nop
+    464  f2a5		       ea		      nop
+    465  f2a6		       ea		      nop
+    466  f2a7		       ea		      nop
+    467  f2a8		       ea		      nop
+    468  f2a9		       ea		      nop
+    469  f2aa		       ea		      nop
+    470  f2ab		       ea		      nop
+    471  f2ac		       ea		      nop
+    472  f2ad		       ea		      nop
+    473  f2ae		       ea		      nop
+    474  f2af		       ea		      nop
+    475  f2b0		       a9 42		      lda	#$42
+    476  f2b2		       85 11		      sta	RESP1
+    477  f2b4		       85 1c		      sta	GRP1
+    478  f2b6				   LineEven_84
+    479  f2b6		       85 02		      sta	WSYNC
+    480  f2b8		       a9 00		      lda	#$00
+    481  f2ba		       85 1b		      sta	GRP0
+    482  f2bc		       a9 00		      lda	#$00
+    483  f2be		       85 1d		      sta	ENAM0
+    484  f2c0		       a9 00		      lda	#0
+    485  f2c2		       85 1c		      sta	GRP1
+    486  f2c4				   LineEven_85
+    487  f2c4		       85 02		      sta	WSYNC
+    488  f2c6		       a9 00		      lda	#$00
+    489  f2c8		       85 1b		      sta	GRP0
+    490  f2ca		       a9 00		      lda	#$00
+    491  f2cc		       85 1d		      sta	ENAM0
+    492  f2ce		       a9 00		      lda	#0
+    493  f2d0		       85 1c		      sta	GRP1
+    494  f2d2		       85 02		      sta	WSYNC
+    495  f2d4		       a9 00		      lda	#0
+    496  f2d6		       85 1c		      sta	GRP1
+    497  f2d8		       85 1b		      sta	GRP0
+    498  f2da		       85 1d		      sta	ENAM0
+    499  f2dc		       a2 69		      ldx	#105
+    500  f2de				   BottomFillEven
+    501  f2de		       85 02		      sta	WSYNC
+    502  f2e0		       ca		      dex
+    503  f2e1		       d0 fb		      bne	BottomFillEven
+    504  f2e3		       4c e1 f4 	      jmp	EndRaster
+    505  f2e6
+    506  f2e6				   RasterOdd
+    507  f2e6		       a2 44		      ldx	#68
+    508  f2e8				   TopFillOdd
+    509  f2e8		       85 02		      sta	WSYNC
+    510  f2ea		       a9 00		      lda	#0
+    511  f2ec		       85 01		      sta	VBLANK
+    512  f2ee		       ca		      dex
+    513  f2ef		       d0 f7		      bne	TopFillOdd
+    514  f2f1				   LineOdd_68
+    515  f2f1		       85 02		      sta	WSYNC
+    516  f2f3		       a9 00		      lda	#$00
+    517  f2f5		       85 1b		      sta	GRP0
+    518  f2f7		       a9 00		      lda	#$00
+    519  f2f9		       85 1d		      sta	ENAM0
+    520  f2fb		       a9 00		      lda	#0
+    521  f2fd		       85 1c		      sta	GRP1
+    522  f2ff				   LineOdd_69
+    523  f2ff		       85 02		      sta	WSYNC
+    524  f301		       a9 00		      lda	#$00
+    525  f303		       85 1b		      sta	GRP0
+    526  f305		       a9 00		      lda	#$00
+    527  f307		       85 1d		      sta	ENAM0
+    528  f309		       a9 00		      lda	#0
+    529  f30b		       85 1c		      sta	GRP1
+    530  f30d				   LineOdd_70
+    531  f30d		       85 02		      sta	WSYNC
+    532  f30f		       a9 00		      lda	#$00
+    533  f311		       85 1b		      sta	GRP0
+    534  f313		       a9 00		      lda	#$00
+    535  f315		       85 1d		      sta	ENAM0
+    536  f317		       a9 00		      lda	#0
+    537  f319		       85 1c		      sta	GRP1
+    538  f31b				   LineOdd_71
+    539  f31b		       85 02		      sta	WSYNC
+    540  f31d		       a9 00		      lda	#$00
+    541  f31f		       85 1b		      sta	GRP0
+    542  f321		       a9 00		      lda	#$00
+    543  f323		       85 1d		      sta	ENAM0
+    544  f325		       a9 00		      lda	#0
+    545  f327		       85 1c		      sta	GRP1
+    546  f329				   LineOdd_72
+    547  f329		       85 02		      sta	WSYNC
+    548  f32b		       a9 3c		      lda	#$3c
+    549  f32d		       85 1b		      sta	GRP0
+    550  f32f		       a9 00		      lda	#$00
+    551  f331		       85 1d		      sta	ENAM0
+    552  f333		       a9 00		      lda	#0
+    553  f335		       85 1c		      sta	GRP1
+    554  f337		       ea		      nop
+    555  f338		       ea		      nop
+    556  f339		       ea		      nop
+    557  f33a		       ea		      nop
+    558  f33b		       ea		      nop
+    559  f33c		       ea		      nop
+    560  f33d		       ea		      nop
+    561  f33e		       ea		      nop
+    562  f33f		       ea		      nop
+    563  f340		       ea		      nop
+    564  f341		       ea		      nop
+    565  f342		       ea		      nop
+    566  f343		       ea		      nop
+    567  f344		       ea		      nop
+    568  f345		       ea		      nop
+    569  f346		       a9 00		      lda	#$00
+    570  f348		       85 11		      sta	RESP1
+    571  f34a		       85 1c		      sta	GRP1
+    572  f34c				   LineOdd_73
+    573  f34c		       85 02		      sta	WSYNC
+    574  f34e		       a9 7e		      lda	#$7e
+    575  f350		       85 1b		      sta	GRP0
+    576  f352		       a9 00		      lda	#$00
+    577  f354		       85 1d		      sta	ENAM0
+    578  f356		       a9 00		      lda	#0
+    579  f358		       85 1c		      sta	GRP1
+    580  f35a		       ea		      nop
+    581  f35b		       ea		      nop
+    582  f35c		       ea		      nop
+    583  f35d		       ea		      nop
+    584  f35e		       ea		      nop
+    585  f35f		       ea		      nop
+    586  f360		       ea		      nop
+    587  f361		       ea		      nop
+    588  f362		       ea		      nop
+    589  f363		       ea		      nop
+    590  f364		       ea		      nop
+    591  f365		       ea		      nop
+    592  f366		       ea		      nop
+    593  f367		       ea		      nop
+    594  f368		       ea		      nop
+    595  f369		       a9 00		      lda	#$00
+    596  f36b		       85 11		      sta	RESP1
+    597  f36d		       85 1c		      sta	GRP1
+    598  f36f				   LineOdd_74
+    599  f36f		       85 02		      sta	WSYNC
+    600  f371		       a9 18		      lda	#$18
+    601  f373		       85 1b		      sta	GRP0
+    602  f375		       a9 00		      lda	#$00
+    603  f377		       85 1d		      sta	ENAM0
+    604  f379		       a9 00		      lda	#0
+    605  f37b		       85 1c		      sta	GRP1
+    606  f37d		       ea		      nop
+    607  f37e		       ea		      nop
+    608  f37f		       ea		      nop
+    609  f380		       ea		      nop
+    610  f381		       ea		      nop
+    611  f382		       ea		      nop
+    612  f383		       a9 3c		      lda	#$3c
+    613  f385		       85 11		      sta	RESP1
+    614  f387		       85 1c		      sta	GRP1
+    615  f389		       ea		      nop
+    616  f38a		       ea		      nop
+    617  f38b		       ea		      nop
+    618  f38c		       ea		      nop
+    619  f38d		       ea		      nop
+    620  f38e		       a9 3c		      lda	#$3c
+    621  f390		       85 11		      sta	RESP1
+    622  f392		       85 1c		      sta	GRP1
+    623  f394				   LineOdd_75
+    624  f394		       85 02		      sta	WSYNC
+    625  f396		       a9 7e		      lda	#$7e
+    626  f398		       85 1b		      sta	GRP0
+    627  f39a		       a9 02		      lda	#$02
+    628  f39c		       85 1d		      sta	ENAM0
+    629  f39e		       a9 00		      lda	#0
+    630  f3a0		       85 1c		      sta	GRP1
+    631  f3a2		       ea		      nop
+    632  f3a3		       ea		      nop
+    633  f3a4		       ea		      nop
+    634  f3a5		       ea		      nop
+    635  f3a6		       ea		      nop
+    636  f3a7		       ea		      nop
+    637  f3a8		       a9 3c		      lda	#$3c
+    638  f3aa		       85 11		      sta	RESP1
+    639  f3ac		       85 1c		      sta	GRP1
+    640  f3ae		       ea		      nop
+    641  f3af		       ea		      nop
+    642  f3b0		       ea		      nop
+    643  f3b1		       ea		      nop
+    644  f3b2		       ea		      nop
+    645  f3b3		       a9 3c		      lda	#$3c
+    646  f3b5		       85 11		      sta	RESP1
+    647  f3b7		       85 1c		      sta	GRP1
+    648  f3b9				   LineOdd_76
+    649  f3b9		       85 02		      sta	WSYNC
+    650  f3bb		       a9 1e		      lda	#$1e
+    651  f3bd		       85 1b		      sta	GRP0
+    652  f3bf		       a9 02		      lda	#$02
+    653  f3c1		       85 1d		      sta	ENAM0
+    654  f3c3		       a9 00		      lda	#0
+    655  f3c5		       85 1c		      sta	GRP1
+    656  f3c7		       ea		      nop
+    657  f3c8		       ea		      nop
+    658  f3c9		       ea		      nop
+    659  f3ca		       ea		      nop
+    660  f3cb		       ea		      nop
+    661  f3cc		       ea		      nop
+    662  f3cd		       a9 18		      lda	#$18
+    663  f3cf		       85 11		      sta	RESP1
+    664  f3d1		       85 1c		      sta	GRP1
+    665  f3d3		       ea		      nop
+    666  f3d4		       ea		      nop
+    667  f3d5		       ea		      nop
+    668  f3d6		       ea		      nop
+    669  f3d7		       ea		      nop
+    670  f3d8		       a9 18		      lda	#$18
+    671  f3da		       85 11		      sta	RESP1
+    672  f3dc		       85 1c		      sta	GRP1
+    673  f3de				   LineOdd_77
+    674  f3de		       85 02		      sta	WSYNC
+    675  f3e0		       a9 3c		      lda	#$3c
+    676  f3e2		       85 1b		      sta	GRP0
+    677  f3e4		       a9 00		      lda	#$00
+    678  f3e6		       85 1d		      sta	ENAM0
+    679  f3e8		       a9 00		      lda	#0
+    680  f3ea		       85 1c		      sta	GRP1
+    681  f3ec		       ea		      nop
+    682  f3ed		       ea		      nop
+    683  f3ee		       ea		      nop
+    684  f3ef		       ea		      nop
+    685  f3f0		       ea		      nop
+    686  f3f1		       ea		      nop
+    687  f3f2		       a9 ff		      lda	#$ff
+    688  f3f4		       85 11		      sta	RESP1
+    689  f3f6		       85 1c		      sta	GRP1
+    690  f3f8		       ea		      nop
+    691  f3f9		       ea		      nop
+    692  f3fa		       ea		      nop
+    693  f3fb		       ea		      nop
+    694  f3fc		       ea		      nop
+    695  f3fd		       a9 7e		      lda	#$7e
+    696  f3ff		       85 11		      sta	RESP1
+    697  f401		       85 1c		      sta	GRP1
+    698  f403				   LineOdd_78
+    699  f403		       85 02		      sta	WSYNC
+    700  f405		       a9 18		      lda	#$18
+    701  f407		       85 1b		      sta	GRP0
+    702  f409		       a9 00		      lda	#$00
+    703  f40b		       85 1d		      sta	ENAM0
+    704  f40d		       a9 00		      lda	#0
+    705  f40f		       85 1c		      sta	GRP1
+    706  f411		       ea		      nop
+    707  f412		       ea		      nop
+    708  f413		       ea		      nop
+    709  f414		       ea		      nop
+    710  f415		       ea		      nop
+    711  f416		       ea		      nop
+    712  f417		       a9 18		      lda	#$18
+    713  f419		       85 11		      sta	RESP1
+    714  f41b		       85 1c		      sta	GRP1
+    715  f41d		       ea		      nop
+    716  f41e		       ea		      nop
+    717  f41f		       ea		      nop
+    718  f420		       ea		      nop
+    719  f421		       ea		      nop
+    720  f422		       a9 18		      lda	#$18
+    721  f424		       85 11		      sta	RESP1
+    722  f426		       85 1c		      sta	GRP1
+    723  f428				   LineOdd_79
+    724  f428		       85 02		      sta	WSYNC
+    725  f42a		       a9 24		      lda	#$24
+    726  f42c		       85 1b		      sta	GRP0
+    727  f42e		       a9 00		      lda	#$00
+    728  f430		       85 1d		      sta	ENAM0
+    729  f432		       a9 00		      lda	#0
+    730  f434		       85 1c		      sta	GRP1
+    731  f436		       ea		      nop
+    732  f437		       ea		      nop
+    733  f438		       ea		      nop
+    734  f439		       ea		      nop
+    735  f43a		       ea		      nop
+    736  f43b		       ea		      nop
+    737  f43c		       a9 24		      lda	#$24
+    738  f43e		       85 11		      sta	RESP1
+    739  f440		       85 1c		      sta	GRP1
+    740  f442		       ea		      nop
+    741  f443		       ea		      nop
+    742  f444		       ea		      nop
+    743  f445		       ea		      nop
+    744  f446		       ea		      nop
+    745  f447		       a9 24		      lda	#$24
+    746  f449		       85 11		      sta	RESP1
+    747  f44b		       85 1c		      sta	GRP1
+    748  f44d				   LineOdd_80
+    749  f44d		       85 02		      sta	WSYNC
+    750  f44f		       a9 42		      lda	#$42
+    751  f451		       85 1b		      sta	GRP0
+    752  f453		       a9 00		      lda	#$00
+    753  f455		       85 1d		      sta	ENAM0
+    754  f457		       a9 00		      lda	#0
+    755  f459		       85 1c		      sta	GRP1
+    756  f45b		       ea		      nop
+    757  f45c		       ea		      nop
+    758  f45d		       ea		      nop
+    759  f45e		       ea		      nop
+    760  f45f		       ea		      nop
+    761  f460		       ea		      nop
+    762  f461		       a9 24		      lda	#$24
+    763  f463		       85 11		      sta	RESP1
+    764  f465		       85 1c		      sta	GRP1
+    765  f467		       ea		      nop
+    766  f468		       ea		      nop
+    767  f469		       ea		      nop
+    768  f46a		       ea		      nop
+    769  f46b		       ea		      nop
+    770  f46c		       a9 00		      lda	#$00
+    771  f46e		       85 11		      sta	RESP1
+    772  f470		       85 1c		      sta	GRP1
+    773  f472				   LineOdd_81
+    774  f472		       85 02		      sta	WSYNC
+    775  f474		       a9 00		      lda	#$00
+    776  f476		       85 1b		      sta	GRP0
+    777  f478		       a9 00		      lda	#$00
+    778  f47a		       85 1d		      sta	ENAM0
+    779  f47c		       a9 00		      lda	#0
+    780  f47e		       85 1c		      sta	GRP1
+    781  f480		       ea		      nop
+    782  f481		       ea		      nop
+    783  f482		       ea		      nop
+    784  f483		       ea		      nop
+    785  f484		       ea		      nop
+    786  f485		       ea		      nop
+    787  f486		       a9 42		      lda	#$42
+    788  f488		       85 11		      sta	RESP1
+    789  f48a		       85 1c		      sta	GRP1
+    790  f48c				   LineOdd_82
+    791  f48c		       85 02		      sta	WSYNC
+    792  f48e		       a9 00		      lda	#$00
+    793  f490		       85 1b		      sta	GRP0
+    794  f492		       a9 00		      lda	#$00
+    795  f494		       85 1d		      sta	ENAM0
+    796  f496		       a9 00		      lda	#0
+    797  f498		       85 1c		      sta	GRP1
+    798  f49a		       ea		      nop
+    799  f49b		       ea		      nop
+    800  f49c		       ea		      nop
+    801  f49d		       ea		      nop
+    802  f49e		       ea		      nop
+    803  f49f		       ea		      nop
+    804  f4a0		       a9 42		      lda	#$42
+    805  f4a2		       85 11		      sta	RESP1
+    806  f4a4		       85 1c		      sta	GRP1
+    807  f4a6				   LineOdd_83
+    808  f4a6		       85 02		      sta	WSYNC
+    809  f4a8		       a9 00		      lda	#$00
+    810  f4aa		       85 1b		      sta	GRP0
+    811  f4ac		       a9 00		      lda	#$00
+    812  f4ae		       85 1d		      sta	ENAM0
+    813  f4b0		       a9 00		      lda	#0
+    814  f4b2		       85 1c		      sta	GRP1
+    815  f4b4				   LineOdd_84
+    816  f4b4		       85 02		      sta	WSYNC
+    817  f4b6		       a9 00		      lda	#$00
+    818  f4b8		       85 1b		      sta	GRP0
+    819  f4ba		       a9 00		      lda	#$00
+    820  f4bc		       85 1d		      sta	ENAM0
+    821  f4be		       a9 00		      lda	#0
+    822  f4c0		       85 1c		      sta	GRP1
+    823  f4c2				   LineOdd_85
+    824  f4c2		       85 02		      sta	WSYNC
+    825  f4c4		       a9 00		      lda	#$00
+    826  f4c6		       85 1b		      sta	GRP0
+    827  f4c8		       a9 00		      lda	#$00
+    828  f4ca		       85 1d		      sta	ENAM0
+    829  f4cc		       a9 00		      lda	#0
+    830  f4ce		       85 1c		      sta	GRP1
+    831  f4d0		       85 02		      sta	WSYNC
+    832  f4d2		       a9 00		      lda	#0
+    833  f4d4		       85 1c		      sta	GRP1
+    834  f4d6		       85 1b		      sta	GRP0
+    835  f4d8		       85 1d		      sta	ENAM0
+    836  f4da		       a2 69		      ldx	#105
+    837  f4dc				   BottomFillOdd
+    838  f4dc		       85 02		      sta	WSYNC
+    839  f4de		       ca		      dex
+    840  f4df		       d0 fb		      bne	BottomFillOdd
+    841  f4e1				   EndRaster
+    842  f4e1
+    843  f4e1		       a2 1e		      ldx	#30
+    844  f4e3				   Overscan
+    845  f4e3		       85 02		      sta	WSYNC
+    846  f4e5		       a9 02		      lda	#2
+    847  f4e7		       85 01		      sta	VBLANK
+    848  f4e9		       ca		      dex
+    849  f4ea		       d0 f7		      bne	Overscan
+    850  f4ec		       e6 80		      inc	FRAME
+    851  f4ee		       4c 38 f0 	      jmp	Frame
+    852  f4f1				   EndKernel
+    853  fffa					      ORG	$fffa
+    854  fffa		       00 f0 00 f0*	      word.w	Reset,Reset,Reset
