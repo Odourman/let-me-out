@@ -49,6 +49,10 @@ def gate(stage,d):
         return last(d,"_fCount")==136 and bool(d["pc"]) and 0<=last(d,"_bank")<=3
     if stage=="A_TRAP_ACK":
         return d["trap_added"] and not d["trap_removed"]
+    if stage=="A_REENTRY_HANDSHAKE":
+        return d["stella_header"] and last(d,"pc")==0xF1F0 and d["bytes"]>500
+    if stage=="B_REENTRY_HANDSHAKE":
+        return d["stella_header"] and last(d,"pc")==0xF1EE and d["bytes"]>500
     if stage=="A_TRAP":
         return (d["tia"] and d["pc"][-2:]==[0xF1F0,0xF1F0] and last(d,"_fCount")==136
                 and d["_scan"][-2:]==[123,123] and last(d,"_sCycles")==21
@@ -92,8 +96,8 @@ if len(sys.argv)>=4 and sys.argv[1]=="--gate":
     sys.exit(0 if ok else 7)
 
 root=Path(sys.argv[1]).resolve()
-names=("A_HANDSHAKE","A_FRAME","A_TRAP_ACK","A_TRAP","B_HANDSHAKE","B_FRAME",
-       "B_SET_0","B_SET_1","B_SET_2","B_SET_3","B_PRE","C_POST")
+names=("A_HANDSHAKE","A_FRAME","A_TRAP_ACK","A_REENTRY_HANDSHAKE","A_TRAP","B_HANDSHAKE","B_FRAME",
+       "B_SET_0","B_SET_1","B_SET_2","B_SET_3","B_REENTRY_HANDSHAKE","B_PRE","C_POST")
 stages={}
 for n in names:
     parent=root/("A_TRAP" if n.startswith("A_") else "B_BREAK_STEP")
@@ -108,11 +112,11 @@ ref=root.parent.parent.parent/"ref_g5af"/"F9_000_M_RESP1"/"native_TIA_original.p
 cmp=compare_png(root/"A_TRAP"/"A_TRAP_native_TIA.png",ref)
 (root/"G5AL_G5AF_NATIVE_COMPARISON.json").write_text(json.dumps(cmp,indent=2)+"\n")
 A=bool((root/"A_TRAP"/"STAGE_A_PASS.txt").exists() and
-       all(stages[n]["session_gate"] for n in ("A_HANDSHAKE","A_FRAME","A_TRAP_ACK","A_TRAP")) and
+       all(stages[n]["session_gate"] for n in ("A_HANDSHAKE","A_FRAME","A_TRAP_ACK","A_REENTRY_HANDSHAKE","A_TRAP")) and
        imgs["A_TRAP"]["ok"] and cmp["pixel_equal"])
 B=bool(A and (root/"B_BREAK_STEP"/"STAGE_B_PASS.txt").exists() and
        all(stages[n]["session_gate"] for n in
-           ("B_HANDSHAKE","B_FRAME","B_SET_0","B_SET_1","B_SET_2","B_SET_3","B_PRE"))
+           ("B_HANDSHAKE","B_FRAME","B_SET_0","B_SET_1","B_SET_2","B_SET_3","B_REENTRY_HANDSHAKE","B_PRE"))
        and imgs["B_PRE"]["ok"])
 pre=stages["B_PRE"]["observed"];post=stages["C_POST"]["observed"]
 C=bool(B and (root/"B_BREAK_STEP"/"STAGE_C_PASS.txt").exists() and
