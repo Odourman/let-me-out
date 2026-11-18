@@ -1,4 +1,6 @@
 # LET ME OUT! – G5AX source-only beslutsunderlag efter G5AW
+**SENARE BESLUT 2026-11-18:** Användaren godkände uttryckligen det enda G5AX-test som föreslås nedan ("Ja, varför inte?"). **Bindande körorder finns separat i [Issue #23](https://github.com/Odourman/let-me-out/issues/23), `G5AX_AUTHORIZED_NOT_STARTED`; denna fil bevaras som ursprungligt käll-/beslutsunderlag och dess tidigare `NOT_AUTHORIZED` är en historisk status vid författandet, inte den nu aktuella orderstatusen.** Ingen Codex-körning har startats automatiskt genom uppdateringen.
+
 **MAIN IX · 2026-11-18 · STATUS: DECISION_READY_NOT_AUTHORIZED · INGEN emulatorstart/kodimplementation.**
 
 ## Varför behövs G5AX?
