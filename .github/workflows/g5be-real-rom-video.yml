@@ -14,14 +14,14 @@ permissions:
 jobs:
   record-real-emulator:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - name: Check out frozen ROM source
         uses: actions/checkout@v4
       - name: Install stock Stella and screen recorder
         run: |
           # Runner has preloaded Ubuntu package indexes; avoid a potentially hung apt update.
-          sudo DEBIAN_FRONTEND=noninteractive timeout 150 apt-get install -y --no-install-recommends stella xvfb xdotool
+          sudo DEBIAN_FRONTEND=noninteractive timeout 360 apt-get install -y --no-install-recommends stella xvfb xdotool
           command -v ffmpeg
           command -v stella
           stella -help > stella-help.txt 2>&1 || true
