@@ -1,0 +1,19 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: test_results.csv>
+index,test_id,developer_selftest_status,actual_evidence_or_limitation,source
+0,T01,INCONCLUSIVE,8 separata Stella-bildrutor anger 262 scanlines föregående bildruta; inte 600 sammanhängande per scen,"Stella debugger full-screen captures, frame 130/625/715/835/1225/1335/1420/1925"
+1,T02,FAIL,"Sex PF-androidkroppar finns i R1 på samma höjdband, men avbildas som korta block/streck; allvarligt läsbarhetsfel","R1 frame 130, original debugger_screen.png"
+2,T03,FAIL,"R2 fem vita PF-kroppar + P0 spelare, P1 nyckel och PF skott; hot-silhuetter fortfarande för grova","R2 frame 625,715,835 screenshots"
+3,T04,FAIL,Fyra godkända humanoidtyper kan inte identifieras entydigt i 4-PF-cell-studien,R1 frame 130 screenshot och ursprunglig 8x9 referens
+4,T05,PASS,"I utvecklarens Stella-förtest: nyckel syns/är skymd/åter synlig; RAM KEY_X=$1B, KEY_Y=$50, KEY_ALIVE=$01 oförändrat i tre mätpunkter","R2 frame 625,715,835; debugger RAM-rad 80..87"
+5,T06,INCONCLUSIVE,Två 64-rutors täckta perioder finns i generatorn; en täckt bildruta visas men kontinuerlig hålltid ej uppmätt i Stella,dist/phases.json och R2 frame 715
+6,T07,INCONCLUSIVE,Stella anger 262 för enstaka föregående bildrutor; ingen full tidslinje för TIA-register eller cykelposition på kritiska rasterlinjer,Debugger screenshots och offline CPU-logg ej liktydig med Stella TIA-trace
+7,T08,INCONCLUSIVE,R4 rörelsestress synlig i Stella vid frame 1925; inga 600 sammanhängande bilder med överlappningsklassificering,R4 frame 1925
+8,T09,PASS,Lokal Stella egenkontroll visar låst högermarkör och intakt vänster yttervägg i C02,R3 frame 1225/1335; skärmbilder
+9,T10,PASS,"Lokal Stella egenkontroll visar tydlig högeröppning efter upplåsning, vänster yttervägg intakt",R3 frame 1420; skärmbild och C02 source
+10,T11,FAIL,Orange låst markering visas i Stella; teknisk brun baslinje $64 är faktiskt lila; den visuella färgprofilen är felaktig,R3 frame 1225 och 1335
+11,T12,FAIL,Den svarta mittursparningen är inte läsbart rund-topp/kilformad; ingen samtidighetsmätning med all scenbelastning,"R3 frame 1335, P1 8-bitars dörrmask"
+12,T13,INCONCLUSIVE,"Guldnyckeln visas i R2, men kontrollerad K11/K09-jämförelse av läsbarhet/kontrast saknas",R2 frame 625 och 835; generatorn innehåller K11/K09
+13,T14,PASS,"DASM 2.20.14.1 assemblerade fyra banker, cmp byte-identisk med binären och SHA-256 matchar",GitHub Actions run 43743159103; DASM_BUILD_BYTE_IDENTICAL=YES
+14,T15,NOT_RUN,Ingen annan VERIFICATION-aktör har gjort separat rebuild/visuell bedömning,Verifieringskontrakt väntar
+15,T16,PASS,"Commitjämförelse begränsad till Odourman/let-me-out; ingen kommersiell Berzerk-kod, ILAF eller The Cabin","PR #7, working branch rom-dev/v018-ntsc-diagnostic"

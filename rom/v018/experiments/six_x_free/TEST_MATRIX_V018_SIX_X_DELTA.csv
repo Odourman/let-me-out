@@ -1,0 +1,17 @@
+test_id,v018_new_experiment_status,evidence_or_reason,independent_verification
+T01,INCONCLUSIVE,600/600 frame HUD=262 in each A/B experiment; full R1-R4 and TIA register traces not demonstrated,NOT_RUN
+T02,FAIL,A only 1 of six android bitmaps per frame; B six coarse shapes not enough to meet human readability,NOT_RUN
+T03,NOT_RETESTED,No new R2 key+five NPC test; historical baseline statuses remain separately documented,NOT_RUN
+T04,FAIL,"Four original masks data preserved, but B does not render four exact masks simultaneously",NOT_RUN
+T05,NOT_RETESTED,"R2 O1 historical baseline local PASS, not transferred to new experiment",NOT_RUN
+T06,NOT_RETESTED,No new long key overlap test,NOT_RUN
+T07,INCONCLUSIVE,"Static 6502 cycle estimates only, no per-TIA-write debugger cycle trace",NOT_RUN
+T08,NOT_RETESTED,No full R4 multiple Y-band stress; six different X paths within R1 only,NOT_RUN
+T09,NOT_RETESTED,"Historical R3 right locked local PASS, not implemented here",NOT_RUN
+T10,NOT_RETESTED,"Historical R3 right open local PASS, not implemented here",NOT_RUN
+T11,NOT_RETESTED,Original R3 orange-port/brown-wall visual problems unchanged,NOT_RUN
+T12,NOT_RETESTED,Original R3 keyhole visibility problem unchanged,NOT_RUN
+T13,NOT_RETESTED,No new K11/K09 key comparison,NOT_RUN
+T14,LOCAL_PASS,Both 16KiB F6 binaries built with real DASM and checked against SHA256SUMS,NOT_RUN
+T15,NOT_RUN,Independent VERIFICATION has not tested new commit,NOT_RUN
+T16,LOCAL_PASS,"Only Let Me Out! files modified, no Berzerk ROM or other projects",NOT_RUN

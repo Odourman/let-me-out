@@ -1,0 +1,63 @@
+name: v018 two-silhouette sprite feasibility (diagnostic only)
+
+on:
+  push:
+    branches:
+      - rom-dev/v018-ntsc-diagnostic
+    paths:
+      - .github/workflows/v018-two-silhouette.yml
+      - rom/v018/experiments/two_silhouettes/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  two-silhouette:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install real DASM Stella and X11 capture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dasm stella xvfb xdotool imagemagick
+          dpkg-query -W -f='${binary:Package} ${Version}\n' dasm stella
+      - name: Build isolated 16KB F6 experiment with DASM
+        run: bash rom/v018/experiments/two_silhouettes/build.sh
+      - name: Capture two horizontal placements in real Stella debugger
+        timeout-minutes: 5
+        run: bash rom/v018/experiments/two_silhouettes/stella_capture.sh
+      - name: Capture independent P1-retrigger horizontal placements in Stella
+        timeout-minutes: 5
+        run: bash rom/v018/experiments/two_silhouettes/stella_capture_retrigger.sh
+      - name: Real Stella 600 consecutive per-frame scanline debug trace (isolated proof)
+        timeout-minutes: 3
+        run: bash rom/v018/experiments/two_silhouettes/stella_trace_600.sh
+      - name: Verify packaged binary, images and manifests
+        run: |
+          cd rom/v018/experiments/two_silhouettes
+          test "$(stat -c %s dist/LetMeOut_v018_two_silhouette_F6.bin)" -eq 16384
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          test -s evidence/near/stella_debugger_full.png
+          test -s evidence/far/stella_debugger_full.png
+          test -s evidence_retrigger/near/stella_debugger_full.png
+          test -s evidence_retrigger/far/stella_debugger_full.png
+          sha256sum evidence/{near,far}/stella_debugger_full.png | tee evidence/screenshots_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: let-me-out-v018-two-silhouette-experiment
+          path: |
+            rom/v018/experiments/two_silhouettes/dist/
+            rom/v018/experiments/two_silhouettes/evidence/
+            rom/v018/experiments/two_silhouettes/evidence_retrigger/
+            rom/v018/experiments/two_silhouettes/evidence_600/
+            rom/v018/experiments/two_silhouettes/stella_trace_600.sh
+            rom/v018/experiments/two_silhouettes/proof_nusiz.asm
+            rom/v018/experiments/two_silhouettes/proof_retrigger_visible.asm
+            rom/v018/experiments/two_silhouettes/stella_capture_retrigger.sh
+            rom/v018/experiments/two_silhouettes/proof.asm
+            rom/v018/experiments/two_silhouettes/build.sh
+            rom/v018/experiments/two_silhouettes/stella_capture.sh
+          if-no-files-found: ignore

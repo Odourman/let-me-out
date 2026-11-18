@@ -1,0 +1,70 @@
+{
+  "variant": "a",
+  "total_captured_frames": 600,
+  "observed_frame_ids_sequential": true,
+  "frame_id_errors": [],
+  "scanline_hud_262_count": 600,
+  "scanline_hud_other_count": 0,
+  "observed_yellow_player_frames": 600,
+  "observed_yellow_shot_frames": 600,
+  "npc_visibility_stats": [
+    {
+      "npc": 0,
+      "type": "large_male",
+      "visible_frames": 100,
+      "visible_fraction": 0.16667,
+      "longest_consecutive_invisible_frames": 5,
+      "max_mask_match_bits_of_72": 72,
+      "mean_mask_match_bits_of_72": 72
+    },
+    {
+      "npc": 1,
+      "type": "large_male",
+      "visible_frames": 100,
+      "visible_fraction": 0.16667,
+      "longest_consecutive_invisible_frames": 5,
+      "max_mask_match_bits_of_72": 72,
+      "mean_mask_match_bits_of_72": 72
+    },
+    {
+      "npc": 2,
+      "type": "large_female",
+      "visible_frames": 100,
+      "visible_fraction": 0.16667,
+      "longest_consecutive_invisible_frames": 5,
+      "max_mask_match_bits_of_72": 72,
+      "mean_mask_match_bits_of_72": 72
+    },
+    {
+      "npc": 3,
+      "type": "large_female",
+      "visible_frames": 100,
+      "visible_fraction": 0.16667,
+      "longest_consecutive_invisible_frames": 5,
+      "max_mask_match_bits_of_72": 72,
+      "mean_mask_match_bits_of_72": 72
+    },
+    {
+      "npc": 4,
+      "type": "small_male",
+      "visible_frames": 100,
+      "visible_fraction": 0.16667,
+      "longest_consecutive_invisible_frames": 5,
+      "max_mask_match_bits_of_72": 72,
+      "mean_mask_match_bits_of_72": 72
+    },
+    {
+      "npc": 5,
+      "type": "small_female",
+      "visible_frames": 100,
+      "visible_fraction": 0.16667,
+      "longest_consecutive_invisible_frames": 5,
+      "max_mask_match_bits_of_72": 72,
+      "mean_mask_match_bits_of_72": 72
+    }
+  ],
+  "acceptance_status": "NOT_APPROVED",
+  "scanline_method": "Pixel-exact HUD comparison to Stella 6.7.1 262-reference screenshot (hash), not CPU-model output.",
+  "visibility_method": "Per-frame P1/PF white pixel groups in actual Stella debugger image. A priori planned X is separate from pixels.",
+  "warning": "Mask fidelity and color comparators are automated development diagnostics; separate Verification and human readability review remain required."
+}

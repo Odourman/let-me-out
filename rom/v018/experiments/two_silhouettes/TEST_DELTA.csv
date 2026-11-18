@@ -1,0 +1,8 @@
+experiment,status,actual_evidence,limits
+A1_RESP1_RESET,FAIL,evidence from prior raw Stella proof screenshot; exact source and ROM included,white NPC sprites missing
+A2_NUSIZ_FIXED_X,PARTIAL_TECHNICAL_SUCCESS,evidence/stella_original/nusiz/near and far,32/64 color-clock fixed spacing only
+A3_RESP1_RETRIGGER,FAIL,evidence/stella_original/retrigger/near and far,white NPC sprites missing
+A2_600_FRAME_STEPS,INCONCLUSIVE,evidence/stella_600/after_600_frames.png,frame 610 and last scanline 262 only; session trace zero bytes
+FULL_R1_6_NPC,NOT_RETESTED,Original baseline package in legacy_frozen_reference/,No six NPC implementation changed
+R2_R3_R4,NOT_RETESTED,Original baseline package in legacy_frozen_reference/,No implementation changes
+INDEPENDENT_VERIFICATION,NOT_RUN,Issue 8 frozen baseline separate,Not a verification claim
