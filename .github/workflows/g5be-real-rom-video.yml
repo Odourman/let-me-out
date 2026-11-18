@@ -1,0 +1,65 @@
+name: G5BE real Stella ROM screen capture (diagnostic only)
+
+on:
+  push:
+    branches:
+      - diagnostics/mainx-g5be-real-rom-video-20261118
+    paths:
+      - .github/workflows/g5be-real-rom-video.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  record-real-emulator:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Check out frozen ROM source
+        uses: actions/checkout@v4
+      - name: Install stock Stella and screen recorder
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y stella xvfb ffmpeg xdotool fonts-dejavu-core
+          command -v stella
+          stella -help > stella-help.txt 2>&1 || true
+          ffmpeg -version | head -n 1
+      - name: Run real ROM and capture actual SDL display
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p rom-capture
+          for x in 67 76; do
+            rom="$PWD/experiments/g5be_iter3/roms/all-p1-boot${x}.bin"
+            test "$(stat -c %s "$rom")" -eq 16384
+            export ROM_PATH="$rom" CAPTURE_X="$x" OUTPUT_DIR="$PWD/rom-capture"
+            xvfb-run -a -s "-screen 0 1024x768x24 -nolisten tcp" bash -euo pipefail -c '
+              export SDL_VIDEODRIVER=x11 LIBGL_ALWAYS_SOFTWARE=1
+              stella "$ROM_PATH" > "$OUTPUT_DIR/stella-${CAPTURE_X}.log" 2>&1 &
+              pid=$!
+              trap "kill $pid 2>/dev/null || true" EXIT
+              sleep 4
+              if ! kill -0 "$pid" 2>/dev/null; then
+                cat "$OUTPUT_DIR/stella-${CAPTURE_X}.log"
+                exit 4
+              fi
+              xdotool search --name Stella getwindowname > "$OUTPUT_DIR/windows-${CAPTURE_X}.txt" || true
+              ffmpeg -hide_banner -nostdin -loglevel error -y -f x11grab -framerate 30 -video_size 1024x768 -i "$DISPLAY" -t 5 -c:v libx264 -preset veryfast -pix_fmt yuv420p -crf 20 -movflags +faststart "$OUTPUT_DIR/stella-actual-rom-${CAPTURE_X}.mp4"
+              ffmpeg -hide_banner -nostdin -loglevel error -y -ss 2 -i "$OUTPUT_DIR/stella-actual-rom-${CAPTURE_X}.mp4" -frames:v 1 "$OUTPUT_DIR/real-capture-${CAPTURE_X}.png"
+            '
+          done
+          printf "file 'stella-actual-rom-67.mp4'\nfile 'stella-actual-rom-76.mp4'\n" > rom-capture/clips.txt
+          (cd rom-capture && ffmpeg -hide_banner -nostdin -loglevel error -y -f concat -safe 0 -i clips.txt -c copy let-me-out-g5be-real-stella.mp4)
+          ffprobe -v error -show_entries format=duration,size -of default=nokey=0:noprint_wrappers=1 rom-capture/let-me-out-g5be-real-stella.mp4
+          sha256sum rom-capture/*.mp4 > rom-capture/SHA256SUMS
+      - name: Upload unmodified real-emulator capture and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: let-me-out-g5be-real-emulator-capture
+          path: |
+            rom-capture/
+            stella-help.txt
+          if-no-files-found: warn
+          retention-days: 14
