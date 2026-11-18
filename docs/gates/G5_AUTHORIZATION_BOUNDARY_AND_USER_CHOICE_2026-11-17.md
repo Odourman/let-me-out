@@ -1,5 +1,11 @@
 # LET ME OUT! – G5: bindande beslutsspärr och framtida scope (ingen canon-ändring)
 
+## MAIN IX – G5AV / LM-D26 AVSLUTAD: SYNTHETIC PASS, GOPHER_NO_ROM_ENTRY_BLOCKED (2026-11-18)
+
+**Senare faktiskt utfall ersätter äldre `AUTHORIZED_NOT_STARTED`, men inte dess historiska tillstånd:** [TO_MAIN_G5AV med loggar och harness](https://github.com/Odourman/let-me-out/issues/21#issuecomment-6978483524) samt [MAIN IX receipt](https://github.com/Odourman/let-me-out/issues/21#issuecomment-6978563516). Issue #21 CLOSED endast för färdig arbetsorder: rapporterat två syntetiska 13/13 PASS, faktisk Gopherprocesskvot 0/1, `GOPHER_ACK=NOT_RUN`. Verifierad källväg i stock v0.57.2: HEADLESS utan ROM → StartInDebugMode → attachCartridge → preview.Run → RunN(60) → VCS stepping före debuggerprompt. Ingen faktiskt körd Gopher2600, ingen ROM, ingen F9/TIA-mätning, ingen Actions eller speländring. MAIN har läst källor och rapport, inte själv reproducerat fixtures. Negativa loggar och blockeraren bevaras; ingen generellt bevisad Gopher-omöjlighet.
+
+**Det avgränsade LM-D26-undantaget är förbrukat.** Användaren har även godkänt att MAIN/Codex-arbetet effektiviseras, vilket endast ger kort [AGENTS.md](../../AGENTS.md) och rutinförändring, inte nytt körmandat. En Gopher/F9-ROM-testpilot eller annat nytt emulatortest kräver separat tydlig användarauktorisation med förregistrerad G0 och budget. `G5_FORMAL_OPEN`, Issue #19:s råbevisbrist, G5AJ/G5AL FAIL, G5AH FAIL, G5AP offline-only, G5AF bounded instrumentation och PR#7 oförändrade.
+
 ## MAIN IX – LM-D26 / G5AV: användaren godkänner EN SNÄV PTY-TRANSPORTPREFLIGHT utan ROM (2026-11-18)
 
 **NYARE SEPARAT UTTRYCKLIGT ANVÄNDARBESLUT** än de äldre source-only-/inga-körningar-styckena: På MAIN IX:s fråga "Godkänner du att ROM DEVELOPMENT IV får genomföra en enda avgränsad PTY-transportkontroll i Codex Cloud, helt utan ROM?" svarade användaren "Ja, fortsätt. Varför inte?". Bindande order: [GitHub Issue #21 G5AV / LM-D26](https://github.com/Odourman/let-me-out/issues/21), `AUTHORIZED_NOT_STARTED` tills ROM DEVELOPMENT IV faktiskt mottar/kör den i Codex.
