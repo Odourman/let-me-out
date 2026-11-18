@@ -1,0 +1,5 @@
+ACTORS=1
+ROTATING=0
+UNION_ENABLED=0
+POSITIONED=0
+ include "kernel.asm"
