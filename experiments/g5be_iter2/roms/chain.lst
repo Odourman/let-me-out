@@ -1,0 +1,866 @@
+------- FILE kernel.asm LEVEL 1 PASS 2
+      1  fffa					      processor	6502
+      2  fffa		       00 00	   VSYNC      =	$00
+      3  fffa		       00 01	   VBLANK     =	$01
+      4  fffa		       00 02	   WSYNC      =	$02
+      5  fffa		       00 04	   NUSIZ0     =	$04
+      6  fffa		       00 05	   NUSIZ1     =	$05
+      7  fffa		       00 06	   COLUP0     =	$06
+      8  fffa		       00 07	   COLUP1     =	$07
+      9  fffa		       00 08	   COLUPF     =	$08
+     10  fffa		       00 0a	   CTRLPF     =	$0a
+     11  fffa		       00 0d	   PF0	      =	$0d
+     12  fffa		       00 10	   RESP0      =	$10
+     13  fffa		       00 11	   RESP1      =	$11
+     14  fffa		       00 12	   RESM0      =	$12
+     15  fffa		       00 1b	   GRP0       =	$1b
+     16  fffa		       00 1c	   GRP1       =	$1c
+     17  fffa		       00 1d	   ENAM0      =	$1d
+     18  fffa		       00 80	   FRAME      =	$80
+     19  fffa		       00 81	   XP	      =	$81
+     20  fffa		       00 86	   YP	      =	$86
+     21  fffa		       00 8b	   ORDER      =	$8b
+     22  fffa		       00 90	   PTR	      =	$90
+     23  fffa		       00 9a	   VALID      =	$9a
+     24  fffa		       00 9c	   TMP	      =	$9c
+     25  fffa		       00 9b	   STENCIL    =	$9b
+     26  fffa		       00 b8	   CACHE      =	$b8
+     27  fffa		       00 a8	   MODE       =	$a8
+     28  fffa		       00 a9	   START      =	$a9
+     29  fffa		       00 aa	   POINTER    =	$aa
+     30  10000 ????
+     31  f000					      ORG	$f000
+     32  f000				   Reset
+     33  f000		       78		      sei
+     34  f001		       d8		      cld
+     35  f002		       a2 ff		      ldx	#$ff
+     36  f004		       9a		      txs
+     37  f005		       a2 7f		      ldx	#$7f
+     38  f007		       a9 00		      lda	#0
+     39  f009				   Clear
+     40  f009		       95 80		      sta	$80,x
+     41  f00b		       ca		      dex
+     42  f00c		       10 fb		      bpl	Clear
+     43  f00e		       a9 02		      lda	#2
+     44  f010		       85 a8		      sta	MODE
+     45  f012				  -	      IF	DYNAMIC
+     46  f012				  -	      ldx	#4
+     47  f012				  -InitCoordinates
+     48  f012				  -	      lda	DefaultX,x
+     49  f012				  -	      sta	XP,x
+     50  f012				  -	      lda	DefaultY,x
+     51  f012				  -	      sta	YP,x
+     52  f012				  -	      dex
+     53  f012				  -	      bpl	InitCoordinates
+     54  f012					      ENDIF
+     55  f012		       a9 1e		      lda	#$1e
+     56  f014		       85 06		      sta	COLUP0
+     57  f016		       a9 0e		      lda	#$0e
+     58  f018		       85 07		      sta	COLUP1
+     59  f01a		       a9 26		      lda	#$26
+     60  f01c		       85 08		      sta	COLUPF
+     61  f01e		       a9 01		      lda	#1
+     62  f020		       85 0a		      sta	CTRLPF
+     63  f022		       85 05		      sta	NUSIZ1
+     64  f024		       a9 30		      lda	#$30
+     65  f026		       85 0d		      sta	PF0
+     66  f028				   Frame
+     67  f028		       85 02		      sta	WSYNC
+     68  f02a		       a9 02		      lda	#2
+     69  f02c		       85 00		      sta	VSYNC
+     70  f02e		       85 01		      sta	VBLANK
+     71  f030		       85 02		      sta	WSYNC
+     72  f032		       85 02		      sta	WSYNC
+     73  f034		       85 02		      sta	WSYNC
+     74  f036				   SyncOff
+     75  f036		       a9 00		      lda	#0
+     76  f038		       85 00		      sta	VSYNC
+     77  f03a		       85 1d		      sta	ENAM0
+     78  f03c		       85 1b		      sta	GRP0
+     79  f03e		       85 1c		      sta	GRP1
+     80  f040		       85 04		      sta	NUSIZ0
+     81  f042		       85 02		      sta	WSYNC
+     82  f044		       a2 04		      ldx	#4
+     83  f046				   PlayerPosition
+     84  f046		       ca		      dex
+     85  f047		       d0 fd		      bne	PlayerPosition
+     86  f049		       85 10		      sta	RESP0
+     87  f04b		       85 02		      sta	WSYNC
+     88  f04d		       a2 02		      ldx	#2
+     89  f04f				   MissilePosition
+     90  f04f		       ca		      dex
+     91  f050		       d0 fd		      bne	MissilePosition
+     92  f052		       85 12		      sta	RESM0
+     93  f054				  -	      IF	DYNAMIC
+     94  f054				  -	      jmp	SetupDynamic
+     95  f054					      ELSE
+     96  f054							; Latch the requested diagnostic fixture in blanking.
+     97  f054		       a6 a8		      ldx	MODE
+     98  f056		       e0 03		      cpx	#3
+     99  f058		       90 02		      bcc	ValidMode
+    100  f05a		       a2 02		      ldx	#2
+    101  f05c				   ValidMode
+    102  f05c		       bd d0 f4 	      lda	Starts,x
+    103  f05f		       85 a9		      sta	START
+    104  f061		       bd d3 f4 	      lda	SceneLo,x
+    105  f064		       85 aa		      sta	POINTER
+    106  f066		       bd d6 f4 	      lda	SceneHi,x
+    107  f069		       85 ab		      sta	POINTER+1
+    108  f06b		       a2 23		      ldx	#35
+    109  f06d				   Blank
+    110  f06d		       85 02		      sta	WSYNC
+    111  f06f		       ca		      dex
+    112  f070		       d0 fb		      bne	Blank
+    113  f072					      ENDIF
+    114  f072				   Visible
+    115  f072		       a9 00		      lda	#0
+    116  f074		       85 01		      sta	VBLANK
+    117  f076		       a2 40		      ldx	#64
+    118  f078				   Top
+    119  f078		       85 02		      sta	WSYNC
+    120  f07a		       ca		      dex
+    121  f07b		       d0 fb		      bne	Top
+    122  f07d		       a9 02		      lda	#2
+    123  f07f		       85 1d		      sta	ENAM0
+    124  f081		       a0 40		      ldy	#64
+    125  f083				   Lead
+    126  f083		       b9 00 f5 	      lda	PlayerRows,y
+    127  f086		       85 1b		      sta	GRP0
+    128  f088		       c8		      iny
+    129  f089		       c4 a9		      cpy	START
+    130  f08b		       f0 05		      beq	Prepare
+    131  f08d		       85 02		      sta	WSYNC
+    132  f08f		       4c 83 f0 	      jmp	Lead
+    133  f092				   Prepare
+    134  f092				  -	      IF	DYNAMIC
+    135  f092				  -	      lda	VALID
+    136  f092				  -	      bne	ValidBand
+    137  f092				  -	      sta	WSYNC
+    138  f092				  -	      jmp	Trail
+    139  f092				  -ValidBand
+    140  f092					      ENDIF
+    141  f092		       88		      dey
+    142  f093							; Wide copy only after the potential X66 shot on this lead line.
+    143  f093				  -	      IF	DYNAMIC
+    144  f093				  -	      ldx	#6
+    145  f093					      ELSE
+    146  f093		       a2 08		      ldx	#8
+    147  f095					      ENDIF
+    148  f095				   DelayLate
+    149  f095		       ca		      dex
+    150  f096		       d0 fd		      bne	DelayLate
+    151  f098		       a9 04		      lda	#4
+    152  f09a		       85 04		      sta	NUSIZ0
+    153  f09c		       6c aa 00 	      jmp	(POINTER)
+    154  f09f				   LeaveBand
+    155  f09f		       a9 00		      lda	#0
+    156  f0a1		       85 04		      sta	NUSIZ0
+    157  f0a3		       85 1c		      sta	GRP1
+    158  f0a5		       c8		      iny
+    159  f0a6				   Trail
+    160  f0a6		       b9 00 f5 	      lda	PlayerRows,y
+    161  f0a9		       85 1b		      sta	GRP0
+    162  f0ab		       c0 58		      cpy	#88
+    163  f0ad		       f0 06		      beq	EndShot
+    164  f0af		       c8		      iny
+    165  f0b0		       85 02		      sta	WSYNC
+    166  f0b2		       4c a6 f0 	      jmp	Trail
+    167  f0b5				   EndShot
+    168  f0b5							; Clear after the ordinary X2 shot, before the next scanline.
+    169  f0b5		       a2 04		      ldx	#4
+    170  f0b7				   ShotDelay
+    171  f0b7		       ca		      dex
+    172  f0b8		       d0 fd		      bne	ShotDelay
+    173  f0ba		       a9 00		      lda	#0
+    174  f0bc		       85 1d		      sta	ENAM0
+    175  f0be		       85 02		      sta	WSYNC
+    176  f0c0		       a2 67		      ldx	#103
+    177  f0c2				   Bottom
+    178  f0c2		       85 02		      sta	WSYNC
+    179  f0c4		       ca		      dex
+    180  f0c5		       d0 fb		      bne	Bottom
+    181  f0c7				   Overscan
+    182  f0c7		       a9 02		      lda	#2
+    183  f0c9		       85 01		      sta	VBLANK
+    184  f0cb		       a2 1d		      ldx	#29
+    185  f0cd				   BottomBlank
+    186  f0cd		       85 02		      sta	WSYNC
+    187  f0cf		       ca		      dex
+    188  f0d0		       d0 fb		      bne	BottomBlank
+    189  f0d2		       e6 80		      inc	FRAME
+    190  f0d4		       4c 28 f0 	      jmp	Frame
+    191  f0d7
+    192  f0d7				  -	      IF	DYNAMIC
+    193  f0d7				  -DefaultX
+    194  f0d7				  -	      byte	127,19,73,100,46
+    195  f0d7				  -DefaultY
+    196  f0d7				  -	      byte	73,72,73,71,72
+    197  f0d7				  -ExpectedX
+    198  f0d7				  -	      byte	19,46,73,0,127
+    212  f0d7				  -	      ENDM
+    213  f0d7				  -
+    214  f0d7				  -SetupDynamic
+    215  f0d7				  -	      sta	WSYNC
+    216  f0d7				  -	      lda	#1
+    217  f0d7				  -	      sta	VALID
+    218  f0d7				  -	      lda	#71
+    219  f0d7				  -	      sta	START
+    220  f0d7				  -	      ldx	#4
+    221  f0d7				  -InitOrder
+    222  f0d7				  -	      txa
+    223  f0d7				  -	      sta	ORDER,x
+    224  f0d7				  -	      dex
+    225  f0d7				  -	      bpl	InitOrder
+    226  f0d7				  -	      SWAP_PAIR	0,1
+    227  f0d7				  -	      SWAP_PAIR	1,2
+    228  f0d7				  -	      SWAP_PAIR	2,3
+    229  f0d7				  -	      SWAP_PAIR	3,4
+    230  f0d7				  -	      SWAP_PAIR	0,1
+    231  f0d7				  -	      SWAP_PAIR	1,2
+    232  f0d7				  -	      SWAP_PAIR	2,3
+    233  f0d7				  -	      SWAP_PAIR	0,1
+    234  f0d7				  -	      SWAP_PAIR	1,2
+    235  f0d7				  -	      SWAP_PAIR	0,1
+    236  f0d7				  -	      ldx	#0
+    237  f0d7				  -PreparePointers
+    238  f0d7				  -	      sta	WSYNC
+    239  f0d7				  -	      ldy	ORDER,x
+    240  f0d7				  -	      lda	XP,y
+    241  f0d7				  -	      cpx	#3
+    242  f0d7				  -	      beq	SelectClock
+    243  f0d7				  -	      cmp	ExpectedX,x
+    244  f0d7				  -	      beq	CheckY
+    245  f0d7				  -	      bne	InvalidX
+    246  f0d7				  -SelectClock
+    247  f0d7				  -	      cmp	#97
+    248  f0d7				  -	      beq	Clock48
+    249  f0d7				  -	      cmp	#100
+    250  f0d7				  -	      beq	Clock49
+    251  f0d7				  -	      cmp	#103
+    252  f0d7				  -	      bne	InvalidX
+    253  f0d7				  -	      lda	#2
+    254  f0d7				  -	      bne	StoreClock
+    255  f0d7				  -Clock49
+    256  f0d7				  -	      lda	#1
+    257  f0d7				  -	      bne	StoreClock
+    258  f0d7				  -Clock48
+    259  f0d7				  -	      lda	#0
+    260  f0d7				  -StoreClock
+    261  f0d7				  -	      sta	STENCIL
+    262  f0d7				  -	      jmp	CheckY
+    263  f0d7				  -InvalidX
+    264  f0d7				  -	      lda	#0
+    265  f0d7				  -	      sta	VALID
+    266  f0d7				  -CheckY
+    267  f0d7				  -	      lda	YP,y
+    268  f0d7				  -	      cmp	#71
+    269  f0d7				  -	      bcc	BadY
+    270  f0d7				  -	      cmp	#74
+    271  f0d7				  -	      bcc	UseY
+    272  f0d7				  -BadY
+    273  f0d7				  -	      lda	#0
+    274  f0d7				  -	      sta	VALID
+    275  f0d7				  -	      lda	#71
+    276  f0d7				  -UseY
+    277  f0d7				  -	      sta	WSYNC
+    278  f0d7				  -	      sta	TMP
+    279  f0d7				  -	      lda	#73
+    280  f0d7				  -	      sec
+    281  f0d7				  -	      sbc	TMP
+    282  f0d7				  -	      clc
+    283  f0d7				  -	      adc	MaskLo,y
+    284  f0d7				  -	      pha
+    285  f0d7				  -	      lda	MaskHi,y
+    286  f0d7				  -	      adc	#0
+    287  f0d7				  -	      ldy	#0
+    288  f0d7				  -	      pha
+    289  f0d7				  -	      txa
+    290  f0d7				  -	      asl
+    291  f0d7				  -	      tay
+    292  f0d7				  -	      pla
+    293  f0d7				  -	      sta	PTR+1,y
+    294  f0d7				  -	      pla
+    295  f0d7				  -	      sta	PTR,y
+    296  f0d7				  -	      inx
+    297  f0d7				  -	      cpx	#5
+    298  f0d7				  -	      bcc	PreparePointers
+    299  f0d7				  -	      ldy	#0
+    300  f0d7				  -	      ldx	#0
+    301  f0d7				  -CacheRow
+    302  f0d7				  -	      sta	WSYNC
+    303  f0d7				  -	      lda	(PTR),y
+    304  f0d7				  -	      sta	CACHE,x
+    305  f0d7				  -	      lda	(PTR+2),y
+    306  f0d7				  -	      sta	CACHE+11,x
+    307  f0d7				  -	      lda	(PTR+4),y
+    308  f0d7				  -	      sta	CACHE+22,x
+    309  f0d7				  -	      lda	(PTR+6),y
+    310  f0d7				  -	      sta	CACHE+33,x
+    311  f0d7				  -	      lda	(PTR+8),y
+    312  f0d7				  -	      sta	CACHE+44,x
+    313  f0d7				  -	      inx
+    314  f0d7				  -	      iny
+    315  f0d7				  -	      cpx	#11
+    316  f0d7				  -	      bcc	CacheRow
+    317  f0d7				  -	      sta	WSYNC
+    318  f0d7				  -	      ldx	STENCIL
+    319  f0d7				  -	      lda	DynamicClocks,x
+    320  f0d7				  -	      and	VALID
+    321  f0d7				  -	      sta	VALID
+    322  f0d7				  -	      lda	DynamicLo,x
+    323  f0d7				  -	      sta	POINTER
+    324  f0d7				  -	      lda	DynamicHi,x
+    325  f0d7				  -	      sta	POINTER+1
+    326  f0d7				  -	      ldx	#2
+    327  f0d7				  -TailBlank
+    328  f0d7				  -	      sta	WSYNC
+    329  f0d7				  -	      dex
+    330  f0d7				  -	      bne	TailBlank
+    331  f0d7				  -	      jmp	Visible
+    332  f0d7				  -	      include	"dynamic.inc"
+    333  f0d7					      ELSE
+------- FILE chain.inc LEVEL 2 PASS 2
+      0  f0d7					      include	"chain.inc"
+      1  f0d7				   Scene0
+      2  f0d7		       85 02		      sta	WSYNC
+      3  f0d9				   Scene0Y76
+      4  f0d9		       c8		      iny
+      5  f0da		       b9 00 f5 	      lda	PlayerRows,y
+      6  f0dd		       8d 1b 00 	      sta.w	GRP0
+      7  f0e0		       a9 18		      lda	#$18
+      8  f0e2		       85 1c		      sta.b	GRP1
+      9  f0e4		       a2 00		      ldx	#0
+     10  f0e6		       a9 18		      lda	#$18
+     11  f0e8		       84 11		      sty.b	RESP1
+     12  f0ea		       8e 1d 00 	      stx.w	ENAM0
+     13  f0ed		       a2 ff		      ldx	#$ff
+     14  f0ef		       84 11		      sty.b	RESP1
+     15  f0f1		       86 1b		      stx.b	GRP0
+     16  f0f3		       85 1c		      sta.b	GRP1
+     17  f0f5		       a9 0e		      lda	#14
+     18  f0f7		       85 06		      sta.b	COLUP0
+     19  f0f9		       ea		      nop
+     20  f0fa		       a9 1e		      lda	#30
+     21  f0fc		       84 11		      sty.b	RESP1
+     22  f0fe		       a2 7e		      ldx	#$7e
+     23  f100		       86 1c		      stx.b	GRP1
+     24  f102		       8c 11 00 	      sty.w	RESP1
+     25  f105		       a2 ff		      ldx	#$ff
+     26  f107		       86 1c		      stx.b	GRP1
+     27  f109		       ea		      nop
+     28  f10a		       85 06		      sta.b	COLUP0
+     29  f10c		       85 1d		      sta.b	ENAM0
+     30  f10e		       24 80		      bit	FRAME
+     31  f110		       ea		      nop
+     32  f111				   Scene0Y77
+     33  f111		       c8		      iny
+     34  f112		       b9 00 f5 	      lda	PlayerRows,y
+     35  f115		       8d 1b 00 	      sta.w	GRP0
+     36  f118		       a9 24		      lda	#$24
+     37  f11a		       85 1c		      sta.b	GRP1
+     38  f11c		       a2 00		      ldx	#0
+     39  f11e		       a9 7e		      lda	#$7e
+     40  f120		       84 11		      sty.b	RESP1
+     41  f122		       8e 1d 00 	      stx.w	ENAM0
+     42  f125		       a2 3c		      ldx	#$3c
+     43  f127		       84 11		      sty.b	RESP1
+     44  f129		       86 1b		      stx.b	GRP0
+     45  f12b		       85 1c		      sta.b	GRP1
+     46  f12d		       a9 0e		      lda	#14
+     47  f12f		       85 06		      sta.b	COLUP0
+     48  f131		       ea		      nop
+     49  f132		       a9 1e		      lda	#30
+     50  f134		       84 11		      sty.b	RESP1
+     51  f136		       a2 18		      ldx	#$18
+     52  f138		       86 1c		      stx.b	GRP1
+     53  f13a		       8c 11 00 	      sty.w	RESP1
+     54  f13d		       a2 18		      ldx	#$18
+     55  f13f		       86 1c		      stx.b	GRP1
+     56  f141		       ea		      nop
+     57  f142		       85 06		      sta.b	COLUP0
+     58  f144		       85 1d		      sta.b	ENAM0
+     59  f146		       ea		      nop
+     60  f147		       4c 9f f0 	      jmp	LeaveBand
+     61  f14a				   Scene1
+     62  f14a		       85 02		      sta	WSYNC
+     63  f14c				   Scene1Y74
+     64  f14c		       c8		      iny
+     65  f14d		       b9 00 f5 	      lda	PlayerRows,y
+     66  f150		       8d 1b 00 	      sta.w	GRP0
+     67  f153		       a9 18		      lda	#$18
+     68  f155		       85 1c		      sta.b	GRP1
+     69  f157		       a2 00		      ldx	#0
+     70  f159		       a9 3c		      lda	#$3c
+     71  f15b		       84 11		      sty.b	RESP1
+     72  f15d		       8e 1d 00 	      stx.w	ENAM0
+     73  f160		       a2 3c		      ldx	#$3c
+     74  f162		       84 11		      sty.b	RESP1
+     75  f164		       86 1b		      stx.b	GRP0
+     76  f166		       85 1c		      sta.b	GRP1
+     77  f168		       a9 0e		      lda	#14
+     78  f16a		       85 06		      sta.b	COLUP0
+     79  f16c		       ea		      nop
+     80  f16d		       a9 1e		      lda	#30
+     81  f16f		       84 11		      sty.b	RESP1
+     82  f171		       a2 3c		      ldx	#$3c
+     83  f173		       86 1c		      stx.b	GRP1
+     84  f175		       8c 11 00 	      sty.w	RESP1
+     85  f178		       a2 3c		      ldx	#$3c
+     86  f17a		       86 1c		      stx.b	GRP1
+     87  f17c		       ea		      nop
+     88  f17d		       85 06		      sta.b	COLUP0
+     89  f17f		       85 1d		      sta.b	ENAM0
+     90  f181		       24 80		      bit	FRAME
+     91  f183		       ea		      nop
+     92  f184				   Scene1Y75
+     93  f184		       c8		      iny
+     94  f185		       b9 00 f5 	      lda	PlayerRows,y
+     95  f188		       8d 1b 00 	      sta.w	GRP0
+     96  f18b		       a9 ff		      lda	#$ff
+     97  f18d		       85 1c		      sta.b	GRP1
+     98  f18f		       a2 00		      ldx	#0
+     99  f191		       a9 3c		      lda	#$3c
+    100  f193		       84 11		      sty.b	RESP1
+    101  f195		       8e 1d 00 	      stx.w	ENAM0
+    102  f198		       a2 18		      ldx	#$18
+    103  f19a		       84 11		      sty.b	RESP1
+    104  f19c		       86 1b		      stx.b	GRP0
+    105  f19e		       85 1c		      sta.b	GRP1
+    106  f1a0		       a9 0e		      lda	#14
+    107  f1a2		       85 06		      sta.b	COLUP0
+    108  f1a4		       ea		      nop
+    109  f1a5		       a9 1e		      lda	#30
+    110  f1a7		       84 11		      sty.b	RESP1
+    111  f1a9		       a2 18		      ldx	#$18
+    112  f1ab		       86 1c		      stx.b	GRP1
+    113  f1ad		       8c 11 00 	      sty.w	RESP1
+    114  f1b0		       a2 18		      ldx	#$18
+    115  f1b2		       86 1c		      stx.b	GRP1
+    116  f1b4		       ea		      nop
+    117  f1b5		       85 06		      sta.b	COLUP0
+    118  f1b7		       85 1d		      sta.b	ENAM0
+    119  f1b9		       24 80		      bit	FRAME
+    120  f1bb		       ea		      nop
+    121  f1bc				   Scene1Y76
+    122  f1bc		       c8		      iny
+    123  f1bd		       b9 00 f5 	      lda	PlayerRows,y
+    124  f1c0		       8d 1b 00 	      sta.w	GRP0
+    125  f1c3		       a9 18		      lda	#$18
+    126  f1c5		       85 1c		      sta.b	GRP1
+    127  f1c7		       a2 00		      ldx	#0
+    128  f1c9		       a9 18		      lda	#$18
+    129  f1cb		       84 11		      sty.b	RESP1
+    130  f1cd		       8e 1d 00 	      stx.w	ENAM0
+    131  f1d0		       a2 ff		      ldx	#$ff
+    132  f1d2		       84 11		      sty.b	RESP1
+    133  f1d4		       86 1b		      stx.b	GRP0
+    134  f1d6		       85 1c		      sta.b	GRP1
+    135  f1d8		       a9 0e		      lda	#14
+    136  f1da		       85 06		      sta.b	COLUP0
+    137  f1dc		       ea		      nop
+    138  f1dd		       a9 1e		      lda	#30
+    139  f1df		       84 11		      sty.b	RESP1
+    140  f1e1		       a2 7e		      ldx	#$7e
+    141  f1e3		       86 1c		      stx.b	GRP1
+    142  f1e5		       8c 11 00 	      sty.w	RESP1
+    143  f1e8		       a2 ff		      ldx	#$ff
+    144  f1ea		       86 1c		      stx.b	GRP1
+    145  f1ec		       ea		      nop
+    146  f1ed		       85 06		      sta.b	COLUP0
+    147  f1ef		       85 1d		      sta.b	ENAM0
+    148  f1f1		       24 80		      bit	FRAME
+    149  f1f3		       ea		      nop
+    150  f1f4				   Scene1Y77
+    151  f1f4		       c8		      iny
+    152  f1f5		       b9 00 f5 	      lda	PlayerRows,y
+    153  f1f8		       8d 1b 00 	      sta.w	GRP0
+    154  f1fb		       a9 24		      lda	#$24
+    155  f1fd		       85 1c		      sta.b	GRP1
+    156  f1ff		       a2 00		      ldx	#0
+    157  f201		       a9 7e		      lda	#$7e
+    158  f203		       84 11		      sty.b	RESP1
+    159  f205		       8e 1d 00 	      stx.w	ENAM0
+    160  f208		       a2 3c		      ldx	#$3c
+    161  f20a		       84 11		      sty.b	RESP1
+    162  f20c		       86 1b		      stx.b	GRP0
+    163  f20e		       85 1c		      sta.b	GRP1
+    164  f210		       a9 0e		      lda	#14
+    165  f212		       85 06		      sta.b	COLUP0
+    166  f214		       ea		      nop
+    167  f215		       a9 1e		      lda	#30
+    168  f217		       84 11		      sty.b	RESP1
+    169  f219		       a2 18		      ldx	#$18
+    170  f21b		       86 1c		      stx.b	GRP1
+    171  f21d		       8c 11 00 	      sty.w	RESP1
+    172  f220		       a2 18		      ldx	#$18
+    173  f222		       86 1c		      stx.b	GRP1
+    174  f224		       ea		      nop
+    175  f225		       85 06		      sta.b	COLUP0
+    176  f227		       85 1d		      sta.b	ENAM0
+    177  f229		       24 80		      bit	FRAME
+    178  f22b		       ea		      nop
+    179  f22c				   Scene1Y78
+    180  f22c		       c8		      iny
+    181  f22d		       b9 00 f5 	      lda	PlayerRows,y
+    182  f230		       8d 1b 00 	      sta.w	GRP0
+    183  f233		       a9 24		      lda	#$24
+    184  f235		       85 1c		      sta.b	GRP1
+    185  f237		       a2 00		      ldx	#0
+    186  f239		       a9 3c		      lda	#$3c
+    187  f23b		       84 11		      sty.b	RESP1
+    188  f23d		       8e 1d 00 	      stx.w	ENAM0
+    189  f240		       a2 7e		      ldx	#$7e
+    190  f242		       84 11		      sty.b	RESP1
+    191  f244		       86 1b		      stx.b	GRP0
+    192  f246		       85 1c		      sta.b	GRP1
+    193  f248		       a9 0e		      lda	#14
+    194  f24a		       85 06		      sta.b	COLUP0
+    195  f24c		       ea		      nop
+    196  f24d		       a9 1e		      lda	#30
+    197  f24f		       84 11		      sty.b	RESP1
+    198  f251		       a2 24		      ldx	#$24
+    199  f253		       86 1c		      stx.b	GRP1
+    200  f255		       8c 11 00 	      sty.w	RESP1
+    201  f258		       a2 24		      ldx	#$24
+    202  f25a		       86 1c		      stx.b	GRP1
+    203  f25c		       ea		      nop
+    204  f25d		       85 06		      sta.b	COLUP0
+    205  f25f		       85 1d		      sta.b	ENAM0
+    206  f261		       ea		      nop
+    207  f262		       4c 9f f0 	      jmp	LeaveBand
+    208  f265				   Scene2
+    209  f265		       85 02		      sta	WSYNC
+    210  f267				   Scene2Y71
+    211  f267		       c8		      iny
+    212  f268		       b9 00 f5 	      lda	PlayerRows,y
+    213  f26b		       8d 1b 00 	      sta.w	GRP0
+    214  f26e		       a9 00		      lda	#$00
+    215  f270		       85 1c		      sta.b	GRP1
+    216  f272		       a2 00		      ldx	#0
+    217  f274		       a9 00		      lda	#$00
+    218  f276		       84 11		      sty.b	RESP1
+    219  f278		       8e 1d 00 	      stx.w	ENAM0
+    220  f27b		       a2 00		      ldx	#$00
+    221  f27d		       84 11		      sty.b	RESP1
+    222  f27f		       86 1b		      stx.b	GRP0
+    223  f281		       85 1c		      sta.b	GRP1
+    224  f283		       a9 0e		      lda	#14
+    225  f285		       85 06		      sta.b	COLUP0
+    226  f287		       ea		      nop
+    227  f288		       a9 1e		      lda	#30
+    228  f28a		       84 11		      sty.b	RESP1
+    229  f28c		       a2 00		      ldx	#$00
+    230  f28e		       86 1c		      stx.b	GRP1
+    231  f290		       8c 11 00 	      sty.w	RESP1
+    232  f293		       a2 00		      ldx	#$00
+    233  f295		       86 1c		      stx.b	GRP1
+    234  f297		       ea		      nop
+    235  f298		       85 06		      sta.b	COLUP0
+    236  f29a		       85 1d		      sta.b	ENAM0
+    237  f29c		       24 80		      bit	FRAME
+    238  f29e		       ea		      nop
+    239  f29f				   Scene2Y72
+    240  f29f		       c8		      iny
+    241  f2a0		       b9 00 f5 	      lda	PlayerRows,y
+    242  f2a3		       8d 1b 00 	      sta.w	GRP0
+    243  f2a6		       a9 3c		      lda	#$3c
+    244  f2a8		       85 1c		      sta.b	GRP1
+    245  f2aa		       a2 00		      ldx	#0
+    246  f2ac		       a9 00		      lda	#$00
+    247  f2ae		       84 11		      sty.b	RESP1
+    248  f2b0		       8e 1d 00 	      stx.w	ENAM0
+    249  f2b3		       a2 00		      ldx	#$00
+    250  f2b5		       84 11		      sty.b	RESP1
+    251  f2b7		       86 1b		      stx.b	GRP0
+    252  f2b9		       85 1c		      sta.b	GRP1
+    253  f2bb		       a9 0e		      lda	#14
+    254  f2bd		       85 06		      sta.b	COLUP0
+    255  f2bf		       ea		      nop
+    256  f2c0		       a9 1e		      lda	#30
+    257  f2c2		       84 11		      sty.b	RESP1
+    258  f2c4		       a2 00		      ldx	#$00
+    259  f2c6		       86 1c		      stx.b	GRP1
+    260  f2c8		       8c 11 00 	      sty.w	RESP1
+    261  f2cb		       a2 00		      ldx	#$00
+    262  f2cd		       86 1c		      stx.b	GRP1
+    263  f2cf		       ea		      nop
+    264  f2d0		       85 06		      sta.b	COLUP0
+    265  f2d2		       85 1d		      sta.b	ENAM0
+    266  f2d4		       24 80		      bit	FRAME
+    267  f2d6		       ea		      nop
+    268  f2d7				   Scene2Y73
+    269  f2d7		       c8		      iny
+    270  f2d8		       b9 00 f5 	      lda	PlayerRows,y
+    271  f2db		       8d 1b 00 	      sta.w	GRP0
+    272  f2de		       a9 3c		      lda	#$3c
+    273  f2e0		       85 1c		      sta.b	GRP1
+    274  f2e2		       a2 00		      ldx	#0
+    275  f2e4		       a9 00		      lda	#$00
+    276  f2e6		       84 11		      sty.b	RESP1
+    277  f2e8		       8e 1d 00 	      stx.w	ENAM0
+    278  f2eb		       a2 3c		      ldx	#$3c
+    279  f2ed		       84 11		      sty.b	RESP1
+    280  f2ef		       86 1b		      stx.b	GRP0
+    281  f2f1		       85 1c		      sta.b	GRP1
+    282  f2f3		       a9 0e		      lda	#14
+    283  f2f5		       85 06		      sta.b	COLUP0
+    284  f2f7		       ea		      nop
+    285  f2f8		       a9 1e		      lda	#30
+    286  f2fa		       84 11		      sty.b	RESP1
+    287  f2fc		       a2 3c		      ldx	#$3c
+    288  f2fe		       86 1c		      stx.b	GRP1
+    289  f300		       8c 11 00 	      sty.w	RESP1
+    290  f303		       a2 3c		      ldx	#$3c
+    291  f305		       86 1c		      stx.b	GRP1
+    292  f307		       ea		      nop
+    293  f308		       85 06		      sta.b	COLUP0
+    294  f30a		       85 1d		      sta.b	ENAM0
+    295  f30c		       24 80		      bit	FRAME
+    296  f30e		       ea		      nop
+    297  f30f				   Scene2Y74
+    298  f30f		       c8		      iny
+    299  f310		       b9 00 f5 	      lda	PlayerRows,y
+    300  f313		       8d 1b 00 	      sta.w	GRP0
+    301  f316		       a9 18		      lda	#$18
+    302  f318		       85 1c		      sta.b	GRP1
+    303  f31a		       a2 00		      ldx	#0
+    304  f31c		       a9 3c		      lda	#$3c
+    305  f31e		       84 11		      sty.b	RESP1
+    306  f320		       8e 1d 00 	      stx.w	ENAM0
+    307  f323		       a2 3c		      ldx	#$3c
+    308  f325		       84 11		      sty.b	RESP1
+    309  f327		       86 1b		      stx.b	GRP0
+    310  f329		       85 1c		      sta.b	GRP1
+    311  f32b		       a9 0e		      lda	#14
+    312  f32d		       85 06		      sta.b	COLUP0
+    313  f32f		       ea		      nop
+    314  f330		       a9 1e		      lda	#30
+    315  f332		       84 11		      sty.b	RESP1
+    316  f334		       a2 3c		      ldx	#$3c
+    317  f336		       86 1c		      stx.b	GRP1
+    318  f338		       8c 11 00 	      sty.w	RESP1
+    319  f33b		       a2 3c		      ldx	#$3c
+    320  f33d		       86 1c		      stx.b	GRP1
+    321  f33f		       ea		      nop
+    322  f340		       85 06		      sta.b	COLUP0
+    323  f342		       85 1d		      sta.b	ENAM0
+    324  f344		       24 80		      bit	FRAME
+    325  f346		       ea		      nop
+    326  f347				   Scene2Y75
+    327  f347		       c8		      iny
+    328  f348		       b9 00 f5 	      lda	PlayerRows,y
+    329  f34b		       8d 1b 00 	      sta.w	GRP0
+    330  f34e		       a9 ff		      lda	#$ff
+    331  f350		       85 1c		      sta.b	GRP1
+    332  f352		       a2 00		      ldx	#0
+    333  f354		       a9 3c		      lda	#$3c
+    334  f356		       84 11		      sty.b	RESP1
+    335  f358		       8e 1d 00 	      stx.w	ENAM0
+    336  f35b		       a2 18		      ldx	#$18
+    337  f35d		       84 11		      sty.b	RESP1
+    338  f35f		       86 1b		      stx.b	GRP0
+    339  f361		       85 1c		      sta.b	GRP1
+    340  f363		       a9 0e		      lda	#14
+    341  f365		       85 06		      sta.b	COLUP0
+    342  f367		       ea		      nop
+    343  f368		       a9 1e		      lda	#30
+    344  f36a		       84 11		      sty.b	RESP1
+    345  f36c		       a2 18		      ldx	#$18
+    346  f36e		       86 1c		      stx.b	GRP1
+    347  f370		       8c 11 00 	      sty.w	RESP1
+    348  f373		       a2 18		      ldx	#$18
+    349  f375		       86 1c		      stx.b	GRP1
+    350  f377		       ea		      nop
+    351  f378		       85 06		      sta.b	COLUP0
+    352  f37a		       85 1d		      sta.b	ENAM0
+    353  f37c		       24 80		      bit	FRAME
+    354  f37e		       ea		      nop
+    355  f37f				   Scene2Y76
+    356  f37f		       c8		      iny
+    357  f380		       b9 00 f5 	      lda	PlayerRows,y
+    358  f383		       8d 1b 00 	      sta.w	GRP0
+    359  f386		       a9 18		      lda	#$18
+    360  f388		       85 1c		      sta.b	GRP1
+    361  f38a		       a2 00		      ldx	#0
+    362  f38c		       a9 18		      lda	#$18
+    363  f38e		       84 11		      sty.b	RESP1
+    364  f390		       8e 1d 00 	      stx.w	ENAM0
+    365  f393		       a2 ff		      ldx	#$ff
+    366  f395		       84 11		      sty.b	RESP1
+    367  f397		       86 1b		      stx.b	GRP0
+    368  f399		       85 1c		      sta.b	GRP1
+    369  f39b		       a9 0e		      lda	#14
+    370  f39d		       85 06		      sta.b	COLUP0
+    371  f39f		       ea		      nop
+    372  f3a0		       a9 1e		      lda	#30
+    373  f3a2		       84 11		      sty.b	RESP1
+    374  f3a4		       a2 7e		      ldx	#$7e
+    375  f3a6		       86 1c		      stx.b	GRP1
+    376  f3a8		       8c 11 00 	      sty.w	RESP1
+    377  f3ab		       a2 ff		      ldx	#$ff
+    378  f3ad		       86 1c		      stx.b	GRP1
+    379  f3af		       ea		      nop
+    380  f3b0		       85 06		      sta.b	COLUP0
+    381  f3b2		       85 1d		      sta.b	ENAM0
+    382  f3b4		       24 80		      bit	FRAME
+    383  f3b6		       ea		      nop
+    384  f3b7				   Scene2Y77
+    385  f3b7		       c8		      iny
+    386  f3b8		       b9 00 f5 	      lda	PlayerRows,y
+    387  f3bb		       8d 1b 00 	      sta.w	GRP0
+    388  f3be		       a9 24		      lda	#$24
+    389  f3c0		       85 1c		      sta.b	GRP1
+    390  f3c2		       a2 00		      ldx	#0
+    391  f3c4		       a9 7e		      lda	#$7e
+    392  f3c6		       84 11		      sty.b	RESP1
+    393  f3c8		       8e 1d 00 	      stx.w	ENAM0
+    394  f3cb		       a2 3c		      ldx	#$3c
+    395  f3cd		       84 11		      sty.b	RESP1
+    396  f3cf		       86 1b		      stx.b	GRP0
+    397  f3d1		       85 1c		      sta.b	GRP1
+    398  f3d3		       a9 0e		      lda	#14
+    399  f3d5		       85 06		      sta.b	COLUP0
+    400  f3d7		       ea		      nop
+    401  f3d8		       a9 1e		      lda	#30
+    402  f3da		       84 11		      sty.b	RESP1
+    403  f3dc		       a2 18		      ldx	#$18
+    404  f3de		       86 1c		      stx.b	GRP1
+    405  f3e0		       8c 11 00 	      sty.w	RESP1
+    406  f3e3		       a2 18		      ldx	#$18
+    407  f3e5		       86 1c		      stx.b	GRP1
+    408  f3e7		       ea		      nop
+    409  f3e8		       85 06		      sta.b	COLUP0
+    410  f3ea		       85 1d		      sta.b	ENAM0
+    411  f3ec		       24 80		      bit	FRAME
+    412  f3ee		       ea		      nop
+    413  f3ef				   Scene2Y78
+    414  f3ef		       c8		      iny
+    415  f3f0		       b9 00 f5 	      lda	PlayerRows,y
+    416  f3f3		       8d 1b 00 	      sta.w	GRP0
+    417  f3f6		       a9 24		      lda	#$24
+    418  f3f8		       85 1c		      sta.b	GRP1
+    419  f3fa		       a2 00		      ldx	#0
+    420  f3fc		       a9 3c		      lda	#$3c
+    421  f3fe		       84 11		      sty.b	RESP1
+    422  f400		       8e 1d 00 	      stx.w	ENAM0
+    423  f403		       a2 7e		      ldx	#$7e
+    424  f405		       84 11		      sty.b	RESP1
+    425  f407		       86 1b		      stx.b	GRP0
+    426  f409		       85 1c		      sta.b	GRP1
+    427  f40b		       a9 0e		      lda	#14
+    428  f40d		       85 06		      sta.b	COLUP0
+    429  f40f		       ea		      nop
+    430  f410		       a9 1e		      lda	#30
+    431  f412		       84 11		      sty.b	RESP1
+    432  f414		       a2 24		      ldx	#$24
+    433  f416		       86 1c		      stx.b	GRP1
+    434  f418		       8c 11 00 	      sty.w	RESP1
+    435  f41b		       a2 24		      ldx	#$24
+    436  f41d		       86 1c		      stx.b	GRP1
+    437  f41f		       ea		      nop
+    438  f420		       85 06		      sta.b	COLUP0
+    439  f422		       85 1d		      sta.b	ENAM0
+    440  f424		       24 80		      bit	FRAME
+    441  f426		       ea		      nop
+    442  f427				   Scene2Y79
+    443  f427		       c8		      iny
+    444  f428		       b9 00 f5 	      lda	PlayerRows,y
+    445  f42b		       8d 1b 00 	      sta.w	GRP0
+    446  f42e		       a9 42		      lda	#$42
+    447  f430		       85 1c		      sta.b	GRP1
+    448  f432		       a2 00		      ldx	#0
+    449  f434		       a9 24		      lda	#$24
+    450  f436		       84 11		      sty.b	RESP1
+    451  f438		       8e 1d 00 	      stx.w	ENAM0
+    452  f43b		       a2 7e		      ldx	#$7e
+    453  f43d		       84 11		      sty.b	RESP1
+    454  f43f		       86 1b		      stx.b	GRP0
+    455  f441		       85 1c		      sta.b	GRP1
+    456  f443		       a9 0e		      lda	#14
+    457  f445		       85 06		      sta.b	COLUP0
+    458  f447		       ea		      nop
+    459  f448		       a9 1e		      lda	#30
+    460  f44a		       84 11		      sty.b	RESP1
+    461  f44c		       a2 00		      ldx	#$00
+    462  f44e		       86 1c		      stx.b	GRP1
+    463  f450		       8c 11 00 	      sty.w	RESP1
+    464  f453		       a2 24		      ldx	#$24
+    465  f455		       86 1c		      stx.b	GRP1
+    466  f457		       ea		      nop
+    467  f458		       85 06		      sta.b	COLUP0
+    468  f45a		       85 1d		      sta.b	ENAM0
+    469  f45c		       24 80		      bit	FRAME
+    470  f45e		       ea		      nop
+    471  f45f				   Scene2Y80
+    472  f45f		       c8		      iny
+    473  f460		       b9 00 f5 	      lda	PlayerRows,y
+    474  f463		       8d 1b 00 	      sta.w	GRP0
+    475  f466		       a9 42		      lda	#$42
+    476  f468		       85 1c		      sta.b	GRP1
+    477  f46a		       a2 00		      ldx	#0
+    478  f46c		       a9 00		      lda	#$00
+    479  f46e		       84 11		      sty.b	RESP1
+    480  f470		       8e 1d 00 	      stx.w	ENAM0
+    481  f473		       a2 24		      ldx	#$24
+    482  f475		       84 11		      sty.b	RESP1
+    483  f477		       86 1b		      stx.b	GRP0
+    484  f479		       85 1c		      sta.b	GRP1
+    485  f47b		       a9 0e		      lda	#14
+    486  f47d		       85 06		      sta.b	COLUP0
+    487  f47f		       ea		      nop
+    488  f480		       a9 1e		      lda	#30
+    489  f482		       84 11		      sty.b	RESP1
+    490  f484		       a2 00		      ldx	#$00
+    491  f486		       86 1c		      stx.b	GRP1
+    492  f488		       8c 11 00 	      sty.w	RESP1
+    493  f48b		       a2 42		      ldx	#$42
+    494  f48d		       86 1c		      stx.b	GRP1
+    495  f48f		       ea		      nop
+    496  f490		       85 06		      sta.b	COLUP0
+    497  f492		       85 1d		      sta.b	ENAM0
+    498  f494		       24 80		      bit	FRAME
+    499  f496		       ea		      nop
+    500  f497				   Scene2Y81
+    501  f497		       c8		      iny
+    502  f498		       b9 00 f5 	      lda	PlayerRows,y
+    503  f49b		       8d 1b 00 	      sta.w	GRP0
+    504  f49e		       a9 00		      lda	#$00
+    505  f4a0		       85 1c		      sta.b	GRP1
+    506  f4a2		       a2 00		      ldx	#0
+    507  f4a4		       a9 00		      lda	#$00
+    508  f4a6		       84 11		      sty.b	RESP1
+    509  f4a8		       8e 1d 00 	      stx.w	ENAM0
+    510  f4ab		       a2 24		      ldx	#$24
+    511  f4ad		       84 11		      sty.b	RESP1
+    512  f4af		       86 1b		      stx.b	GRP0
+    513  f4b1		       85 1c		      sta.b	GRP1
+    514  f4b3		       a9 0e		      lda	#14
+    515  f4b5		       85 06		      sta.b	COLUP0
+    516  f4b7		       ea		      nop
+    517  f4b8		       a9 1e		      lda	#30
+    518  f4ba		       84 11		      sty.b	RESP1
+    519  f4bc		       a2 00		      ldx	#$00
+    520  f4be		       86 1c		      stx.b	GRP1
+    521  f4c0		       8c 11 00 	      sty.w	RESP1
+    522  f4c3		       a2 42		      ldx	#$42
+    523  f4c5		       86 1c		      stx.b	GRP1
+    524  f4c7		       ea		      nop
+    525  f4c8		       85 06		      sta.b	COLUP0
+    526  f4ca		       85 1d		      sta.b	ENAM0
+    527  f4cc		       ea		      nop
+    528  f4cd		       4c 9f f0 	      jmp	LeaveBand
+    529  f4d0				   Starts
+    530  f4d0		       4c 4a 47 	      byte.b	76,74,71
+    531  f4d3				   SceneLo
+    532  f4d3		       d7 4a 65 	      byte.b	<Scene0,<Scene1,<Scene2
+    533  f4d6				   SceneHi
+    534  f4d6		       f0 f1 f2 	      byte.b	>Scene0,>Scene1,>Scene2
+------- FILE kernel.asm
+    335  f4d9					      ENDIF
+    336  f500		       00 00 00 00*	      ALIGN	256
+    337  f500				   PlayerRows
+    338  f500		       00 00 00 00*	      ds	72,0
+    339  f548		       3c 7e 18 7e*	      byte.b	$3c,$7e,$18,$7e,$1e,$3c,$18,$24,$42
+    340  f551		       00 00 00 00*	      ds	8,0
+    341  fffa					      ORG	$fffa
+    342  fffa		       00 f0 00 f0*	      word.w	Reset,Reset,Reset
