@@ -1,0 +1,34 @@
+{"event": "ram_kernel", "unix_ns": 1795023642215227745, "hex": "8502c8b9c0f88d1b00a918851ca200a91884118e1d00a2ff8411861b851ca90e8506eaa91e8411a27e861c8c1100a2ff861cea8506851d600000000000000000", "x": [127, 19, 73, 100, 46], "y": [73, 72, 73, 71, 72]}
+{"event": "planner_ram", "unix_ns": 1795023642215621436, "order": [1, 4, 2, 3, 0], "scratch": [0, 0, 1, 5, 61, 58, 56, 23, 250, 8, 0, 255, 0, 4, 0, 19], "target_last": 58, "kt_last": 61, "dropped": 0}
+{"event": "blanking_trace", "unix_ns": 1795023642215633279, "reply": "write 0x2c to 0x0010 (RESP0) (TIA) \nwrite 0x00 to 0x0004 (NUSIZ0) (TIA) \nwrite 0x00 to 0x0026 (VDELP1) (TIA) \nbreak on PC->0xf09c\n"}
+{"event": "p1_checkpoint", "unix_ns": 1795023642349370213, "sl": 112, "cl": 25, "cycle": 31, "reply": "Player 1: 111110 (05) _.--*__.--._ [003 > 0x8 > 003] 2 [close] drw (px 1), 2nd\n"}
+{"event": "p1_checkpoint", "unix_ns": 1795023642349797190, "sl": 112, "cl": 34, "cycle": 34, "reply": "Player 1: 100000 (01) _.--.__.--*_ [030 > 0x8 > 030] 2 [close]\n"}
+{"event": "p1_checkpoint", "unix_ns": 1795023642350238278, "sl": 112, "cl": 43, "cycle": 37, "reply": "Player 1: 111000 (03) _*--.__.--._ [030 > 0x8 > 030] 2 [close]\n"}
+{"event": "p1_checkpoint", "unix_ns": 1795023642352510748, "sl": 112, "cl": 106, "cycle": 58, "reply": "Player 1: 111110 (05) _.--*__.--._ [084 > 0x8 > 084] 2 [close] drw (px 1), 2nd\n"}
+{"event": "p1_checkpoint", "unix_ns": 1795023642352905583, "sl": 112, "cl": 121, "cycle": 63, "reply": "Player 1: 110000 (02) _.--*__.--._ [111 > 0x8 > 111] 2 [close]\n"}
+{"event": "p1_checkpoint", "unix_ns": 1795023642353057868, "sl": 112, "cl": 127, "cycle": 65, "reply": "Player 1: 111100 (04) _.--.__.--*_ [111 > 0x8 > 111] 2 [close] drw (px 7), 2nd\n"}
+{"event": "raster_timing", "unix_ns": 1795023642439051494, "line": 100, "visible_y": 64, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439062408, "line": 101, "visible_y": 65, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439068967, "line": 102, "visible_y": 66, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439346811, "line": 103, "visible_y": 67, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439355436, "line": 104, "visible_y": 68, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439361132, "line": 105, "visible_y": 69, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439366511, "line": 106, "visible_y": 70, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439371335, "line": 107, "visible_y": 71, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439376563, "line": 108, "visible_y": 72, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439414760, "line": 109, "visible_y": 73, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439421044, "line": 110, "visible_y": 74, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439431517, "line": 111, "visible_y": 75, "resp": [], "grp": [], "last_cycle": 61}
+{"event": "raster_timing", "unix_ns": 1795023642439649010, "line": 112, "visible_y": 76, "resp": [22, 31, 49, 58], "grp": [15, 37, 54, 63], "last_cycle": 71}
+{"event": "raster_timing", "unix_ns": 1795023642439663854, "line": 113, "visible_y": 77, "resp": [], "grp": [9], "last_cycle": 21}
+{"event": "raster_timing", "unix_ns": 1795023642439670007, "line": 114, "visible_y": 78, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439784890, "line": 115, "visible_y": 79, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439790940, "line": 116, "visible_y": 80, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439795890, "line": 117, "visible_y": 81, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439800450, "line": 118, "visible_y": 82, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439805843, "line": 119, "visible_y": 83, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439810665, "line": 120, "visible_y": 84, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439815163, "line": 121, "visible_y": 85, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439819792, "line": 122, "visible_y": 86, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "raster_timing", "unix_ns": 1795023642439824506, "line": 123, "visible_y": 87, "resp": [], "grp": [], "last_cycle": 9}
+{"event": "timing_done", "unix_ns": 1795023642440559253, "first": 100, "last": 123, "max_cycle": 71}
