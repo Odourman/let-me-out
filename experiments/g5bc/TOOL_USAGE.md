@@ -1,0 +1,15 @@
+# G5BC · Faktisk verktygsanvändning
+
+Samtliga observationer är utvecklarens egenkontroll. Fulla SHA-256 för loggarna finns i `SHA256SUMS`. Verktygsbyten ingick inte i denna körning.
+
+| Verktyg | Status | Exakt reproduktion och rå utdata | Vad verktyget gav |
+|---|---|---|---|
+| DASM 2.20.14.1 från G5AR ENV-01 | EXECUTED_DEVELOPER_OBSERVED | `python build.py`, assemblerlistningar och symbols i `roms/` | Två körbara byteidentiskt återbyggda NTSC/F6-ROM:ar med oförändrat originalmaskunderlag. |
+| Stock Stella 6.7.1 från G5AR ENV-01 | EXECUTED_DEVELOPER_OBSERVED | `bash stella_debug.sh roms/hybrid.bin "$out/stella67" 270 /workspace/.g5ar-env01/bin/stella` · [session](evidence/brief/stella-6.7.1.txt) | Tio RAM-byte ändrade i historisk omordning. RESP1-fällan stannade på SL104, PC $C9. `timer`, `listTimers` och `resetTimers` svarade `No such command`. |
+| Stock Stella 7.0 amd64 | Tidigare sidoinstallerad i G5BB, EXECUTED_DEVELOPER_OBSERVED i G5BC | `bash stella_debug.sh roms/hybrid.bin "$out/stella70" 271 /workspace/work/g5bb/stella7/usr/bin/stella` · [session](evidence/brief/stella-7.0.txt) | Samma RAM-fixture, RESP1-fälla på SL104, PC $C9. Tre timerträffar $BA→$B8 på 66 cykler vardera. `listTimers` visade mätningen och `resetTimers` nollställde statistiken. |
+| Gopher2600 v0.57.2 revision `2af86eb725739adbf3d9d45cea2ed69eea57da2a` | EXECUTED_DEVELOPER_OBSERVED | `bash -x native_regress.sh roms/baseline.bin roms/hybrid.bin "$out/native"` · [kommandon och svar](evidence/brief/gopher-regress.txt) | `regress list/run` gav 2 success/0 fail. Två positiva boot-digests, 30 frames var. Databashashen matchade före/efter. Ingen REDUX. |
+| Samma Gopher med Python 3.12.14/Pillow 13.0.0 och PTY | EXECUTED_DEVELOPER_OBSERVED | `python runtime_capture.py hybrid "$out/reorder" --fixture historic-reorder > "$out/reorder.jsonl"`, följt av `python measure.py hybrid "$out/reorder.jsonl" "$out/reorder" "$out/reorder-pixels.jsonl"` · [rå POKE/PEEK](evidence/brief/ram-hybrid.jsonl) · [pixelutfall](evidence/brief/pixels-hybrid.txt) | RAM-byte verifierade före/efter. I `cacheprobe` återkom alla F-pixlar medan höger M uteblev. [Cacheprobe-rålogg](evidence/brief/ram-cacheprobe.jsonl) · [pixelutfall](evidence/brief/pixels-cacheprobe.txt) |
+| Python 6507-audit från G5BB | EXECUTED_DEVELOPER_OBSERVED | `python audit_kernel.py "$out"/trace-*.jsonl` · [rå audit](evidence/brief/kernel-audit.jsonl) | Avkodade faktiska RAM-program, kontrollerade sidgränser, slutbranch, reserv och cykler. Positiva och negativa data ingår. |
+| Xvfb och xdotool från G5AR | EXECUTED_DEVELOPER_OBSERVED | `capture_stella.sh`, `stella_debug.sh` | Stock Stella-bilder och faktiska konsolkommandon. |
+
+[Verktygens binärhashar och Pythonversioner](evidence/brief/tool-versions.txt) · [Stella 7.0 officiellt paket](https://github.com/stella-emu/stella/releases/download/7.0/stella_7.0_amd64.deb) · [Stella-debuggerhandbok](https://stella-emu.github.io/docs/debugger.html) · [Gopher Regression Database](https://github.com/JetSetIlly/Gopher2600-Docs/wiki/Regression-Database)

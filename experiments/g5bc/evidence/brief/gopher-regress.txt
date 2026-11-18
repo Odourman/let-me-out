@@ -1,0 +1,32 @@
++ set -euo pipefail
+++ realpath roms/baseline.bin
++ frozen=/workspace/work/g5bc-checkout/experiments/g5bc/roms/baseline.bin
+++ realpath roms/hybrid.bin
++ candidate=/workspace/work/g5bc-checkout/experiments/g5bc/roms/hybrid.bin
+++ realpath -m /workspace/work/g5bc/native-regression
++ root=/workspace/work/g5bc/native-regression
++ test '!' -e /workspace/work/g5bc/native-regression
++ mkdir -p /workspace/work/g5bc/native-regression/home /workspace/work/g5bc/native-regression/cwd
++ export HOME=/workspace/work/g5bc/native-regression/home XDG_CONFIG_HOME=/workspace/work/g5bc/native-regression/home
++ HOME=/workspace/work/g5bc/native-regression/home
++ XDG_CONFIG_HOME=/workspace/work/g5bc/native-regression/home
++ cd /workspace/work/g5bc/native-regression/cwd
++ gopher=/workspace/.g5ar-env01/bin/gopher2600
++ printf '%s  %s\n' 7c77fcba29b460547f35c4667d637f1f0ff14e94be3b93290d1d4a8b85cacccd /workspace/work/g5bc-checkout/experiments/g5bc/roms/baseline.bin
++ sha256sum -c -
+/workspace/work/g5bc-checkout/experiments/g5bc/roms/baseline.bin: OK
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BB positive boot / same-Y' /workspace/work/g5bc-checkout/experiments/g5bc/roms/baseline.bin
+adding: [video] baseline [NTSC] frames=30 [G5BB positive boot / same-Y][2Kadded: [video] baseline [NTSC] frames=30 [G5BB positive boot / same-Y]
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BC positive boot / generalized same-Y' /workspace/work/g5bc-checkout/experiments/g5bc/roms/hybrid.bin
+adding: [video] hybrid [NTSC] frames=30 [G5BC positive boot / generalized same-Y][2Kadded: [video] hybrid [NTSC] frames=30 [G5BC positive boot / generalized same-Y]
++ /workspace/.g5ar-env01/bin/gopher2600 regress list
+000 [video] baseline [NTSC] frames=30 [G5BB positive boot / same-Y]
+001 [video] hybrid [NTSC] frames=30 [G5BC positive boot / generalized same-Y]
++ db=/workspace/work/g5bc/native-regression/home/gopher2600/regression/db
++ sha256sum /workspace/work/g5bc/native-regression/home/gopher2600/regression/db
++ /workspace/.g5ar-env01/bin/gopher2600 regress run -concurrent=false -verbose
+[2Krunning: 000 [video] baseline [NTSC] frames=30 [G5BB positive boot / same-Y][2Ksucceed: 000 [video] baseline [NTSC] frames=30 [G5BB positive boot / same-Y]
+[2Krunning: 001 [video] hybrid [NTSC] frames=30 [G5BC positive boot / generalized same-Y][2Ksucceed: 001 [video] hybrid [NTSC] frames=30 [G5BC positive boot / generalized same-Y]
+regression tests: 2 success, 0 fail (elapsed 1s)
++ sha256sum -c /workspace/work/g5bc/native-regression/database.sha256
+/workspace/work/g5bc/native-regression/home/gopher2600/regression/db: OK
