@@ -1,0 +1,2160 @@
+------- FILE roms/mixed-bank3.asm LEVEL 1 PASS 2
+      1  fffa					      processor	6502
+      2  fffa		       00 00	   VSYNC      =	$00
+      3  fffa		       00 01	   VBLANK     =	$01
+      4  fffa		       00 02	   WSYNC      =	$02
+      5  fffa		       00 04	   NUSIZ0     =	$04
+      6  fffa		       00 05	   NUSIZ1     =	$05
+      7  fffa		       00 06	   COLUP0     =	$06
+      8  fffa		       00 07	   COLUP1     =	$07
+      9  fffa		       00 08	   COLUPF     =	$08
+     10  fffa		       00 0a	   CTRLPF     =	$0a
+     11  fffa		       00 0d	   PF0	      =	$0d
+     12  fffa		       00 10	   RESP0      =	$10
+     13  fffa		       00 11	   RESP1      =	$11
+     14  fffa		       00 12	   RESM0      =	$12
+     15  fffa		       00 1b	   GRP0       =	$1b
+     16  fffa		       00 1c	   GRP1       =	$1c
+     17  fffa		       00 1d	   ENAM0      =	$1d
+     18  fffa		       00 80	   FRAME      =	$80
+     19  fffa		       00 81	   XP	      =	$81
+     20  fffa		       00 86	   YP	      =	$86
+     21  fffa		       00 8b	   ORDER      =	$8b
+     22  fffa		       00 90	   PTR	      =	$90
+     23  fffa		       00 9a	   VALID      =	$9a
+     24  fffa		       00 9c	   TMP	      =	$9c
+     25  fffa		       00 9d	   LIMIT_Y    =	$9d
+     26  fffa		       00 9e	   BANKSEL    =	$9e
+     27  fffa		       00 ad	   FOURTH     =	$ad
+     28  fffa		       00 9b	   STENCIL    =	$9b
+     29  10000 ????			   -	       IF	ROWS = 17
+     30  10000 ????			   -MODE       =	$a2
+     31  10000 ????			   -START      =	$9f
+     32  10000 ????			   -POINTER    =	$a0
+     33  10000 ????			   -CACHE      =	$a3
+     34  10000 ????				       ELSE
+     35  10000 ????		00 b8	    CACHE      =	$b8
+     36  10000 ????		00 a8	    MODE       =	$a8
+     37  10000 ????		00 a9	    START      =	$a9
+     38  10000 ????		00 aa	    POINTER    =	$aa
+     39  10000 ????				       ENDIF
+     40  10000 ????
+     41  f000					      ORG	$f000
+     42  f000				   Reset
+     43  f000		       78		      sei
+     44  f001		       d8		      cld
+     45  f002		       a2 ff		      ldx	#$ff
+     46  f004		       9a		      txs
+     47  f005		       a2 7f		      ldx	#$7f
+     48  f007		       a9 00		      lda	#0
+     49  f009				   Clear
+     50  f009		       95 80		      sta	$80,x
+     51  f00b		       ca		      dex
+     52  f00c		       10 fb		      bpl	Clear
+     53  f00e		       a9 02		      lda	#2
+     54  f010		       85 a8		      sta	MODE
+     55  f012					      IF	DYNAMIC
+     56  f012		       a2 04		      ldx	#4
+     57  f014				   InitCoordinates
+     58  f014		       bd d4 f0 	      lda	DefaultX,x
+     59  f017		       95 81		      sta	XP,x
+     60  f019		       bd d9 f0 	      lda	DefaultY,x
+     61  f01c		       95 86		      sta	YP,x
+     62  f01e		       ca		      dex
+     63  f01f		       10 f3		      bpl	InitCoordinates
+     64  f021					      ENDIF
+     65  f021		       a9 1e		      lda	#$1e
+     66  f023		       85 06		      sta	COLUP0
+     67  f025		       a9 0e		      lda	#$0e
+     68  f027		       85 07		      sta	COLUP1
+     69  f029		       a9 26		      lda	#$26
+     70  f02b		       85 08		      sta	COLUPF
+     71  f02d		       a9 01		      lda	#1
+     72  f02f		       85 0a		      sta	CTRLPF
+     73  f031		       85 05		      sta	NUSIZ1
+     74  f033		       a9 30		      lda	#$30
+     75  f035		       85 0d		      sta	PF0
+     76  f037				   Frame
+     77  f037		       85 02		      sta	WSYNC
+     78  f039		       a9 02		      lda	#2
+     79  f03b		       85 00		      sta	VSYNC
+     80  f03d		       85 01		      sta	VBLANK
+     81  f03f		       85 02		      sta	WSYNC
+     82  f041		       85 02		      sta	WSYNC
+     83  f043		       85 02		      sta	WSYNC
+     84  f045				   SyncOff
+     85  f045		       a9 00		      lda	#0
+     86  f047		       85 00		      sta	VSYNC
+     87  f049		       85 1d		      sta	ENAM0
+     88  f04b		       85 1b		      sta	GRP0
+     89  f04d		       85 1c		      sta	GRP1
+     90  f04f		       85 04		      sta	NUSIZ0
+     91  f051		       85 02		      sta	WSYNC
+     92  f053		       a2 04		      ldx	#4
+     93  f055				   PlayerPosition
+     94  f055		       ca		      dex
+     95  f056		       d0 fd		      bne	PlayerPosition
+     96  f058		       85 10		      sta	RESP0
+     97  f05a		       85 02		      sta	WSYNC
+     98  f05c		       a2 02		      ldx	#2
+     99  f05e				   MissilePosition
+    100  f05e		       ca		      dex
+    101  f05f		       d0 fd		      bne	MissilePosition
+    102  f061		       85 12		      sta	RESM0
+    103  f063					      IF	DYNAMIC
+    104  f063		       4c ed f0 	      jmp	SetupDynamic
+    105  f066				  -	      ELSE
+    106  f066				  -			; Latch the requested diagnostic fixture in blanking.
+    107  f066				  -	      ldx	MODE
+    108  f066				  -	      cpx	#3
+    109  f066				  -	      bcc	ValidMode
+    110  f066				  -	      ldx	#2
+    111  f066				  -ValidMode
+    112  f066				  -	      lda	Starts,x
+    113  f066				  -	      sta	START
+    114  f066				  -	      lda	SceneLo,x
+    115  f066				  -	      sta	POINTER
+    116  f066				  -	      lda	SceneHi,x
+    117  f066				  -	      sta	POINTER+1
+    118  f066				  -	      ldx	#35
+    119  f066				  -Blank
+    120  f066				  -	      sta	WSYNC
+    121  f066				  -	      dex
+    122  f066				  -	      bne	Blank
+    123  f066					      ENDIF
+    124  f066				   Visible
+    125  f066		       a9 00		      lda	#0
+    126  f068		       85 01		      sta	VBLANK
+    127  f06a		       a2 40		      ldx	#64
+    128  f06c				   Top
+    129  f06c		       85 02		      sta	WSYNC
+    130  f06e		       ca		      dex
+    131  f06f		       d0 fb		      bne	Top
+    132  f071		       a9 02		      lda	#2
+    133  f073		       85 1d		      sta	ENAM0
+    134  f075		       a0 40		      ldy	#64
+    135  f077				   Lead
+    136  f077		       b9 00 ff 	      lda	PlayerRows,y
+    137  f07a		       85 1b		      sta	GRP0
+    138  f07c		       c8		      iny
+    139  f07d		       c4 a9		      cpy	START
+    140  f07f		       f0 05		      beq	Prepare
+    141  f081		       85 02		      sta	WSYNC
+    142  f083		       4c 77 f0 	      jmp	Lead
+    143  f086				   Prepare
+    144  f086					      IF	DYNAMIC
+    145  f086		       a5 9a		      lda	VALID
+    146  f088		       d0 05		      bne	ValidBand
+    147  f08a		       85 02		      sta	WSYNC
+    148  f08c		       4c a3 f0 	      jmp	Trail
+    149  f08f				   ValidBand
+    150  f08f					      ENDIF
+    151  f08f		       88		      dey
+    152  f090							; Wide copy only after the potential X66 shot on this lead line.
+    153  f090					      IF	DYNAMIC
+    154  f090		       a2 06		      ldx	#6
+    155  f092				  -	      ELSE
+    156  f092				  -	      ldx	#8
+    157  f092					      ENDIF
+    158  f092				   DelayLate
+    159  f092		       ca		      dex
+    160  f093		       d0 fd		      bne	DelayLate
+    161  f095		       a9 00		      lda	#0
+    162  f097		       85 04		      sta	NUSIZ0
+    163  f099		       6c aa 00 	      jmp	(POINTER)
+    164  f09c				   LeaveBand
+    165  f09c		       a9 00		      lda	#0
+    166  f09e		       85 04		      sta	NUSIZ0
+    167  f0a0		       85 1c		      sta	GRP1
+    168  f0a2		       c8		      iny
+    169  f0a3				   Trail
+    170  f0a3		       b9 00 ff 	      lda	PlayerRows,y
+    171  f0a6		       85 1b		      sta	GRP0
+    172  f0a8		       c0 58		      cpy	#88
+    173  f0aa		       f0 06		      beq	EndShot
+    174  f0ac		       c8		      iny
+    175  f0ad		       85 02		      sta	WSYNC
+    176  f0af		       4c a3 f0 	      jmp	Trail
+    177  f0b2				   EndShot
+    178  f0b2							; Clear after the ordinary X2 shot, before the next scanline.
+    179  f0b2		       a2 04		      ldx	#4
+    180  f0b4				   ShotDelay
+    181  f0b4		       ca		      dex
+    182  f0b5		       d0 fd		      bne	ShotDelay
+    183  f0b7		       a9 00		      lda	#0
+    184  f0b9		       85 1d		      sta	ENAM0
+    185  f0bb		       85 02		      sta	WSYNC
+    186  f0bd		       a2 67		      ldx	#103
+    187  f0bf				   Bottom
+    188  f0bf		       85 02		      sta	WSYNC
+    189  f0c1		       ca		      dex
+    190  f0c2		       d0 fb		      bne	Bottom
+    191  f0c4				   Overscan
+    192  f0c4		       a9 02		      lda	#2
+    193  f0c6		       85 01		      sta	VBLANK
+    194  f0c8		       a2 1d		      ldx	#29
+    195  f0ca				   BottomBlank
+    196  f0ca		       85 02		      sta	WSYNC
+    197  f0cc		       ca		      dex
+    198  f0cd		       d0 fb		      bne	BottomBlank
+    199  f0cf		       e6 80		      inc	FRAME
+    200  f0d1		       4c 37 f0 	      jmp	Frame
+    201  f0d4
+    202  f0d4					      IF	DYNAMIC
+    203  f0d4				   DefaultX
+    204  f0d4		       7f 13 49 64*	      byte.b	BOOT_RIGHT,19,BOOT_X,100,46
+    205  f0d9				   DefaultY
+    206  f0d9		       49 48 49 47*	      byte.b	73,72,73,71,72
+    207  f0de				   ExpectedX
+    208  f0de		       13 2e 00 64*	      byte.b	19,46,0,100,0
+    209  f0e3				   RightBank
+    210  f0e3		       00 ff ff 01*	      byte.b	0,$ff,$ff,1,$ff,$ff,2,$ff,$ff,3
+    211  f0e3					      MAC	swap_pair
+    212  f0e3					      SUBROUTINE
+    213  f0e3					      ldy	ORDER+{1}
+    214  f0e3					      lda	XP,y
+    215  f0e3					      ldy	ORDER+{2}
+    216  f0e3					      cmp	XP,y
+    217  f0e3					      bcc	.Done
+    218  f0e3					      beq	.Done
+    219  f0e3					      ldx	ORDER+{1}
+    220  f0e3					      sty	ORDER+{1}
+    221  f0e3					      stx	ORDER+{2}
+    222  f0e3				   .Done
+    223  f0e3					      ENDM
+    224  f0ed
+    225  f0ed				   SetupDynamic
+    226  f0ed		       85 02		      sta	WSYNC
+    227  f0ef		       a9 01		      lda	#1
+    228  f0f1		       85 9a		      sta	VALID
+    229  f0f3		       a9 00		      lda	#0
+    230  f0f5		       85 9e		      sta	BANKSEL
+    231  f0f7		       a9 00		      lda	#0
+    232  f0f9		       85 8b		      sta	ORDER+0
+    233  f0fb		       a9 01		      lda	#1
+    234  f0fd		       85 8c		      sta	ORDER+1
+    235  f0ff		       a9 02		      lda	#2
+    236  f101		       85 8d		      sta	ORDER+2
+    237  f103		       a9 03		      lda	#3
+    238  f105		       85 8e		      sta	ORDER+3
+    239  f107		       a9 04		      lda	#4
+    240  f109		       85 8f		      sta	ORDER+4
+    241  f10b				  -	      IF	ROWS = 17
+    242  f10b				  -	      SWAP_PAIR	0,3
+    243  f10b				  -	      sta	WSYNC
+    244  f10b				  -	      SWAP_PAIR	1,4
+    245  f10b				  -	      SWAP_PAIR	0,2
+    246  f10b				  -	      sta	WSYNC
+    247  f10b				  -	      SWAP_PAIR	1,3
+    248  f10b				  -	      SWAP_PAIR	0,1
+    249  f10b				  -	      sta	WSYNC
+    250  f10b				  -	      SWAP_PAIR	2,4
+    251  f10b				  -	      SWAP_PAIR	1,2
+    252  f10b				  -	      sta	WSYNC
+    253  f10b				  -	      SWAP_PAIR	3,4
+    254  f10b				  -	      SWAP_PAIR	2,3
+    255  f10b					      ELSE
+    256  f10b		       85 02		      sta	WSYNC
+      0  f10d					      SWAP_PAIR	0,1
+      1  f10d					      SUBROUTINE
+      2  f10d		       a4 8b		      ldy	ORDER+0
+      3  f10f		       b9 81 00 	      lda	XP,y
+      4  f112		       a4 8c		      ldy	ORDER+1
+      5  f114		       d9 81 00 	      cmp	XP,y
+      6  f117		       90 08		      bcc	.Done
+      7  f119		       f0 06		      beq	.Done
+      8  f11b		       a6 8b		      ldx	ORDER+0
+      9  f11d		       84 8b		      sty	ORDER+0
+     10  f11f		       86 8c		      stx	ORDER+1
+     11  f121				   .Done
+    258  f121		       85 02		      sta	WSYNC
+      0  f123					      SWAP_PAIR	1,2
+      1  f123					      SUBROUTINE
+      2  f123		       a4 8c		      ldy	ORDER+1
+      3  f125		       b9 81 00 	      lda	XP,y
+      4  f128		       a4 8d		      ldy	ORDER+2
+      5  f12a		       d9 81 00 	      cmp	XP,y
+      6  f12d		       90 08		      bcc	.Done
+      7  f12f		       f0 06		      beq	.Done
+      8  f131		       a6 8c		      ldx	ORDER+1
+      9  f133		       84 8c		      sty	ORDER+1
+     10  f135		       86 8d		      stx	ORDER+2
+     11  f137				   .Done
+    260  f137		       85 02		      sta	WSYNC
+      0  f139					      SWAP_PAIR	2,3
+      1  f139					      SUBROUTINE
+      2  f139		       a4 8d		      ldy	ORDER+2
+      3  f13b		       b9 81 00 	      lda	XP,y
+      4  f13e		       a4 8e		      ldy	ORDER+3
+      5  f140		       d9 81 00 	      cmp	XP,y
+      6  f143		       90 08		      bcc	.Done
+      7  f145		       f0 06		      beq	.Done
+      8  f147		       a6 8d		      ldx	ORDER+2
+      9  f149		       84 8d		      sty	ORDER+2
+     10  f14b		       86 8e		      stx	ORDER+3
+     11  f14d				   .Done
+    262  f14d		       85 02		      sta	WSYNC
+      0  f14f					      SWAP_PAIR	3,4
+      1  f14f					      SUBROUTINE
+      2  f14f		       a4 8e		      ldy	ORDER+3
+      3  f151		       b9 81 00 	      lda	XP,y
+      4  f154		       a4 8f		      ldy	ORDER+4
+      5  f156		       d9 81 00 	      cmp	XP,y
+      6  f159		       90 08		      bcc	.Done
+      7  f15b		       f0 06		      beq	.Done
+      8  f15d		       a6 8e		      ldx	ORDER+3
+      9  f15f		       84 8e		      sty	ORDER+3
+     10  f161		       86 8f		      stx	ORDER+4
+     11  f163				   .Done
+    264  f163		       85 02		      sta	WSYNC
+      0  f165					      SWAP_PAIR	0,1
+      1  f165					      SUBROUTINE
+      2  f165		       a4 8b		      ldy	ORDER+0
+      3  f167		       b9 81 00 	      lda	XP,y
+      4  f16a		       a4 8c		      ldy	ORDER+1
+      5  f16c		       d9 81 00 	      cmp	XP,y
+      6  f16f		       90 08		      bcc	.Done
+      7  f171		       f0 06		      beq	.Done
+      8  f173		       a6 8b		      ldx	ORDER+0
+      9  f175		       84 8b		      sty	ORDER+0
+     10  f177		       86 8c		      stx	ORDER+1
+     11  f179				   .Done
+    266  f179		       85 02		      sta	WSYNC
+      0  f17b					      SWAP_PAIR	1,2
+      1  f17b					      SUBROUTINE
+      2  f17b		       a4 8c		      ldy	ORDER+1
+      3  f17d		       b9 81 00 	      lda	XP,y
+      4  f180		       a4 8d		      ldy	ORDER+2
+      5  f182		       d9 81 00 	      cmp	XP,y
+      6  f185		       90 08		      bcc	.Done
+      7  f187		       f0 06		      beq	.Done
+      8  f189		       a6 8c		      ldx	ORDER+1
+      9  f18b		       84 8c		      sty	ORDER+1
+     10  f18d		       86 8d		      stx	ORDER+2
+     11  f18f				   .Done
+    268  f18f		       85 02		      sta	WSYNC
+      0  f191					      SWAP_PAIR	2,3
+      1  f191					      SUBROUTINE
+      2  f191		       a4 8d		      ldy	ORDER+2
+      3  f193		       b9 81 00 	      lda	XP,y
+      4  f196		       a4 8e		      ldy	ORDER+3
+      5  f198		       d9 81 00 	      cmp	XP,y
+      6  f19b		       90 08		      bcc	.Done
+      7  f19d		       f0 06		      beq	.Done
+      8  f19f		       a6 8d		      ldx	ORDER+2
+      9  f1a1		       84 8d		      sty	ORDER+2
+     10  f1a3		       86 8e		      stx	ORDER+3
+     11  f1a5				   .Done
+    270  f1a5		       85 02		      sta	WSYNC
+      0  f1a7					      SWAP_PAIR	0,1
+      1  f1a7					      SUBROUTINE
+      2  f1a7		       a4 8b		      ldy	ORDER+0
+      3  f1a9		       b9 81 00 	      lda	XP,y
+      4  f1ac		       a4 8c		      ldy	ORDER+1
+      5  f1ae		       d9 81 00 	      cmp	XP,y
+      6  f1b1		       90 08		      bcc	.Done
+      7  f1b3		       f0 06		      beq	.Done
+      8  f1b5		       a6 8b		      ldx	ORDER+0
+      9  f1b7		       84 8b		      sty	ORDER+0
+     10  f1b9		       86 8c		      stx	ORDER+1
+     11  f1bb				   .Done
+    272  f1bb		       85 02		      sta	WSYNC
+      0  f1bd					      SWAP_PAIR	1,2
+      1  f1bd					      SUBROUTINE
+      2  f1bd		       a4 8c		      ldy	ORDER+1
+      3  f1bf		       b9 81 00 	      lda	XP,y
+      4  f1c2		       a4 8d		      ldy	ORDER+2
+      5  f1c4		       d9 81 00 	      cmp	XP,y
+      6  f1c7		       90 08		      bcc	.Done
+      7  f1c9		       f0 06		      beq	.Done
+      8  f1cb		       a6 8c		      ldx	ORDER+1
+      9  f1cd		       84 8c		      sty	ORDER+1
+     10  f1cf		       86 8d		      stx	ORDER+2
+     11  f1d1				   .Done
+    274  f1d1		       85 02		      sta	WSYNC
+      0  f1d3					      SWAP_PAIR	0,1
+      1  f1d3					      SUBROUTINE
+      2  f1d3		       a4 8b		      ldy	ORDER+0
+      3  f1d5		       b9 81 00 	      lda	XP,y
+      4  f1d8		       a4 8c		      ldy	ORDER+1
+      5  f1da		       d9 81 00 	      cmp	XP,y
+      6  f1dd		       90 08		      bcc	.Done
+      7  f1df		       f0 06		      beq	.Done
+      8  f1e1		       a6 8b		      ldx	ORDER+0
+      9  f1e3		       84 8b		      sty	ORDER+0
+     10  f1e5		       86 8c		      stx	ORDER+1
+     11  f1e7				   .Done
+    276  f1e7					      ENDIF
+    277  f1e7		       85 02		      sta	WSYNC
+    278  f1e9		       a9 ff		      lda	#$ff
+    279  f1eb		       c5 86		      cmp	YP+0
+    280  f1ed		       90 02		      bcc	NextY0
+    281  f1ef		       a5 86		      lda	YP+0
+    282  f1f1				   NextY0
+    283  f1f1		       c5 87		      cmp	YP+1
+    284  f1f3		       90 02		      bcc	NextY1
+    285  f1f5		       a5 87		      lda	YP+1
+    286  f1f7				   NextY1
+    287  f1f7		       c5 88		      cmp	YP+2
+    288  f1f9		       90 02		      bcc	NextY2
+    289  f1fb		       a5 88		      lda	YP+2
+    290  f1fd				   NextY2
+    291  f1fd		       c5 89		      cmp	YP+3
+    292  f1ff		       90 02		      bcc	NextY3
+    293  f201		       a5 89		      lda	YP+3
+    294  f203				   NextY3
+    295  f203		       c5 8a		      cmp	YP+4
+    296  f205		       90 02		      bcc	NextY4
+    297  f207		       a5 8a		      lda	YP+4
+    298  f209				   NextY4
+    299  f209		       85 a9		      sta	START
+    300  f20b		       c9 42		      cmp	#66
+    301  f20d		       90 04		      bcc	InvalidBand
+    302  f20f		       c9 4d		      cmp	#77
+    303  f211		       90 08		      bcc	SetLimit
+    304  f213				   InvalidBand
+    305  f213		       a9 00		      lda	#0
+    306  f215		       85 9a		      sta	VALID
+    307  f217		       a9 47		      lda	#71
+    308  f219		       85 a9		      sta	START
+    309  f21b				   SetLimit
+    310  f21b				  -	      IF	ROWS = 17
+    311  f21b				  -	      cmp	#72
+    312  f21b				  -	      bcc	ClampDone
+    313  f21b				  -	      lda	#71
+    314  f21b				  -	      sta	START
+    315  f21b				  -ClampDone
+    316  f21b					      ENDIF
+    317  f21b		       18		      clc
+    318  f21c		       69 02		      adc	#(ROWS-9)
+    319  f21e		       85 9d		      sta	LIMIT_Y
+    320  f220		       a2 00		      ldx	#0
+    321  f222				   PreparePointers
+    322  f222		       85 02		      sta	WSYNC
+    323  f224		       b4 8b		      ldy	ORDER,x
+    324  f226		       b9 81 00 	      lda	XP,y
+    325  f229		       e0 02		      cpx	#2
+    326  f22b		       f0 44		      beq	SelectClock
+    327  f22d		       e0 04		      cpx	#4
+    328  f22f		       f0 10		      beq	SelectBank
+    329  f231					      IF	MIXED
+    330  f231		       e0 03		      cpx	#3
+    331  f233		       f0 07		      beq	StoreFourth
+    332  f235					      ENDIF
+    333  f235		       dd de f0 	      cmp	ExpectedX,x
+    334  f238		       f0 53		      beq	CheckY
+    335  f23a		       d0 4d		      bne	InvalidX
+    336  f23c					      IF	MIXED
+    337  f23c				   StoreFourth
+    338  f23c		       85 ad		      sta	FOURTH
+    339  f23e		       4c 8d f2 	      jmp	CheckY
+    340  f241					      ENDIF
+    341  f241				   SelectBank
+    342  f241					      IF	MIXED
+    343  f241		       a2 00		      ldx	#0
+    344  f243		       c9 7f		      cmp	#127
+    345  f245		       d0 12		      bne	MixedRight
+    346  f247		       a5 ad		      lda	FOURTH
+    347  f249		       c9 64		      cmp	#100
+    348  f24b		       f0 18		      beq	MixedOK
+    349  f24d		       e8		      inx
+    350  f24e		       c9 61		      cmp	#97
+    351  f250		       f0 13		      beq	MixedOK
+    352  f252		       e8		      inx
+    353  f253		       c9 67		      cmp	#103
+    354  f255		       d0 15		      bne	MixedBad
+    355  f257		       f0 0c		      beq	MixedOK
+    356  f259				   MixedRight
+    357  f259		       c9 85		      cmp	#133
+    358  f25b		       d0 0f		      bne	MixedBad
+    359  f25d		       a5 ad		      lda	FOURTH
+    360  f25f		       c9 67		      cmp	#103
+    361  f261		       d0 09		      bne	MixedBad
+    362  f263		       a2 03		      ldx	#3
+    363  f265				   MixedOK
+    364  f265		       86 9e		      stx	BANKSEL
+    365  f267		       a2 04		      ldx	#4
+    366  f269		       4c 8d f2 	      jmp	CheckY
+    367  f26c				   MixedBad
+    368  f26c		       a2 04		      ldx	#4
+    369  f26e		       4c 89 f2 	      jmp	InvalidX
+    370  f271				  -	      ELSE
+    371  f271				  -	      sec
+    372  f271				  -	      sbc	#127
+    373  f271				  -	      cmp	#10
+    374  f271				  -	      bcs	InvalidX
+    375  f271				  -	      tax
+    376  f271				  -	      lda	RightBank,x
+    377  f271				  -	      ldx	#4
+    378  f271				  -	      bmi	InvalidX
+    379  f271				  -	      sta	BANKSEL
+    380  f271				  -	      jmp	CheckY
+    381  f271					      ENDIF
+    382  f271				   SelectClock
+    383  f271		       c9 40		      cmp	#64
+    384  f273		       90 14		      bcc	InvalidX
+    385  f275		       c9 53		      cmp	#83
+    386  f277		       b0 10		      bcs	InvalidX
+    387  f279		       38		      sec
+    388  f27a		       e9 40		      sbc	#64
+    389  f27c		       aa		      tax
+    390  f27d		       bd bb fd 	      lda	ThirdXs,x
+    391  f280		       a2 02		      ldx	#2
+    392  f282		       30 05		      bmi	InvalidX
+    393  f284		       85 9b		      sta	STENCIL
+    394  f286		       4c 8d f2 	      jmp	CheckY
+    395  f289				   InvalidX
+    396  f289		       a9 00		      lda	#0
+    397  f28b		       85 9a		      sta	VALID
+    398  f28d				   CheckY
+    399  f28d		       b9 86 00 	      lda	YP,y
+    400  f290		       c5 a9		      cmp	START
+    401  f292		       90 06		      bcc	BadY
+    402  f294		       c5 9d		      cmp	LIMIT_Y
+    403  f296		       90 08		      bcc	UseY
+    404  f298		       f0 06		      beq	UseY
+    405  f29a				   BadY
+    406  f29a		       a9 00		      lda	#0
+    407  f29c		       85 9a		      sta	VALID
+    408  f29e		       a5 a9		      lda	START
+    409  f2a0				   UseY
+    410  f2a0		       85 02		      sta	WSYNC
+    411  f2a2		       85 9c		      sta	TMP
+    412  f2a4		       a5 9d		      lda	LIMIT_Y
+    413  f2a6		       38		      sec
+    414  f2a7		       e5 9c		      sbc	TMP
+    415  f2a9		       18		      clc
+    416  f2aa		       79 6d fe 	      adc	MaskLo,y
+    417  f2ad		       48		      pha
+    418  f2ae		       b9 72 fe 	      lda	MaskHi,y
+    419  f2b1		       69 00		      adc	#0
+    420  f2b3		       a0 00		      ldy	#0
+    421  f2b5		       48		      pha
+    422  f2b6				   PeakStack
+    423  f2b6		       8a		      txa
+    424  f2b7		       0a		      asl
+    425  f2b8		       a8		      tay
+    426  f2b9		       68		      pla
+    427  f2ba		       99 91 00 	      sta	PTR+1,y
+    428  f2bd		       68		      pla
+    429  f2be		       99 90 00 	      sta	PTR,y
+    430  f2c1		       e8		      inx
+    431  f2c2		       e0 05		      cpx	#5
+    432  f2c4					      IF	MIXED
+    433  f2c4		       b0 03		      bcs	PointersDone
+    434  f2c6		       4c 22 f2 	      jmp	PreparePointers
+    435  f2c9				   PointersDone
+    436  f2c9				  -	      ELSE
+    437  f2c9				  -	      bcc	PreparePointers
+    438  f2c9					      ENDIF
+    439  f2c9		       a0 00		      ldy	#0
+    440  f2cb		       a2 00		      ldx	#0
+    441  f2cd				   CacheRow
+    442  f2cd		       85 02		      sta	WSYNC
+    443  f2cf		       b1 90		      lda	(PTR),y
+    444  f2d1		       95 b8		      sta	CACHE,x
+    445  f2d3		       b1 92		      lda	(PTR+2),y
+    446  f2d5		       95 c3		      sta	CACHE+1*ROWS,x
+    447  f2d7		       b1 94		      lda	(PTR+4),y
+    448  f2d9		       95 ce		      sta	CACHE+2*ROWS,x
+    449  f2db		       b1 96		      lda	(PTR+6),y
+    450  f2dd		       95 d9		      sta	CACHE+3*ROWS,x
+    451  f2df		       b1 98		      lda	(PTR+8),y
+    452  f2e1		       95 e4		      sta	CACHE+4*ROWS,x
+    453  f2e3		       e8		      inx
+    454  f2e4		       c8		      iny
+    455  f2e5		       e0 0b		      cpx	#ROWS
+    456  f2e7		       90 e4		      bcc	CacheRow
+    457  f2e9		       85 02		      sta	WSYNC
+    458  f2eb		       a6 9e		      ldx	BANKSEL
+    459  f2ed		       bd f6 ff 	      lda	$fff6,x
+    460  f2f0		       a6 9b		      ldx	STENCIL
+    461  f2f2		       bd d8 fd 	      lda	DynamicClocks,x
+    462  f2f5		       25 9a		      and	VALID
+    463  f2f7		       85 9a		      sta	VALID
+    464  f2f9		       bd ce fd 	      lda	DynamicLo,x
+    465  f2fc		       85 aa		      sta	POINTER
+    466  f2fe		       bd d3 fd 	      lda	DynamicHi,x
+    467  f301		       85 ab		      sta	POINTER+1
+    468  f303		       a2 01		      ldx	#1
+    469  f305				   TailBlank
+    470  f305		       85 02		      sta	WSYNC
+    471  f307		       ca		      dex
+    472  f308		       d0 fb		      bne	TailBlank
+    473  f30a		       4c 66 f0 	      jmp	Visible
+------- FILE roms/mixed-bank3.inc LEVEL 2 PASS 2
+      0  f30d					      include	"roms/mixed-bank3.inc"
+      1  f30d				   Dynamic73
+      2  f30d		       85 02		      sta	WSYNC
+      3  f30f				   Dynamic73Y71
+      4  f30f		       c8		      iny
+      5  f310		       a5 d9		      lda.b	CACHE+33
+      6  f312		       be 00 ff 	      ldx	PlayerRows,y
+      7  f315		       8e 1b 00 	      stx.w	GRP0
+      8  f318		       ea		      nop
+      9  f319		       a6 b8		      ldx.b	CACHE+0
+     10  f31b		       8c 11 00 	      sty.w	RESP1
+     11  f31e		       86 1c		      stx.b	GRP1
+     12  f320		       a6 c3		      ldx.b	CACHE+11
+     13  f322		       84 11		      sty.b	RESP1
+     14  f324		       86 1c		      stx.b	GRP1
+     15  f326		       a6 ce		      ldx.b	CACHE+22
+     16  f328		       84 11		      sty.b	RESP1
+     17  f32a		       8e 1c 00 	      stx.w	GRP1
+     18  f32d		       a6 e4		      ldx.b	CACHE+44
+     19  f32f		       84 11		      sty.b	RESP1
+     20  f331		       85 1c		      sta.b	GRP1
+     21  f333		       ea		      nop
+     22  f334		       ea		      nop
+     23  f335		       84 11		      sty.b	RESP1
+     24  f337		       ea		      nop
+     25  f338		       86 1c		      stx.b	GRP1
+     26  f33a		       24 80		      bit	FRAME
+     27  f33c		       ea		      nop
+     28  f33d		       ea		      nop
+     29  f33e		       ea		      nop
+     30  f33f		       ea		      nop
+     31  f340				   Dynamic73Y72
+     32  f340		       c8		      iny
+     33  f341		       a5 da		      lda.b	CACHE+34
+     34  f343		       be 00 ff 	      ldx	PlayerRows,y
+     35  f346		       8e 1b 00 	      stx.w	GRP0
+     36  f349		       ea		      nop
+     37  f34a		       a6 b9		      ldx.b	CACHE+1
+     38  f34c		       8c 11 00 	      sty.w	RESP1
+     39  f34f		       86 1c		      stx.b	GRP1
+     40  f351		       a6 c4		      ldx.b	CACHE+12
+     41  f353		       84 11		      sty.b	RESP1
+     42  f355		       86 1c		      stx.b	GRP1
+     43  f357		       a6 cf		      ldx.b	CACHE+23
+     44  f359		       84 11		      sty.b	RESP1
+     45  f35b		       8e 1c 00 	      stx.w	GRP1
+     46  f35e		       a6 e5		      ldx.b	CACHE+45
+     47  f360		       84 11		      sty.b	RESP1
+     48  f362		       85 1c		      sta.b	GRP1
+     49  f364		       ea		      nop
+     50  f365		       ea		      nop
+     51  f366		       84 11		      sty.b	RESP1
+     52  f368		       ea		      nop
+     53  f369		       86 1c		      stx.b	GRP1
+     54  f36b		       24 80		      bit	FRAME
+     55  f36d		       ea		      nop
+     56  f36e		       ea		      nop
+     57  f36f		       ea		      nop
+     58  f370		       ea		      nop
+     59  f371				   Dynamic73Y73
+     60  f371		       c8		      iny
+     61  f372		       a5 db		      lda.b	CACHE+35
+     62  f374		       be 00 ff 	      ldx	PlayerRows,y
+     63  f377		       8e 1b 00 	      stx.w	GRP0
+     64  f37a		       ea		      nop
+     65  f37b		       a6 ba		      ldx.b	CACHE+2
+     66  f37d		       8c 11 00 	      sty.w	RESP1
+     67  f380		       86 1c		      stx.b	GRP1
+     68  f382		       a6 c5		      ldx.b	CACHE+13
+     69  f384		       84 11		      sty.b	RESP1
+     70  f386		       86 1c		      stx.b	GRP1
+     71  f388		       a6 d0		      ldx.b	CACHE+24
+     72  f38a		       84 11		      sty.b	RESP1
+     73  f38c		       8e 1c 00 	      stx.w	GRP1
+     74  f38f		       a6 e6		      ldx.b	CACHE+46
+     75  f391		       84 11		      sty.b	RESP1
+     76  f393		       85 1c		      sta.b	GRP1
+     77  f395		       ea		      nop
+     78  f396		       ea		      nop
+     79  f397		       84 11		      sty.b	RESP1
+     80  f399		       ea		      nop
+     81  f39a		       86 1c		      stx.b	GRP1
+     82  f39c		       24 80		      bit	FRAME
+     83  f39e		       ea		      nop
+     84  f39f		       ea		      nop
+     85  f3a0		       ea		      nop
+     86  f3a1		       ea		      nop
+     87  f3a2				   Dynamic73Y74
+     88  f3a2		       c8		      iny
+     89  f3a3		       a5 dc		      lda.b	CACHE+36
+     90  f3a5		       be 00 ff 	      ldx	PlayerRows,y
+     91  f3a8		       8e 1b 00 	      stx.w	GRP0
+     92  f3ab		       ea		      nop
+     93  f3ac		       a6 bb		      ldx.b	CACHE+3
+     94  f3ae		       8c 11 00 	      sty.w	RESP1
+     95  f3b1		       86 1c		      stx.b	GRP1
+     96  f3b3		       a6 c6		      ldx.b	CACHE+14
+     97  f3b5		       84 11		      sty.b	RESP1
+     98  f3b7		       86 1c		      stx.b	GRP1
+     99  f3b9		       a6 d1		      ldx.b	CACHE+25
+    100  f3bb		       84 11		      sty.b	RESP1
+    101  f3bd		       8e 1c 00 	      stx.w	GRP1
+    102  f3c0		       a6 e7		      ldx.b	CACHE+47
+    103  f3c2		       84 11		      sty.b	RESP1
+    104  f3c4		       85 1c		      sta.b	GRP1
+    105  f3c6		       ea		      nop
+    106  f3c7		       ea		      nop
+    107  f3c8		       84 11		      sty.b	RESP1
+    108  f3ca		       ea		      nop
+    109  f3cb		       86 1c		      stx.b	GRP1
+    110  f3cd		       24 80		      bit	FRAME
+    111  f3cf		       ea		      nop
+    112  f3d0		       ea		      nop
+    113  f3d1		       ea		      nop
+    114  f3d2		       ea		      nop
+    115  f3d3				   Dynamic73Y75
+    116  f3d3		       c8		      iny
+    117  f3d4		       a5 dd		      lda.b	CACHE+37
+    118  f3d6		       be 00 ff 	      ldx	PlayerRows,y
+    119  f3d9		       8e 1b 00 	      stx.w	GRP0
+    120  f3dc		       ea		      nop
+    121  f3dd		       a6 bc		      ldx.b	CACHE+4
+    122  f3df		       8c 11 00 	      sty.w	RESP1
+    123  f3e2		       86 1c		      stx.b	GRP1
+    124  f3e4		       a6 c7		      ldx.b	CACHE+15
+    125  f3e6		       84 11		      sty.b	RESP1
+    126  f3e8		       86 1c		      stx.b	GRP1
+    127  f3ea		       a6 d2		      ldx.b	CACHE+26
+    128  f3ec		       84 11		      sty.b	RESP1
+    129  f3ee		       8e 1c 00 	      stx.w	GRP1
+    130  f3f1		       a6 e8		      ldx.b	CACHE+48
+    131  f3f3		       84 11		      sty.b	RESP1
+    132  f3f5		       85 1c		      sta.b	GRP1
+    133  f3f7		       ea		      nop
+    134  f3f8		       ea		      nop
+    135  f3f9		       84 11		      sty.b	RESP1
+    136  f3fb		       ea		      nop
+    137  f3fc		       86 1c		      stx.b	GRP1
+    138  f3fe		       24 80		      bit	FRAME
+    139  f400		       ea		      nop
+    140  f401		       ea		      nop
+    141  f402		       ea		      nop
+    142  f403		       ea		      nop
+    143  f404				   Dynamic73Y76
+    144  f404		       c8		      iny
+    145  f405		       a5 de		      lda.b	CACHE+38
+    146  f407		       be 00 ff 	      ldx	PlayerRows,y
+    147  f40a		       8e 1b 00 	      stx.w	GRP0
+    148  f40d		       ea		      nop
+    149  f40e		       a6 bd		      ldx.b	CACHE+5
+    150  f410		       8c 11 00 	      sty.w	RESP1
+    151  f413		       86 1c		      stx.b	GRP1
+    152  f415		       a6 c8		      ldx.b	CACHE+16
+    153  f417		       84 11		      sty.b	RESP1
+    154  f419		       86 1c		      stx.b	GRP1
+    155  f41b		       a6 d3		      ldx.b	CACHE+27
+    156  f41d		       84 11		      sty.b	RESP1
+    157  f41f		       8e 1c 00 	      stx.w	GRP1
+    158  f422		       a6 e9		      ldx.b	CACHE+49
+    159  f424		       84 11		      sty.b	RESP1
+    160  f426		       85 1c		      sta.b	GRP1
+    161  f428		       ea		      nop
+    162  f429		       ea		      nop
+    163  f42a		       84 11		      sty.b	RESP1
+    164  f42c		       ea		      nop
+    165  f42d		       86 1c		      stx.b	GRP1
+    166  f42f		       24 80		      bit	FRAME
+    167  f431		       ea		      nop
+    168  f432		       ea		      nop
+    169  f433		       ea		      nop
+    170  f434		       ea		      nop
+    171  f435				   Dynamic73Y77
+    172  f435		       c8		      iny
+    173  f436		       a5 df		      lda.b	CACHE+39
+    174  f438		       be 00 ff 	      ldx	PlayerRows,y
+    175  f43b		       8e 1b 00 	      stx.w	GRP0
+    176  f43e		       ea		      nop
+    177  f43f		       a6 be		      ldx.b	CACHE+6
+    178  f441		       8c 11 00 	      sty.w	RESP1
+    179  f444		       86 1c		      stx.b	GRP1
+    180  f446		       a6 c9		      ldx.b	CACHE+17
+    181  f448		       84 11		      sty.b	RESP1
+    182  f44a		       86 1c		      stx.b	GRP1
+    183  f44c		       a6 d4		      ldx.b	CACHE+28
+    184  f44e		       84 11		      sty.b	RESP1
+    185  f450		       8e 1c 00 	      stx.w	GRP1
+    186  f453		       a6 ea		      ldx.b	CACHE+50
+    187  f455		       84 11		      sty.b	RESP1
+    188  f457		       85 1c		      sta.b	GRP1
+    189  f459		       ea		      nop
+    190  f45a		       ea		      nop
+    191  f45b		       84 11		      sty.b	RESP1
+    192  f45d		       ea		      nop
+    193  f45e		       86 1c		      stx.b	GRP1
+    194  f460		       24 80		      bit	FRAME
+    195  f462		       ea		      nop
+    196  f463		       ea		      nop
+    197  f464		       ea		      nop
+    198  f465		       ea		      nop
+    199  f466				   Dynamic73Y78
+    200  f466		       c8		      iny
+    201  f467		       a5 e0		      lda.b	CACHE+40
+    202  f469		       be 00 ff 	      ldx	PlayerRows,y
+    203  f46c		       8e 1b 00 	      stx.w	GRP0
+    204  f46f		       ea		      nop
+    205  f470		       a6 bf		      ldx.b	CACHE+7
+    206  f472		       8c 11 00 	      sty.w	RESP1
+    207  f475		       86 1c		      stx.b	GRP1
+    208  f477		       a6 ca		      ldx.b	CACHE+18
+    209  f479		       84 11		      sty.b	RESP1
+    210  f47b		       86 1c		      stx.b	GRP1
+    211  f47d		       a6 d5		      ldx.b	CACHE+29
+    212  f47f		       84 11		      sty.b	RESP1
+    213  f481		       8e 1c 00 	      stx.w	GRP1
+    214  f484		       a6 eb		      ldx.b	CACHE+51
+    215  f486		       84 11		      sty.b	RESP1
+    216  f488		       85 1c		      sta.b	GRP1
+    217  f48a		       ea		      nop
+    218  f48b		       ea		      nop
+    219  f48c		       84 11		      sty.b	RESP1
+    220  f48e		       ea		      nop
+    221  f48f		       86 1c		      stx.b	GRP1
+    222  f491		       24 80		      bit	FRAME
+    223  f493		       ea		      nop
+    224  f494		       ea		      nop
+    225  f495		       ea		      nop
+    226  f496		       ea		      nop
+    227  f497				   Dynamic73Y79
+    228  f497		       c8		      iny
+    229  f498		       a5 e1		      lda.b	CACHE+41
+    230  f49a		       be 00 ff 	      ldx	PlayerRows,y
+    231  f49d		       8e 1b 00 	      stx.w	GRP0
+    232  f4a0		       ea		      nop
+    233  f4a1		       a6 c0		      ldx.b	CACHE+8
+    234  f4a3		       8c 11 00 	      sty.w	RESP1
+    235  f4a6		       86 1c		      stx.b	GRP1
+    236  f4a8		       a6 cb		      ldx.b	CACHE+19
+    237  f4aa		       84 11		      sty.b	RESP1
+    238  f4ac		       86 1c		      stx.b	GRP1
+    239  f4ae		       a6 d6		      ldx.b	CACHE+30
+    240  f4b0		       84 11		      sty.b	RESP1
+    241  f4b2		       8e 1c 00 	      stx.w	GRP1
+    242  f4b5		       a6 ec		      ldx.b	CACHE+52
+    243  f4b7		       84 11		      sty.b	RESP1
+    244  f4b9		       85 1c		      sta.b	GRP1
+    245  f4bb		       ea		      nop
+    246  f4bc		       ea		      nop
+    247  f4bd		       84 11		      sty.b	RESP1
+    248  f4bf		       ea		      nop
+    249  f4c0		       86 1c		      stx.b	GRP1
+    250  f4c2		       24 80		      bit	FRAME
+    251  f4c4		       ea		      nop
+    252  f4c5		       ea		      nop
+    253  f4c6		       ea		      nop
+    254  f4c7		       ea		      nop
+    255  f4c8				   Dynamic73Y80
+    256  f4c8		       c8		      iny
+    257  f4c9		       a5 e2		      lda.b	CACHE+42
+    258  f4cb		       be 00 ff 	      ldx	PlayerRows,y
+    259  f4ce		       8e 1b 00 	      stx.w	GRP0
+    260  f4d1		       ea		      nop
+    261  f4d2		       a6 c1		      ldx.b	CACHE+9
+    262  f4d4		       8c 11 00 	      sty.w	RESP1
+    263  f4d7		       86 1c		      stx.b	GRP1
+    264  f4d9		       a6 cc		      ldx.b	CACHE+20
+    265  f4db		       84 11		      sty.b	RESP1
+    266  f4dd		       86 1c		      stx.b	GRP1
+    267  f4df		       a6 d7		      ldx.b	CACHE+31
+    268  f4e1		       84 11		      sty.b	RESP1
+    269  f4e3		       8e 1c 00 	      stx.w	GRP1
+    270  f4e6		       a6 ed		      ldx.b	CACHE+53
+    271  f4e8		       84 11		      sty.b	RESP1
+    272  f4ea		       85 1c		      sta.b	GRP1
+    273  f4ec		       ea		      nop
+    274  f4ed		       ea		      nop
+    275  f4ee		       84 11		      sty.b	RESP1
+    276  f4f0		       ea		      nop
+    277  f4f1		       86 1c		      stx.b	GRP1
+    278  f4f3		       24 80		      bit	FRAME
+    279  f4f5		       ea		      nop
+    280  f4f6		       ea		      nop
+    281  f4f7		       ea		      nop
+    282  f4f8		       ea		      nop
+    283  f4f9				   Dynamic73Y81
+    284  f4f9		       c8		      iny
+    285  f4fa		       a5 e3		      lda.b	CACHE+43
+    286  f4fc		       be 00 ff 	      ldx	PlayerRows,y
+    287  f4ff		       8e 1b 00 	      stx.w	GRP0
+    288  f502		       ea		      nop
+    289  f503		       a6 c2		      ldx.b	CACHE+10
+    290  f505		       8c 11 00 	      sty.w	RESP1
+    291  f508		       86 1c		      stx.b	GRP1
+    292  f50a		       a6 cd		      ldx.b	CACHE+21
+    293  f50c		       84 11		      sty.b	RESP1
+    294  f50e		       86 1c		      stx.b	GRP1
+    295  f510		       a6 d8		      ldx.b	CACHE+32
+    296  f512		       84 11		      sty.b	RESP1
+    297  f514		       8e 1c 00 	      stx.w	GRP1
+    298  f517		       a6 ee		      ldx.b	CACHE+54
+    299  f519		       84 11		      sty.b	RESP1
+    300  f51b		       85 1c		      sta.b	GRP1
+    301  f51d		       ea		      nop
+    302  f51e		       ea		      nop
+    303  f51f		       84 11		      sty.b	RESP1
+    304  f521		       ea		      nop
+    305  f522		       86 1c		      stx.b	GRP1
+    306  f524		       ea		      nop
+    307  f525		       ea		      nop
+    308  f526		       ea		      nop
+    309  f527		       ea		      nop
+    310  f528		       4c 9c f0 	      jmp	LeaveBand
+    311  f52b				   Dynamic67
+    312  f52b		       85 02		      sta	WSYNC
+    313  f52d				   Dynamic67Y71
+    314  f52d		       c8		      iny
+    315  f52e		       be 00 ff 	      ldx	PlayerRows,y
+    316  f531		       8e 1b 00 	      stx.w	GRP0
+    317  f534		       a5 b8		      lda.b	CACHE+0
+    318  f536		       85 1c		      sta.b	GRP1
+    319  f538		       a5 ce		      lda.b	CACHE+22
+    320  f53a		       84 11		      sty.b	RESP1
+    321  f53c		       ea		      nop
+    322  f53d		       a6 c3		      ldx.b	CACHE+11
+    323  f53f		       8c 11 00 	      sty.w	RESP1
+    324  f542		       86 1c		      stx.b	GRP1
+    325  f544		       8c 11 00 	      sty.w	RESP1
+    326  f547		       85 1c		      sta.b	GRP1
+    327  f549		       a6 e4		      ldx.b	CACHE+44
+    328  f54b		       a5 d9		      lda.b	CACHE+33
+    329  f54d		       84 11		      sty.b	RESP1
+    330  f54f		       8d 1c 00 	      sta.w	GRP1
+    331  f552		       ea		      nop
+    332  f553		       8c 11 00 	      sty.w	RESP1
+    333  f556		       ea		      nop
+    334  f557		       8e 1c 00 	      stx.w	GRP1
+    335  f55a		       ea		      nop
+    336  f55b		       ea		      nop
+    337  f55c		       ea		      nop
+    338  f55d		       ea		      nop
+    339  f55e		       ea		      nop
+    340  f55f				   Dynamic67Y72
+    341  f55f		       c8		      iny
+    342  f560		       be 00 ff 	      ldx	PlayerRows,y
+    343  f563		       8e 1b 00 	      stx.w	GRP0
+    344  f566		       a5 b9		      lda.b	CACHE+1
+    345  f568		       85 1c		      sta.b	GRP1
+    346  f56a		       a5 cf		      lda.b	CACHE+23
+    347  f56c		       84 11		      sty.b	RESP1
+    348  f56e		       ea		      nop
+    349  f56f		       a6 c4		      ldx.b	CACHE+12
+    350  f571		       8c 11 00 	      sty.w	RESP1
+    351  f574		       86 1c		      stx.b	GRP1
+    352  f576		       8c 11 00 	      sty.w	RESP1
+    353  f579		       85 1c		      sta.b	GRP1
+    354  f57b		       a6 e5		      ldx.b	CACHE+45
+    355  f57d		       a5 da		      lda.b	CACHE+34
+    356  f57f		       84 11		      sty.b	RESP1
+    357  f581		       8d 1c 00 	      sta.w	GRP1
+    358  f584		       ea		      nop
+    359  f585		       8c 11 00 	      sty.w	RESP1
+    360  f588		       ea		      nop
+    361  f589		       8e 1c 00 	      stx.w	GRP1
+    362  f58c		       ea		      nop
+    363  f58d		       ea		      nop
+    364  f58e		       ea		      nop
+    365  f58f		       ea		      nop
+    366  f590		       ea		      nop
+    367  f591				   Dynamic67Y73
+    368  f591		       c8		      iny
+    369  f592		       be 00 ff 	      ldx	PlayerRows,y
+    370  f595		       8e 1b 00 	      stx.w	GRP0
+    371  f598		       a5 ba		      lda.b	CACHE+2
+    372  f59a		       85 1c		      sta.b	GRP1
+    373  f59c		       a5 d0		      lda.b	CACHE+24
+    374  f59e		       84 11		      sty.b	RESP1
+    375  f5a0		       ea		      nop
+    376  f5a1		       a6 c5		      ldx.b	CACHE+13
+    377  f5a3		       8c 11 00 	      sty.w	RESP1
+    378  f5a6		       86 1c		      stx.b	GRP1
+    379  f5a8		       8c 11 00 	      sty.w	RESP1
+    380  f5ab		       85 1c		      sta.b	GRP1
+    381  f5ad		       a6 e6		      ldx.b	CACHE+46
+    382  f5af		       a5 db		      lda.b	CACHE+35
+    383  f5b1		       84 11		      sty.b	RESP1
+    384  f5b3		       8d 1c 00 	      sta.w	GRP1
+    385  f5b6		       ea		      nop
+    386  f5b7		       8c 11 00 	      sty.w	RESP1
+    387  f5ba		       ea		      nop
+    388  f5bb		       8e 1c 00 	      stx.w	GRP1
+    389  f5be		       ea		      nop
+    390  f5bf		       ea		      nop
+    391  f5c0		       ea		      nop
+    392  f5c1		       ea		      nop
+    393  f5c2		       ea		      nop
+    394  f5c3				   Dynamic67Y74
+    395  f5c3		       c8		      iny
+    396  f5c4		       be 00 ff 	      ldx	PlayerRows,y
+    397  f5c7		       8e 1b 00 	      stx.w	GRP0
+    398  f5ca		       a5 bb		      lda.b	CACHE+3
+    399  f5cc		       85 1c		      sta.b	GRP1
+    400  f5ce		       a5 d1		      lda.b	CACHE+25
+    401  f5d0		       84 11		      sty.b	RESP1
+    402  f5d2		       ea		      nop
+    403  f5d3		       a6 c6		      ldx.b	CACHE+14
+    404  f5d5		       8c 11 00 	      sty.w	RESP1
+    405  f5d8		       86 1c		      stx.b	GRP1
+    406  f5da		       8c 11 00 	      sty.w	RESP1
+    407  f5dd		       85 1c		      sta.b	GRP1
+    408  f5df		       a6 e7		      ldx.b	CACHE+47
+    409  f5e1		       a5 dc		      lda.b	CACHE+36
+    410  f5e3		       84 11		      sty.b	RESP1
+    411  f5e5		       8d 1c 00 	      sta.w	GRP1
+    412  f5e8		       ea		      nop
+    413  f5e9		       8c 11 00 	      sty.w	RESP1
+    414  f5ec		       ea		      nop
+    415  f5ed		       8e 1c 00 	      stx.w	GRP1
+    416  f5f0		       ea		      nop
+    417  f5f1		       ea		      nop
+    418  f5f2		       ea		      nop
+    419  f5f3		       ea		      nop
+    420  f5f4		       ea		      nop
+    421  f5f5				   Dynamic67Y75
+    422  f5f5		       c8		      iny
+    423  f5f6		       be 00 ff 	      ldx	PlayerRows,y
+    424  f5f9		       8e 1b 00 	      stx.w	GRP0
+    425  f5fc		       a5 bc		      lda.b	CACHE+4
+    426  f5fe		       85 1c		      sta.b	GRP1
+    427  f600		       a5 d2		      lda.b	CACHE+26
+    428  f602		       84 11		      sty.b	RESP1
+    429  f604		       ea		      nop
+    430  f605		       a6 c7		      ldx.b	CACHE+15
+    431  f607		       8c 11 00 	      sty.w	RESP1
+    432  f60a		       86 1c		      stx.b	GRP1
+    433  f60c		       8c 11 00 	      sty.w	RESP1
+    434  f60f		       85 1c		      sta.b	GRP1
+    435  f611		       a6 e8		      ldx.b	CACHE+48
+    436  f613		       a5 dd		      lda.b	CACHE+37
+    437  f615		       84 11		      sty.b	RESP1
+    438  f617		       8d 1c 00 	      sta.w	GRP1
+    439  f61a		       ea		      nop
+    440  f61b		       8c 11 00 	      sty.w	RESP1
+    441  f61e		       ea		      nop
+    442  f61f		       8e 1c 00 	      stx.w	GRP1
+    443  f622		       ea		      nop
+    444  f623		       ea		      nop
+    445  f624		       ea		      nop
+    446  f625		       ea		      nop
+    447  f626		       ea		      nop
+    448  f627				   Dynamic67Y76
+    449  f627		       c8		      iny
+    450  f628		       be 00 ff 	      ldx	PlayerRows,y
+    451  f62b		       8e 1b 00 	      stx.w	GRP0
+    452  f62e		       a5 bd		      lda.b	CACHE+5
+    453  f630		       85 1c		      sta.b	GRP1
+    454  f632		       a5 d3		      lda.b	CACHE+27
+    455  f634		       84 11		      sty.b	RESP1
+    456  f636		       ea		      nop
+    457  f637		       a6 c8		      ldx.b	CACHE+16
+    458  f639		       8c 11 00 	      sty.w	RESP1
+    459  f63c		       86 1c		      stx.b	GRP1
+    460  f63e		       8c 11 00 	      sty.w	RESP1
+    461  f641		       85 1c		      sta.b	GRP1
+    462  f643		       a6 e9		      ldx.b	CACHE+49
+    463  f645		       a5 de		      lda.b	CACHE+38
+    464  f647		       84 11		      sty.b	RESP1
+    465  f649		       8d 1c 00 	      sta.w	GRP1
+    466  f64c		       ea		      nop
+    467  f64d		       8c 11 00 	      sty.w	RESP1
+    468  f650		       ea		      nop
+    469  f651		       8e 1c 00 	      stx.w	GRP1
+    470  f654		       ea		      nop
+    471  f655		       ea		      nop
+    472  f656		       ea		      nop
+    473  f657		       ea		      nop
+    474  f658		       ea		      nop
+    475  f659				   Dynamic67Y77
+    476  f659		       c8		      iny
+    477  f65a		       be 00 ff 	      ldx	PlayerRows,y
+    478  f65d		       8e 1b 00 	      stx.w	GRP0
+    479  f660		       a5 be		      lda.b	CACHE+6
+    480  f662		       85 1c		      sta.b	GRP1
+    481  f664		       a5 d4		      lda.b	CACHE+28
+    482  f666		       84 11		      sty.b	RESP1
+    483  f668		       ea		      nop
+    484  f669		       a6 c9		      ldx.b	CACHE+17
+    485  f66b		       8c 11 00 	      sty.w	RESP1
+    486  f66e		       86 1c		      stx.b	GRP1
+    487  f670		       8c 11 00 	      sty.w	RESP1
+    488  f673		       85 1c		      sta.b	GRP1
+    489  f675		       a6 ea		      ldx.b	CACHE+50
+    490  f677		       a5 df		      lda.b	CACHE+39
+    491  f679		       84 11		      sty.b	RESP1
+    492  f67b		       8d 1c 00 	      sta.w	GRP1
+    493  f67e		       ea		      nop
+    494  f67f		       8c 11 00 	      sty.w	RESP1
+    495  f682		       ea		      nop
+    496  f683		       8e 1c 00 	      stx.w	GRP1
+    497  f686		       ea		      nop
+    498  f687		       ea		      nop
+    499  f688		       ea		      nop
+    500  f689		       ea		      nop
+    501  f68a		       ea		      nop
+    502  f68b				   Dynamic67Y78
+    503  f68b		       c8		      iny
+    504  f68c		       be 00 ff 	      ldx	PlayerRows,y
+    505  f68f		       8e 1b 00 	      stx.w	GRP0
+    506  f692		       a5 bf		      lda.b	CACHE+7
+    507  f694		       85 1c		      sta.b	GRP1
+    508  f696		       a5 d5		      lda.b	CACHE+29
+    509  f698		       84 11		      sty.b	RESP1
+    510  f69a		       ea		      nop
+    511  f69b		       a6 ca		      ldx.b	CACHE+18
+    512  f69d		       8c 11 00 	      sty.w	RESP1
+    513  f6a0		       86 1c		      stx.b	GRP1
+    514  f6a2		       8c 11 00 	      sty.w	RESP1
+    515  f6a5		       85 1c		      sta.b	GRP1
+    516  f6a7		       a6 eb		      ldx.b	CACHE+51
+    517  f6a9		       a5 e0		      lda.b	CACHE+40
+    518  f6ab		       84 11		      sty.b	RESP1
+    519  f6ad		       8d 1c 00 	      sta.w	GRP1
+    520  f6b0		       ea		      nop
+    521  f6b1		       8c 11 00 	      sty.w	RESP1
+    522  f6b4		       ea		      nop
+    523  f6b5		       8e 1c 00 	      stx.w	GRP1
+    524  f6b8		       ea		      nop
+    525  f6b9		       ea		      nop
+    526  f6ba		       ea		      nop
+    527  f6bb		       ea		      nop
+    528  f6bc		       ea		      nop
+    529  f6bd				   Dynamic67Y79
+    530  f6bd		       c8		      iny
+    531  f6be		       be 00 ff 	      ldx	PlayerRows,y
+    532  f6c1		       8e 1b 00 	      stx.w	GRP0
+    533  f6c4		       a5 c0		      lda.b	CACHE+8
+    534  f6c6		       85 1c		      sta.b	GRP1
+    535  f6c8		       a5 d6		      lda.b	CACHE+30
+    536  f6ca		       84 11		      sty.b	RESP1
+    537  f6cc		       ea		      nop
+    538  f6cd		       a6 cb		      ldx.b	CACHE+19
+    539  f6cf		       8c 11 00 	      sty.w	RESP1
+    540  f6d2		       86 1c		      stx.b	GRP1
+    541  f6d4		       8c 11 00 	      sty.w	RESP1
+    542  f6d7		       85 1c		      sta.b	GRP1
+    543  f6d9		       a6 ec		      ldx.b	CACHE+52
+    544  f6db		       a5 e1		      lda.b	CACHE+41
+    545  f6dd		       84 11		      sty.b	RESP1
+    546  f6df		       8d 1c 00 	      sta.w	GRP1
+    547  f6e2		       ea		      nop
+    548  f6e3		       8c 11 00 	      sty.w	RESP1
+    549  f6e6		       ea		      nop
+    550  f6e7		       8e 1c 00 	      stx.w	GRP1
+    551  f6ea		       ea		      nop
+    552  f6eb		       ea		      nop
+    553  f6ec		       ea		      nop
+    554  f6ed		       ea		      nop
+    555  f6ee		       ea		      nop
+    556  f6ef				   Dynamic67Y80
+    557  f6ef		       c8		      iny
+    558  f6f0		       be 00 ff 	      ldx	PlayerRows,y
+    559  f6f3		       8e 1b 00 	      stx.w	GRP0
+    560  f6f6		       a5 c1		      lda.b	CACHE+9
+    561  f6f8		       85 1c		      sta.b	GRP1
+    562  f6fa		       a5 d7		      lda.b	CACHE+31
+    563  f6fc		       84 11		      sty.b	RESP1
+    564  f6fe		       ea		      nop
+    565  f6ff		       a6 cc		      ldx.b	CACHE+20
+    566  f701		       8c 11 00 	      sty.w	RESP1
+    567  f704		       86 1c		      stx.b	GRP1
+    568  f706		       8c 11 00 	      sty.w	RESP1
+    569  f709		       85 1c		      sta.b	GRP1
+    570  f70b		       a6 ed		      ldx.b	CACHE+53
+    571  f70d		       a5 e2		      lda.b	CACHE+42
+    572  f70f		       84 11		      sty.b	RESP1
+    573  f711		       8d 1c 00 	      sta.w	GRP1
+    574  f714		       ea		      nop
+    575  f715		       8c 11 00 	      sty.w	RESP1
+    576  f718		       ea		      nop
+    577  f719		       8e 1c 00 	      stx.w	GRP1
+    578  f71c		       ea		      nop
+    579  f71d		       ea		      nop
+    580  f71e		       ea		      nop
+    581  f71f		       ea		      nop
+    582  f720		       ea		      nop
+    583  f721				   Dynamic67Y81
+    584  f721		       c8		      iny
+    585  f722		       be 00 ff 	      ldx	PlayerRows,y
+    586  f725		       8e 1b 00 	      stx.w	GRP0
+    587  f728		       a5 c2		      lda.b	CACHE+10
+    588  f72a		       85 1c		      sta.b	GRP1
+    589  f72c		       a5 d8		      lda.b	CACHE+32
+    590  f72e		       84 11		      sty.b	RESP1
+    591  f730		       ea		      nop
+    592  f731		       a6 cd		      ldx.b	CACHE+21
+    593  f733		       8c 11 00 	      sty.w	RESP1
+    594  f736		       86 1c		      stx.b	GRP1
+    595  f738		       8c 11 00 	      sty.w	RESP1
+    596  f73b		       85 1c		      sta.b	GRP1
+    597  f73d		       a6 ee		      ldx.b	CACHE+54
+    598  f73f		       a5 e3		      lda.b	CACHE+43
+    599  f741		       84 11		      sty.b	RESP1
+    600  f743		       8d 1c 00 	      sta.w	GRP1
+    601  f746		       ea		      nop
+    602  f747		       8c 11 00 	      sty.w	RESP1
+    603  f74a		       ea		      nop
+    604  f74b		       8e 1c 00 	      stx.w	GRP1
+    605  f74e		       24 80		      bit	FRAME
+    606  f750		       ea		      nop
+    607  f751		       ea		      nop
+    608  f752		       4c 9c f0 	      jmp	LeaveBand
+    609  f755				   Dynamic76
+    610  f755		       85 02		      sta	WSYNC
+    611  f757				   Dynamic76Y71
+    612  f757		       c8		      iny
+    613  f758		       be 00 ff 	      ldx	PlayerRows,y
+    614  f75b		       86 1b		      stx.b	GRP0
+    615  f75d		       a6 ce		      ldx.b	CACHE+22
+    616  f75f		       a5 b8		      lda.b	CACHE+0
+    617  f761		       24 80		      bit	FRAME
+    618  f763		       8c 11 00 	      sty.w	RESP1
+    619  f766		       85 1c		      sta.b	GRP1
+    620  f768		       a5 c3		      lda.b	CACHE+11
+    621  f76a		       84 11		      sty.b	RESP1
+    622  f76c		       85 1c		      sta.b	GRP1
+    623  f76e		       ea		      nop
+    624  f76f		       ea		      nop
+    625  f770		       84 11		      sty.b	RESP1
+    626  f772		       86 1c		      stx.b	GRP1
+    627  f774		       a6 d9		      ldx.b	CACHE+33
+    628  f776		       84 11		      sty.b	RESP1
+    629  f778		       ea		      nop
+    630  f779		       8e 1c 00 	      stx.w	GRP1
+    631  f77c		       8c 11 00 	      sty.w	RESP1
+    632  f77f		       a5 e4		      lda.b	CACHE+44
+    633  f781		       85 1c		      sta.b	GRP1
+    634  f783		       ea		      nop
+    635  f784		       ea		      nop
+    636  f785		       ea		      nop
+    637  f786		       ea		      nop
+    638  f787		       ea		      nop
+    639  f788				   Dynamic76Y72
+    640  f788		       c8		      iny
+    641  f789		       be 00 ff 	      ldx	PlayerRows,y
+    642  f78c		       86 1b		      stx.b	GRP0
+    643  f78e		       a6 cf		      ldx.b	CACHE+23
+    644  f790		       a5 b9		      lda.b	CACHE+1
+    645  f792		       24 80		      bit	FRAME
+    646  f794		       8c 11 00 	      sty.w	RESP1
+    647  f797		       85 1c		      sta.b	GRP1
+    648  f799		       a5 c4		      lda.b	CACHE+12
+    649  f79b		       84 11		      sty.b	RESP1
+    650  f79d		       85 1c		      sta.b	GRP1
+    651  f79f		       ea		      nop
+    652  f7a0		       ea		      nop
+    653  f7a1		       84 11		      sty.b	RESP1
+    654  f7a3		       86 1c		      stx.b	GRP1
+    655  f7a5		       a6 da		      ldx.b	CACHE+34
+    656  f7a7		       84 11		      sty.b	RESP1
+    657  f7a9		       ea		      nop
+    658  f7aa		       8e 1c 00 	      stx.w	GRP1
+    659  f7ad		       8c 11 00 	      sty.w	RESP1
+    660  f7b0		       a5 e5		      lda.b	CACHE+45
+    661  f7b2		       85 1c		      sta.b	GRP1
+    662  f7b4		       ea		      nop
+    663  f7b5		       ea		      nop
+    664  f7b6		       ea		      nop
+    665  f7b7		       ea		      nop
+    666  f7b8		       ea		      nop
+    667  f7b9				   Dynamic76Y73
+    668  f7b9		       c8		      iny
+    669  f7ba		       be 00 ff 	      ldx	PlayerRows,y
+    670  f7bd		       86 1b		      stx.b	GRP0
+    671  f7bf		       a6 d0		      ldx.b	CACHE+24
+    672  f7c1		       a5 ba		      lda.b	CACHE+2
+    673  f7c3		       24 80		      bit	FRAME
+    674  f7c5		       8c 11 00 	      sty.w	RESP1
+    675  f7c8		       85 1c		      sta.b	GRP1
+    676  f7ca		       a5 c5		      lda.b	CACHE+13
+    677  f7cc		       84 11		      sty.b	RESP1
+    678  f7ce		       85 1c		      sta.b	GRP1
+    679  f7d0		       ea		      nop
+    680  f7d1		       ea		      nop
+    681  f7d2		       84 11		      sty.b	RESP1
+    682  f7d4		       86 1c		      stx.b	GRP1
+    683  f7d6		       a6 db		      ldx.b	CACHE+35
+    684  f7d8		       84 11		      sty.b	RESP1
+    685  f7da		       ea		      nop
+    686  f7db		       8e 1c 00 	      stx.w	GRP1
+    687  f7de		       8c 11 00 	      sty.w	RESP1
+    688  f7e1		       a5 e6		      lda.b	CACHE+46
+    689  f7e3		       85 1c		      sta.b	GRP1
+    690  f7e5		       ea		      nop
+    691  f7e6		       ea		      nop
+    692  f7e7		       ea		      nop
+    693  f7e8		       ea		      nop
+    694  f7e9		       ea		      nop
+    695  f7ea				   Dynamic76Y74
+    696  f7ea		       c8		      iny
+    697  f7eb		       be 00 ff 	      ldx	PlayerRows,y
+    698  f7ee		       86 1b		      stx.b	GRP0
+    699  f7f0		       a6 d1		      ldx.b	CACHE+25
+    700  f7f2		       a5 bb		      lda.b	CACHE+3
+    701  f7f4		       24 80		      bit	FRAME
+    702  f7f6		       8c 11 00 	      sty.w	RESP1
+    703  f7f9		       85 1c		      sta.b	GRP1
+    704  f7fb		       a5 c6		      lda.b	CACHE+14
+    705  f7fd		       84 11		      sty.b	RESP1
+    706  f7ff		       85 1c		      sta.b	GRP1
+    707  f801		       ea		      nop
+    708  f802		       ea		      nop
+    709  f803		       84 11		      sty.b	RESP1
+    710  f805		       86 1c		      stx.b	GRP1
+    711  f807		       a6 dc		      ldx.b	CACHE+36
+    712  f809		       84 11		      sty.b	RESP1
+    713  f80b		       ea		      nop
+    714  f80c		       8e 1c 00 	      stx.w	GRP1
+    715  f80f		       8c 11 00 	      sty.w	RESP1
+    716  f812		       a5 e7		      lda.b	CACHE+47
+    717  f814		       85 1c		      sta.b	GRP1
+    718  f816		       ea		      nop
+    719  f817		       ea		      nop
+    720  f818		       ea		      nop
+    721  f819		       ea		      nop
+    722  f81a		       ea		      nop
+    723  f81b				   Dynamic76Y75
+    724  f81b		       c8		      iny
+    725  f81c		       be 00 ff 	      ldx	PlayerRows,y
+    726  f81f		       86 1b		      stx.b	GRP0
+    727  f821		       a6 d2		      ldx.b	CACHE+26
+    728  f823		       a5 bc		      lda.b	CACHE+4
+    729  f825		       24 80		      bit	FRAME
+    730  f827		       8c 11 00 	      sty.w	RESP1
+    731  f82a		       85 1c		      sta.b	GRP1
+    732  f82c		       a5 c7		      lda.b	CACHE+15
+    733  f82e		       84 11		      sty.b	RESP1
+    734  f830		       85 1c		      sta.b	GRP1
+    735  f832		       ea		      nop
+    736  f833		       ea		      nop
+    737  f834		       84 11		      sty.b	RESP1
+    738  f836		       86 1c		      stx.b	GRP1
+    739  f838		       a6 dd		      ldx.b	CACHE+37
+    740  f83a		       84 11		      sty.b	RESP1
+    741  f83c		       ea		      nop
+    742  f83d		       8e 1c 00 	      stx.w	GRP1
+    743  f840		       8c 11 00 	      sty.w	RESP1
+    744  f843		       a5 e8		      lda.b	CACHE+48
+    745  f845		       85 1c		      sta.b	GRP1
+    746  f847		       ea		      nop
+    747  f848		       ea		      nop
+    748  f849		       ea		      nop
+    749  f84a		       ea		      nop
+    750  f84b		       ea		      nop
+    751  f84c				   Dynamic76Y76
+    752  f84c		       c8		      iny
+    753  f84d		       be 00 ff 	      ldx	PlayerRows,y
+    754  f850		       86 1b		      stx.b	GRP0
+    755  f852		       a6 d3		      ldx.b	CACHE+27
+    756  f854		       a5 bd		      lda.b	CACHE+5
+    757  f856		       24 80		      bit	FRAME
+    758  f858		       8c 11 00 	      sty.w	RESP1
+    759  f85b		       85 1c		      sta.b	GRP1
+    760  f85d		       a5 c8		      lda.b	CACHE+16
+    761  f85f		       84 11		      sty.b	RESP1
+    762  f861		       85 1c		      sta.b	GRP1
+    763  f863		       ea		      nop
+    764  f864		       ea		      nop
+    765  f865		       84 11		      sty.b	RESP1
+    766  f867		       86 1c		      stx.b	GRP1
+    767  f869		       a6 de		      ldx.b	CACHE+38
+    768  f86b		       84 11		      sty.b	RESP1
+    769  f86d		       ea		      nop
+    770  f86e		       8e 1c 00 	      stx.w	GRP1
+    771  f871		       8c 11 00 	      sty.w	RESP1
+    772  f874		       a5 e9		      lda.b	CACHE+49
+    773  f876		       85 1c		      sta.b	GRP1
+    774  f878		       ea		      nop
+    775  f879		       ea		      nop
+    776  f87a		       ea		      nop
+    777  f87b		       ea		      nop
+    778  f87c		       ea		      nop
+    779  f87d				   Dynamic76Y77
+    780  f87d		       c8		      iny
+    781  f87e		       be 00 ff 	      ldx	PlayerRows,y
+    782  f881		       86 1b		      stx.b	GRP0
+    783  f883		       a6 d4		      ldx.b	CACHE+28
+    784  f885		       a5 be		      lda.b	CACHE+6
+    785  f887		       24 80		      bit	FRAME
+    786  f889		       8c 11 00 	      sty.w	RESP1
+    787  f88c		       85 1c		      sta.b	GRP1
+    788  f88e		       a5 c9		      lda.b	CACHE+17
+    789  f890		       84 11		      sty.b	RESP1
+    790  f892		       85 1c		      sta.b	GRP1
+    791  f894		       ea		      nop
+    792  f895		       ea		      nop
+    793  f896		       84 11		      sty.b	RESP1
+    794  f898		       86 1c		      stx.b	GRP1
+    795  f89a		       a6 df		      ldx.b	CACHE+39
+    796  f89c		       84 11		      sty.b	RESP1
+    797  f89e		       ea		      nop
+    798  f89f		       8e 1c 00 	      stx.w	GRP1
+    799  f8a2		       8c 11 00 	      sty.w	RESP1
+    800  f8a5		       a5 ea		      lda.b	CACHE+50
+    801  f8a7		       85 1c		      sta.b	GRP1
+    802  f8a9		       ea		      nop
+    803  f8aa		       ea		      nop
+    804  f8ab		       ea		      nop
+    805  f8ac		       ea		      nop
+    806  f8ad		       ea		      nop
+    807  f8ae				   Dynamic76Y78
+    808  f8ae		       c8		      iny
+    809  f8af		       be 00 ff 	      ldx	PlayerRows,y
+    810  f8b2		       86 1b		      stx.b	GRP0
+    811  f8b4		       a6 d5		      ldx.b	CACHE+29
+    812  f8b6		       a5 bf		      lda.b	CACHE+7
+    813  f8b8		       24 80		      bit	FRAME
+    814  f8ba		       8c 11 00 	      sty.w	RESP1
+    815  f8bd		       85 1c		      sta.b	GRP1
+    816  f8bf		       a5 ca		      lda.b	CACHE+18
+    817  f8c1		       84 11		      sty.b	RESP1
+    818  f8c3		       85 1c		      sta.b	GRP1
+    819  f8c5		       ea		      nop
+    820  f8c6		       ea		      nop
+    821  f8c7		       84 11		      sty.b	RESP1
+    822  f8c9		       86 1c		      stx.b	GRP1
+    823  f8cb		       a6 e0		      ldx.b	CACHE+40
+    824  f8cd		       84 11		      sty.b	RESP1
+    825  f8cf		       ea		      nop
+    826  f8d0		       8e 1c 00 	      stx.w	GRP1
+    827  f8d3		       8c 11 00 	      sty.w	RESP1
+    828  f8d6		       a5 eb		      lda.b	CACHE+51
+    829  f8d8		       85 1c		      sta.b	GRP1
+    830  f8da		       ea		      nop
+    831  f8db		       ea		      nop
+    832  f8dc		       ea		      nop
+    833  f8dd		       ea		      nop
+    834  f8de		       ea		      nop
+    835  f8df				   Dynamic76Y79
+    836  f8df		       c8		      iny
+    837  f8e0		       be 00 ff 	      ldx	PlayerRows,y
+    838  f8e3		       86 1b		      stx.b	GRP0
+    839  f8e5		       a6 d6		      ldx.b	CACHE+30
+    840  f8e7		       a5 c0		      lda.b	CACHE+8
+    841  f8e9		       24 80		      bit	FRAME
+    842  f8eb		       8c 11 00 	      sty.w	RESP1
+    843  f8ee		       85 1c		      sta.b	GRP1
+    844  f8f0		       a5 cb		      lda.b	CACHE+19
+    845  f8f2		       84 11		      sty.b	RESP1
+    846  f8f4		       85 1c		      sta.b	GRP1
+    847  f8f6		       ea		      nop
+    848  f8f7		       ea		      nop
+    849  f8f8		       84 11		      sty.b	RESP1
+    850  f8fa		       86 1c		      stx.b	GRP1
+    851  f8fc		       a6 e1		      ldx.b	CACHE+41
+    852  f8fe		       84 11		      sty.b	RESP1
+    853  f900		       ea		      nop
+    854  f901		       8e 1c 00 	      stx.w	GRP1
+    855  f904		       8c 11 00 	      sty.w	RESP1
+    856  f907		       a5 ec		      lda.b	CACHE+52
+    857  f909		       85 1c		      sta.b	GRP1
+    858  f90b		       ea		      nop
+    859  f90c		       ea		      nop
+    860  f90d		       ea		      nop
+    861  f90e		       ea		      nop
+    862  f90f		       ea		      nop
+    863  f910				   Dynamic76Y80
+    864  f910		       c8		      iny
+    865  f911		       be 00 ff 	      ldx	PlayerRows,y
+    866  f914		       86 1b		      stx.b	GRP0
+    867  f916		       a6 d7		      ldx.b	CACHE+31
+    868  f918		       a5 c1		      lda.b	CACHE+9
+    869  f91a		       24 80		      bit	FRAME
+    870  f91c		       8c 11 00 	      sty.w	RESP1
+    871  f91f		       85 1c		      sta.b	GRP1
+    872  f921		       a5 cc		      lda.b	CACHE+20
+    873  f923		       84 11		      sty.b	RESP1
+    874  f925		       85 1c		      sta.b	GRP1
+    875  f927		       ea		      nop
+    876  f928		       ea		      nop
+    877  f929		       84 11		      sty.b	RESP1
+    878  f92b		       86 1c		      stx.b	GRP1
+    879  f92d		       a6 e2		      ldx.b	CACHE+42
+    880  f92f		       84 11		      sty.b	RESP1
+    881  f931		       ea		      nop
+    882  f932		       8e 1c 00 	      stx.w	GRP1
+    883  f935		       8c 11 00 	      sty.w	RESP1
+    884  f938		       a5 ed		      lda.b	CACHE+53
+    885  f93a		       85 1c		      sta.b	GRP1
+    886  f93c		       ea		      nop
+    887  f93d		       ea		      nop
+    888  f93e		       ea		      nop
+    889  f93f		       ea		      nop
+    890  f940		       ea		      nop
+    891  f941				   Dynamic76Y81
+    892  f941		       c8		      iny
+    893  f942		       be 00 ff 	      ldx	PlayerRows,y
+    894  f945		       86 1b		      stx.b	GRP0
+    895  f947		       a6 d8		      ldx.b	CACHE+32
+    896  f949		       a5 c2		      lda.b	CACHE+10
+    897  f94b		       24 80		      bit	FRAME
+    898  f94d		       8c 11 00 	      sty.w	RESP1
+    899  f950		       85 1c		      sta.b	GRP1
+    900  f952		       a5 cd		      lda.b	CACHE+21
+    901  f954		       84 11		      sty.b	RESP1
+    902  f956		       85 1c		      sta.b	GRP1
+    903  f958		       ea		      nop
+    904  f959		       ea		      nop
+    905  f95a		       84 11		      sty.b	RESP1
+    906  f95c		       86 1c		      stx.b	GRP1
+    907  f95e		       a6 e3		      ldx.b	CACHE+43
+    908  f960		       84 11		      sty.b	RESP1
+    909  f962		       ea		      nop
+    910  f963		       8e 1c 00 	      stx.w	GRP1
+    911  f966		       8c 11 00 	      sty.w	RESP1
+    912  f969		       a5 ee		      lda.b	CACHE+54
+    913  f96b		       85 1c		      sta.b	GRP1
+    914  f96d		       24 80		      bit	FRAME
+    915  f96f		       ea		      nop
+    916  f970		       ea		      nop
+    917  f971		       4c 9c f0 	      jmp	LeaveBand
+    918  f974				   Dynamic82
+    919  f974		       85 02		      sta	WSYNC
+    920  f976				   Dynamic82Y71
+    921  f976		       c8		      iny
+    922  f977		       ea		      nop
+    923  f978		       b9 00 ff 	      lda	PlayerRows,y
+    924  f97b		       85 1b		      sta.b	GRP0
+    925  f97d		       a5 b8		      lda.b	CACHE+0
+    926  f97f		       85 1c		      sta.b	GRP1
+    927  f981		       ea		      nop
+    928  f982		       84 11		      sty.b	RESP1
+    929  f984		       a6 d9		      ldx.b	CACHE+33
+    930  f986		       a5 c3		      lda.b	CACHE+11
+    931  f988		       84 11		      sty.b	RESP1
+    932  f98a		       ea		      nop
+    933  f98b		       85 1c		      sta.b	GRP1
+    934  f98d		       a5 ce		      lda.b	CACHE+22
+    935  f98f		       8c 11 00 	      sty.w	RESP1
+    936  f992		       8d 1c 00 	      sta.w	GRP1
+    937  f995		       84 11		      sty.b	RESP1
+    938  f997		       a5 e4		      lda.b	CACHE+44
+    939  f999		       86 1c		      stx.b	GRP1
+    940  f99b		       8c 11 00 	      sty.w	RESP1
+    941  f99e		       ea		      nop
+    942  f99f		       85 1c		      sta.b	GRP1
+    943  f9a1		       24 80		      bit	FRAME
+    944  f9a3		       ea		      nop
+    945  f9a4		       ea		      nop
+    946  f9a5		       ea		      nop
+    947  f9a6		       ea		      nop
+    948  f9a7				   Dynamic82Y72
+    949  f9a7		       c8		      iny
+    950  f9a8		       ea		      nop
+    951  f9a9		       b9 00 ff 	      lda	PlayerRows,y
+    952  f9ac		       85 1b		      sta.b	GRP0
+    953  f9ae		       a5 b9		      lda.b	CACHE+1
+    954  f9b0		       85 1c		      sta.b	GRP1
+    955  f9b2		       ea		      nop
+    956  f9b3		       84 11		      sty.b	RESP1
+    957  f9b5		       a6 da		      ldx.b	CACHE+34
+    958  f9b7		       a5 c4		      lda.b	CACHE+12
+    959  f9b9		       84 11		      sty.b	RESP1
+    960  f9bb		       ea		      nop
+    961  f9bc		       85 1c		      sta.b	GRP1
+    962  f9be		       a5 cf		      lda.b	CACHE+23
+    963  f9c0		       8c 11 00 	      sty.w	RESP1
+    964  f9c3		       8d 1c 00 	      sta.w	GRP1
+    965  f9c6		       84 11		      sty.b	RESP1
+    966  f9c8		       a5 e5		      lda.b	CACHE+45
+    967  f9ca		       86 1c		      stx.b	GRP1
+    968  f9cc		       8c 11 00 	      sty.w	RESP1
+    969  f9cf		       ea		      nop
+    970  f9d0		       85 1c		      sta.b	GRP1
+    971  f9d2		       24 80		      bit	FRAME
+    972  f9d4		       ea		      nop
+    973  f9d5		       ea		      nop
+    974  f9d6		       ea		      nop
+    975  f9d7		       ea		      nop
+    976  f9d8				   Dynamic82Y73
+    977  f9d8		       c8		      iny
+    978  f9d9		       ea		      nop
+    979  f9da		       b9 00 ff 	      lda	PlayerRows,y
+    980  f9dd		       85 1b		      sta.b	GRP0
+    981  f9df		       a5 ba		      lda.b	CACHE+2
+    982  f9e1		       85 1c		      sta.b	GRP1
+    983  f9e3		       ea		      nop
+    984  f9e4		       84 11		      sty.b	RESP1
+    985  f9e6		       a6 db		      ldx.b	CACHE+35
+    986  f9e8		       a5 c5		      lda.b	CACHE+13
+    987  f9ea		       84 11		      sty.b	RESP1
+    988  f9ec		       ea		      nop
+    989  f9ed		       85 1c		      sta.b	GRP1
+    990  f9ef		       a5 d0		      lda.b	CACHE+24
+    991  f9f1		       8c 11 00 	      sty.w	RESP1
+    992  f9f4		       8d 1c 00 	      sta.w	GRP1
+    993  f9f7		       84 11		      sty.b	RESP1
+    994  f9f9		       a5 e6		      lda.b	CACHE+46
+    995  f9fb		       86 1c		      stx.b	GRP1
+    996  f9fd		       8c 11 00 	      sty.w	RESP1
+    997  fa00		       ea		      nop
+    998  fa01		       85 1c		      sta.b	GRP1
+    999  fa03		       24 80		      bit	FRAME
+   1000  fa05		       ea		      nop
+   1001  fa06		       ea		      nop
+   1002  fa07		       ea		      nop
+   1003  fa08		       ea		      nop
+   1004  fa09				   Dynamic82Y74
+   1005  fa09		       c8		      iny
+   1006  fa0a		       ea		      nop
+   1007  fa0b		       b9 00 ff 	      lda	PlayerRows,y
+   1008  fa0e		       85 1b		      sta.b	GRP0
+   1009  fa10		       a5 bb		      lda.b	CACHE+3
+   1010  fa12		       85 1c		      sta.b	GRP1
+   1011  fa14		       ea		      nop
+   1012  fa15		       84 11		      sty.b	RESP1
+   1013  fa17		       a6 dc		      ldx.b	CACHE+36
+   1014  fa19		       a5 c6		      lda.b	CACHE+14
+   1015  fa1b		       84 11		      sty.b	RESP1
+   1016  fa1d		       ea		      nop
+   1017  fa1e		       85 1c		      sta.b	GRP1
+   1018  fa20		       a5 d1		      lda.b	CACHE+25
+   1019  fa22		       8c 11 00 	      sty.w	RESP1
+   1020  fa25		       8d 1c 00 	      sta.w	GRP1
+   1021  fa28		       84 11		      sty.b	RESP1
+   1022  fa2a		       a5 e7		      lda.b	CACHE+47
+   1023  fa2c		       86 1c		      stx.b	GRP1
+   1024  fa2e		       8c 11 00 	      sty.w	RESP1
+   1025  fa31		       ea		      nop
+   1026  fa32		       85 1c		      sta.b	GRP1
+   1027  fa34		       24 80		      bit	FRAME
+   1028  fa36		       ea		      nop
+   1029  fa37		       ea		      nop
+   1030  fa38		       ea		      nop
+   1031  fa39		       ea		      nop
+   1032  fa3a				   Dynamic82Y75
+   1033  fa3a		       c8		      iny
+   1034  fa3b		       ea		      nop
+   1035  fa3c		       b9 00 ff 	      lda	PlayerRows,y
+   1036  fa3f		       85 1b		      sta.b	GRP0
+   1037  fa41		       a5 bc		      lda.b	CACHE+4
+   1038  fa43		       85 1c		      sta.b	GRP1
+   1039  fa45		       ea		      nop
+   1040  fa46		       84 11		      sty.b	RESP1
+   1041  fa48		       a6 dd		      ldx.b	CACHE+37
+   1042  fa4a		       a5 c7		      lda.b	CACHE+15
+   1043  fa4c		       84 11		      sty.b	RESP1
+   1044  fa4e		       ea		      nop
+   1045  fa4f		       85 1c		      sta.b	GRP1
+   1046  fa51		       a5 d2		      lda.b	CACHE+26
+   1047  fa53		       8c 11 00 	      sty.w	RESP1
+   1048  fa56		       8d 1c 00 	      sta.w	GRP1
+   1049  fa59		       84 11		      sty.b	RESP1
+   1050  fa5b		       a5 e8		      lda.b	CACHE+48
+   1051  fa5d		       86 1c		      stx.b	GRP1
+   1052  fa5f		       8c 11 00 	      sty.w	RESP1
+   1053  fa62		       ea		      nop
+   1054  fa63		       85 1c		      sta.b	GRP1
+   1055  fa65		       24 80		      bit	FRAME
+   1056  fa67		       ea		      nop
+   1057  fa68		       ea		      nop
+   1058  fa69		       ea		      nop
+   1059  fa6a		       ea		      nop
+   1060  fa6b				   Dynamic82Y76
+   1061  fa6b		       c8		      iny
+   1062  fa6c		       ea		      nop
+   1063  fa6d		       b9 00 ff 	      lda	PlayerRows,y
+   1064  fa70		       85 1b		      sta.b	GRP0
+   1065  fa72		       a5 bd		      lda.b	CACHE+5
+   1066  fa74		       85 1c		      sta.b	GRP1
+   1067  fa76		       ea		      nop
+   1068  fa77		       84 11		      sty.b	RESP1
+   1069  fa79		       a6 de		      ldx.b	CACHE+38
+   1070  fa7b		       a5 c8		      lda.b	CACHE+16
+   1071  fa7d		       84 11		      sty.b	RESP1
+   1072  fa7f		       ea		      nop
+   1073  fa80		       85 1c		      sta.b	GRP1
+   1074  fa82		       a5 d3		      lda.b	CACHE+27
+   1075  fa84		       8c 11 00 	      sty.w	RESP1
+   1076  fa87		       8d 1c 00 	      sta.w	GRP1
+   1077  fa8a		       84 11		      sty.b	RESP1
+   1078  fa8c		       a5 e9		      lda.b	CACHE+49
+   1079  fa8e		       86 1c		      stx.b	GRP1
+   1080  fa90		       8c 11 00 	      sty.w	RESP1
+   1081  fa93		       ea		      nop
+   1082  fa94		       85 1c		      sta.b	GRP1
+   1083  fa96		       24 80		      bit	FRAME
+   1084  fa98		       ea		      nop
+   1085  fa99		       ea		      nop
+   1086  fa9a		       ea		      nop
+   1087  fa9b		       ea		      nop
+   1088  fa9c				   Dynamic82Y77
+   1089  fa9c		       c8		      iny
+   1090  fa9d		       ea		      nop
+   1091  fa9e		       b9 00 ff 	      lda	PlayerRows,y
+   1092  faa1		       85 1b		      sta.b	GRP0
+   1093  faa3		       a5 be		      lda.b	CACHE+6
+   1094  faa5		       85 1c		      sta.b	GRP1
+   1095  faa7		       ea		      nop
+   1096  faa8		       84 11		      sty.b	RESP1
+   1097  faaa		       a6 df		      ldx.b	CACHE+39
+   1098  faac		       a5 c9		      lda.b	CACHE+17
+   1099  faae		       84 11		      sty.b	RESP1
+   1100  fab0		       ea		      nop
+   1101  fab1		       85 1c		      sta.b	GRP1
+   1102  fab3		       a5 d4		      lda.b	CACHE+28
+   1103  fab5		       8c 11 00 	      sty.w	RESP1
+   1104  fab8		       8d 1c 00 	      sta.w	GRP1
+   1105  fabb		       84 11		      sty.b	RESP1
+   1106  fabd		       a5 ea		      lda.b	CACHE+50
+   1107  fabf		       86 1c		      stx.b	GRP1
+   1108  fac1		       8c 11 00 	      sty.w	RESP1
+   1109  fac4		       ea		      nop
+   1110  fac5		       85 1c		      sta.b	GRP1
+   1111  fac7		       24 80		      bit	FRAME
+   1112  fac9		       ea		      nop
+   1113  faca		       ea		      nop
+   1114  facb		       ea		      nop
+   1115  facc		       ea		      nop
+   1116  facd				   Dynamic82Y78
+   1117  facd		       c8		      iny
+   1118  face		       ea		      nop
+   1119  facf		       b9 00 ff 	      lda	PlayerRows,y
+   1120  fad2		       85 1b		      sta.b	GRP0
+   1121  fad4		       a5 bf		      lda.b	CACHE+7
+   1122  fad6		       85 1c		      sta.b	GRP1
+   1123  fad8		       ea		      nop
+   1124  fad9		       84 11		      sty.b	RESP1
+   1125  fadb		       a6 e0		      ldx.b	CACHE+40
+   1126  fadd		       a5 ca		      lda.b	CACHE+18
+   1127  fadf		       84 11		      sty.b	RESP1
+   1128  fae1		       ea		      nop
+   1129  fae2		       85 1c		      sta.b	GRP1
+   1130  fae4		       a5 d5		      lda.b	CACHE+29
+   1131  fae6		       8c 11 00 	      sty.w	RESP1
+   1132  fae9		       8d 1c 00 	      sta.w	GRP1
+   1133  faec		       84 11		      sty.b	RESP1
+   1134  faee		       a5 eb		      lda.b	CACHE+51
+   1135  faf0		       86 1c		      stx.b	GRP1
+   1136  faf2		       8c 11 00 	      sty.w	RESP1
+   1137  faf5		       ea		      nop
+   1138  faf6		       85 1c		      sta.b	GRP1
+   1139  faf8		       24 80		      bit	FRAME
+   1140  fafa		       ea		      nop
+   1141  fafb		       ea		      nop
+   1142  fafc		       ea		      nop
+   1143  fafd		       ea		      nop
+   1144  fafe				   Dynamic82Y79
+   1145  fafe		       c8		      iny
+   1146  faff		       ea		      nop
+   1147  fb00		       b9 00 ff 	      lda	PlayerRows,y
+   1148  fb03		       85 1b		      sta.b	GRP0
+   1149  fb05		       a5 c0		      lda.b	CACHE+8
+   1150  fb07		       85 1c		      sta.b	GRP1
+   1151  fb09		       ea		      nop
+   1152  fb0a		       84 11		      sty.b	RESP1
+   1153  fb0c		       a6 e1		      ldx.b	CACHE+41
+   1154  fb0e		       a5 cb		      lda.b	CACHE+19
+   1155  fb10		       84 11		      sty.b	RESP1
+   1156  fb12		       ea		      nop
+   1157  fb13		       85 1c		      sta.b	GRP1
+   1158  fb15		       a5 d6		      lda.b	CACHE+30
+   1159  fb17		       8c 11 00 	      sty.w	RESP1
+   1160  fb1a		       8d 1c 00 	      sta.w	GRP1
+   1161  fb1d		       84 11		      sty.b	RESP1
+   1162  fb1f		       a5 ec		      lda.b	CACHE+52
+   1163  fb21		       86 1c		      stx.b	GRP1
+   1164  fb23		       8c 11 00 	      sty.w	RESP1
+   1165  fb26		       ea		      nop
+   1166  fb27		       85 1c		      sta.b	GRP1
+   1167  fb29		       24 80		      bit	FRAME
+   1168  fb2b		       ea		      nop
+   1169  fb2c		       ea		      nop
+   1170  fb2d		       ea		      nop
+   1171  fb2e		       ea		      nop
+   1172  fb2f				   Dynamic82Y80
+   1173  fb2f		       c8		      iny
+   1174  fb30		       ea		      nop
+   1175  fb31		       b9 00 ff 	      lda	PlayerRows,y
+   1176  fb34		       85 1b		      sta.b	GRP0
+   1177  fb36		       a5 c1		      lda.b	CACHE+9
+   1178  fb38		       85 1c		      sta.b	GRP1
+   1179  fb3a		       ea		      nop
+   1180  fb3b		       84 11		      sty.b	RESP1
+   1181  fb3d		       a6 e2		      ldx.b	CACHE+42
+   1182  fb3f		       a5 cc		      lda.b	CACHE+20
+   1183  fb41		       84 11		      sty.b	RESP1
+   1184  fb43		       ea		      nop
+   1185  fb44		       85 1c		      sta.b	GRP1
+   1186  fb46		       a5 d7		      lda.b	CACHE+31
+   1187  fb48		       8c 11 00 	      sty.w	RESP1
+   1188  fb4b		       8d 1c 00 	      sta.w	GRP1
+   1189  fb4e		       84 11		      sty.b	RESP1
+   1190  fb50		       a5 ed		      lda.b	CACHE+53
+   1191  fb52		       86 1c		      stx.b	GRP1
+   1192  fb54		       8c 11 00 	      sty.w	RESP1
+   1193  fb57		       ea		      nop
+   1194  fb58		       85 1c		      sta.b	GRP1
+   1195  fb5a		       24 80		      bit	FRAME
+   1196  fb5c		       ea		      nop
+   1197  fb5d		       ea		      nop
+   1198  fb5e		       ea		      nop
+   1199  fb5f		       ea		      nop
+   1200  fb60				   Dynamic82Y81
+   1201  fb60		       c8		      iny
+   1202  fb61		       ea		      nop
+   1203  fb62		       b9 00 ff 	      lda	PlayerRows,y
+   1204  fb65		       85 1b		      sta.b	GRP0
+   1205  fb67		       a5 c2		      lda.b	CACHE+10
+   1206  fb69		       85 1c		      sta.b	GRP1
+   1207  fb6b		       ea		      nop
+   1208  fb6c		       84 11		      sty.b	RESP1
+   1209  fb6e		       a6 e3		      ldx.b	CACHE+43
+   1210  fb70		       a5 cd		      lda.b	CACHE+21
+   1211  fb72		       84 11		      sty.b	RESP1
+   1212  fb74		       ea		      nop
+   1213  fb75		       85 1c		      sta.b	GRP1
+   1214  fb77		       a5 d8		      lda.b	CACHE+32
+   1215  fb79		       8c 11 00 	      sty.w	RESP1
+   1216  fb7c		       8d 1c 00 	      sta.w	GRP1
+   1217  fb7f		       84 11		      sty.b	RESP1
+   1218  fb81		       a5 ee		      lda.b	CACHE+54
+   1219  fb83		       86 1c		      stx.b	GRP1
+   1220  fb85		       8c 11 00 	      sty.w	RESP1
+   1221  fb88		       ea		      nop
+   1222  fb89		       85 1c		      sta.b	GRP1
+   1223  fb8b		       ea		      nop
+   1224  fb8c		       ea		      nop
+   1225  fb8d		       ea		      nop
+   1226  fb8e		       ea		      nop
+   1227  fb8f		       4c 9c f0 	      jmp	LeaveBand
+   1228  fb92				   Dynamic64
+   1229  fb92		       85 02		      sta	WSYNC
+   1230  fb94				   Dynamic64Y71
+   1231  fb94		       c8		      iny
+   1232  fb95		       a5 b8		      lda.b	CACHE+0
+   1233  fb97		       be 00 ff 	      ldx	PlayerRows,y
+   1234  fb9a		       8d 1c 00 	      sta.w	GRP1
+   1235  fb9d		       86 1b		      stx.b	GRP0
+   1236  fb9f		       a6 ce		      ldx.b	CACHE+22
+   1237  fba1		       84 11		      sty.b	RESP1
+   1238  fba3		       a5 c3		      lda.b	CACHE+11
+   1239  fba5		       ea		      nop
+   1240  fba6		       8c 11 00 	      sty.w	RESP1
+   1241  fba9		       85 1c		      sta.b	GRP1
+   1242  fbab		       84 11		      sty.b	RESP1
+   1243  fbad		       86 1c		      stx.b	GRP1
+   1244  fbaf		       a6 e4		      ldx.b	CACHE+44
+   1245  fbb1		       a5 d9		      lda.b	CACHE+33
+   1246  fbb3		       8c 11 00 	      sty.w	RESP1
+   1247  fbb6		       8d 1c 00 	      sta.w	GRP1
+   1248  fbb9		       24 80		      bit	FRAME
+   1249  fbbb		       84 11		      sty.b	RESP1
+   1250  fbbd		       ea		      nop
+   1251  fbbe		       86 1c		      stx.b	GRP1
+   1252  fbc0		       24 80		      bit	FRAME
+   1253  fbc2		       ea		      nop
+   1254  fbc3		       ea		      nop
+   1255  fbc4		       ea		      nop
+   1256  fbc5		       ea		      nop
+   1257  fbc6				   Dynamic64Y72
+   1258  fbc6		       c8		      iny
+   1259  fbc7		       a5 b9		      lda.b	CACHE+1
+   1260  fbc9		       be 00 ff 	      ldx	PlayerRows,y
+   1261  fbcc		       8d 1c 00 	      sta.w	GRP1
+   1262  fbcf		       86 1b		      stx.b	GRP0
+   1263  fbd1		       a6 cf		      ldx.b	CACHE+23
+   1264  fbd3		       84 11		      sty.b	RESP1
+   1265  fbd5		       a5 c4		      lda.b	CACHE+12
+   1266  fbd7		       ea		      nop
+   1267  fbd8		       8c 11 00 	      sty.w	RESP1
+   1268  fbdb		       85 1c		      sta.b	GRP1
+   1269  fbdd		       84 11		      sty.b	RESP1
+   1270  fbdf		       86 1c		      stx.b	GRP1
+   1271  fbe1		       a6 e5		      ldx.b	CACHE+45
+   1272  fbe3		       a5 da		      lda.b	CACHE+34
+   1273  fbe5		       8c 11 00 	      sty.w	RESP1
+   1274  fbe8		       8d 1c 00 	      sta.w	GRP1
+   1275  fbeb		       24 80		      bit	FRAME
+   1276  fbed		       84 11		      sty.b	RESP1
+   1277  fbef		       ea		      nop
+   1278  fbf0		       86 1c		      stx.b	GRP1
+   1279  fbf2		       24 80		      bit	FRAME
+   1280  fbf4		       ea		      nop
+   1281  fbf5		       ea		      nop
+   1282  fbf6		       ea		      nop
+   1283  fbf7		       ea		      nop
+   1284  fbf8				   Dynamic64Y73
+   1285  fbf8		       c8		      iny
+   1286  fbf9		       a5 ba		      lda.b	CACHE+2
+   1287  fbfb		       be 00 ff 	      ldx	PlayerRows,y
+   1288  fbfe		       8d 1c 00 	      sta.w	GRP1
+   1289  fc01		       86 1b		      stx.b	GRP0
+   1290  fc03		       a6 d0		      ldx.b	CACHE+24
+   1291  fc05		       84 11		      sty.b	RESP1
+   1292  fc07		       a5 c5		      lda.b	CACHE+13
+   1293  fc09		       ea		      nop
+   1294  fc0a		       8c 11 00 	      sty.w	RESP1
+   1295  fc0d		       85 1c		      sta.b	GRP1
+   1296  fc0f		       84 11		      sty.b	RESP1
+   1297  fc11		       86 1c		      stx.b	GRP1
+   1298  fc13		       a6 e6		      ldx.b	CACHE+46
+   1299  fc15		       a5 db		      lda.b	CACHE+35
+   1300  fc17		       8c 11 00 	      sty.w	RESP1
+   1301  fc1a		       8d 1c 00 	      sta.w	GRP1
+   1302  fc1d		       24 80		      bit	FRAME
+   1303  fc1f		       84 11		      sty.b	RESP1
+   1304  fc21		       ea		      nop
+   1305  fc22		       86 1c		      stx.b	GRP1
+   1306  fc24		       24 80		      bit	FRAME
+   1307  fc26		       ea		      nop
+   1308  fc27		       ea		      nop
+   1309  fc28		       ea		      nop
+   1310  fc29		       ea		      nop
+   1311  fc2a				   Dynamic64Y74
+   1312  fc2a		       c8		      iny
+   1313  fc2b		       a5 bb		      lda.b	CACHE+3
+   1314  fc2d		       be 00 ff 	      ldx	PlayerRows,y
+   1315  fc30		       8d 1c 00 	      sta.w	GRP1
+   1316  fc33		       86 1b		      stx.b	GRP0
+   1317  fc35		       a6 d1		      ldx.b	CACHE+25
+   1318  fc37		       84 11		      sty.b	RESP1
+   1319  fc39		       a5 c6		      lda.b	CACHE+14
+   1320  fc3b		       ea		      nop
+   1321  fc3c		       8c 11 00 	      sty.w	RESP1
+   1322  fc3f		       85 1c		      sta.b	GRP1
+   1323  fc41		       84 11		      sty.b	RESP1
+   1324  fc43		       86 1c		      stx.b	GRP1
+   1325  fc45		       a6 e7		      ldx.b	CACHE+47
+   1326  fc47		       a5 dc		      lda.b	CACHE+36
+   1327  fc49		       8c 11 00 	      sty.w	RESP1
+   1328  fc4c		       8d 1c 00 	      sta.w	GRP1
+   1329  fc4f		       24 80		      bit	FRAME
+   1330  fc51		       84 11		      sty.b	RESP1
+   1331  fc53		       ea		      nop
+   1332  fc54		       86 1c		      stx.b	GRP1
+   1333  fc56		       24 80		      bit	FRAME
+   1334  fc58		       ea		      nop
+   1335  fc59		       ea		      nop
+   1336  fc5a		       ea		      nop
+   1337  fc5b		       ea		      nop
+   1338  fc5c				   Dynamic64Y75
+   1339  fc5c		       c8		      iny
+   1340  fc5d		       a5 bc		      lda.b	CACHE+4
+   1341  fc5f		       be 00 ff 	      ldx	PlayerRows,y
+   1342  fc62		       8d 1c 00 	      sta.w	GRP1
+   1343  fc65		       86 1b		      stx.b	GRP0
+   1344  fc67		       a6 d2		      ldx.b	CACHE+26
+   1345  fc69		       84 11		      sty.b	RESP1
+   1346  fc6b		       a5 c7		      lda.b	CACHE+15
+   1347  fc6d		       ea		      nop
+   1348  fc6e		       8c 11 00 	      sty.w	RESP1
+   1349  fc71		       85 1c		      sta.b	GRP1
+   1350  fc73		       84 11		      sty.b	RESP1
+   1351  fc75		       86 1c		      stx.b	GRP1
+   1352  fc77		       a6 e8		      ldx.b	CACHE+48
+   1353  fc79		       a5 dd		      lda.b	CACHE+37
+   1354  fc7b		       8c 11 00 	      sty.w	RESP1
+   1355  fc7e		       8d 1c 00 	      sta.w	GRP1
+   1356  fc81		       24 80		      bit	FRAME
+   1357  fc83		       84 11		      sty.b	RESP1
+   1358  fc85		       ea		      nop
+   1359  fc86		       86 1c		      stx.b	GRP1
+   1360  fc88		       24 80		      bit	FRAME
+   1361  fc8a		       ea		      nop
+   1362  fc8b		       ea		      nop
+   1363  fc8c		       ea		      nop
+   1364  fc8d		       ea		      nop
+   1365  fc8e				   Dynamic64Y76
+   1366  fc8e		       c8		      iny
+   1367  fc8f		       a5 bd		      lda.b	CACHE+5
+   1368  fc91		       be 00 ff 	      ldx	PlayerRows,y
+   1369  fc94		       8d 1c 00 	      sta.w	GRP1
+   1370  fc97		       86 1b		      stx.b	GRP0
+   1371  fc99		       a6 d3		      ldx.b	CACHE+27
+   1372  fc9b		       84 11		      sty.b	RESP1
+   1373  fc9d		       a5 c8		      lda.b	CACHE+16
+   1374  fc9f		       ea		      nop
+   1375  fca0		       8c 11 00 	      sty.w	RESP1
+   1376  fca3		       85 1c		      sta.b	GRP1
+   1377  fca5		       84 11		      sty.b	RESP1
+   1378  fca7		       86 1c		      stx.b	GRP1
+   1379  fca9		       a6 e9		      ldx.b	CACHE+49
+   1380  fcab		       a5 de		      lda.b	CACHE+38
+   1381  fcad		       8c 11 00 	      sty.w	RESP1
+   1382  fcb0		       8d 1c 00 	      sta.w	GRP1
+   1383  fcb3		       24 80		      bit	FRAME
+   1384  fcb5		       84 11		      sty.b	RESP1
+   1385  fcb7		       ea		      nop
+   1386  fcb8		       86 1c		      stx.b	GRP1
+   1387  fcba		       24 80		      bit	FRAME
+   1388  fcbc		       ea		      nop
+   1389  fcbd		       ea		      nop
+   1390  fcbe		       ea		      nop
+   1391  fcbf		       ea		      nop
+   1392  fcc0				   Dynamic64Y77
+   1393  fcc0		       c8		      iny
+   1394  fcc1		       a5 be		      lda.b	CACHE+6
+   1395  fcc3		       be 00 ff 	      ldx	PlayerRows,y
+   1396  fcc6		       8d 1c 00 	      sta.w	GRP1
+   1397  fcc9		       86 1b		      stx.b	GRP0
+   1398  fccb		       a6 d4		      ldx.b	CACHE+28
+   1399  fccd		       84 11		      sty.b	RESP1
+   1400  fccf		       a5 c9		      lda.b	CACHE+17
+   1401  fcd1		       ea		      nop
+   1402  fcd2		       8c 11 00 	      sty.w	RESP1
+   1403  fcd5		       85 1c		      sta.b	GRP1
+   1404  fcd7		       84 11		      sty.b	RESP1
+   1405  fcd9		       86 1c		      stx.b	GRP1
+   1406  fcdb		       a6 ea		      ldx.b	CACHE+50
+   1407  fcdd		       a5 df		      lda.b	CACHE+39
+   1408  fcdf		       8c 11 00 	      sty.w	RESP1
+   1409  fce2		       8d 1c 00 	      sta.w	GRP1
+   1410  fce5		       24 80		      bit	FRAME
+   1411  fce7		       84 11		      sty.b	RESP1
+   1412  fce9		       ea		      nop
+   1413  fcea		       86 1c		      stx.b	GRP1
+   1414  fcec		       24 80		      bit	FRAME
+   1415  fcee		       ea		      nop
+   1416  fcef		       ea		      nop
+   1417  fcf0		       ea		      nop
+   1418  fcf1		       ea		      nop
+   1419  fcf2				   Dynamic64Y78
+   1420  fcf2		       c8		      iny
+   1421  fcf3		       a5 bf		      lda.b	CACHE+7
+   1422  fcf5		       be 00 ff 	      ldx	PlayerRows,y
+   1423  fcf8		       8d 1c 00 	      sta.w	GRP1
+   1424  fcfb		       86 1b		      stx.b	GRP0
+   1425  fcfd		       a6 d5		      ldx.b	CACHE+29
+   1426  fcff		       84 11		      sty.b	RESP1
+   1427  fd01		       a5 ca		      lda.b	CACHE+18
+   1428  fd03		       ea		      nop
+   1429  fd04		       8c 11 00 	      sty.w	RESP1
+   1430  fd07		       85 1c		      sta.b	GRP1
+   1431  fd09		       84 11		      sty.b	RESP1
+   1432  fd0b		       86 1c		      stx.b	GRP1
+   1433  fd0d		       a6 eb		      ldx.b	CACHE+51
+   1434  fd0f		       a5 e0		      lda.b	CACHE+40
+   1435  fd11		       8c 11 00 	      sty.w	RESP1
+   1436  fd14		       8d 1c 00 	      sta.w	GRP1
+   1437  fd17		       24 80		      bit	FRAME
+   1438  fd19		       84 11		      sty.b	RESP1
+   1439  fd1b		       ea		      nop
+   1440  fd1c		       86 1c		      stx.b	GRP1
+   1441  fd1e		       24 80		      bit	FRAME
+   1442  fd20		       ea		      nop
+   1443  fd21		       ea		      nop
+   1444  fd22		       ea		      nop
+   1445  fd23		       ea		      nop
+   1446  fd24				   Dynamic64Y79
+   1447  fd24		       c8		      iny
+   1448  fd25		       a5 c0		      lda.b	CACHE+8
+   1449  fd27		       be 00 ff 	      ldx	PlayerRows,y
+   1450  fd2a		       8d 1c 00 	      sta.w	GRP1
+   1451  fd2d		       86 1b		      stx.b	GRP0
+   1452  fd2f		       a6 d6		      ldx.b	CACHE+30
+   1453  fd31		       84 11		      sty.b	RESP1
+   1454  fd33		       a5 cb		      lda.b	CACHE+19
+   1455  fd35		       ea		      nop
+   1456  fd36		       8c 11 00 	      sty.w	RESP1
+   1457  fd39		       85 1c		      sta.b	GRP1
+   1458  fd3b		       84 11		      sty.b	RESP1
+   1459  fd3d		       86 1c		      stx.b	GRP1
+   1460  fd3f		       a6 ec		      ldx.b	CACHE+52
+   1461  fd41		       a5 e1		      lda.b	CACHE+41
+   1462  fd43		       8c 11 00 	      sty.w	RESP1
+   1463  fd46		       8d 1c 00 	      sta.w	GRP1
+   1464  fd49		       24 80		      bit	FRAME
+   1465  fd4b		       84 11		      sty.b	RESP1
+   1466  fd4d		       ea		      nop
+   1467  fd4e		       86 1c		      stx.b	GRP1
+   1468  fd50		       24 80		      bit	FRAME
+   1469  fd52		       ea		      nop
+   1470  fd53		       ea		      nop
+   1471  fd54		       ea		      nop
+   1472  fd55		       ea		      nop
+   1473  fd56				   Dynamic64Y80
+   1474  fd56		       c8		      iny
+   1475  fd57		       a5 c1		      lda.b	CACHE+9
+   1476  fd59		       be 00 ff 	      ldx	PlayerRows,y
+   1477  fd5c		       8d 1c 00 	      sta.w	GRP1
+   1478  fd5f		       86 1b		      stx.b	GRP0
+   1479  fd61		       a6 d7		      ldx.b	CACHE+31
+   1480  fd63		       84 11		      sty.b	RESP1
+   1481  fd65		       a5 cc		      lda.b	CACHE+20
+   1482  fd67		       ea		      nop
+   1483  fd68		       8c 11 00 	      sty.w	RESP1
+   1484  fd6b		       85 1c		      sta.b	GRP1
+   1485  fd6d		       84 11		      sty.b	RESP1
+   1486  fd6f		       86 1c		      stx.b	GRP1
+   1487  fd71		       a6 ed		      ldx.b	CACHE+53
+   1488  fd73		       a5 e2		      lda.b	CACHE+42
+   1489  fd75		       8c 11 00 	      sty.w	RESP1
+   1490  fd78		       8d 1c 00 	      sta.w	GRP1
+   1491  fd7b		       24 80		      bit	FRAME
+   1492  fd7d		       84 11		      sty.b	RESP1
+   1493  fd7f		       ea		      nop
+   1494  fd80		       86 1c		      stx.b	GRP1
+   1495  fd82		       24 80		      bit	FRAME
+   1496  fd84		       ea		      nop
+   1497  fd85		       ea		      nop
+   1498  fd86		       ea		      nop
+   1499  fd87		       ea		      nop
+   1500  fd88				   Dynamic64Y81
+   1501  fd88		       c8		      iny
+   1502  fd89		       a5 c2		      lda.b	CACHE+10
+   1503  fd8b		       be 00 ff 	      ldx	PlayerRows,y
+   1504  fd8e		       8d 1c 00 	      sta.w	GRP1
+   1505  fd91		       86 1b		      stx.b	GRP0
+   1506  fd93		       a6 d8		      ldx.b	CACHE+32
+   1507  fd95		       84 11		      sty.b	RESP1
+   1508  fd97		       a5 cd		      lda.b	CACHE+21
+   1509  fd99		       ea		      nop
+   1510  fd9a		       8c 11 00 	      sty.w	RESP1
+   1511  fd9d		       85 1c		      sta.b	GRP1
+   1512  fd9f		       84 11		      sty.b	RESP1
+   1513  fda1		       86 1c		      stx.b	GRP1
+   1514  fda3		       a6 ee		      ldx.b	CACHE+54
+   1515  fda5		       a5 e3		      lda.b	CACHE+43
+   1516  fda7		       8c 11 00 	      sty.w	RESP1
+   1517  fdaa		       8d 1c 00 	      sta.w	GRP1
+   1518  fdad		       24 80		      bit	FRAME
+   1519  fdaf		       84 11		      sty.b	RESP1
+   1520  fdb1		       ea		      nop
+   1521  fdb2		       86 1c		      stx.b	GRP1
+   1522  fdb4		       ea		      nop
+   1523  fdb5		       ea		      nop
+   1524  fdb6		       ea		      nop
+   1525  fdb7		       ea		      nop
+   1526  fdb8		       4c 9c f0 	      jmp	LeaveBand
+   1527  fdbb				   ThirdXs
+   1528  fdbb		       04 ff ff 01*	      byte.b	4,$ff,$ff,1,$ff,$ff,$ff,$ff,$ff,0,$ff,$ff,2,$ff,$ff,$ff,$ff,$ff,3
+   1529  fdce				   DynamicLo
+   1530  fdce		       0d 2b 55 74*	      byte.b	<Dynamic73,<Dynamic67,<Dynamic76,<Dynamic82,<Dynamic64
+   1531  fdd3				   DynamicHi
+   1532  fdd3		       f3 f5 f7 f9*	      byte.b	>Dynamic73,>Dynamic67,>Dynamic76,>Dynamic82,>Dynamic64
+   1533  fdd8				   DynamicClocks
+   1534  fdd8		       01 01 01 01*	      byte.b	1,1,1,1,1
+   1535  fde0		       00 00 00 	      ALIGN	32
+   1536  fde0				   Mask0
+   1537  fde0		       00 00		      ds	2,0
+   1538  fde2		       3c 3c 18 ff*	      byte.b	$3c,$3c,$18,$ff,$18,$24,$24,$42,$42
+   1539  fdeb		       00 00		      ds	2,0
+   1540  fe00		       00 00 00 00*	      ALIGN	32
+   1541  fe00				   Mask1
+   1542  fe00		       00 00		      ds	2,0
+   1543  fe02		       3c 3c 18 ff*	      byte.b	$3c,$3c,$18,$ff,$18,$24,$24,$42,$42
+   1544  fe0b		       00 00		      ds	2,0
+   1545  fe20		       00 00 00 00*	      ALIGN	32
+   1546  fe20				   Mask2
+   1547  fe20		       00 00		      ds	2,0
+   1548  fe22		       3c 3c 18 ff*	      byte.b	$3c,$3c,$18,$ff,$3c,$7e,$7e,$24,$24
+   1549  fe2b		       00 00		      ds	2,0
+   1550  fe40		       00 00 00 00*	      ALIGN	32
+   1551  fe40				   Mask3
+   1552  fe40		       00 00		      ds	2,0
+   1553  fe42		       00 00 3c 3c*	      byte.b	$00,$00,$3c,$3c,$18,$7e,$18,$24,$00
+   1554  fe4b		       00 00		      ds	2,0
+   1555  fe60		       00 00 00 00*	      ALIGN	32
+   1556  fe60				   Mask4
+   1557  fe60		       00 00		      ds	2,0
+   1558  fe62		       00 00 3c 3c*	      byte.b	$00,$00,$3c,$3c,$18,$7e,$3c,$24,$00
+   1559  fe6b		       00 00		      ds	2,0
+   1560  fe6d				   MaskLo
+   1561  fe6d		       e0 00 20 40*	      byte.b	<Mask0,<Mask1,<Mask2,<Mask3,<Mask4
+   1562  fe72				   MaskHi
+   1563  fe72		       fd fe fe fe*	      byte.b	>Mask0,>Mask1,>Mask2,>Mask3,>Mask4
+------- FILE roms/mixed-bank3.asm
+    475  fe77				  -	      ELSE
+    476  fe77				  -	      include	"chain.inc"
+    477  fe77					      ENDIF
+    478  ff00		       00 00 00 00*	      ALIGN	256
+    479  ff00				   PlayerRows
+    480  ff00		       00 00 00 00*	      ds	72,0
+    481  ff48		       3c 7e 18 7e*	      byte.b	$3c,$7e,$18,$7e,$1e,$3c,$18,$24,$42
+    482  ff51		       00 00 00 00*	      ds	8,0
+    483  fffa					      ORG	$fffa
+    484  fffa		       00 f0 00 f0*	      word.w	Reset,Reset,Reset

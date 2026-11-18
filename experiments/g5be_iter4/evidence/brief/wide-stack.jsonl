@@ -1,0 +1,91 @@
+{"event": "termios", "unix_ns": 1795035218118537305, "name": "beam", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795035218119283688, "name": "beam", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/g5be4-checkout/experiments/g5be_iter4/roms/wide.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795035218119930976, "pid": 42872}
+{"event": "rx", "unix_ns": 1795035221509365690, "name": "beam", "seq": 0, "offset": 0, "hex": "5b20246630303020736569205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035221509641152, "seq": 0, "answer": "", "prompt": "[ $f000 sei ] >> "}
+{"event": "tx", "unix_ns": 1795035221510130124, "name": "beam", "seq": 1, "offset": 0, "hex": "56455253494f4e205245564953494f4e04"}
+{"event": "rx", "unix_ns": 1795035221510191601, "name": "beam", "seq": 1, "offset": 17, "hex": "76302e35372e32"}
+{"event": "rx", "unix_ns": 1795035221510253783, "name": "beam", "seq": 1, "offset": 24, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795035221510273499, "name": "beam", "seq": 1, "offset": 25, "hex": "32616638366562373235373339616462663364396434356365613265643639656561353764613261"}
+{"event": "rx", "unix_ns": 1795035221510289248, "name": "beam", "seq": 1, "offset": 65, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795035221510315649, "name": "beam", "seq": 1, "offset": 66, "hex": "5b20246630303020736569205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035221510332682, "seq": 1, "answer": "v0.57.2\n2af86eb725739adbf3d9d45cea2ed69eea57da2a\n", "prompt": "[ $f000 sei ] >> "}
+{"event": "tx", "unix_ns": 1795035221510496112, "name": "beam", "seq": 2, "offset": 17, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035221765957358, "name": "beam", "seq": 2, "offset": 83, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035221766109719, "seq": 2, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035221798690789, "name": "beam", "seq": 3, "offset": 28, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035221935664900, "name": "beam", "seq": 3, "offset": 105, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035221935755671, "seq": 3, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035221935818546, "name": "beam", "seq": 4, "offset": 39, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222022817977, "name": "beam", "seq": 4, "offset": 127, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222022922616, "seq": 4, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222022985847, "name": "beam", "seq": 5, "offset": 50, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222116914311, "name": "beam", "seq": 5, "offset": 149, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222117219538, "seq": 5, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222117303643, "name": "beam", "seq": 6, "offset": 61, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222231045840, "name": "beam", "seq": 6, "offset": 171, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222231246283, "seq": 6, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222236125805, "name": "beam", "seq": 7, "offset": 72, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222398776939, "name": "beam", "seq": 7, "offset": 193, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222398894231, "seq": 7, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222398967320, "name": "beam", "seq": 8, "offset": 83, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222453546899, "name": "beam", "seq": 8, "offset": 215, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222453706688, "seq": 8, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222453765365, "name": "beam", "seq": 9, "offset": 94, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222535774067, "name": "beam", "seq": 9, "offset": 237, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222535858763, "seq": 9, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222535945149, "name": "beam", "seq": 10, "offset": 105, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222665191549, "name": "beam", "seq": 10, "offset": 259, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222665294708, "seq": 10, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222698643416, "name": "beam", "seq": 11, "offset": 116, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035222938239422, "name": "beam", "seq": 11, "offset": 281, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035222938351645, "seq": 11, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035222938412567, "name": "beam", "seq": 12, "offset": 127, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223019002765, "name": "beam", "seq": 12, "offset": 303, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223019083891, "seq": 12, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223019135213, "name": "beam", "seq": 13, "offset": 138, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223067563208, "name": "beam", "seq": 13, "offset": 325, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223067686341, "seq": 13, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223067822712, "name": "beam", "seq": 14, "offset": 149, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223146619686, "name": "beam", "seq": 14, "offset": 347, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223146716344, "seq": 14, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223146772199, "name": "beam", "seq": 15, "offset": 160, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223228597332, "name": "beam", "seq": 15, "offset": 369, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223228682877, "seq": 15, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223228736240, "name": "beam", "seq": 16, "offset": 171, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223305500264, "name": "beam", "seq": 16, "offset": 391, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223305648640, "seq": 16, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223305716238, "name": "beam", "seq": 17, "offset": 182, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223401320632, "name": "beam", "seq": 17, "offset": 413, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223402418306, "seq": 17, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223408000679, "name": "beam", "seq": 18, "offset": 193, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223466005218, "name": "beam", "seq": 18, "offset": 435, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223466086206, "seq": 18, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223466137924, "name": "beam", "seq": 19, "offset": 204, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223699618182, "name": "beam", "seq": 19, "offset": 457, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223699775466, "seq": 19, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223699845269, "name": "beam", "seq": 20, "offset": 215, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223763225581, "name": "beam", "seq": 20, "offset": 479, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223763326267, "seq": 20, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223763522084, "name": "beam", "seq": 21, "offset": 226, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795035223844436212, "name": "beam", "seq": 21, "offset": 501, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223844519214, "seq": 21, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223844720896, "name": "beam", "seq": 22, "offset": 237, "hex": "425245414b2050432030786632373904"}
+{"event": "rx", "unix_ns": 1795035223844804692, "name": "beam", "seq": 22, "offset": 523, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223844821078, "seq": 22, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795035223844949398, "name": "beam", "seq": 23, "offset": 253, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795035223846923793, "name": "beam", "seq": 23, "offset": 545, "hex": "627265616b206f6e2050432d3e3078663237390a"}
+{"event": "rx", "unix_ns": 1795035223847005471, "name": "beam", "seq": 23, "offset": 565, "hex": "5b20246632373920747861205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223847029122, "seq": 23, "answer": "break on PC->0xf279\n", "prompt": "[ $f279 txa ] >> "}
+{"event": "tx", "unix_ns": 1795035223847140186, "name": "beam", "seq": 24, "offset": 257, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795035223847158091, "name": "beam", "seq": 24, "offset": 582, "hex": "627265616b706f696e742023302064726f707065640a5b20246632373920747861205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223847171860, "seq": 24, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f279 txa ] >> "}
+{"event": "tx", "unix_ns": 1795035223847314972, "name": "beam", "seq": 25, "offset": 270, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795035223847327667, "name": "beam", "seq": 25, "offset": 621, "hex": "46523d3030323020534c3d30303920434c3d3032350a5b20246632373920747861205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223847338367, "seq": 25, "answer": "FR=0020 SL=009 CL=025\n", "prompt": "[ $f279 txa ] >> "}
+{"event": "tx", "unix_ns": 1795035223847514467, "name": "beam", "seq": 26, "offset": 273, "hex": "43505504"}
+{"event": "rx", "unix_ns": 1795035223847529488, "name": "beam", "seq": 26, "offset": 660, "hex": "50433d6632373920413d666320583d303020593d30302053503d66642053523d73762d4264495a63"}
+{"event": "rx", "unix_ns": 1795035223847556011, "name": "beam", "seq": 26, "offset": 700, "hex": "0a5b20246632373920747861205d203e3e20"}
+{"event": "ack", "unix_ns": 1795035223847598234, "seq": 26, "answer": "PC=f279 A=fc X=00 Y=00 SP=fd SR=sv-BdIZc\n", "prompt": "[ $f279 txa ] >> "}
+{"event": "stack", "unix_ns": 1795035223847608825, "readout": "PC=f279 A=fc X=00 Y=00 SP=fd SR=sv-BdIZc\n"}
+{"event": "exit", "unix_ns": 1795035224361804865, "name": "beam", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 6.242513001998304, "stderr_hex": ""}
