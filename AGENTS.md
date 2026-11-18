@@ -6,7 +6,7 @@ Scope: **only** the Atari 2600 game in `Odourman/let-me-out`. This file is a sho
 
 1. [Live project status and work queue](docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md)
 2. [G5 authorization boundary](docs/gates/G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md)
-3. The **specific GitHub Issue / user-approved work order** for this task; its explicit scope, budgets, negative controls and stop criteria govern this task.
+3. The **specific MAIN-issued work order**, under LM-D29's standing user permission for technical tests or an explicitly approved implementation scope; its budgets, negative controls and stop criteria govern that particular task.
 4. Relevant frozen source, acceptance/test matrix and actual ROM/emulator evidence. Original Master Spec and 57 decisions are in the [official project Drive folder](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u), with later **explicit** user decisions superseding originals *only within their stated scope*.
 
 Dated handoffs and `docs/project_sources/` are navigation, not living authority. Do not use ChatGPT Memory or Library as project truth. Confirm live GitHub refs/sha and source version when needed; preserve historical failures.
@@ -24,11 +24,11 @@ The user explicitly corrected MAIN: **"Du behöver inte fråga om godkännande h
 - **Existing test orders keep their specific per-run safety/budget rules for those particular tests** (e.g. G5AX / Issue #23). When one order finishes, MAIN may authorize a **new bounded technical test** under this standing user permission, rather than asking the user again. Historical FAIL/NOT_RUN and G5_FORMAL_OPEN are not retroactively changed.
 
 - **MAIN** prioritizes, issues bounded work orders, checks developer receipts, records decisions and coordinates the user.
-- **ROM DEVELOPMENT IV / Codex** does source analysis, 6507/DASM/TIA code, builds, debugging and **developer self-tests only inside explicitly approved scope**.
+- **ROM DEVELOPMENT IV / Codex** does source analysis, 6507/DASM/TIA code, builds, debugging and **developer self-tests inside concretely delegated MAIN scope**. LM-D29 removes repeated personal approval for technical tests, not the separate scope boundary for gameplay implementation.
 - **RESEARCH** advises; **GRAPHICS** supplies studies within its own design order.
 - **VERIFICATION II** independently checks frozen deliverables; a developer's PASS never substitutes for it.
-- A general "continue", a plan, an Issue's existence, or this `AGENTS.md` does **not** approve a new ROM build, emulator run, implementation step, design waiver, verification, PR merge or new gate.
-- An authorized test may use only its stated **ROM/hash**, emulator/version, process/run limits, input controls and criteria. When a stop condition fires, stop; don't retry, broaden the run or change the goal without a new authorization.
+- A general "continue", a plan, an Issue's existence or this `AGENTS.md` does **not** by itself start a Codex task, approve a gameplay implementation step, design waiver, independent verification, PR merge or release. **MAIN may commission bounded diagnostic ROM builds and emulator tests under LM-D29 without asking the user again.**
+- Each specific diagnostic test must respect its stated **ROM/hash**, emulator/version, process/run limits, input controls and criteria. When a stop condition fires, stop that run; MAIN can delegate a **new, separately bounded test-only task** under the standing LM-D29 permission without seeking another personal approval. No unlimited silent retries.
 
 ## Efficient Codex workflow
 
