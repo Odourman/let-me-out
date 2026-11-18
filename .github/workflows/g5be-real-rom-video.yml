@@ -20,8 +20,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Install stock Stella and screen recorder
         run: |
-          sudo apt-get update
-          sudo apt-get install -y stella xvfb ffmpeg xdotool fonts-dejavu-core
+          # Runner has preloaded Ubuntu package indexes; avoid a potentially hung apt update.
+          sudo DEBIAN_FRONTEND=noninteractive timeout 150 apt-get install -y --no-install-recommends stella xvfb xdotool
+          command -v ffmpeg
           command -v stella
           stella -help > stella-help.txt 2>&1 || true
           ffmpeg -version | head -n 1
