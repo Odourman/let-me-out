@@ -1,0 +1,122 @@
+{"event": "termios", "unix_ns": 1795019956038923492, "name": "gopher-runtime", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795019956039752561, "name": "gopher-runtime", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/g5bd-checkout/experiments/g5bd/roms/phasevdel.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795019956040199645, "pid": 22712}
+{"event": "rx", "unix_ns": 1795019959416121065, "name": "gopher-runtime", "seq": 0, "offset": 0, "hex": "5b20246630303020736569205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959416220712, "seq": 0, "answer": "", "prompt": "[ $f000 sei ] >> "}
+{"event": "tx", "unix_ns": 1795019959416468629, "name": "gopher-runtime", "seq": 1, "offset": 0, "hex": "56455253494f4e205245564953494f4e04"}
+{"event": "rx", "unix_ns": 1795019959416538266, "name": "gopher-runtime", "seq": 1, "offset": 17, "hex": "76302e35372e320a"}
+{"event": "rx", "unix_ns": 1795019959416609862, "name": "gopher-runtime", "seq": 1, "offset": 25, "hex": "326166383665623732353733396164626633643964343563656132656436396565613537646132610a5b20246630303020736569205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959416633740, "seq": 1, "answer": "v0.57.2\n2af86eb725739adbf3d9d45cea2ed69eea57da2a\n", "prompt": "[ $f000 sei ] >> "}
+{"event": "tx", "unix_ns": 1795019959416937808, "name": "gopher-runtime", "seq": 2, "offset": 17, "hex": "434152545249444745204d415050455204"}
+{"event": "rx", "unix_ns": 1795019959416963866, "name": "gopher-runtime", "seq": 2, "offset": 83, "hex": "46360a5b20246630303020736569205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959416977029, "seq": 2, "answer": "F6\n", "prompt": "[ $f000 sei ] >> "}
+{"event": "tx", "unix_ns": 1795019959418874397, "name": "gopher-runtime", "seq": 3, "offset": 34, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795019959547177746, "name": "gopher-runtime", "seq": 3, "offset": 103, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959547245984, "seq": 3, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959547307245, "name": "gopher-runtime", "seq": 4, "offset": 45, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795019959806198008, "name": "gopher-runtime", "seq": 4, "offset": 125, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959806293050, "seq": 4, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959806341243, "name": "gopher-runtime", "seq": 5, "offset": 56, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795019959856812801, "name": "gopher-runtime", "seq": 5, "offset": 147, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959856923812, "seq": 5, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959857027806, "name": "gopher-runtime", "seq": 6, "offset": 67, "hex": "5045454b2030783030383120307830303832203078303038332030783030383420307830303835203078303038362030783030383720307830303838203078303038392030783030386104"}
+{"event": "rx", "unix_ns": 1795019959857131737, "name": "gopher-runtime", "seq": 6, "offset": 169, "hex": "3078303038312028585029202852414d29203d20307831330a307830303832202852414d29203d20307832650a307830303833202852414d29203d20307834390a307830303834202852414d29203d20307836340a307830303835202852414d29203d20307837660a"}
+{"event": "rx", "unix_ns": 1795019959857230397, "name": "gopher-runtime", "seq": 6, "offset": 274, "hex": "3078303038362028595029202852414d29203d20307834380a307830303837202852414d29203d20307834380a307830303838202852414d29203d20307834380a307830303839202852414d29203d20307834380a307830303861202852414d29203d20307834380a"}
+{"event": "rx", "unix_ns": 1795019959857248712, "name": "gopher-runtime", "seq": 6, "offset": 379, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959857267911, "seq": 6, "answer": "0x0081 (XP) (RAM) = 0x13\n0x0082 (RAM) = 0x2e\n0x0083 (RAM) = 0x49\n0x0084 (RAM) = 0x64\n0x0085 (RAM) = 0x7f\n0x0086 (YP) (RAM) = 0x48\n0x0087 (RAM) = 0x48\n0x0088 (RAM) = 0x48\n0x0089 (RAM) = 0x48\n0x008a (RAM) = 0x48\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959857743149, "name": "gopher-runtime", "seq": 7, "offset": 142, "hex": "504f4b4520307830303831203078376604"}
+{"event": "rx", "unix_ns": 1795019959860379386, "name": "gopher-runtime", "seq": 7, "offset": 401, "hex": "3078376620706f6b656420746f203078303038312028585029202852414d290a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959860455009, "seq": 7, "answer": "0x7f poked to 0x0081 (XP) (RAM)\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959860530287, "name": "gopher-runtime", "seq": 8, "offset": 159, "hex": "504f4b4520307830303832203078313304"}
+{"event": "rx", "unix_ns": 1795019959861238467, "name": "gopher-runtime", "seq": 8, "offset": 455, "hex": "3078313320706f6b656420746f20307830303832202852414d290a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959861272335, "seq": 8, "answer": "0x13 poked to 0x0082 (RAM)\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959861391333, "name": "gopher-runtime", "seq": 9, "offset": 176, "hex": "504f4b4520307830303835203078326504"}
+{"event": "rx", "unix_ns": 1795019959861992037, "name": "gopher-runtime", "seq": 9, "offset": 504, "hex": "3078326520706f6b656420746f20307830303835202852414d290a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959862024692, "seq": 9, "answer": "0x2e poked to 0x0085 (RAM)\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959862077676, "name": "gopher-runtime", "seq": 10, "offset": 193, "hex": "504f4b4520307830303836203078343904"}
+{"event": "rx", "unix_ns": 1795019959862125703, "name": "gopher-runtime", "seq": 10, "offset": 553, "hex": "3078343920706f6b656420746f203078303038362028595029202852414d290a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959862141616, "seq": 10, "answer": "0x49 poked to 0x0086 (YP) (RAM)\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959862160659, "name": "gopher-runtime", "seq": 11, "offset": 210, "hex": "504f4b4520307830303838203078343904"}
+{"event": "rx", "unix_ns": 1795019959862234381, "name": "gopher-runtime", "seq": 11, "offset": 607, "hex": "3078343920706f6b656420746f20307830303838202852414d290a"}
+{"event": "rx", "unix_ns": 1795019959862309203, "name": "gopher-runtime", "seq": 11, "offset": 634, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959862325444, "seq": 11, "answer": "0x49 poked to 0x0088 (RAM)\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959862360881, "name": "gopher-runtime", "seq": 12, "offset": 227, "hex": "504f4b4520307830303839203078343704"}
+{"event": "rx", "unix_ns": 1795019959862503847, "name": "gopher-runtime", "seq": 12, "offset": 656, "hex": "3078343720706f6b656420746f20307830303839202852414d290a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959862517537, "seq": 12, "answer": "0x47 poked to 0x0089 (RAM)\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959862545555, "name": "gopher-runtime", "seq": 13, "offset": 244, "hex": "5045454b2030783030383120307830303832203078303038332030783030383420307830303835203078303038362030783030383720307830303838203078303038392030783030386104"}
+{"event": "rx", "unix_ns": 1795019959862773005, "name": "gopher-runtime", "seq": 13, "offset": 705, "hex": "3078303038312028585029202852414d29203d20307837660a307830303832202852414d29203d20307831330a307830303833202852414d29203d20307834390a307830303834202852414d29203d20307836340a307830303835202852414d29203d20307832650a"}
+{"event": "rx", "unix_ns": 1795019959862796646, "name": "gopher-runtime", "seq": 13, "offset": 810, "hex": "3078303038362028595029202852414d29203d20307834390a307830303837202852414d29203d20307834380a307830303838202852414d29203d20307834390a307830303839202852414d29203d20307834370a307830303861202852414d29203d20307834380a"}
+{"event": "rx", "unix_ns": 1795019959862861814, "name": "gopher-runtime", "seq": 13, "offset": 915, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959862881004, "seq": 13, "answer": "0x0081 (XP) (RAM) = 0x7f\n0x0082 (RAM) = 0x13\n0x0083 (RAM) = 0x49\n0x0084 (RAM) = 0x64\n0x0085 (RAM) = 0x2e\n0x0086 (YP) (RAM) = 0x49\n0x0087 (RAM) = 0x48\n0x0088 (RAM) = 0x49\n0x0089 (RAM) = 0x47\n0x008a (RAM) = 0x48\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "fixture", "unix_ns": 1795019959862920216, "label": "historic-reorder", "x": [127, 19, 73, 100, 46], "y": [73, 72, 73, 71, 72], "changed": [129, 130, 133, 134, 136, 137], "before": [19, 46, 73, 100, 127, 72, 72, 72, 72, 72]}
+{"event": "tx", "unix_ns": 1795019959862994525, "name": "gopher-runtime", "seq": 14, "offset": 319, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795019959928866221, "name": "gopher-runtime", "seq": 14, "offset": 937, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959928939927, "seq": 14, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959928982273, "name": "gopher-runtime", "seq": 15, "offset": 330, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795019959929426967, "name": "gopher-runtime", "seq": 15, "offset": 959, "hex": "46523d3030303420534c3d30303020434c3d2d36380a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959929454959, "seq": 15, "answer": "FR=0004 SL=000 CL=-68\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959930032569, "name": "gopher-runtime", "seq": 16, "offset": 333, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795019959930069779, "name": "gopher-runtime", "seq": 16, "offset": 1003, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959930086212, "seq": 16, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "transition", "unix_ns": 1795019959930297518, "label": "historic-reorder", "frame": 4, "scanlines": 262}
+{"event": "tx", "unix_ns": 1795019959930332778, "name": "gopher-runtime", "seq": 17, "offset": 342, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795019959974611605, "name": "gopher-runtime", "seq": 17, "offset": 1058, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959974689516, "seq": 17, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959974755413, "name": "gopher-runtime", "seq": 18, "offset": 353, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795019959974828732, "name": "gopher-runtime", "seq": 18, "offset": 1080, "hex": "46523d3030303520534c3d30303020434c3d2d36380a"}
+{"event": "rx", "unix_ns": 1795019959974842015, "name": "gopher-runtime", "seq": 18, "offset": 1102, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959974852563, "seq": 18, "answer": "FR=0005 SL=000 CL=-68\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959974873697, "name": "gopher-runtime", "seq": 19, "offset": 356, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795019959974936146, "name": "gopher-runtime", "seq": 19, "offset": 1124, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959974948324, "seq": 19, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959974989715, "name": "gopher-runtime", "seq": 20, "offset": 365, "hex": "5045454b203078303039632030783030396404"}
+{"event": "rx", "unix_ns": 1795019959975036989, "name": "gopher-runtime", "seq": 20, "offset": 1179, "hex": "30783030396320285553454429202852414d29203d20307830300a3078303039642028504149525f534c4f5429202852414d29203d20307830340a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019959975072820, "seq": 20, "answer": "0x009c (USED) (RAM) = 0x00\n0x009d (PAIR_SLOT) (RAM) = 0x04\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019959975146435, "name": "gopher-runtime", "seq": 21, "offset": 384, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f673562642f62726965662d70686173657664656c2d706e672f6672616d655f303030352e706e6704"}
+{"event": "rx", "unix_ns": 1795019959975207435, "name": "gopher-runtime", "seq": 21, "offset": 1260, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795019960028489777, "name": "gopher-runtime", "seq": 21, "offset": 1278, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960028605476, "seq": 21, "answer": "saving screenshot\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "raster", "unix_ns": 1795019960028840541, "frame": 5, "label": "historic-reorder", "x": [127, 19, 73, 100, 46], "y": [73, 72, 73, 71, 72], "top": 29, "bottom": 242, "scanlines": 262, "planner_misses_previous": 0, "compact_slot_previous": 4, "path": "frame_0005.png"}
+{"event": "tx", "unix_ns": 1795019960028938640, "name": "gopher-runtime", "seq": 22, "offset": 451, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795019960130559309, "name": "gopher-runtime", "seq": 22, "offset": 1300, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960130671486, "seq": 22, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960130744676, "name": "gopher-runtime", "seq": 23, "offset": 462, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795019960130829825, "name": "gopher-runtime", "seq": 23, "offset": 1322, "hex": "46523d3030303620534c3d30303020434c3d2d36380a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960130847024, "seq": 23, "answer": "FR=0006 SL=000 CL=-68\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960130869903, "name": "gopher-runtime", "seq": 24, "offset": 465, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795019960130947351, "name": "gopher-runtime", "seq": 24, "offset": 1366, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960130965592, "seq": 24, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960131014589, "name": "gopher-runtime", "seq": 25, "offset": 474, "hex": "5045454b203078303039632030783030396404"}
+{"event": "rx", "unix_ns": 1795019960131068666, "name": "gopher-runtime", "seq": 25, "offset": 1421, "hex": "30783030396320285553454429202852414d29203d20307830300a3078303039642028504149525f534c4f5429202852414d29203d20307830340a"}
+{"event": "rx", "unix_ns": 1795019960131084703, "name": "gopher-runtime", "seq": 25, "offset": 1480, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960131097427, "seq": 25, "answer": "0x009c (USED) (RAM) = 0x00\n0x009d (PAIR_SLOT) (RAM) = 0x04\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960131194814, "name": "gopher-runtime", "seq": 26, "offset": 493, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f673562642f62726965662d70686173657664656c2d706e672f6672616d655f303030362e706e6704"}
+{"event": "rx", "unix_ns": 1795019960131291166, "name": "gopher-runtime", "seq": 26, "offset": 1502, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795019960207673477, "name": "gopher-runtime", "seq": 26, "offset": 1520, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960207783740, "seq": 26, "answer": "saving screenshot\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "raster", "unix_ns": 1795019960207909601, "frame": 6, "label": "historic-reorder", "x": [127, 19, 73, 100, 46], "y": [73, 72, 73, 71, 72], "top": 29, "bottom": 242, "scanlines": 262, "planner_misses_previous": 0, "compact_slot_previous": 4, "path": "frame_0006.png"}
+{"event": "tx", "unix_ns": 1795019960208041721, "name": "gopher-runtime", "seq": 27, "offset": 560, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795019960244022097, "name": "gopher-runtime", "seq": 27, "offset": 1542, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960244107723, "seq": 27, "answer": "", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960244179915, "name": "gopher-runtime", "seq": 28, "offset": 571, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795019960244388379, "name": "gopher-runtime", "seq": 28, "offset": 1564, "hex": "46523d3030303720534c3d30303020434c3d2d36380a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960244418651, "seq": 28, "answer": "FR=0007 SL=000 CL=-68\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960244470766, "name": "gopher-runtime", "seq": 29, "offset": 574, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795019960246421363, "name": "gopher-runtime", "seq": 29, "offset": 1608, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960246481760, "seq": 29, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960246556067, "name": "gopher-runtime", "seq": 30, "offset": 583, "hex": "5045454b203078303039632030783030396404"}
+{"event": "rx", "unix_ns": 1795019960248424171, "name": "gopher-runtime", "seq": 30, "offset": 1663, "hex": "30783030396320285553454429202852414d29203d20307830300a3078303039642028504149525f534c4f5429202852414d29203d20307830340a"}
+{"event": "rx", "unix_ns": 1795019960248474261, "name": "gopher-runtime", "seq": 30, "offset": 1722, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960248492190, "seq": 30, "answer": "0x009c (USED) (RAM) = 0x00\n0x009d (PAIR_SLOT) (RAM) = 0x04\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "tx", "unix_ns": 1795019960248639846, "name": "gopher-runtime", "seq": 31, "offset": 602, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f673562642f62726965662d70686173657664656c2d706e672f6672616d655f303030372e706e6704"}
+{"event": "rx", "unix_ns": 1795019960248684601, "name": "gopher-runtime", "seq": 31, "offset": 1744, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795019960312741495, "name": "gopher-runtime", "seq": 31, "offset": 1762, "hex": "5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960312830013, "seq": 31, "answer": "saving screenshot\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "raster", "unix_ns": 1795019960312922483, "frame": 7, "label": "historic-reorder", "x": [127, 19, 73, 100, 46], "y": [73, 72, 73, 71, 72], "top": 29, "bottom": 242, "scanlines": 262, "planner_misses_previous": 0, "compact_slot_previous": 4, "path": "frame_0007.png"}
+{"event": "tx", "unix_ns": 1795019960313065280, "name": "gopher-runtime", "seq": 32, "offset": 669, "hex": "5045454b2030783030383120307830303832203078303038332030783030383420307830303835203078303038362030783030383720307830303838203078303038392030783030386104"}
+{"event": "rx", "unix_ns": 1795019960313161528, "name": "gopher-runtime", "seq": 32, "offset": 1784, "hex": "3078303038312028585029202852414d29203d20307837660a307830303832202852414d29203d20307831330a307830303833202852414d29203d20307834390a"}
+{"event": "rx", "unix_ns": 1795019960313176144, "name": "gopher-runtime", "seq": 32, "offset": 1849, "hex": "307830303834202852414d29203d20307836340a307830303835202852414d29203d20307832650a3078303038362028595029202852414d29203d20307834390a307830303837202852414d29203d2030783438"}
+{"event": "rx", "unix_ns": 1795019960313185437, "name": "gopher-runtime", "seq": 32, "offset": 1933, "hex": "0a307830303838202852414d29203d20307834390a307830303839202852414d29203d20307834370a"}
+{"event": "rx", "unix_ns": 1795019960313231459, "name": "gopher-runtime", "seq": 32, "offset": 1974, "hex": "307830303861202852414d29203d20307834380a5b202466303533206c64782023243034205d203e3e20"}
+{"event": "ack", "unix_ns": 1795019960313245811, "seq": 32, "answer": "0x0081 (XP) (RAM) = 0x7f\n0x0082 (RAM) = 0x13\n0x0083 (RAM) = 0x49\n0x0084 (RAM) = 0x64\n0x0085 (RAM) = 0x2e\n0x0086 (YP) (RAM) = 0x49\n0x0087 (RAM) = 0x48\n0x0088 (RAM) = 0x49\n0x0089 (RAM) = 0x47\n0x008a (RAM) = 0x48\n", "prompt": "[ $f053 ldx #$04 ] >> "}
+{"event": "exit", "unix_ns": 1795019960844534929, "name": "gopher-runtime", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 4.804772616000264, "stderr_hex": ""}

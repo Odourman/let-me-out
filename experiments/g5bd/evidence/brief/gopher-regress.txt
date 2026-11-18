@@ -1,0 +1,32 @@
++ set -euo pipefail
+++ realpath roms/baseline.bin
++ frozen=/workspace/work/g5bd-checkout/experiments/g5bd/roms/baseline.bin
+++ realpath roms/phaseprobe.bin
++ candidate=/workspace/work/g5bd-checkout/experiments/g5bd/roms/phaseprobe.bin
+++ realpath -m /workspace/work/g5bd/native
++ root=/workspace/work/g5bd/native
++ test '!' -e /workspace/work/g5bd/native
++ mkdir -p /workspace/work/g5bd/native/home /workspace/work/g5bd/native/cwd
++ export HOME=/workspace/work/g5bd/native/home XDG_CONFIG_HOME=/workspace/work/g5bd/native/home
++ HOME=/workspace/work/g5bd/native/home
++ XDG_CONFIG_HOME=/workspace/work/g5bd/native/home
++ cd /workspace/work/g5bd/native/cwd
++ gopher=/workspace/.g5ar-env01/bin/gopher2600
++ printf '%s  %s\n' 0f1c83bab54f4a1089461f7ac721d8c6e46f59f3a984938939a223af5083cd14 /workspace/work/g5bd-checkout/experiments/g5bd/roms/baseline.bin
++ sha256sum -c -
+/workspace/work/g5bd-checkout/experiments/g5bd/roms/baseline.bin: OK
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BC positive boot / same-Y' /workspace/work/g5bd-checkout/experiments/g5bd/roms/baseline.bin
+adding: [video] baseline [NTSC] frames=30 [G5BC positive boot / same-Y][2Kadded: [video] baseline [NTSC] frames=30 [G5BC positive boot / same-Y]
++ /workspace/.g5ar-env01/bin/gopher2600 regress add -tv NTSC -frames 30 -mapping F6 -notes 'G5BD phaseprobe positive boot / same-Y' /workspace/work/g5bd-checkout/experiments/g5bd/roms/phaseprobe.bin
+adding: [video] phaseprobe [NTSC] frames=30 [G5BD phaseprobe positive boot / same-Y][2Kadded: [video] phaseprobe [NTSC] frames=30 [G5BD phaseprobe positive boot / same-Y]
++ /workspace/.g5ar-env01/bin/gopher2600 regress list
+000 [video] baseline [NTSC] frames=30 [G5BC positive boot / same-Y]
+001 [video] phaseprobe [NTSC] frames=30 [G5BD phaseprobe positive boot / same-Y]
++ db=/workspace/work/g5bd/native/home/gopher2600/regression/db
++ sha256sum /workspace/work/g5bd/native/home/gopher2600/regression/db
++ /workspace/.g5ar-env01/bin/gopher2600 regress run -concurrent=false -verbose
+[2Krunning: 000 [video] baseline [NTSC] frames=30 [G5BC positive boot / same-Y][2Ksucceed: 000 [video] baseline [NTSC] frames=30 [G5BC positive boot / same-Y]
+[2Krunning: 001 [video] phaseprobe [NTSC] frames=30 [G5BD phaseprobe positive boot / same-Y][2Ksucceed: 001 [video] phaseprobe [NTSC] frames=30 [G5BD phaseprobe positive boot / same-Y]
+regression tests: 2 success, 0 fail (elapsed 0s)
++ sha256sum -c /workspace/work/g5bd/native/database.sha256
+/workspace/work/g5bd/native/home/gopher2600/regression/db: OK
