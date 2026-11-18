@@ -209,6 +209,11 @@ verify_session A_TRAP_ACK
 send run
 wid=""
 find_debugger "$case_dir" A_NEW_TRAP_REENTRY 40
+# Allow Stella's new PromptWidget to finalize after run; prove its response BEFORE numeric batch.
+sleep 2
+send 'print pc'
+copy_session A_REENTRY_HANDSHAKE
+verify_session A_REENTRY_HANDSHAKE
 record_cpu
 copy_native A_TRAP
 copy_session A_TRAP
@@ -254,6 +259,11 @@ done
 send run
 wid=""
 find_debugger "$case_dir" B_NEW_BREAK_REENTRY 40
+# Same targeted one-shot prompt reentry handshake, without blind retry.
+sleep 2
+send 'print pc'
+copy_session B_REENTRY_HANDSHAKE
+verify_session B_REENTRY_HANDSHAKE
 record_cpu
 copy_native B_PRE
 copy_session B_PRE
