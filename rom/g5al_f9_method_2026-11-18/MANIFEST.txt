@@ -1,0 +1,59 @@
+G5AL / LM-D25 F9-only final frozen evidence manifest (2026-11-18)
+ROLE ROM DEVELOPMENT III; status G5AL_F9_TRAP_CONTROL_FAIL; G5_FORMAL_OPEN
+BASE MAIN commit bef65b52556dab99d8eaac4270325704de81dbff
+FINAL branch rom-dev-iii/g5al-lm-d25-f9-stable-bank-neutral-20261118
+FINAL HEAD Git commit is the COMMIT CREATING THIS MANIFEST; fetch the branch and Issue #17.
+NO PR NO MERGE NO NEW ASM/BIN/DASM NO C0 NO LATER FAMILY.
+Exactly 2/2 NEW G5AL measurement runs completed. No third authorized.
+
+FROZEN ORIGINAL F9 NTSC F6 16384-byte ROM SHA256 6c2585148eb082fb8bc794d664edc4869b18849fcfabb9cada23373d1dc1318b
+Historical original F9 run 44050126727 artifact LET_ME_OUT_R1_F9_ONE_ROM_AND_ACTUAL_STELLA_PARTIAL_OR_COMPLETE_G1
+Original source static PASS, 4 identical 4096-byte F6 banks.
+Original M TOP-DOWN nine mask rows 3C 3C 18 FF 18 24 24 42 42.
+Historical G5AF frozen reference native TIA PNG SHA256 078c9c1ce249cb8c9ef6a45dc322647db2e1a869b3f60635c9e27436f38c016a
+
+RUN1 https://github.com/Odourman/let-me-out/actions/runs/44203795042
+Capture job 134464417668 FAILURE
+Archive readback job 134467449687 SUCCESS
+Original GitHub artifact 14382688726, raw ZIP 35625 bytes
+ZIP_SHA256 b2edf5609eefb051885bc5eaa5b7cfb8a20e4b9fdeb3e0c9f8df9f389c8d69f7
+Original raw ZIP entries 45, original SHA256SUMS lines 44, local original rehash 44/44 PASS
+Drive raw ZIP https://drive.google.com/file/d/1qwKIqIBlJ67mUP7b034J78KjgEJxQAQn/view
+A initial PASS, A frame PASS, A trap ACK PASS.
+A post-run STRICT_FAIL because source session contains print pcprint _fCount too many arguments;
+one valid later PC F1F0, frame136 scan123 sCycles21 bank0, real TIA state and original native PNG matching G5AF EXACTLY, 0 different pixels.
+B NOT_RUN C NOT_RUN.
+
+RUN2 https://github.com/Odourman/let-me-out/actions/runs/44204912620
+Capture job 134468256971 FAILURE
+Archive readback job 134468721983 SUCCESS
+Original GitHub artifact 14383206943, raw ZIP 32818 bytes
+ZIP_SHA256 a937861dc55c674abee68146c8e12026bd732e4b36116d55c80aa3b1d39668fe
+Original raw ZIP entries 40, original SHA256SUMS lines 39, local original rehash 39/39 PASS
+Drive raw ZIP https://drive.google.com/file/d/1_dSFqTn_bIypBNrsmJiV5WPjgLORwetZ/view
+A initial PASS, A frame PASS, A trap ACK PASS.
+A post-run STRICT_FAIL because A_REENTRY_HANDSHAKE saveSes did not create live debugger session.
+Window title was NOT accepted alone as numeric command execution; no post-run PC and no native in run2.
+B NOT_RUN C NOT_RUN.
+
+HISTORICAL negative outcomes preserved:
+G5AJ LM-D24 G5AJ_F9_TRAP_CONTROL_FAIL (2/2, unchanged)
+G5AH LM-D23 C0_NO_BUILD_INSTRUMENTATION_BLOCKER, original archive SHA FAIL preserved
+G5AF older bounded original F9 instrumentation PASS only
+G5AD NO_BUILD and G5Z inconclusive preserved.
+
+GITHUB_BLOB_SHA1 (exact new specialist source files, except this self manifest):
+167a4e05d78a6fc20aa2f6d49ef19b650f9f49a9  rom/g5al_f9_method_2026-11-18/PREREGISTERED_F9_METHOD.md
+e7f4512fa64cd78d480e5bb8a2f74b131be4b48c  rom/g5al_f9_method_2026-11-18/TARGETED_CORRECTION_BEFORE_SECOND_FINAL_RUN.md
+f159c1f8668c1f504fd9538a8d1ef17b2ddefafa  rom/g5al_f9_method_2026-11-18/audit_g5al.py
+f3e8c49b8cb4c1f7ad3e73a7c25423f21ba6df0c  rom/g5al_f9_method_2026-11-18/check_f9_frozen.py
+5fdaef9ba971dbd16a8e0d0ec94a442a96a4a602  rom/g5al_f9_method_2026-11-18/run_g5al_f9.sh
+21d75b3fc2ae3ba29ec6d97a1518203537381f4b  rom/g5al_f9_method_2026-11-18/REPRODUCE_AND_EVIDENCE.md
+3bf17d5a61810733167f0dcd8914567a0ef7b3fa  rom/g5al_f9_method_2026-11-18/G5AL_F9_METHOD_EVIDENCE.csv
+308c9e91f6ccebff5d68b1e2d63311ce369062db  rom/g5al_f9_method_2026-11-18/TO_MAIN_G5AL_F9_METHOD.md
+48d08183ce1b899f866ea574140bc6d1248b9252  .github/workflows/g5al_f9_stable_bank_neutral.yml
+
+This MANIFEST is intentionally excluded from its own blob listing (no self-referential hash).
+The raw ZIP manifests are also intentionally non-self-referential and were independently readback verified.
+A source-reference historical F9 SHA is NOT a new G5AL ROM.
+STOP; wait for MAIN VIII to source-review. Independent VERIFICATION II not performed.
