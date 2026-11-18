@@ -1,0 +1,1046 @@
+------- FILE roms/vdel.asm LEVEL 1 PASS 3
+      1  fffa		       00 05	   ACTORS     =	5
+      2  fffa		       00 00	   ROWSPLIT   =	0
+      3  fffa		       00 01	   VDEL       =	1
+      4  fffa		       00 01	   COPIES     =	1
+      5  fffa		       00 00	   MISSILE    =	0
+------- FILE kernel.asm LEVEL 2 PASS 3
+      0  10000 ????				       include	"kernel.asm"
+      1  10000 ????				       processor	6502
+      2  10000 ????						; LM-D33 diagnostic only. All raster origins are derived from X/Y in RIOT RAM.
+      3  10000 ????						; Runtime emits the timed scanline program in RIOT RAM. Cartridge banks are
+      4  10000 ????						; identical and no bank selector or precompiled scene is used.
+      5  10000 ????		00 00	    VSYNC      =	$00
+      6  10000 ????		00 01	    VBLANK     =	$01
+      7  10000 ????		00 02	    WSYNC      =	$02
+      8  10000 ????		00 04	    NUSIZ0     =	$04
+      9  10000 ????		00 05	    NUSIZ1     =	$05
+     10  10000 ????		00 06	    COLUP0     =	$06
+     11  10000 ????		00 07	    COLUP1     =	$07
+     12  10000 ????		00 08	    COLUPF     =	$08
+     13  10000 ????		00 09	    COLUBK     =	$09
+     14  10000 ????		00 0a	    CTRLPF     =	$0a
+     15  10000 ????		00 0d	    PF0        =	$0d
+     16  10000 ????		00 0e	    PF1        =	$0e
+     17  10000 ????		00 0f	    PF2        =	$0f
+     18  10000 ????		00 10	    RESP0      =	$10
+     19  10000 ????		00 11	    RESP1      =	$11
+     20  10000 ????		00 12	    RESM0      =	$12
+     21  10000 ????		02 82	    SWCHB      =	$0282
+     22  10000 ????		00 20	    HMP0       =	$20
+     23  10000 ????		00 2a	    HMOVE      =	$2a
+     24  10000 ????		00 2b	    HMCLR      =	$2b
+     25  10000 ????		00 22	    HMM0       =	$22
+     26  10000 ????		00 1e	    ENAM1      =	$1e
+     27  10000 ????		00 26	    VDELP1     =	$26
+     28  10000 ????		00 1b	    GRP0       =	$1b
+     29  10000 ????		00 1c	    GRP1       =	$1c
+     30  10000 ????		00 1d	    ENAM0      =	$1d
+     31  10000 ????		02 84	    INTIM      =	$0284
+     32  10000 ????		02 96	    TIM64T     =	$0296
+     33  10000 ????		00 80	    FRAME      =	$80
+     34  10000 ????		00 81	    XP	       =	$81
+     35  10000 ????		00 86	    YP	       =	$86
+     36  10000 ????		00 8b	    ORDER      =	$8b
+     37  10000 ????		00 90	    SORTI      =	$90
+     38  10000 ????		00 91	    SORTJ      =	$91
+     39  10000 ????		00 92	    SAVEDID    =	$92
+     40  10000 ????		00 93	    ITER       =	$93
+     41  10000 ????		00 94	    KT	       =	$94
+     42  10000 ????		00 95	    TARGET     =	$95
+     43  10000 ????		00 96	    GAP        =	$96
+     44  10000 ????		00 97	    ADDRLO     =	$97
+     45  10000 ????		00 98	    ADDRHI     =	$98
+     46  10000 ????		00 99	    BRANCH     =	$99
+     47  10000 ????		00 9a	    PAIRX      =	$9a
+     48  10000 ????		00 9c	    USED       =	$9c	; count of diagnostic misses this frame
+     49  10000 ????		00 9e	    ACTOR      =	$9e
+     50  10000 ????		00 9f	    ANCHOR     =	$9f
+     51  10000 ????		00 9d	    PAIR_SLOT  =	$9d
+     52  10000 ????		00 9b	    SECOND     =	$9b
+     53  10000 ????		00 92	    COMPACT_END =	$92
+     54  10000 ????		00 92	    FAST       =	$92
+     55  10000 ????		00 90	    PREFETCHED =	$90
+     56  10000 ????		00 91	    NEXT_READY =	$91
+     57  10000 ????		00 a0	    CACHED     =	UNION
+     58  10000 ????		00 a0	    UNION      =	$a0	; 24 bytes, used only when a pair's origins coincide
+     59  10000 ????		00 b8	    CODE       =	$b8	; 64 bytes; stack uses $f8-$ff
+     60  10000 ????		00 40	    STARTY     =	64
+     61  10000 ????		00 18	    ROWS       =	24
+     62  10000 ????
+     63  f000					      ORG	$f000
+     64  f000				   Reset
+     65  f000		       78		      sei
+     66  f001		       d8		      cld
+     67  f002		       a2 ff		      ldx	#$ff
+     68  f004		       9a		      txs
+     69  f005		       a2 7f		      ldx	#$7f
+     70  f007		       a9 00		      lda	#0
+     71  f009				   Clear
+     72  f009		       95 80		      sta	$80,x
+     73  f00b		       ca		      dex
+     74  f00c		       10 fb		      bpl	Clear
+     75  f00e		       a2 04		      ldx	#4
+     76  f010				   InitCoordinates
+     77  f010		       bd dd f0 	      lda	InitialX,x
+     78  f013		       95 81		      sta	XP,x
+     79  f015		       a9 48		      lda	#72
+     80  f017		       95 86		      sta	YP,x
+     81  f019		       ca		      dex
+     82  f01a		       10 f4		      bpl	InitCoordinates
+     83  f01c		       a9 1e		      lda	#$1e
+     84  f01e		       85 06		      sta	COLUP0
+     85  f020		       a9 0e		      lda	#$0e
+     86  f022		       85 07		      sta	COLUP1
+     87  f024		       a9 26		      lda	#$26
+     88  f026		       85 08		      sta	COLUPF
+     89  f028		       a9 01		      lda	#1
+     90  f02a		       85 0a		      sta	CTRLPF
+     91  f02c				  -	      IF	ACTORS = 2
+     92  f02c				  -	      lda	#0
+     93  f02c					      ENDIF
+     94  f02c		       a9 01		      lda	#COPIES
+     95  f02e				   SetCopies
+     96  f02e		       85 05		      sta	NUSIZ1
+     97  f030					      IF	VDEL
+     98  f030		       a9 01		      lda	#1
+     99  f032		       85 26		      sta	VDELP1
+    100  f034					      ENDIF
+    101  f034		       a9 30		      lda	#$30
+    102  f036		       85 0d		      sta	PF0
+    103  f038				   Frame
+    104  f038		       85 02		      sta	WSYNC
+    105  f03a		       a9 02		      lda	#2
+    106  f03c		       85 00		      sta	VSYNC
+    107  f03e		       85 01		      sta	VBLANK
+    108  f040		       85 02		      sta	WSYNC
+    109  f042		       85 02		      sta	WSYNC
+    110  f044		       85 02		      sta	WSYNC
+    111  f046		       a9 00		      lda	#0
+    112  f048		       85 00		      sta	VSYNC
+    113  f04a		       85 1b		      sta	GRP0
+    114  f04c		       85 1c		      sta	GRP1
+    115  f04e		       85 1d		      sta	ENAM0
+    116  f050		       a9 2c		      lda	#44
+    117  f052		       8d 96 02 	      sta	TIM64T
+    118  f055							; Set P0 and M0 in blanked scanlines, at fixed x ~10 and x ~25.
+    119  f055		       85 02		      sta	WSYNC
+    120  f057		       a2 04		      ldx	#4
+    121  f059				   PosPlayer
+    122  f059		       ca		      dex
+    123  f05a		       d0 fd		      bne	PosPlayer
+    124  f05c		       85 10		      sta	RESP0
+    125  f05e		       85 02		      sta	WSYNC
+    126  f060		       a2 02		      ldx	#2
+    127  f062				   PosMissile
+    128  f062		       ca		      dex
+    129  f063		       d0 fd		      bne	PosMissile
+    130  f065		       85 12		      sta	RESM0
+    131  f067				  -	      IF	MISSILE
+    132  f067				  -	      sta	HMCLR
+    133  f067				  -	      lda	#77
+    134  f067				  -	      sta	WSYNC
+    135  f067				  -	      sec
+    136  f067				  -MissileCoarse
+    137  f067				  -	      sbc	#15
+    138  f067				  -	      bcs	MissileCoarse
+    139  f067				  -	      eor	#7
+    140  f067				  -	      asl
+    141  f067				  -	      asl
+    142  f067				  -	      asl
+    143  f067				  -	      asl
+    144  f067				  -	      ldx	#1
+    145  f067				  -	      sta	RESM0,x
+    146  f067				  -	      sta	HMM0,x
+    147  f067				  -	      sta	WSYNC
+    148  f067				  -	      sta	HMOVE
+    149  f067					      ENDIF
+    150  f067							; Select is a diagnostic input for the negative Stella fixture.
+    151  f067		       ad 82 02 	      lda	SWCHB
+    152  f06a		       29 02		      and	#2
+    153  f06c		       d0 0f		      bne	SortCurrent
+    154  f06e		       a2 04		      ldx	#4
+    155  f070				   SelectFixture
+    156  f070		       bd e2 f0 	      lda	NegativeX,x
+    157  f073		       95 81		      sta	XP,x
+    158  f075		       bd e7 f0 	      lda	NegativeY,x
+    159  f078		       95 86		      sta	YP,x
+    160  f07a		       ca		      dex
+    161  f07b		       10 f3		      bpl	SelectFixture
+    162  f07d				   SortCurrent
+    163  f07d							; This sort is outside the active band. Five independent X bytes determine
+    164  f07d							; the current index order from scratch each frame.
+    165  f07d		       20 ec f0 	      jsr	Sort
+    166  f080				  -	      IF	ACTORS = 2
+    167  f080				  -	      jsr	PreparePair
+    168  f080				  -	      sta	HMCLR
+    169  f080				  -	      lda	ANCHOR
+    170  f080				  -	      clc
+    171  f080				  -	      adc	#9
+    172  f080				  -	      ldx	#1
+    173  f080				  -	      jsr	PositionP1
+    174  f080				  -	      sta	WSYNC
+    175  f080				  -FineMove
+    176  f080				  -	      sta	HMOVE
+    177  f080					      ENDIF
+    178  f080				   BlankTimer
+    179  f080		       ad 84 02 	      lda	INTIM
+    180  f083		       d0 fb		      bne	BlankTimer
+    181  f085		       85 02		      sta	WSYNC
+    182  f087				   VisibleStart
+    183  f087		       85 01		      sta	VBLANK
+    184  f089		       a9 4c		      lda	#76
+    185  f08b		       8d 96 02 	      sta	TIM64T
+    186  f08e					      IF	ACTORS = 5
+    187  f08e		       20 a5 f3 	      jsr	PreparePair
+    188  f091		       20 58 f3 	      jsr	FindSecond
+    189  f094					      ENDIF
+    190  f094		       20 32 f1 	      jsr	MakeKernel
+    191  f097				   TopTimer
+    192  f097		       ad 84 02 	      lda	INTIM
+    193  f09a		       d0 fb		      bne	TopTimer
+    194  f09c				   BandEntry
+    195  f09c		       a9 02		      lda	#2
+    196  f09e		       85 1d		      sta	ENAM0
+    197  f0a0		       a0 ff		      ldy	#$ff
+    198  f0a2		       20 b8 00 	      jsr	CODE
+    199  f0a5				   BandExit
+    200  f0a5							; The RAM program synchronized to the first line after the band and exited.
+    201  f0a5		       a9 00		      lda	#0
+    202  f0a7		       85 1b		      sta	GRP0
+    203  f0a9		       85 1c		      sta	GRP1
+    204  f0ab				  -	      IF	MISSILE
+    205  f0ab				  -	      sta	ENAM1
+    206  f0ab					      ENDIF
+    207  f0ab		       a2 67		      ldx	#103
+    208  f0ad		       a4 92		      ldy	FAST
+    209  f0af		       f0 03		      beq	DisableMissile
+    210  f0b1		       85 02		      sta	WSYNC
+    211  f0b3		       ca		      dex
+    212  f0b4				   DisableMissile
+    213  f0b4		       85 1d		      sta	ENAM0
+    214  f0b6				   Bottom
+    215  f0b6		       85 02		      sta	WSYNC
+    216  f0b8		       ca		      dex
+    217  f0b9		       d0 fb		      bne	Bottom
+    218  f0bb		       a2 1e		      ldx	#30
+    219  f0bd				   Over
+    220  f0bd		       85 02		      sta	WSYNC
+    221  f0bf		       a9 02		      lda	#2
+    222  f0c1		       85 01		      sta	VBLANK
+    223  f0c3		       ca		      dex
+    224  f0c4		       d0 f7		      bne	Over
+    225  f0c6		       e6 80		      inc	FRAME
+    226  f0c8
+    227  f0c8				   FrameJump
+    228  f0c8		       4c 38 f0 	      jmp	Frame
+    229  f0cb
+    230  f0cb				   PositionP1
+    231  f0cb		       85 02		      sta	WSYNC
+    232  f0cd		       38		      sec
+    233  f0ce				   CoarseP1
+    234  f0ce		       e9 0f		      sbc	#15
+    235  f0d0		       b0 fc		      bcs	CoarseP1
+    236  f0d2		       49 07		      eor	#7
+    237  f0d4		       0a		      asl
+    238  f0d5		       0a		      asl
+    239  f0d6		       0a		      asl
+    240  f0d7		       0a		      asl
+    241  f0d8		       95 10		      sta	RESP0,x
+    242  f0da		       95 20		      sta	HMP0,x
+    243  f0dc		       60		      rts
+    244  f0dd
+    245  f0dd				   InitialX
+    246  f0dd				  -	      IF	ACTORS = 2
+    247  f0dd				  -	      byte	19,52,151,73,75
+    248  f0dd					      ELSE
+    249  f0dd		       13 2e 49 64*	      byte.b	19,46,73,100,127
+    250  f0e2					      ENDIF
+    251  f0e2				   NegativeX
+    252  f0e2				  -	      IF	ACTORS = 2
+    253  f0e2				  -	      byte	19,52,151,73,81
+    254  f0e2					      ELSE
+    255  f0e2		       7f 13 49 64*	      byte.b	127,19,73,100,46
+    256  f0e7					      ENDIF
+    257  f0e7
+    258  f0e7				   NegativeY
+    259  f0e7		       49 48 49 47*	      byte.b	73,72,73,71,72
+    260  f0ec
+    261  f0ec				   Sort
+    262  f0ec				  -	      IF	ACTORS = 2
+    263  f0ec				  -	      ldx	#1
+    264  f0ec					      ELSE
+    265  f0ec		       a2 04		      ldx	#4
+    266  f0ee					      ENDIF
+    267  f0ee				   OrderInit
+    268  f0ee		       8a		      txa
+    269  f0ef				  -	      IF	ACTORS = 2
+    270  f0ef				  -	      clc
+    271  f0ef				  -	      adc	#3
+    272  f0ef					      ENDIF
+    273  f0ef		       95 8b		      sta	ORDER,x
+    274  f0f1		       ca		      dex
+    275  f0f2		       10 fa		      bpl	OrderInit
+    276  f0f4		       a9 01		      lda	#1
+    277  f0f6		       85 90		      sta	SORTI
+    278  f0f8				   SortOuter
+    279  f0f8		       a6 90		      ldx	SORTI
+    280  f0fa		       b5 8b		      lda	ORDER,x
+    281  f0fc		       85 92		      sta	SAVEDID
+    282  f0fe		       a8		      tay
+    283  f0ff		       b9 81 00 	      lda	XP,y
+    284  f102		       85 9a		      sta	PAIRX
+    285  f104		       86 91		      stx	SORTJ
+    286  f106				   SortInner
+    287  f106		       a6 91		      ldx	SORTJ
+    288  f108		       f0 15		      beq	SortPlace
+    289  f10a		       ca		      dex
+    290  f10b		       b5 8b		      lda	ORDER,x
+    291  f10d		       a8		      tay
+    292  f10e		       b9 81 00 	      lda	XP,y
+    293  f111		       c5 9a		      cmp	PAIRX
+    294  f113		       90 0a		      bcc	SortPlace
+    295  f115		       f0 08		      beq	SortPlace
+    296  f117		       98		      tya
+    297  f118		       95 8c		      sta	ORDER+1,x
+    298  f11a		       c6 91		      dec	SORTJ
+    299  f11c		       4c 06 f1 	      jmp	SortInner
+    300  f11f				   SortPlace
+    301  f11f		       a6 91		      ldx	SORTJ
+    302  f121		       a5 92		      lda	SAVEDID
+    303  f123		       95 8b		      sta	ORDER,x
+    304  f125		       e6 90		      inc	SORTI
+    305  f127		       a5 90		      lda	SORTI
+    306  f129				  -	      IF	ACTORS = 2
+    307  f129				  -	      cmp	#2
+    308  f129					      ELSE
+    309  f129		       c9 05		      cmp	#5
+    310  f12b					      ENDIF
+    311  f12b		       90 cb		      bcc	SortOuter
+    312  f12d		       60		      rts
+    313  f12e
+    314  f12e							; X=output byte offset, Y scratch. No nesting beyond two JSRs.
+    315  f12e				   Emit
+    316  f12e		       95 b8		      sta	CODE,x
+    317  f130		       e8		      inx
+    318  f131		       60		      rts
+    319  f132
+    320  f132				   MakeKernel
+    321  f132		       a9 00		      lda	#0
+    322  f134		       85 92		      sta	FAST
+    323  f136		       85 90		      sta	PREFETCHED
+    324  f138		       85 91		      sta	NEXT_READY
+    325  f13a					      IF	ACTORS = 5
+    326  f13a		       a5 9a		      lda	PAIRX
+    327  f13c		       d0 20		      bne	UseNormalPrefix
+    328  f13e		       a5 9b		      lda	SECOND
+    329  f140		       c9 ff		      cmp	#$ff
+    330  f142		       d0 1a		      bne	UseNormalPrefix
+    331  f144		       20 81 f4 	      jsr	CanReuseMask
+    332  f147		       90 03		      bcc	CheckFastLimit
+    333  f149		       4c a9 f4 	      jmp	BuildReuse
+    334  f14c				   CheckFastLimit
+    335  f14c		       a4 8f		      ldy	ORDER+4
+    336  f14e		       b9 81 00 	      lda	XP,y
+    337  f151		       a8		      tay
+    338  f152		       b9 00 fa 	      lda	CyclesByPixel,y
+    339  f155		       c9 41		      cmp	#65
+    340  f157		       b0 05		      bcs	UseNormalPrefix
+    341  f159		       e6 92		      inc	FAST
+    342  f15b		       4c 71 f1 	      jmp	FastPrefixStart
+    343  f15e				   UseNormalPrefix
+    344  f15e					      ENDIF
+    345  f15e		       a2 00		      ldx	#0
+    346  f160		       a0 00		      ldy	#0
+    347  f162				   CopyPrefix
+    348  f162		       b9 35 f5 	      lda	Prefix,y
+    349  f165		       20 2e f1 	      jsr	Emit
+    350  f168		       c8		      iny
+    351  f169		       c0 0c		      cpy	#PrefixEnd-Prefix
+    352  f16b		       90 f5		      bcc	CopyPrefix
+    353  f16d		       a9 0d		      lda	#13
+    354  f16f		       d0 11		      bne	InitPlanner
+    355  f171				   FastPrefixStart
+    356  f171		       a2 00		      ldx	#0
+    357  f173		       a0 00		      ldy	#0
+    358  f175				   FastCopy
+    359  f175		       b9 2d f5 	      lda	FastPrefix,y
+    360  f178		       20 2e f1 	      jsr	Emit
+    361  f17b		       c8		      iny
+    362  f17c		       c0 08		      cpy	#FastPrefixEnd-FastPrefix
+    363  f17e		       90 f5		      bcc	FastCopy
+    364  f180		       a9 09		      lda	#9
+    365  f182				   InitPlanner
+    366  f182		       85 94		      sta	KT
+    367  f184		       a9 00		      lda	#0
+    368  f186		       85 93		      sta	ITER
+    369  f188		       85 9c		      sta	USED
+    370  f18a				  -	      IF	ACTORS = 2
+    371  f18a				  -	      jsr	SelectCompactSource
+    372  f18a				  -	      lda	#$b9
+    373  f18a				  -	      jsr	Emit
+    374  f18a				  -	      lda	ADDRLO
+    375  f18a				  -	      jsr	Emit
+    376  f18a				  -	      lda	ADDRHI
+    377  f18a				  -	      jsr	Emit
+    378  f18a				  -	      lda	#$85
+    379  f18a				  -	      jsr	Emit
+    380  f18a				  -	      lda	#GRP1
+    381  f18a				  -	      jsr	Emit
+    382  f18a				  -	      lda	#20
+    383  f18a				  -	      sta	KT
+    384  f18a				  -	      lda	#2
+    385  f18a				  -	      sta	ITER
+    386  f18a					      ENDIF
+    387  f18a				   NextActor
+    388  f18a		       a5 93		      lda	ITER
+    389  f18c		       c9 05		      cmp	#ACTORS
+    390  f18e		       90 03		      bcc	ActorValid
+    391  f190		       4c d5 f2 	      jmp	FinishKernel
+    392  f193				   ActorValid
+    393  f193		       a8		      tay
+    394  f194		       b9 8b 00 	      lda	ORDER,y
+    395  f197		       85 9e		      sta	ACTOR
+    396  f199		       a8		      tay
+    397  f19a		       b9 81 00 	      lda	XP,y
+    398  f19d					      IF	ACTORS = 5
+    399  f19d		       a4 9a		      ldy	PAIRX
+    400  f19f		       f0 08		      beq	OriginReady
+    401  f1a1		       a4 93		      ldy	ITER
+    402  f1a3		       c4 9d		      cpy	PAIR_SLOT
+    403  f1a5		       d0 02		      bne	OriginReady
+    404  f1a7		       a5 9f		      lda	ANCHOR
+    405  f1a9				   OriginReady
+    406  f1a9					      ENDIF
+    407  f1a9		       a8		      tay
+    408  f1aa		       b9 00 fa 	      lda	CyclesByPixel,y
+    409  f1ad		       85 95		      sta	TARGET
+    410  f1af		       38		      sec
+    411  f1b0		       e5 94		      sbc	KT
+    412  f1b2		       90 28		      bcc	CannotSchedule
+    413  f1b4		       a5 92		      lda	FAST
+    414  f1b6		       f0 0e		      beq	StandardBudget
+    415  f1b8		       a5 95		      lda	TARGET
+    416  f1ba		       38		      sec
+    417  f1bb		       e5 94		      sbc	KT
+    418  f1bd		       a4 90		      ldy	PREFETCHED
+    419  f1bf		       f0 05		      beq	StandardBudget
+    420  f1c1		       e9 03		      sbc	#3
+    421  f1c3		       4c da f1 	      jmp	BudgetReady
+    422  f1c6				   StandardBudget
+    423  f1c6		       a5 95		      lda	TARGET
+    424  f1c8		       38		      sec
+    425  f1c9		       e5 94		      sbc	KT
+    426  f1cb					      IF	ACTORS = 5
+    427  f1cb		       a4 93		      ldy	ITER
+    428  f1cd		       c4 9b		      cpy	SECOND
+    429  f1cf		       d0 06		      bne	NormalBudget
+    430  f1d1		       38		      sec
+    431  f1d2		       e9 0b		      sbc	#11
+    432  f1d4		       4c da f1 	      jmp	BudgetReady
+    433  f1d7				   NormalBudget
+    434  f1d7		       38		      sec
+    435  f1d8					      ENDIF
+    436  f1d8		       e9 07		      sbc	#7	; absolute indexed LDA (4), zp RESP1 (3)
+    437  f1da				   BudgetReady
+    438  f1da		       b0 05		      bcs	CanSchedule
+    439  f1dc				   CannotSchedule
+    440  f1dc		       e6 9c		      inc	USED
+    441  f1de		       4c cd f2 	      jmp	Advance
+    442  f1e1				   CanSchedule
+    443  f1e1		       85 96		      sta	GAP
+    444  f1e3		       a5 92		      lda	FAST
+    445  f1e5		       f0 5b		      beq	StandardMask
+    446  f1e7		       a9 00		      lda	#0
+    447  f1e9		       85 91		      sta	NEXT_READY
+    448  f1eb		       a5 90		      lda	PREFETCHED
+    449  f1ed		       d0 6b		      bne	EmitActor
+    450  f1ef		       a5 93		      lda	ITER
+    451  f1f1		       c9 04		      cmp	#4
+    452  f1f3		       b0 4d		      bcs	StandardMask
+    453  f1f5		       a5 96		      lda	GAP
+    454  f1f7		       c9 04		      cmp	#4
+    455  f1f9		       90 47		      bcc	StandardMask
+    456  f1fb		       a8		      tay
+    457  f1fc		       a5 93		      lda	ITER
+    458  f1fe		       a8		      tay
+    459  f1ff		       b9 8c 00 	      lda	ORDER+1,y
+    460  f202		       a8		      tay
+    461  f203		       b9 81 00 	      lda	XP,y
+    462  f206		       a8		      tay
+    463  f207		       b9 00 fa 	      lda	CyclesByPixel,y
+    464  f20a		       38		      sec
+    465  f20b		       e5 95		      sbc	TARGET
+    466  f20d		       c9 06		      cmp	#6
+    467  f20f		       90 31		      bcc	StandardMask
+    468  f211		       c9 0a		      cmp	#10
+    469  f213		       b0 2d		      bcs	StandardMask
+    470  f215							; The follower's row is pipelined in X before the current RESP1.
+    471  f215		       a5 93		      lda	ITER
+    472  f217		       a8		      tay
+    473  f218		       b9 8c 00 	      lda	ORDER+1,y
+    474  f21b		       a4 9e		      ldy	ACTOR
+    475  f21d		       84 91		      sty	NEXT_READY
+    476  f21f		       85 9e		      sta	ACTOR
+    477  f221		       20 42 f3 	      jsr	MaskAddress
+    478  f224		       a9 be		      lda	#$be
+    479  f226		       20 2e f1 	      jsr	Emit
+    480  f229		       a5 97		      lda	ADDRLO
+    481  f22b		       20 2e f1 	      jsr	Emit
+    482  f22e		       a5 98		      lda	ADDRHI
+    483  f230		       20 2e f1 	      jsr	Emit
+    484  f233		       a5 91		      lda	NEXT_READY
+    485  f235		       85 9e		      sta	ACTOR
+    486  f237		       a9 01		      lda	#1
+    487  f239		       85 91		      sta	NEXT_READY
+    488  f23b		       a5 96		      lda	GAP
+    489  f23d		       38		      sec
+    490  f23e		       e9 04		      sbc	#4
+    491  f240		       85 96		      sta	GAP
+    492  f242				   StandardMask
+    493  f242					      IF	ACTORS = 5
+    494  f242		       a5 9a		      lda	PAIRX
+    495  f244		       f0 11		      beq	NormalMask
+    496  f246		       a5 93		      lda	ITER
+    497  f248		       c5 9d		      cmp	PAIR_SLOT
+    498  f24a		       d0 0b		      bne	NormalMask
+    499  f24c		       a9 a0		      lda	#UNION
+    500  f24e		       85 97		      sta	ADDRLO
+    501  f250		       a9 00		      lda	#0
+    502  f252		       85 98		      sta	ADDRHI
+    503  f254		       4c 5a f2 	      jmp	EmitActor
+    504  f257				   NormalMask
+    505  f257					      ENDIF
+    506  f257		       20 42 f3 	      jsr	MaskAddress
+    507  f25a				   EmitActor
+    508  f25a		       20 16 f3 	      jsr	Delay
+    509  f25d		       a5 90		      lda	PREFETCHED
+    510  f25f		       d0 2d		      bne	EmitStrobe
+    511  f261		       a9 b9		      lda	#$b9	; LDA nn,Y; padded source masks cannot cross a page
+    512  f263		       20 2e f1 	      jsr	Emit
+    513  f266		       a5 97		      lda	ADDRLO
+    514  f268		       20 2e f1 	      jsr	Emit
+    515  f26b		       a5 98		      lda	ADDRHI
+    516  f26d		       20 2e f1 	      jsr	Emit
+    517  f270					      IF	ACTORS = 5
+    518  f270		       a5 93		      lda	ITER
+    519  f272		       c5 9b		      cmp	SECOND
+    520  f274		       d0 18		      bne	NoInlineOr
+    521  f276		       a8		      tay
+    522  f277		       b9 8c 00 	      lda	ORDER+1,y
+    523  f27a		       85 9e		      sta	ACTOR
+    524  f27c		       20 42 f3 	      jsr	MaskAddress
+    525  f27f		       a9 19		      lda	#$19	; ORA abs,Y, four cycles on the padded source page
+    526  f281		       20 2e f1 	      jsr	Emit
+    527  f284		       a5 97		      lda	ADDRLO
+    528  f286		       20 2e f1 	      jsr	Emit
+    529  f289		       a5 98		      lda	ADDRHI
+    530  f28b		       20 2e f1 	      jsr	Emit
+    531  f28e				   NoInlineOr
+    532  f28e					      ENDIF
+    533  f28e				   EmitStrobe
+    534  f28e		       a5 96		      lda	GAP
+    535  f290		       c9 01		      cmp	#1
+    536  f292		       f0 0d		      beq	FourCycleStrobe
+    537  f294		       a9 85		      lda	#$85
+    538  f296		       20 2e f1 	      jsr	Emit
+    539  f299		       a9 11		      lda	#RESP1
+    540  f29b		       20 2e f1 	      jsr	Emit
+    541  f29e		       4c b0 f2 	      jmp	StoreMask
+    542  f2a1				   FourCycleStrobe
+    543  f2a1		       a9 8d		      lda	#$8d
+    544  f2a3		       20 2e f1 	      jsr	Emit
+    545  f2a6		       a9 11		      lda	#RESP1
+    546  f2a8		       20 2e f1 	      jsr	Emit
+    547  f2ab		       a9 00		      lda	#0
+    548  f2ad		       20 2e f1 	      jsr	Emit
+    549  f2b0				   StoreMask
+    550  f2b0		       a5 90		      lda	PREFETCHED
+    551  f2b2		       f0 04		      beq	AccumulatorMask
+    552  f2b4		       a9 86		      lda	#$86
+    553  f2b6		       d0 02		      bne	EmitMaskStore
+    554  f2b8				   AccumulatorMask
+    555  f2b8		       a9 85		      lda	#$85
+    556  f2ba				   EmitMaskStore
+    557  f2ba		       20 2e f1 	      jsr	Emit
+    558  f2bd		       a9 1c		      lda	#GRP1
+    559  f2bf		       20 2e f1 	      jsr	Emit
+    560  f2c2		       a5 95		      lda	TARGET
+    561  f2c4		       18		      clc
+    562  f2c5		       69 03		      adc	#3
+    563  f2c7		       85 94		      sta	KT
+    564  f2c9		       a5 91		      lda	NEXT_READY
+    565  f2cb		       85 90		      sta	PREFETCHED
+    566  f2cd				   Advance
+    567  f2cd					      IF	ACTORS = 5
+    568  f2cd		       20 92 f3 	      jsr	SkipPairPartner
+    569  f2d0					      ENDIF
+    570  f2d0		       e6 93		      inc	ITER
+    571  f2d2		       4c 8a f1 	      jmp	NextActor
+    572  f2d5				   FinishKernel
+    573  f2d5		       a5 92		      lda	FAST
+    574  f2d7		       f0 22		      beq	FinishJump
+    575  f2d9				  -	      IF	MISSILE
+    576  f2d9				  -			; Test only the missing F actor's full-width row, in the reorder fixture.
+    577  f2d9				  -	      lda	TARGET
+    578  f2d9				  -	      cmp	#58
+    579  f2d9				  -	      bne	EndMissile
+    580  f2d9				  -	      lda	XP+2
+    581  f2d9				  -	      cmp	#73
+    582  f2d9				  -	      bne	EndMissile
+    583  f2d9				  -	      lda	YP+2
+    584  f2d9				  -	      cmp	#73
+    585  f2d9				  -	      bne	EndMissile
+    586  f2d9				  -	      ldy	#0
+    587  f2d9				  -CopyMissileTail
+    588  f2d9				  -	      lda	MissileTail,y
+    589  f2d9				  -	      jsr	Emit
+    590  f2d9				  -	      iny
+    591  f2d9				  -	      cpy	#MissileTailEnd-MissileTail
+    592  f2d9				  -	      bcc	CopyMissileTail
+    593  f2d9				  -EndMissile
+    594  f2d9					      ENDIF
+    595  f2d9		       a9 c0		      lda	#$c0
+    596  f2db		       20 2e f1 	      jsr	Emit
+    597  f2de		       a9 17		      lda	#ROWS-1
+    598  f2e0		       20 2e f1 	      jsr	Emit
+    599  f2e3		       a9 d0		      lda	#$d0
+    600  f2e5		       20 2e f1 	      jsr	Emit
+    601  f2e8		       8a		      txa
+    602  f2e9		       49 ff		      eor	#$ff
+    603  f2eb		       20 2e f1 	      jsr	Emit
+    604  f2ee		       a9 85		      lda	#$85
+    605  f2f0		       20 2e f1 	      jsr	Emit
+    606  f2f3		       a9 02		      lda	#WSYNC
+    607  f2f5		       20 2e f1 	      jsr	Emit
+    608  f2f8		       4c 10 f3 	      jmp	EmitReturn
+    609  f2fb				   FinishJump
+    610  f2fb		       a9 4c		      lda	#$4c
+    611  f2fd		       20 2e f1 	      jsr	Emit
+    612  f300		       a9 b8		      lda	#CODE
+    613  f302		       20 2e f1 	      jsr	Emit
+    614  f305		       a9 00		      lda	#0
+    615  f307		       20 2e f1 	      jsr	Emit
+    616  f30a				   PatchPrefix
+    617  f30a		       8a		      txa
+    618  f30b		       38		      sec
+    619  f30c		       e9 07		      sbc	#7	; branch instruction ends at CODE+7
+    620  f30e		       85 be		      sta	CODE+6
+    621  f310				   EmitReturn
+    622  f310		       a9 60		      lda	#$60
+    623  f312		       20 2e f1 	      jsr	Emit
+    624  f315		       60		      rts
+    625  f316
+    626  f316							; GAP is the strobe delay before loading the row. A one-cycle remainder
+    627  f316							; is emitted as absolute rather than zero-page STA RESP1.
+    628  f316				   Delay
+    629  f316		       a5 96		      lda	GAP
+    630  f318		       c9 02		      cmp	#2
+    631  f31a		       90 25		      bcc	Delayed
+    632  f31c		       29 01		      and	#1
+    633  f31e		       f0 11		      beq	EvenDelay
+    634  f320		       a9 24		      lda	#$24
+    635  f322		       20 2e f1 	      jsr	Emit
+    636  f325		       a9 80		      lda	#FRAME
+    637  f327		       20 2e f1 	      jsr	Emit
+    638  f32a		       a5 96		      lda	GAP
+    639  f32c		       38		      sec
+    640  f32d		       e9 03		      sbc	#3
+    641  f32f		       85 96		      sta	GAP
+    642  f331				   EvenDelay
+    643  f331		       a5 96		      lda	GAP
+    644  f333		       f0 0c		      beq	Delayed
+    645  f335		       a9 ea		      lda	#$ea
+    646  f337		       20 2e f1 	      jsr	Emit
+    647  f33a		       c6 96		      dec	GAP
+    648  f33c		       c6 96		      dec	GAP
+    649  f33e		       4c 31 f3 	      jmp	EvenDelay
+    650  f341				   Delayed
+    651  f341		       60		      rts
+    652  f342
+    653  f342				   MaskAddress
+    654  f342		       a4 9e		      ldy	ACTOR
+    655  f344		       a9 60		      lda	#32+STARTY
+    656  f346		       38		      sec
+    657  f347		       f9 86 00 	      sbc	YP,y
+    658  f34a		       18		      clc
+    659  f34b		       79 41 f5 	      adc	MaskLow,y
+    660  f34e		       85 97		      sta	ADDRLO
+    661  f350		       b9 46 f5 	      lda	MaskHigh,y
+    662  f353		       69 00		      adc	#0
+    663  f355		       85 98		      sta	ADDRHI
+    664  f357		       60		      rts
+    665  f358
+    666  f358				   FindSecond
+    667  f358		       a9 ff		      lda	#$ff
+    668  f35a		       85 9b		      sta	SECOND
+    669  f35c		       a5 9a		      lda	PAIRX
+    670  f35e		       f0 07		      beq	ScanSecondStart
+    671  f360		       a5 9d		      lda	PAIR_SLOT
+    672  f362		       18		      clc
+    673  f363		       69 01		      adc	#1
+    674  f365		       85 92		      sta	COMPACT_END
+    675  f367				   ScanSecondStart
+    676  f367		       a2 00		      ldx	#0
+    677  f369				   ScanSecond
+    678  f369		       a5 9a		      lda	PAIRX
+    679  f36b		       f0 10		      beq	InspectSecond
+    680  f36d		       8a		      txa
+    681  f36e		       18		      clc
+    682  f36f		       69 01		      adc	#1
+    683  f371		       c5 9d		      cmp	PAIR_SLOT
+    684  f373		       f0 17		      beq	NextSecond
+    685  f375		       e4 9d		      cpx	PAIR_SLOT
+    686  f377		       f0 13		      beq	NextSecond
+    687  f379		       e4 92		      cpx	COMPACT_END
+    688  f37b		       f0 0f		      beq	NextSecond
+    689  f37d				   InspectSecond
+    690  f37d		       b4 8b		      ldy	ORDER,x
+    691  f37f		       b9 81 00 	      lda	XP,y
+    692  f382		       b4 8c		      ldy	ORDER+1,x
+    693  f384		       d9 81 00 	      cmp	XP,y
+    694  f387		       d0 03		      bne	NextSecond
+    695  f389		       86 9b		      stx	SECOND
+    696  f38b		       60		      rts
+    697  f38c				   NextSecond
+    698  f38c		       e8		      inx
+    699  f38d		       e0 04		      cpx	#4
+    700  f38f		       90 d8		      bcc	ScanSecond
+    701  f391		       60		      rts
+    702  f392
+    703  f392				   SkipPairPartner
+    704  f392		       a5 93		      lda	ITER
+    705  f394		       c5 9b		      cmp	SECOND
+    706  f396		       f0 0a		      beq	SkipSlot
+    707  f398		       a5 9a		      lda	PAIRX
+    708  f39a		       f0 08		      beq	NoPartner
+    709  f39c		       a5 93		      lda	ITER
+    710  f39e		       c5 9d		      cmp	PAIR_SLOT
+    711  f3a0		       d0 02		      bne	NoPartner
+    712  f3a2				   SkipSlot
+    713  f3a2		       e6 93		      inc	ITER
+    714  f3a4				   NoPartner
+    715  f3a4		       60		      rts
+    716  f3a5
+    717  f3a5				   PreparePair
+    718  f3a5		       a9 00		      lda	#0
+    719  f3a7		       85 9a		      sta	PAIRX
+    720  f3a9		       85 9d		      sta	PAIR_SLOT
+    721  f3ab				   TryPair
+    722  f3ab		       a6 9d		      ldx	PAIR_SLOT
+    723  f3ad		       b4 8b		      ldy	ORDER,x
+    724  f3af		       b9 81 00 	      lda	XP,y
+    725  f3b2		       85 9f		      sta	ANCHOR
+    726  f3b4		       b5 8c		      lda	ORDER+1,x
+    727  f3b6		       a8		      tay
+    728  f3b7		       b9 81 00 	      lda	XP,y
+    729  f3ba		       38		      sec
+    730  f3bb		       e5 9f		      sbc	ANCHOR
+    731  f3bd		       c9 09		      cmp	#9
+    732  f3bf		       b0 33		      bcs	RejectWidth
+    733  f3c1		       85 96		      sta	GAP
+    734  f3c3		       b5 8b		      lda	ORDER,x
+    735  f3c5		       c9 03		      cmp	#3
+    736  f3c7		       b0 12		      bcs	LeftSmall
+    737  f3c9		       c0 03		      cpy	#3
+    738  f3cb		       b0 06		      bcs	WidthOne
+    739  f3cd		       a5 96		      lda	GAP
+    740  f3cf		       f0 26		      beq	PairLeftOrigin
+    741  f3d1		       d0 21		      bne	RejectWidth
+    742  f3d3				   WidthOne
+    743  f3d3		       a5 96		      lda	GAP
+    744  f3d5		       c9 02		      cmp	#2
+    745  f3d7		       b0 1b		      bcs	RejectWidth
+    746  f3d9		       90 1c		      bcc	PairLeftOrigin
+    747  f3db				   LeftSmall
+    748  f3db		       c0 03		      cpy	#3
+    749  f3dd		       b0 0a		      bcs	BothSmall
+    750  f3df		       a5 96		      lda	GAP
+    751  f3e1		       f0 14		      beq	PairLeftOrigin
+    752  f3e3		       c9 02		      cmp	#2
+    753  f3e5		       b0 0d		      bcs	RejectWidth
+    754  f3e7		       90 06		      bcc	AnchorPlusOne
+    755  f3e9				   BothSmall
+    756  f3e9					      IF	ROWSPLIT = 0
+    757  f3e9		       a5 96		      lda	GAP
+    758  f3eb		       c9 03		      cmp	#3
+    759  f3ed		       b0 05		      bcs	RejectWidth
+    760  f3ef					      ENDIF
+    761  f3ef				   AnchorPlusOne
+    762  f3ef		       e6 9f		      inc	ANCHOR
+    763  f3f1		       4c f7 f3 	      jmp	PairLeftOrigin
+    764  f3f4				   RejectWidth
+    765  f3f4		       4c 5a f4 	      jmp	PairRejected
+    766  f3f7				   PairLeftOrigin
+    767  f3f7		       a6 9d		      ldx	PAIR_SLOT
+    768  f3f9		       b5 8b		      lda	ORDER,x
+    769  f3fb		       85 9e		      sta	ACTOR
+    770  f3fd		       20 42 f3 	      jsr	MaskAddress
+    771  f400		       a5 97		      lda	ADDRLO
+    772  f402		       85 90		      sta	SORTI
+    773  f404		       a5 98		      lda	ADDRHI
+    774  f406		       85 91		      sta	SORTJ
+    775  f408		       a6 9d		      ldx	PAIR_SLOT
+    776  f40a		       b5 8c		      lda	ORDER+1,x
+    777  f40c		       85 9e		      sta	ACTOR
+    778  f40e		       20 42 f3 	      jsr	MaskAddress
+    779  f411		       a6 9d		      ldx	PAIR_SLOT
+    780  f413		       b4 8b		      ldy	ORDER,x
+    781  f415		       b9 81 00 	      lda	XP,y
+    782  f418		       45 9f		      eor	ANCHOR
+    783  f41a		       85 95		      sta	TARGET	; zero means unshifted first row (otherwise left by 1)
+    784  f41c		       a0 17		      ldy	#ROWS-1
+    785  f41e				   PairRow
+    786  f41e		       b1 90		      lda	(SORTI),y
+    787  f420		       a6 95		      ldx	TARGET
+    788  f422		       f0 03		      beq	FirstReady
+    789  f424		       0a		      asl
+    790  f425		       b0 33		      bcs	PairRejected
+    791  f427				   FirstReady
+    792  f427		       99 a0 00 	      sta	UNION,y
+    793  f42a		       b1 97		      lda	(ADDRLO),y
+    794  f42c				  -	      IF	ROWSPLIT
+    795  f42c				  -	      beq	PairRowReady
+    796  f42c					      ENDIF
+    797  f42c		       a6 96		      ldx	GAP
+    798  f42e		       e0 00		      cpx	#0
+    799  f430		       d0 09		      bne	PairRight
+    800  f432		       a6 95		      ldx	TARGET
+    801  f434		       f0 18		      beq	PairRowReady
+    802  f436		       0a		      asl
+    803  f437		       b0 21		      bcs	PairRejected
+    804  f439		       90 13		      bcc	PairRowReady
+    805  f43b				   PairRight
+    806  f43b		       a6 95		      ldx	TARGET
+    807  f43d		       f0 07		      beq	ShiftStart
+    808  f43f		       a6 96		      ldx	GAP
+    809  f441		       ca		      dex
+    810  f442		       f0 0a		      beq	PairRowReady
+    811  f444		       d0 02		      bne	ShiftNext
+    812  f446				   ShiftStart
+    813  f446		       a6 96		      ldx	GAP
+    814  f448				   ShiftNext
+    815  f448		       4a		      lsr
+    816  f449				  -	      IF	ROWSPLIT
+    817  f449				  -	      bcs	OnlyLeftRow
+    818  f449					      ELSE
+    819  f449		       b0 0f		      bcs	PairRejected	; a lit pixel would be discarded, so reject
+    820  f44b					      ENDIF
+    821  f44b		       ca		      dex
+    822  f44c		       d0 fa		      bne	ShiftNext
+    823  f44e				   PairRowReady
+    824  f44e		       19 a0 00 	      ora	UNION,y
+    825  f451		       99 a0 00 	      sta	UNION,y
+    826  f454				   OnlyLeftRow
+    827  f454		       88		      dey
+    828  f455		       10 c7		      bpl	PairRow
+    829  f457		       e6 9a		      inc	PAIRX
+    830  f459		       60		      rts
+    831  f45a				   PairRejected
+    832  f45a					      IF	ACTORS = 5
+    833  f45a		       e6 9d		      inc	PAIR_SLOT
+    834  f45c		       a5 9d		      lda	PAIR_SLOT
+    835  f45e		       c9 04		      cmp	#4
+    836  f460		       b0 03		      bcs	NoCompactPair
+    837  f462		       4c ab f3 	      jmp	TryPair
+    838  f465				   NoCompactPair
+    839  f465					      ENDIF
+    840  f465		       a4 8b		      ldy	ORDER
+    841  f467		       b9 81 00 	      lda	XP,y
+    842  f46a		       85 9f		      sta	ANCHOR
+    843  f46c		       60		      rts
+    844  f46d
+    845  f46d				   SelectCompactSource
+    846  f46d		       a5 9a		      lda	PAIRX
+    847  f46f		       f0 09		      beq	FirstMask
+    848  f471		       a9 a0		      lda	#UNION
+    849  f473		       85 97		      sta	ADDRLO
+    850  f475		       a9 00		      lda	#0
+    851  f477		       85 98		      sta	ADDRHI
+    852  f479		       60		      rts
+    853  f47a				   FirstMask
+    854  f47a		       a5 8b		      lda	ORDER
+    855  f47c		       85 9e		      sta	ACTOR
+    856  f47e		       4c 42 f3 	      jmp	MaskAddress
+    857  f481
+    858  f481
+    859  f481							; Five nine-cycle strobes when the first two actors share the same bitmap:
+    860  f481							; no GRP1 rewrite for slot two, a prefetched fourth mask, and one stream
+    861  f481							; byte from the preceding raster line for the final slot.
+    862  f481				   CanReuseMask
+    863  f481		       a5 8b		      lda	ORDER
+    864  f483		       05 8c		      ora	ORDER+1
+    865  f485		       c9 01		      cmp	#1
+    866  f487		       d0 19		      bne	ReuseNo
+    867  f489		       a5 86		      lda	YP
+    868  f48b		       c5 87		      cmp	YP+1
+    869  f48d		       d0 13		      bne	ReuseNo
+    870  f48f		       a2 00		      ldx	#0
+    871  f491				   ReuseCheck
+    872  f491		       b4 8b		      ldy	ORDER,x
+    873  f493		       b9 81 00 	      lda	XP,y
+    874  f496		       dd a4 f4 	      cmp	TightPositions,x
+    875  f499		       d0 07		      bne	ReuseNo
+    876  f49b		       e8		      inx
+    877  f49c		       e0 05		      cpx	#5
+    878  f49e		       90 f1		      bcc	ReuseCheck
+    879  f4a0		       38		      sec
+    880  f4a1		       60		      rts
+    881  f4a2				   ReuseNo
+    882  f4a2		       18		      clc
+    883  f4a3		       60		      rts
+    884  f4a4				   TightPositions
+    885  f4a4		       13 2e 49 64*	      byte.b	19,46,73,100,127
+    886  f4a9
+    887  f4a9				   BuildReuse
+    888  f4a9		       e6 92		      inc	FAST
+    889  f4ab		       a9 00		      lda	#0
+    890  f4ad		       85 9c		      sta	USED
+    891  f4af		       a2 36		      ldx	#ReuseEnd-ReuseCode-1
+    892  f4b1				   ReuseCopy
+    893  f4b1		       bd f6 f4 	      lda	ReuseCode,x
+    894  f4b4		       95 b8		      sta	CODE,x
+    895  f4b6		       ca		      dex
+    896  f4b7		       10 f8		      bpl	ReuseCopy
+    897  f4b9		       a2 00		      ldx	#0
+    898  f4bb				   ReusePatch
+    899  f4bb		       bc f3 f4 	      ldy	ReuseActorSlot,x
+    900  f4be		       b9 8b 00 	      lda	ORDER,y
+    901  f4c1		       85 9e		      sta	ACTOR
+    902  f4c3		       20 42 f3 	      jsr	MaskAddress
+    903  f4c6		       bc f0 f4 	      ldy	ReusePatchOffset,x
+    904  f4c9		       a5 97		      lda	ADDRLO
+    905  f4cb		       99 b9 00 	      sta	CODE+1,y
+    906  f4ce		       a5 98		      lda	ADDRHI
+    907  f4d0		       99 ba 00 	      sta	CODE+2,y
+    908  f4d3		       e8		      inx
+    909  f4d4		       e0 03		      cpx	#3
+    910  f4d6		       90 e3		      bcc	ReusePatch
+    911  f4d8		       a4 8f		      ldy	ORDER+4
+    912  f4da		       84 9e		      sty	ACTOR
+    913  f4dc		       20 42 f3 	      jsr	MaskAddress
+    914  f4df		       a0 00		      ldy	#0
+    915  f4e1		       b1 97		      lda	(ADDRLO),y
+    916  f4e3		       85 a0		      sta	CACHED
+    917  f4e5		       e6 97		      inc	ADDRLO
+    918  f4e7		       a5 97		      lda	ADDRLO
+    919  f4e9		       85 e4		      sta	CODE+NextCache-ReuseCode+1
+    920  f4eb		       a5 98		      lda	ADDRHI
+    921  f4ed		       85 e5		      sta	CODE+NextCache-ReuseCode+2
+    922  f4ef		       60		      rts
+    923  f4f0				   ReusePatchOffset
+    924  f4f0		       0b 18 08 	      byte.b	MaskOne-ReuseCode,MaskThree-ReuseCode,MaskFour-ReuseCode
+    925  f4f3				   ReuseActorSlot
+    926  f4f3		       00 02 03 	      byte.b	0,2,3
+    927  f4f6				   ReuseCode
+    928  f4f6		       85 02		      sta	WSYNC
+    929  f4f8		       c8		      iny
+    930  f4f9		       b9 60 f5 	      lda	PlayerRows,y
+    931  f4fc		       85 1b		      sta	GRP0
+    932  f4fe				   MaskFour
+    933  f4fe		       be ff ff 	      ldx	$ffff,y
+    934  f501				   MaskOne
+    935  f501		       b9 ff ff 	      lda	$ffff,y
+    936  f504		       ea		      nop
+    937  f505		       85 11		      sta	RESP1
+    938  f507		       85 1c		      sta	GRP1
+    939  f509		       24 80		      bit	FRAME
+    940  f50b		       85 11		      sta	RESP1
+    941  f50d		       ea		      nop
+    942  f50e				   MaskThree
+    943  f50e		       b9 ff ff 	      lda	$ffff,y
+    944  f511		       85 11		      sta	RESP1
+    945  f513		       85 1c		      sta	GRP1
+    946  f515		       24 80		      bit	FRAME
+    947  f517		       85 11		      sta	RESP1
+    948  f519		       86 1c		      stx	GRP1
+    949  f51b		       a5 a0		      lda	CACHED
+    950  f51d		       85 11		      sta	RESP1
+    951  f51f		       85 1c		      sta	GRP1
+    952  f521				   NextCache
+    953  f521		       b9 ff ff 	      lda	$ffff,y
+    954  f524		       85 a0		      sta	CACHED
+    955  f526		       c0 17		      cpy	#ROWS-1
+    956  f528		       d0 cc		      bne	ReuseCode
+    957  f52a		       85 02		      sta	WSYNC
+    958  f52c		       60		      rts
+    959  f52d				   ReuseEnd
+    960  f52d
+    961  f52d				   FastPrefix
+    962  f52d		       85 02		      sta	WSYNC
+    963  f52f		       c8		      iny
+    964  f530		       b9 60 f5 	      lda	PlayerRows,y
+    965  f533		       85 1b		      sta	GRP0
+    966  f535				   FastPrefixEnd
+    967  f535				   Prefix
+    968  f535		       85 02		      sta	WSYNC
+    969  f537		       c8		      iny
+    970  f538		       c0 18		      cpy	#ROWS
+    971  f53a		       f0 00		      byte.b	$f0,0	; BEQ exits after syncing to the first line below band
+    972  f53c		       b9 60 f5 	      lda	PlayerRows,y
+    973  f53f		       85 1b		      sta	GRP0
+    974  f541				   PrefixEnd
+    975  f541				   MaskLow
+    976  f541		       00 00 00 00*	      byte.b	<Male,<Male,<Female,<SmallM,<SmallF
+    977  f546				   MaskHigh
+    978  f546		       f6 f6 f7 f8*	      byte.b	>Male,>Male,>Female,>SmallM,>SmallF
+    979  f560		       00 00 00 00*	      ALIGN	32
+    980  f560				   PlayerRows
+    981  f560		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,$3c,$7e,$18,$7e,$1e,$3c,$18,$24,$42
+    982  f571		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0
+    983  f578				  -	      IF	MISSILE
+    984  f578				  -MissileTail
+    985  f578				  -	      lda	MissileRows,y
+    986  f578				  -	      sta	ENAM1
+    987  f578				  -MissileTailEnd
+    988  f578				  -	      ALIGN	32
+    989  f578				  -MissileRows
+    990  f578				  -	      ds	11,0
+    991  f578				  -	      byte	2
+    992  f578				  -	      ds	12,0
+    993  f578					      ENDIF
+    994  f578				   EndProgram
+------- FILE tables.inc LEVEL 3 PASS 3
+      0  f578					      include	"tables.inc"
+      1  f600					      ORG	$f600
+      2  f600				   Male
+      3  f600		       00 00 00 00*	      ds	32,0
+      4  f620		       3c 3c 18 ff*	      byte.b	$3c,$3c,$18,$ff,$18,$24,$24,$42,$42
+      5  f629		       00 00 00 00*	      ds	32,0
+      6  f700					      ORG	$f700
+      7  f700				   Female
+      8  f700		       00 00 00 00*	      ds	32,0
+      9  f720		       3c 3c 18 ff*	      byte.b	$3c,$3c,$18,$ff,$3c,$7e,$7e,$24,$24
+     10  f729		       00 00 00 00*	      ds	32,0
+     11  f800					      ORG	$f800
+     12  f800				   SmallM
+     13  f800		       00 00 00 00*	      ds	32,0
+     14  f820		       00 00 3c 3c*	      byte.b	$00,$00,$3c,$3c,$18,$7e,$18,$24,$00
+     15  f829		       00 00 00 00*	      ds	32,0
+     16  f900					      ORG	$f900
+     17  f900				   SmallF
+     18  f900		       00 00 00 00*	      ds	32,0
+     19  f920		       00 00 3c 3c*	      byte.b	$00,$00,$3c,$3c,$18,$7e,$3c,$24,$00
+     20  f929		       00 00 00 00*	      ds	32,0
+     21  fa00					      ORG	$fa00
+     22  fa00				   CyclesByPixel
+     23  fa00		       16 16 16 16*	      byte.b	22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+     24  fa10		       16 16 16 16*	      byte.b	22,22,22,22,22,23,23,23,24,24,24,25,25,25,26,26
+     25  fa20		       1a 1b 1b 1b*	      byte.b	26,27,27,27,28,28,28,29,29,29,30,30,30,31,31,31
+     26  fa30		       20 20 20 21*	      byte.b	32,32,32,33,33,33,34,34,34,35,35,35,36,36,36,37
+     27  fa40		       25 25 26 26*	      byte.b	37,37,38,38,38,39,39,39,40,40,40,41,41,41,42,42
+     28  fa50		       2a 2b 2b 2b*	      byte.b	42,43,43,43,44,44,44,45,45,45,46,46,46,47,47,47
+     29  fa60		       30 30 30 31*	      byte.b	48,48,48,49,49,49,50,50,50,51,51,51,52,52,52,53
+     30  fa70		       35 35 36 36*	      byte.b	53,53,54,54,54,55,55,55,56,56,56,57,57,57,58,58
+     31  fa80		       3a 3b 3b 3b*	      byte.b	58,59,59,59,60,60,60,61,61,61,62,62,62,63,63,63
+     32  fa90		       40 40 40 41*	      byte.b	64,64,64,65,65,65,66,66,66,66,66,66,66,66,66,66
+     33  faa0		       42 42 42 42*	      byte.b	66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66
+     34  fab0		       42 42 42 42*	      byte.b	66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66
+     35  fac0		       42 42 42 42*	      byte.b	66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66
+     36  fad0		       42 42 42 42*	      byte.b	66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66
+     37  fae0		       42 42 42 42*	      byte.b	66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66
+     38  faf0		       42 42 42 42*	      byte.b	66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66
+------- FILE kernel.asm
+    996  fffa					      ORG	$fffa
+    997  fffa		       00 f0 00 f0*	      word.w	Reset,Reset,Reset
+------- FILE roms/vdel.asm

@@ -1,0 +1,6 @@
+ACTORS=5
+ROWSPLIT=0
+VDEL=1
+COPIES=1
+MISSILE=0
+ include "kernel.asm"
