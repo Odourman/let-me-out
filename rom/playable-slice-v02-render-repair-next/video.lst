@@ -1,0 +1,1169 @@
+------- FILE game.asm LEVEL 1 PASS 2
+      1  fffa					      processor	6502
+      2  fffa		       00 00	   VSYNC      =	$00
+      3  fffa		       00 01	   VBLANK     =	$01
+      4  fffa		       00 02	   WSYNC      =	$02
+      5  fffa		       00 04	   NUSIZ0     =	$04
+      6  fffa		       00 05	   NUSIZ1     =	$05
+      7  fffa		       00 06	   COLUP0     =	$06
+      8  fffa		       00 07	   COLUP1     =	$07
+      9  fffa		       00 08	   COLUPF     =	$08
+     10  fffa		       00 09	   COLUBK     =	$09
+     11  fffa		       00 0a	   CTRLPF     =	$0a
+     12  fffa		       00 0d	   PF0	      =	$0d
+     13  fffa		       00 0e	   PF1	      =	$0e
+     14  fffa		       00 0f	   PF2	      =	$0f
+     15  fffa		       00 10	   RESP0      =	$10
+     16  fffa		       00 1b	   GRP0       =	$1b
+     17  fffa		       00 1c	   GRP1       =	$1c
+     18  fffa		       00 1d	   ENAM0      =	$1d
+     19  fffa		       00 20	   HMP0       =	$20
+     20  fffa		       00 21	   HMP1       =	$21
+     21  fffa		       00 11	   RESP1      =	$11
+     22  fffa		       00 2a	   HMOVE      =	$2a
+     23  fffa		       00 2b	   HMCLR      =	$2b
+     24  fffa		       00 0c	   INPT4      =	$0c
+     25  fffa		       02 80	   SWCHA      =	$0280
+     26  fffa		       02 82	   SWCHB      =	$0282
+     27  fffa		       02 84	   INTIM      =	$0284
+     28  fffa		       02 96	   TIM64T     =	$0296
+     29  10000 ????
+     30  10000 ????		00 80	    PX	       =	$80
+     31  10000 ????		00 81	    PY	       =	$81
+     32  10000 ????		00 82	    Aim        =	$82
+     33  10000 ????		00 83	    Pressed    =	$83
+     34  10000 ????		00 84	    Shot       =	$84
+     35  10000 ????		00 85	    BX	       =	$85
+     36  10000 ????		00 86	    BY	       =	$86
+     37  10000 ????		00 87	    Direction  =	$87
+     38  10000 ????		00 88	    Hunt       =	$88
+     39  10000 ????		00 89	    P0Ptr      =	$89
+     40  10000 ????		00 8b	    BLine      =	$8b
+     41  10000 ????		00 8c	    TX	       =	$8c
+     42  10000 ????		00 8d	    TY	       =	$8d
+     43  10000 ????		00 8e	    Tmp        =	$8e
+     44  10000 ????		00 8f	    Tile       =	$8f
+     45  10000 ????		00 90	    FrameClock =	$90
+     46  10000 ????
+     47  10000 ????		00 05	    NPCCount   =	5
+     48  10000 ????		00 91	    NX	       =	$91
+     49  10000 ????		00 96	    NY	       =	$96
+     50  10000 ????		00 9b	    NDir       =	$9b
+     51  10000 ????		00 a0	    Life       =	$a0	; 255 active, 1..8 death, zero removed
+     52  10000 ????		00 a5	    Actor      =	$a5
+     53  10000 ????		00 a6	    Quota      =	$a6
+     54  10000 ????		00 a7	    TryDir     =	$a7
+     55  10000 ????		00 a8	    Retry      =	$a8
+     56  10000 ????		00 a9	    Death      =	$a9
+     57  10000 ????		00 aa	    Points     =	$aa
+     58  10000 ????		00 ab	    PointsHi   =	$ab
+     59  10000 ????		00 ac	    Lives      =	$ac
+     60  10000 ????		00 ad	    RandomState =	$ad
+     61  10000 ????		00 ae	    Carrier    =	$ae
+     62  10000 ????		00 af	    KeyState   =	$af
+     63  10000 ????		00 b0	    KeyX       =	$b0
+     64  10000 ????		00 b1	    KeyY       =	$b1
+     65  10000 ????		00 b2	    Unlocked   =	$b2
+     66  10000 ????		00 b3	    RoomDone   =	$b3
+     67  10000 ????		00 b4	    QueueY     =	$b4	; seven entries, including sentinel
+     68  10000 ????		00 bb	    QueueX     =	$bb
+     69  10000 ????		00 c2	    QueueLo    =	$c2
+     70  10000 ????		00 c9	    QueueHi    =	$c9
+     71  10000 ????		00 d0	    QueueColor =	$d0
+     72  10000 ????		00 d7	    P1Ptr      =	$d7
+     73  10000 ????		00 d9	    SortI      =	$d9
+     74  10000 ????		00 da	    SortJ      =	$da
+     75  10000 ????		00 db	    OrderEnd   =	$db
+     76  10000 ????		00 dc	    Omitted    =	$dc
+     77  10000 ????		00 dd	    Sound      =	$dd
+     78  10000 ????		00 de	    Eligible   =	$de
+     79  10000 ????		00 ec	    Rendered   =	$ec
+     80  10000 ????		00 ed	    TempY      =	$ed
+     81  10000 ????		00 ee	    MinSetup   =	$ee
+     82  10000 ????		00 ef	    SetupRows  =	$ef
+     83  10000 ????		00 ed	    DoorColor  =	$ed	; reuse TempY after Schedule
+     84  10000 ????		00 8c	    AssistRow  =	$8c	; TX/TY/Tmp/Tile are dead until the logic bank
+     85  10000 ????		00 8d	    AssistX    =	$8d
+     86  10000 ????		00 8e	    AssistPtr  =	$8e
+     87  10000 ????		00 a7	    AssistColor =	$a7	; TryDir/Retry are assigned by logic before use
+     88  10000 ????		00 a8	    AssistQueue =	$a8
+     89  10000 ????		00 f5	    AssistObject =	$f5	; pending NPC index+1 during planning, render bit afterward
+     90  10000 ????		00 f6	    BridgeOld  =	$f6
+     91  10000 ????		00 f7	    BridgeX    =	$f7
+     92  10000 ????		00 a5	    NextQueueY =	$a5	; Actor is dead after frame planning
+     93  10000 ????		00 ee	    SplitY     =	$ee
+     94  10000 ????		00 8e	    SplitLow   =	$8e
+     95  10000 ????		00 8f	    SplitHigh  =	$8f
+     96  10000 ????		00 d9	    EntryX     =	$d9	; SortI is dead after Schedule
+     97  10000 ????		00 da	    AssistID   =	$da
+     98  10000 ????		00 e5	    QueueFirst =	$e5	; seven first-line bytes; populated while blanked
+     99  10000 ????		00 df	    AudioTicks =	$df
+    100  10000 ????		00 e0	    Blocked    =	$e0	; five retry flags, persistent across NPC update slots
+    101  10000 ????		00 15	    AUDC0      =	$15
+    102  10000 ????		00 17	    AUDF0      =	$17
+    103  10000 ????		00 19	    AUDV0      =	$19
+    104  10000 ????
+    105  10000 ????				       MAC	drawpf
+    106  10000 ????				       lda	PFData0,y
+    107  10000 ????				       sta	PF0
+    108  10000 ????				       lda	PFData1,y
+    109  10000 ????				       sta	PF1
+    110  10000 ????				       lda	PFData2,y
+    111  10000 ????				       sta	PF2
+    112  10000 ????				       ENDM
+    113  10000 ????				       MAC	drawsprites
+    114  10000 ????				       SUBROUTINE
+    115  10000 ????				       lda	(P0Ptr),y
+    116  10000 ????				       sta	GRP0
+    117  10000 ????				       lda	#0
+    118  10000 ????				       cpy	BLine
+    119  10000 ????				       bne	.NoShot
+    120  10000 ????				       lda	#2
+    121  10000 ????			    .NoShot
+    122  10000 ????				       sta	ENAM0
+    123  10000 ????				       lda	(P1Ptr),y
+    124  10000 ????				       sta	GRP1
+    125  10000 ????				       ENDM
+    126  10000 ????			   -	       IF	LOGIC
+    127  10000 ????			   -	       ORG	$f000
+    128  10000 ????			   -	       include	"logic.asm"
+    129  10000 ????				       ELSE
+    130  f000					      ORG	$f000
+    131  f000				   VideoReset
+    132  f000		       78		      sei
+    133  f001		       d8		      cld
+    134  f002		       a2 ff		      ldx	#$ff
+    135  f004		       9a		      txs
+    136  f005		       a9 00		      lda	#0
+    137  f007		       a2 7f		      ldx	#127
+    138  f009				   ClearRam
+    139  f009		       95 80		      sta	$80,x
+    140  f00b		       ca		      dex
+    141  f00c		       10 fb		      bpl	ClearRam
+    142  f00e		       a2 2c		      ldx	#$2c
+    143  f010				   ClearTIA
+    144  f010		       95 00		      sta	0,x
+    145  f012		       ca		      dex
+    146  f013		       10 fb		      bpl	ClearTIA
+    147  f015		       4c 92 ff 	      jmp	InitBank
+    148  f018				   VideoStart
+    149  f018		       a9 01		      lda	#1
+    150  f01a		       85 0a		      sta	CTRLPF
+    151  f01c		       a9 1e		      lda	#$1e
+    152  f01e		       85 06		      sta	COLUP0
+    153  f020		       a9 0e		      lda	#$0e
+    154  f022		       85 07		      sta	COLUP1
+    155  f024		       a9 26		      lda	#$26
+    156  f026		       85 08		      sta	COLUPF
+    157  f028				   Frame
+    158  f028		       a9 02		      lda	#2
+    159  f02a		       85 02		      sta	WSYNC
+    160  f02c		       85 01		      sta	VBLANK
+    161  f02e		       85 00		      sta	VSYNC
+    162  f030		       85 02		      sta	WSYNC
+    163  f032		       85 02		      sta	WSYNC
+    164  f034		       85 02		      sta	WSYNC
+    165  f036		       a9 00		      lda	#0
+    166  f038		       85 00		      sta	VSYNC
+    167  f03a							; Three former top blank rows give the six-object planner more time.
+    168  f03a		       a9 30		      lda	#48
+    169  f03c		       8d 96 02 	      sta	TIM64T
+    170  f03f		       85 02		      sta	WSYNC
+    171  f041		       20 f8 f1 	      jsr	PlanFrame
+    172  f044				   PositionFrame
+    173  f044		       a5 d9		      lda	EntryX
+    174  f046		       38		      sec
+    175  f047		       e9 03		      sbc	#3
+    176  f049		       a2 00		      ldx	#0
+    177  f04b		       20 45 f2 	      jsr	Position
+    178  f04e		       a5 84		      lda	Shot
+    179  f050		       f0 0e		      beq	PositionDone
+    180  f052		       a5 85		      lda	BX
+    181  f054		       38		      sec
+    182  f055		       e9 02		      sbc	#2
+    183  f057		       b0 02		      bcs	MissileXReady
+    184  f059		       a9 00		      lda	#0
+    185  f05b				   MissileXReady
+    186  f05b		       a2 02		      ldx	#2
+    187  f05d		       20 45 f2 	      jsr	Position
+    188  f060				   PositionDone
+    189  f060		       85 02		      sta	WSYNC
+    190  f062		       85 2a		      sta	HMOVE
+    191  f064		       85 02		      sta	WSYNC
+    192  f066		       85 2b		      sta	HMCLR
+    193  f068		       a9 00		      lda	#0
+    194  f06a		       85 0d		      sta	PF0
+    195  f06c		       85 0e		      sta	PF1
+    196  f06e		       85 0f		      sta	PF2
+    197  f070		       85 1b		      sta	GRP0
+    198  f072		       85 1d		      sta	ENAM0
+    199  f074		       20 83 f5 	      jsr	SelectDoorKernel
+    200  f077				   BlankWait
+    201  f077		       ad 84 02 	      lda	INTIM
+    202  f07a		       d0 fb		      bne	BlankWait
+    203  f07c		       85 02		      sta	WSYNC
+    204  f07e		       85 01		      sta	VBLANK
+    205  f080		       a0 50		      ldy	#80
+    206  f082		       a2 05		      ldx	#5
+    207  f084				   Top
+    208  f084		       85 02		      sta	WSYNC
+    209  f086		       ca		      dex
+    210  f087		       d0 fb		      bne	Top
+      0  f089					      DrawPF
+      1  f089		       b9 00 f5 	      lda	PFData0,y
+      2  f08c		       85 0d		      sta	PF0
+      3  f08e		       b9 00 f6 	      lda	PFData1,y
+      4  f091		       85 0e		      sta	PF1
+      5  f093		       b9 00 f7 	      lda	PFData2,y
+      6  f096		       85 0f		      sta	PF2
+      0  f098					      DrawSprites
+      1  f098					      SUBROUTINE
+      2  f098		       b1 89		      lda	(P0Ptr),y
+      3  f09a		       85 1b		      sta	GRP0
+      4  f09c		       a9 00		      lda	#0
+      5  f09e		       c4 8b		      cpy	BLine
+      6  f0a0		       d0 02		      bne	.NoShot
+      7  f0a2		       a9 02		      lda	#2
+      8  f0a4				   .NoShot
+      9  f0a4		       85 1d		      sta	ENAM0
+     10  f0a6		       b1 d7		      lda	(P1Ptr),y
+     11  f0a8		       85 1c		      sta	GRP1
+    213  f0aa		       c8		      iny
+    214  f0ab		       4c ae f0 	      jmp	NextRoom
+    215  f0ae				   NextRoom
+    216  f0ae		       85 02		      sta	WSYNC
+    217  f0b0				   Room
+    218  f0b0		       b9 00 f8 	      lda	RoomFlags,y
+    219  f0b3		       f0 05		      beq	RoomSprites
+    220  f0b5		       30 18		      bmi	DoorScanline
+    221  f0b7		       4c a4 f1 	      jmp	WallScanline
+    222  f0ba				   RoomSprites
+      0  f0ba					      DrawSprites
+      1  f0ba					      SUBROUTINE
+      2  f0ba		       b1 89		      lda	(P0Ptr),y
+      3  f0bc		       85 1b		      sta	GRP0
+      4  f0be		       a9 00		      lda	#0
+      5  f0c0		       c4 8b		      cpy	BLine
+      6  f0c2		       d0 02		      bne	.NoShot
+      7  f0c4		       a9 02		      lda	#2
+      8  f0c6				   .NoShot
+      9  f0c6		       85 1d		      sta	ENAM0
+     10  f0c8		       b1 d7		      lda	(P1Ptr),y
+     11  f0ca		       85 1c		      sta	GRP1
+    224  f0cc		       4c ec f0 	      jmp	RoomTail
+    225  f0cf				   DoorScanline
+    226  f0cf		       4a		      lsr
+    227  f0d0		       b0 74		      bcs	SpecialScanline
+    228  f0d2		       85 1d		      sta	ENAM0
+    229  f0d4		       a9 26		      lda	#$26
+    230  f0d6		       85 08		      sta	COLUPF
+    231  f0d8				  -	      IF	DOOR_PLAYER_FIRST
+    232  f0d8				  -	      lda	(P0Ptr),y
+    233  f0d8				  -	      sta	GRP0
+    234  f0d8				  -	      lda	(P1Ptr),y
+    235  f0d8				  -	      sta	GRP1
+    236  f0d8					      ELSE
+    237  f0d8		       b1 d7		      lda	(P1Ptr),y
+    238  f0da		       85 1c		      sta	GRP1
+    239  f0dc		       b1 89		      lda	(P0Ptr),y
+    240  f0de		       85 1b		      sta	GRP0
+    241  f0e0					      ENDIF
+    242  f0e0		       c4 8b		      cpy	BLine
+    243  f0e2		       d0 04		      bne	DoorNoShot
+    244  f0e4		       a9 02		      lda	#2
+    245  f0e6		       85 1d		      sta	ENAM0
+    246  f0e8				   DoorNoShot
+    247  f0e8		       a5 ed		      lda	DoorColor
+    248  f0ea		       85 08		      sta	COLUPF
+    249  f0ec				   RoomTail
+    250  f0ec		       c8		      iny
+    251  f0ed		       f0 47		      beq	RoomEnd
+    252  f0ef				   RoomQueueCheck
+    253  f0ef		       c4 a5		      cpy	NextQueueY
+    254  f0f1		       d0 bb		      bne	NextRoom
+    255  f0f3							; The dedicated RESP1 line holds PF/P0 until the first glyph line.
+    256  f0f3							; AllowedSetup excludes the actual playfield transitions.
+    257  f0f3		       b5 bb		      lda	QueueX,x
+    258  f0f5		       f0 42		      beq	BridgePreSync
+    259  f0f7				   NpcPreSync
+    260  f0f7		       85 02		      sta	WSYNC
+    261  f0f9				   NpcSetupFirst
+    262  f0f9		       38		      sec
+    263  f0fa				   NpcCoarse
+    264  f0fa		       e9 0f		      sbc	#15
+    265  f0fc		       b0 fc		      bcs	NpcCoarse
+    266  f0fe		       49 07		      eor	#7
+    267  f100		       0a		      asl
+    268  f101		       0a		      asl
+    269  f102		       0a		      asl
+    270  f103		       0a		      asl
+    271  f104		       85 21		      sta	HMP1
+    272  f106		       85 11		      sta	RESP1
+    273  f108				   NpcSetupSync
+    274  f108		       85 02		      sta	WSYNC
+    275  f10a				   GlyphStart
+    276  f10a		       85 2a		      sta	HMOVE
+    277  f10c		       c8		      iny
+    278  f10d		       b1 89		      lda	(P0Ptr),y
+    279  f10f		       85 1b		      sta	GRP0
+    280  f111		       a9 00		      lda	#0
+    281  f113		       c4 8b		      cpy	BLine
+    282  f115		       d0 02		      bne	FirstNoShot
+    283  f117		       a9 02		      lda	#2
+    284  f119				   FirstNoShot
+    285  f119		       85 1d		      sta	ENAM0
+    286  f11b		       b5 e5		      lda	QueueFirst,x
+    287  f11d		       85 1c		      sta	GRP1
+    288  f11f		       b5 d0		      lda	QueueColor,x
+    289  f121		       85 07		      sta	COLUP1
+    290  f123		       b5 c2		      lda	QueueLo,x
+    291  f125		       85 d7		      sta	P1Ptr
+    292  f127		       b5 c9		      lda	QueueHi,x
+    293  f129		       85 d8		      sta	P1Ptr+1
+    294  f12b		       e8		      inx
+    295  f12c		       b5 b4		      lda	QueueY,x
+    296  f12e		       85 a5		      sta	NextQueueY
+    297  f130		       c8		      iny
+    298  f131		       f0 03		      beq	RoomEnd
+    299  f133		       4c ae f0 	      jmp	NextRoom
+    300  f136				   RoomEnd
+    301  f136		       4c c7 f1 	      jmp	RoomFinish
+    302  f139				   BridgePreSync
+    303  f139		       85 02		      sta	WSYNC
+    304  f13b		       a5 f6		      lda	BridgeOld
+    305  f13d		       85 1c		      sta	GRP1
+    306  f13f		       a5 f7		      lda	BridgeX
+    307  f141		       24 f7		      bit	BridgeX
+    308  f143		       4c f9 f0 	      jmp	NpcSetupFirst	; 15 cycles elapsed, three coarse iterations saved
+    309  f146				   SpecialScanline
+    310  f146		       a9 26		      lda	#$26
+    311  f148		       85 08		      sta	COLUPF
+    312  f14a		       b1 d7		      lda	(P1Ptr),y
+    313  f14c		       85 1c		      sta	GRP1
+    314  f14e		       c4 8c		      cpy	AssistRow
+    315  f150		       f0 12		      beq	AssistStart
+    316  f152		       b1 89		      lda	(P0Ptr),y
+    317  f154		       85 1b		      sta	GRP0
+    318  f156		       a9 00		      lda	#0
+    319  f158		       c4 8b		      cpy	BLine
+    320  f15a		       d0 02		      bne	SpecialNoShot
+    321  f15c		       a9 02		      lda	#2
+    322  f15e				   SpecialNoShot
+    323  f15e		       85 1d		      sta	ENAM0
+    324  f160		       c8		      iny		; generated special rows never end the room
+    325  f161		       4c ef f0 	      jmp	RoomQueueCheck
+    326  f164				   AssistStart
+    327  f164		       c0 ec		      cpy	#156+80
+    328  f166		       d0 03		      bne	OrdinaryAssist
+    329  f168		       4c 00 f8 	      jmp	KeyAssistStart
+    330  f16b				   OrdinaryAssist
+    331  f16b		       86 a8		      stx	AssistQueue
+    332  f16d		       a9 00		      lda	#0
+    333  f16f		       85 1b		      sta	GRP0
+    334  f171		       85 1c		      sta	GRP1
+    335  f173		       85 1d		      sta	ENAM0
+    336  f175		       a5 8d		      lda	AssistX
+    337  f177		       85 02		      sta	WSYNC
+    338  f179		       38		      sec
+    339  f17a				   AssistCoarse
+    340  f17a		       e9 0f		      sbc	#15
+    341  f17c		       b0 fc		      bcs	AssistCoarse
+    342  f17e		       49 07		      eor	#7
+    343  f180		       0a		      asl
+    344  f181		       0a		      asl
+    345  f182		       0a		      asl
+    346  f183		       0a		      asl
+    347  f184		       85 20		      sta	HMP0
+    348  f186		       85 10		      sta	RESP0
+    349  f188				   AssistSync
+    350  f188		       85 02		      sta	WSYNC
+    351  f18a				   AssistMove
+    352  f18a		       85 2a		      sta	HMOVE
+    353  f18c				   AssistInstallRegisters
+    354  f18c		       a5 a7		      lda	AssistColor
+    355  f18e		       85 06		      sta	COLUP0
+    356  f190		       a5 8e		      lda	AssistPtr
+    357  f192		       85 89		      sta	P0Ptr
+    358  f194		       a5 8f		      lda	AssistPtr+1
+    359  f196		       85 8a		      sta	P0Ptr+1
+    360  f198		       a9 00		      lda	#0
+    361  f19a		       85 20		      sta	HMP0
+    362  f19c		       a6 a8		      ldx	AssistQueue
+    363  f19e		       c8		      iny
+    364  f19f		       c8		      iny
+    365  f1a0		       c8		      iny
+    366  f1a1		       4c ae f0 	      jmp	NextRoom
+    367  f1a4				   WallScanline
+    368  f1a4							; The dispatcher stores PF0 shifted right so its flags stay positive.
+    369  f1a4		       0a		      asl
+    370  f1a5		       85 0d		      sta	PF0
+    371  f1a7		       b9 00 f6 	      lda	PFData1,y
+    372  f1aa		       85 0e		      sta	PF1
+    373  f1ac		       b9 00 f7 	      lda	PFData2,y
+    374  f1af		       85 0f		      sta	PF2
+    375  f1b1							; Update P1 on the wall transition before selecting the missile row.
+    376  f1b1		       b1 d7		      lda	(P1Ptr),y
+    377  f1b3		       85 1c		      sta	GRP1
+    378  f1b5		       b1 89		      lda	(P0Ptr),y
+    379  f1b7		       85 1b		      sta	GRP0
+    380  f1b9		       a9 00		      lda	#0
+    381  f1bb		       c4 8b		      cpy	BLine
+    382  f1bd		       d0 02		      bne	WallNoShot
+    383  f1bf		       a9 02		      lda	#2
+    384  f1c1				   WallNoShot
+    385  f1c1		       85 1d		      sta	ENAM0
+    386  f1c3		       c8		      iny
+    387  f1c4		       4c ae f0 	      jmp	NextRoom
+    388  f1c7				   RoomFinish
+    389  f1c7		       85 02		      sta	WSYNC
+    390  f1c9		       a9 00		      lda	#0
+    391  f1cb		       85 0d		      sta	PF0
+    392  f1cd		       85 0e		      sta	PF1
+    393  f1cf		       85 0f		      sta	PF2
+    394  f1d1		       85 1b		      sta	GRP0
+    395  f1d3		       85 1d		      sta	ENAM0
+    396  f1d5		       a2 08		      ldx	#8
+    397  f1d7				   Bottom
+    398  f1d7		       85 02		      sta	WSYNC
+    399  f1d9		       ca		      dex
+    400  f1da		       d0 fb		      bne	Bottom
+    401  f1dc		       a9 02		      lda	#2
+    402  f1de		       85 01		      sta	VBLANK
+    403  f1e0		       a9 23		      lda	#35
+    404  f1e2		       ea		      nop
+    405  f1e3		       ea		      nop
+    406  f1e4		       ea		      nop
+    407  f1e5		       ea		      nop
+    408  f1e6		       ea		      nop
+    409  f1e7		       ea		      nop
+    410  f1e8		       8d 96 02 	      sta	TIM64T
+    411  f1eb		       e6 90		      inc	FrameClock
+    412  f1ed		       4c 86 ff 	      jmp	GameBank
+    413  f1f0				   Overscan
+    414  f1f0		       ad 84 02 	      lda	INTIM
+    415  f1f3		       d0 fb		      bne	Overscan
+    416  f1f5		       4c 28 f0 	      jmp	Frame
+    417  f1f8
+    418  f1f8							; A is pixel X, X is 0 for P0 and 2 for M0.
+    419  f1f8				   PlanFrame
+    420  f1f8							; Reserve the upper P0 band before scheduling the overlapping floor key.
+    421  f1f8		       a9 00		      lda	#0
+    422  f1fa		       85 f5		      sta	AssistObject
+    423  f1fc		       20 51 f5 	      jsr	PrepareKeyAssist
+    424  f1ff		       20 57 f2 	      jsr	Schedule
+    425  f202		       a9 3c		      lda	#$3c
+    426  f204		       a6 b2		      ldx	Unlocked
+    427  f206		       f0 02		      beq	DoorColorReady
+    428  f208		       a9 00		      lda	#0
+    429  f20a				   DoorColorReady
+    430  f20a		       85 ed		      sta	DoorColor
+    431  f20c		       38		      sec
+    432  f20d		       a9 ee		      lda	#<(PlayerShape-80)
+    433  f20f		       e5 81		      sbc	PY
+    434  f211		       85 89		      sta	P0Ptr
+    435  f213		       a9 f3		      lda	#>(PlayerShape-80)
+    436  f215		       e9 00		      sbc	#0
+    437  f217		       85 8a		      sta	P0Ptr+1
+    438  f219		       a9 00		      lda	#0
+    439  f21b		       a6 84		      ldx	Shot
+    440  f21d		       f0 05		      beq	NoRasterShot
+    441  f21f		       a5 86		      lda	BY
+    442  f221		       18		      clc
+    443  f222		       69 50		      adc	#80
+    444  f224				   NoRasterShot
+    445  f224		       85 8b		      sta	BLine
+    446  f226		       a5 80		      lda	PX
+    447  f228		       85 d9		      sta	EntryX
+    448  f22a		       a9 1e		      lda	#$1e
+    449  f22c		       85 06		      sta	COLUP0
+    450  f22e		       a9 00		      lda	#0
+    451  f230		       85 8c		      sta	AssistRow
+    452  f232		       a5 f5		      lda	AssistObject
+    453  f234		       f0 03		      beq	OrdinaryAssistPlan
+    454  f236		       4c 3d f7 	      jmp	InstallKeyAssist
+    455  f239				   OrdinaryAssistPlan
+    456  f239		       a5 dc		      lda	Omitted
+    457  f23b		       f0 03		      beq	AssistPlanDone
+    458  f23d		       20 00 f7 	      jsr	ScheduleAssist
+    459  f240				   AssistPlanDone
+    460  f240		       a5 b4		      lda	QueueY
+    461  f242		       85 a5		      sta	NextQueueY
+    462  f244		       60		      rts
+    463  f245
+    464  f245				   Position
+    465  f245		       85 02		      sta	WSYNC
+    466  f247		       38		      sec
+    467  f248				   PositionCoarse
+    468  f248		       e9 0f		      sbc	#15
+    469  f24a		       b0 fc		      bcs	PositionCoarse
+    470  f24c		       49 07		      eor	#7
+    471  f24e		       0a		      asl
+    472  f24f		       0a		      asl
+    473  f250		       0a		      asl
+    474  f251		       0a		      asl
+    475  f252		       95 20		      sta	HMP0,x
+    476  f254		       95 10		      sta	RESP0,x
+    477  f256		       60		      rts
+    478  f257
+    479  f257
+    480  f257							; Collect non-overlapping visible slots in increasing Y each frame.
+    481  f257							; Simulation X/Y are read only; omitted actors continue normal updates.
+    482  f257				   Schedule
+    483  f257		       a9 02		      lda	#2
+    484  f259		       85 db		      sta	OrderEnd
+    485  f25b		       a9 00		      lda	#0
+    486  f25d		       85 d9		      sta	SortI
+    487  f25f		       85 dc		      sta	Omitted
+    488  f261		       85 de		      sta	Eligible
+    489  f263		       85 ec		      sta	Rendered
+    490  f265		       a2 04		      ldx	#4
+    491  f267				   MeasureEligible
+    492  f267		       a9 ff		      lda	#255
+    493  f269		       95 ef		      sta	SetupRows,x
+    494  f26b		       b5 a0		      lda	Life,x
+    495  f26d		       f0 20		      beq	NextEligible
+    496  f26f		       e6 dc		      inc	Omitted
+    497  f271		       a5 de		      lda	Eligible
+    498  f273		       1d 7e f3 	      ora	ObjectBit,x
+    499  f276		       85 de		      sta	Eligible
+    500  f278		       b5 a0		      lda	Life,x
+    501  f27a		       10 06		      bpl	DeathCandidate
+    502  f27c		       bd 84 f3 	      lda	LeadingBlank,x
+    503  f27f		       4c 84 f2 	      jmp	Candidate
+    504  f282				   DeathCandidate
+    505  f282		       a9 01		      lda	#1
+    506  f284				   Candidate
+    507  f284		       18		      clc
+    508  f285		       75 96		      adc	NY,x
+    509  f287		       38		      sec
+    510  f288		       e9 01		      sbc	#1
+    511  f28a		       20 5e f3 	      jsr	PreserveTile
+    512  f28d		       95 ef		      sta	SetupRows,x
+    513  f28f				   NextEligible
+    514  f28f		       ca		      dex
+    515  f290		       10 d5		      bpl	MeasureEligible
+    516  f292		       a9 ff		      lda	#255
+    517  f294		       85 f4		      sta	SetupRows+5
+    518  f296		       a4 f5		      ldy	AssistObject
+    519  f298		       f0 03		      beq	PlanKeySlot
+    520  f29a		       99 ee 00 	      sta	SetupRows-1,y
+    521  f29d				   PlanKeySlot
+    522  f29d		       a5 af		      lda	KeyState
+    523  f29f		       c9 01		      cmp	#1
+    524  f2a1		       d0 0f		      bne	PlanNext
+    525  f2a3		       e6 dc		      inc	Omitted
+    526  f2a5		       a5 de		      lda	Eligible
+    527  f2a7		       09 20		      ora	#32
+    528  f2a9		       85 de		      sta	Eligible
+    529  f2ab		       a5 b1		      lda	KeyY
+    530  f2ad		       20 5e f3 	      jsr	PreserveTile
+    531  f2b0		       85 f4		      sta	SetupRows+5
+    532  f2b2				   PlanNext
+    533  f2b2		       a9 ff		      lda	#255
+    534  f2b4		       85 ee		      sta	MinSetup
+    535  f2b6		       85 a5		      sta	Actor
+    536  f2b8		       a2 05		      ldx	#5
+    537  f2ba				   FindNext
+    538  f2ba		       b5 ef		      lda	SetupRows,x
+    539  f2bc		       c5 db		      cmp	OrderEnd
+    540  f2be		       90 08		      bcc	SkipPlan
+    541  f2c0		       c5 ee		      cmp	MinSetup
+    542  f2c2		       b0 04		      bcs	SkipPlan
+    543  f2c4		       85 ee		      sta	MinSetup
+    544  f2c6		       86 a5		      stx	Actor
+    545  f2c8				   SkipPlan
+    546  f2c8		       ca		      dex
+    547  f2c9		       10 ef		      bpl	FindNext
+    548  f2cb				   Planned
+    549  f2cb		       a6 d9		      ldx	SortI
+    550  f2cd		       a4 a5		      ldy	Actor
+    551  f2cf		       30 74		      bmi	EndPlan
+    552  f2d1		       c0 05		      cpy	#5
+    553  f2d3		       f0 06		      beq	LoadKeyOrigin
+    554  f2d5		       b9 96 00 	      lda	NY,y
+    555  f2d8		       4c dd f2 	      jmp	StoreOrigin
+    556  f2db				   LoadKeyOrigin
+    557  f2db		       a5 b1		      lda	KeyY
+    558  f2dd				   StoreOrigin
+    559  f2dd		       85 da		      sta	SortJ
+    560  f2df		       a5 ee		      lda	MinSetup
+    561  f2e1		       18		      clc
+    562  f2e2		       69 50		      adc	#80
+    563  f2e4		       95 b4		      sta	QueueY,x
+    564  f2e6		       a5 ec		      lda	Rendered
+    565  f2e8		       19 7e f3 	      ora	ObjectBit,y
+    566  f2eb		       85 ec		      sta	Rendered
+    567  f2ed		       c0 05		      cpy	#5
+    568  f2ef		       f0 1b		      beq	PlanKey
+    569  f2f1		       b9 91 00 	      lda	NX,y
+    570  f2f4		       18		      clc
+    571  f2f5		       69 03		      adc	#3
+    572  f2f7		       95 bb		      sta	QueueX,x
+    573  f2f9		       a9 0e		      lda	#$0e
+    574  f2fb		       95 d0		      sta	QueueColor,x
+    575  f2fd		       b9 a0 00 	      lda	Life,y
+    576  f300		       30 04		      bmi	LivePlan
+    577  f302		       a9 04		      lda	#4
+    578  f304		       d0 13		      bne	SetShape
+    579  f306				   LivePlan
+    580  f306		       b9 6d f3 	      lda	Shapes,y
+    581  f309		       4c 19 f3 	      jmp	SetShape
+    582  f30c				   PlanKey
+    583  f30c		       a5 b0		      lda	KeyX
+    584  f30e		       18		      clc
+    585  f30f		       69 03		      adc	#3
+    586  f311		       95 bb		      sta	QueueX,x
+    587  f313		       a9 1a		      lda	#$1a
+    588  f315		       95 d0		      sta	QueueColor,x
+    589  f317		       a9 05		      lda	#5
+    590  f319				   SetShape
+    591  f319		       a8		      tay
+    592  f31a		       38		      sec
+    593  f31b		       b9 72 f3 	      lda	ShapeLo,y
+    594  f31e		       e5 da		      sbc	SortJ
+    595  f320		       95 c2		      sta	QueueLo,x
+    596  f322		       85 d7		      sta	P1Ptr
+    597  f324		       b9 78 f3 	      lda	ShapeHi,y
+    598  f327		       e9 00		      sbc	#0
+    599  f329		       95 c9		      sta	QueueHi,x
+    600  f32b		       85 d8		      sta	P1Ptr+1
+    601  f32d		       84 ed		      sty	TempY
+    602  f32f		       b4 b4		      ldy	QueueY,x
+    603  f331		       c8		      iny
+    604  f332		       b1 d7		      lda	(P1Ptr),y
+    605  f334		       95 e5		      sta	QueueFirst,x
+    606  f336		       a4 ed		      ldy	TempY
+    607  f338		       a5 da		      lda	SortJ
+    608  f33a		       18		      clc
+    609  f33b		       79 89 f3 	      adc	LastPlusTwo,y
+    610  f33e		       85 db		      sta	OrderEnd
+    611  f340		       e6 d9		      inc	SortI
+    612  f342		       4c b2 f2 	      jmp	PlanNext
+    613  f345				   EndPlan
+    614  f345		       20 00 f5 	      jsr	BridgeFloorKey
+    615  f348		       a6 d9		      ldx	SortI
+    616  f34a		       a9 3f		      lda	#<(PlayerShape-255)
+    617  f34c		       85 d7		      sta	P1Ptr
+    618  f34e		       a9 f3		      lda	#>(PlayerShape-255)
+    619  f350		       85 d8		      sta	P1Ptr+1
+    620  f352		       a9 00		      lda	#0
+    621  f354		       95 b4		      sta	QueueY,x
+    622  f356		       a5 dc		      lda	Omitted
+    623  f358		       38		      sec
+    624  f359		       e5 d9		      sbc	SortI
+    625  f35b		       85 dc		      sta	Omitted
+    626  f35d		       60		      rts
+    627  f35e				   PreserveTile
+    628  f35e		       a8		      tay
+    629  f35f		       b9 00 fe 	      lda	AllowedSetup,y
+    630  f362		       60		      rts
+    631  f363				   CompensateAssistX
+    632  f363		       38		      sec
+    633  f364		       a5 8d		      lda	AssistX
+    634  f366		       e9 2d		      sbc	#45
+    635  f368		       85 8d		      sta	AssistX
+    636  f36a		       4c 40 f2 	      jmp	AssistPlanDone
+    637  f36d
+    638  f36d				   Shapes
+    639  f36d		       00 00 01 02*	      byte.b	0,0,1,2,3
+    640  f372				   ShapeLo
+    641  f372		       5f 17 cf 87*	      byte.b	<(Mask0-80),<(Mask1-80),<(Mask2-80),<(Mask3-80),<(DeathShape-80),<(KeyShape-80)
+    642  f378				   ShapeHi
+    643  f378		       f9 fa fa fb*	      byte.b	>(Mask0-80),>(Mask1-80),>(Mask2-80),>(Mask3-80),>(DeathShape-80),>(KeyShape-80)
+    644  f37e				   ObjectBit
+    645  f37e		       01 02 04 08*	      byte.b	1,2,4,8,16,32
+    646  f384				   LeadingBlank
+    647  f384		       00 00 00 02*	      byte.b	0,0,0,2,2
+    648  f389				   LastPlusTwo
+    649  f389		       0a 0a 09 09*	      byte.b	10,10,9,9,9,7
+    650  f38f		       00 00 00 00*	      ds	175,0
+    651  f43e				   PlayerShape
+    652  f43e		       3c 7e 18 7e*	      byte.b	$3c,$7e,$18,$7e,$1e,$3c,$18,$24,$42
+    653  f447		       00 00 00 00*	      ds	167,0	; the upper solid tile keeps the player at Y >= 8
+------- FILE video.inc LEVEL 2 PASS 2
+      0  f4ee					      include	"video.inc"
+      1  f500		       00 00 00 00*	      ALIGN	256
+      2  f500				   PFData0
+------- FILE key_bridge.inc LEVEL 3 PASS 2
+      0  f500					      include	"key_bridge.inc"
+      1  f500							; Only the final P1 actor can bridge into a newly ready floor key. The
+      2  f500							; candidate must have no lit overlap and RESP1 must clear its right edge.
+      3  f500				   BridgeFloorKey
+      4  f500		       a5 af		      lda	KeyState
+      5  f502		       c9 01		      cmp	#1
+      6  f504		       d0 43		      bne	BridgeReject
+      7  f506		       a5 ec		      lda	Rendered
+      8  f508		       29 20		      and	#32
+      9  f50a		       d0 3d		      bne	BridgeReject
+     10  f50c		       a6 d9		      ldx	SortI
+     11  f50e		       f0 39		      beq	BridgeReject
+     12  f510		       a4 b1		      ldy	KeyY
+     13  f512		       b9 00 fe 	      lda	AllowedSetup,y
+     14  f515		       c5 b1		      cmp	KeyY
+     15  f517		       d0 30		      bne	BridgeReject
+     16  f519		       18		      clc
+     17  f51a		       69 02		      adc	#2
+     18  f51c		       c5 db		      cmp	OrderEnd
+     19  f51e		       90 29		      bcc	BridgeReject
+     20  f520		       a5 b0		      lda	KeyX
+     21  f522		       c9 2a		      cmp	#42
+     22  f524		       90 23		      bcc	BridgeReject
+     23  f526		       18		      clc
+     24  f527		       69 03		      adc	#3
+     25  f529		       38		      sec
+     26  f52a		       f5 ba		      sbc	QueueX-1,x
+     27  f52c		       c9 14		      cmp	#20
+     28  f52e		       90 19		      bcc	BridgeReject
+     29  f530		       b5 ba		      lda	QueueX-1,x
+     30  f532		       c9 17		      cmp	#23
+     31  f534		       90 13		      bcc	BridgeReject
+     32  f536		       a5 b0		      lda	KeyX
+     33  f538		       38		      sec
+     34  f539		       e9 2a		      sbc	#42
+     35  f53b		       85 f7		      sta	BridgeX
+     36  f53d		       98		      tya
+     37  f53e		       18		      clc
+     38  f53f		       69 50		      adc	#80
+     39  f541		       a8		      tay
+     40  f542		       d5 b3		      cmp	QueueY-1,x
+     41  f544		       f0 03		      beq	BridgeReject
+     42  f546		       4c 00 f6 	      jmp	AppendBridge
+     43  f549				   BridgeReject
+     44  f549		       60		      rts
+------- FILE video.inc
+      4  f54a		       00 00 00 00*	      ds	PFData0+80-*,0
+      5  f550				   MapColumn0
+      6  f550		       f0		      byte.b	240
+------- FILE prepare_key_assist.inc LEVEL 3 PASS 2
+      0  f551					      include	"prepare_key_assist.inc"
+      1  f551				   PrepareKeyAssist
+      2  f551							; The key uses P1 through logical lines 156-158 while P0 moves.
+      3  f551							; The frame may reserve P0 for a small upper NPC and the lower player.
+      4  f551		       a5 af		      lda	KeyState
+      5  f553		       c9 01		      cmp	#1
+      6  f555		       d0 2b		      bne	KeyAssistRejected
+      7  f557		       a5 84		      lda	Shot
+      8  f559		       f0 06		      beq	KeyAssistPlayer
+      9  f55b		       a5 86		      lda	BY
+     10  f55d		       c9 9f		      cmp	#159
+     11  f55f		       90 21		      bcc	KeyAssistRejected
+     12  f561				   KeyAssistPlayer
+     13  f561		       a5 81		      lda	PY
+     14  f563		       c9 9f		      cmp	#159
+     15  f565		       90 1b		      bcc	KeyAssistRejected
+     16  f567		       a5 80		      lda	PX
+     17  f569		       c9 2a		      cmp	#42
+     18  f56b		       90 15		      bcc	KeyAssistRejected
+     19  f56d		       c9 7c		      cmp	#124
+     20  f56f		       b0 11		      bcs	KeyAssistRejected
+     21  f571		       a5 b1		      lda	KeyY
+     22  f573		       c9 99		      cmp	#153
+     23  f575		       d0 0b		      bne	KeyAssistRejected
+     24  f577		       a5 b0		      lda	KeyX
+     25  f579		       c9 2c		      cmp	#44
+     26  f57b		       90 05		      bcc	KeyAssistRejected
+     27  f57d		       a2 04		      ldx	#4
+     28  f57f		       4c 30 f6 	      jmp	SelectKeyNpc
+     29  f582				   KeyAssistRejected
+     30  f582		       60		      rts
+     31  f583
+     32  f583
+     33  f583
+     34  f583							; Mirror banks 0 and 2 share all addresses. Both paths need the same
+     35  f583							; early ENAM0 clear. Preserve the player's latch order in its door band.
+     36  f583				   SelectDoorKernel
+     37  f583		       a5 81		      lda	PY
+     38  f585		       c9 40		      cmp	#64
+     39  f587		       90 07		      bcc	DoorKernelSelected
+     40  f589		       c9 68		      cmp	#104
+     41  f58b		       b0 03		      bcs	DoorKernelSelected
+     42  f58d		       8d f8 ff 	      sta	$fff8
+     43  f590				   DoorKernelSelected
+     44  f590		       60		      rts
+------- FILE video.inc
+      8  f600		       00 00 00 00*	      ALIGN	256
+      9  f600				   PFData1
+------- FILE key_bridge_append.inc LEVEL 3 PASS 2
+      0  f600					      include	"key_bridge_append.inc"
+      1  f600				   AppendBridge
+      2  f600		       95 b4		      sta	QueueY,x
+      3  f602		       b5 c1		      lda	QueueLo-1,x
+      4  f604		       85 d7		      sta	P1Ptr
+      5  f606		       b5 c8		      lda	QueueHi-1,x
+      6  f608		       85 d8		      sta	P1Ptr+1
+      7  f60a		       b1 d7		      lda	(P1Ptr),y
+      8  f60c		       85 f6		      sta	BridgeOld
+      9  f60e		       a9 00		      lda	#0
+     10  f610		       95 bb		      sta	QueueX,x
+     11  f612		       a9 1a		      lda	#$1a
+     12  f614		       95 d0		      sta	QueueColor,x
+     13  f616		       a9 70		      lda	#$70
+     14  f618		       95 e5		      sta	QueueFirst,x
+     15  f61a		       38		      sec
+     16  f61b		       a9 f7		      lda	#<(KeyShape-80)
+     17  f61d		       e5 b1		      sbc	KeyY
+     18  f61f		       95 c2		      sta	QueueLo,x
+     19  f621		       a9 fc		      lda	#>(KeyShape-80)
+     20  f623		       e9 00		      sbc	#0
+     21  f625		       95 c9		      sta	QueueHi,x
+     22  f627		       a5 ec		      lda	Rendered
+     23  f629		       09 20		      ora	#32
+     24  f62b		       85 ec		      sta	Rendered
+     25  f62d		       e6 d9		      inc	SortI
+     26  f62f		       60		      rts
+------- FILE video.inc
+------- FILE key_assist_select.inc LEVEL 3 PASS 2
+      0  f630					      include	"key_assist_select.inc"
+      1  f630							; All other live sprites must end ahead of the key's setup. A single
+      2  f630							; small mask can finish before logical line 156 on the upper P0 band.
+      3  f630				   SelectKeyNpc
+      4  f630		       b5 a0		      lda	Life,x
+      5  f632		       f0 15		      beq	NextKeyNpc
+      6  f634		       b5 96		      lda	NY,x
+      7  f636		       c9 90		      cmp	#144
+      8  f638		       90 0f		      bcc	NextKeyNpc
+      9  f63a		       c9 95		      cmp	#149
+     10  f63c		       b0 0f		      bcs	RejectKeySelection
+     11  f63e		       e0 03		      cpx	#3
+     12  f640		       90 0b		      bcc	RejectKeySelection
+     13  f642		       b5 a0		      lda	Life,x
+     14  f644		       10 07		      bpl	RejectKeySelection
+     15  f646		       4c 3b f8 	      jmp	FinishKeySelection
+     16  f649				   NextKeyNpc
+     17  f649		       ca		      dex
+     18  f64a		       10 e4		      bpl	SelectKeyNpc
+     19  f64c		       60		      rts
+     20  f64d				   RejectKeySelection
+     21  f64d		       4c 49 f8 	      jmp	ClearKeySelection
+------- FILE video.inc
+     12  f650					      ds	PFData1+80-*,0
+     13  f650				   MapColumn1
+     14  f650		       ff ff ff ff*	      byte.b	255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0
+     15  f660		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     16  f670		       08 08 08 08*	      byte.b	8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+     17  f680		       08 08 08 08*	      byte.b	8,8,8,8,8,8,8,8,15,15,15,15,15,15,15,15
+     18  f690		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     19  f6a0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     20  f6b0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     21  f6c0		       0f 0f 0f 0f*	      byte.b	15,15,15,15,15,15,15,15,8,8,8,8,8,8,8,8
+     22  f6d0		       08 08 08 08*	      byte.b	8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+     23  f6e0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     24  f6f0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255
+     25  f700					      ALIGN	256
+     26  f700				   PFData2
+------- FILE assist_window.inc LEVEL 3 PASS 2
+      0  f700					      include	"assist_window.inc"
+      1  f700				   ScheduleAssist
+      2  f700		       a5 af		      lda	KeyState
+      3  f702		       c9 01		      cmp	#1
+      4  f704		       f0 36		      beq	AssistRejectLocal
+      5  f706		       a9 81		      lda	#129
+      6  f708		       a6 81		      ldx	PY
+      7  f70a		       e0 3d		      cpx	#61
+      8  f70c		       b0 04		      bcs	AssistLower
+      9  f70e		       a9 45		      lda	#69
+     10  f710		       d0 0c		      bne	AssistSetSplit
+     11  f712				   AssistLower
+     12  f712		       e0 87		      cpx	#135
+     13  f714		       b0 08		      bcs	AssistSetSplit
+     14  f716		       a9 88		      lda	#136
+     15  f718		       e0 6b		      cpx	#107
+     16  f71a		       90 02		      bcc	AssistSetSplit
+     17  f71c		       a9 68		      lda	#104
+     18  f71e				   AssistSetSplit
+     19  f71e		       85 ee		      sta	SplitY
+     20  f720		       38		      sec
+     21  f721		       e9 08		      sbc	#8
+     22  f723		       85 8e		      sta	SplitLow
+     23  f725		       69 0d		      adc	#13
+     24  f727		       85 8f		      sta	SplitHigh
+     25  f729		       a2 04		      ldx	#4
+     26  f72b				   AssistCheckStrip
+     27  f72b		       b5 a0		      lda	Life,x
+     28  f72d		       f0 0a		      beq	AssistContinueLocal
+     29  f72f		       b5 96		      lda	NY,x
+     30  f731		       c5 8e		      cmp	SplitLow
+     31  f733		       90 04		      bcc	AssistContinueLocal
+     32  f735		       c5 8f		      cmp	SplitHigh
+     33  f737		       90 03		      bcc	AssistRejectLocal
+     34  f739				   AssistContinueLocal
+     35  f739		       4c b0 fe 	      jmp	AssistNextStrip
+     36  f73c				   AssistRejectLocal
+     37  f73c		       60		      rts
+------- FILE video.inc
+------- FILE key_assist_install.inc LEVEL 3 PASS 2
+      0  f73d					      include	"key_assist_install.inc"
+      1  f73d				   InstallKeyAssist
+      2  f73d		       aa		      tax
+      3  f73e		       ca		      dex
+      4  f73f		       a9 9c		      lda	#156
+      5  f741		       85 ee		      sta	SplitY
+      6  f743		       a9 00		      lda	#0
+      7  f745		       85 da		      sta	AssistID
+      8  f747		       20 01 ff 	      jsr	InstallAssist
+      9  f74a		       4c 63 f3 	      jmp	CompensateAssistX
+------- FILE video.inc
+     29  f74d		       00 00 00 	      ds	PFData2+80-*,0
+     30  f750				   MapColumn2
+     31  f750		       ff ff ff ff*	      byte.b	255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0
+     32  f760		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     33  f770		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     34  f780		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3
+     35  f790		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     36  f7a0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     37  f7b0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     38  f7c0		       03 03 03 03*	      byte.b	3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0
+     39  f7d0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     40  f7e0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     41  f7f0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255
+     42  f800					      ALIGN	256
+     43  f800				   RoomFlags
+------- FILE key_assist_raster.inc LEVEL 3 PASS 2
+      0  f800					      include	"key_assist_raster.inc"
+      1  f800				   KeyAssistStart
+      2  f800							; On the first switch line GRP1 was already updated by SpecialScanline.
+      3  f800		       86 a8		      stx	AssistQueue
+      4  f802		       a9 00		      lda	#0
+      5  f804		       85 1b		      sta	GRP0
+      6  f806		       85 1d		      sta	ENAM0
+      7  f808		       c8		      iny
+      8  f809		       b1 d7		      lda	(P1Ptr),y
+      9  f80b		       85 f6		      sta	BridgeOld
+     10  f80d		       85 02		      sta	WSYNC
+     11  f80f		       a5 f6		      lda	BridgeOld
+     12  f811		       85 1c		      sta	GRP1
+     13  f813		       a5 8d		      lda	AssistX
+     14  f815		       24 8d		      bit	AssistX
+     15  f817		       4c 1a f8 	      jmp	KeyAssistPosition	; 15 cycles replace three coarse iterations
+     16  f81a
+     17  f81a				   KeyAssistPosition
+     18  f81a		       38		      sec
+     19  f81b				   KeyAssistCoarse
+     20  f81b		       e9 0f		      sbc	#15
+     21  f81d		       b0 fc		      bcs	KeyAssistCoarse
+     22  f81f		       49 07		      eor	#7
+     23  f821		       0a		      asl
+     24  f822		       0a		      asl
+     25  f823		       0a		      asl
+     26  f824		       0a		      asl
+     27  f825		       85 20		      sta	HMP0
+     28  f827		       85 10		      sta	RESP0
+     29  f829		       a9 00		      lda	#0
+     30  f82b		       85 21		      sta	HMP1
+     31  f82d		       85 02		      sta	WSYNC
+     32  f82f		       85 2a		      sta	HMOVE
+     33  f831		       c8		      iny
+     34  f832		       b1 d7		      lda	(P1Ptr),y
+     35  f834		       85 1c		      sta	GRP1
+     36  f836		       88		      dey
+     37  f837		       88		      dey
+     38  f838		       4c 8c f1 	      jmp	AssistInstallRegisters
+     39  f83b
+     40  f83b				   FinishKeySelection
+     41  f83b		       a5 f5		      lda	AssistObject
+     42  f83d		       f0 03		      beq	FirstKeySelection
+     43  f83f		       4c 4d f6 	      jmp	RejectKeySelection
+     44  f842				   FirstKeySelection
+     45  f842		       e8		      inx
+     46  f843		       86 f5		      stx	AssistObject
+     47  f845		       ca		      dex
+     48  f846		       4c 49 f6 	      jmp	NextKeyNpc
+     49  f849
+     50  f849				   ClearKeySelection
+     51  f849		       a9 00		      lda	#0
+     52  f84b		       85 f5		      sta	AssistObject
+     53  f84d		       60		      rts
+------- FILE video.inc
+     45  f84e		       00 00		      ds	RoomFlags+80-*,0
+     46  f850				   MapFlags
+     47  f850		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0
+     48  f860		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     49  f870		       08 00 00 00*	      byte.b	8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     50  f880		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0
+     51  f890		       08 00 00 00*	      byte.b	8,0,0,0,0,129,0,0,128,128,128,128,128,128,128,128
+     52  f8a0		       80 80 80 80*	      byte.b	128,128,128,128,128,128,128,128,128,128,128,128,128,128,128,128
+     53  f8b0		       80 80 80 80*	      byte.b	128,128,128,128,128,128,128,128,129,0,0,0,0,0,0,0
+     54  f8c0		       08 00 00 00*	      byte.b	8,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0
+     55  f8d0		       00 81 00 00*	      byte.b	0,129,0,0,0,0,0,0,129,0,0,0,0,0,0,0
+     56  f8e0		       08 00 00 00*	      byte.b	8,0,0,0,0,0,0,0,0,0,0,0,129,0,0,0
+     57  f8f0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,120,0,0,0,0,0,0,0
+     58  f900		       00 00 00 00*	      ds	175,0
+     59  f9af				   Mask0
+     60  f9af		       3c 3c 18 ff*	      byte.b	60,60,24,255,24,36,36,66,66
+     61  f9b8		       00 00 00 00*	      ds	175,0
+     62  fa67				   Mask1
+     63  fa67		       3c 3c 18 ff*	      byte.b	60,60,24,255,60,126,126,36,36
+     64  fa70		       00 00 00 00*	      ds	175,0
+     65  fb1f				   Mask2
+     66  fb1f		       00 00 3c 3c*	      byte.b	0,0,60,60,24,126,24,36,0
+     67  fb28		       00 00 00 00*	      ds	175,0
+     68  fbd7				   Mask3
+     69  fbd7		       00 00 3c 3c*	      byte.b	0,0,60,60,24,126,60,36,0
+     70  fbe0		       00 00 00 00*	      ds	175,0
+------- FILE game.asm
+    655  fc8f				   DeathShape
+    656  fc8f		       00 42 24 18*	      byte.b	$00,$42,$24,$18,$a5,$18,$24,$42,$00
+    657  fc98		       00 00 00 00*	      ds	175,0
+    658  fd47				   KeyShape
+    659  fd47		       00 70 50 7e*	      byte.b	$00,$70,$50,$7e,$24,$04,$00,$00,$00
+    660  fd50		       00 00 00 00*	      ds	175,0
+------- FILE schedule.inc LEVEL 2 PASS 2
+      0  fdff					      include	"schedule.inc"
+      1  fe00		       00		      ALIGN	256
+      2  fe00				   AllowedSetup
+      3  fe00		       00 01 02 03*	      byte.b	0,1,2,3,4,5,6,6,6,6,10,11,12,13,14,15
+      4  fe10		       10 11 12 13*	      byte.b	16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,30
+      5  fe20		       1e 1e 22 23*	      byte.b	30,30,34,35,36,37,38,39,40,41,42,43,44,45,46,47
+      6  fe30		       30 31 32 33*	      byte.b	48,49,50,51,52,53,54,54,54,54,58,59,60,61,62,62
+      7  fe40		       3e 3e 42 43*	      byte.b	62,62,66,67,68,69,70,71,72,73,74,75,76,77,78,79
+      8  fe50		       50 51 52 53*	      byte.b	80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95
+      9  fe60		       60 61 62 63*	      byte.b	96,97,98,99,100,101,102,102,102,102,106,107,108,109,110,110
+     10  fe70		       6e 6e 72 73*	      byte.b	110,110,114,115,116,117,118,118,118,118,122,123,124,125,126,127
+     11  fe80		       80 81 82 83*	      byte.b	128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,142
+     12  fe90		       8e 8e 92 93*	      byte.b	142,142,146,147,148,149,150,151,152,153,154,155,156,157,158,159
+     13  fea0		       a0 a1 a2 a3*	      byte.b	160,161,162,163,164,165,166,166,166,166,170,171,172,173,174,175
+------- FILE game.asm
+    662  feb0							; Search for room to reuse P0 on the other side of a quiet strip.
+    663  feb0							; The strip is a register-write window. The NPC still uses its RAM X/Y.
+    664  feb0				   AssistNextStrip
+    665  feb0		       ca		      dex
+    666  feb1		       30 03		      bmi	AssistCheckDone
+    667  feb3		       4c 2b f7 	      jmp	AssistCheckStrip
+    668  feb6				   AssistCheckDone
+    669  feb6							; P1 needs the larger guard for its own setup. P0 and M0 can
+    670  feb6							; begin on the first line after the three-line P0 switch.
+    671  feb6		       a5 8f		      lda	SplitHigh
+    672  feb8		       38		      sec
+    673  feb9		       e9 03		      sbc	#3
+    674  febb		       85 8f		      sta	SplitHigh
+    675  febd		       a5 81		      lda	PY
+    676  febf		       c5 8e		      cmp	SplitLow
+    677  fec1		       90 12		      bcc	AssistHumanFirst
+    678  fec3		       c5 8f		      cmp	SplitHigh
+    679  fec5		       90 39		      bcc	AssistReturn
+    680  fec7		       a5 84		      lda	Shot
+    681  fec9		       f0 06		      beq	AssistNpcFirst
+    682  fecb		       a5 86		      lda	BY
+    683  fecd		       c5 8f		      cmp	SplitHigh
+    684  fecf		       90 2f		      bcc	AssistReturn
+    685  fed1				   AssistNpcFirst
+    686  fed1		       a9 00		      lda	#0
+    687  fed3		       f0 0c		      beq	AssistFind
+    688  fed5				   AssistHumanFirst
+    689  fed5		       a5 84		      lda	Shot
+    690  fed7		       f0 06		      beq	AssistHumanReady
+    691  fed9		       a5 86		      lda	BY
+    692  fedb		       c5 8e		      cmp	SplitLow
+    693  fedd		       b0 21		      bcs	AssistReturn
+    694  fedf				   AssistHumanReady
+    695  fedf		       a9 01		      lda	#1
+    696  fee1				   AssistFind
+    697  fee1		       85 da		      sta	AssistID
+    698  fee3		       a2 04		      ldx	#4
+    699  fee5				   AssistCheckCandidate
+    700  fee5		       b5 a0		      lda	Life,x
+    701  fee7		       10 14		      bpl	AssistNextCandidate
+    702  fee9		       bd 7e f3 	      lda	ObjectBit,x
+    703  feec		       24 ec		      bit	Rendered
+    704  feee		       d0 0d		      bne	AssistNextCandidate
+    705  fef0		       b5 96		      lda	NY,x
+    706  fef2		       c5 ee		      cmp	SplitY
+    707  fef4		       a5 da		      lda	AssistID
+    708  fef6		       2a		      rol
+    709  fef7		       29 01		      and	#1
+    710  fef9		       45 da		      eor	AssistID
+    711  fefb		       f0 04		      beq	InstallAssist
+    712  fefd				   AssistNextCandidate
+    713  fefd		       ca		      dex
+    714  fefe		       10 e5		      bpl	AssistCheckCandidate
+    715  ff00				   AssistReturn
+    716  ff00		       60		      rts
+    717  ff01				   InstallAssist
+    718  ff01		       a5 ee		      lda	SplitY
+    719  ff03		       18		      clc
+    720  ff04		       69 50		      adc	#80
+    721  ff06		       85 8c		      sta	AssistRow
+    722  ff08		       bd 7e f3 	      lda	ObjectBit,x
+    723  ff0b		       85 f5		      sta	AssistObject
+    724  ff0d		       05 ec		      ora	Rendered
+    725  ff0f		       85 ec		      sta	Rendered
+    726  ff11		       c6 dc		      dec	Omitted
+    727  ff13		       bc 6d f3 	      ldy	Shapes,x
+    728  ff16		       38		      sec
+    729  ff17		       b9 72 f3 	      lda	ShapeLo,y
+    730  ff1a		       f5 96		      sbc	NY,x
+    731  ff1c		       85 8e		      sta	AssistPtr
+    732  ff1e		       b9 78 f3 	      lda	ShapeHi,y
+    733  ff21		       e9 00		      sbc	#0
+    734  ff23		       85 8f		      sta	AssistPtr+1
+    735  ff25		       b5 91		      lda	NX,x
+    736  ff27		       a4 da		      ldy	AssistID
+    737  ff29		       d0 1d		      bne	AssistSetSecond
+    738  ff2b							; NPC in the upper band, then restore the player's original pointer.
+    739  ff2b		       85 d9		      sta	EntryX
+    740  ff2d		       a5 89		      lda	P0Ptr
+    741  ff2f		       a4 8e		      ldy	AssistPtr
+    742  ff31		       84 89		      sty	P0Ptr
+    743  ff33		       85 8e		      sta	AssistPtr
+    744  ff35		       a5 8a		      lda	P0Ptr+1
+    745  ff37		       a4 8f		      ldy	AssistPtr+1
+    746  ff39		       84 8a		      sty	P0Ptr+1
+    747  ff3b		       85 8f		      sta	AssistPtr+1
+    748  ff3d		       a9 0e		      lda	#$0e
+    749  ff3f		       85 06		      sta	COLUP0
+    750  ff41		       a9 1e		      lda	#$1e
+    751  ff43		       a4 80		      ldy	PX
+    752  ff45		       4c 4b ff 	      jmp	AssistSetColor
+    753  ff48				   AssistSetSecond
+    754  ff48		       a8		      tay
+    755  ff49		       a9 0e		      lda	#$0e
+    756  ff4b				   AssistSetColor
+    757  ff4b		       85 a7		      sta	AssistColor
+    758  ff4d		       98		      tya
+    759  ff4e		       18		      clc
+    760  ff4f		       69 03		      adc	#3
+    761  ff51		       85 8d		      sta	AssistX
+    762  ff53		       60		      rts
+    763  ff54
+    764  ff54
+    765  ff54					      ENDIF
+    766  ff54
+    767  ff80					      ORG	$ff80
+    768  ff80				   Reset
+    769  ff80		       8d f6 ff 	      sta	$fff6
+    770  ff83					      IF	LOGIC = 0
+    771  ff83		       4c 00 f0 	      jmp	VideoReset
+    772  ff86				  -	      ELSE
+    773  ff86				  -	      jmp	Reset
+    774  ff86					      ENDIF
+    775  ff86				   GameBank
+    776  ff86		       8d f7 ff 	      sta	$fff7
+    777  ff89				  -	      IF	LOGIC
+    778  ff89				  -	      jmp	LogicUpdate
+    779  ff89					      ELSE
+    780  ff89		       4c 86 ff 	      jmp	GameBank
+    781  ff8c					      ENDIF
+    782  ff8c				   VideoBank
+    783  ff8c		       8d f6 ff 	      sta	$fff6
+    784  ff8f					      IF	LOGIC = 0
+    785  ff8f		       4c f0 f1 	      jmp	Overscan
+    786  ff92				  -	      ELSE
+    787  ff92				  -	      jmp	VideoBank
+    788  ff92					      ENDIF
+    789  ff92				   InitBank
+    790  ff92		       8d f7 ff 	      sta	$fff7
+    791  ff95				  -	      IF	LOGIC
+    792  ff95				  -	      jsr	InitGame
+    793  ff95				  -	      jmp	StartBank
+    794  ff95					      ELSE
+    795  ff95		       ea ea ea ea*	      ds	6,$ea
+    796  ff9b					      ENDIF
+    797  ff9b				   StartBank
+    798  ff9b		       8d f6 ff 	      sta	$fff6
+    799  ff9e					      IF	LOGIC = 0
+    800  ff9e		       4c 18 f0 	      jmp	VideoStart
+    801  ffa1				  -	      ELSE
+    802  ffa1				  -	      jmp	StartBank
+    803  ffa1					      ENDIF
+    804  fffa					      ORG	$fffa
+    805  fffa		       80 ff 80 ff*	      word.w	Reset,Reset,Reset
