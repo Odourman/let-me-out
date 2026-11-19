@@ -1,0 +1,564 @@
+------- FILE game.asm LEVEL 1 PASS 2
+      1  fffa					      processor	6502
+      2  fffa		       00 00	   VSYNC      =	$00
+      3  fffa		       00 01	   VBLANK     =	$01
+      4  fffa		       00 02	   WSYNC      =	$02
+      5  fffa		       00 04	   NUSIZ0     =	$04
+      6  fffa		       00 05	   NUSIZ1     =	$05
+      7  fffa		       00 06	   COLUP0     =	$06
+      8  fffa		       00 07	   COLUP1     =	$07
+      9  fffa		       00 08	   COLUPF     =	$08
+     10  fffa		       00 09	   COLUBK     =	$09
+     11  fffa		       00 0a	   CTRLPF     =	$0a
+     12  fffa		       00 0d	   PF0	      =	$0d
+     13  fffa		       00 0e	   PF1	      =	$0e
+     14  fffa		       00 0f	   PF2	      =	$0f
+     15  fffa		       00 10	   RESP0      =	$10
+     16  fffa		       00 1b	   GRP0       =	$1b
+     17  fffa		       00 1c	   GRP1       =	$1c
+     18  fffa		       00 1d	   ENAM0      =	$1d
+     19  fffa		       00 20	   HMP0       =	$20
+     20  fffa		       00 21	   HMP1       =	$21
+     21  fffa		       00 11	   RESP1      =	$11
+     22  fffa		       00 2a	   HMOVE      =	$2a
+     23  fffa		       00 2b	   HMCLR      =	$2b
+     24  fffa		       00 0c	   INPT4      =	$0c
+     25  fffa		       02 80	   SWCHA      =	$0280
+     26  fffa		       02 82	   SWCHB      =	$0282
+     27  fffa		       02 84	   INTIM      =	$0284
+     28  fffa		       02 96	   TIM64T     =	$0296
+     29  10000 ????
+     30  10000 ????		00 80	    PX	       =	$80
+     31  10000 ????		00 81	    PY	       =	$81
+     32  10000 ????		00 82	    Aim        =	$82
+     33  10000 ????		00 83	    Pressed    =	$83
+     34  10000 ????		00 84	    Shot       =	$84
+     35  10000 ????		00 85	    BX	       =	$85
+     36  10000 ????		00 86	    BY	       =	$86
+     37  10000 ????		00 87	    Direction  =	$87
+     38  10000 ????		00 88	    Hunt       =	$88
+     39  10000 ????		00 89	    P0Ptr      =	$89
+     40  10000 ????		00 8b	    BLine      =	$8b
+     41  10000 ????		00 8c	    TX	       =	$8c
+     42  10000 ????		00 8d	    TY	       =	$8d
+     43  10000 ????		00 8e	    Tmp        =	$8e
+     44  10000 ????		00 8f	    Tile       =	$8f
+     45  10000 ????		00 90	    FrameClock =	$90
+     46  10000 ????
+     47  10000 ????		00 05	    NPCCount   =	5
+     48  10000 ????		00 91	    NX	       =	$91
+     49  10000 ????		00 96	    NY	       =	$96
+     50  10000 ????		00 9b	    NDir       =	$9b
+     51  10000 ????		00 a0	    Life       =	$a0	; 255 active, 1..8 death, zero removed
+     52  10000 ????		00 a5	    Actor      =	$a5
+     53  10000 ????		00 a6	    Quota      =	$a6
+     54  10000 ????		00 a7	    TryDir     =	$a7
+     55  10000 ????		00 a8	    Retry      =	$a8
+     56  10000 ????		00 a9	    Death      =	$a9
+     57  10000 ????		00 aa	    Points     =	$aa
+     58  10000 ????		00 ab	    PointsHi   =	$ab
+     59  10000 ????		00 ac	    Lives      =	$ac
+     60  10000 ????		00 ad	    RandomState =	$ad
+     61  10000 ????		00 ae	    Carrier    =	$ae
+     62  10000 ????		00 af	    KeyState   =	$af
+     63  10000 ????		00 b0	    KeyX       =	$b0
+     64  10000 ????		00 b1	    KeyY       =	$b1
+     65  10000 ????		00 b2	    Unlocked   =	$b2
+     66  10000 ????		00 b3	    RoomDone   =	$b3
+     67  10000 ????		00 b4	    QueueY     =	$b4	; seven entries, including sentinel
+     68  10000 ????		00 bb	    QueueX     =	$bb
+     69  10000 ????		00 c2	    QueueLo    =	$c2
+     70  10000 ????		00 c9	    QueueHi    =	$c9
+     71  10000 ????		00 d0	    QueueColor =	$d0
+     72  10000 ????		00 d7	    P1Ptr      =	$d7
+     73  10000 ????		00 d9	    SortI      =	$d9
+     74  10000 ????		00 da	    SortJ      =	$da
+     75  10000 ????		00 db	    OrderEnd   =	$db
+     76  10000 ????		00 dc	    Omitted    =	$dc
+     77  10000 ????		00 dd	    Sound      =	$dd
+     78  10000 ????		00 e5	    QueueFirst =	$e5	; seven first-line bytes; populated while blanked
+     79  10000 ????		00 df	    AudioTicks =	$df
+     80  10000 ????		00 e0	    Blocked    =	$e0	; five retry flags, persistent across NPC update slots
+     81  10000 ????		00 15	    AUDC0      =	$15
+     82  10000 ????		00 17	    AUDF0      =	$17
+     83  10000 ????		00 19	    AUDV0      =	$19
+     84  10000 ????
+     85  10000 ????				       MAC	drawline
+     86  10000 ????				       SUBROUTINE
+     87  10000 ????				       lda	(P0Ptr),y
+     88  10000 ????				       sta	GRP0
+     89  10000 ????				       lda	#0
+     90  10000 ????				       cpy	BLine
+     91  10000 ????				       bne	.NoShot
+     92  10000 ????				       lda	#2
+     93  10000 ????			    .NoShot
+     94  10000 ????				       sta	ENAM0
+     95  10000 ????				       lda	(P1Ptr),y
+     96  10000 ????				       sta	GRP1
+     97  10000 ????				       lda	PFData1,y
+     98  10000 ????				       sta	PF1
+     99  10000 ????				       lda	PFData2,y
+    100  10000 ????				       sta	PF2
+    101  10000 ????				       lda	PFData0,y
+    102  10000 ????				       sta	PF0
+    103  10000 ????				       ENDM
+    104  10000 ????			   -	       IF	LOGIC
+    105  10000 ????			   -	       ORG	$f000
+    106  10000 ????			   -	       include	"logic.asm"
+    107  10000 ????				       ELSE
+    108  f000					      ORG	$f000
+    109  f000				   VideoReset
+    110  f000		       78		      sei
+    111  f001		       d8		      cld
+    112  f002		       a2 ff		      ldx	#$ff
+    113  f004		       9a		      txs
+    114  f005		       a9 00		      lda	#0
+    115  f007		       a2 7f		      ldx	#127
+    116  f009				   ClearRam
+    117  f009		       95 80		      sta	$80,x
+    118  f00b		       ca		      dex
+    119  f00c		       10 fb		      bpl	ClearRam
+    120  f00e		       a2 2c		      ldx	#$2c
+    121  f010				   ClearTIA
+    122  f010		       95 00		      sta	0,x
+    123  f012		       ca		      dex
+    124  f013		       10 fb		      bpl	ClearTIA
+    125  f015		       4c 92 ff 	      jmp	InitBank
+    126  f018				   VideoStart
+    127  f018		       a9 01		      lda	#1
+    128  f01a		       85 0a		      sta	CTRLPF
+    129  f01c		       a9 1e		      lda	#$1e
+    130  f01e		       85 06		      sta	COLUP0
+    131  f020		       a9 0e		      lda	#$0e
+    132  f022		       85 07		      sta	COLUP1
+    133  f024		       a9 26		      lda	#$26
+    134  f026		       85 08		      sta	COLUPF
+    135  f028				   Frame
+    136  f028		       a9 02		      lda	#2
+    137  f02a		       85 02		      sta	WSYNC
+    138  f02c		       85 01		      sta	VBLANK
+    139  f02e		       85 00		      sta	VSYNC
+    140  f030		       85 02		      sta	WSYNC
+    141  f032		       85 02		      sta	WSYNC
+    142  f034		       85 02		      sta	WSYNC
+    143  f036		       a9 00		      lda	#0
+    144  f038		       85 00		      sta	VSYNC
+    145  f03a		       a9 2c		      lda	#44
+    146  f03c		       8d 96 02 	      sta	TIM64T
+    147  f03f							; Horizontal setup uses P0 and M0's independent reset/fine-motion registers.
+    148  f03f		       a5 80		      lda	PX
+    149  f041		       38		      sec
+    150  f042		       e9 03		      sbc	#3
+    151  f044		       a2 00		      ldx	#0
+    152  f046		       20 33 f1 	      jsr	Position
+    153  f049		       a5 85		      lda	BX
+    154  f04b		       38		      sec
+    155  f04c		       e9 03		      sbc	#3
+    156  f04e		       b0 02		      bcs	MissileXReady
+    157  f050		       a9 00		      lda	#0
+    158  f052				   MissileXReady
+    159  f052		       a2 02		      ldx	#2
+    160  f054		       20 33 f1 	      jsr	Position
+    161  f057		       85 02		      sta	WSYNC
+    162  f059		       85 2a		      sta	HMOVE
+    163  f05b		       85 02		      sta	WSYNC
+    164  f05d		       85 2b		      sta	HMCLR
+    165  f05f
+    166  f05f		       20 45 f1 	      jsr	Schedule
+    167  f062		       38		      sec
+    168  f063		       a9 91		      lda	#<(PlayerShape-80)
+    169  f065		       e5 81		      sbc	PY
+    170  f067		       85 89		      sta	P0Ptr
+    171  f069		       a9 f2		      lda	#>(PlayerShape-80)
+    172  f06b		       e9 00		      sbc	#0
+    173  f06d		       85 8a		      sta	P0Ptr+1
+    174  f06f		       a9 00		      lda	#0
+    175  f071		       a6 84		      ldx	Shot
+    176  f073		       f0 05		      beq	NoRasterShot
+    177  f075		       a5 86		      lda	BY
+    178  f077		       18		      clc
+    179  f078		       69 50		      adc	#80
+    180  f07a				   NoRasterShot
+    181  f07a		       85 8b		      sta	BLine
+    182  f07c		       a9 00		      lda	#0
+    183  f07e		       85 0d		      sta	PF0
+    184  f080		       85 0e		      sta	PF1
+    185  f082		       85 0f		      sta	PF2
+    186  f084		       85 1b		      sta	GRP0
+    187  f086		       85 1d		      sta	ENAM0
+    188  f088				   BlankWait
+    189  f088		       ad 84 02 	      lda	INTIM
+    190  f08b		       d0 fb		      bne	BlankWait
+    191  f08d		       85 02		      sta	WSYNC
+    192  f08f		       85 01		      sta	VBLANK
+    193  f091		       a0 50		      ldy	#80
+    194  f093		       a2 08		      ldx	#8
+    195  f095				   Top
+    196  f095		       85 02		      sta	WSYNC
+    197  f097		       ca		      dex
+    198  f098		       d0 fb		      bne	Top
+    199  f09a		       4c 9f f0 	      jmp	Room
+    200  f09d				   NextRoom
+    201  f09d		       85 02		      sta	WSYNC
+    202  f09f				   Room
+      0  f09f					      DrawLine
+      1  f09f					      SUBROUTINE
+      2  f09f		       b1 89		      lda	(P0Ptr),y
+      3  f0a1		       85 1b		      sta	GRP0
+      4  f0a3		       a9 00		      lda	#0
+      5  f0a5		       c4 8b		      cpy	BLine
+      6  f0a7		       d0 02		      bne	.NoShot
+      7  f0a9		       a9 02		      lda	#2
+      8  f0ab				   .NoShot
+      9  f0ab		       85 1d		      sta	ENAM0
+     10  f0ad		       b1 d7		      lda	(P1Ptr),y
+     11  f0af		       85 1c		      sta	GRP1
+     12  f0b1		       b9 00 f5 	      lda	PFData1,y
+     13  f0b4		       85 0e		      sta	PF1
+     14  f0b6		       b9 00 f6 	      lda	PFData2,y
+     15  f0b9		       85 0f		      sta	PF2
+     16  f0bb		       b9 00 f4 	      lda	PFData0,y
+     17  f0be		       85 0d		      sta	PF0
+    204  f0c0		       c8		      iny
+    205  f0c1		       f0 3f		      beq	RoomEnd
+    206  f0c3		       98		      tya
+    207  f0c4		       d5 b4		      cmp	QueueY,x
+    208  f0c6		       d0 d5		      bne	NextRoom
+    209  f0c8							; This line is a horizontal P1 transition. Existing map/P0 registers
+    210  f0c8							; are held until the subsequent glyph line.
+    211  f0c8		       b5 bb		      lda	QueueX,x
+    212  f0ca		       85 02		      sta	WSYNC
+    213  f0cc				   NpcSetupFirst
+    214  f0cc		       38		      sec
+    215  f0cd				   NpcCoarse
+    216  f0cd		       e9 0f		      sbc	#15
+    217  f0cf		       b0 fc		      bcs	NpcCoarse
+    218  f0d1		       49 07		      eor	#7
+    219  f0d3		       0a		      asl
+    220  f0d4		       0a		      asl
+    221  f0d5		       0a		      asl
+    222  f0d6		       0a		      asl
+    223  f0d7		       85 21		      sta	HMP1
+    224  f0d9		       85 11		      sta	RESP1
+    225  f0db				   NpcSetupSync
+    226  f0db		       85 02		      sta	WSYNC
+    227  f0dd				   GlyphStart
+    228  f0dd		       85 2a		      sta	HMOVE
+    229  f0df		       c8		      iny
+    230  f0e0		       b1 89		      lda	(P0Ptr),y
+    231  f0e2		       85 1b		      sta	GRP0
+    232  f0e4		       a9 00		      lda	#0
+    233  f0e6		       c4 8b		      cpy	BLine
+    234  f0e8		       d0 02		      bne	FirstNoShot
+    235  f0ea		       a9 02		      lda	#2
+    236  f0ec				   FirstNoShot
+    237  f0ec		       85 1d		      sta	ENAM0
+    238  f0ee		       b5 e5		      lda	QueueFirst,x
+    239  f0f0		       85 1c		      sta	GRP1
+    240  f0f2		       b5 d0		      lda	QueueColor,x
+    241  f0f4		       85 07		      sta	COLUP1
+    242  f0f6		       b5 c2		      lda	QueueLo,x
+    243  f0f8		       85 d7		      sta	P1Ptr
+    244  f0fa		       b5 c9		      lda	QueueHi,x
+    245  f0fc		       85 d8		      sta	P1Ptr+1
+    246  f0fe		       e8		      inx
+    247  f0ff		       c8		      iny
+    248  f100		       d0 9b		      bne	NextRoom
+    249  f102				   RoomEnd
+    250  f102		       85 02		      sta	WSYNC
+    251  f104		       a9 00		      lda	#0
+    252  f106		       85 0d		      sta	PF0
+    253  f108		       85 0e		      sta	PF1
+    254  f10a		       85 0f		      sta	PF2
+    255  f10c		       85 1b		      sta	GRP0
+    256  f10e		       85 1d		      sta	ENAM0
+    257  f110		       a2 08		      ldx	#8
+    258  f112				   Bottom
+    259  f112		       85 02		      sta	WSYNC
+    260  f114		       ca		      dex
+    261  f115		       d0 fb		      bne	Bottom
+    262  f117		       a9 02		      lda	#2
+    263  f119		       85 01		      sta	VBLANK
+    264  f11b		       a9 23		      lda	#35
+    265  f11d		       ea		      nop
+    266  f11e		       ea		      nop
+    267  f11f		       ea		      nop
+    268  f120		       ea		      nop
+    269  f121		       ea		      nop
+    270  f122		       ea		      nop
+    271  f123		       8d 96 02 	      sta	TIM64T
+    272  f126		       e6 90		      inc	FrameClock
+    273  f128		       4c 86 ff 	      jmp	GameBank
+    274  f12b				   Overscan
+    275  f12b		       ad 84 02 	      lda	INTIM
+    276  f12e		       d0 fb		      bne	Overscan
+    277  f130		       4c 28 f0 	      jmp	Frame
+    278  f133
+    279  f133							; A is pixel X, X is 0 for P0 and 2 for M0.
+    280  f133				   Position
+    281  f133		       85 02		      sta	WSYNC
+    282  f135		       38		      sec
+    283  f136				   PositionCoarse
+    284  f136		       e9 0f		      sbc	#15
+    285  f138		       b0 fc		      bcs	PositionCoarse
+    286  f13a		       49 07		      eor	#7
+    287  f13c		       0a		      asl
+    288  f13d		       0a		      asl
+    289  f13e		       0a		      asl
+    290  f13f		       0a		      asl
+    291  f140		       95 20		      sta	HMP0,x
+    292  f142		       95 10		      sta	RESP0,x
+    293  f144		       60		      rts
+    294  f145
+    295  f145
+    296  f145							; Collect non-overlapping visible slots in increasing Y each frame.
+    297  f145							; Simulation X/Y are read only; omitted actors continue normal updates.
+    298  f145				   Schedule
+    299  f145		       a9 e2		      lda	#<(PlayerShape-255)
+    300  f147		       85 d7		      sta	P1Ptr
+    301  f149		       a9 f1		      lda	#>(PlayerShape-255)
+    302  f14b		       85 d8		      sta	P1Ptr+1
+    303  f14d		       a9 02		      lda	#2
+    304  f14f		       85 db		      sta	OrderEnd
+    305  f151		       a9 00		      lda	#0
+    306  f153		       85 d9		      sta	SortI
+    307  f155		       85 dc		      sta	Omitted
+    308  f157				   PlanNext
+    309  f157		       a9 ff		      lda	#255
+    310  f159		       85 da		      sta	SortJ
+    311  f15b		       85 a5		      sta	Actor
+    312  f15d		       a2 04		      ldx	#4
+    313  f15f				   FindNext
+    314  f15f		       b5 a0		      lda	Life,x
+    315  f161		       f0 0e		      beq	SkipPlan
+    316  f163		       b5 96		      lda	NY,x
+    317  f165		       c5 db		      cmp	OrderEnd
+    318  f167		       90 08		      bcc	SkipPlan
+    319  f169		       c5 da		      cmp	SortJ
+    320  f16b		       b0 04		      bcs	SkipPlan
+    321  f16d		       85 da		      sta	SortJ
+    322  f16f		       86 a5		      stx	Actor
+    323  f171				   SkipPlan
+    324  f171		       ca		      dex
+    325  f172		       10 eb		      bpl	FindNext
+    326  f174		       a5 af		      lda	KeyState
+    327  f176		       c9 01		      cmp	#1
+    328  f178		       d0 10		      bne	Planned
+    329  f17a		       a5 b1		      lda	KeyY
+    330  f17c		       c5 db		      cmp	OrderEnd
+    331  f17e		       90 0a		      bcc	Planned
+    332  f180		       c5 da		      cmp	SortJ
+    333  f182		       b0 06		      bcs	Planned
+    334  f184		       85 da		      sta	SortJ
+    335  f186		       a9 05		      lda	#5
+    336  f188		       85 a5		      sta	Actor
+    337  f18a				   Planned
+    338  f18a		       a6 d9		      ldx	SortI
+    339  f18c		       a4 a5		      ldy	Actor
+    340  f18e		       30 6c		      bmi	EndPlan
+    341  f190							; Move the setup two rows earlier at a tile boundary so its two lines
+    342  f190							; can keep the preceding PF bytes. The actual bitmap origin stays fixed.
+    343  f190		       a5 da		      lda	SortJ
+    344  f192		       29 07		      and	#7
+    345  f194		       c9 02		      cmp	#2
+    346  f196		       a5 da		      lda	SortJ
+    347  f198		       b0 03		      bcs	NormalSetup
+    348  f19a		       38		      sec
+    349  f19b		       e9 02		      sbc	#2
+    350  f19d				   NormalSetup
+    351  f19d		       18		      clc
+    352  f19e		       69 4f		      adc	#79
+    353  f1a0		       95 b4		      sta	QueueY,x
+    354  f1a2		       c0 05		      cpy	#5
+    355  f1a4		       f0 1b		      beq	PlanKey
+    356  f1a6		       b9 91 00 	      lda	NX,y
+    357  f1a9		       18		      clc
+    358  f1aa		       69 03		      adc	#3
+    359  f1ac		       95 bb		      sta	QueueX,x
+    360  f1ae		       a9 0e		      lda	#$0e
+    361  f1b0		       95 d0		      sta	QueueColor,x
+    362  f1b2		       b9 a0 00 	      lda	Life,y
+    363  f1b5		       30 04		      bmi	LivePlan
+    364  f1b7		       a9 04		      lda	#4
+    365  f1b9		       d0 13		      bne	SetShape
+    366  f1bb				   LivePlan
+    367  f1bb		       b9 1b f2 	      lda	Shapes,y
+    368  f1be		       4c ce f1 	      jmp	SetShape
+    369  f1c1				   PlanKey
+    370  f1c1		       a5 b0		      lda	KeyX
+    371  f1c3		       18		      clc
+    372  f1c4		       69 03		      adc	#3
+    373  f1c6		       95 bb		      sta	QueueX,x
+    374  f1c8		       a9 1a		      lda	#$1a
+    375  f1ca		       95 d0		      sta	QueueColor,x
+    376  f1cc		       a9 05		      lda	#5
+    377  f1ce				   SetShape
+    378  f1ce		       a8		      tay
+    379  f1cf		       38		      sec
+    380  f1d0		       b9 20 f2 	      lda	ShapeLo,y
+    381  f1d3		       e5 da		      sbc	SortJ
+    382  f1d5		       95 c2		      sta	QueueLo,x
+    383  f1d7		       b9 26 f2 	      lda	ShapeHi,y
+    384  f1da		       e9 00		      sbc	#0
+    385  f1dc		       95 c9		      sta	QueueHi,x
+    386  f1de		       a5 da		      lda	SortJ
+    387  f1e0		       29 07		      and	#7
+    388  f1e2		       c9 02		      cmp	#2
+    389  f1e4		       90 06		      bcc	FirstIsBlank
+    390  f1e6		       b9 2c f2 	      lda	FirstBits,y
+    391  f1e9		       4c ee f1 	      jmp	FirstReady
+    392  f1ec				   FirstIsBlank
+    393  f1ec		       a9 00		      lda	#0
+    394  f1ee				   FirstReady
+    395  f1ee		       95 e5		      sta	QueueFirst,x
+    396  f1f0		       a5 da		      lda	SortJ
+    397  f1f2		       18		      clc
+    398  f1f3		       69 0d		      adc	#13
+    399  f1f5		       85 db		      sta	OrderEnd
+    400  f1f7		       e6 d9		      inc	SortI
+    401  f1f9		       4c 57 f1 	      jmp	PlanNext
+    402  f1fc				   EndPlan
+    403  f1fc		       a9 00		      lda	#0
+    404  f1fe		       95 b4		      sta	QueueY,x
+    405  f200		       a5 af		      lda	KeyState
+    406  f202		       c9 01		      cmp	#1
+    407  f204		       d0 02		      bne	NoKeyCount
+    408  f206		       e6 dc		      inc	Omitted
+    409  f208				   NoKeyCount
+    410  f208		       a2 04		      ldx	#4
+    411  f20a				   CountAlive
+    412  f20a		       b5 a0		      lda	Life,x
+    413  f20c		       f0 02		      beq	SkipCount
+    414  f20e		       e6 dc		      inc	Omitted
+    415  f210				   SkipCount
+    416  f210		       ca		      dex
+    417  f211		       10 f7		      bpl	CountAlive
+    418  f213		       a5 dc		      lda	Omitted
+    419  f215		       38		      sec
+    420  f216		       e5 d9		      sbc	SortI
+    421  f218		       85 dc		      sta	Omitted
+    422  f21a		       60		      rts
+    423  f21b				   Shapes
+    424  f21b		       00 00 01 02*	      byte.b	0,0,1,2,3
+    425  f220				   ShapeLo
+    426  f220		       5f c6 2d 94*	      byte.b	<(Mask0-80),<(Mask1-80),<(Mask2-80),<(Mask3-80),<(DeathShape-80),<(KeyShape-80)
+    427  f226				   ShapeHi
+    428  f226		       f7 f8 fa fb*	      byte.b	>(Mask0-80),>(Mask1-80),>(Mask2-80),>(Mask3-80),>(DeathShape-80),>(KeyShape-80)
+    429  f22c				   FirstBits
+    430  f22c		       3c 3c 00 00*	      byte.b	$3c,$3c,0,0,0,0
+    431  f232		       00 00 00 00*	      ds	175,0
+    432  f2e1				   PlayerShape
+    433  f2e1		       3c 7e 18 7e*	      byte.b	$3c,$7e,$18,$7e,$1e,$3c,$18,$24,$42
+    434  f2ea		       00 00 00 00*	      ds	175,0
+------- FILE video.inc LEVEL 2 PASS 2
+      0  f399					      include	"video.inc"
+      1  f400		       00 00 00 00*	      ALIGN	256
+      2  f400				   PFData0
+      3  f400		       00 00 00 00*	      ds	80,0
+      4  f450				   MapColumn0
+      5  f450		       f0 f0 f0 f0*	      byte.b	240,240,240,240,240,240,240,240,16,16,16,16,16,16,16,16
+      6  f460		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+      7  f470		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+      8  f480		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+      9  f490		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+     10  f4a0		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+     11  f4b0		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+     12  f4c0		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+     13  f4d0		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+     14  f4e0		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+     15  f4f0		       10 10 10 10*	      byte.b	16,16,16,16,16,16,16,16,240,240,240,240,240,240,240,240
+     16  f500					      ALIGN	256
+     17  f500				   PFData1
+     18  f500		       00 00 00 00*	      ds	80,0
+     19  f550				   MapColumn1
+     20  f550		       ff ff ff ff*	      byte.b	255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0
+     21  f560		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     22  f570		       08 08 08 08*	      byte.b	8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+     23  f580		       08 08 08 08*	      byte.b	8,8,8,8,8,8,8,8,15,15,15,15,15,15,15,15
+     24  f590		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     25  f5a0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     26  f5b0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     27  f5c0		       0f 0f 0f 0f*	      byte.b	15,15,15,15,15,15,15,15,8,8,8,8,8,8,8,8
+     28  f5d0		       08 08 08 08*	      byte.b	8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+     29  f5e0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     30  f5f0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255
+     31  f600					      ALIGN	256
+     32  f600				   PFData2
+     33  f600		       00 00 00 00*	      ds	80,0
+     34  f650				   MapColumn2
+     35  f650		       ff ff ff ff*	      byte.b	255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0
+     36  f660		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     37  f670		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     38  f680		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3
+     39  f690		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     40  f6a0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     41  f6b0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     42  f6c0		       03 03 03 03*	      byte.b	3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0
+     43  f6d0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     44  f6e0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     45  f6f0		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255
+     46  f700		       00 00 00 00*	      ds	175,0
+     47  f7af				   Mask0
+     48  f7af		       3c 3c 18 ff*	      byte.b	60,60,24,255,24,36,36,66,66
+     49  f7b8		       00 00 00 00*	      ds	175,0
+     50  f867		       00 00 00 00*	      ds	175,0
+     51  f916				   Mask1
+     52  f916		       3c 3c 18 ff*	      byte.b	60,60,24,255,60,126,126,36,36
+     53  f91f		       00 00 00 00*	      ds	175,0
+     54  f9ce		       00 00 00 00*	      ds	175,0
+     55  fa7d				   Mask2
+     56  fa7d		       00 00 3c 3c*	      byte.b	0,0,60,60,24,126,24,36,0
+     57  fa86		       00 00 00 00*	      ds	175,0
+     58  fb35		       00 00 00 00*	      ds	175,0
+     59  fbe4				   Mask3
+     60  fbe4		       00 00 3c 3c*	      byte.b	0,0,60,60,24,126,60,36,0
+     61  fbed		       00 00 00 00*	      ds	175,0
+------- FILE game.asm
+    436  fc9c		       00 00 00 00*	      ds	175,0
+    437  fd4b				   DeathShape
+    438  fd4b		       00 42 24 18*	      byte.b	$00,$42,$24,$18,$a5,$18,$24,$42,$00
+    439  fd54		       00 00 00 00*	      ds	175,0
+    440  fe03				   KeyShape
+    441  fe03		       00 70 50 7e*	      byte.b	$00,$70,$50,$7e,$24,$04,$00,$00,$00
+    442  fe0c		       00 00 00 00*	      ds	175,0
+    443  febb					      ENDIF
+    444  febb
+    445  ff80					      ORG	$ff80
+    446  ff80				   Reset
+    447  ff80		       8d f6 ff 	      sta	$fff6
+    448  ff83					      IF	LOGIC = 0
+    449  ff83		       4c 00 f0 	      jmp	VideoReset
+    450  ff86				  -	      ELSE
+    451  ff86				  -	      jmp	Reset
+    452  ff86					      ENDIF
+    453  ff86				   GameBank
+    454  ff86		       8d f7 ff 	      sta	$fff7
+    455  ff89				  -	      IF	LOGIC
+    456  ff89				  -	      jmp	LogicUpdate
+    457  ff89					      ELSE
+    458  ff89		       4c 86 ff 	      jmp	GameBank
+    459  ff8c					      ENDIF
+    460  ff8c				   VideoBank
+    461  ff8c		       8d f6 ff 	      sta	$fff6
+    462  ff8f					      IF	LOGIC = 0
+    463  ff8f		       4c 2b f1 	      jmp	Overscan
+    464  ff92				  -	      ELSE
+    465  ff92				  -	      jmp	VideoBank
+    466  ff92					      ENDIF
+    467  ff92				   InitBank
+    468  ff92		       8d f7 ff 	      sta	$fff7
+    469  ff95				  -	      IF	LOGIC
+    470  ff95				  -	      jsr	InitGame
+    471  ff95				  -	      jmp	StartBank
+    472  ff95					      ELSE
+    473  ff95		       ea ea ea ea*	      ds	6,$ea
+    474  ff9b					      ENDIF
+    475  ff9b				   StartBank
+    476  ff9b		       8d f6 ff 	      sta	$fff6
+    477  ff9e					      IF	LOGIC = 0
+    478  ff9e		       4c 18 f0 	      jmp	VideoStart
+    479  ffa1				  -	      ELSE
+    480  ffa1				  -	      jmp	StartBank
+    481  ffa1					      ENDIF
+    482  fffa					      ORG	$fffa
+    483  fffa		       80 ff 80 ff*	      word.w	Reset,Reset,Reset
