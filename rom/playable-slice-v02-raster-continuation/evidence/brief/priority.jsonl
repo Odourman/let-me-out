@@ -1,0 +1,6 @@
+{"event":"launch","unix_ns":1795105481174114318,"name":"priority","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice7/rom/playable-slice-v02-raster-continuation/let-me-out-v02-raster-continuation.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795105481250953291,"pid":26430}
+{"event":"setup","unix_ns":1795105508266553433,"poke":{"128":62,"129":60,"170":10,"171":0,"174":0,"145":62,"146":91,"147":102,"148":88,"149":73,"150":60,"151":22,"152":112,"153":136,"154":153}}
+{"event":"check","unix_ns":1795105509164252545,"label":"same-update-shot-wins","count":2,"scanlines":[262],"state":[62,60,8,1,0,66,64,8,1],"npc_x":[62,91,102,88,73],"npc_y":[60,23,112,136,153],"life":[7,255,255,255,255],"score":0,"lives":3,"carrier":0,"key":0,"key_position":[0,0],"unlocked":0,"room_done":0,"omitted":0}
+{"event":"result","unix_ns":1795105509458032253,"case":"priority","status":"PASS"}
+{"event":"exit","unix_ns":1795105510044664448,"name":"priority","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":28.870544448000146,"stderr_hex":""}

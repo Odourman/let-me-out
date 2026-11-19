@@ -1,0 +1,6 @@
+{"event":"launch","unix_ns":1795105359385217547,"name":"door-locked","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice7/rom/playable-slice-v02-raster-continuation/let-me-out-v02-raster-continuation.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795105359389989561,"pid":25811}
+{"event":"setup","unix_ns":1795105374947941146,"poke":{"128":148,"129":80,"170":0,"171":0,"174":0,"145":80,"146":122,"147":94,"148":92,"149":72,"150":20,"151":45,"152":70,"153":118,"154":151}}
+{"event":"check","unix_ns":1795105378461171755,"label":"door-without-key","count":12,"scanlines":[262],"state":[148,80,8,0,0,0,0,0,0],"npc_x":[79,122,94,92,71],"npc_y":[20,45,71,119,151],"life":[255,255,255,255,255],"score":0,"lives":3,"carrier":0,"key":0,"key_position":[0,0],"unlocked":0,"room_done":0,"omitted":0}
+{"event":"result","unix_ns":1795105378677088565,"case":"door-locked","status":"PASS"}
+{"event":"exit","unix_ns":1795105379239519238,"name":"door-locked","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":19.854274636003538,"stderr_hex":""}

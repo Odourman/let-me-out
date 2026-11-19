@@ -1,0 +1,10 @@
+{"event":"launch","unix_ns":1795105480387099579,"name":"slice-phase","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice7/rom/playable-slice-v02-raster-continuation/let-me-out-v02-raster-continuation.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795105480460193085,"pid":26378}
+{"event":"transition","unix_ns":1795105509584007205,"mode":"cap","label":"BridgePreSync","tv":"FR=0027 SL=132 CL=136","cpu":"PC=f134 A=00 X=03 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105509585349697,"mode":"cap","label":"CapSFReset","tv":"FR=0027 SL=133 CL=064","cpu":"PC=f6ee A=80 X=03 Y=a9 SP=ff SR=Sv-BdIzC"}
+{"event":"transition","unix_ns":1795105509590477932,"mode":"cap","label":"CapLateMotion","tv":"FR=0027 SL=133 CL=142","cpu":"PC=f766 A=80 X=03 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105509591375364,"mode":"cap","label":"CapLateSync","tv":"FR=0027 SL=133 CL=151","cpu":"PC=f768 A=80 X=03 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105509592565370,"mode":"cap","label":"CapGlyph","tv":"FR=0027 SL=134 CL=-59","cpu":"PC=f7e1 A=80 X=03 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105509594156987,"mode":"cap","label":"GlyphP1","tv":"FR=0027 SL=134 CL=019","cpu":"PC=f116 A=3c X=03 Y=aa SP=ff SR=sv-BdIzC"}
+{"event":"transition","unix_ns":1795105509594949928,"mode":"cap","label":"NextRoom","tv":"FR=0027 SL=134 CL=151","cpu":"PC=f0a9 A=e6 X=04 Y=ab SP=ff SR=Sv-BdIzC"}
+{"event":"exit","unix_ns":1795105510239430249,"name":"slice-phase","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":29.85232177600119,"stderr_hex":""}

@@ -1,0 +1,11 @@
+{"event":"launch","unix_ns":1795105443588538491,"name":"slice-phase","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice7/rom/playable-slice-v02-raster-continuation/let-me-out-v02-raster-continuation.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795105443590689170,"pid":26254}
+{"event":"transition","unix_ns":1795105450881411177,"mode":"wall-bridge","label":"EncodeWallX","tv":"FR=0027 SL=009 CL=055","cpu":"PC=f7c9 A=a9 X=00 Y=ff SP=f7 SR=Sv-BdIzc"}
+{"event":"transition","unix_ns":1795105450941542023,"mode":"wall-bridge","label":"BridgePreSync","tv":"FR=0027 SL=132 CL=133","cpu":"PC=f134 A=00 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105450942306067,"mode":"wall-bridge","label":"CapSFReset","tv":"FR=0027 SL=133 CL=064","cpu":"PC=f6ee A=60 X=00 Y=a9 SP=ff SR=sv-BdIzC"}
+{"event":"transition","unix_ns":1795105450942724524,"mode":"wall-bridge","label":"CapLateMotion","tv":"FR=0027 SL=133 CL=142","cpu":"PC=f766 A=80 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105450943042579,"mode":"wall-bridge","label":"CapLateSync","tv":"FR=0027 SL=133 CL=151","cpu":"PC=f768 A=80 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105450943454559,"mode":"wall-bridge","label":"CapGlyph","tv":"FR=0027 SL=134 CL=-59","cpu":"PC=f7e1 A=80 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795105450943990731,"mode":"wall-bridge","label":"GlyphP1","tv":"FR=0027 SL=134 CL=019","cpu":"PC=f116 A=3c X=00 Y=aa SP=ff SR=sv-BdIzC"}
+{"event":"transition","unix_ns":1795105450945205906,"mode":"wall-bridge","label":"NextRoom","tv":"FR=0027 SL=134 CL=151","cpu":"PC=f0a9 A=00 X=01 Y=ab SP=ff SR=Sv-BdIzC"}
+{"event":"exit","unix_ns":1795105451474899265,"name":"slice-phase","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":7.886355223999999,"stderr_hex":""}

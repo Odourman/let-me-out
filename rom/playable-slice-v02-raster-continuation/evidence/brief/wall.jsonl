@@ -1,0 +1,7 @@
+{"event":"launch","unix_ns":1795105481779974175,"name":"wall","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice7/rom/playable-slice-v02-raster-continuation/let-me-out-v02-raster-continuation.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795105481876495591,"pid":26446}
+{"event":"setup","unix_ns":1795105508066447933,"poke":{"128":20,"129":40,"170":0,"171":0,"174":0,"145":80,"146":122,"147":94,"148":92,"149":72,"150":20,"151":47,"152":75,"153":115,"154":151}}
+{"event":"check","unix_ns":1795105511693425209,"label":"inside-wall-stop","count":12,"scanlines":[262],"state":[24,40,8,0,0,0,0,0,0],"npc_x":[79,122,94,92,71],"npc_y":[20,47,76,116,151],"life":[255,255,255,255,255],"score":0,"lives":3,"carrier":0,"key":0,"key_position":[0,0],"unlocked":0,"room_done":0,"omitted":0}
+{"event":"check","unix_ns":1795105514767937863,"label":"shot-stopped-at-wall","count":15,"scanlines":[262],"state":[24,40,8,1,0,32,44,8,1],"npc_x":[78,122,92,92,71],"npc_y":[20,47,76,114,149],"life":[255,255,255,255,255],"score":0,"lives":3,"carrier":0,"key":0,"key_position":[0,0],"unlocked":0,"room_done":0,"omitted":0}
+{"event":"result","unix_ns":1795105514900303763,"case":"wall","status":"PASS"}
+{"event":"exit","unix_ns":1795105515471652239,"name":"wall","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":33.69167243899574,"stderr_hex":""}
