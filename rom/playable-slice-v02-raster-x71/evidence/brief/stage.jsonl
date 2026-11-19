@@ -1,0 +1,13 @@
+{"event":"launch","unix_ns":1795106316743490631,"name":"slice-phase","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice8/rom/playable-slice-v02-raster-x71/let-me-out-v02-raster-x71.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795106316764226153,"pid":27526}
+{"event":"phase","unix_ns":1795106332151687235,"label":"Frame","tv":"FR=0024 SL=257 CL=-50","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332184705304,"label":"BlankWait","tv":"FR=0025 SL=033 CL=109","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332191337765,"label":"Top","tv":"FR=0025 SL=039 CL=-47","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332195144846,"label":"Room","tv":"FR=0025 SL=044 CL=113","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332376357311,"label":"RoomEnd","tv":"FR=0025 SL=219 CL=067","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332378699863,"label":"Bottom","tv":"FR=0025 SL=220 CL=-11","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332382661200,"label":"GameBank","tv":"FR=0025 SL=228 CL=037","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332383701748,"label":"Overscan","tv":"FR=0025 SL=232 CL=-41","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795106332395099771,"label":"Frame","tv":"FR=0025 SL=257 CL=-44","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"stack","unix_ns":1795106332567513794,"tv":"FR=0026 SL=231 CL=052","cpu":"PC=f357 A=0d X=08 Y=52 SP=f7 SR=sv-BdIzc"}
+{"event":"exit","unix_ns":1795106333087043652,"name":"slice-phase","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":16.343545798998093,"stderr_hex":""}

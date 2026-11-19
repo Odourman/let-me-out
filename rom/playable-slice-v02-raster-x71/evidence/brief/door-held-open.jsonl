@@ -1,0 +1,7 @@
+{"event":"launch","unix_ns":1795106316790003416,"name":"door-held-open","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice8/rom/playable-slice-v02-raster-x71/let-me-out-v02-raster-x71.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795106316800240859,"pid":27529}
+{"event":"setup","unix_ns":1795106324100809522,"poke":{"128":148,"129":80,"170":0,"171":0,"174":0,"145":80,"146":122,"147":94,"148":92,"149":72,"150":20,"151":45,"152":118,"153":151,"154":165}}
+{"event":"check","unix_ns":1795106324541187533,"label":"unlock-input","count":1,"scanlines":[262],"state":[148,80,8,0,0,0,0,0,0],"npc_x":[80,122,94,92,72],"npc_y":[20,45,118,151,165],"life":[255,255,255,255,255],"score":0,"lives":3,"carrier":0,"key":2,"key_position":[0,0],"unlocked":1,"room_done":0,"omitted":0}
+{"event":"check","unix_ns":1795106326536754830,"label":"open-before-passage","count":6,"scanlines":[262],"state":[148,80,8,0,0,0,0,0,0],"npc_x":[80,122,94,92,72],"npc_y":[20,45,119,152,165],"life":[255,255,255,255,255],"score":0,"lives":3,"carrier":0,"key":2,"key_position":[0,0],"unlocked":1,"room_done":0,"omitted":0}
+{"event":"result","unix_ns":1795106326771397920,"case":"door-held-open","status":"PASS"}
+{"event":"exit","unix_ns":1795106327348460769,"name":"door-held-open","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":10.55844831700233,"stderr_hex":""}
