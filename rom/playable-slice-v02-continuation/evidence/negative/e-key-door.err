@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/work/slice2cont/rom/playable-slice-v02-continuation/scenarios.py", line 233, in <module>
+    run(s,a.case,a.out.resolve(),a.key_lifetime,a.pixel_probe)
+  File "/workspace/work/slice2cont/rom/playable-slice-v02-continuation/scenarios.py", line 193, in run
+    snap(s,1,"shot-start",out)
+  File "/workspace/work/slice2cont/rom/playable-slice-v02-continuation/scenarios.py", line 30, in snap
+    assert set(totals)=={262},(label,totals)
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: ('shot-start', [264])
