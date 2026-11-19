@@ -1,0 +1,262 @@
+{"event": "termios", "unix_ns": 1795101674097827300, "name": "door-locked", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795101674098454141, "name": "door-locked", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice6/rom/slice6-door-probe/let-me-out-v02-raster-repair-bridge.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795101674099215583, "pid": 23426}
+{"event": "rx", "unix_ns": 1795101676939585943, "name": "door-locked", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101676939691742, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795101676939919099, "name": "door-locked", "seq": 1, "offset": 0, "hex": "56455253494f4e205245564953494f4e04"}
+{"event": "rx", "unix_ns": 1795101676939943082, "name": "door-locked", "seq": 1, "offset": 23, "hex": "76302e35372e320a326166383665623732353733396164626633643964343563656132656436396565613537646132610a5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101676939959354, "seq": 1, "answer": "v0.57.2\n2af86eb725739adbf3d9d45cea2ed69eea57da2a\n", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795101676940017876, "name": "door-locked", "seq": 2, "offset": 17, "hex": "434152545249444745204d415050455204"}
+{"event": "rx", "unix_ns": 1795101676940030091, "name": "door-locked", "seq": 2, "offset": 95, "hex": "46360a5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101676940038311, "seq": 2, "answer": "F6\n", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795101676944150704, "name": "door-locked", "seq": 3, "offset": 34, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677192171345, "name": "door-locked", "seq": 3, "offset": 121, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677192241693, "seq": 3, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677194216657, "name": "door-locked", "seq": 4, "offset": 45, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677382149447, "name": "door-locked", "seq": 4, "offset": 144, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677382240934, "seq": 4, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677382295136, "name": "door-locked", "seq": 5, "offset": 56, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677575751347, "name": "door-locked", "seq": 5, "offset": 167, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677575820231, "seq": 5, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677580128396, "name": "door-locked", "seq": 6, "offset": 67, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677666693076, "name": "door-locked", "seq": 6, "offset": 190, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677666772304, "seq": 6, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677666819095, "name": "door-locked", "seq": 7, "offset": 78, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677765230123, "name": "door-locked", "seq": 7, "offset": 213, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677765298082, "seq": 7, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677765339920, "name": "door-locked", "seq": 8, "offset": 89, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677838620285, "name": "door-locked", "seq": 8, "offset": 236, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677838716543, "seq": 8, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677838768530, "name": "door-locked", "seq": 9, "offset": 100, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677870550963, "name": "door-locked", "seq": 9, "offset": 259, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677870668584, "seq": 9, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677870721805, "name": "door-locked", "seq": 10, "offset": 111, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677897951573, "name": "door-locked", "seq": 10, "offset": 282, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677898041823, "seq": 10, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677898089116, "name": "door-locked", "seq": 11, "offset": 122, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101677956146971, "name": "door-locked", "seq": 11, "offset": 305, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101677956214104, "seq": 11, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101677956256967, "name": "door-locked", "seq": 12, "offset": 133, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678035094124, "name": "door-locked", "seq": 12, "offset": 328, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678035189731, "seq": 12, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678035250421, "name": "door-locked", "seq": 13, "offset": 144, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678154949350, "name": "door-locked", "seq": 13, "offset": 351, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678155048388, "seq": 13, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678155136911, "name": "door-locked", "seq": 14, "offset": 155, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678240233035, "name": "door-locked", "seq": 14, "offset": 374, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678240376256, "seq": 14, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678240426577, "name": "door-locked", "seq": 15, "offset": 166, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678359857151, "name": "door-locked", "seq": 15, "offset": 397, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678359952374, "seq": 15, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678360002724, "name": "door-locked", "seq": 16, "offset": 177, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678477321251, "name": "door-locked", "seq": 16, "offset": 420, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678477389498, "seq": 16, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678477449218, "name": "door-locked", "seq": 17, "offset": 188, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678648139921, "name": "door-locked", "seq": 17, "offset": 443, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678648236324, "seq": 17, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678648286190, "name": "door-locked", "seq": 18, "offset": 199, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678736397020, "name": "door-locked", "seq": 18, "offset": 466, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678736471399, "seq": 18, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678736515078, "name": "door-locked", "seq": 19, "offset": 210, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678801811432, "name": "door-locked", "seq": 19, "offset": 489, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678801889721, "seq": 19, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678839277557, "name": "door-locked", "seq": 20, "offset": 221, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101678941140666, "name": "door-locked", "seq": 20, "offset": 512, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101678941316423, "seq": 20, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101678941370737, "name": "door-locked", "seq": 21, "offset": 232, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679070794642, "name": "door-locked", "seq": 21, "offset": 535, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679070862622, "seq": 21, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679070902781, "name": "door-locked", "seq": 22, "offset": 243, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679236477404, "name": "door-locked", "seq": 22, "offset": 558, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679236603540, "seq": 22, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679236656012, "name": "door-locked", "seq": 23, "offset": 254, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679364138520, "name": "door-locked", "seq": 23, "offset": 581, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679364487748, "seq": 23, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679364669956, "name": "door-locked", "seq": 24, "offset": 265, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679470029716, "name": "door-locked", "seq": 24, "offset": 604, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679470401245, "seq": 24, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679470457047, "name": "door-locked", "seq": 25, "offset": 276, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679604820842, "name": "door-locked", "seq": 25, "offset": 627, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679604920002, "seq": 25, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679604984515, "name": "door-locked", "seq": 26, "offset": 287, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679777229096, "name": "door-locked", "seq": 26, "offset": 650, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679777295662, "seq": 26, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679777360442, "name": "door-locked", "seq": 27, "offset": 298, "hex": "504f4b4520307830303830203078393404"}
+{"event": "rx", "unix_ns": 1795101679777402774, "name": "door-locked", "seq": 27, "offset": 673, "hex": "3078393420706f6b656420746f20307830303830202852414d29"}
+{"event": "rx", "unix_ns": 1795101679777417073, "name": "door-locked", "seq": 27, "offset": 699, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679777436895, "name": "door-locked", "seq": 27, "offset": 700, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679777446198, "seq": 27, "answer": "0x94 poked to 0x0080 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679777463055, "name": "door-locked", "seq": 28, "offset": 315, "hex": "504f4b4520307830303831203078353004"}
+{"event": "rx", "unix_ns": 1795101679777479775, "name": "door-locked", "seq": 28, "offset": 723, "hex": "3078353020706f6b656420746f20307830303831202852414d29"}
+{"event": "rx", "unix_ns": 1795101679777490911, "name": "door-locked", "seq": 28, "offset": 749, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679777829621, "name": "door-locked", "seq": 28, "offset": 750, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679777855056, "seq": 28, "answer": "0x50 poked to 0x0081 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679778231464, "name": "door-locked", "seq": 29, "offset": 332, "hex": "504f4b4520307830306161203078303004"}
+{"event": "rx", "unix_ns": 1795101679778307223, "name": "door-locked", "seq": 29, "offset": 773, "hex": "3078303020706f6b656420746f20307830306161202852414d29"}
+{"event": "rx", "unix_ns": 1795101679778324927, "name": "door-locked", "seq": 29, "offset": 799, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679778344024, "name": "door-locked", "seq": 29, "offset": 800, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679778353445, "seq": 29, "answer": "0x00 poked to 0x00aa (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679778370103, "name": "door-locked", "seq": 30, "offset": 349, "hex": "504f4b4520307830306162203078303004"}
+{"event": "rx", "unix_ns": 1795101679778386738, "name": "door-locked", "seq": 30, "offset": 823, "hex": "3078303020706f6b656420746f20307830306162202852414d29"}
+{"event": "rx", "unix_ns": 1795101679778397321, "name": "door-locked", "seq": 30, "offset": 849, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679778411053, "name": "door-locked", "seq": 30, "offset": 850, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679778417671, "seq": 30, "answer": "0x00 poked to 0x00ab (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679778428794, "name": "door-locked", "seq": 31, "offset": 366, "hex": "504f4b4520307830306165203078303004"}
+{"event": "rx", "unix_ns": 1795101679778442488, "name": "door-locked", "seq": 31, "offset": 873, "hex": "3078303020706f6b656420746f20307830306165202852414d29"}
+{"event": "rx", "unix_ns": 1795101679778452273, "name": "door-locked", "seq": 31, "offset": 899, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679778464626, "name": "door-locked", "seq": 31, "offset": 900, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679778470254, "seq": 31, "answer": "0x00 poked to 0x00ae (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679778480173, "name": "door-locked", "seq": 32, "offset": 383, "hex": "504f4b4520307830303931203078353004"}
+{"event": "rx", "unix_ns": 1795101679778500559, "name": "door-locked", "seq": 32, "offset": 923, "hex": "3078353020706f6b656420746f20307830303931202852414d290a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679778507801, "seq": 32, "answer": "0x50 poked to 0x0091 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679778525368, "name": "door-locked", "seq": 33, "offset": 400, "hex": "504f4b4520307830303932203078376104"}
+{"event": "rx", "unix_ns": 1795101679778643882, "name": "door-locked", "seq": 33, "offset": 973, "hex": "3078376120706f6b656420746f20307830303932202852414d290a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679778652996, "seq": 33, "answer": "0x7a poked to 0x0092 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679778678143, "name": "door-locked", "seq": 34, "offset": 417, "hex": "504f4b4520307830303933203078356504"}
+{"event": "rx", "unix_ns": 1795101679778685344, "name": "door-locked", "seq": 34, "offset": 1023, "hex": "3078356520706f6b656420746f20307830303933202852414d290a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679778691466, "seq": 34, "answer": "0x5e poked to 0x0093 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679778753783, "name": "door-locked", "seq": 35, "offset": 434, "hex": "504f4b4520307830303934203078356304"}
+{"event": "rx", "unix_ns": 1795101679778765773, "name": "door-locked", "seq": 35, "offset": 1073, "hex": "3078356320706f6b656420746f20307830303934202852414d290a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679780139115, "seq": 35, "answer": "0x5c poked to 0x0094 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679780349008, "name": "door-locked", "seq": 36, "offset": 451, "hex": "504f4b4520307830303935203078343804"}
+{"event": "rx", "unix_ns": 1795101679780452368, "name": "door-locked", "seq": 36, "offset": 1123, "hex": "3078343820706f6b656420746f20307830303935202852414d29"}
+{"event": "rx", "unix_ns": 1795101679780472370, "name": "door-locked", "seq": 36, "offset": 1149, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679780495809, "name": "door-locked", "seq": 36, "offset": 1150, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679780506679, "seq": 36, "answer": "0x48 poked to 0x0095 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679780525378, "name": "door-locked", "seq": 37, "offset": 468, "hex": "504f4b4520307830303936203078313404"}
+{"event": "rx", "unix_ns": 1795101679780542599, "name": "door-locked", "seq": 37, "offset": 1173, "hex": "3078313420706f6b656420746f20307830303936202852414d29"}
+{"event": "rx", "unix_ns": 1795101679780553342, "name": "door-locked", "seq": 37, "offset": 1199, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679780600002, "name": "door-locked", "seq": 37, "offset": 1200, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679780610303, "seq": 37, "answer": "0x14 poked to 0x0096 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679780623694, "name": "door-locked", "seq": 38, "offset": 485, "hex": "504f4b4520307830303937203078326404"}
+{"event": "rx", "unix_ns": 1795101679780638797, "name": "door-locked", "seq": 38, "offset": 1223, "hex": "3078326420706f6b656420746f20307830303937202852414d29"}
+{"event": "rx", "unix_ns": 1795101679780687189, "name": "door-locked", "seq": 38, "offset": 1249, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679780737774, "name": "door-locked", "seq": 38, "offset": 1250, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679780746770, "seq": 38, "answer": "0x2d poked to 0x0097 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679780821900, "name": "door-locked", "seq": 39, "offset": 502, "hex": "504f4b4520307830303938203078343604"}
+{"event": "rx", "unix_ns": 1795101679780855855, "name": "door-locked", "seq": 39, "offset": 1273, "hex": "3078343620706f6b656420746f20307830303938202852414d290a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679780864483, "seq": 39, "answer": "0x46 poked to 0x0098 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679780878126, "name": "door-locked", "seq": 40, "offset": 519, "hex": "504f4b4520307830303939203078373604"}
+{"event": "rx", "unix_ns": 1795101679780891898, "name": "door-locked", "seq": 40, "offset": 1323, "hex": "3078373620706f6b656420746f20307830303939202852414d29"}
+{"event": "rx", "unix_ns": 1795101679780903031, "name": "door-locked", "seq": 40, "offset": 1349, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101679780916363, "name": "door-locked", "seq": 40, "offset": 1350, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679780922519, "seq": 40, "answer": "0x76 poked to 0x0099 (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679781154320, "name": "door-locked", "seq": 41, "offset": 536, "hex": "504f4b4520307830303961203078393704"}
+{"event": "rx", "unix_ns": 1795101679781193983, "name": "door-locked", "seq": 41, "offset": 1373, "hex": "3078393720706f6b656420746f20307830303961202852414d290a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679781203570, "seq": 41, "answer": "0x97 poked to 0x009a (RAM)\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679781446118, "name": "door-locked", "seq": 42, "offset": 553, "hex": "5045454b20307830303830203078303038312030783030616120307830306162203078303061652030783030393120307830303932203078303039332030783030393420307830303935203078303039362030783030393720307830303938203078303039392030783030396104"}
+{"event": "rx", "unix_ns": 1795101679783720202, "name": "door-locked", "seq": 42, "offset": 1423, "hex": "307830303830202852414d29203d20307839340a307830303831202852414d29203d20307835300a307830306161202852414d29203d20307830300a307830306162202852414d29203d20307830300a307830306165202852414d29203d20307830300a307830303931202852414d29203d20307835300a307830303932202852414d29203d20307837610a307830303933202852414d29203d20307835650a307830303934202852414d29203d20307835630a307830303935202852414d29203d20307834380a307830303936202852414d29203d20307831340a307830303937202852414d29203d20307832640a307830303938202852414d29203d20307834360a307830303939202852414d29203d20307837360a307830303961202852414d29203d20307839370a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679783752531, "seq": 42, "answer": "0x0080 (RAM) = 0x94\n0x0081 (RAM) = 0x50\n0x00aa (RAM) = 0x00\n0x00ab (RAM) = 0x00\n0x00ae (RAM) = 0x00\n0x0091 (RAM) = 0x50\n0x0092 (RAM) = 0x7a\n0x0093 (RAM) = 0x5e\n0x0094 (RAM) = 0x5c\n0x0095 (RAM) = 0x48\n0x0096 (RAM) = 0x14\n0x0097 (RAM) = 0x2d\n0x0098 (RAM) = 0x46\n0x0099 (RAM) = 0x76\n0x009a (RAM) = 0x97\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "setup", "unix_ns": 1795101679783986748, "poke": {"128": 148, "129": 80, "170": 0, "171": 0, "174": 0, "145": 80, "146": 122, "147": 94, "148": 92, "149": 72, "150": 20, "151": 45, "152": 70, "153": 118, "154": 151}}
+{"event": "tx", "unix_ns": 1795101679784061594, "name": "door-locked", "seq": 43, "offset": 663, "hex": "535449434b204c45465420524947485404"}
+{"event": "rx", "unix_ns": 1795101679784198372, "name": "door-locked", "seq": 43, "offset": 1746, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679784420196, "seq": 43, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679784450266, "name": "door-locked", "seq": 44, "offset": 680, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679966743533, "name": "door-locked", "seq": 44, "offset": 1769, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679966816837, "seq": 44, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679966864321, "name": "door-locked", "seq": 45, "offset": 691, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101679966910705, "name": "door-locked", "seq": 45, "offset": 1792, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237340a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101679966924879, "seq": 45, "answer": "top: 29, bottom: 242, total: 274\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101679967788703, "name": "door-locked", "seq": 46, "offset": 700, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680147424364, "name": "door-locked", "seq": 46, "offset": 1848, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680147512754, "seq": 46, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680147563612, "name": "door-locked", "seq": 47, "offset": 711, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680147642575, "name": "door-locked", "seq": 47, "offset": 1871, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a20323734"}
+{"event": "rx", "unix_ns": 1795101680147658109, "name": "door-locked", "seq": 47, "offset": 1903, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101680147677462, "name": "door-locked", "seq": 47, "offset": 1904, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680147688306, "seq": 47, "answer": "top: 29, bottom: 242, total: 274\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680147830227, "name": "door-locked", "seq": 48, "offset": 720, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680263267794, "name": "door-locked", "seq": 48, "offset": 1927, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680263354765, "seq": 48, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680263415220, "name": "door-locked", "seq": 49, "offset": 731, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680264162967, "name": "door-locked", "seq": 49, "offset": 1950, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237340a"}
+{"event": "rx", "unix_ns": 1795101680264196685, "name": "door-locked", "seq": 49, "offset": 1983, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680264212837, "seq": 49, "answer": "top: 29, bottom: 242, total: 274\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680264256717, "name": "door-locked", "seq": 50, "offset": 740, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680461016336, "name": "door-locked", "seq": 50, "offset": 2006, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680461085499, "seq": 50, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680461126700, "name": "door-locked", "seq": 51, "offset": 751, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680461158995, "name": "door-locked", "seq": 51, "offset": 2029, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a20323735"}
+{"event": "rx", "unix_ns": 1795101680461173172, "name": "door-locked", "seq": 51, "offset": 2061, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101680461189701, "name": "door-locked", "seq": 51, "offset": 2062, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680461199851, "seq": 51, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680461218840, "name": "door-locked", "seq": 52, "offset": 760, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680562773361, "name": "door-locked", "seq": 52, "offset": 2085, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680562863343, "seq": 52, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680563013047, "name": "door-locked", "seq": 53, "offset": 771, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680563056482, "name": "door-locked", "seq": 53, "offset": 2108, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a20323735"}
+{"event": "rx", "unix_ns": 1795101680563071530, "name": "door-locked", "seq": 53, "offset": 2140, "hex": "0a"}
+{"event": "rx", "unix_ns": 1795101680563093119, "name": "door-locked", "seq": 53, "offset": 2141, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680563166862, "seq": 53, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680563194662, "name": "door-locked", "seq": 54, "offset": 780, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680654334862, "name": "door-locked", "seq": 54, "offset": 2164, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680654411111, "seq": 54, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680654460468, "name": "door-locked", "seq": 55, "offset": 791, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680656201456, "name": "door-locked", "seq": 55, "offset": 2187, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237350a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680656252673, "seq": 55, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680656355544, "name": "door-locked", "seq": 56, "offset": 800, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680780149964, "name": "door-locked", "seq": 56, "offset": 2243, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680780236442, "seq": 56, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680780398286, "name": "door-locked", "seq": 57, "offset": 811, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680784131942, "name": "door-locked", "seq": 57, "offset": 2266, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237350a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680784195900, "seq": 57, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680784257573, "name": "door-locked", "seq": 58, "offset": 820, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680986059202, "name": "door-locked", "seq": 58, "offset": 2322, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680986153863, "seq": 58, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680986209928, "name": "door-locked", "seq": 59, "offset": 831, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101680988435930, "name": "door-locked", "seq": 59, "offset": 2345, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237350a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101680988500026, "seq": 59, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101680988557938, "name": "door-locked", "seq": 60, "offset": 840, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681099101604, "name": "door-locked", "seq": 60, "offset": 2401, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681099181683, "seq": 60, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681099243773, "name": "door-locked", "seq": 61, "offset": 851, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681099314539, "name": "door-locked", "seq": 61, "offset": 2424, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237350a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681099331604, "seq": 61, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681099365345, "name": "door-locked", "seq": 62, "offset": 860, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681283606291, "name": "door-locked", "seq": 62, "offset": 2480, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681283703705, "seq": 62, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681283826097, "name": "door-locked", "seq": 63, "offset": 871, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681284675062, "name": "door-locked", "seq": 63, "offset": 2503, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237350a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681284710756, "seq": 63, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681284759410, "name": "door-locked", "seq": 64, "offset": 880, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681478529095, "name": "door-locked", "seq": 64, "offset": 2559, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681478690084, "seq": 64, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681478746692, "name": "door-locked", "seq": 65, "offset": 891, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681480170545, "name": "door-locked", "seq": 65, "offset": 2582, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237350a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681480203363, "seq": 65, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681480325857, "name": "door-locked", "seq": 66, "offset": 900, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681688836874, "name": "door-locked", "seq": 66, "offset": 2638, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681688908822, "seq": 66, "answer": "", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681688965366, "name": "door-locked", "seq": 67, "offset": 911, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795101681692115336, "name": "door-locked", "seq": 67, "offset": 2661, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203237350a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681692156161, "seq": 67, "answer": "top: 29, bottom: 242, total: 275\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681692233902, "name": "door-locked", "seq": 68, "offset": 920, "hex": "5045454b20307830303830203078303038312030783030383220307830303833203078303038342030783030383520307830303836203078303038372030783030383804"}
+{"event": "rx", "unix_ns": 1795101681697413139, "name": "door-locked", "seq": 68, "offset": 2717, "hex": "307830303830202852414d29203d20307839340a307830303831202852414d29203d20307835300a307830303832202852414d29203d20307830380a307830303833202852414d29203d20307830300a307830303834202852414d29203d20307830300a307830303835202852414d29203d2030783030"}
+{"event": "rx", "unix_ns": 1795101681697454516, "name": "door-locked", "seq": 68, "offset": 2836, "hex": "0a307830303836202852414d29203d20307830300a307830303837202852414d29203d20307830300a307830303838202852414d29203d20307830300a"}
+{"event": "rx", "unix_ns": 1795101681697529086, "name": "door-locked", "seq": 68, "offset": 2897, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681697548471, "seq": 68, "answer": "0x0080 (RAM) = 0x94\n0x0081 (RAM) = 0x50\n0x0082 (RAM) = 0x08\n0x0083 (RAM) = 0x00\n0x0084 (RAM) = 0x00\n0x0085 (RAM) = 0x00\n0x0086 (RAM) = 0x00\n0x0087 (RAM) = 0x00\n0x0088 (RAM) = 0x00\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681697638259, "name": "door-locked", "seq": 69, "offset": 988, "hex": "5045454b2030783030393120307830303932203078303039332030783030393420307830303935203078303039362030783030393720307830303938203078303039392030783030396120307830303962203078303039632030783030396420307830303965203078303039662030783030613004"}
+{"event": "rx", "unix_ns": 1795101681698499589, "name": "door-locked", "seq": 69, "offset": 2920, "hex": "307830303931202852414d29203d20307834660a307830303932202852414d29203d20307837610a307830303933202852414d29203d20307835650a307830303934202852414d29203d2030783563"}
+{"event": "rx", "unix_ns": 1795101681698516164, "name": "door-locked", "seq": 69, "offset": 2999, "hex": "0a307830303935202852414d29203d20307834370a307830303936202852414d29203d20307831340a307830303937202852414d29203d20307832640a307830303938202852414d29203d20307834370a"}
+{"event": "rx", "unix_ns": 1795101681698525613, "name": "door-locked", "seq": 69, "offset": 3080, "hex": "307830303939202852414d29203d20307837370a307830303961202852414d29203d2030783937"}
+{"event": "rx", "unix_ns": 1795101681698535105, "name": "door-locked", "seq": 69, "offset": 3119, "hex": "0a307830303962202852414d29203d20307830320a307830303963202852414d29203d20307830330a"}
+{"event": "rx", "unix_ns": 1795101681698543223, "name": "door-locked", "seq": 69, "offset": 3160, "hex": "307830303964202852414d29203d20307830310a307830303965202852414d29203d20307830310a"}
+{"event": "rx", "unix_ns": 1795101681698551574, "name": "door-locked", "seq": 69, "offset": 3200, "hex": "307830303966202852414d29203d20307830320a307830306130202852414d29203d20307866660a"}
+{"event": "rx", "unix_ns": 1795101681698585232, "name": "door-locked", "seq": 69, "offset": 3240, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681698599438, "seq": 69, "answer": "0x0091 (RAM) = 0x4f\n0x0092 (RAM) = 0x7a\n0x0093 (RAM) = 0x5e\n0x0094 (RAM) = 0x5c\n0x0095 (RAM) = 0x47\n0x0096 (RAM) = 0x14\n0x0097 (RAM) = 0x2d\n0x0098 (RAM) = 0x47\n0x0099 (RAM) = 0x77\n0x009a (RAM) = 0x97\n0x009b (RAM) = 0x02\n0x009c (RAM) = 0x03\n0x009d (RAM) = 0x01\n0x009e (RAM) = 0x01\n0x009f (RAM) = 0x02\n0x00a0 (RAM) = 0xff\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "tx", "unix_ns": 1795101681698642045, "name": "door-locked", "seq": 70, "offset": 1105, "hex": "5045454b20307830306131203078303061322030783030613320307830306134203078303061612030783030616220307830306163203078303061642030783030616520307830306166203078303062302030783030623120307830306232203078303062332030783030646304"}
+{"event": "rx", "unix_ns": 1795101681698682621, "name": "door-locked", "seq": 70, "offset": 3263, "hex": "307830306131202852414d29203d20307866660a307830306132202852414d29203d20307866660a307830306133202852414d29203d20307866660a307830306134202852414d29203d2030786666"}
+{"event": "rx", "unix_ns": 1795101681698694053, "name": "door-locked", "seq": 70, "offset": 3342, "hex": "0a307830306161202852414d29203d20307830300a307830306162202852414d29203d20307830300a"}
+{"event": "rx", "unix_ns": 1795101681698702305, "name": "door-locked", "seq": 70, "offset": 3383, "hex": "307830306163202852414d29203d20307830330a307830306164202852414d29203d20307863660a"}
+{"event": "rx", "unix_ns": 1795101681698710653, "name": "door-locked", "seq": 70, "offset": 3423, "hex": "307830306165202852414d29203d20307830300a"}
+{"event": "rx", "unix_ns": 1795101681698718317, "name": "door-locked", "seq": 70, "offset": 3443, "hex": "307830306166202852414d29203d20307830300a307830306230202852414d29203d20307830300a"}
+{"event": "rx", "unix_ns": 1795101681698725898, "name": "door-locked", "seq": 70, "offset": 3483, "hex": "307830306231202852414d29203d20307830300a307830306232202852414d29203d20307830300a"}
+{"event": "rx", "unix_ns": 1795101681698733154, "name": "door-locked", "seq": 70, "offset": 3523, "hex": "307830306233202852414d29203d20307830300a307830306463202852414d29203d2030783030"}
+{"event": "rx", "unix_ns": 1795101681698740305, "name": "door-locked", "seq": 70, "offset": 3562, "hex": "0a5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681698749731, "seq": 70, "answer": "0x00a1 (RAM) = 0xff\n0x00a2 (RAM) = 0xff\n0x00a3 (RAM) = 0xff\n0x00a4 (RAM) = 0xff\n0x00aa (RAM) = 0x00\n0x00ab (RAM) = 0x00\n0x00ac (RAM) = 0x03\n0x00ad (RAM) = 0xcf\n0x00ae (RAM) = 0x00\n0x00af (RAM) = 0x00\n0x00b0 (RAM) = 0x00\n0x00b1 (RAM) = 0x00\n0x00b2 (RAM) = 0x00\n0x00b3 (RAM) = 0x00\n0x00dc (RAM) = 0x00\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "check", "unix_ns": 1795101681698772065, "label": "door-without-key", "count": 12, "scanlines": [274, 275], "state": [148, 80, 8, 0, 0, 0, 0, 0, 0], "npc_x": [79, 122, 94, 92, 71], "npc_y": [20, 45, 71, 119, 151], "life": [255, 255, 255, 255, 255], "score": 0, "lives": 3, "carrier": 0, "key": 0, "key_position": [0, 0], "unlocked": 0, "room_done": 0, "omitted": 0}
+{"event": "tx", "unix_ns": 1795101681698952985, "name": "door-locked", "seq": 71, "offset": 1215, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f736c696365362d72756e2f646f6f722d70726f62652f646f6f722d6c6f636b65642f646f6f722d776974686f75742d6b65792e706e6704"}
+{"event": "rx", "unix_ns": 1795101681698971411, "name": "door-locked", "seq": 71, "offset": 3586, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795101681868883945, "name": "door-locked", "seq": 71, "offset": 3604, "hex": "5b202466303431206a7372202466323062205d203e3e20"}
+{"event": "ack", "unix_ns": 1795101681868993811, "seq": 71, "answer": "saving screenshot\n", "prompt": "[ $f041 jsr $f20b ] >> "}
+{"event": "exit", "unix_ns": 1795101682435209534, "name": "door-locked", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 8.3367464260009, "stderr_hex": ""}

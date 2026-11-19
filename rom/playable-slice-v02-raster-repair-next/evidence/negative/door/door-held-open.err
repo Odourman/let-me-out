@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/work/slice6/rom/slice6-door-probe/scenarios.py", line 236, in <module>
+    run(s,a.case,a.out.resolve(),a.key_lifetime,a.pixel_stride or (10 if a.pixel_probe else 0))
+  File "/workspace/work/slice6/rom/slice6-door-probe/scenarios.py", line 162, in run
+    snap(s,1,"unlock-input",out)
+  File "/workspace/work/slice6/rom/slice6-door-probe/scenarios.py", line 30, in snap
+    assert set(totals)=={262},(label,totals)
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: ('unlock-input', [273])

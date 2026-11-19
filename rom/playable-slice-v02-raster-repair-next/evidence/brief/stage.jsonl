@@ -1,0 +1,13 @@
+{"event":"launch","unix_ns":1795102062484514273,"name":"slice-phase","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice6/rom/playable-slice-v02-raster-repair-next/let-me-out-v02-raster-repair-bridge.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795102062485079526,"pid":24727}
+{"event":"phase","unix_ns":1795102066248530674,"label":"Frame","tv":"FR=0024 SL=257 CL=-50","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066258359354,"label":"BlankWait","tv":"FR=0025 SL=033 CL=109","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066259897402,"label":"Top","tv":"FR=0025 SL=039 CL=-47","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066264418217,"label":"Room","tv":"FR=0025 SL=044 CL=113","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066301687099,"label":"RoomEnd","tv":"FR=0025 SL=219 CL=067","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066302416501,"label":"Bottom","tv":"FR=0025 SL=220 CL=-11","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066304749728,"label":"GameBank","tv":"FR=0025 SL=228 CL=037","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066305500826,"label":"Overscan","tv":"FR=0025 SL=232 CL=-41","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795102066339516379,"label":"Frame","tv":"FR=0025 SL=257 CL=-44","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"stack","unix_ns":1795102066440471757,"tv":"FR=0026 SL=231 CL=052","cpu":"PC=f357 A=0d X=08 Y=52 SP=f7 SR=sv-BdIzc"}
+{"event":"exit","unix_ns":1795102066968322775,"name":"slice-phase","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":4.483801483002026,"stderr_hex":""}
