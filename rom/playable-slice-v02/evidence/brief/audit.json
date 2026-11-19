@@ -1,0 +1,105 @@
+{
+  "soak": {
+    "scanlines": {
+      "262": 600
+    },
+    "omissions": {
+      "0": 353,
+      "1": 237,
+      "2": 10
+    },
+    "objects": {
+      "M (0)": {
+        "eligible": 600,
+        "queued": 600,
+        "omitted": 0,
+        "longest_omission_streak": 0
+      },
+      "M (1)": {
+        "eligible": 600,
+        "queued": 590,
+        "omitted": 10,
+        "longest_omission_streak": 10
+      },
+      "F": {
+        "eligible": 600,
+        "queued": 600,
+        "omitted": 0,
+        "longest_omission_streak": 0
+      },
+      "SM": {
+        "eligible": 600,
+        "queued": 600,
+        "omitted": 0,
+        "longest_omission_streak": 0
+      },
+      "SF": {
+        "eligible": 600,
+        "queued": 353,
+        "omitted": 247,
+        "longest_omission_streak": 211
+      },
+      "key": {
+        "eligible": 0,
+        "queued": 0,
+        "omitted": 0,
+        "longest_omission_streak": 0
+      }
+    }
+  },
+  "graphics": {
+    "expected_brown_excluding_door": 4864,
+    "images": {
+      "quiet": {
+        "wall_missing": 8,
+        "wall_extra": 0,
+        "right_orange": 128,
+        "right_dark": 0,
+        "left_brown": 120
+      },
+      "closed": {
+        "wall_missing": 40,
+        "wall_extra": 0,
+        "right_orange": 128,
+        "right_dark": 0,
+        "left_brown": 128
+      },
+      "open-before-passage": {
+        "wall_missing": 58,
+        "wall_extra": 0,
+        "right_orange": 0,
+        "right_dark": 128,
+        "left_brown": 128
+      },
+      "open-during-exit": {
+        "wall_missing": 32,
+        "wall_extra": 0,
+        "right_orange": 0,
+        "right_dark": 128,
+        "left_brown": 104
+      },
+      "controlled-key": {
+        "wall_missing": 49,
+        "wall_extra": 0,
+        "right_orange": 128,
+        "right_dark": 0,
+        "left_brown": 128,
+        "key_expected": 14,
+        "key_correct": 14,
+        "key_missing": 0,
+        "key_extra": 4
+      },
+      "cold-key": {
+        "wall_missing": 12,
+        "wall_extra": 0,
+        "right_orange": 128,
+        "right_dark": 0,
+        "left_brown": 128,
+        "key_expected": 14,
+        "key_correct": 0,
+        "key_missing": 14,
+        "key_extra": 0
+      }
+    }
+  }
+}

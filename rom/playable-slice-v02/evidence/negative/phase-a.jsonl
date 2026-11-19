@@ -1,0 +1,245 @@
+{"event": "termios", "unix_ns": 1795073634346420908, "name": "slice-phase", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795073634347070522, "name": "slice-phase", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice2/rom/playable-slice-v02/let-me-out-v02.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795073634347533249, "pid": 8315}
+{"event": "rx", "unix_ns": 1795073635623453997, "name": "slice-phase", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635623557788, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795073635624736201, "name": "slice-phase", "seq": 1, "offset": 0, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635736046144, "name": "slice-phase", "seq": 1, "offset": 23, "hex": "5b20246631363120736563205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635736180634, "seq": 1, "answer": "", "prompt": "[ $f161 sec ] >> "}
+{"event": "tx", "unix_ns": 1795073635736253645, "name": "slice-phase", "seq": 2, "offset": 11, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635809784376, "name": "slice-phase", "seq": 2, "offset": 40, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635809949033, "seq": 2, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073635810023736, "name": "slice-phase", "seq": 3, "offset": 22, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635824830130, "name": "slice-phase", "seq": 3, "offset": 57, "hex": "5b20246631356120626e6520246662205d203e20"}
+{"event": "ack", "unix_ns": 1795073635824896080, "seq": 3, "answer": "", "prompt": "[ $f15a bne $fb ] > "}
+{"event": "tx", "unix_ns": 1795073635825059341, "name": "slice-phase", "seq": 4, "offset": 33, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635833636096, "name": "slice-phase", "seq": 4, "offset": 77, "hex": "5b20246631363120736563205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635833775243, "seq": 4, "answer": "", "prompt": "[ $f161 sec ] >> "}
+{"event": "tx", "unix_ns": 1795073635833988718, "name": "slice-phase", "seq": 5, "offset": 44, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635894419669, "name": "slice-phase", "seq": 5, "offset": 94, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635894501394, "seq": 5, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073635894545815, "name": "slice-phase", "seq": 6, "offset": 55, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635899771478, "name": "slice-phase", "seq": 6, "offset": 111, "hex": "5b20246631343020646578205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635899837569, "seq": 6, "answer": "", "prompt": "[ $f140 dex ] >> "}
+{"event": "tx", "unix_ns": 1795073635899875630, "name": "slice-phase", "seq": 7, "offset": 66, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635905397566, "name": "slice-phase", "seq": 7, "offset": 128, "hex": "5b20246631356120626e6520246662205d203e20"}
+{"event": "ack", "unix_ns": 1795073635905449349, "seq": 7, "answer": "", "prompt": "[ $f15a bne $fb ] > "}
+{"event": "tx", "unix_ns": 1795073635905482517, "name": "slice-phase", "seq": 8, "offset": 77, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635907693394, "name": "slice-phase", "seq": 8, "offset": 148, "hex": "5b20246631363120736563205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635907736061, "seq": 8, "answer": "", "prompt": "[ $f161 sec ] >> "}
+{"event": "tx", "unix_ns": 1795073635907765820, "name": "slice-phase", "seq": 9, "offset": 88, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635946418556, "name": "slice-phase", "seq": 9, "offset": 165, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635946470069, "seq": 9, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073635946547690, "name": "slice-phase", "seq": 10, "offset": 99, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635949531233, "name": "slice-phase", "seq": 10, "offset": 182, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635949752270, "seq": 10, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073635949806372, "name": "slice-phase", "seq": 11, "offset": 110, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635951939353, "name": "slice-phase", "seq": 11, "offset": 199, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635951979792, "seq": 11, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073635952009636, "name": "slice-phase", "seq": 12, "offset": 121, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635954789731, "name": "slice-phase", "seq": 12, "offset": 216, "hex": "5b20246631343020646578205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635954832625, "seq": 12, "answer": "", "prompt": "[ $f140 dex ] >> "}
+{"event": "tx", "unix_ns": 1795073635954862348, "name": "slice-phase", "seq": 13, "offset": 132, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635957072712, "name": "slice-phase", "seq": 13, "offset": 233, "hex": "5b202466313537206c646120494e54494d205d203e20"}
+{"event": "ack", "unix_ns": 1795073635957111506, "seq": 13, "answer": "", "prompt": "[ $f157 lda INTIM ] > "}
+{"event": "tx", "unix_ns": 1795073635957137776, "name": "slice-phase", "seq": 14, "offset": 143, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635959409420, "name": "slice-phase", "seq": 14, "offset": 255, "hex": "5b202466313537206c646120494e54494d205d203e20"}
+{"event": "ack", "unix_ns": 1795073635959528271, "seq": 14, "answer": "", "prompt": "[ $f157 lda INTIM ] > "}
+{"event": "tx", "unix_ns": 1795073635959563273, "name": "slice-phase", "seq": 15, "offset": 154, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635962141988, "name": "slice-phase", "seq": 15, "offset": 277, "hex": "5b20246631363120736563205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635962179833, "seq": 15, "answer": "", "prompt": "[ $f161 sec ] >> "}
+{"event": "tx", "unix_ns": 1795073635962206864, "name": "slice-phase", "seq": 16, "offset": 165, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073635997723632, "name": "slice-phase", "seq": 16, "offset": 294, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073635997772272, "seq": 16, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073635997820444, "name": "slice-phase", "seq": 17, "offset": 176, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636002345474, "name": "slice-phase", "seq": 17, "offset": 311, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636002385545, "seq": 17, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636002448938, "name": "slice-phase", "seq": 18, "offset": 187, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636005494566, "name": "slice-phase", "seq": 18, "offset": 328, "hex": "5b20246633353720636d702023243f3f205d203e20"}
+{"event": "ack", "unix_ns": 1795073636005615752, "seq": 18, "answer": "", "prompt": "[ $f357 cmp #$?? ] > "}
+{"event": "tx", "unix_ns": 1795073636005769607, "name": "slice-phase", "seq": 19, "offset": 198, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636008408581, "name": "slice-phase", "seq": 19, "offset": 349, "hex": "5b20246631356120626e6520246662205d203e20"}
+{"event": "ack", "unix_ns": 1795073636008426286, "seq": 19, "answer": "", "prompt": "[ $f15a bne $fb ] > "}
+{"event": "tx", "unix_ns": 1795073636008454932, "name": "slice-phase", "seq": 20, "offset": 209, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636010603296, "name": "slice-phase", "seq": 20, "offset": 369, "hex": "5b20246631363120736563205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636010656598, "seq": 20, "answer": "", "prompt": "[ $f161 sec ] >> "}
+{"event": "tx", "unix_ns": 1795073636010688220, "name": "slice-phase", "seq": 21, "offset": 220, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636047638474, "name": "slice-phase", "seq": 21, "offset": 386, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636047699439, "seq": 21, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636047755583, "name": "slice-phase", "seq": 22, "offset": 231, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636050682212, "name": "slice-phase", "seq": 22, "offset": 403, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636050798743, "seq": 22, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636050853580, "name": "slice-phase", "seq": 23, "offset": 242, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636053603526, "name": "slice-phase", "seq": 23, "offset": 420, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636053812018, "seq": 23, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636053882064, "name": "slice-phase", "seq": 24, "offset": 253, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636056787773, "name": "slice-phase", "seq": 24, "offset": 437, "hex": "5b2024663132612062657120243132205d203e20"}
+{"event": "ack", "unix_ns": 1795073636056818888, "seq": 24, "answer": "", "prompt": "[ $f12a beq $12 ] > "}
+{"event": "tx", "unix_ns": 1795073636056863680, "name": "slice-phase", "seq": 25, "offset": 264, "hex": "425245414b2050432030786630323804"}
+{"event": "rx", "unix_ns": 1795073636056982187, "name": "slice-phase", "seq": 25, "offset": 457, "hex": "5b2024663132612062657120243132205d203e20"}
+{"event": "ack", "unix_ns": 1795073636056996514, "seq": 25, "answer": "", "prompt": "[ $f12a beq $12 ] > "}
+{"event": "tx", "unix_ns": 1795073636057014607, "name": "slice-phase", "seq": 26, "offset": 280, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636060184038, "name": "slice-phase", "seq": 26, "offset": 477, "hex": "627265616b206f6e2050432d3e3078663032380a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636060223759, "seq": 26, "answer": "break on PC->0xf028\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636060302831, "name": "slice-phase", "seq": 27, "offset": 284, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636060367466, "name": "slice-phase", "seq": 27, "offset": 519, "hex": "627265616b706f696e742023302064726f70706564"}
+{"event": "rx", "unix_ns": 1795073636060402072, "name": "slice-phase", "seq": 27, "offset": 540, "hex": "0a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636060413821, "seq": 27, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636060427253, "name": "slice-phase", "seq": 28, "offset": 297, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636060466147, "name": "slice-phase", "seq": 28, "offset": 563, "hex": "46523d3030323520534c3d30313120434c3d2d34370a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636060476462, "seq": 28, "answer": "FR=0025 SL=011 CL=-47\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636060497153, "name": "slice-phase", "seq": 29, "offset": 300, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636060508541, "name": "slice-phase", "seq": 29, "offset": 607, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a203136"}
+{"event": "rx", "unix_ns": 1795073636060516429, "name": "slice-phase", "seq": 29, "offset": 638, "hex": "0a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636060523602, "seq": 29, "answer": "top: 48, bottom: 276, total: 16\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "phase", "unix_ns": 1795073636060530209, "label": "Frame", "tv": "FR=0025 SL=011 CL=-47", "frame": "top: 48, bottom: 276, total: 16"}
+{"event": "tx", "unix_ns": 1795073636060624304, "name": "slice-phase", "seq": 30, "offset": 309, "hex": "425245414b2050432030786630383804"}
+{"event": "rx", "unix_ns": 1795073636060792619, "name": "slice-phase", "seq": 30, "offset": 661, "hex": "5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636060808925, "seq": 30, "answer": "", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636060839283, "name": "slice-phase", "seq": 31, "offset": 325, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636067655027, "name": "slice-phase", "seq": 31, "offset": 683, "hex": "627265616b206f6e2050432d3e3078663038380a5b202466303838206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636067730321, "seq": 31, "answer": "break on PC->0xf088\n", "prompt": "[ $f088 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636067788788, "name": "slice-phase", "seq": 32, "offset": 329, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636068053612, "name": "slice-phase", "seq": 32, "offset": 726, "hex": "627265616b706f696e742023302064726f707065640a5b202466303838206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636068204114, "seq": 32, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f088 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636068225788, "name": "slice-phase", "seq": 33, "offset": 342, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636068323174, "name": "slice-phase", "seq": 33, "offset": 771, "hex": "46523d3030323620534c3d30343320434c3d3135340a5b202466303838206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636068333610, "seq": 33, "answer": "FR=0026 SL=043 CL=154\n", "prompt": "[ $f088 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636068355518, "name": "slice-phase", "seq": 34, "offset": 345, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636068380515, "name": "slice-phase", "seq": 34, "offset": 816, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2031360a5b202466303838206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636068390945, "seq": 34, "answer": "top: 48, bottom: 276, total: 16\n", "prompt": "[ $f088 lda INTIM ] >> "}
+{"event": "phase", "unix_ns": 1795073636068397320, "label": "BlankWait", "tv": "FR=0026 SL=043 CL=154", "frame": "top: 48, bottom: 276, total: 16"}
+{"event": "tx", "unix_ns": 1795073636068417615, "name": "slice-phase", "seq": 35, "offset": 354, "hex": "425245414b2050432030786630393504"}
+{"event": "rx", "unix_ns": 1795073636068604006, "name": "slice-phase", "seq": 35, "offset": 871, "hex": "5b202466303838206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636068621130, "seq": 35, "answer": "", "prompt": "[ $f088 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636068639895, "name": "slice-phase", "seq": 36, "offset": 370, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636081001266, "name": "slice-phase", "seq": 36, "offset": 894, "hex": "627265616b206f6e2050432d3e3078663039350a5b20246630393520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636081059585, "seq": 36, "answer": "break on PC->0xf095\n", "prompt": "[ $f095 sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636081107611, "name": "slice-phase", "seq": 37, "offset": 374, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636081393102, "name": "slice-phase", "seq": 37, "offset": 937, "hex": "627265616b706f696e742023302064726f707065640a5b20246630393520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636081410609, "seq": 37, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f095 sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636081428132, "name": "slice-phase", "seq": 38, "offset": 387, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636081708243, "name": "slice-phase", "seq": 38, "offset": 982, "hex": "46523d3030323620534c3d31383920434c3d2d34370a5b20246630393520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636081772066, "seq": 38, "answer": "FR=0026 SL=189 CL=-47\n", "prompt": "[ $f095 sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636081806092, "name": "slice-phase", "seq": 39, "offset": 390, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636081911062, "name": "slice-phase", "seq": 39, "offset": 1027, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2031360a5b20246630393520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636081923347, "seq": 39, "answer": "top: 48, bottom: 276, total: 16\n", "prompt": "[ $f095 sta WSYNC ] >> "}
+{"event": "phase", "unix_ns": 1795073636081929879, "label": "Top", "tv": "FR=0026 SL=189 CL=-47", "frame": "top: 48, bottom: 276, total: 16"}
+{"event": "tx", "unix_ns": 1795073636081955596, "name": "slice-phase", "seq": 40, "offset": 399, "hex": "425245414b2050432030786630633604"}
+{"event": "rx", "unix_ns": 1795073636082013548, "name": "slice-phase", "seq": 40, "offset": 1082, "hex": "5b20246630393520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636082023330, "seq": 40, "answer": "", "prompt": "[ $f095 sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636082035060, "name": "slice-phase", "seq": 41, "offset": 415, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636083269345, "name": "slice-phase", "seq": 41, "offset": 1105, "hex": "627265616b206f6e2050432d3e3078663063360a5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636083307574, "seq": 41, "answer": "break on PC->0xf0c6\n", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636083331428, "name": "slice-phase", "seq": 42, "offset": 419, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636083361446, "name": "slice-phase", "seq": 42, "offset": 1142, "hex": "627265616b706f696e742023302064726f707065640a5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636083370385, "seq": 42, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636083380409, "name": "slice-phase", "seq": 43, "offset": 432, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636083426298, "name": "slice-phase", "seq": 43, "offset": 1181, "hex": "46523d3030323620534c3d31393720434c3d3133340a5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636083435040, "seq": 43, "answer": "FR=0026 SL=197 CL=134\n", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636083453012, "name": "slice-phase", "seq": 44, "offset": 435, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636083477053, "name": "slice-phase", "seq": 44, "offset": 1220, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2031360a5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636083486808, "seq": 44, "answer": "top: 48, bottom: 276, total: 16\n", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "phase", "unix_ns": 1795073636083491320, "label": "Room", "tv": "FR=0026 SL=197 CL=134", "frame": "top: 48, bottom: 276, total: 16"}
+{"event": "tx", "unix_ns": 1795073636083510053, "name": "slice-phase", "seq": 45, "offset": 444, "hex": "425245414b2050432030786631326504"}
+{"event": "rx", "unix_ns": 1795073636083537757, "name": "slice-phase", "seq": 45, "offset": 1269, "hex": "5b20246630633620747961205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636083548344, "seq": 45, "answer": "", "prompt": "[ $f0c6 tya ] >> "}
+{"event": "tx", "unix_ns": 1795073636083563136, "name": "slice-phase", "seq": 46, "offset": 460, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636104836953, "name": "slice-phase", "seq": 46, "offset": 1286, "hex": "627265616b206f6e2050432d3e3078663132650a5b20246631326520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636104885178, "seq": 46, "answer": "break on PC->0xf12e\n", "prompt": "[ $f12e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636104948285, "name": "slice-phase", "seq": 47, "offset": 464, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636105070205, "name": "slice-phase", "seq": 47, "offset": 1329, "hex": "627265616b706f696e742023302064726f707065640a5b20246631326520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105085887, "seq": 47, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f12e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636105114054, "name": "slice-phase", "seq": 48, "offset": 477, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636105148278, "name": "slice-phase", "seq": 48, "offset": 1374, "hex": "46523d3030323820534c3d30303320434c3d3035380a5b20246631326520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105158475, "seq": 48, "answer": "FR=0028 SL=003 CL=058\n", "prompt": "[ $f12e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636105180608, "name": "slice-phase", "seq": 49, "offset": 480, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636105243612, "name": "slice-phase", "seq": 49, "offset": 1419, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2032300a5b20246631326520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105254608, "seq": 49, "answer": "top: 48, bottom: 276, total: 20\n", "prompt": "[ $f12e sta WSYNC ] >> "}
+{"event": "phase", "unix_ns": 1795073636105260410, "label": "RoomEnd", "tv": "FR=0028 SL=003 CL=058", "frame": "top: 48, bottom: 276, total: 20"}
+{"event": "tx", "unix_ns": 1795073636105281053, "name": "slice-phase", "seq": 50, "offset": 489, "hex": "425245414b2050432030786631336504"}
+{"event": "rx", "unix_ns": 1795073636105307654, "name": "slice-phase", "seq": 50, "offset": 1474, "hex": "5b20246631326520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105316614, "seq": 50, "answer": "", "prompt": "[ $f12e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636105335304, "name": "slice-phase", "seq": 51, "offset": 505, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636105454192, "name": "slice-phase", "seq": 51, "offset": 1497, "hex": "627265616b206f6e2050432d3e3078663133650a5b20246631336520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105463443, "seq": 51, "answer": "break on PC->0xf13e\n", "prompt": "[ $f13e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636105483624, "name": "slice-phase", "seq": 52, "offset": 509, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636105498732, "name": "slice-phase", "seq": 52, "offset": 1540, "hex": "627265616b706f696e742023302064726f707065640a5b20246631336520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105615479, "seq": 52, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f13e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636105639058, "name": "slice-phase", "seq": 53, "offset": 522, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636105669931, "name": "slice-phase", "seq": 53, "offset": 1585, "hex": "46523d3030323820534c3d30303420434c3d2d3131"}
+{"event": "rx", "unix_ns": 1795073636105679443, "name": "slice-phase", "seq": 53, "offset": 1606, "hex": "0a5b20246631336520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105687192, "seq": 53, "answer": "FR=0028 SL=004 CL=-11\n", "prompt": "[ $f13e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636105704872, "name": "slice-phase", "seq": 54, "offset": 525, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636105714709, "name": "slice-phase", "seq": 54, "offset": 1630, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2032300a"}
+{"event": "rx", "unix_ns": 1795073636105722060, "name": "slice-phase", "seq": 54, "offset": 1662, "hex": "5b20246631336520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105728842, "seq": 54, "answer": "top: 48, bottom: 276, total: 20\n", "prompt": "[ $f13e sta WSYNC ] >> "}
+{"event": "phase", "unix_ns": 1795073636105733138, "label": "Bottom", "tv": "FR=0028 SL=004 CL=-11", "frame": "top: 48, bottom: 276, total: 20"}
+{"event": "tx", "unix_ns": 1795073636105751332, "name": "slice-phase", "seq": 55, "offset": 534, "hex": "425245414b2050432030786666383604"}
+{"event": "rx", "unix_ns": 1795073636105788263, "name": "slice-phase", "seq": 55, "offset": 1685, "hex": "5b20246631336520737461205753594e43205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636105795876, "seq": 55, "answer": "", "prompt": "[ $f13e sta WSYNC ] >> "}
+{"event": "tx", "unix_ns": 1795073636105812723, "name": "slice-phase", "seq": 56, "offset": 550, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636106905855, "name": "slice-phase", "seq": 56, "offset": 1708, "hex": "627265616b206f6e2050432d3e3078666638360a5b20246666383620737461202466666637205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636106922031, "seq": 56, "answer": "break on PC->0xff86\n", "prompt": "[ $ff86 sta $fff7 ] >> "}
+{"event": "tx", "unix_ns": 1795073636106947152, "name": "slice-phase", "seq": 57, "offset": 554, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636106961342, "name": "slice-phase", "seq": 57, "offset": 1751, "hex": "627265616b706f696e742023302064726f707065640a5b20246666383620737461202466666637205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636106971811, "seq": 57, "answer": "breakpoint #0 dropped\n", "prompt": "[ $ff86 sta $fff7 ] >> "}
+{"event": "tx", "unix_ns": 1795073636106995194, "name": "slice-phase", "seq": 58, "offset": 567, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636107008216, "name": "slice-phase", "seq": 58, "offset": 1796, "hex": "46523d3030323820534c3d30313220434c3d3033370a5b20246666383620737461202466666637205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636107021740, "seq": 58, "answer": "FR=0028 SL=012 CL=037\n", "prompt": "[ $ff86 sta $fff7 ] >> "}
+{"event": "tx", "unix_ns": 1795073636107039248, "name": "slice-phase", "seq": 59, "offset": 570, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636107064158, "name": "slice-phase", "seq": 59, "offset": 1841, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2032300a5b20246666383620737461202466666637205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636107073057, "seq": 59, "answer": "top: 48, bottom: 276, total: 20\n", "prompt": "[ $ff86 sta $fff7 ] >> "}
+{"event": "phase", "unix_ns": 1795073636107077673, "label": "GameBank", "tv": "FR=0028 SL=012 CL=037", "frame": "top: 48, bottom: 276, total: 20"}
+{"event": "tx", "unix_ns": 1795073636107095717, "name": "slice-phase", "seq": 60, "offset": 579, "hex": "425245414b2050432030786631353704"}
+{"event": "rx", "unix_ns": 1795073636107119654, "name": "slice-phase", "seq": 60, "offset": 1896, "hex": "5b20246666383620737461202466666637205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636107127654, "seq": 60, "answer": "", "prompt": "[ $ff86 sta $fff7 ] >> "}
+{"event": "tx", "unix_ns": 1795073636107144201, "name": "slice-phase", "seq": 61, "offset": 595, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636109395996, "name": "slice-phase", "seq": 61, "offset": 1919, "hex": "627265616b206f6e2050432d3e3078663135370a5b202466313537206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636109415119, "seq": 61, "answer": "break on PC->0xf157\n", "prompt": "[ $f157 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636109437526, "name": "slice-phase", "seq": 62, "offset": 599, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636109465522, "name": "slice-phase", "seq": 62, "offset": 1962, "hex": "627265616b706f696e742023302064726f707065640a5b202466313537206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636109473805, "seq": 62, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f157 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636109490631, "name": "slice-phase", "seq": 63, "offset": 612, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636109514691, "name": "slice-phase", "seq": 63, "offset": 2007, "hex": "46523d3030323920534c3d30303420434c3d3035320a5b202466313537206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636109522603, "seq": 63, "answer": "FR=0029 SL=004 CL=052\n", "prompt": "[ $f157 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636109537545, "name": "slice-phase", "seq": 64, "offset": 615, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636109575315, "name": "slice-phase", "seq": 64, "offset": 2052, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2032330a5b202466313537206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636109604863, "seq": 64, "answer": "top: 48, bottom: 276, total: 23\n", "prompt": "[ $f157 lda INTIM ] >> "}
+{"event": "phase", "unix_ns": 1795073636109609468, "label": "Overscan", "tv": "FR=0029 SL=004 CL=052", "frame": "top: 48, bottom: 276, total: 23"}
+{"event": "tx", "unix_ns": 1795073636109627500, "name": "slice-phase", "seq": 65, "offset": 624, "hex": "425245414b2050432030786630323804"}
+{"event": "rx", "unix_ns": 1795073636109654789, "name": "slice-phase", "seq": 65, "offset": 2107, "hex": "5b202466313537206c646120494e54494d205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636109662730, "seq": 65, "answer": "", "prompt": "[ $f157 lda INTIM ] >> "}
+{"event": "tx", "unix_ns": 1795073636109694696, "name": "slice-phase", "seq": 66, "offset": 640, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636111410112, "name": "slice-phase", "seq": 66, "offset": 2130, "hex": "627265616b206f6e2050432d3e3078663032380a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636111432366, "seq": 66, "answer": "break on PC->0xf028\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636111451900, "name": "slice-phase", "seq": 67, "offset": 644, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636111508298, "name": "slice-phase", "seq": 67, "offset": 2172, "hex": "627265616b706f696e742023302064726f707065640a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636111517087, "seq": 67, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636111534423, "name": "slice-phase", "seq": 68, "offset": 657, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636111557865, "name": "slice-phase", "seq": 68, "offset": 2216, "hex": "46523d3030323920534c3d30323020434c3d2d34310a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636111565839, "seq": 68, "answer": "FR=0029 SL=020 CL=-41\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636111607556, "name": "slice-phase", "seq": 69, "offset": 660, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795073636111617994, "name": "slice-phase", "seq": 69, "offset": 2260, "hex": "746f703a2034382c20626f74746f6d3a203237362c20746f74616c3a2032330a5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636111624821, "seq": 69, "answer": "top: 48, bottom: 276, total: 23\n", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "phase", "unix_ns": 1795073636111629195, "label": "Frame", "tv": "FR=0029 SL=020 CL=-41", "frame": "top: 48, bottom: 276, total: 23"}
+{"event": "tx", "unix_ns": 1795073636111647941, "name": "slice-phase", "seq": 70, "offset": 669, "hex": "535449434b204c45465420524947485404"}
+{"event": "rx", "unix_ns": 1795073636111676124, "name": "slice-phase", "seq": 70, "offset": 2314, "hex": "5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636111684821, "seq": 70, "answer": "", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636111723852, "name": "slice-phase", "seq": 71, "offset": 686, "hex": "425245414b2050432030786633353704"}
+{"event": "rx", "unix_ns": 1795073636111748981, "name": "slice-phase", "seq": 71, "offset": 2336, "hex": "5b202466303238206c64612023243032205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636111757177, "seq": 71, "answer": "", "prompt": "[ $f028 lda #$02 ] >> "}
+{"event": "tx", "unix_ns": 1795073636111774470, "name": "slice-phase", "seq": 72, "offset": 702, "hex": "52554e04"}
+{"event": "rx", "unix_ns": 1795073636163558511, "name": "slice-phase", "seq": 72, "offset": 2358, "hex": "627265616b206f6e2050432d3e3078663335370a5b20246633353720636d702023246130205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636163682260, "seq": 72, "answer": "break on PC->0xf357\n", "prompt": "[ $f357 cmp #$a0 ] >> "}
+{"event": "tx", "unix_ns": 1795073636163743076, "name": "slice-phase", "seq": 73, "offset": 706, "hex": "44524f5020425245414b203004"}
+{"event": "rx", "unix_ns": 1795073636163838161, "name": "slice-phase", "seq": 73, "offset": 2400, "hex": "627265616b706f696e742023302064726f707065640a5b20246633353720636d702023246130205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636163851842, "seq": 73, "answer": "breakpoint #0 dropped\n", "prompt": "[ $f357 cmp #$a0 ] >> "}
+{"event": "tx", "unix_ns": 1795073636163875509, "name": "slice-phase", "seq": 74, "offset": 719, "hex": "545604"}
+{"event": "rx", "unix_ns": 1795073636163903619, "name": "slice-phase", "seq": 74, "offset": 2444, "hex": "46523d3030333820534c3d30303120434c3d3035350a5b20246633353720636d702023246130205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636163912861, "seq": 74, "answer": "FR=0038 SL=001 CL=055\n", "prompt": "[ $f357 cmp #$a0 ] >> "}
+{"event": "tx", "unix_ns": 1795073636163933125, "name": "slice-phase", "seq": 75, "offset": 722, "hex": "43505504"}
+{"event": "rx", "unix_ns": 1795073636164040820, "name": "slice-phase", "seq": 75, "offset": 2488, "hex": "50433d6633353720413d306420583d303820593d35322053503d66372053523d73762d4264497a630a5b20246633353720636d702023246130205d203e3e20"}
+{"event": "ack", "unix_ns": 1795073636164053874, "seq": 75, "answer": "PC=f357 A=0d X=08 Y=52 SP=f7 SR=sv-BdIzc\n", "prompt": "[ $f357 cmp #$a0 ] >> "}
+{"event": "stack", "unix_ns": 1795073636164061784, "tv": "FR=0038 SL=001 CL=055", "cpu": "PC=f357 A=0d X=08 Y=52 SP=f7 SR=sv-BdIzc"}
+{"event": "exit", "unix_ns": 1795073636672133524, "name": "slice-phase", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 2.3250533389991688, "stderr_hex": ""}
