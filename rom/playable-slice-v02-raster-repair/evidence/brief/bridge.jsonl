@@ -1,0 +1,7 @@
+{"event":"launch","unix_ns":1795099425197687003,"name":"slice-phase","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice5/rom/playable-slice-v02-raster-repair/let-me-out-v02-raster-repair.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795099425198191005,"pid":20970}
+{"event":"transition","unix_ns":1795099427316947713,"mode":"bridge","label":"BridgePreSync","tv":"FR=0027 SL=196 CL=100","cpu":"PC=f134 A=00 X=03 Y=e9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795099427317355594,"mode":"bridge","label":"NpcSetupFirst","tv":"FR=0027 SL=197 CL=-23","cpu":"PC=f0f4 A=2b X=03 Y=e9 SP=ff SR=sv-BdIzC"}
+{"event":"transition","unix_ns":1795099427317787049,"mode":"bridge","label":"NpcSetupSync","tv":"FR=0027 SL=197 CL=073","cpu":"PC=f103 A=90 X=03 Y=e9 SP=ff SR=Sv-BdIzC"}
+{"event":"transition","unix_ns":1795099427318037261,"mode":"bridge","label":"GlyphStart","tv":"FR=0027 SL=197 CL=083","cpu":"PC=f105 A=90 X=03 Y=e9 SP=ff SR=Sv-BdIzC"}
+{"event":"exit","unix_ns":1795099427838423733,"name":"slice-phase","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":2.6405524729998433,"stderr_hex":""}
