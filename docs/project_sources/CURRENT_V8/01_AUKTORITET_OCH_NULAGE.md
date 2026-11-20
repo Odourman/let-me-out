@@ -1,0 +1,20 @@
+# LET ME OUT! – AUKTORITET OCH NULÄGE / V8
+
+**Project Sources V8, MAIN XI, 2026-11-20.** Daterad navigationskopia, **inte** självständig projektcanon, en ny implementationsorder, emulator-PASS eller oberoende Verification. Följ alltid aktuell [GitHub-status](https://github.com/Odourman/let-me-out/blob/main/docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md), [AGENTS.md](https://github.com/Odourman/let-me-out/blob/main/AGENTS.md), [G5-spärren](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md), faktisk Issue, fryst commit och originalbeslut i [Google Drive](https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u). Om ny leverans publicerats senare än denna daterade källa ska den granskas innan nuläget anges.
+
+## Auktoritetsordning och senare uttryckliga användarbeslut
+
+Original Master Spec och originalets **57 beslut** i Drive gäller där de inte uttryckligen supersederats. Senare enskilda beslut ersätter bara angiven del. Designmål ≠ byggd ROM ≠ oberoende verifiering.
+
+- [LM-D12/13 (G5Q)](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5Q_MAIN_VII_A1_B1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md): fem NPC individuellt fria X/Y, jakt i fyra riktningar, trovärdig fara och utan systematisk osynlighet; nyckel syns utan **verklig pixelöverlappning**.
+- [LM-D14/15/16 (G5S)](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5S_MAIN_VII_C1_D1_E1_USER_APPROVAL_DECISION_RECORD_2026-11-17.md): fem individer, fyra intakta TOP-DOWN 8×9-masker; för framtida fem-NPC-score **-30/kill med 0-golv, +50 för faktisk keypickup, +100 riktig exit, +15 per överlevande**; en nyckelbärare uniformt **1/5 per individ**, fem olika giltiga startpositioner, key-drop efter dödsanimation.
+- [LM-D17/19 (G5X)](https://github.com/Odourman/let-me-out/blob/main/docs/gates/G5X_MAIN_VII_APPROVED_FUTURE_FOUR_MAPS_SOURCE_MANIFEST_2026-11-17.json): godkända **framtida inre kartreferenser** A_OPEN_01, B_OPEN_02, C_OPEN_01, D_OPEN_01, dimensioner 40×22; **inte** auktoriserad fyra-rums-implementation.
+- **[Nytt explicit användarbeslut 20 november](https://github.com/Odourman/let-me-out/blob/main/docs/gates/MAIN_XI_USER_DECISION_FUTURE_RANDOM_NPC_FORMS_TOP_BOTTOM_EXIT_2026-11-20.md):** de fem figurernas former väljs **oberoende slumpmässigt** vid varje rumsstart bland exakt samma fyra originalmasker, istället för fast M,M,F,SM,SF. En enda orange/svart-utskuren dörr i **topp eller botten per karta** istället för obligatorisk högerdörr. Inga nya maskpixlar, färg-/AI-/poängändringar. Exakta nya kartvarianter/top/bottom-mappningar ännu inte definierade; gamla originalgrids med högerdörr är frysta historiska referenser.
+
+## Verkligt nuläge vid kontrollen 20 november
+
+[Nyaste MAIN XI-mottagna utvecklarcheckpoint](https://github.com/Odourman/let-me-out/issues/31#issuecomment-7036737753) fryst `8177c09368721988debb5407d8ffc2ed4bf4d94e`, ROM `rom/playable-slice-v02-object-conflict-repair/let-me-out-v02-object-conflict-repair.bin`, SHA-256 `f4ec909d57c583bc4cd58caa8550e6ff3f7a261a9f74f00156303c478fdd5b31` omräknad av MAIN. Utvecklarens Gopher: 600×262, 595/600 exakta femmaskers standardrutor, historiska 48/48 + nya 32/32 riktade PF-prov; Y160 återstår 16 med 2 pixelfel var. Riktig joystick-kallstart, +key, utgång, **210 poäng och tre liv** rapporterade.
+
+**Kritiskt:** key/player samma band **0/14**; fem same-Y **2/5**; svart door-cutout saknas; dynamiska PF missing locked/open/cold-key **36/58/16**. Nya framtida visuella regler är **inte implementerade** i denna ROM. Enbart valda GitHub-filer/loggar/PNG och ROM-hash är MAIN_REVIEWED; emulatorresultat DEVELOPER_OBSERVED; **INDEPENDENT_VERIFICATION=NOT_RUN, G5_FORMAL_OPEN**.
+
+[Provorder top/bottom](https://github.com/Odourman/let-me-out/issues/31#issuecomment-7036700643) är registrerad i Issue #31. **8177c** är senaste tekniska teststart efter MAIN:s mottagning (äldre text i själva provordern anger X71 som historisk fryst ursprungsbas). Användaren vill invänta ROM DEVELOPMENT:s svar innan nya uppdrag.
