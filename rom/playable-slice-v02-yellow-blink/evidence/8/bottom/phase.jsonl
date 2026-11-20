@@ -1,0 +1,12 @@
+{"event":"termios","unix_ns":1795190968536969927,"name":"slice-phase","iflag":0,"oflag":0,"cflag":191,"lflag":2,"cc_hex":"031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event":"launch","unix_ns":1795190968547315231,"name":"slice-phase","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/key16-v4/8/let-me-out-v02-brown-door-bottom.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795190968571637624,"pid":21837}
+{"event":"transition","unix_ns":1795190999164651020,"mode":"wall-x60-held","label":"EncodeWallX","tv":"FR=0027 SL=009 CL=067","cpu":"PC=f7c9 A=a9 X=00 Y=ff SP=f7 SR=Sv-BdIzc"}
+{"event":"transition","unix_ns":1795190999296205012,"mode":"wall-x60-held","label":"BridgePreSync","tv":"FR=0027 SL=132 CL=115","cpu":"PC=f140 A=00 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795190999296802279,"mode":"wall-x60-held","label":"CapLeftReset","tv":"FR=0027 SL=133 CL=052","cpu":"PC=f65e A=e0 X=00 Y=a9 SP=ff SR=Sv-BdIzC"}
+{"event":"transition","unix_ns":1795190999298451893,"mode":"wall-x60-held","label":"CapLateMotion","tv":"FR=0027 SL=133 CL=142","cpu":"PC=f766 A=80 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795190999349434988,"mode":"wall-x60-held","label":"CapLateSync","tv":"FR=0027 SL=133 CL=151","cpu":"PC=f768 A=80 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795190999357846458,"mode":"wall-x60-held","label":"CapGlyph","tv":"FR=0027 SL=134 CL=-59","cpu":"PC=f7e1 A=80 X=00 Y=a9 SP=ff SR=sv-BdIZC"}
+{"event":"transition","unix_ns":1795190999359671233,"mode":"wall-x60-held","label":"GlyphP1","tv":"FR=0027 SL=134 CL=019","cpu":"PC=f122 A=26 X=00 Y=aa SP=ff SR=sv-BdIzC"}
+{"event":"transition","unix_ns":1795190999371666287,"mode":"wall-x60-held","label":"NextRoom","tv":"FR=0027 SL=134 CL=151","cpu":"PC=f090 A=00 X=01 Y=ab SP=ff SR=Sv-BdIzC"}
+{"event":"exit","unix_ns":1795190999939638046,"name":"slice-phase","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":31.39231730100073,"stderr_hex":""}
