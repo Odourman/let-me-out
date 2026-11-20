@@ -1,0 +1,98 @@
+--- a/build.py
++++ b/build.py
+@@ -85,7 +85,7 @@
+         recommended.append(candidate)
+     (HERE/"schedule.inc").write_text(" ALIGN 256\n"+emit("AllowedSetup",recommended))
+     video.extend((" ALIGN 256\nRoomFlags:\n include \"key_assist_raster.inc\"\n ds RoomFlags+80-*,0\n",
+-                  emit("MapFlags",[128 if y in border
++                  emit("MapFlags",[64 if 86<=y<=94 else 128 if y in border
+                                    else 129 if y in split_rows
+                                    else pack(bits[y//8][:4],range(4,8))>>1 if y in transitions else 0 for y in range(176)])))
+     masks=json.loads((ROOT/"design/NPC_REFERENCE_8x9_masks.json").read_text())["sprites"]
+--- a/game.asm
++++ b/game.asm
+@@ -202,6 +202,7 @@
+  ldx #2
+  jsr Position
+ PositionDone:
++ jsr ParkCrowdMissile
+  jsr FinishHorizontal
+  lda #0
+  sta PF0
+@@ -429,6 +430,8 @@
+  iny
+  jmp NextRoom
+ WallScanline:
++ cmp #64
++ beq RetriggerJump
+  ; The dispatcher stores PF0 shifted right so its flags stay positive.
+  asl
+  sta PF0
+@@ -453,6 +456,8 @@
+  ENDIF
+  iny
+  jmp NextRoom
++RetriggerJump:
++ jmp RetriggerPair
+ RoomFinish:
+  sta WSYNC
+ RoomFinishAfterSync:
+@@ -722,7 +727,7 @@
+  ds 175,0
+ PlayerShape:
+  byte $3c,$7e,$18,$7e,$1e,$3c,$18,$24,$42
+- ds 159,0             ; the upper solid tile keeps the player at Y >= 8
++ ds 148,0             ; the upper solid tile keeps the player at Y >= 8
+  include "bridge_color.inc"
+  include "video.inc"
+ DeathShape:
+@@ -875,7 +880,7 @@
+  jmp StartBank
+  ENDIF
+  IF LOGIC = 0
+- include "wall_bridge.inc"
++ include "retrigger_pair.inc"
+  ENDIF
+  IF * > $fff6
+  ERR
+--- a/crowd.py
++++ b/crowd.py
+@@ -10,16 +10,8 @@
+ from replay import FRAME, peek
+ 
+ CASES = (
+-    ("small-overlap-player-on-bridge", (4,85), (64,67,72,53,74), (151,47,60,82,86), None),
+-    ("small-overlap-m1-head", (4,100), (64,67,72,53,74), (151,47,60,82,86), None),
+-    ("small-overlap-player-below", (24,159), (90,30,60,50,81), (153,45,60,82,86), None),
+-    ("small-same-y-player-below", (24,159), (90,30,60,50,81), (153,45,60,86,86), None),
+-    ("small-same-y-player-above", (52,55), (90,30,60,50,81), (153,38,42,86,86), None),
+-    ("all-five-same-y", (24,159), (20,44,68,92,116), (86,86,86,86,86), None),
+-    ("player-shares-band", (34,83), (90,30,60,50,81), (153,45,60,82,86), None),
+-    ("projectile-in-opposite-band", (52,55), (90,30,60,50,81), (153,38,42,86,86), (120,91)),
++ ("all-five-same-y", (24,159), (20,44,68,92,116), (86,86,86,86,86), None),
+ )
+-
+ KEY_CASES = (
+     ("small-overlap-player-on-bridge", (4,85), (64,67,72,53,74), (151,47,60,82,86), None),
+     ("small-overlap-m1-head", (4,100), (64,67,72,53,74), (151,47,60,82,86), None),
+--- a/cap_plan.inc
++++ b/cap_plan.inc
+@@ -21,4 +21,4 @@
+  rts
+ 
+ TryWallBridge:
+- jmp PlanWallBridge
++ rts
+--- a/prepare_key_assist.inc
++++ b/prepare_key_assist.inc
+@@ -60,7 +60,9 @@
+  lda NX+4
+  ldx #3
+  jsr Position
+- jsr CacheCapPlayer
++ nop
++ nop
++ nop
+ FinishMove:
+  sta WSYNC
+  sta HMOVE

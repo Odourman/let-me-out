@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/work/slice13/rom/playable-slice-v02-inner-render-conflict-repair/door_trial.py", line 144, in <module>
+    main()
+  File "/workspace/work/slice13/rom/playable-slice-v02-inner-render-conflict-repair/door_trial.py", line 139, in main
+    (route if args.cold else fixture)(s,args.out.resolve(),args.edge)
+  File "/workspace/work/slice13/rom/playable-slice-v02-inner-render-conflict-repair/door_trial.py", line 106, in fixture
+    assert snap(s,12,"locked",out)[:2]==[74,y]
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/slice13/rom/playable-slice-v02-inner-render-conflict-repair/scenarios.py", line 30, in snap
+    assert set(totals)=={262},(label,totals)
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: ('locked', [289, 58, 64, 71, 47, 52, 58, 26, 29, 32, 36, 3])

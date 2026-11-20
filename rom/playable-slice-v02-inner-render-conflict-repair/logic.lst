@@ -1,0 +1,1514 @@
+------- FILE game.asm LEVEL 1 PASS 2
+      1  fffa					      processor	6502
+      2  fffa		       00 00	   VSYNC      =	$00
+      3  fffa		       00 01	   VBLANK     =	$01
+      4  fffa		       00 02	   WSYNC      =	$02
+      5  fffa		       00 04	   NUSIZ0     =	$04
+      6  fffa		       00 05	   NUSIZ1     =	$05
+      7  fffa		       00 06	   COLUP0     =	$06
+      8  fffa		       00 07	   COLUP1     =	$07
+      9  fffa		       00 08	   COLUPF     =	$08
+     10  fffa		       00 09	   COLUBK     =	$09
+     11  fffa		       00 0a	   CTRLPF     =	$0a
+     12  fffa		       00 0d	   PF0	      =	$0d
+     13  fffa		       00 0e	   PF1	      =	$0e
+     14  fffa		       00 0f	   PF2	      =	$0f
+     15  fffa		       00 10	   RESP0      =	$10
+     16  fffa		       00 1b	   GRP0       =	$1b
+     17  fffa		       00 1c	   GRP1       =	$1c
+     18  fffa		       00 1d	   ENAM0      =	$1d
+     19  fffa		       00 1e	   ENAM1      =	$1e
+     20  fffa		       00 20	   HMP0       =	$20
+     21  fffa		       00 21	   HMP1       =	$21
+     22  fffa		       00 11	   RESP1      =	$11
+     23  fffa		       00 2a	   HMOVE      =	$2a
+     24  fffa		       00 2b	   HMCLR      =	$2b
+     25  fffa		       00 0c	   INPT4      =	$0c
+     26  fffa		       02 80	   SWCHA      =	$0280
+     27  fffa		       02 82	   SWCHB      =	$0282
+     28  fffa		       02 84	   INTIM      =	$0284
+     29  fffa		       02 96	   TIM64T     =	$0296
+     30  10000 ????
+     31  10000 ????		00 80	    PX	       =	$80
+     32  10000 ????		00 81	    PY	       =	$81
+     33  10000 ????		00 82	    Aim        =	$82
+     34  10000 ????		00 83	    Pressed    =	$83
+     35  10000 ????		00 84	    Shot       =	$84
+     36  10000 ????		00 85	    BX	       =	$85
+     37  10000 ????		00 86	    BY	       =	$86
+     38  10000 ????		00 87	    Direction  =	$87
+     39  10000 ????		00 88	    Hunt       =	$88
+     40  10000 ????		00 89	    P0Ptr      =	$89
+     41  10000 ????		00 8b	    BLine      =	$8b
+     42  10000 ????		00 8c	    TX	       =	$8c
+     43  10000 ????		00 8d	    TY	       =	$8d
+     44  10000 ????		00 8e	    Tmp        =	$8e
+     45  10000 ????		00 8f	    Tile       =	$8f
+     46  10000 ????		00 90	    FrameClock =	$90
+     47  10000 ????
+     48  10000 ????		00 05	    NPCCount   =	5
+     49  10000 ????		00 91	    NX	       =	$91
+     50  10000 ????		00 96	    NY	       =	$96
+     51  10000 ????		00 9b	    NDir       =	$9b
+     52  10000 ????		00 a0	    Life       =	$a0	; 255 active, 1..8 death, zero removed
+     53  10000 ????		00 a5	    Actor      =	$a5
+     54  10000 ????		00 a6	    Quota      =	$a6
+     55  10000 ????		00 a7	    TryDir     =	$a7
+     56  10000 ????		00 a8	    Retry      =	$a8
+     57  10000 ????		00 a9	    CapStart   =	$a9	; unused by the game bank
+     58  10000 ????		00 aa	    Points     =	$aa
+     59  10000 ????		00 ab	    PointsHi   =	$ab
+     60  10000 ????		00 ac	    Lives      =	$ac
+     61  10000 ????		00 ad	    RandomState =	$ad
+     62  10000 ????		00 ae	    Carrier    =	$ae
+     63  10000 ????		00 af	    KeyState   =	$af
+     64  10000 ????		00 b0	    KeyX       =	$b0
+     65  10000 ????		00 b1	    KeyY       =	$b1
+     66  10000 ????		00 b2	    Unlocked   =	$b2
+     67  10000 ????		00 b3	    RoomDone   =	$b3
+     68  10000 ????		00 b4	    QueueY     =	$b4	; seven entries, including sentinel
+     69  10000 ????		00 bb	    QueueX     =	$bb
+     70  10000 ????		00 c2	    QueueLo    =	$c2
+     71  10000 ????		00 c9	    QueueHi    =	$c9
+     72  10000 ????		00 d0	    QueueColor =	$d0
+     73  10000 ????		00 d7	    P1Ptr      =	$d7
+     74  10000 ????		00 d9	    SortI      =	$d9
+     75  10000 ????		00 da	    SortJ      =	$da
+     76  10000 ????		00 db	    OrderEnd   =	$db
+     77  10000 ????		00 dc	    Omitted    =	$dc
+     78  10000 ????		00 dd	    Sound      =	$dd
+     79  10000 ????		00 de	    Eligible   =	$de
+     80  10000 ????		00 ec	    Rendered   =	$ec
+     81  10000 ????		00 ed	    TempY      =	$ed
+     82  10000 ????		00 ee	    MinSetup   =	$ee
+     83  10000 ????		00 ef	    SetupRows  =	$ef
+     84  10000 ????		00 ed	    DoorColor  =	$ed	; reuse TempY after Schedule
+     85  10000 ????		00 8c	    AssistRow  =	$8c	; TX/TY/Tmp/Tile are dead until the logic bank
+     86  10000 ????		00 8d	    AssistX    =	$8d
+     87  10000 ????		00 8e	    AssistPtr  =	$8e
+     88  10000 ????		00 a7	    AssistColor =	$a7	; TryDir/Retry are assigned by logic before use
+     89  10000 ????		00 a8	    AssistQueue =	$a8
+     90  10000 ????		00 a7	    CapPlayerFirst =	AssistColor	; the M1 path excludes both assist modes
+     91  10000 ????		00 a8	    CapPlayerNext =	AssistQueue
+     92  10000 ????		00 8e	    CapWallColor =	AssistPtr
+     93  10000 ????		00 f5	    AssistObject =	$f5	; pending NPC index+1 during planning, render bit afterward
+     94  10000 ????		00 f6	    BridgeOld  =	$f6
+     95  10000 ????		00 f7	    BridgeX    =	$f7
+     96  10000 ????		00 a5	    NextQueueY =	$a5	; Actor is dead after frame planning
+     97  10000 ????		00 ee	    SplitY     =	$ee
+     98  10000 ????		00 8e	    SplitLow   =	$8e
+     99  10000 ????		00 8f	    SplitHigh  =	$8f
+    100  10000 ????		00 d9	    EntryX     =	$d9	; SortI is dead after Schedule
+    101  10000 ????		00 da	    AssistID   =	$da
+    102  10000 ????		00 e5	    QueueFirst =	$e5	; seven first-line bytes; populated while blanked
+    103  10000 ????		00 df	    AudioTicks =	$df
+    104  10000 ????		00 e0	    Blocked    =	$e0	; five retry flags, persistent across NPC update slots
+    105  10000 ????		00 15	    AUDC0      =	$15
+    106  10000 ????		00 17	    AUDF0      =	$17
+    107  10000 ????		00 19	    AUDV0      =	$19
+    108  10000 ????
+    109  10000 ????				       MAC	drawpf
+    110  10000 ????				       lda	PFData0,y
+    111  10000 ????				       sta	PF0
+    112  10000 ????				       lda	PFData1,y
+    113  10000 ????				       sta	PF1
+    114  10000 ????				       lda	PFData2,y
+    115  10000 ????				       sta	PF2
+    116  10000 ????				       ENDM
+    117  10000 ????				       MAC	drawsprites
+    118  10000 ????				       SUBROUTINE
+    119  10000 ????				       IF	CAP_KERNEL = 0
+    120  10000 ????				       sta	ENAM0	; RoomFlags was zero, clear before the left-edge shot.
+    121  10000 ????				       ENDIF
+    122  10000 ????				       lda	(P0Ptr),y
+    123  10000 ????				       sta	GRP0
+    124  10000 ????				       IF	CAP_KERNEL
+    125  10000 ????				       lda	#0
+    126  10000 ????				       cpy	BLine
+    127  10000 ????				       bne	.NoShot
+    128  10000 ????				       lda	#2
+    129  10000 ????			    .NoShot
+    130  10000 ????				       stx	HMP0
+    131  10000 ????				       ELSE
+    132  10000 ????				       cpy	BLine
+    133  10000 ????				       bne	.NoShot
+    134  10000 ????				       lda	#2
+    135  10000 ????				       sta	ENAM0
+    136  10000 ????			    .NoShot
+    137  10000 ????				       nop		; preserve the no-shot GRP1 phase
+    138  10000 ????				       ENDIF
+    139  10000 ????				       lda	(P1Ptr),y
+    140  10000 ????				       sta	GRP1
+    141  10000 ????				       ENDM
+    142  10000 ????				       IF	LOGIC
+    143  f000					      ORG	$f000
+------- FILE logic.asm LEVEL 2 PASS 2
+      0  f000					      include	"logic.asm"
+      1  f000				   InitGame
+      2  f000		       a9 03		      lda	#3
+      3  f002		       85 ac		      sta	Lives
+      4  f004		       ad 84 02 	      lda	INTIM
+      5  f007		       49 6d		      eor	#$6d
+      6  f009		       d0 02		      bne	InitialSeed
+      7  f00b		       a9 6d		      lda	#$6d
+      8  f00d				   InitialSeed
+      9  f00d		       85 ad		      sta	RandomState
+     10  f00f				   InitRoom
+     11  f00f		       a9 00		      lda	#0
+     12  f011		       85 88		      sta	Hunt
+     13  f013		       85 84		      sta	Shot
+     14  f015		       85 83		      sta	Pressed
+     15  f017		       85 b3		      sta	RoomDone
+     16  f019		       85 af		      sta	KeyState
+     17  f01b		       85 b2		      sta	Unlocked
+     18  f01d		       85 a6		      sta	Quota
+     19  f01f		       a9 0c		      lda	#12
+     20  f021		       85 80		      sta	PX
+     21  f023		       a9 52		      lda	#82
+     22  f025		       85 81		      sta	PY
+     23  f027		       a9 08		      lda	#8
+     24  f029		       85 82		      sta	Aim
+     25  f02b		       20 68 f0 	      jsr	Random
+     26  f02e		       38		      sec
+     27  f02f				   SpawnModulo
+     28  f02f		       e9 07		      sbc	#7
+     29  f031		       b0 fc		      bcs	SpawnModulo
+     30  f033		       69 07		      adc	#7
+     31  f035		       a8		      tay
+     32  f036		       a2 00		      ldx	#0
+     33  f038				   SpawnLoop
+     34  f038		       b9 f4 f5 	      lda	SpawnX,y
+     35  f03b		       95 91		      sta	NX,x
+     36  f03d		       b9 fb f5 	      lda	SpawnY,y
+     37  f040		       95 96		      sta	NY,x
+     38  f042		       b9 02 f6 	      lda	SpawnDir,y
+     39  f045		       95 9b		      sta	NDir,x
+     40  f047		       a9 00		      lda	#0
+     41  f049		       95 e0		      sta	Blocked,x
+     42  f04b		       a9 ff		      lda	#255
+     43  f04d		       95 a0		      sta	Life,x
+     44  f04f		       c8		      iny
+     45  f050		       c0 07		      cpy	#7
+     46  f052		       90 02		      bcc	SpawnNext
+     47  f054		       a0 00		      ldy	#0
+     48  f056				   SpawnNext
+     49  f056		       e8		      inx
+     50  f057		       e0 05		      cpx	#5
+     51  f059		       90 dd		      bcc	SpawnLoop
+     52  f05b		       20 68 f0 	      jsr	Random
+     53  f05e		       38		      sec
+     54  f05f				   CarrierModulo
+     55  f05f		       e9 05		      sbc	#5
+     56  f061		       b0 fc		      bcs	CarrierModulo
+     57  f063		       69 05		      adc	#5
+     58  f065		       85 ae		      sta	Carrier
+     59  f067		       60		      rts
+     60  f068
+     61  f068				   Random
+     62  f068		       a5 ad		      lda	RandomState
+     63  f06a		       4a		      lsr
+     64  f06b		       90 02		      bcc	NoRandomTap
+     65  f06d		       49 b8		      eor	#$b8
+     66  f06f				   NoRandomTap
+     67  f06f		       85 ad		      sta	RandomState
+     68  f071		       60		      rts
+     69  f072
+     70  f072				   LogicUpdate
+     71  f072		       20 68 f0 	      jsr	Random
+     72  f075		       ad 82 02 	      lda	SWCHB
+     73  f078		       4a		      lsr
+     74  f079		       b0 10		      bcs	NotReset
+     75  f07b		       a9 00		      lda	#0
+     76  f07d		       85 aa		      sta	Points
+     77  f07f		       85 ab		      sta	PointsHi
+     78  f081		       a9 03		      lda	#3
+     79  f083		       85 ac		      sta	Lives
+     80  f085		       20 0f f0 	      jsr	InitRoom
+     81  f088		       4c 8c ff 	      jmp	VideoBank
+     82  f08b				   NotReset
+     83  f08b		       a5 ac		      lda	Lives
+     84  f08d		       f0 23		      beq	SkipUpdate
+     85  f08f		       a5 b3		      lda	RoomDone
+     86  f091		       d0 1f		      bne	SkipUpdate
+     87  f093		       a5 df		      lda	AudioTicks
+     88  f095		       f0 08		      beq	VolumeReady
+     89  f097		       c6 df		      dec	AudioTicks
+     90  f099		       d0 04		      bne	VolumeReady
+     91  f09b		       a9 00		      lda	#0
+     92  f09d		       85 19		      sta	AUDV0
+     93  f09f				   VolumeReady
+     94  f09f		       20 13 f2 	      jsr	DeathTicks
+     95  f0a2		       20 b5 f0 	      jsr	Gameplay
+     96  f0a5		       a5 b3		      lda	RoomDone
+     97  f0a7		       d0 09		      bne	SkipUpdate
+     98  f0a9		       20 99 f1 	      jsr	KeyPickup
+     99  f0ac		       20 33 f2 	      jsr	MoveNPC
+    100  f0af		       20 04 f3 	      jsr	Touch
+    101  f0b2				   SkipUpdate
+    102  f0b2		       4c 8c ff 	      jmp	VideoBank
+    103  f0b5
+    104  f0b5				   Gameplay
+    105  f0b5							; Convert active-low direction to R L D U bits.
+    106  f0b5		       ad 80 02 	      lda	SWCHA
+    107  f0b8		       49 ff		      eor	#$ff
+    108  f0ba		       4a		      lsr
+    109  f0bb		       4a		      lsr
+    110  f0bc		       4a		      lsr
+    111  f0bd		       4a		      lsr
+    112  f0be		       aa		      tax
+    113  f0bf		       bd 76 f3 	      lda	Dx,x
+    114  f0c2		       1d 86 f3 	      ora	Dy,x
+    115  f0c5		       f0 02		      beq	KeepAim
+    116  f0c7		       86 82		      stx	Aim
+    117  f0c9				   KeepAim
+    118  f0c9		       a5 0c		      lda	INPT4
+    119  f0cb		       30 25		      bmi	Released
+    120  f0cd		       a5 83		      lda	Pressed
+    121  f0cf		       d0 63		      bne	StepShot
+    122  f0d1		       e6 83		      inc	Pressed
+    123  f0d3		       a5 84		      lda	Shot
+    124  f0d5		       d0 5d		      bne	StepShot
+    125  f0d7		       e6 84		      inc	Shot
+    126  f0d9		       a9 01		      lda	#1
+    127  f0db		       85 88		      sta	Hunt
+    128  f0dd		       a5 82		      lda	Aim
+    129  f0df		       85 87		      sta	Direction
+    130  f0e1		       a5 80		      lda	PX
+    131  f0e3		       18		      clc
+    132  f0e4		       69 03		      adc	#3
+    133  f0e6		       85 85		      sta	BX
+    134  f0e8		       a5 81		      lda	PY
+    135  f0ea		       18		      clc
+    136  f0eb		       69 04		      adc	#4
+    137  f0ed		       85 86		      sta	BY
+    138  f0ef		       4c 34 f1 	      jmp	StepShot
+    139  f0f2				   Released
+    140  f0f2		       a9 00		      lda	#0
+    141  f0f4		       85 83		      sta	Pressed
+    142  f0f6		       86 8e		      stx	Tmp
+    143  f0f8		       bd 76 f3 	      lda	Dx,x
+    144  f0fb		       f0 12		      beq	MoveY
+    145  f0fd				   NormalX
+    146  f0fd		       18		      clc
+    147  f0fe		       65 80		      adc	PX
+    148  f100		       85 8c		      sta	TX
+    149  f102		       a5 81		      lda	PY
+    150  f104		       85 8d		      sta	TY
+    151  f106		       20 2f f3 	      jsr	HitBox
+    152  f109		       b0 04		      bcs	MoveY
+    153  f10b		       a5 8c		      lda	TX
+    154  f10d		       85 80		      sta	PX
+    155  f10f				   MoveY
+    156  f10f		       a6 8e		      ldx	Tmp
+    157  f111		       bd 86 f3 	      lda	Dy,x
+    158  f114		       f0 1e		      beq	StepShot
+    159  f116				  -	      IF	TOP_DOOR
+    160  f116				  -	      bpl	MoveOrdinaryY
+    161  f116					      ELSE
+    162  f116		       30 0a		      bmi	MoveOrdinaryY
+    163  f118					      ENDIF
+    164  f118		       20 5a f1 	      jsr	VerticalDoor
+    165  f11b		       b0 3c		      bcs	DoneGameplay
+    166  f11d		       a6 8e		      ldx	Tmp
+    167  f11f		       bd 86 f3 	      lda	Dy,x
+    168  f122				   MoveOrdinaryY
+    169  f122		       18		      clc
+    170  f123		       65 81		      adc	PY
+    171  f125		       85 8d		      sta	TY
+    172  f127		       a5 80		      lda	PX
+    173  f129		       85 8c		      sta	TX
+    174  f12b		       20 2f f3 	      jsr	HitBox
+    175  f12e		       b0 04		      bcs	StepShot
+    176  f130		       a5 8d		      lda	TY
+    177  f132		       85 81		      sta	PY
+    178  f134				   StepShot
+    179  f134		       a5 84		      lda	Shot
+    180  f136		       f0 21		      beq	DoneGameplay
+    181  f138		       a6 87		      ldx	Direction
+    182  f13a		       a5 85		      lda	BX
+    183  f13c		       18		      clc
+    184  f13d		       7d 76 f3 	      adc	Dx,x
+    185  f140		       85 85		      sta	BX
+    186  f142		       a5 86		      lda	BY
+    187  f144		       18		      clc
+    188  f145		       7d 86 f3 	      adc	Dy,x
+    189  f148		       85 86		      sta	BY
+    190  f14a		       a8		      tay
+    191  f14b		       a5 85		      lda	BX
+    192  f14d		       20 56 f3 	      jsr	HitPoint
+    193  f150		       b0 03		      bcs	ShotHitWall
+    194  f152		       4c d7 f1 	      jmp	ShotTarget
+    195  f155				   ShotHitWall
+    196  f155		       a9 00		      lda	#0
+    197  f157		       85 84		      sta	Shot
+    198  f159				   DoneGameplay
+    199  f159		       60		      rts
+    200  f15a
+    201  f15a							; The 8-pixel box must fit in the single X64..95 aperture.
+    202  f15a				   VerticalDoor
+    203  f15a		       a5 80		      lda	PX
+    204  f15c		       c9 40		      cmp	#64
+    205  f15e		       90 37		      bcc	OrdinaryDoorWall
+    206  f160		       c9 59		      cmp	#89
+    207  f162		       b0 33		      bcs	OrdinaryDoorWall
+    208  f164		       a5 81		      lda	PY
+    209  f166				  -	      IF	TOP_DOOR
+    210  f166				  -	      cmp	#9
+    211  f166				  -	      bcs	OrdinaryDoorWall
+    212  f166					      ELSE
+    213  f166		       c9 9f		      cmp	#159
+    214  f168		       90 2d		      bcc	OrdinaryDoorWall
+    215  f16a					      ENDIF
+    216  f16a		       a5 af		      lda	KeyState
+    217  f16c		       c9 02		      cmp	#2
+    218  f16e		       d0 27		      bne	OrdinaryDoorWall
+    219  f170		       a5 b2		      lda	Unlocked
+    220  f172		       d0 04		      bne	CrossDoor
+    221  f174		       e6 b2		      inc	Unlocked
+    222  f176		       38		      sec
+    223  f177		       60		      rts
+    224  f178				   CrossDoor
+    225  f178				  -	      IF	TOP_DOOR
+    226  f178				  -	      dec	PY
+    227  f178				  -	      bne	DoorHandled
+    228  f178					      ELSE
+    229  f178		       e6 81		      inc	PY
+    230  f17a		       a5 81		      lda	PY
+    231  f17c		       c9 a8		      cmp	#168
+    232  f17e		       90 15		      bcc	DoorHandled
+    233  f180					      ENDIF
+    234  f180		       e6 b3		      inc	RoomDone
+    235  f182		       a9 64		      lda	#100
+    236  f184		       20 cd f1 	      jsr	AddScore
+    237  f187		       a2 04		      ldx	#4
+    238  f189				   Survivors
+    239  f189		       b5 a0		      lda	Life,x
+    240  f18b		       10 05		      bpl	NextSurvivor
+    241  f18d		       a9 0f		      lda	#15
+    242  f18f		       20 cd f1 	      jsr	AddScore
+    243  f192				   NextSurvivor
+    244  f192		       ca		      dex
+    245  f193		       10 f4		      bpl	Survivors
+    246  f195				   DoorHandled
+    247  f195		       38		      sec
+    248  f196		       60		      rts
+    249  f197				   OrdinaryDoorWall
+    250  f197		       18		      clc
+    251  f198		       60		      rts
+    252  f199
+    253  f199				   KeyPickup
+    254  f199		       a5 af		      lda	KeyState
+    255  f19b		       c9 01		      cmp	#1
+    256  f19d		       d0 2d		      bne	NoPickup
+    257  f19f		       a5 80		      lda	PX
+    258  f1a1		       38		      sec
+    259  f1a2		       e5 b0		      sbc	KeyX
+    260  f1a4		       18		      clc
+    261  f1a5		       69 07		      adc	#7
+    262  f1a7		       c9 0f		      cmp	#15
+    263  f1a9		       b0 21		      bcs	NoPickup
+    264  f1ab		       a5 81		      lda	PY
+    265  f1ad		       38		      sec
+    266  f1ae		       e5 b1		      sbc	KeyY
+    267  f1b0		       18		      clc
+    268  f1b1		       69 08		      adc	#8
+    269  f1b3		       c9 11		      cmp	#17
+    270  f1b5		       b0 15		      bcs	NoPickup
+    271  f1b7		       e6 af		      inc	KeyState
+    272  f1b9		       a9 32		      lda	#50
+    273  f1bb		       20 cd f1 	      jsr	AddScore
+    274  f1be		       a9 04		      lda	#4
+    275  f1c0		       85 15		      sta	AUDC0
+    276  f1c2		       a9 0c		      lda	#12
+    277  f1c4		       85 17		      sta	AUDF0
+    278  f1c6		       a9 08		      lda	#8
+    279  f1c8		       85 19		      sta	AUDV0
+    280  f1ca		       85 df		      sta	AudioTicks
+    281  f1cc				   NoPickup
+    282  f1cc		       60		      rts
+    283  f1cd
+    284  f1cd				   AddScore
+    285  f1cd		       18		      clc
+    286  f1ce		       65 aa		      adc	Points
+    287  f1d0		       85 aa		      sta	Points
+    288  f1d2		       90 02		      bcc	ScoreDone
+    289  f1d4		       e6 ab		      inc	PointsHi
+    290  f1d6				   ScoreDone
+    291  f1d6		       60		      rts
+    292  f1d7
+    293  f1d7				   ShotTarget
+    294  f1d7		       a2 04		      ldx	#4
+    295  f1d9				   TargetLoop
+    296  f1d9		       b5 a0		      lda	Life,x
+    297  f1db		       10 32		      bpl	NextTarget
+    298  f1dd		       a5 85		      lda	BX
+    299  f1df		       38		      sec
+    300  f1e0		       f5 91		      sbc	NX,x
+    301  f1e2		       c9 08		      cmp	#8
+    302  f1e4		       b0 29		      bcs	NextTarget
+    303  f1e6		       a5 86		      lda	BY
+    304  f1e8		       38		      sec
+    305  f1e9		       f5 96		      sbc	NY,x
+    306  f1eb		       c9 09		      cmp	#9
+    307  f1ed		       b0 20		      bcs	NextTarget
+    308  f1ef		       a9 08		      lda	#8
+    309  f1f1		       95 a0		      sta	Life,x
+    310  f1f3		       a9 00		      lda	#0
+    311  f1f5		       85 84		      sta	Shot
+    312  f1f7		       38		      sec
+    313  f1f8		       a5 aa		      lda	Points
+    314  f1fa		       e9 1e		      sbc	#30
+    315  f1fc		       a8		      tay
+    316  f1fd		       a5 ab		      lda	PointsHi
+    317  f1ff		       e9 00		      sbc	#0
+    318  f201		       90 05		      bcc	ZeroPoints
+    319  f203		       85 ab		      sta	PointsHi
+    320  f205		       84 aa		      sty	Points
+    321  f207		       60		      rts
+    322  f208				   ZeroPoints
+    323  f208		       a9 00		      lda	#0
+    324  f20a		       85 aa		      sta	Points
+    325  f20c		       85 ab		      sta	PointsHi
+    326  f20e		       60		      rts
+    327  f20f				   NextTarget
+    328  f20f		       ca		      dex
+    329  f210		       10 c7		      bpl	TargetLoop
+    330  f212		       60		      rts
+    331  f213
+    332  f213				   DeathTicks
+    333  f213		       a2 04		      ldx	#4
+    334  f215				   DeathLoop
+    335  f215		       b5 a0		      lda	Life,x
+    336  f217		       30 16		      bmi	DeathNext
+    337  f219		       f0 14		      beq	DeathNext
+    338  f21b		       d6 a0		      dec	Life,x
+    339  f21d		       d0 10		      bne	DeathNext
+    340  f21f		       e4 ae		      cpx	Carrier
+    341  f221		       d0 0c		      bne	DeathNext
+    342  f223		       b5 91		      lda	NX,x
+    343  f225		       85 b0		      sta	KeyX
+    344  f227		       b5 96		      lda	NY,x
+    345  f229		       85 b1		      sta	KeyY
+    346  f22b		       a9 01		      lda	#1
+    347  f22d		       85 af		      sta	KeyState
+    348  f22f				   DeathNext
+    349  f22f		       ca		      dex
+    350  f230		       10 e3		      bpl	DeathLoop
+    351  f232		       60		      rts
+    352  f233
+    353  f233							; One actor budget per update. Patrol and hunt use the same four cardinal
+    354  f233							; steps and the same full-box wall and inter-actor collision.
+    355  f233				   MoveNPC
+    356  f233		       a5 90		      lda	FrameClock
+    357  f235		       29 01		      and	#1
+    358  f237		       f0 01		      beq	UpdateNpc
+    359  f239		       60		      rts
+    360  f23a				   UpdateNpc
+    361  f23a		       a6 a6		      ldx	Quota
+    362  f23c		       86 a5		      stx	Actor
+    363  f23e		       e6 a6		      inc	Quota
+    364  f240		       a5 a6		      lda	Quota
+    365  f242		       c9 05		      cmp	#5
+    366  f244		       90 04		      bcc	QuotaValid
+    367  f246		       a9 00		      lda	#0
+    368  f248		       85 a6		      sta	Quota
+    369  f24a				   QuotaValid
+    370  f24a		       b5 a0		      lda	Life,x
+    371  f24c		       30 01		      bmi	NpcAlive
+    372  f24e		       60		      rts
+    373  f24f				   NpcAlive
+    374  f24f		       b5 9b		      lda	NDir,x
+    375  f251		       85 a7		      sta	TryDir
+    376  f253		       a5 88		      lda	Hunt
+    377  f255		       f0 38		      beq	StartAttempts
+    378  f257		       b5 e0		      lda	Blocked,x
+    379  f259		       d0 34		      bne	StartAttempts
+    380  f25b		       a5 80		      lda	PX
+    381  f25d		       38		      sec
+    382  f25e		       f5 91		      sbc	NX,x
+    383  f260		       90 06		      bcc	HuntLeft
+    384  f262		       85 dd		      sta	Sound
+    385  f264		       a9 00		      lda	#0
+    386  f266		       f0 09		      beq	HuntCompare
+    387  f268				   HuntLeft
+    388  f268		       49 ff		      eor	#255
+    389  f26a		       18		      clc
+    390  f26b		       69 01		      adc	#1
+    391  f26d		       85 dd		      sta	Sound
+    392  f26f		       a9 02		      lda	#2
+    393  f271				   HuntCompare
+    394  f271		       85 a7		      sta	TryDir
+    395  f273
+    396  f273		       a5 81		      lda	PY
+    397  f275		       38		      sec
+    398  f276		       f5 96		      sbc	NY,x
+    399  f278		       90 08		      bcc	HuntUp
+    400  f27a		       c5 dd		      cmp	Sound
+    401  f27c		       90 11		      bcc	StartAttempts
+    402  f27e		       a9 01		      lda	#1
+    403  f280		       d0 0b		      bne	HuntChoice
+    404  f282				   HuntUp
+    405  f282		       49 ff		      eor	#255
+    406  f284		       18		      clc
+    407  f285		       69 01		      adc	#1
+    408  f287		       c5 dd		      cmp	Sound
+    409  f289		       90 04		      bcc	StartAttempts
+    410  f28b		       a9 03		      lda	#3
+    411  f28d				   HuntChoice
+    412  f28d		       85 a7		      sta	TryDir
+    413  f28f				   StartAttempts
+    414  f28f		       a9 02		      lda	#2
+    415  f291		       85 a8		      sta	Retry
+    416  f293				   TryMove
+    417  f293		       a6 a5		      ldx	Actor
+    418  f295		       a4 a7		      ldy	TryDir
+    419  f297		       b5 91		      lda	NX,x
+    420  f299		       18		      clc
+    421  f29a		       79 27 f3 	      adc	CardinalX,y
+    422  f29d		       85 8c		      sta	TX
+    423  f29f		       b5 96		      lda	NY,x
+    424  f2a1		       18		      clc
+    425  f2a2		       79 2b f3 	      adc	CardinalY,y
+    426  f2a5		       85 8d		      sta	TY
+    427  f2a7		       20 2f f3 	      jsr	HitBox
+    428  f2aa		       b0 25		      bcs	TryAnother
+    429  f2ac		       a2 04		      ldx	#4
+    430  f2ae				   NpcOverlapLoop
+    431  f2ae		       e4 a5		      cpx	Actor
+    432  f2b0		       f0 09		      beq	NpcOverlapNext
+    433  f2b2		       b5 a0		      lda	Life,x
+    434  f2b4		       10 05		      bpl	NpcOverlapNext
+    435  f2b6		       20 e8 f2 	      jsr	Overlap
+    436  f2b9		       b0 16		      bcs	TryAnother
+    437  f2bb				   NpcOverlapNext
+    438  f2bb		       ca		      dex
+    439  f2bc		       10 f0		      bpl	NpcOverlapLoop
+    440  f2be		       a6 a5		      ldx	Actor
+    441  f2c0		       a5 8c		      lda	TX
+    442  f2c2		       95 91		      sta	NX,x
+    443  f2c4		       a5 8d		      lda	TY
+    444  f2c6		       95 96		      sta	NY,x
+    445  f2c8		       a5 a7		      lda	TryDir
+    446  f2ca		       95 9b		      sta	NDir,x
+    447  f2cc		       a9 00		      lda	#0
+    448  f2ce		       95 e0		      sta	Blocked,x
+    449  f2d0				   NpcDone
+    450  f2d0		       60		      rts
+    451  f2d1				   TryAnother
+    452  f2d1		       e6 a7		      inc	TryDir
+    453  f2d3		       a5 a7		      lda	TryDir
+    454  f2d5		       29 03		      and	#3
+    455  f2d7		       85 a7		      sta	TryDir
+    456  f2d9		       c6 a8		      dec	Retry
+    457  f2db		       d0 b6		      bne	TryMove
+    458  f2dd		       a6 a5		      ldx	Actor
+    459  f2df		       a5 a7		      lda	TryDir
+    460  f2e1		       95 9b		      sta	NDir,x
+    461  f2e3		       a9 01		      lda	#1
+    462  f2e5		       95 e0		      sta	Blocked,x
+    463  f2e7		       60		      rts
+    464  f2e8
+    465  f2e8							; AABB result carry=1 if candidate overlaps the indexed live actor.
+    466  f2e8				   Overlap
+    467  f2e8		       a5 8c		      lda	TX
+    468  f2ea		       38		      sec
+    469  f2eb		       f5 91		      sbc	NX,x
+    470  f2ed		       18		      clc
+    471  f2ee		       69 07		      adc	#7
+    472  f2f0		       c9 0f		      cmp	#15
+    473  f2f2		       b0 0e		      bcs	NoOverlap
+    474  f2f4		       a5 8d		      lda	TY
+    475  f2f6		       38		      sec
+    476  f2f7		       f5 96		      sbc	NY,x
+    477  f2f9		       18		      clc
+    478  f2fa		       69 08		      adc	#8
+    479  f2fc		       c9 11		      cmp	#17
+    480  f2fe		       b0 02		      bcs	NoOverlap
+    481  f300		       38		      sec
+    482  f301		       60		      rts
+    483  f302				   NoOverlap
+    484  f302		       18		      clc
+    485  f303		       60		      rts
+    486  f304
+    487  f304				   Touch
+    488  f304		       a5 88		      lda	Hunt
+    489  f306		       f0 1e		      beq	TouchDone
+    490  f308		       a5 80		      lda	PX
+    491  f30a		       85 8c		      sta	TX
+    492  f30c		       a5 81		      lda	PY
+    493  f30e		       85 8d		      sta	TY
+    494  f310		       a2 04		      ldx	#4
+    495  f312				   TouchLoop
+    496  f312		       b5 a0		      lda	Life,x
+    497  f314		       10 0d		      bpl	TouchNext
+    498  f316		       20 e8 f2 	      jsr	Overlap
+    499  f319		       90 08		      bcc	TouchNext
+    500  f31b		       c6 ac		      dec	Lives
+    501  f31d		       f0 07		      beq	TouchDone
+    502  f31f		       20 0f f0 	      jsr	InitRoom
+    503  f322		       60		      rts
+    504  f323				   TouchNext
+    505  f323		       ca		      dex
+    506  f324		       10 ec		      bpl	TouchLoop
+    507  f326				   TouchDone
+    508  f326		       60		      rts
+    509  f327
+    510  f327				   CardinalX
+    511  f327		       01 00 ff 00	      byte.b	1,0,255,0
+    512  f32b				   CardinalY
+    513  f32b		       00 01 00 ff	      byte.b	0,1,0,255
+    514  f32f
+    515  f32f							; Six points cover the 8x9 box in this 4x8 tile grid.
+    516  f32f				   HitBox
+    517  f32f		       a4 8d		      ldy	TY
+    518  f331		       20 3c f3 	      jsr	HitEdge
+    519  f334		       b0 1f		      bcs	BoxDone
+    520  f336		       a5 8d		      lda	TY
+    521  f338		       18		      clc
+    522  f339		       69 08		      adc	#8
+    523  f33b		       a8		      tay
+    524  f33c				   HitEdge
+    525  f33c		       a5 8c		      lda	TX
+    526  f33e		       20 56 f3 	      jsr	HitPoint
+    527  f341		       b0 12		      bcs	BoxDone
+    528  f343		       a5 8c		      lda	TX
+    529  f345		       18		      clc
+    530  f346		       69 04		      adc	#4
+    531  f348		       20 56 f3 	      jsr	HitPoint
+    532  f34b		       b0 08		      bcs	BoxDone
+    533  f34d		       a5 8c		      lda	TX
+    534  f34f		       18		      clc
+    535  f350		       69 07		      adc	#7
+    536  f352		       4c 56 f3 	      jmp	HitPoint
+    537  f355				   BoxDone
+    538  f355		       60		      rts
+    539  f356
+    540  f356							; A=x, Y=y. Carry indicates solid. Preserve Y.
+    541  f356				   HitPoint
+    542  f356		       c9 a0		      cmp	#160
+    543  f358		       b0 18		      bcs	Wall
+    544  f35a		       c0 b0		      cpy	#176
+    545  f35c		       b0 14		      bcs	Wall
+    546  f35e		       aa		      tax
+    547  f35f		       bd b4 f4 	      lda	ColumnByte,x
+    548  f362		       18		      clc
+    549  f363		       79 04 f4 	      adc	RowOffset,y
+    550  f366		       85 8f		      sta	Tile
+    551  f368		       bd 54 f5 	      lda	ColumnMask,x
+    552  f36b		       a6 8f		      ldx	Tile
+    553  f36d		       3d 96 f3 	      and	Collision,x
+    554  f370		       f0 02		      beq	Open
+    555  f372				   Wall
+    556  f372		       38		      sec
+    557  f373		       60		      rts
+    558  f374				   Open
+    559  f374		       18		      clc
+    560  f375		       60		      rts
+    561  f376
+    562  f376				   Dx
+    563  f376		       00 00 00 00*	      byte.b	0,0,0,0,255,255,255,255,1,1,1,1,0,0,0,0
+    564  f386				   Dy
+    565  f386		       00 ff 01 00*	      byte.b	0,255,1,0,0,255,1,0,0,255,1,0,0,255,1,0
+    566  f396
+------- FILE collision.inc LEVEL 3 PASS 2
+      0  f396					      include	"collision.inc"
+      1  f396				   Collision
+      2  f396		       ff ff ff ff*	      byte.b	255,255,255,255,255,1,0,0,0,128,1,0,0,0,128,1
+      3  f3a6		       00 00 00 80*	      byte.b	0,0,0,128,1,1,0,128,128,1,1,0,128,128,1,1
+      4  f3b6		       00 80 80 01*	      byte.b	0,128,128,1,63,0,252,128,1,0,0,0,128,1,0,0
+      5  f3c6		       00 80 01 00*	      byte.b	0,128,1,0,0,0,128,1,0,0,0,128,1,0,0,0
+      6  f3d6		       80 01 00 00*	      byte.b	128,1,0,0,0,128,1,63,0,252,128,1,1,0,128,128
+      7  f3e6		       01 01 00 80*	      byte.b	1,1,0,128,128,1,1,0,128,128,1,0,0,0,128,1
+      8  f3f6		       00 00 00 80*	      byte.b	0,0,0,128,1,0,0,0,128,255,255,255,255,255
+      9  f404				   RowOffset
+     10  f404		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5
+     11  f414		       0a 0a 0a 0a*	      byte.b	10,10,10,10,10,10,10,10,15,15,15,15,15,15,15,15
+     12  f424		       14 14 14 14*	      byte.b	20,20,20,20,20,20,20,20,25,25,25,25,25,25,25,25
+     13  f434		       1e 1e 1e 1e*	      byte.b	30,30,30,30,30,30,30,30,35,35,35,35,35,35,35,35
+     14  f444		       28 28 28 28*	      byte.b	40,40,40,40,40,40,40,40,45,45,45,45,45,45,45,45
+     15  f454		       32 32 32 32*	      byte.b	50,50,50,50,50,50,50,50,55,55,55,55,55,55,55,55
+     16  f464		       3c 3c 3c 3c*	      byte.b	60,60,60,60,60,60,60,60,65,65,65,65,65,65,65,65
+     17  f474		       46 46 46 46*	      byte.b	70,70,70,70,70,70,70,70,75,75,75,75,75,75,75,75
+     18  f484		       50 50 50 50*	      byte.b	80,80,80,80,80,80,80,80,85,85,85,85,85,85,85,85
+     19  f494		       5a 5a 5a 5a*	      byte.b	90,90,90,90,90,90,90,90,95,95,95,95,95,95,95,95
+     20  f4a4		       64 64 64 64*	      byte.b	100,100,100,100,100,100,100,100,105,105,105,105,105,105,105,105
+     21  f4b4				   ColumnByte
+     22  f4b4		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     23  f4c4		       00 00 00 00*	      byte.b	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     24  f4d4		       01 01 01 01*	      byte.b	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+     25  f4e4		       01 01 01 01*	      byte.b	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+     26  f4f4		       02 02 02 02*	      byte.b	2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+     27  f504		       02 02 02 02*	      byte.b	2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+     28  f514		       03 03 03 03*	      byte.b	3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
+     29  f524		       03 03 03 03*	      byte.b	3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
+     30  f534		       04 04 04 04*	      byte.b	4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
+     31  f544		       04 04 04 04*	      byte.b	4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
+     32  f554				   ColumnMask
+     33  f554		       01 01 01 01*	      byte.b	1,1,1,1,2,2,2,2,4,4,4,4,8,8,8,8
+     34  f564		       10 10 10 10*	      byte.b	16,16,16,16,32,32,32,32,64,64,64,64,128,128,128,128
+     35  f574		       01 01 01 01*	      byte.b	1,1,1,1,2,2,2,2,4,4,4,4,8,8,8,8
+     36  f584		       10 10 10 10*	      byte.b	16,16,16,16,32,32,32,32,64,64,64,64,128,128,128,128
+     37  f594		       01 01 01 01*	      byte.b	1,1,1,1,2,2,2,2,4,4,4,4,8,8,8,8
+     38  f5a4		       10 10 10 10*	      byte.b	16,16,16,16,32,32,32,32,64,64,64,64,128,128,128,128
+     39  f5b4		       01 01 01 01*	      byte.b	1,1,1,1,2,2,2,2,4,4,4,4,8,8,8,8
+     40  f5c4		       10 10 10 10*	      byte.b	16,16,16,16,32,32,32,32,64,64,64,64,128,128,128,128
+     41  f5d4		       01 01 01 01*	      byte.b	1,1,1,1,2,2,2,2,4,4,4,4,8,8,8,8
+     42  f5e4		       10 10 10 10*	      byte.b	16,16,16,16,32,32,32,32,64,64,64,64,128,128,128,128
+     43  f5f4				   SpawnX
+     44  f5f4		       4f 5a 47 6f*	      byte.b	79,90,71,111,95,70,101
+     45  f5fb				   SpawnY
+     46  f5fb		       14 28 3e 56*	      byte.b	20,40,62,86,111,137,153
+     47  f602				   SpawnDir
+     48  f602		       00 01 02 03*	      byte.b	0,1,2,3,0,1,2
+------- FILE logic.asm
+------- FILE game.asm
+    145  f609				  -	      ELSE
+    146  f609				  -	      ORG	$f000
+    147  f609				  -VideoReset
+    148  f609				  -	      sei
+    149  f609				  -	      cld
+    150  f609				  -	      ldx	#$ff
+    151  f609				  -	      txs
+    152  f609				  -	      lda	#0
+    153  f609				  -	      ldx	#127
+    154  f609				  -ClearRam
+    155  f609				  -	      sta	$80,x
+    156  f609				  -	      dex
+    157  f609				  -	      bpl	ClearRam
+    158  f609				  -	      ldx	#$2c
+    159  f609				  -ClearTIA
+    160  f609				  -	      sta	0,x
+    161  f609				  -	      dex
+    162  f609				  -	      bpl	ClearTIA
+    163  f609				  -	      jmp	InitBank
+    164  f609				  -VideoStart
+    165  f609				  -	      lda	#1
+    166  f609				  -	      sta	CTRLPF
+    167  f609				  -	      lda	#$1e
+    168  f609				  -	      sta	COLUP0
+    169  f609				  -	      lda	#$0e
+    170  f609				  -	      sta	COLUP1
+    171  f609				  -	      lda	#$26
+    172  f609				  -	      sta	COLUPF
+    173  f609				  -Frame
+    174  f609				  -	      lda	#2
+    175  f609				  -	      sta	WSYNC
+    176  f609				  -	      sta	VBLANK
+    177  f609				  -	      sta	VSYNC
+    178  f609				  -	      sta	WSYNC
+    179  f609				  -	      sta	WSYNC
+    180  f609				  -	      sta	WSYNC
+    181  f609				  -	      lda	#0
+    182  f609				  -	      sta	VSYNC
+    183  f609				  -			; Three former top blank rows give the six-object planner more time.
+    184  f609				  -	      lda	#48
+    185  f609				  -	      sta	TIM64T
+    186  f609				  -	      sta	WSYNC
+    187  f609				  -	      jsr	PlanFrame
+    188  f609				  -PositionFrame
+    189  f609				  -	      lda	EntryX
+    190  f609				  -	      sec
+    191  f609				  -	      sbc	#3
+    192  f609				  -	      ldx	#0
+    193  f609				  -	      jsr	Position
+    194  f609				  -	      lda	Shot
+    195  f609				  -	      beq	PositionDone
+    196  f609				  -	      lda	BX
+    197  f609				  -	      sec
+    198  f609				  -	      sbc	#2
+    199  f609				  -	      bcs	MissileXReady
+    200  f609				  -	      lda	#0
+    201  f609				  -MissileXReady
+    202  f609				  -	      ldx	#2
+    203  f609				  -	      jsr	Position
+    204  f609				  -PositionDone
+    205  f609				  -	      jsr	FinishHorizontal
+    206  f609				  -	      lda	#0
+    207  f609				  -	      sta	PF0
+    208  f609				  -	      sta	PF1
+    209  f609				  -	      sta	PF2
+    210  f609				  -	      sta	GRP0
+    211  f609				  -	      sta	ENAM0
+    212  f609				  -	      jsr	SelectDoorKernel
+    213  f609				  -BlankWait
+    214  f609				  -	      lda	INTIM
+    215  f609				  -	      bne	BlankWait
+    216  f609				  -	      sta	WSYNC
+    217  f609				  -	      sta	VBLANK
+    218  f609				  -	      ldy	#80
+    219  f609				  -	      ldx	#5
+    220  f609				  -Top
+    221  f609				  -	      sta	WSYNC
+    222  f609				  -	      dex
+    223  f609				  -	      bne	Top
+    224  f609				  -	      IF	TOP_DOOR
+    225  f609				  -	      bit	PX
+    226  f609				  -	      nop
+    227  f609				  -	      nop
+    228  f609				  -	      jmp	BorderDoor
+    229  f609				  -	      ds	5,0
+    230  f609				  -	      ELSE
+    231  f609				  -	      lda	#$ff
+    232  f609				  -	      sta	PF0
+    233  f609				  -	      sta	PF1
+    234  f609				  -	      sta	PF2
+    235  f609				  -	      iny
+    236  f609				  -	      jmp	NextRoom
+    237  f609				  -	      ENDIF
+    238  f609				  -NextRoom
+    239  f609				  -	      sta	WSYNC
+    240  f609				  -Room
+    241  f609				  -	      lda	RoomFlags,y
+    242  f609				  -	      beq	RoomSprites
+    243  f609				  -	      bmi	DoorScanline
+    244  f609				  -	      jmp	WallScanline
+    245  f609				  -RoomSprites
+    246  f609				  -	      DrawSprites
+    247  f609				  -	      IF	CAP_KERNEL
+    248  f609				  -	      cpy	BLine
+    249  f609				  -	      bne	UsualRoomTail
+    250  f609				  -	      nop
+    251  f609				  -	      nop
+    252  f609				  -	      nop
+    253  f609				  -	      nop
+    254  f609				  -	      lda	#2
+    255  f609				  -	      sta	ENAM1
+    256  f609				  -	      ENDIF
+    257  f609				  -UsualRoomTail
+    258  f609				  -	      jmp	RoomTail
+    259  f609				  -	      IF	CAP_KERNEL = 0
+    260  f609				  -	      include	"left_encode.inc"
+    261  f609				  -RejectNearLeftHere =	RejectNearLeft
+    262  f609				  -	      ENDIF
+    263  f609				  -DoorScanline
+    264  f609				  -	      lsr
+    265  f609				  -	      bcc	BorderDoor
+    266  f609				  -	      jmp	SpecialScanline
+    267  f609				  -BorderDoor
+    268  f609				  -	      lda	#$f0
+    269  f609				  -	      sta	PF0
+    270  f609				  -	      lda	#$ff
+    271  f609				  -	      sta	PF1
+    272  f609				  -	      lda	PFData2,y
+    273  f609				  -	      bit	Unlocked
+    274  f609				  -	      beq	ClosedBorder
+    275  f609				  -	      and	#$0f
+    276  f609				  -ClosedBorder
+    277  f609				  -DoorMaskWrite
+    278  f609				  -	      sta	PF2
+    279  f609				  -	      lda	(P0Ptr),y
+    280  f609				  -DoorPlayerWrite
+    281  f609				  -	      sta	GRP0
+    282  f609				  -	      lda	#0
+    283  f609				  -	      sta	GRP1
+    284  f609				  -	      sta	ENAM0
+    285  f609				  -	      iny
+    286  f609				  -	      beq	LastBorderLine
+    287  f609				  -	      jmp	NextRoom
+    288  f609				  -LastBorderLine
+    289  f609				  -	      sta	WSYNC
+    290  f609				  -	      jmp	RoomFinishAfterSync
+    291  f609				  -EncodeNearLeftShift
+    292  f609				  -	      asl
+    293  f609				  -	      asl
+    294  f609				  -	      asl
+    295  f609				  -	      asl
+    296  f609				  -	      clc
+    297  f609				  -	      rts
+    298  f609				  -RejectNearLeft
+    299  f609				  -	      sec
+    300  f609				  -	      rts
+    301  f609				  -RoomTail
+    302  f609				  -	      iny
+    303  f609				  -	      beq	RoomEnd
+    304  f609				  -RoomQueueCheck
+    305  f609				  -	      cpy	NextQueueY
+    306  f609				  -	      bne	NextRoom
+    307  f609				  -			; The dedicated RESP1 line holds PF/P0 until the first glyph line.
+    308  f609				  -			; AllowedSetup excludes the actual playfield transitions.
+    309  f609				  -	      lda	QueueX,x
+    310  f609				  -	      beq	BridgePreSync
+    311  f609				  -NpcPreSync
+    312  f609				  -	      sta	WSYNC
+    313  f609				  -NpcSetupFirst
+    314  f609				  -	      sec
+    315  f609				  -NpcCoarse
+    316  f609				  -	      sbc	#15
+    317  f609				  -	      bcs	NpcCoarse
+    318  f609				  -	      eor	#7
+    319  f609				  -	      asl
+    320  f609				  -	      asl
+    321  f609				  -	      asl
+    322  f609				  -	      asl
+    323  f609				  -	      sta	HMP1
+    324  f609				  -	      sta	RESP1
+    325  f609				  -NpcSetupSync
+    326  f609				  -	      sta	WSYNC
+    327  f609				  -GlyphStart
+    328  f609				  -	      sta	HMOVE
+    329  f609				  -GlyphBody
+    330  f609				  -	      iny
+    331  f609				  -	      lda	(P0Ptr),y
+    332  f609				  -	      sta	GRP0
+    333  f609				  -	      lda	#0
+    334  f609				  -	      cpy	BLine
+    335  f609				  -	      bne	FirstNoShot
+    336  f609				  -	      lda	#2
+    337  f609				  -FirstNoShot
+    338  f609				  -	      IF	CAP_KERNEL
+    339  f609				  -	      sta	ENAM1
+    340  f609				  -	      ELSE
+    341  f609				  -	      sta	ENAM0
+    342  f609				  -	      ENDIF
+    343  f609				  -GlyphP1
+    344  f609				  -	      lda	QueueFirst,x
+    345  f609				  -	      sta	GRP1
+    346  f609				  -	      lda	QueueColor,x
+    347  f609				  -	      sta	COLUP1
+    348  f609				  -	      lda	QueueLo,x
+    349  f609				  -	      sta	P1Ptr
+    350  f609				  -	      lda	QueueHi,x
+    351  f609				  -	      sta	P1Ptr+1
+    352  f609				  -	      inx
+    353  f609				  -	      lda	QueueY,x
+    354  f609				  -	      sta	NextQueueY
+    355  f609				  -	      iny
+    356  f609				  -	      beq	RoomEnd
+    357  f609				  -	      jmp	NextRoom
+    358  f609				  -RoomEnd
+    359  f609				  -	      jmp	RoomFinish
+    360  f609				  -BridgePreSync
+    361  f609				  -	      sta	WSYNC
+    362  f609				  -	      IF	CAP_KERNEL
+    363  f609				  -	      lda	#$26
+    364  f609				  -	      sta	COLUPF
+    365  f609				  -	      lda	CapPlayerFirst
+    366  f609				  -	      sta	GRP0
+    367  f609				  -	      nop
+    368  f609				  -	      ENDIF
+    369  f609				  -	      lda	BridgeOld
+    370  f609				  -	      sta	GRP1
+    371  f609				  -	      lda	BridgeX
+    372  f609				  -	      IF	CAP_KERNEL
+    373  f609				  -	      jmp	CapPositionSF
+    374  f609				  -	      ELSE
+    375  f609				  -	      bit	BridgeX
+    376  f609				  -	      jmp	NpcSetupFirst
+    377  f609				  -	      ds	7,0
+    378  f609				  -	      ENDIF
+    379  f609				  -SpecialScanline
+    380  f609				  -	      lda	#$26
+    381  f609				  -	      sta	COLUPF
+    382  f609				  -	      lda	(P1Ptr),y
+    383  f609				  -	      sta	GRP1
+    384  f609				  -	      cpy	AssistRow
+    385  f609				  -	      beq	AssistStart
+    386  f609				  -	      lda	(P0Ptr),y
+    387  f609				  -	      sta	GRP0
+    388  f609				  -	      lda	#0
+    389  f609				  -	      cpy	BLine
+    390  f609				  -	      bne	SpecialNoShot
+    391  f609				  -	      lda	#2
+    392  f609				  -SpecialNoShot
+    393  f609				  -	      IF	CAP_KERNEL
+    394  f609				  -	      stx	HMP0
+    395  f609				  -	      ELSE
+    396  f609				  -	      sta	ENAM0
+    397  f609				  -	      ENDIF
+    398  f609				  -	      iny		; generated special rows never end the room
+    399  f609				  -	      jmp	RoomQueueCheck
+    400  f609				  -AssistStart
+    401  f609				  -	      cpy	#156+80
+    402  f609				  -	      bne	OrdinaryAssist
+    403  f609				  -	      jmp	KeyAssistStart
+    404  f609				  -OrdinaryAssist
+    405  f609				  -	      stx	AssistQueue
+    406  f609				  -	      lda	#0
+    407  f609				  -	      sta	GRP0
+    408  f609				  -	      sta	GRP1
+    409  f609				  -	      sta	ENAM0
+    410  f609				  -	      lda	AssistX
+    411  f609				  -	      sta	WSYNC
+    412  f609				  -	      sec
+    413  f609				  -AssistCoarse
+    414  f609				  -	      sbc	#15
+    415  f609				  -	      bcs	AssistCoarse
+    416  f609				  -	      eor	#7
+    417  f609				  -	      asl
+    418  f609				  -	      asl
+    419  f609				  -	      asl
+    420  f609				  -	      asl
+    421  f609				  -	      sta	HMP0
+    422  f609				  -	      sta	RESP0
+    423  f609				  -AssistSync
+    424  f609				  -	      sta	WSYNC
+    425  f609				  -AssistMove
+    426  f609				  -	      sta	HMOVE
+    427  f609				  -AssistInstallRegisters
+    428  f609				  -	      lda	AssistColor
+    429  f609				  -	      sta	COLUP0
+    430  f609				  -	      lda	AssistPtr
+    431  f609				  -	      sta	P0Ptr
+    432  f609				  -	      lda	AssistPtr+1
+    433  f609				  -	      sta	P0Ptr+1
+    434  f609				  -	      lda	#0
+    435  f609				  -	      sta	HMP0
+    436  f609				  -	      ldx	AssistQueue
+    437  f609				  -	      iny
+    438  f609				  -	      iny
+    439  f609				  -	      iny
+    440  f609				  -	      jmp	NextRoom
+    441  f609				  -WallScanline
+    442  f609				  -			; The dispatcher stores PF0 shifted right so its flags stay positive.
+    443  f609				  -	      asl
+    444  f609				  -	      sta	PF0
+    445  f609				  -	      lda	PFData1,y
+    446  f609				  -	      sta	PF1
+    447  f609				  -	      lda	PFData2,y
+    448  f609				  -	      sta	PF2
+    449  f609				  -			; Update P1 on the wall transition before selecting the missile row.
+    450  f609				  -	      lda	(P1Ptr),y
+    451  f609				  -	      sta	GRP1
+    452  f609				  -	      lda	(P0Ptr),y
+    453  f609				  -	      sta	GRP0
+    454  f609				  -	      lda	#0
+    455  f609				  -	      cpy	BLine
+    456  f609				  -	      bne	WallNoShot
+    457  f609				  -	      lda	#2
+    458  f609				  -WallNoShot
+    459  f609				  -	      IF	CAP_KERNEL
+    460  f609				  -	      stx	HMP0
+    461  f609				  -	      ELSE
+    462  f609				  -	      sta	ENAM0
+    463  f609				  -	      ENDIF
+    464  f609				  -	      iny
+    465  f609				  -	      jmp	NextRoom
+    466  f609				  -RoomFinish
+    467  f609				  -	      sta	WSYNC
+    468  f609				  -RoomFinishAfterSync
+    469  f609				  -	      lda	#0
+    470  f609				  -	      sta	PF0
+    471  f609				  -	      sta	PF1
+    472  f609				  -	      sta	PF2
+    473  f609				  -	      sta	GRP0
+    474  f609				  -	      sta	ENAM0
+    475  f609				  -	      ldx	#8
+    476  f609				  -Bottom
+    477  f609				  -	      sta	WSYNC
+    478  f609				  -	      dex
+    479  f609				  -	      bne	Bottom
+    480  f609				  -	      lda	#2
+    481  f609				  -	      sta	VBLANK
+    482  f609				  -	      lda	#35
+    483  f609				  -	      nop
+    484  f609				  -	      nop
+    485  f609				  -	      nop
+    486  f609				  -	      nop
+    487  f609				  -	      nop
+    488  f609				  -	      nop
+    489  f609				  -	      sta	TIM64T
+    490  f609				  -	      inc	FrameClock
+    491  f609				  -	      jmp	GameBank
+    492  f609				  -Overscan
+    493  f609				  -	      lda	INTIM
+    494  f609				  -	      bne	Overscan
+    495  f609				  -	      jmp	Frame
+    496  f609				  -
+    497  f609				  -			; A is pixel X, X is 0 for P0 and 2 for M0.
+    498  f609				  -PlanFrame
+    499  f609				  -			; Reserve the upper P0 band before scheduling the overlapping floor key.
+    500  f609				  -	      lda	#0
+    501  f609				  -	      sta	AssistObject
+    502  f609				  -	      sta	CapStart
+    503  f609				  -	      jsr	PrepareKeyAssist
+    504  f609				  -	      jsr	Schedule
+    505  f609				  -	      lda	#$3c
+    506  f609				  -	      ldx	Unlocked
+    507  f609				  -	      beq	DoorColorReady
+    508  f609				  -	      lda	#$26
+    509  f609				  -DoorColorReady
+    510  f609				  -	      sta	DoorColor
+    511  f609				  -	      sec
+    512  f609				  -	      lda	#<(PlayerShape-80)
+    513  f609				  -	      sbc	PY
+    514  f609				  -	      sta	P0Ptr
+    515  f609				  -	      lda	#>(PlayerShape-80)
+    516  f609				  -	      sbc	#0
+    517  f609				  -	      sta	P0Ptr+1
+    518  f609				  -	      lda	#0
+    519  f609				  -	      ldx	Shot
+    520  f609				  -	      beq	NoRasterShot
+    521  f609				  -	      lda	BY
+    522  f609				  -	      clc
+    523  f609				  -	      adc	#80
+    524  f609				  -NoRasterShot
+    525  f609				  -	      ora	CapStart
+    526  f609				  -	      sta	BLine
+    527  f609				  -	      lda	PX
+    528  f609				  -	      sta	EntryX
+    529  f609				  -	      lda	#$1e
+    530  f609				  -	      sta	COLUP0
+    531  f609				  -	      lda	#0
+    532  f609				  -	      sta	AssistRow
+    533  f609				  -	      lda	AssistObject
+    534  f609				  -	      beq	OrdinaryAssistPlan
+    535  f609				  -	      jmp	InstallKeyAssist
+    536  f609				  -OrdinaryAssistPlan
+    537  f609				  -	      lda	Omitted
+    538  f609				  -	      beq	AssistPlanDone
+    539  f609				  -	      jsr	ScheduleAssist
+    540  f609				  -AssistPlanDone
+    541  f609				  -	      lda	QueueY
+    542  f609				  -	      sta	NextQueueY
+    543  f609				  -	      rts
+    544  f609				  -
+    545  f609				  -Position
+    546  f609				  -	      sta	WSYNC
+    547  f609				  -	      sec
+    548  f609				  -PositionCoarse
+    549  f609				  -	      sbc	#15
+    550  f609				  -	      bcs	PositionCoarse
+    551  f609				  -	      eor	#7
+    552  f609				  -	      asl
+    553  f609				  -	      asl
+    554  f609				  -	      asl
+    555  f609				  -	      asl
+    556  f609				  -	      sta	HMP0,x
+    557  f609				  -	      sta	RESP0,x
+    558  f609				  -	      rts
+    559  f609				  -
+    560  f609				  -
+    561  f609				  -			; Collect non-overlapping visible slots in increasing Y each frame.
+    562  f609				  -			; Simulation X/Y are read only; omitted actors continue normal updates.
+    563  f609				  -Schedule
+    564  f609				  -	      lda	#2
+    565  f609				  -	      sta	OrderEnd
+    566  f609				  -	      lda	#0
+    567  f609				  -	      sta	SortI
+    568  f609				  -	      sta	Omitted
+    569  f609				  -	      sta	Eligible
+    570  f609				  -	      sta	Rendered
+    571  f609				  -	      ldx	#4
+    572  f609				  -MeasureEligible
+    573  f609				  -	      lda	#255
+    574  f609				  -	      sta	SetupRows,x
+    575  f609				  -	      lda	Life,x
+    576  f609				  -	      beq	NextEligible
+    577  f609				  -	      inc	Omitted
+    578  f609				  -	      lda	Eligible
+    579  f609				  -	      ora	ObjectBit,x
+    580  f609				  -	      sta	Eligible
+    581  f609				  -	      lda	Life,x
+    582  f609				  -	      bpl	DeathCandidate
+    583  f609				  -	      lda	LeadingBlank,x
+    584  f609				  -	      jmp	Candidate
+    585  f609				  -DeathCandidate
+    586  f609				  -	      lda	#1
+    587  f609				  -Candidate
+    588  f609				  -	      clc
+    589  f609				  -	      adc	NY,x
+    590  f609				  -	      sec
+    591  f609				  -	      sbc	#1
+    592  f609				  -	      jsr	PreserveTile
+    593  f609				  -	      sta	SetupRows,x
+    594  f609				  -NextEligible
+    595  f609				  -	      dex
+    596  f609				  -	      bpl	MeasureEligible
+    597  f609				  -	      lda	#255
+    598  f609				  -	      sta	SetupRows+5
+    599  f609				  -	      ldy	AssistObject
+    600  f609				  -	      beq	PlanKeySlot
+    601  f609				  -	      sta	SetupRows-1,y
+    602  f609				  -PlanKeySlot
+    603  f609				  -	      lda	KeyState
+    604  f609				  -	      cmp	#1
+    605  f609				  -	      bne	PlanNext
+    606  f609				  -	      inc	Omitted
+    607  f609				  -	      lda	Eligible
+    608  f609				  -	      ora	#32
+    609  f609				  -	      sta	Eligible
+    610  f609				  -	      lda	KeyY
+    611  f609				  -	      jsr	PreserveTile
+    612  f609				  -	      sta	SetupRows+5
+    613  f609				  -PlanNext
+    614  f609				  -	      lda	#255
+    615  f609				  -	      sta	MinSetup
+    616  f609				  -	      sta	Actor
+    617  f609				  -	      ldx	#5
+    618  f609				  -FindNext
+    619  f609				  -	      lda	SetupRows,x
+    620  f609				  -	      cmp	OrderEnd
+    621  f609				  -	      bcc	SkipPlan
+    622  f609				  -	      cmp	MinSetup
+    623  f609				  -	      bcs	SkipPlan
+    624  f609				  -	      sta	MinSetup
+    625  f609				  -	      stx	Actor
+    626  f609				  -SkipPlan
+    627  f609				  -	      dex
+    628  f609				  -	      bpl	FindNext
+    629  f609				  -Planned
+    630  f609				  -	      ldx	SortI
+    631  f609				  -	      ldy	Actor
+    632  f609				  -	      bmi	EndPlan
+    633  f609				  -	      cpy	#5
+    634  f609				  -	      beq	LoadKeyOrigin
+    635  f609				  -	      lda	NY,y
+    636  f609				  -	      jmp	StoreOrigin
+    637  f609				  -LoadKeyOrigin
+    638  f609				  -	      lda	KeyY
+    639  f609				  -StoreOrigin
+    640  f609				  -	      sta	SortJ
+    641  f609				  -	      lda	MinSetup
+    642  f609				  -	      clc
+    643  f609				  -	      adc	#80
+    644  f609				  -	      sta	QueueY,x
+    645  f609				  -	      lda	Rendered
+    646  f609				  -	      ora	ObjectBit,y
+    647  f609				  -	      sta	Rendered
+    648  f609				  -	      cpy	#5
+    649  f609				  -	      beq	PlanKey
+    650  f609				  -	      lda	NX,y
+    651  f609				  -	      clc
+    652  f609				  -	      adc	#3
+    653  f609				  -	      sta	QueueX,x
+    654  f609				  -	      lda	#$0e
+    655  f609				  -	      sta	QueueColor,x
+    656  f609				  -	      lda	Life,y
+    657  f609				  -	      bmi	LivePlan
+    658  f609				  -	      lda	#4
+    659  f609				  -	      bne	SetShape
+    660  f609				  -LivePlan
+    661  f609				  -	      lda	Shapes,y
+    662  f609				  -	      jmp	SetShape
+    663  f609				  -PlanKey
+    664  f609				  -	      lda	KeyX
+    665  f609				  -	      clc
+    666  f609				  -	      adc	#3
+    667  f609				  -	      sta	QueueX,x
+    668  f609				  -	      lda	#$1a
+    669  f609				  -	      sta	QueueColor,x
+    670  f609				  -	      lda	#5
+    671  f609				  -SetShape
+    672  f609				  -	      tay
+    673  f609				  -	      sec
+    674  f609				  -	      lda	ShapeLo,y
+    675  f609				  -	      sbc	SortJ
+    676  f609				  -	      sta	QueueLo,x
+    677  f609				  -	      sta	P1Ptr
+    678  f609				  -	      lda	ShapeHi,y
+    679  f609				  -	      sbc	#0
+    680  f609				  -	      sta	QueueHi,x
+    681  f609				  -	      sta	P1Ptr+1
+    682  f609				  -	      sty	TempY
+    683  f609				  -	      ldy	QueueY,x
+    684  f609				  -	      iny
+    685  f609				  -	      lda	(P1Ptr),y
+    686  f609				  -	      sta	QueueFirst,x
+    687  f609				  -	      ldy	TempY
+    688  f609				  -	      lda	SortJ
+    689  f609				  -	      clc
+    690  f609				  -	      adc	LastPlusTwo,y
+    691  f609				  -	      sta	OrderEnd
+    692  f609				  -	      inc	SortI
+    693  f609				  -	      jmp	PlanNext
+    694  f609				  -EndPlan
+    695  f609				  -	      jsr	BridgeFloorKey
+    696  f609				  -	      jsr	PlanSmallOverlap
+    697  f609				  -	      ldx	SortI
+    698  f609				  -	      lda	#<(PlayerShape-255)
+    699  f609				  -	      sta	P1Ptr
+    700  f609				  -	      lda	#>(PlayerShape-255)
+    701  f609				  -	      sta	P1Ptr+1
+    702  f609				  -	      lda	#0
+    703  f609				  -	      sta	QueueY,x
+    704  f609				  -	      lda	Omitted
+    705  f609				  -	      sec
+    706  f609				  -	      sbc	SortI
+    707  f609				  -	      sta	Omitted
+    708  f609				  -	      rts
+    709  f609				  -PreserveTile
+    710  f609				  -	      tay
+    711  f609				  -	      lda	AllowedSetup,y
+    712  f609				  -	      rts
+    713  f609				  -CompensateAssistX
+    714  f609				  -	      sec
+    715  f609				  -	      lda	AssistX
+    716  f609				  -	      sbc	#45
+    717  f609				  -	      sta	AssistX
+    718  f609				  -	      jmp	AssistPlanDone
+    719  f609				  -
+    720  f609				  -Shapes
+    721  f609				  -	      byte	0,0,1,2,3
+    722  f609				  -ShapeLo
+    723  f609				  -	      byte	<(Mask0-80),<(Mask1-80),<(Mask2-80),<(Mask3-80),<(DeathShape-80),<(KeyShape-80)
+    724  f609				  -ShapeHi
+    725  f609				  -	      byte	>(Mask0-80),>(Mask1-80),>(Mask2-80),>(Mask3-80),>(DeathShape-80),>(KeyShape-80)
+    726  f609				  -ObjectBit
+    727  f609				  -	      byte	1,2,4,8,16,32
+    728  f609				  -LeadingBlank
+    729  f609				  -	      byte	0,0,0,2,2
+    730  f609				  -LastPlusTwo
+    731  f609				  -	      byte	10,10,9,9,9,7
+    732  f609				  -	      ds	175,0
+    733  f609				  -PlayerShape
+    734  f609				  -	      byte	$3c,$7e,$18,$7e,$1e,$3c,$18,$24,$42
+    735  f609				  -	      ds	159,0	; the upper solid tile keeps the player at Y >= 8
+    736  f609				  -	      include	"bridge_color.inc"
+    737  f609				  -	      include	"video.inc"
+    738  f609				  -DeathShape
+    739  f609				  -	      byte	$00,$42,$24,$18,$a5,$18,$24,$42,$00
+    740  f609				  -	      ds	175,0
+    741  f609				  -KeyShape
+    742  f609				  -	      byte	$00,$70,$50,$7e,$24,$04,$00,$00,$00
+    743  f609				  -	      ds	175,0
+    744  f609				  -	      include	"schedule.inc"
+    745  f609				  -			; Search for room to reuse P0 on the other side of a quiet strip.
+    746  f609				  -			; The strip is a register-write window. The NPC still uses its RAM X/Y.
+    747  f609				  -AssistNextStrip
+    748  f609				  -	      dex
+    749  f609				  -	      bmi	AssistCheckDone
+    750  f609				  -	      jmp	AssistCheckStrip
+    751  f609				  -AssistCheckDone
+    752  f609				  -			; P1 needs the larger guard for its own setup. P0 and M0 can
+    753  f609				  -			; begin on the first line after the three-line P0 switch.
+    754  f609				  -	      lda	SplitHigh
+    755  f609				  -	      sec
+    756  f609				  -	      sbc	#3
+    757  f609				  -	      sta	SplitHigh
+    758  f609				  -	      lda	PY
+    759  f609				  -	      cmp	SplitLow
+    760  f609				  -	      bcc	AssistHumanFirst
+    761  f609				  -	      cmp	SplitHigh
+    762  f609				  -	      bcc	AssistReturn
+    763  f609				  -	      lda	Shot
+    764  f609				  -	      beq	AssistNpcFirst
+    765  f609				  -	      lda	BY
+    766  f609				  -	      cmp	SplitHigh
+    767  f609				  -	      bcc	AssistReturn
+    768  f609				  -AssistNpcFirst
+    769  f609				  -	      lda	#0
+    770  f609				  -	      beq	AssistFind
+    771  f609				  -AssistHumanFirst
+    772  f609				  -	      lda	Shot
+    773  f609				  -	      beq	AssistHumanReady
+    774  f609				  -	      lda	BY
+    775  f609				  -	      cmp	SplitLow
+    776  f609				  -	      bcs	AssistReturn
+    777  f609				  -AssistHumanReady
+    778  f609				  -	      lda	#1
+    779  f609				  -AssistFind
+    780  f609				  -	      sta	AssistID
+    781  f609				  -	      ldx	#4
+    782  f609				  -AssistCheckCandidate
+    783  f609				  -	      lda	Life,x
+    784  f609				  -	      bpl	AssistNextCandidate
+    785  f609				  -	      lda	ObjectBit,x
+    786  f609				  -	      bit	Rendered
+    787  f609				  -	      bne	AssistNextCandidate
+    788  f609				  -	      lda	NY,x
+    789  f609				  -	      cmp	SplitY
+    790  f609				  -	      lda	AssistID
+    791  f609				  -	      rol
+    792  f609				  -	      and	#1
+    793  f609				  -	      eor	AssistID
+    794  f609				  -	      beq	InstallAssist
+    795  f609				  -AssistNextCandidate
+    796  f609				  -	      dex
+    797  f609				  -	      bpl	AssistCheckCandidate
+    798  f609				  -AssistReturn
+    799  f609				  -	      rts
+    800  f609				  -InstallAssist
+    801  f609				  -	      lda	SplitY
+    802  f609				  -	      clc
+    803  f609				  -	      adc	#80
+    804  f609				  -	      sta	AssistRow
+    805  f609				  -	      lda	ObjectBit,x
+    806  f609				  -	      sta	AssistObject
+    807  f609				  -	      ora	Rendered
+    808  f609				  -	      sta	Rendered
+    809  f609				  -	      dec	Omitted
+    810  f609				  -	      ldy	Shapes,x
+    811  f609				  -	      sec
+    812  f609				  -	      lda	ShapeLo,y
+    813  f609				  -	      sbc	NY,x
+    814  f609				  -	      sta	AssistPtr
+    815  f609				  -	      lda	ShapeHi,y
+    816  f609				  -	      sbc	#0
+    817  f609				  -	      sta	AssistPtr+1
+    818  f609				  -	      lda	NX,x
+    819  f609				  -	      ldy	AssistID
+    820  f609				  -	      bne	AssistSetSecond
+    821  f609				  -			; NPC in the upper band, then restore the player's original pointer.
+    822  f609				  -	      sta	EntryX
+    823  f609				  -	      lda	P0Ptr
+    824  f609				  -	      ldy	AssistPtr
+    825  f609				  -	      sty	P0Ptr
+    826  f609				  -	      sta	AssistPtr
+    827  f609				  -	      lda	P0Ptr+1
+    828  f609				  -	      ldy	AssistPtr+1
+    829  f609				  -	      sty	P0Ptr+1
+    830  f609				  -	      sta	AssistPtr+1
+    831  f609				  -	      lda	#$0e
+    832  f609				  -	      sta	COLUP0
+    833  f609				  -	      lda	#$1e
+    834  f609				  -	      ldy	PX
+    835  f609				  -	      jmp	AssistSetColor
+    836  f609				  -AssistSetSecond
+    837  f609				  -	      tay
+    838  f609				  -	      lda	#$0e
+    839  f609				  -AssistSetColor
+    840  f609				  -	      sta	AssistColor
+    841  f609				  -	      tya
+    842  f609				  -	      clc
+    843  f609				  -	      adc	#3
+    844  f609				  -	      sta	AssistX
+    845  f609				  -	      rts
+    846  f609				  -
+    847  f609				  -
+    848  f609					      ENDIF
+    849  f609
+    850  ff80					      ORG	$ff80
+    851  ff80				   Reset
+    852  ff80		       8d f6 ff 	      sta	$fff6
+    853  ff83				  -	      IF	LOGIC = 0
+    854  ff83				  -	      jmp	VideoReset
+    855  ff83					      ELSE
+    856  ff83		       4c 80 ff 	      jmp	Reset
+    857  ff86					      ENDIF
+    858  ff86				   GameBank
+    859  ff86		       8d f7 ff 	      sta	$fff7
+    860  ff89					      IF	LOGIC
+    861  ff89		       4c 72 f0 	      jmp	LogicUpdate
+    862  ff8c				  -	      ELSE
+    863  ff8c				  -	      jmp	GameBank
+    864  ff8c					      ENDIF
+    865  ff8c				   VideoBank
+    866  ff8c		       8d f6 ff 	      sta	$fff6
+    867  ff8f				  -	      IF	LOGIC = 0
+    868  ff8f				  -	      jmp	Overscan
+    869  ff8f					      ELSE
+    870  ff8f		       4c 8c ff 	      jmp	VideoBank
+    871  ff92					      ENDIF
+    872  ff92				   InitBank
+    873  ff92		       8d f7 ff 	      sta	$fff7
+    874  ff95					      IF	LOGIC
+    875  ff95		       20 00 f0 	      jsr	InitGame
+    876  ff98		       4c 9b ff 	      jmp	StartBank
+    877  ff9b				  -	      ELSE
+    878  ff9b				  -	      ds	6,$ea
+    879  ff9b					      ENDIF
+    880  ff9b				   StartBank
+    881  ff9b		       8d f6 ff 	      sta	$fff6
+    882  ff9e				  -	      IF	LOGIC = 0
+    883  ff9e				  -	      jmp	VideoStart
+    884  ff9e					      ELSE
+    885  ff9e		       4c 9b ff 	      jmp	StartBank
+    886  ffa1					      ENDIF
+    887  ffa1				  -	      IF	LOGIC = 0
+    888  ffa1				  -	      include	"wall_bridge.inc"
+    889  ffa1					      ENDIF
+    890  ffa1				  -	      IF	* > $fff6
+    891  ffa1				  -	      ERR
+    892  ffa1					      ENDIF
+    893  fffa					      ORG	$fffa
+    894  fffa		       80 ff 80 ff*	      word.w	Reset,Reset,Reset
