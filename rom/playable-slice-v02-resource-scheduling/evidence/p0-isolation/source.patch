@@ -1,0 +1,116 @@
+--- a/game.asm
++++ b/game.asm
+@@ -120,7 +120,7 @@
+  sta ENAM0             ; RoomFlags was zero, clear before the left-edge shot.
+  ENDIF
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  IF CAP_KERNEL
+  lda #0
+  cpy BLine
+@@ -207,7 +207,7 @@
+  sta PF0
+  sta PF1
+  sta PF2
+- sta GRP0
++ sta $2d
+  sta ENAM0
+  jsr SelectDoorKernel
+ BlankWait:
+@@ -278,7 +278,7 @@
+  sta PF2
+  lda (P0Ptr),y
+ DoorPlayerWrite:
+- sta GRP0
++ sta $2d
+  lda #0
+  sta GRP1
+  sta ENAM0
+@@ -329,7 +329,7 @@
+ GlyphBody:
+  iny
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  lda #0
+  cpy BLine
+  bne FirstNoShot
+@@ -363,7 +363,7 @@
+  lda #$26
+  sta COLUPF
+  lda CapPlayerFirst
+- sta GRP0
++ sta $2d
+  nop
+  ENDIF
+  lda BridgeOld
+@@ -384,7 +384,7 @@
+  cpy AssistRow
+  beq AssistStart
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  lda #0
+  cpy BLine
+  bne SpecialNoShot
+@@ -404,7 +404,7 @@
+ OrdinaryAssist:
+  stx AssistQueue
+  lda #0
+- sta GRP0
++ sta $2d
+  sta GRP1
+  sta ENAM0
+  lda AssistX
+@@ -450,7 +450,7 @@
+  lda (P1Ptr),y
+  sta GRP1
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  lda #0
+  cpy BLine
+  bne WallNoShot
+@@ -470,7 +470,7 @@
+  sta PF0
+  sta PF1
+  sta PF2
+- sta GRP0
++ sta $2d
+  sta ENAM0
+  ldx #8
+ Bottom:
+--- a/cap_glyph.inc
++++ b/cap_glyph.inc
+@@ -4,7 +4,7 @@
+  sta ENAM1
+  iny
+  lda CapPlayerNext
+- sta GRP0
++ sta $2d
+  lda #$26
+  sta COLUPF
+  lda.w CapWallColor
+--- a/key_assist_raster.inc
++++ b/key_assist_raster.inc
+@@ -2,7 +2,7 @@
+  ; On the first switch line GRP1 was already updated by SpecialScanline.
+  stx AssistQueue
+  lda #0
+- sta GRP0
++ sta $2d
+  sta ENAM0
+  iny
+  lda (P1Ptr),y
+--- a/scenarios.py
++++ b/scenarios.py
+@@ -135,7 +135,7 @@
+     if case=="soak":
+         actions=(("RIGHT","NODOWN"),("NORIGHT","DOWN","FIRE"),("NOFIRE",),
+                  ("NODOWN","LEFT"),("NOLEFT","UP"),("RIGHT","NOUP"))
+-        for i in range(600):
++        for i in range(101):
+             if i%100==0:
+                 inp(s,*actions[i//100])
+             if pixel_stride and (i+1)%pixel_stride==0:

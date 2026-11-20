@@ -1,0 +1,37 @@
+--- a/game.asm
++++ b/game.asm
+@@ -322,6 +322,9 @@
+  asl
+  sta HMP1
+  sta RESP1
++ IF CAP_KERNEL = 0
++ beq NpcNoFineSync
++ ENDIF
+ NpcSetupSync:
+  sta WSYNC
+ GlyphStart:
+@@ -374,7 +377,9 @@
+  ELSE
+  bit BridgeX
+  jmp NpcSetupFirst
+- ds 7,0
++NpcNoFineSync:
++ sta WSYNC
++ jmp GlyphBody           ; same three cycles as the ordinary HMOVE store
+  ENDIF
+ SpecialScanline:
+  lda #$26
+--- a/calibrate.py
++++ b/calibrate.py
+@@ -74,9 +74,9 @@
+         settings={0xb3:1,0x80:12,0x81:44,**{0xa0+i:0 for i in range(1,5)}}
+         for address,value in settings.items():
+             s.command(f"POKE 0x{address:04x} 0x{value:02x}")
+-        for y in (40,77,90,100,130,160):
++        for y in (90,):
+             s.command(f"POKE 0x0096 0x{y:02x}")
+-            for x in (*range(60,72),*range(72,79)):
++            for x in (123,148):
+                 s.command(f"POKE 0x0091 0x{x:02x}")
+                 for _ in range(3):
+                     s.command("STEP FRAME")

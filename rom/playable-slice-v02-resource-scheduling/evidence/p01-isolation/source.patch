@@ -1,0 +1,170 @@
+--- a/game.asm
++++ b/game.asm
+@@ -120,7 +120,7 @@
+  sta ENAM0             ; RoomFlags was zero, clear before the left-edge shot.
+  ENDIF
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  IF CAP_KERNEL
+  lda #0
+  cpy BLine
+@@ -137,7 +137,7 @@
+  nop                   ; preserve the no-shot GRP1 phase
+  ENDIF
+  lda (P1Ptr),y
+- sta GRP1
++ sta $2d
+  ENDM
+  IF LOGIC
+  ORG $f000
+@@ -207,7 +207,7 @@
+  sta PF0
+  sta PF1
+  sta PF2
+- sta GRP0
++ sta $2d
+  sta ENAM0
+  jsr SelectDoorKernel
+ BlankWait:
+@@ -278,9 +278,9 @@
+  sta PF2
+  lda (P0Ptr),y
+ DoorPlayerWrite:
+- sta GRP0
++ sta $2d
+  lda #0
+- sta GRP1
++ sta $2d
+  sta ENAM0
+  iny
+  beq LastBorderLine
+@@ -329,7 +329,7 @@
+ GlyphBody:
+  iny
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  lda #0
+  cpy BLine
+  bne FirstNoShot
+@@ -342,7 +342,7 @@
+  ENDIF
+ GlyphP1:
+  lda QueueFirst,x
+- sta GRP1
++ sta $2d
+  lda QueueColor,x
+  sta COLUP1
+  lda QueueLo,x
+@@ -363,11 +363,11 @@
+  lda #$26
+  sta COLUPF
+  lda CapPlayerFirst
+- sta GRP0
++ sta $2d
+  nop
+  ENDIF
+  lda BridgeOld
+- sta GRP1
++ sta $2d
+  lda BridgeX
+  IF CAP_KERNEL
+  jmp CapPositionSF
+@@ -380,11 +380,11 @@
+  lda #$26
+  sta COLUPF
+  lda (P1Ptr),y
+- sta GRP1
++ sta $2d
+  cpy AssistRow
+  beq AssistStart
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  lda #0
+  cpy BLine
+  bne SpecialNoShot
+@@ -404,8 +404,8 @@
+ OrdinaryAssist:
+  stx AssistQueue
+  lda #0
+- sta GRP0
+- sta GRP1
++ sta $2d
++ sta $2d
+  sta ENAM0
+  lda AssistX
+  sta WSYNC
+@@ -448,9 +448,9 @@
+  sta PF2
+  ; Update P1 on the wall transition before selecting the missile row.
+  lda (P1Ptr),y
+- sta GRP1
++ sta $2d
+  lda (P0Ptr),y
+- sta GRP0
++ sta $2d
+  lda #0
+  cpy BLine
+  bne WallNoShot
+@@ -470,7 +470,7 @@
+  sta PF0
+  sta PF1
+  sta PF2
+- sta GRP0
++ sta $2d
+  sta ENAM0
+  ldx #8
+ Bottom:
+--- a/cap_glyph.inc
++++ b/cap_glyph.inc
+@@ -4,7 +4,7 @@
+  sta ENAM1
+  iny
+  lda CapPlayerNext
+- sta GRP0
++ sta $2d
+  lda #$26
+  sta COLUPF
+  lda.w CapWallColor
+--- a/key_assist_raster.inc
++++ b/key_assist_raster.inc
+@@ -2,7 +2,7 @@
+  ; On the first switch line GRP1 was already updated by SpecialScanline.
+  stx AssistQueue
+  lda #0
+- sta GRP0
++ sta $2d
+  sta ENAM0
+  iny
+  lda (P1Ptr),y
+@@ -10,7 +10,7 @@
+  sta WSYNC
+  lda BridgeOld
+ KeyAssistGrpOld:
+- sta GRP1
++ sta $2d
+  lda AssistX
+  bit AssistX
+  jmp KeyAssistPosition   ; 15 cycles replace three coarse iterations
+@@ -38,7 +38,7 @@
+  iny
+  lda (P1Ptr),y
+ KeyAssistGrpNew:
+- sta GRP1
++ sta $2d
+  dey
+  dey
+  jmp AssistInstallRegisters
+--- a/scenarios.py
++++ b/scenarios.py
+@@ -135,7 +135,7 @@
+     if case=="soak":
+         actions=(("RIGHT","NODOWN"),("NORIGHT","DOWN","FIRE"),("NOFIRE",),
+                  ("NODOWN","LEFT"),("NOLEFT","UP"),("RIGHT","NOUP"))
+-        for i in range(600):
++        for i in range(101):
+             if i%100==0:
+                 inp(s,*actions[i//100])
+             if pixel_stride and (i+1)%pixel_stride==0:

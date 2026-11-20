@@ -1,0 +1,955 @@
+{"event": "termios", "unix_ns": 1795188494864623060, "name": "small-overlap-player-on-bridge", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795188494865223449, "name": "small-overlap-player-on-bridge", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice15/rom/resource-vdel/let-me-out-v02-brown-door-top.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795188494865972100, "pid": 15481}
+{"event": "rx", "unix_ns": 1795188496336408648, "name": "small-overlap-player-on-bridge", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496336518653, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795188496336751480, "name": "small-overlap-player-on-bridge", "seq": 1, "offset": 0, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496438853356, "name": "small-overlap-player-on-bridge", "seq": 1, "offset": 23, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496439074019, "seq": 1, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496439139464, "name": "small-overlap-player-on-bridge", "seq": 2, "offset": 11, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496506489133, "name": "small-overlap-player-on-bridge", "seq": 2, "offset": 46, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496506613775, "seq": 2, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496506685835, "name": "small-overlap-player-on-bridge", "seq": 3, "offset": 22, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496537521928, "name": "small-overlap-player-on-bridge", "seq": 3, "offset": 69, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496537789416, "seq": 3, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496538065879, "name": "small-overlap-player-on-bridge", "seq": 4, "offset": 33, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496570028661, "name": "small-overlap-player-on-bridge", "seq": 4, "offset": 92, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496570131462, "seq": 4, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496570209631, "name": "small-overlap-player-on-bridge", "seq": 5, "offset": 44, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496602054392, "name": "small-overlap-player-on-bridge", "seq": 5, "offset": 115, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496602151447, "seq": 5, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496602202737, "name": "small-overlap-player-on-bridge", "seq": 6, "offset": 55, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496630216811, "name": "small-overlap-player-on-bridge", "seq": 6, "offset": 138, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496630324584, "seq": 6, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496630376873, "name": "small-overlap-player-on-bridge", "seq": 7, "offset": 66, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496661023953, "name": "small-overlap-player-on-bridge", "seq": 7, "offset": 161, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496661124892, "seq": 7, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496661178483, "name": "small-overlap-player-on-bridge", "seq": 8, "offset": 77, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496690991330, "name": "small-overlap-player-on-bridge", "seq": 8, "offset": 184, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496691141917, "seq": 8, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496691198358, "name": "small-overlap-player-on-bridge", "seq": 9, "offset": 88, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496716853528, "name": "small-overlap-player-on-bridge", "seq": 9, "offset": 207, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496716952863, "seq": 9, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496717005586, "name": "small-overlap-player-on-bridge", "seq": 10, "offset": 99, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496749297206, "name": "small-overlap-player-on-bridge", "seq": 10, "offset": 230, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496749402896, "seq": 10, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496749454767, "name": "small-overlap-player-on-bridge", "seq": 11, "offset": 110, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496782821398, "name": "small-overlap-player-on-bridge", "seq": 11, "offset": 253, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496782925598, "seq": 11, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496782975802, "name": "small-overlap-player-on-bridge", "seq": 12, "offset": 121, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496808403951, "name": "small-overlap-player-on-bridge", "seq": 12, "offset": 276, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496808508847, "seq": 12, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496808559562, "name": "small-overlap-player-on-bridge", "seq": 13, "offset": 132, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496836501711, "name": "small-overlap-player-on-bridge", "seq": 13, "offset": 299, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496836850764, "seq": 13, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496836926702, "name": "small-overlap-player-on-bridge", "seq": 14, "offset": 143, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496890344648, "name": "small-overlap-player-on-bridge", "seq": 14, "offset": 322, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496890449933, "seq": 14, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496890525376, "name": "small-overlap-player-on-bridge", "seq": 15, "offset": 154, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496936453838, "name": "small-overlap-player-on-bridge", "seq": 15, "offset": 345, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496936565704, "seq": 15, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496936685762, "name": "small-overlap-player-on-bridge", "seq": 16, "offset": 165, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188496974685953, "name": "small-overlap-player-on-bridge", "seq": 16, "offset": 368, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188496974871334, "seq": 16, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188496975053531, "name": "small-overlap-player-on-bridge", "seq": 17, "offset": 176, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497002260259, "name": "small-overlap-player-on-bridge", "seq": 17, "offset": 391, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497002362890, "seq": 17, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497002505360, "name": "small-overlap-player-on-bridge", "seq": 18, "offset": 187, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497029057216, "name": "small-overlap-player-on-bridge", "seq": 18, "offset": 414, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497029159421, "seq": 18, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497029229951, "name": "small-overlap-player-on-bridge", "seq": 19, "offset": 198, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497055253708, "name": "small-overlap-player-on-bridge", "seq": 19, "offset": 437, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497055350520, "seq": 19, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497055437330, "name": "small-overlap-player-on-bridge", "seq": 20, "offset": 209, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497082012544, "name": "small-overlap-player-on-bridge", "seq": 20, "offset": 460, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497082111400, "seq": 20, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497082345946, "name": "small-overlap-player-on-bridge", "seq": 21, "offset": 220, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497111657608, "name": "small-overlap-player-on-bridge", "seq": 21, "offset": 483, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497111759889, "seq": 21, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497111832993, "name": "small-overlap-player-on-bridge", "seq": 22, "offset": 231, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497135432685, "name": "small-overlap-player-on-bridge", "seq": 22, "offset": 506, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497135494581, "seq": 22, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497135534195, "name": "small-overlap-player-on-bridge", "seq": 23, "offset": 242, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497161080424, "name": "small-overlap-player-on-bridge", "seq": 23, "offset": 529, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497161176940, "seq": 23, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497161246342, "name": "small-overlap-player-on-bridge", "seq": 24, "offset": 253, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497188180980, "name": "small-overlap-player-on-bridge", "seq": 24, "offset": 552, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497188273023, "seq": 24, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497188346519, "name": "small-overlap-player-on-bridge", "seq": 25, "offset": 264, "hex": "504f4b4520307830303830203078303404"}
+{"event": "rx", "unix_ns": 1795188497188456825, "name": "small-overlap-player-on-bridge", "seq": 25, "offset": 575, "hex": "3078303420706f6b656420746f20307830303830202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497188474230, "seq": 25, "answer": "0x04 poked to 0x0080 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497188506914, "name": "small-overlap-player-on-bridge", "seq": 26, "offset": 281, "hex": "504f4b4520307830303831203078353504"}
+{"event": "rx", "unix_ns": 1795188497188650733, "name": "small-overlap-player-on-bridge", "seq": 26, "offset": 625, "hex": "3078353520706f6b656420746f20307830303831202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497188665484, "seq": 26, "answer": "0x55 poked to 0x0081 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497188694127, "name": "small-overlap-player-on-bridge", "seq": 27, "offset": 298, "hex": "504f4b4520307830306233203078303104"}
+{"event": "rx", "unix_ns": 1795188497188735794, "name": "small-overlap-player-on-bridge", "seq": 27, "offset": 675, "hex": "3078303120706f6b656420746f20307830306233202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497188746621, "seq": 27, "answer": "0x01 poked to 0x00b3 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497188774378, "name": "small-overlap-player-on-bridge", "seq": 28, "offset": 315, "hex": "504f4b4520307830303834203078303004"}
+{"event": "rx", "unix_ns": 1795188497188804650, "name": "small-overlap-player-on-bridge", "seq": 28, "offset": 725, "hex": "3078303020706f6b656420746f20307830303834202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497188813308, "seq": 28, "answer": "0x00 poked to 0x0084 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497188831946, "name": "small-overlap-player-on-bridge", "seq": 29, "offset": 332, "hex": "504f4b4520307830303931203078343004"}
+{"event": "rx", "unix_ns": 1795188497188842167, "name": "small-overlap-player-on-bridge", "seq": 29, "offset": 775, "hex": "3078343020706f6b656420746f20307830303931202852414d29"}
+{"event": "rx", "unix_ns": 1795188497188849977, "name": "small-overlap-player-on-bridge", "seq": 29, "offset": 801, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497188857693, "seq": 29, "answer": "0x40 poked to 0x0091 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497188956952, "name": "small-overlap-player-on-bridge", "seq": 30, "offset": 349, "hex": "504f4b4520307830303932203078343304"}
+{"event": "rx", "unix_ns": 1795188497188969536, "name": "small-overlap-player-on-bridge", "seq": 30, "offset": 825, "hex": "3078343320706f6b656420746f20307830303932202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497188976705, "seq": 30, "answer": "0x43 poked to 0x0092 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497188995348, "name": "small-overlap-player-on-bridge", "seq": 31, "offset": 366, "hex": "504f4b4520307830303933203078343804"}
+{"event": "rx", "unix_ns": 1795188497189005738, "name": "small-overlap-player-on-bridge", "seq": 31, "offset": 875, "hex": "3078343820706f6b656420746f20307830303933202852414d290a"}
+{"event": "rx", "unix_ns": 1795188497189069446, "name": "small-overlap-player-on-bridge", "seq": 31, "offset": 902, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189078475, "seq": 31, "answer": "0x48 poked to 0x0093 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189117489, "name": "small-overlap-player-on-bridge", "seq": 32, "offset": 383, "hex": "504f4b4520307830303934203078333504"}
+{"event": "rx", "unix_ns": 1795188497189184299, "name": "small-overlap-player-on-bridge", "seq": 32, "offset": 925, "hex": "3078333520706f6b656420746f20307830303934202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189199920, "seq": 32, "answer": "0x35 poked to 0x0094 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189220329, "name": "small-overlap-player-on-bridge", "seq": 33, "offset": 400, "hex": "504f4b4520307830303935203078346104"}
+{"event": "rx", "unix_ns": 1795188497189251702, "name": "small-overlap-player-on-bridge", "seq": 33, "offset": 975, "hex": "3078346120706f6b656420746f20307830303935202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189260344, "seq": 33, "answer": "0x4a poked to 0x0095 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189277550, "name": "small-overlap-player-on-bridge", "seq": 34, "offset": 417, "hex": "504f4b4520307830303936203078393704"}
+{"event": "rx", "unix_ns": 1795188497189302457, "name": "small-overlap-player-on-bridge", "seq": 34, "offset": 1025, "hex": "3078393720706f6b656420746f20307830303936202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189343188, "seq": 34, "answer": "0x97 poked to 0x0096 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189362400, "name": "small-overlap-player-on-bridge", "seq": 35, "offset": 434, "hex": "504f4b4520307830303937203078326604"}
+{"event": "rx", "unix_ns": 1795188497189387777, "name": "small-overlap-player-on-bridge", "seq": 35, "offset": 1075, "hex": "3078326620706f6b656420746f20307830303937202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189395925, "seq": 35, "answer": "0x2f poked to 0x0097 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189413762, "name": "small-overlap-player-on-bridge", "seq": 36, "offset": 451, "hex": "504f4b4520307830303938203078336304"}
+{"event": "rx", "unix_ns": 1795188497189438720, "name": "small-overlap-player-on-bridge", "seq": 36, "offset": 1125, "hex": "3078336320706f6b656420746f20307830303938202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189446876, "seq": 36, "answer": "0x3c poked to 0x0098 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189463833, "name": "small-overlap-player-on-bridge", "seq": 37, "offset": 468, "hex": "504f4b4520307830303939203078353204"}
+{"event": "rx", "unix_ns": 1795188497189488351, "name": "small-overlap-player-on-bridge", "seq": 37, "offset": 1175, "hex": "3078353220706f6b656420746f20307830303939202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189496982, "seq": 37, "answer": "0x52 poked to 0x0099 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189514173, "name": "small-overlap-player-on-bridge", "seq": 38, "offset": 485, "hex": "504f4b4520307830303961203078353604"}
+{"event": "rx", "unix_ns": 1795188497189644591, "name": "small-overlap-player-on-bridge", "seq": 38, "offset": 1225, "hex": "3078353620706f6b656420746f20307830303961202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189658729, "seq": 38, "answer": "0x56 poked to 0x009a (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189673995, "name": "small-overlap-player-on-bridge", "seq": 39, "offset": 502, "hex": "504f4b4520307830306166203078303104"}
+{"event": "rx", "unix_ns": 1795188497189728556, "name": "small-overlap-player-on-bridge", "seq": 39, "offset": 1275, "hex": "3078303120706f6b656420746f20307830306166202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189736930, "seq": 39, "answer": "0x01 poked to 0x00af (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189754392, "name": "small-overlap-player-on-bridge", "seq": 40, "offset": 519, "hex": "504f4b4520307830306230203078353504"}
+{"event": "rx", "unix_ns": 1795188497189792824, "name": "small-overlap-player-on-bridge", "seq": 40, "offset": 1325, "hex": "3078353520706f6b656420746f20307830306230202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189800997, "seq": 40, "answer": "0x55 poked to 0x00b0 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189818333, "name": "small-overlap-player-on-bridge", "seq": 41, "offset": 536, "hex": "504f4b4520307830306231203078393904"}
+{"event": "rx", "unix_ns": 1795188497189890197, "name": "small-overlap-player-on-bridge", "seq": 41, "offset": 1375, "hex": "3078393920706f6b656420746f20307830306231202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497189900966, "seq": 41, "answer": "0x99 poked to 0x00b1 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497189914418, "name": "small-overlap-player-on-bridge", "seq": 42, "offset": 553, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497215675589, "name": "small-overlap-player-on-bridge", "seq": 42, "offset": 1425, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497215765258, "seq": 42, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497215833639, "name": "small-overlap-player-on-bridge", "seq": 43, "offset": 564, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497245200620, "name": "small-overlap-player-on-bridge", "seq": 43, "offset": 1448, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497245377894, "seq": 43, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497245462219, "name": "small-overlap-player-on-bridge", "seq": 44, "offset": 575, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497295973902, "name": "small-overlap-player-on-bridge", "seq": 44, "offset": 1471, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497296075265, "seq": 44, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497296148679, "name": "small-overlap-player-on-bridge", "seq": 45, "offset": 586, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497354390606, "name": "small-overlap-player-on-bridge", "seq": 45, "offset": 1494, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497354494716, "seq": 45, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497354659094, "name": "small-overlap-player-on-bridge", "seq": 46, "offset": 597, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f6b657931352f7664656c2f736d616c6c2d6f7665726c61702d706c617965722d6f6e2d6272696467652e706e6704"}
+{"event": "rx", "unix_ns": 1795188497356870085, "name": "small-overlap-player-on-bridge", "seq": 46, "offset": 1517, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795188497373173525, "name": "small-overlap-player-on-bridge", "seq": 46, "offset": 1535, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497373241842, "seq": 46, "answer": "saving screenshot\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497446209880, "name": "small-overlap-player-on-bridge", "seq": 47, "offset": 670, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795188497446330166, "name": "small-overlap-player-on-bridge", "seq": 47, "offset": 1558, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a"}
+{"event": "rx", "unix_ns": 1795188497446389917, "name": "small-overlap-player-on-bridge", "seq": 47, "offset": 1591, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497446410511, "seq": 47, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188497446615305, "name": "small-overlap-player-on-bridge", "seq": 48, "offset": 679, "hex": "5045454b203078303065632030783030663504"}
+{"event": "rx", "unix_ns": 1795188497446744396, "name": "small-overlap-player-on-bridge", "seq": 48, "offset": 1614, "hex": "307830306563202852414d29203d20307830660a307830306635202852414d29203d20307830300a"}
+{"event": "rx", "unix_ns": 1795188497446758518, "name": "small-overlap-player-on-bridge", "seq": 48, "offset": 1654, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188497446769549, "seq": 48, "answer": "0x00ec (RAM) = 0x0f\n0x00f5 (RAM) = 0x00\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "crowd", "unix_ns": 1795188497448385510, "key_correct": 0, "key_extra": 0, "case": "small-overlap-player-on-bridge", "player": [4, 85], "objects": [{"index": 0, "x": 64, "y": 151, "expected": 28, "visible": 28}, {"index": 1, "x": 67, "y": 47, "expected": 28, "visible": 28}, {"index": 2, "x": 72, "y": 60, "expected": 38, "visible": 38}, {"index": 3, "x": 53, "y": 82, "expected": 20, "visible": 20}, {"index": 4, "x": 74, "y": 86, "expected": 22, "visible": 0}], "white_extra": 0, "yellow_missing": 0, "yellow_extra": 0, "scanlines": 262, "rendered": 15, "assist": 0}
+{"event": "exit", "unix_ns": 1795188497960881362, "name": "small-overlap-player-on-bridge", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 3.095648631999211, "stderr_hex": ""}
+{"event": "termios", "unix_ns": 1795188497961320317, "name": "small-overlap-m1-head", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795188497961635702, "name": "small-overlap-m1-head", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice15/rom/resource-vdel/let-me-out-v02-brown-door-top.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795188497962271119, "pid": 15490}
+{"event": "rx", "unix_ns": 1795188499020849345, "name": "small-overlap-m1-head", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499020957305, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795188499021051771, "name": "small-overlap-m1-head", "seq": 1, "offset": 0, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499039803620, "name": "small-overlap-m1-head", "seq": 1, "offset": 23, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499040003910, "seq": 1, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499040059946, "name": "small-overlap-m1-head", "seq": 2, "offset": 11, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499076761944, "name": "small-overlap-m1-head", "seq": 2, "offset": 46, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499076864822, "seq": 2, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499076936829, "name": "small-overlap-m1-head", "seq": 3, "offset": 22, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499107699974, "name": "small-overlap-m1-head", "seq": 3, "offset": 69, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499107807522, "seq": 3, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499107900643, "name": "small-overlap-m1-head", "seq": 4, "offset": 33, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499132878037, "name": "small-overlap-m1-head", "seq": 4, "offset": 92, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499132998667, "seq": 4, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499133052624, "name": "small-overlap-m1-head", "seq": 5, "offset": 44, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499160209980, "name": "small-overlap-m1-head", "seq": 5, "offset": 115, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499160320380, "seq": 5, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499160399860, "name": "small-overlap-m1-head", "seq": 6, "offset": 55, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499186888210, "name": "small-overlap-m1-head", "seq": 6, "offset": 138, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499186982216, "seq": 6, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499187055975, "name": "small-overlap-m1-head", "seq": 7, "offset": 66, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499211912498, "name": "small-overlap-m1-head", "seq": 7, "offset": 161, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499211992581, "seq": 7, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499212053384, "name": "small-overlap-m1-head", "seq": 8, "offset": 77, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499236871526, "name": "small-overlap-m1-head", "seq": 8, "offset": 184, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499236947953, "seq": 8, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499237011885, "name": "small-overlap-m1-head", "seq": 9, "offset": 88, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499265308205, "name": "small-overlap-m1-head", "seq": 9, "offset": 207, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499265393676, "seq": 9, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499265464660, "name": "small-overlap-m1-head", "seq": 10, "offset": 99, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499289554619, "name": "small-overlap-m1-head", "seq": 10, "offset": 230, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499289659720, "seq": 10, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499289729172, "name": "small-overlap-m1-head", "seq": 11, "offset": 110, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499315064317, "name": "small-overlap-m1-head", "seq": 11, "offset": 253, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499315194373, "seq": 11, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499315265710, "name": "small-overlap-m1-head", "seq": 12, "offset": 121, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499343890980, "name": "small-overlap-m1-head", "seq": 12, "offset": 276, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499343975600, "seq": 12, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499344043013, "name": "small-overlap-m1-head", "seq": 13, "offset": 132, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499371356158, "name": "small-overlap-m1-head", "seq": 13, "offset": 299, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499371459147, "seq": 13, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499371525769, "name": "small-overlap-m1-head", "seq": 14, "offset": 143, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499399818736, "name": "small-overlap-m1-head", "seq": 14, "offset": 322, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499399897429, "seq": 14, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499399967789, "name": "small-overlap-m1-head", "seq": 15, "offset": 154, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499444303122, "name": "small-overlap-m1-head", "seq": 15, "offset": 345, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499444397916, "seq": 15, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499444449273, "name": "small-overlap-m1-head", "seq": 16, "offset": 165, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499471456492, "name": "small-overlap-m1-head", "seq": 16, "offset": 368, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499471550395, "seq": 16, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499471656597, "name": "small-overlap-m1-head", "seq": 17, "offset": 176, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499497014291, "name": "small-overlap-m1-head", "seq": 17, "offset": 391, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499497123953, "seq": 17, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499497205022, "name": "small-overlap-m1-head", "seq": 18, "offset": 187, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499523556553, "name": "small-overlap-m1-head", "seq": 18, "offset": 414, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499523687605, "seq": 18, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499523760512, "name": "small-overlap-m1-head", "seq": 19, "offset": 198, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499552740388, "name": "small-overlap-m1-head", "seq": 19, "offset": 437, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499552829456, "seq": 19, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499552878940, "name": "small-overlap-m1-head", "seq": 20, "offset": 209, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499580505549, "name": "small-overlap-m1-head", "seq": 20, "offset": 460, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499580634219, "seq": 20, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499580702010, "name": "small-overlap-m1-head", "seq": 21, "offset": 220, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499607417163, "name": "small-overlap-m1-head", "seq": 21, "offset": 483, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499607504424, "seq": 21, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499607569947, "name": "small-overlap-m1-head", "seq": 22, "offset": 231, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499633267576, "name": "small-overlap-m1-head", "seq": 22, "offset": 506, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499633484866, "seq": 22, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499633625298, "name": "small-overlap-m1-head", "seq": 23, "offset": 242, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499660355114, "name": "small-overlap-m1-head", "seq": 23, "offset": 529, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499660437851, "seq": 23, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499660484835, "name": "small-overlap-m1-head", "seq": 24, "offset": 253, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499685982232, "name": "small-overlap-m1-head", "seq": 24, "offset": 552, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686091187, "seq": 24, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686209057, "name": "small-overlap-m1-head", "seq": 25, "offset": 264, "hex": "504f4b4520307830303830203078303404"}
+{"event": "rx", "unix_ns": 1795188499686324427, "name": "small-overlap-m1-head", "seq": 25, "offset": 575, "hex": "3078303420706f6b656420746f20307830303830202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686339090, "seq": 25, "answer": "0x04 poked to 0x0080 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686368610, "name": "small-overlap-m1-head", "seq": 26, "offset": 281, "hex": "504f4b4520307830303831203078363404"}
+{"event": "rx", "unix_ns": 1795188499686414490, "name": "small-overlap-m1-head", "seq": 26, "offset": 625, "hex": "3078363420706f6b656420746f20307830303831202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686424812, "seq": 26, "answer": "0x64 poked to 0x0081 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686437945, "name": "small-overlap-m1-head", "seq": 27, "offset": 298, "hex": "504f4b4520307830306233203078303104"}
+{"event": "rx", "unix_ns": 1795188499686512069, "name": "small-overlap-m1-head", "seq": 27, "offset": 675, "hex": "3078303120706f6b656420746f20307830306233202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686521388, "seq": 27, "answer": "0x01 poked to 0x00b3 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686543580, "name": "small-overlap-m1-head", "seq": 28, "offset": 315, "hex": "504f4b4520307830303834203078303004"}
+{"event": "rx", "unix_ns": 1795188499686575220, "name": "small-overlap-m1-head", "seq": 28, "offset": 725, "hex": "3078303020706f6b656420746f20307830303834202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686623502, "seq": 28, "answer": "0x00 poked to 0x0084 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686650006, "name": "small-overlap-m1-head", "seq": 29, "offset": 332, "hex": "504f4b4520307830303931203078343004"}
+{"event": "rx", "unix_ns": 1795188499686749544, "name": "small-overlap-m1-head", "seq": 29, "offset": 775, "hex": "3078343020706f6b656420746f20307830303931202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686758312, "seq": 29, "answer": "0x40 poked to 0x0091 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686805651, "name": "small-overlap-m1-head", "seq": 30, "offset": 349, "hex": "504f4b4520307830303932203078343304"}
+{"event": "rx", "unix_ns": 1795188499686834114, "name": "small-overlap-m1-head", "seq": 30, "offset": 825, "hex": "3078343320706f6b656420746f20307830303932202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686843140, "seq": 30, "answer": "0x43 poked to 0x0092 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686860700, "name": "small-overlap-m1-head", "seq": 31, "offset": 366, "hex": "504f4b4520307830303933203078343804"}
+{"event": "rx", "unix_ns": 1795188499686885342, "name": "small-overlap-m1-head", "seq": 31, "offset": 875, "hex": "3078343820706f6b656420746f20307830303933202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686893582, "seq": 31, "answer": "0x48 poked to 0x0093 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686910629, "name": "small-overlap-m1-head", "seq": 32, "offset": 383, "hex": "504f4b4520307830303934203078333504"}
+{"event": "rx", "unix_ns": 1795188499686934648, "name": "small-overlap-m1-head", "seq": 32, "offset": 925, "hex": "3078333520706f6b656420746f20307830303934202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499686942817, "seq": 32, "answer": "0x35 poked to 0x0094 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499686959699, "name": "small-overlap-m1-head", "seq": 33, "offset": 400, "hex": "504f4b4520307830303935203078346104"}
+{"event": "rx", "unix_ns": 1795188499686997328, "name": "small-overlap-m1-head", "seq": 33, "offset": 975, "hex": "3078346120706f6b656420746f20307830303935202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687005333, "seq": 33, "answer": "0x4a poked to 0x0095 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687022703, "name": "small-overlap-m1-head", "seq": 34, "offset": 417, "hex": "504f4b4520307830303936203078393704"}
+{"event": "rx", "unix_ns": 1795188499687046366, "name": "small-overlap-m1-head", "seq": 34, "offset": 1025, "hex": "3078393720706f6b656420746f20307830303936202852414d290a"}
+{"event": "rx", "unix_ns": 1795188499687057156, "name": "small-overlap-m1-head", "seq": 34, "offset": 1052, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687065345, "seq": 34, "answer": "0x97 poked to 0x0096 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687083122, "name": "small-overlap-m1-head", "seq": 35, "offset": 434, "hex": "504f4b4520307830303937203078326604"}
+{"event": "rx", "unix_ns": 1795188499687098586, "name": "small-overlap-m1-head", "seq": 35, "offset": 1075, "hex": "3078326620706f6b656420746f20307830303937202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687105163, "seq": 35, "answer": "0x2f poked to 0x0097 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687123179, "name": "small-overlap-m1-head", "seq": 36, "offset": 451, "hex": "504f4b4520307830303938203078336304"}
+{"event": "rx", "unix_ns": 1795188499687148341, "name": "small-overlap-m1-head", "seq": 36, "offset": 1125, "hex": "3078336320706f6b656420746f20307830303938202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687156429, "seq": 36, "answer": "0x3c poked to 0x0098 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687172953, "name": "small-overlap-m1-head", "seq": 37, "offset": 468, "hex": "504f4b4520307830303939203078353204"}
+{"event": "rx", "unix_ns": 1795188499687198492, "name": "small-overlap-m1-head", "seq": 37, "offset": 1175, "hex": "3078353220706f6b656420746f20307830303939202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687206351, "seq": 37, "answer": "0x52 poked to 0x0099 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687223494, "name": "small-overlap-m1-head", "seq": 38, "offset": 485, "hex": "504f4b4520307830303961203078353604"}
+{"event": "rx", "unix_ns": 1795188499687248513, "name": "small-overlap-m1-head", "seq": 38, "offset": 1225, "hex": "3078353620706f6b656420746f20307830303961202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687256545, "seq": 38, "answer": "0x56 poked to 0x009a (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687279964, "name": "small-overlap-m1-head", "seq": 39, "offset": 502, "hex": "504f4b4520307830306166203078303104"}
+{"event": "rx", "unix_ns": 1795188499687332112, "name": "small-overlap-m1-head", "seq": 39, "offset": 1275, "hex": "3078303120706f6b656420746f20307830306166202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687340122, "seq": 39, "answer": "0x01 poked to 0x00af (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687457815, "name": "small-overlap-m1-head", "seq": 40, "offset": 519, "hex": "504f4b4520307830306230203078353504"}
+{"event": "rx", "unix_ns": 1795188499687515083, "name": "small-overlap-m1-head", "seq": 40, "offset": 1325, "hex": "3078353520706f6b656420746f20307830306230202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687524558, "seq": 40, "answer": "0x55 poked to 0x00b0 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687544604, "name": "small-overlap-m1-head", "seq": 41, "offset": 536, "hex": "504f4b4520307830306231203078393904"}
+{"event": "rx", "unix_ns": 1795188499687568906, "name": "small-overlap-m1-head", "seq": 41, "offset": 1375, "hex": "3078393920706f6b656420746f20307830306231202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499687576786, "seq": 41, "answer": "0x99 poked to 0x00b1 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499687631300, "name": "small-overlap-m1-head", "seq": 42, "offset": 553, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499715247177, "name": "small-overlap-m1-head", "seq": 42, "offset": 1425, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499715359565, "seq": 42, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499715449110, "name": "small-overlap-m1-head", "seq": 43, "offset": 564, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499740362325, "name": "small-overlap-m1-head", "seq": 43, "offset": 1448, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499740448133, "seq": 43, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499740514458, "name": "small-overlap-m1-head", "seq": 44, "offset": 575, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499772890808, "name": "small-overlap-m1-head", "seq": 44, "offset": 1471, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499772988095, "seq": 44, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499773073400, "name": "small-overlap-m1-head", "seq": 45, "offset": 586, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499816618513, "name": "small-overlap-m1-head", "seq": 45, "offset": 1494, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499816712510, "seq": 45, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499816844430, "name": "small-overlap-m1-head", "seq": 46, "offset": 597, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f6b657931352f7664656c2f736d616c6c2d6f7665726c61702d6d312d686561642e706e6704"}
+{"event": "rx", "unix_ns": 1795188499816901171, "name": "small-overlap-m1-head", "seq": 46, "offset": 1517, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795188499835551188, "name": "small-overlap-m1-head", "seq": 46, "offset": 1535, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499835653026, "seq": 46, "answer": "saving screenshot\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499866958083, "name": "small-overlap-m1-head", "seq": 47, "offset": 661, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795188499867119899, "name": "small-overlap-m1-head", "seq": 47, "offset": 1558, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a"}
+{"event": "rx", "unix_ns": 1795188499867136960, "name": "small-overlap-m1-head", "seq": 47, "offset": 1591, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499867155084, "seq": 47, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188499867262529, "name": "small-overlap-m1-head", "seq": 48, "offset": 670, "hex": "5045454b203078303065632030783030663504"}
+{"event": "rx", "unix_ns": 1795188499867344605, "name": "small-overlap-m1-head", "seq": 48, "offset": 1614, "hex": "307830306563202852414d29203d20307830660a307830306635202852414d29203d20307830300a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188499867358374, "seq": 48, "answer": "0x00ec (RAM) = 0x0f\n0x00f5 (RAM) = 0x00\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "crowd", "unix_ns": 1795188499868686821, "key_correct": 0, "key_extra": 0, "case": "small-overlap-m1-head", "player": [4, 100], "objects": [{"index": 0, "x": 64, "y": 151, "expected": 28, "visible": 28}, {"index": 1, "x": 67, "y": 47, "expected": 28, "visible": 28}, {"index": 2, "x": 72, "y": 60, "expected": 38, "visible": 38}, {"index": 3, "x": 53, "y": 82, "expected": 20, "visible": 20}, {"index": 4, "x": 74, "y": 86, "expected": 22, "visible": 0}], "white_extra": 0, "yellow_missing": 0, "yellow_extra": 0, "scanlines": 262, "rendered": 15, "assist": 0}
+{"event": "exit", "unix_ns": 1795188500385323095, "name": "small-overlap-m1-head", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 2.4236802449995594, "stderr_hex": ""}
+{"event": "termios", "unix_ns": 1795188500386189094, "name": "floor-key-sm-overlap-five", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795188500386407978, "name": "floor-key-sm-overlap-five", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice15/rom/resource-vdel/let-me-out-v02-brown-door-top.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795188500387033055, "pid": 15500}
+{"event": "rx", "unix_ns": 1795188501728026063, "name": "floor-key-sm-overlap-five", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188501728157343, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795188501728219899, "name": "floor-key-sm-overlap-five", "seq": 1, "offset": 0, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188501812620607, "name": "floor-key-sm-overlap-five", "seq": 1, "offset": 23, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188501812731127, "seq": 1, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188501812806899, "name": "floor-key-sm-overlap-five", "seq": 2, "offset": 11, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188501872948195, "name": "floor-key-sm-overlap-five", "seq": 2, "offset": 46, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188501873053023, "seq": 2, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188501873125565, "name": "floor-key-sm-overlap-five", "seq": 3, "offset": 22, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188501900068618, "name": "floor-key-sm-overlap-five", "seq": 3, "offset": 69, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188501900157634, "seq": 3, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188501900227581, "name": "floor-key-sm-overlap-five", "seq": 4, "offset": 33, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188501925343960, "name": "floor-key-sm-overlap-five", "seq": 4, "offset": 92, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188501925461166, "seq": 4, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188501925528535, "name": "floor-key-sm-overlap-five", "seq": 5, "offset": 44, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188501951695671, "name": "floor-key-sm-overlap-five", "seq": 5, "offset": 115, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188501951776589, "seq": 5, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188501951841247, "name": "floor-key-sm-overlap-five", "seq": 6, "offset": 55, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188501979079458, "name": "floor-key-sm-overlap-five", "seq": 6, "offset": 138, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188501979162986, "seq": 6, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188501979234424, "name": "floor-key-sm-overlap-five", "seq": 7, "offset": 66, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502029329695, "name": "floor-key-sm-overlap-five", "seq": 7, "offset": 161, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502029433751, "seq": 7, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502029520729, "name": "floor-key-sm-overlap-five", "seq": 8, "offset": 77, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502062050424, "name": "floor-key-sm-overlap-five", "seq": 8, "offset": 184, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502062150465, "seq": 8, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502062221811, "name": "floor-key-sm-overlap-five", "seq": 9, "offset": 88, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502089389378, "name": "floor-key-sm-overlap-five", "seq": 9, "offset": 207, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502089500238, "seq": 9, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502089570005, "name": "floor-key-sm-overlap-five", "seq": 10, "offset": 99, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502116677901, "name": "floor-key-sm-overlap-five", "seq": 10, "offset": 230, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502116777055, "seq": 10, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502116850857, "name": "floor-key-sm-overlap-five", "seq": 11, "offset": 110, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502141926638, "name": "floor-key-sm-overlap-five", "seq": 11, "offset": 253, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502142036293, "seq": 11, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502142114553, "name": "floor-key-sm-overlap-five", "seq": 12, "offset": 121, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502169234124, "name": "floor-key-sm-overlap-five", "seq": 12, "offset": 276, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502169316804, "seq": 12, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502169382984, "name": "floor-key-sm-overlap-five", "seq": 13, "offset": 132, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502196542723, "name": "floor-key-sm-overlap-five", "seq": 13, "offset": 299, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502196645033, "seq": 13, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502196710910, "name": "floor-key-sm-overlap-five", "seq": 14, "offset": 143, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502243972537, "name": "floor-key-sm-overlap-five", "seq": 14, "offset": 322, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502244072664, "seq": 14, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502244146979, "name": "floor-key-sm-overlap-five", "seq": 15, "offset": 154, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502297423433, "name": "floor-key-sm-overlap-five", "seq": 15, "offset": 345, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502297523247, "seq": 15, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502298119849, "name": "floor-key-sm-overlap-five", "seq": 16, "offset": 165, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502325829319, "name": "floor-key-sm-overlap-five", "seq": 16, "offset": 368, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502325922055, "seq": 16, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502325990681, "name": "floor-key-sm-overlap-five", "seq": 17, "offset": 176, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502357339282, "name": "floor-key-sm-overlap-five", "seq": 17, "offset": 391, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502357438584, "seq": 17, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502357489942, "name": "floor-key-sm-overlap-five", "seq": 18, "offset": 187, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502389952248, "name": "floor-key-sm-overlap-five", "seq": 18, "offset": 414, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502390051709, "seq": 18, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502391933105, "name": "floor-key-sm-overlap-five", "seq": 19, "offset": 198, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502419269446, "name": "floor-key-sm-overlap-five", "seq": 19, "offset": 437, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502419367968, "seq": 19, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502419459927, "name": "floor-key-sm-overlap-five", "seq": 20, "offset": 209, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502446467844, "name": "floor-key-sm-overlap-five", "seq": 20, "offset": 460, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502446652006, "seq": 20, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502446707761, "name": "floor-key-sm-overlap-five", "seq": 21, "offset": 220, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502473377337, "name": "floor-key-sm-overlap-five", "seq": 21, "offset": 483, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502473476667, "seq": 21, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502473527736, "name": "floor-key-sm-overlap-five", "seq": 22, "offset": 231, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502502029136, "name": "floor-key-sm-overlap-five", "seq": 22, "offset": 506, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502502130329, "seq": 22, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502502186197, "name": "floor-key-sm-overlap-five", "seq": 23, "offset": 242, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502531322330, "name": "floor-key-sm-overlap-five", "seq": 23, "offset": 529, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502531484110, "seq": 23, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502531538324, "name": "floor-key-sm-overlap-five", "seq": 24, "offset": 253, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502563228444, "name": "floor-key-sm-overlap-five", "seq": 24, "offset": 552, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502563343114, "seq": 24, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502563459047, "name": "floor-key-sm-overlap-five", "seq": 25, "offset": 264, "hex": "504f4b4520307830303830203078336304"}
+{"event": "rx", "unix_ns": 1795188502563512882, "name": "floor-key-sm-overlap-five", "seq": 25, "offset": 575, "hex": "3078336320706f6b656420746f20307830303830202852414d290a"}
+{"event": "rx", "unix_ns": 1795188502563537436, "name": "floor-key-sm-overlap-five", "seq": 25, "offset": 602, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502563549107, "seq": 25, "answer": "0x3c poked to 0x0080 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502563575075, "name": "floor-key-sm-overlap-five", "seq": 26, "offset": 281, "hex": "504f4b4520307830303831203078396604"}
+{"event": "rx", "unix_ns": 1795188502564486087, "name": "floor-key-sm-overlap-five", "seq": 26, "offset": 625, "hex": "3078396620706f6b656420746f20307830303831202852414d29"}
+{"event": "rx", "unix_ns": 1795188502564545512, "name": "floor-key-sm-overlap-five", "seq": 26, "offset": 651, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502564565678, "seq": 26, "answer": "0x9f poked to 0x0081 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502564663601, "name": "floor-key-sm-overlap-five", "seq": 27, "offset": 298, "hex": "504f4b4520307830306233203078303104"}
+{"event": "rx", "unix_ns": 1795188502564675483, "name": "floor-key-sm-overlap-five", "seq": 27, "offset": 675, "hex": "3078303120706f6b656420746f20307830306233202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502564685672, "seq": 27, "answer": "0x01 poked to 0x00b3 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502564725339, "name": "floor-key-sm-overlap-five", "seq": 28, "offset": 315, "hex": "504f4b4520307830303834203078303004"}
+{"event": "rx", "unix_ns": 1795188502564733139, "name": "floor-key-sm-overlap-five", "seq": 28, "offset": 725, "hex": "3078303020706f6b656420746f20307830303834202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502564739887, "seq": 28, "answer": "0x00 poked to 0x0084 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502564765828, "name": "floor-key-sm-overlap-five", "seq": 29, "offset": 332, "hex": "504f4b4520307830303931203078356104"}
+{"event": "rx", "unix_ns": 1795188502564773456, "name": "floor-key-sm-overlap-five", "seq": 29, "offset": 775, "hex": "3078356120706f6b656420746f20307830303931202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502564779908, "seq": 29, "answer": "0x5a poked to 0x0091 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565285156, "name": "floor-key-sm-overlap-five", "seq": 30, "offset": 349, "hex": "504f4b4520307830303932203078316504"}
+{"event": "rx", "unix_ns": 1795188502565317578, "name": "floor-key-sm-overlap-five", "seq": 30, "offset": 825, "hex": "3078316520706f6b656420746f20307830303932202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565331788, "seq": 30, "answer": "0x1e poked to 0x0092 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565383938, "name": "floor-key-sm-overlap-five", "seq": 31, "offset": 366, "hex": "504f4b4520307830303933203078336304"}
+{"event": "rx", "unix_ns": 1795188502565393676, "name": "floor-key-sm-overlap-five", "seq": 31, "offset": 875, "hex": "3078336320706f6b656420746f20307830303933202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565400862, "seq": 31, "answer": "0x3c poked to 0x0093 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565427111, "name": "floor-key-sm-overlap-five", "seq": 32, "offset": 383, "hex": "504f4b4520307830303934203078336204"}
+{"event": "rx", "unix_ns": 1795188502565434462, "name": "floor-key-sm-overlap-five", "seq": 32, "offset": 925, "hex": "3078336220706f6b656420746f20307830303934202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565440761, "seq": 32, "answer": "0x3b poked to 0x0094 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565462692, "name": "floor-key-sm-overlap-five", "seq": 33, "offset": 400, "hex": "504f4b4520307830303935203078373804"}
+{"event": "rx", "unix_ns": 1795188502565470177, "name": "floor-key-sm-overlap-five", "seq": 33, "offset": 975, "hex": "3078373820706f6b656420746f20307830303935202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565475776, "seq": 33, "answer": "0x78 poked to 0x0095 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565496557, "name": "floor-key-sm-overlap-five", "seq": 34, "offset": 417, "hex": "504f4b4520307830303936203078313404"}
+{"event": "rx", "unix_ns": 1795188502565503558, "name": "floor-key-sm-overlap-five", "seq": 34, "offset": 1025, "hex": "3078313420706f6b656420746f20307830303936202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565509645, "seq": 34, "answer": "0x14 poked to 0x0096 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565641640, "name": "floor-key-sm-overlap-five", "seq": 35, "offset": 434, "hex": "504f4b4520307830303937203078333004"}
+{"event": "rx", "unix_ns": 1795188502565659175, "name": "floor-key-sm-overlap-five", "seq": 35, "offset": 1075, "hex": "3078333020706f6b656420746f20307830303937202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565668584, "seq": 35, "answer": "0x30 poked to 0x0097 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565714604, "name": "floor-key-sm-overlap-five", "seq": 36, "offset": 451, "hex": "504f4b4520307830303938203078363004"}
+{"event": "rx", "unix_ns": 1795188502565723441, "name": "floor-key-sm-overlap-five", "seq": 36, "offset": 1125, "hex": "3078363020706f6b656420746f20307830303938202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565730110, "seq": 36, "answer": "0x60 poked to 0x0098 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565754381, "name": "floor-key-sm-overlap-five", "seq": 37, "offset": 468, "hex": "504f4b4520307830303939203078393404"}
+{"event": "rx", "unix_ns": 1795188502565761897, "name": "floor-key-sm-overlap-five", "seq": 37, "offset": 1175, "hex": "3078393420706f6b656420746f20307830303939202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502565767908, "seq": 37, "answer": "0x94 poked to 0x0099 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502565881804, "name": "floor-key-sm-overlap-five", "seq": 38, "offset": 485, "hex": "504f4b4520307830303961203078373604"}
+{"event": "rx", "unix_ns": 1795188502565897564, "name": "floor-key-sm-overlap-five", "seq": 38, "offset": 1225, "hex": "3078373620706f6b656420746f20307830303961202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502566015295, "seq": 38, "answer": "0x76 poked to 0x009a (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502566054624, "name": "floor-key-sm-overlap-five", "seq": 39, "offset": 502, "hex": "504f4b4520307830306166203078303104"}
+{"event": "rx", "unix_ns": 1795188502566063116, "name": "floor-key-sm-overlap-five", "seq": 39, "offset": 1275, "hex": "3078303120706f6b656420746f20307830306166202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502566069650, "seq": 39, "answer": "0x01 poked to 0x00af (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502566093327, "name": "floor-key-sm-overlap-five", "seq": 40, "offset": 519, "hex": "504f4b4520307830306230203078353504"}
+{"event": "rx", "unix_ns": 1795188502566100430, "name": "floor-key-sm-overlap-five", "seq": 40, "offset": 1325, "hex": "3078353520706f6b656420746f20307830306230202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502566106875, "seq": 40, "answer": "0x55 poked to 0x00b0 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502566128156, "name": "floor-key-sm-overlap-five", "seq": 41, "offset": 536, "hex": "504f4b4520307830306231203078393904"}
+{"event": "rx", "unix_ns": 1795188502566135178, "name": "floor-key-sm-overlap-five", "seq": 41, "offset": 1375, "hex": "3078393920706f6b656420746f20307830306231202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502566140788, "seq": 41, "answer": "0x99 poked to 0x00b1 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502567455732, "name": "floor-key-sm-overlap-five", "seq": 42, "offset": 553, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502602012807, "name": "floor-key-sm-overlap-five", "seq": 42, "offset": 1425, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502602113970, "seq": 42, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502602181932, "name": "floor-key-sm-overlap-five", "seq": 43, "offset": 564, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502632023263, "name": "floor-key-sm-overlap-five", "seq": 43, "offset": 1448, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502632127146, "seq": 43, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502632179937, "name": "floor-key-sm-overlap-five", "seq": 44, "offset": 575, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502667690038, "name": "floor-key-sm-overlap-five", "seq": 44, "offset": 1471, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502667793506, "seq": 44, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502667847548, "name": "floor-key-sm-overlap-five", "seq": 45, "offset": 586, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502709848285, "name": "floor-key-sm-overlap-five", "seq": 45, "offset": 1494, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502709950804, "seq": 45, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502710086815, "name": "floor-key-sm-overlap-five", "seq": 46, "offset": 597, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f6b657931352f7664656c2f666c6f6f722d6b65792d736d2d6f7665726c61702d666976652e706e6704"}
+{"event": "rx", "unix_ns": 1795188502710131550, "name": "floor-key-sm-overlap-five", "seq": 46, "offset": 1517, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795188502729208936, "name": "floor-key-sm-overlap-five", "seq": 46, "offset": 1535, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502729299394, "seq": 46, "answer": "saving screenshot\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502750802805, "name": "floor-key-sm-overlap-five", "seq": 47, "offset": 665, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795188502750918433, "name": "floor-key-sm-overlap-five", "seq": 47, "offset": 1558, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a"}
+{"event": "rx", "unix_ns": 1795188502750959226, "name": "floor-key-sm-overlap-five", "seq": 47, "offset": 1591, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502750979259, "seq": 47, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188502751011252, "name": "floor-key-sm-overlap-five", "seq": 48, "offset": 674, "hex": "5045454b203078303065632030783030663504"}
+{"event": "rx", "unix_ns": 1795188502751112060, "name": "floor-key-sm-overlap-five", "seq": 48, "offset": 1614, "hex": "307830306563202852414d29203d20307833660a307830306635202852414d29203d2030783038"}
+{"event": "rx", "unix_ns": 1795188502751124253, "name": "floor-key-sm-overlap-five", "seq": 48, "offset": 1653, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188502751133914, "seq": 48, "answer": "0x00ec (RAM) = 0x3f\n0x00f5 (RAM) = 0x08\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "crowd", "unix_ns": 1795188502752433427, "key_correct": 14, "key_extra": 0, "case": "floor-key-sm-overlap-five", "player": [60, 159], "objects": [{"index": 0, "x": 90, "y": 20, "expected": 28, "visible": 28}, {"index": 1, "x": 30, "y": 48, "expected": 28, "visible": 23}, {"index": 2, "x": 60, "y": 96, "expected": 38, "visible": 38}, {"index": 3, "x": 59, "y": 148, "expected": 20, "visible": 16}, {"index": 4, "x": 120, "y": 118, "expected": 22, "visible": 22}], "white_extra": 10, "yellow_missing": 0, "yellow_extra": 2, "scanlines": 262, "rendered": 63, "assist": 8}
+{"event": "exit", "unix_ns": 1795188503264619739, "name": "floor-key-sm-overlap-five", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 2.8782052460010163, "stderr_hex": ""}
+{"event": "termios", "unix_ns": 1795188503265043820, "name": "floor-key-player-in-band", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795188503265288071, "name": "floor-key-player-in-band", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice15/rom/resource-vdel/let-me-out-v02-brown-door-top.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795188503266130602, "pid": 15509}
+{"event": "rx", "unix_ns": 1795188504336078248, "name": "floor-key-player-in-band", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504336193291, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795188504336276967, "name": "floor-key-player-in-band", "seq": 1, "offset": 0, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504352382887, "name": "floor-key-player-in-band", "seq": 1, "offset": 23, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504352481529, "seq": 1, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504352531841, "name": "floor-key-player-in-band", "seq": 2, "offset": 11, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504386403865, "name": "floor-key-player-in-band", "seq": 2, "offset": 46, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504386520517, "seq": 2, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504386657144, "name": "floor-key-player-in-band", "seq": 3, "offset": 22, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504416035353, "name": "floor-key-player-in-band", "seq": 3, "offset": 69, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504416139109, "seq": 3, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504416207148, "name": "floor-key-player-in-band", "seq": 4, "offset": 33, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504442441080, "name": "floor-key-player-in-band", "seq": 4, "offset": 92, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504442548286, "seq": 4, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504442627859, "name": "floor-key-player-in-band", "seq": 5, "offset": 44, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504493764190, "name": "floor-key-player-in-band", "seq": 5, "offset": 115, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504494660007, "seq": 5, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504494927957, "name": "floor-key-player-in-band", "seq": 6, "offset": 55, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504532499389, "name": "floor-key-player-in-band", "seq": 6, "offset": 138, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504532620923, "seq": 6, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504532694125, "name": "floor-key-player-in-band", "seq": 7, "offset": 66, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504559784777, "name": "floor-key-player-in-band", "seq": 7, "offset": 161, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504559884876, "seq": 7, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504560033260, "name": "floor-key-player-in-band", "seq": 8, "offset": 77, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504588208681, "name": "floor-key-player-in-band", "seq": 8, "offset": 184, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504588303154, "seq": 8, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504588354491, "name": "floor-key-player-in-band", "seq": 9, "offset": 88, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504614495687, "name": "floor-key-player-in-band", "seq": 9, "offset": 207, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504614631627, "seq": 9, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504614742721, "name": "floor-key-player-in-band", "seq": 10, "offset": 99, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504645632298, "name": "floor-key-player-in-band", "seq": 10, "offset": 230, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504645731454, "seq": 10, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504645803484, "name": "floor-key-player-in-band", "seq": 11, "offset": 110, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504674443915, "name": "floor-key-player-in-band", "seq": 11, "offset": 253, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504674540034, "seq": 11, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504674687814, "name": "floor-key-player-in-band", "seq": 12, "offset": 121, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504702605018, "name": "floor-key-player-in-band", "seq": 12, "offset": 276, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504702705666, "seq": 12, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504702756763, "name": "floor-key-player-in-band", "seq": 13, "offset": 132, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504732445521, "name": "floor-key-player-in-band", "seq": 13, "offset": 299, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504732539136, "seq": 13, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504732651220, "name": "floor-key-player-in-band", "seq": 14, "offset": 143, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504763462990, "name": "floor-key-player-in-band", "seq": 14, "offset": 322, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504763564006, "seq": 14, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504763682945, "name": "floor-key-player-in-band", "seq": 15, "offset": 154, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504802110837, "name": "floor-key-player-in-band", "seq": 15, "offset": 345, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504802221206, "seq": 15, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504802306164, "name": "floor-key-player-in-band", "seq": 16, "offset": 165, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504828485718, "name": "floor-key-player-in-band", "seq": 16, "offset": 368, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504828611885, "seq": 16, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504828666763, "name": "floor-key-player-in-band", "seq": 17, "offset": 176, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504859667753, "name": "floor-key-player-in-band", "seq": 17, "offset": 391, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504859772483, "seq": 17, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504859840207, "name": "floor-key-player-in-band", "seq": 18, "offset": 187, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504886862232, "name": "floor-key-player-in-band", "seq": 18, "offset": 414, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504886963888, "seq": 18, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504887031460, "name": "floor-key-player-in-band", "seq": 19, "offset": 198, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504915318275, "name": "floor-key-player-in-band", "seq": 19, "offset": 437, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504915485733, "seq": 19, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504915540335, "name": "floor-key-player-in-band", "seq": 20, "offset": 209, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504940490062, "name": "floor-key-player-in-band", "seq": 20, "offset": 460, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504940675771, "seq": 20, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504941244848, "name": "floor-key-player-in-band", "seq": 21, "offset": 220, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504967490678, "name": "floor-key-player-in-band", "seq": 21, "offset": 483, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504967611916, "seq": 21, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504967666108, "name": "floor-key-player-in-band", "seq": 22, "offset": 231, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188504994688445, "name": "floor-key-player-in-band", "seq": 22, "offset": 506, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188504994792134, "seq": 22, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188504994845431, "name": "floor-key-player-in-band", "seq": 23, "offset": 242, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188505022782358, "name": "floor-key-player-in-band", "seq": 23, "offset": 529, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505023372718, "seq": 23, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505023496996, "name": "floor-key-player-in-band", "seq": 24, "offset": 253, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188505049338846, "name": "floor-key-player-in-band", "seq": 24, "offset": 552, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049442271, "seq": 24, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049512760, "name": "floor-key-player-in-band", "seq": 25, "offset": 264, "hex": "504f4b4520307830303830203078336304"}
+{"event": "rx", "unix_ns": 1795188505049564012, "name": "floor-key-player-in-band", "seq": 25, "offset": 575, "hex": "3078336320706f6b656420746f20307830303830202852414d290a"}
+{"event": "rx", "unix_ns": 1795188505049630681, "name": "floor-key-player-in-band", "seq": 25, "offset": 602, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049644271, "seq": 25, "answer": "0x3c poked to 0x0080 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049678747, "name": "floor-key-player-in-band", "seq": 26, "offset": 281, "hex": "504f4b4520307830303831203078393704"}
+{"event": "rx", "unix_ns": 1795188505049687883, "name": "floor-key-player-in-band", "seq": 26, "offset": 625, "hex": "3078393720706f6b656420746f20307830303831202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049697551, "seq": 26, "answer": "0x97 poked to 0x0081 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049723162, "name": "floor-key-player-in-band", "seq": 27, "offset": 298, "hex": "504f4b4520307830306233203078303104"}
+{"event": "rx", "unix_ns": 1795188505049730789, "name": "floor-key-player-in-band", "seq": 27, "offset": 675, "hex": "3078303120706f6b656420746f20307830306233202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049737853, "seq": 27, "answer": "0x01 poked to 0x00b3 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049761661, "name": "floor-key-player-in-band", "seq": 28, "offset": 315, "hex": "504f4b4520307830303834203078303004"}
+{"event": "rx", "unix_ns": 1795188505049769314, "name": "floor-key-player-in-band", "seq": 28, "offset": 725, "hex": "3078303020706f6b656420746f20307830303834202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049788372, "seq": 28, "answer": "0x00 poked to 0x0084 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049810708, "name": "floor-key-player-in-band", "seq": 29, "offset": 332, "hex": "504f4b4520307830303931203078356104"}
+{"event": "rx", "unix_ns": 1795188505049818348, "name": "floor-key-player-in-band", "seq": 29, "offset": 775, "hex": "3078356120706f6b656420746f20307830303931202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049824493, "seq": 29, "answer": "0x5a poked to 0x0091 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049854728, "name": "floor-key-player-in-band", "seq": 30, "offset": 349, "hex": "504f4b4520307830303932203078316504"}
+{"event": "rx", "unix_ns": 1795188505049861911, "name": "floor-key-player-in-band", "seq": 30, "offset": 825, "hex": "3078316520706f6b656420746f20307830303932202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049867965, "seq": 30, "answer": "0x1e poked to 0x0092 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049889715, "name": "floor-key-player-in-band", "seq": 31, "offset": 366, "hex": "504f4b4520307830303933203078336304"}
+{"event": "rx", "unix_ns": 1795188505049897248, "name": "floor-key-player-in-band", "seq": 31, "offset": 875, "hex": "3078336320706f6b656420746f20307830303933202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049903226, "seq": 31, "answer": "0x3c poked to 0x0093 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049918527, "name": "floor-key-player-in-band", "seq": 32, "offset": 383, "hex": "504f4b4520307830303934203078336204"}
+{"event": "rx", "unix_ns": 1795188505049925402, "name": "floor-key-player-in-band", "seq": 32, "offset": 925, "hex": "3078336220706f6b656420746f20307830303934202852414d29"}
+{"event": "rx", "unix_ns": 1795188505049942521, "name": "floor-key-player-in-band", "seq": 32, "offset": 951, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049949342, "seq": 32, "answer": "0x3b poked to 0x0094 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505049971946, "name": "floor-key-player-in-band", "seq": 33, "offset": 400, "hex": "504f4b4520307830303935203078373804"}
+{"event": "rx", "unix_ns": 1795188505049979053, "name": "floor-key-player-in-band", "seq": 33, "offset": 975, "hex": "3078373820706f6b656420746f20307830303935202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505049985131, "seq": 33, "answer": "0x78 poked to 0x0095 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050006474, "name": "floor-key-player-in-band", "seq": 34, "offset": 417, "hex": "504f4b4520307830303936203078313404"}
+{"event": "rx", "unix_ns": 1795188505050013860, "name": "floor-key-player-in-band", "seq": 34, "offset": 1025, "hex": "3078313420706f6b656420746f20307830303936202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050020107, "seq": 34, "answer": "0x14 poked to 0x0096 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050040802, "name": "floor-key-player-in-band", "seq": 35, "offset": 434, "hex": "504f4b4520307830303937203078333004"}
+{"event": "rx", "unix_ns": 1795188505050047598, "name": "floor-key-player-in-band", "seq": 35, "offset": 1075, "hex": "3078333020706f6b656420746f20307830303937202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050053144, "seq": 35, "answer": "0x30 poked to 0x0097 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050067714, "name": "floor-key-player-in-band", "seq": 36, "offset": 451, "hex": "504f4b4520307830303938203078363004"}
+{"event": "rx", "unix_ns": 1795188505050076984, "name": "floor-key-player-in-band", "seq": 36, "offset": 1125, "hex": "3078363020706f6b656420746f20307830303938202852414d29"}
+{"event": "rx", "unix_ns": 1795188505050092149, "name": "floor-key-player-in-band", "seq": 36, "offset": 1151, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050098700, "seq": 36, "answer": "0x60 poked to 0x0098 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050119288, "name": "floor-key-player-in-band", "seq": 37, "offset": 468, "hex": "504f4b4520307830303939203078393404"}
+{"event": "rx", "unix_ns": 1795188505050126400, "name": "floor-key-player-in-band", "seq": 37, "offset": 1175, "hex": "3078393420706f6b656420746f20307830303939202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050132061, "seq": 37, "answer": "0x94 poked to 0x0099 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050147100, "name": "floor-key-player-in-band", "seq": 38, "offset": 485, "hex": "504f4b4520307830303961203078373604"}
+{"event": "rx", "unix_ns": 1795188505050154105, "name": "floor-key-player-in-band", "seq": 38, "offset": 1225, "hex": "3078373620706f6b656420746f20307830303961202852414d29"}
+{"event": "rx", "unix_ns": 1795188505050168875, "name": "floor-key-player-in-band", "seq": 38, "offset": 1251, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050174817, "seq": 38, "answer": "0x76 poked to 0x009a (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050195356, "name": "floor-key-player-in-band", "seq": 39, "offset": 502, "hex": "504f4b4520307830306166203078303104"}
+{"event": "rx", "unix_ns": 1795188505050202292, "name": "floor-key-player-in-band", "seq": 39, "offset": 1275, "hex": "3078303120706f6b656420746f20307830306166202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050207964, "seq": 39, "answer": "0x01 poked to 0x00af (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050229092, "name": "floor-key-player-in-band", "seq": 40, "offset": 519, "hex": "504f4b4520307830306230203078353504"}
+{"event": "rx", "unix_ns": 1795188505050236148, "name": "floor-key-player-in-band", "seq": 40, "offset": 1325, "hex": "3078353520706f6b656420746f20307830306230202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050242360, "seq": 40, "answer": "0x55 poked to 0x00b0 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505050263124, "name": "floor-key-player-in-band", "seq": 41, "offset": 536, "hex": "504f4b4520307830306231203078393904"}
+{"event": "rx", "unix_ns": 1795188505050270364, "name": "floor-key-player-in-band", "seq": 41, "offset": 1375, "hex": "3078393920706f6b656420746f20307830306231202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505050276505, "seq": 41, "answer": "0x99 poked to 0x00b1 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505051445494, "name": "floor-key-player-in-band", "seq": 42, "offset": 553, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188505081195896, "name": "floor-key-player-in-band", "seq": 42, "offset": 1425, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505081296657, "seq": 42, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505081369129, "name": "floor-key-player-in-band", "seq": 43, "offset": 564, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188505110922523, "name": "floor-key-player-in-band", "seq": 43, "offset": 1448, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505111027534, "seq": 43, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505111111567, "name": "floor-key-player-in-band", "seq": 44, "offset": 575, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188505139234521, "name": "floor-key-player-in-band", "seq": 44, "offset": 1471, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505139339810, "seq": 44, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505139456370, "name": "floor-key-player-in-band", "seq": 45, "offset": 586, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188505180107509, "name": "floor-key-player-in-band", "seq": 45, "offset": 1494, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505180211250, "seq": 45, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505180338794, "name": "floor-key-player-in-band", "seq": 46, "offset": 597, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f6b657931352f7664656c2f666c6f6f722d6b65792d706c617965722d696e2d62616e642e706e6704"}
+{"event": "rx", "unix_ns": 1795188505180443487, "name": "floor-key-player-in-band", "seq": 46, "offset": 1517, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795188505199862318, "name": "floor-key-player-in-band", "seq": 46, "offset": 1535, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505199983937, "seq": 46, "answer": "saving screenshot\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505220086528, "name": "floor-key-player-in-band", "seq": 47, "offset": 664, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795188505220281999, "name": "floor-key-player-in-band", "seq": 47, "offset": 1558, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505220310021, "seq": 47, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188505220373217, "name": "floor-key-player-in-band", "seq": 48, "offset": 673, "hex": "5045454b203078303065632030783030663504"}
+{"event": "rx", "unix_ns": 1795188505220440321, "name": "floor-key-player-in-band", "seq": 48, "offset": 1614, "hex": "307830306563202852414d29203d20307833660a307830306635202852414d29203d20307830300a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188505220456549, "seq": 48, "answer": "0x00ec (RAM) = 0x3f\n0x00f5 (RAM) = 0x00\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "crowd", "unix_ns": 1795188505221683998, "key_correct": 14, "key_extra": 0, "case": "floor-key-player-in-band", "player": [60, 151], "objects": [{"index": 0, "x": 90, "y": 20, "expected": 28, "visible": 28}, {"index": 1, "x": 30, "y": 48, "expected": 28, "visible": 23}, {"index": 2, "x": 60, "y": 96, "expected": 38, "visible": 38}, {"index": 3, "x": 59, "y": 148, "expected": 20, "visible": 5}, {"index": 4, "x": 120, "y": 118, "expected": 22, "visible": 22}], "white_extra": 8, "yellow_missing": 1, "yellow_extra": 4, "scanlines": 262, "rendered": 63, "assist": 0}
+{"event": "exit", "unix_ns": 1795188505735515402, "name": "floor-key-player-in-band", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 2.4702193810007884, "stderr_hex": ""}
+{"event": "termios", "unix_ns": 1795188505735961091, "name": "floor-key-player-separated-x", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795188505736169822, "name": "floor-key-player-separated-x", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice15/rom/resource-vdel/let-me-out-v02-brown-door-top.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795188505737026292, "pid": 15517}
+{"event": "rx", "unix_ns": 1795188506989776966, "name": "floor-key-player-separated-x", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188506990502184, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795188506990745623, "name": "floor-key-player-separated-x", "seq": 1, "offset": 0, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507010718221, "name": "floor-key-player-separated-x", "seq": 1, "offset": 23, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507010825941, "seq": 1, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507010877187, "name": "floor-key-player-separated-x", "seq": 2, "offset": 11, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507052723493, "name": "floor-key-player-separated-x", "seq": 2, "offset": 46, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507052829280, "seq": 2, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507053008249, "name": "floor-key-player-separated-x", "seq": 3, "offset": 22, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507094625458, "name": "floor-key-player-separated-x", "seq": 3, "offset": 69, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507094829298, "seq": 3, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507094906583, "name": "floor-key-player-separated-x", "seq": 4, "offset": 33, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507124510087, "name": "floor-key-player-separated-x", "seq": 4, "offset": 92, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507124642306, "seq": 4, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507124715892, "name": "floor-key-player-separated-x", "seq": 5, "offset": 44, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507170477813, "name": "floor-key-player-separated-x", "seq": 5, "offset": 115, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507170616782, "seq": 5, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507170672116, "name": "floor-key-player-separated-x", "seq": 6, "offset": 55, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507209075478, "name": "floor-key-player-separated-x", "seq": 6, "offset": 138, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507209178945, "seq": 6, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507209229409, "name": "floor-key-player-separated-x", "seq": 7, "offset": 66, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507239877497, "name": "floor-key-player-separated-x", "seq": 7, "offset": 161, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507240157473, "seq": 7, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507240230280, "name": "floor-key-player-separated-x", "seq": 8, "offset": 77, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507271514257, "name": "floor-key-player-separated-x", "seq": 8, "offset": 184, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507271644380, "seq": 8, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507271794673, "name": "floor-key-player-separated-x", "seq": 9, "offset": 88, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507300010805, "name": "floor-key-player-separated-x", "seq": 9, "offset": 207, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507300114496, "seq": 9, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507300186711, "name": "floor-key-player-separated-x", "seq": 10, "offset": 99, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507328697707, "name": "floor-key-player-separated-x", "seq": 10, "offset": 230, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507328815146, "seq": 10, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507328866677, "name": "floor-key-player-separated-x", "seq": 11, "offset": 110, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507364046795, "name": "floor-key-player-separated-x", "seq": 11, "offset": 253, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507364150525, "seq": 11, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507364226280, "name": "floor-key-player-separated-x", "seq": 12, "offset": 121, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507391917618, "name": "floor-key-player-separated-x", "seq": 12, "offset": 276, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507392024521, "seq": 12, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507392373196, "name": "floor-key-player-separated-x", "seq": 13, "offset": 132, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507423645789, "name": "floor-key-player-separated-x", "seq": 13, "offset": 299, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507423747249, "seq": 13, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507423799087, "name": "floor-key-player-separated-x", "seq": 14, "offset": 143, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507454190779, "name": "floor-key-player-separated-x", "seq": 14, "offset": 322, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507454293562, "seq": 14, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507454392016, "name": "floor-key-player-separated-x", "seq": 15, "offset": 154, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507498098725, "name": "floor-key-player-separated-x", "seq": 15, "offset": 345, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507498212003, "seq": 15, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507498298594, "name": "floor-key-player-separated-x", "seq": 16, "offset": 165, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507543892917, "name": "floor-key-player-separated-x", "seq": 16, "offset": 368, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507543999389, "seq": 16, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507544070180, "name": "floor-key-player-separated-x", "seq": 17, "offset": 176, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507571130148, "name": "floor-key-player-separated-x", "seq": 17, "offset": 391, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507571228670, "seq": 17, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507571278910, "name": "floor-key-player-separated-x", "seq": 18, "offset": 187, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507602264208, "name": "floor-key-player-separated-x", "seq": 18, "offset": 414, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507602522377, "seq": 18, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507602629241, "name": "floor-key-player-separated-x", "seq": 19, "offset": 198, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507637689194, "name": "floor-key-player-separated-x", "seq": 19, "offset": 437, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507637871693, "seq": 19, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507638028522, "name": "floor-key-player-separated-x", "seq": 20, "offset": 209, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507667024679, "name": "floor-key-player-separated-x", "seq": 20, "offset": 460, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507667143680, "seq": 20, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507667239849, "name": "floor-key-player-separated-x", "seq": 21, "offset": 220, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507698613504, "name": "floor-key-player-separated-x", "seq": 21, "offset": 483, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507698713964, "seq": 21, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507698788260, "name": "floor-key-player-separated-x", "seq": 22, "offset": 231, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507725810877, "name": "floor-key-player-separated-x", "seq": 22, "offset": 506, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507725911319, "seq": 22, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507725962445, "name": "floor-key-player-separated-x", "seq": 23, "offset": 242, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507752628363, "name": "floor-key-player-separated-x", "seq": 23, "offset": 529, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507752732056, "seq": 23, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507752787963, "name": "floor-key-player-separated-x", "seq": 24, "offset": 253, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507781234823, "name": "floor-key-player-separated-x", "seq": 24, "offset": 552, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507781392124, "seq": 24, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507781481730, "name": "floor-key-player-separated-x", "seq": 25, "offset": 264, "hex": "504f4b4520307830303830203078313804"}
+{"event": "rx", "unix_ns": 1795188507781555240, "name": "floor-key-player-separated-x", "seq": 25, "offset": 575, "hex": "3078313820706f6b656420746f20307830303830202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507781571050, "seq": 25, "answer": "0x18 poked to 0x0080 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507781643780, "name": "floor-key-player-separated-x", "seq": 26, "offset": 281, "hex": "504f4b4520307830303831203078393704"}
+{"event": "rx", "unix_ns": 1795188507781675005, "name": "floor-key-player-separated-x", "seq": 26, "offset": 625, "hex": "3078393720706f6b656420746f20307830303831202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507781685288, "seq": 26, "answer": "0x97 poked to 0x0081 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507781698424, "name": "floor-key-player-separated-x", "seq": 27, "offset": 298, "hex": "504f4b4520307830306233203078303104"}
+{"event": "rx", "unix_ns": 1795188507781757677, "name": "floor-key-player-separated-x", "seq": 27, "offset": 675, "hex": "3078303120706f6b656420746f20307830306233202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507781767571, "seq": 27, "answer": "0x01 poked to 0x00b3 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507781779246, "name": "floor-key-player-separated-x", "seq": 28, "offset": 315, "hex": "504f4b4520307830303834203078303004"}
+{"event": "rx", "unix_ns": 1795188507781826668, "name": "floor-key-player-separated-x", "seq": 28, "offset": 725, "hex": "3078303020706f6b656420746f20307830303834202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507781871039, "seq": 28, "answer": "0x00 poked to 0x0084 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507781883479, "name": "floor-key-player-separated-x", "seq": 29, "offset": 332, "hex": "504f4b4520307830303931203078356104"}
+{"event": "rx", "unix_ns": 1795188507781998830, "name": "floor-key-player-separated-x", "seq": 29, "offset": 775, "hex": "3078356120706f6b656420746f20307830303931202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782008066, "seq": 29, "answer": "0x5a poked to 0x0091 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782018465, "name": "floor-key-player-separated-x", "seq": 30, "offset": 349, "hex": "504f4b4520307830303932203078316504"}
+{"event": "rx", "unix_ns": 1795188507782053365, "name": "floor-key-player-separated-x", "seq": 30, "offset": 825, "hex": "3078316520706f6b656420746f20307830303932202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782061522, "seq": 30, "answer": "0x1e poked to 0x0092 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782136383, "name": "floor-key-player-separated-x", "seq": 31, "offset": 366, "hex": "504f4b4520307830303933203078336304"}
+{"event": "rx", "unix_ns": 1795188507782149932, "name": "floor-key-player-separated-x", "seq": 31, "offset": 875, "hex": "3078336320706f6b656420746f20307830303933202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782157536, "seq": 31, "answer": "0x3c poked to 0x0093 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782169176, "name": "floor-key-player-separated-x", "seq": 32, "offset": 383, "hex": "504f4b4520307830303934203078336204"}
+{"event": "rx", "unix_ns": 1795188507782204543, "name": "floor-key-player-separated-x", "seq": 32, "offset": 925, "hex": "3078336220706f6b656420746f20307830303934202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782212562, "seq": 32, "answer": "0x3b poked to 0x0094 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782223103, "name": "floor-key-player-separated-x", "seq": 33, "offset": 400, "hex": "504f4b4520307830303935203078373804"}
+{"event": "rx", "unix_ns": 1795188507782258248, "name": "floor-key-player-separated-x", "seq": 33, "offset": 975, "hex": "3078373820706f6b656420746f20307830303935202852414d290a"}
+{"event": "rx", "unix_ns": 1795188507782269413, "name": "floor-key-player-separated-x", "seq": 33, "offset": 1002, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782277936, "seq": 33, "answer": "0x78 poked to 0x0095 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782297101, "name": "floor-key-player-separated-x", "seq": 34, "offset": 417, "hex": "504f4b4520307830303936203078313404"}
+{"event": "rx", "unix_ns": 1795188507782321689, "name": "floor-key-player-separated-x", "seq": 34, "offset": 1025, "hex": "3078313420706f6b656420746f20307830303936202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782331012, "seq": 34, "answer": "0x14 poked to 0x0096 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782348993, "name": "floor-key-player-separated-x", "seq": 35, "offset": 434, "hex": "504f4b4520307830303937203078333004"}
+{"event": "rx", "unix_ns": 1795188507782493459, "name": "floor-key-player-separated-x", "seq": 35, "offset": 1075, "hex": "3078333020706f6b656420746f20307830303937202852414d29"}
+{"event": "rx", "unix_ns": 1795188507782517882, "name": "floor-key-player-separated-x", "seq": 35, "offset": 1101, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782527404, "seq": 35, "answer": "0x30 poked to 0x0097 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782604672, "name": "floor-key-player-separated-x", "seq": 36, "offset": 451, "hex": "504f4b4520307830303938203078363004"}
+{"event": "rx", "unix_ns": 1795188507782661041, "name": "floor-key-player-separated-x", "seq": 36, "offset": 1125, "hex": "3078363020706f6b656420746f20307830303938202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782672203, "seq": 36, "answer": "0x60 poked to 0x0098 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782696080, "name": "floor-key-player-separated-x", "seq": 37, "offset": 468, "hex": "504f4b4520307830303939203078393404"}
+{"event": "rx", "unix_ns": 1795188507782708190, "name": "floor-key-player-separated-x", "seq": 37, "offset": 1175, "hex": "3078393420706f6b656420746f20307830303939202852414d290a"}
+{"event": "rx", "unix_ns": 1795188507782717380, "name": "floor-key-player-separated-x", "seq": 37, "offset": 1202, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782739025, "seq": 37, "answer": "0x94 poked to 0x0099 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782757397, "name": "floor-key-player-separated-x", "seq": 38, "offset": 485, "hex": "504f4b4520307830303961203078373604"}
+{"event": "rx", "unix_ns": 1795188507782767125, "name": "floor-key-player-separated-x", "seq": 38, "offset": 1225, "hex": "3078373620706f6b656420746f20307830303961202852414d29"}
+{"event": "rx", "unix_ns": 1795188507782774808, "name": "floor-key-player-separated-x", "seq": 38, "offset": 1251, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782781082, "seq": 38, "answer": "0x76 poked to 0x009a (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782826779, "name": "floor-key-player-separated-x", "seq": 39, "offset": 502, "hex": "504f4b4520307830306166203078303104"}
+{"event": "rx", "unix_ns": 1795188507782837262, "name": "floor-key-player-separated-x", "seq": 39, "offset": 1275, "hex": "3078303120706f6b656420746f20307830306166202852414d290a"}
+{"event": "rx", "unix_ns": 1795188507782844830, "name": "floor-key-player-separated-x", "seq": 39, "offset": 1302, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782851508, "seq": 39, "answer": "0x01 poked to 0x00af (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782877436, "name": "floor-key-player-separated-x", "seq": 40, "offset": 519, "hex": "504f4b4520307830306230203078353504"}
+{"event": "rx", "unix_ns": 1795188507782887036, "name": "floor-key-player-separated-x", "seq": 40, "offset": 1325, "hex": "3078353520706f6b656420746f20307830306230202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782893817, "seq": 40, "answer": "0x55 poked to 0x00b0 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782910680, "name": "floor-key-player-separated-x", "seq": 41, "offset": 536, "hex": "504f4b4520307830306231203078393904"}
+{"event": "rx", "unix_ns": 1795188507782920353, "name": "floor-key-player-separated-x", "seq": 41, "offset": 1375, "hex": "3078393920706f6b656420746f20307830306231202852414d29"}
+{"event": "rx", "unix_ns": 1795188507782927282, "name": "floor-key-player-separated-x", "seq": 41, "offset": 1401, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507782933324, "seq": 41, "answer": "0x99 poked to 0x00b1 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507782953440, "name": "floor-key-player-separated-x", "seq": 42, "offset": 553, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507811303947, "name": "floor-key-player-separated-x", "seq": 42, "offset": 1425, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507811462450, "seq": 42, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507811571670, "name": "floor-key-player-separated-x", "seq": 43, "offset": 564, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507840947572, "name": "floor-key-player-separated-x", "seq": 43, "offset": 1448, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507841049900, "seq": 43, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507841103323, "name": "floor-key-player-separated-x", "seq": 44, "offset": 575, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507878001815, "name": "floor-key-player-separated-x", "seq": 44, "offset": 1471, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507878105828, "seq": 44, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507878159262, "name": "floor-key-player-separated-x", "seq": 45, "offset": 586, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507920953122, "name": "floor-key-player-separated-x", "seq": 45, "offset": 1494, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507921051035, "seq": 45, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507922872030, "name": "floor-key-player-separated-x", "seq": 46, "offset": 597, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f6b657931352f7664656c2f666c6f6f722d6b65792d706c617965722d7365706172617465642d782e706e6704"}
+{"event": "rx", "unix_ns": 1795188507923461068, "name": "floor-key-player-separated-x", "seq": 46, "offset": 1517, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795188507940018423, "name": "floor-key-player-separated-x", "seq": 46, "offset": 1535, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507940088740, "seq": 46, "answer": "saving screenshot\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507961762369, "name": "floor-key-player-separated-x", "seq": 47, "offset": 668, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795188507962079180, "name": "floor-key-player-separated-x", "seq": 47, "offset": 1558, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a"}
+{"event": "rx", "unix_ns": 1795188507962121628, "name": "floor-key-player-separated-x", "seq": 47, "offset": 1591, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507962144059, "seq": 47, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188507962209096, "name": "floor-key-player-separated-x", "seq": 48, "offset": 677, "hex": "5045454b203078303065632030783030663504"}
+{"event": "rx", "unix_ns": 1795188507962257358, "name": "floor-key-player-separated-x", "seq": 48, "offset": 1614, "hex": "307830306563202852414d29203d20307833660a"}
+{"event": "rx", "unix_ns": 1795188507962432009, "name": "floor-key-player-separated-x", "seq": 48, "offset": 1634, "hex": "307830306635202852414d29203d20307830300a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188507962452391, "seq": 48, "answer": "0x00ec (RAM) = 0x3f\n0x00f5 (RAM) = 0x00\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "crowd", "unix_ns": 1795188507964740978, "key_correct": 14, "key_extra": 0, "case": "floor-key-player-separated-x", "player": [24, 151], "objects": [{"index": 0, "x": 90, "y": 20, "expected": 28, "visible": 28}, {"index": 1, "x": 30, "y": 48, "expected": 28, "visible": 23}, {"index": 2, "x": 60, "y": 96, "expected": 38, "visible": 38}, {"index": 3, "x": 59, "y": 148, "expected": 20, "visible": 14}, {"index": 4, "x": 120, "y": 118, "expected": 22, "visible": 22}], "white_extra": 8, "yellow_missing": 1, "yellow_extra": 5, "scanlines": 262, "rendered": 63, "assist": 0}
+{"event": "exit", "unix_ns": 1795188508481978316, "name": "floor-key-player-separated-x", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 2.745801704000769, "stderr_hex": ""}
+{"event": "termios", "unix_ns": 1795188508482368710, "name": "floor-key-shot-active", "iflag": 0, "oflag": 0, "cflag": 191, "lflag": 2, "cc_hex": "031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event": "launch", "unix_ns": 1795188508482733412, "name": "floor-key-shot-active", "argv": ["/workspace/.g5ar-env01/bin/gopher2600", "HEADLESS", "/workspace/work/slice15/rom/resource-vdel/let-me-out-v02-brown-door-top.bin"], "isolated_home": true}
+{"event": "started", "unix_ns": 1795188508483210976, "pid": 15530}
+{"event": "rx", "unix_ns": 1795188509616709499, "name": "floor-key-shot-active", "seq": 0, "offset": 0, "hex": "5b20246666383020737461202466666636205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509616886759, "seq": 0, "answer": "", "prompt": "[ $ff80 sta $fff6 ] >> "}
+{"event": "tx", "unix_ns": 1795188509616970825, "name": "floor-key-shot-active", "seq": 1, "offset": 0, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509646985551, "name": "floor-key-shot-active", "seq": 1, "offset": 23, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509647090740, "seq": 1, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509647143163, "name": "floor-key-shot-active", "seq": 2, "offset": 11, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509680640643, "name": "floor-key-shot-active", "seq": 2, "offset": 46, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509680744332, "seq": 2, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509680797967, "name": "floor-key-shot-active", "seq": 3, "offset": 22, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509711256674, "name": "floor-key-shot-active", "seq": 3, "offset": 69, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509711362123, "seq": 3, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509711483484, "name": "floor-key-shot-active", "seq": 4, "offset": 33, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509742136272, "name": "floor-key-shot-active", "seq": 4, "offset": 92, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509742240401, "seq": 4, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509742292922, "name": "floor-key-shot-active", "seq": 5, "offset": 44, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509770917570, "name": "floor-key-shot-active", "seq": 5, "offset": 115, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509771021095, "seq": 5, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509771073940, "name": "floor-key-shot-active", "seq": 6, "offset": 55, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509798568306, "name": "floor-key-shot-active", "seq": 6, "offset": 138, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509798705014, "seq": 6, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509798772719, "name": "floor-key-shot-active", "seq": 7, "offset": 66, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509825163930, "name": "floor-key-shot-active", "seq": 7, "offset": 161, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509825264025, "seq": 7, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509825332115, "name": "floor-key-shot-active", "seq": 8, "offset": 77, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509854072841, "name": "floor-key-shot-active", "seq": 8, "offset": 184, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509854157087, "seq": 8, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509854263771, "name": "floor-key-shot-active", "seq": 9, "offset": 88, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509883209745, "name": "floor-key-shot-active", "seq": 9, "offset": 207, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509883290940, "seq": 9, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509883360177, "name": "floor-key-shot-active", "seq": 10, "offset": 99, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509909266045, "name": "floor-key-shot-active", "seq": 10, "offset": 230, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509909374036, "seq": 10, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509909453568, "name": "floor-key-shot-active", "seq": 11, "offset": 110, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509935185990, "name": "floor-key-shot-active", "seq": 11, "offset": 253, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509935271658, "seq": 11, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509935337043, "name": "floor-key-shot-active", "seq": 12, "offset": 121, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509960606266, "name": "floor-key-shot-active", "seq": 12, "offset": 276, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509960681190, "seq": 12, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509960742248, "name": "floor-key-shot-active", "seq": 13, "offset": 132, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188509990180051, "name": "floor-key-shot-active", "seq": 13, "offset": 299, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188509990431032, "seq": 13, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188509990486116, "name": "floor-key-shot-active", "seq": 14, "offset": 143, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510021902389, "name": "floor-key-shot-active", "seq": 14, "offset": 322, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510021992363, "seq": 14, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510022058507, "name": "floor-key-shot-active", "seq": 15, "offset": 154, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510062815324, "name": "floor-key-shot-active", "seq": 15, "offset": 345, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510062976948, "seq": 15, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510063029408, "name": "floor-key-shot-active", "seq": 16, "offset": 165, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510089363016, "name": "floor-key-shot-active", "seq": 16, "offset": 368, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510089456152, "seq": 16, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510089506041, "name": "floor-key-shot-active", "seq": 17, "offset": 176, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510115557564, "name": "floor-key-shot-active", "seq": 17, "offset": 391, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510115673451, "seq": 17, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510115739533, "name": "floor-key-shot-active", "seq": 18, "offset": 187, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510140745167, "name": "floor-key-shot-active", "seq": 18, "offset": 414, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510140809727, "seq": 18, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510140873315, "name": "floor-key-shot-active", "seq": 19, "offset": 198, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510167952595, "name": "floor-key-shot-active", "seq": 19, "offset": 437, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510168034933, "seq": 19, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510168095944, "name": "floor-key-shot-active", "seq": 20, "offset": 209, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510193057193, "name": "floor-key-shot-active", "seq": 20, "offset": 460, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510193143875, "seq": 20, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510193213188, "name": "floor-key-shot-active", "seq": 21, "offset": 220, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510220002890, "name": "floor-key-shot-active", "seq": 21, "offset": 483, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510220087349, "seq": 21, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510220149283, "name": "floor-key-shot-active", "seq": 22, "offset": 231, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510247332252, "name": "floor-key-shot-active", "seq": 22, "offset": 506, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510247430829, "seq": 22, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510247491229, "name": "floor-key-shot-active", "seq": 23, "offset": 242, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510274890858, "name": "floor-key-shot-active", "seq": 23, "offset": 529, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510275153034, "seq": 23, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510275223253, "name": "floor-key-shot-active", "seq": 24, "offset": 253, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510304468582, "name": "floor-key-shot-active", "seq": 24, "offset": 552, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510304554909, "seq": 24, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510304659662, "name": "floor-key-shot-active", "seq": 25, "offset": 264, "hex": "504f4b4520307830303830203078336304"}
+{"event": "rx", "unix_ns": 1795188510304734196, "name": "floor-key-shot-active", "seq": 25, "offset": 575, "hex": "3078336320706f6b656420746f20307830303830202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510304748614, "seq": 25, "answer": "0x3c poked to 0x0080 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510304776185, "name": "floor-key-shot-active", "seq": 26, "offset": 281, "hex": "504f4b4520307830303831203078396604"}
+{"event": "rx", "unix_ns": 1795188510304822721, "name": "floor-key-shot-active", "seq": 26, "offset": 625, "hex": "3078396620706f6b656420746f20307830303831202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510304832067, "seq": 26, "answer": "0x9f poked to 0x0081 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510304854667, "name": "floor-key-shot-active", "seq": 27, "offset": 298, "hex": "504f4b4520307830306233203078303104"}
+{"event": "rx", "unix_ns": 1795188510304892181, "name": "floor-key-shot-active", "seq": 27, "offset": 675, "hex": "3078303120706f6b656420746f20307830306233202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510304902518, "name": "floor-key-shot-active", "seq": 27, "offset": 702, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510304910239, "seq": 27, "answer": "0x01 poked to 0x00b3 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510304943601, "name": "floor-key-shot-active", "seq": 28, "offset": 315, "hex": "504f4b4520307830303834203078303104"}
+{"event": "rx", "unix_ns": 1795188510304975884, "name": "floor-key-shot-active", "seq": 28, "offset": 725, "hex": "3078303120706f6b656420746f20307830303834202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510304984644, "name": "floor-key-shot-active", "seq": 28, "offset": 752, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510304991057, "seq": 28, "answer": "0x01 poked to 0x0084 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305008848, "name": "floor-key-shot-active", "seq": 29, "offset": 332, "hex": "504f4b4520307830303931203078356104"}
+{"event": "rx", "unix_ns": 1795188510305032871, "name": "floor-key-shot-active", "seq": 29, "offset": 775, "hex": "3078356120706f6b656420746f20307830303931202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305042182, "name": "floor-key-shot-active", "seq": 29, "offset": 802, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305048848, "seq": 29, "answer": "0x5a poked to 0x0091 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305065693, "name": "floor-key-shot-active", "seq": 30, "offset": 349, "hex": "504f4b4520307830303932203078316504"}
+{"event": "rx", "unix_ns": 1795188510305091034, "name": "floor-key-shot-active", "seq": 30, "offset": 825, "hex": "3078316520706f6b656420746f20307830303932202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305099805, "name": "floor-key-shot-active", "seq": 30, "offset": 852, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305106227, "seq": 30, "answer": "0x1e poked to 0x0092 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305123653, "name": "floor-key-shot-active", "seq": 31, "offset": 366, "hex": "504f4b4520307830303933203078336304"}
+{"event": "rx", "unix_ns": 1795188510305151049, "name": "floor-key-shot-active", "seq": 31, "offset": 875, "hex": "3078336320706f6b656420746f20307830303933202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305159844, "name": "floor-key-shot-active", "seq": 31, "offset": 902, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305165772, "seq": 31, "answer": "0x3c poked to 0x0093 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305182410, "name": "floor-key-shot-active", "seq": 32, "offset": 383, "hex": "504f4b4520307830303934203078336204"}
+{"event": "rx", "unix_ns": 1795188510305208050, "name": "floor-key-shot-active", "seq": 32, "offset": 925, "hex": "3078336220706f6b656420746f20307830303934202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305216606, "name": "floor-key-shot-active", "seq": 32, "offset": 952, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305222513, "seq": 32, "answer": "0x3b poked to 0x0094 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305239184, "name": "floor-key-shot-active", "seq": 33, "offset": 400, "hex": "504f4b4520307830303935203078373804"}
+{"event": "rx", "unix_ns": 1795188510305262237, "name": "floor-key-shot-active", "seq": 33, "offset": 975, "hex": "3078373820706f6b656420746f20307830303935202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305271009, "name": "floor-key-shot-active", "seq": 33, "offset": 1002, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305276899, "seq": 33, "answer": "0x78 poked to 0x0095 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305293453, "name": "floor-key-shot-active", "seq": 34, "offset": 417, "hex": "504f4b4520307830303936203078313404"}
+{"event": "rx", "unix_ns": 1795188510305317430, "name": "floor-key-shot-active", "seq": 34, "offset": 1025, "hex": "3078313420706f6b656420746f20307830303936202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305327687, "name": "floor-key-shot-active", "seq": 34, "offset": 1052, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305333615, "seq": 34, "answer": "0x14 poked to 0x0096 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305350241, "name": "floor-key-shot-active", "seq": 35, "offset": 434, "hex": "504f4b4520307830303937203078333004"}
+{"event": "rx", "unix_ns": 1795188510305374482, "name": "floor-key-shot-active", "seq": 35, "offset": 1075, "hex": "3078333020706f6b656420746f20307830303937202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305405135, "name": "floor-key-shot-active", "seq": 35, "offset": 1102, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305412913, "seq": 35, "answer": "0x30 poked to 0x0097 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305429666, "name": "floor-key-shot-active", "seq": 36, "offset": 451, "hex": "504f4b4520307830303938203078363004"}
+{"event": "rx", "unix_ns": 1795188510305454758, "name": "floor-key-shot-active", "seq": 36, "offset": 1125, "hex": "3078363020706f6b656420746f20307830303938202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305463828, "name": "floor-key-shot-active", "seq": 36, "offset": 1152, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305469965, "seq": 36, "answer": "0x60 poked to 0x0098 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305486939, "name": "floor-key-shot-active", "seq": 37, "offset": 468, "hex": "504f4b4520307830303939203078393404"}
+{"event": "rx", "unix_ns": 1795188510305510415, "name": "floor-key-shot-active", "seq": 37, "offset": 1175, "hex": "3078393420706f6b656420746f20307830303939202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305518907, "name": "floor-key-shot-active", "seq": 37, "offset": 1202, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305525275, "seq": 37, "answer": "0x94 poked to 0x0099 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305542416, "name": "floor-key-shot-active", "seq": 38, "offset": 485, "hex": "504f4b4520307830303961203078373604"}
+{"event": "rx", "unix_ns": 1795188510305567331, "name": "floor-key-shot-active", "seq": 38, "offset": 1225, "hex": "3078373620706f6b656420746f20307830303961202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305595249, "seq": 38, "answer": "0x76 poked to 0x009a (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305614610, "name": "floor-key-shot-active", "seq": 39, "offset": 502, "hex": "504f4b4520307830303835203078373804"}
+{"event": "rx", "unix_ns": 1795188510305638763, "name": "floor-key-shot-active", "seq": 39, "offset": 1275, "hex": "3078373820706f6b656420746f20307830303835202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305647594, "name": "floor-key-shot-active", "seq": 39, "offset": 1302, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305653591, "seq": 39, "answer": "0x78 poked to 0x0085 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305670657, "name": "floor-key-shot-active", "seq": 40, "offset": 519, "hex": "504f4b4520307830303836203078613004"}
+{"event": "rx", "unix_ns": 1795188510305694422, "name": "floor-key-shot-active", "seq": 40, "offset": 1325, "hex": "3078613020706f6b656420746f20307830303836202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305702870, "name": "floor-key-shot-active", "seq": 40, "offset": 1352, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305709355, "seq": 40, "answer": "0xa0 poked to 0x0086 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305725976, "name": "floor-key-shot-active", "seq": 41, "offset": 536, "hex": "504f4b4520307830306166203078303104"}
+{"event": "rx", "unix_ns": 1795188510305736971, "name": "floor-key-shot-active", "seq": 41, "offset": 1375, "hex": "3078303120706f6b656420746f20307830306166202852414d29"}
+{"event": "rx", "unix_ns": 1795188510305743897, "name": "floor-key-shot-active", "seq": 41, "offset": 1401, "hex": "0a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305749747, "seq": 41, "answer": "0x01 poked to 0x00af (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305766275, "name": "floor-key-shot-active", "seq": 42, "offset": 553, "hex": "504f4b4520307830306230203078353504"}
+{"event": "rx", "unix_ns": 1795188510305889945, "name": "floor-key-shot-active", "seq": 42, "offset": 1425, "hex": "3078353520706f6b656420746f20307830306230202852414d290a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305904752, "seq": 42, "answer": "0x55 poked to 0x00b0 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305926758, "name": "floor-key-shot-active", "seq": 43, "offset": 570, "hex": "504f4b4520307830306231203078393904"}
+{"event": "rx", "unix_ns": 1795188510305951254, "name": "floor-key-shot-active", "seq": 43, "offset": 1475, "hex": "3078393920706f6b656420746f20307830306231202852414d290a"}
+{"event": "rx", "unix_ns": 1795188510305959617, "name": "floor-key-shot-active", "seq": 43, "offset": 1502, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510305965912, "seq": 43, "answer": "0x99 poked to 0x00b1 (RAM)\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510305977519, "name": "floor-key-shot-active", "seq": 44, "offset": 587, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510336629805, "name": "floor-key-shot-active", "seq": 44, "offset": 1525, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510336728927, "seq": 44, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510336793897, "name": "floor-key-shot-active", "seq": 45, "offset": 598, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510367338406, "name": "floor-key-shot-active", "seq": 45, "offset": 1548, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510369521741, "seq": 45, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510369669459, "name": "floor-key-shot-active", "seq": 46, "offset": 609, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510403566403, "name": "floor-key-shot-active", "seq": 46, "offset": 1571, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510403667330, "seq": 46, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510403718417, "name": "floor-key-shot-active", "seq": 47, "offset": 620, "hex": "53544550204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510450746116, "name": "floor-key-shot-active", "seq": 47, "offset": 1594, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510450844669, "seq": 47, "answer": "", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510450985767, "name": "floor-key-shot-active", "seq": 48, "offset": 631, "hex": "53435245454e53484f54202f776f726b73706163652f776f726b2f6b657931352f7664656c2f666c6f6f722d6b65792d73686f742d6163746976652e706e6704"}
+{"event": "rx", "unix_ns": 1795188510451028837, "name": "floor-key-shot-active", "seq": 48, "offset": 1617, "hex": "736176696e672073637265656e73686f740a"}
+{"event": "rx", "unix_ns": 1795188510470873297, "name": "floor-key-shot-active", "seq": 48, "offset": 1635, "hex": "5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510470954232, "seq": 48, "answer": "saving screenshot\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510492251071, "name": "floor-key-shot-active", "seq": 49, "offset": 695, "hex": "5456204652414d4504"}
+{"event": "rx", "unix_ns": 1795188510492406848, "name": "floor-key-shot-active", "seq": 49, "offset": 1658, "hex": "746f703a2032392c20626f74746f6d3a203234322c20746f74616c3a203236320a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510492435363, "seq": 49, "answer": "top: 29, bottom: 242, total: 262\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "tx", "unix_ns": 1795188510492474858, "name": "floor-key-shot-active", "seq": 50, "offset": 704, "hex": "5045454b203078303065632030783030663504"}
+{"event": "rx", "unix_ns": 1795188510492649403, "name": "floor-key-shot-active", "seq": 50, "offset": 1714, "hex": "307830306563202852414d29203d20307833660a307830306635202852414d29203d20307830380a5b202466303431206a7372202466323036205d203e3e20"}
+{"event": "ack", "unix_ns": 1795188510492668955, "seq": 50, "answer": "0x00ec (RAM) = 0x3f\n0x00f5 (RAM) = 0x08\n", "prompt": "[ $f041 jsr $f206 ] >> "}
+{"event": "crowd", "unix_ns": 1795188510495791850, "key_correct": 14, "key_extra": 0, "case": "floor-key-shot-active", "player": [60, 159], "objects": [{"index": 0, "x": 90, "y": 20, "expected": 28, "visible": 28}, {"index": 1, "x": 30, "y": 48, "expected": 28, "visible": 23}, {"index": 2, "x": 60, "y": 96, "expected": 38, "visible": 38}, {"index": 3, "x": 59, "y": 148, "expected": 20, "visible": 16}, {"index": 4, "x": 120, "y": 118, "expected": 22, "visible": 22}], "white_extra": 10, "yellow_missing": 0, "yellow_extra": 2, "scanlines": 262, "rendered": 63, "assist": 8}
+{"event": "exit", "unix_ns": 1795188511011280646, "name": "floor-key-shot-active", "status": -9, "stop": "SIGTERM then SIGKILL", "elapsed_s": 2.5284580460029247, "stderr_hex": ""}

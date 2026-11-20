@@ -1,0 +1,31 @@
+--- a/game.asm
++++ b/game.asm
+@@ -338,7 +338,7 @@
+  IF CAP_KERNEL
+  sta ENAM1
+  ELSE
+- sta ENAM0
++ sta $26                ; release the old GRP1 latch before key graphics
+  ENDIF
+ GlyphP1:
+  lda QueueFirst,x
+@@ -372,7 +372,7 @@
+  IF CAP_KERNEL
+  jmp CapPositionSF
+  ELSE
+- bit BridgeX
++ sta $26                ; VDELP1: the fixture's BridgeX=$2b is odd
+  jmp NpcSetupFirst
+  ds 7,0
+  ENDIF
+--- a/key_bridge.inc
++++ b/key_bridge.inc
+@@ -14,7 +14,7 @@
+  cmp KeyY
+  bne BridgeReject
+  clc
+- adc #2
++ adc #4
+  cmp OrderEnd
+  bcc BridgeReject
+  lda KeyX

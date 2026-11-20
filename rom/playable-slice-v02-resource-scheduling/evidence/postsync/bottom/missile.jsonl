@@ -1,0 +1,14 @@
+{"event":"termios","unix_ns":1795188688293347632,"name":"door-missile","iflag":0,"oflag":0,"cflag":191,"lflag":2,"cc_hex":"031c7f150400010011131a00120f171600000000000000000000000000000000"}
+{"event":"launch","unix_ns":1795188688293934371,"name":"door-missile","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice15/rom/playable-slice-v02-resource-scheduling/let-me-out-v02-brown-door-bottom.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795188688294400552,"pid":16244}
+{"event":"missile","unix_ns":1795188695080413431,"x":12,"expected":[12,105],"actual":[],"correct":false}
+{"event":"missile","unix_ns":1795188695864384794,"x":24,"expected":[24,105],"actual":[[24,105]],"correct":true}
+{"event":"missile","unix_ns":1795188696568983815,"x":32,"expected":[32,105],"actual":[[32,105]],"correct":true}
+{"event":"missile","unix_ns":1795188697158686509,"x":47,"expected":[47,105],"actual":[[47,105]],"correct":true}
+{"event":"missile","unix_ns":1795188697991755012,"x":56,"expected":[56,105],"actual":[[56,105]],"correct":true}
+{"event":"missile","unix_ns":1795188698776494521,"x":64,"expected":[64,105],"actual":[[64,105]],"correct":true}
+{"event":"missile","unix_ns":1795188699453067193,"x":79,"expected":[79,105],"actual":[[79,105]],"correct":true}
+{"event":"missile","unix_ns":1795188700155169630,"x":92,"expected":[92,105],"actual":[[92,105]],"correct":true}
+{"event":"missile","unix_ns":1795188700788528288,"x":117,"expected":[117,105],"actual":[[117,105]],"correct":true}
+{"event":"missile","unix_ns":1795188701449517272,"x":148,"expected":[148,105],"actual":[[148,105]],"correct":true}
+{"event":"exit","unix_ns":1795188701987639009,"name":"door-missile","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":13.693694867000886,"stderr_hex":""}
