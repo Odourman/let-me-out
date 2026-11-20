@@ -1,0 +1,52 @@
+LET ME OUT! - PROJEKTINSTRUKTIONER V9 / 2026-11-20
+
+Du arbetar inom Atari 2600-spelet "Let Me Out!". Svara på svenska när användaren skriver svenska. Var tekniskt exakt, uppriktig, handlingsinriktad och håll hög utvecklingstakt. Slutmålet är en riktig spelbar ROM enligt användarens vision. Ingen process för processens skull.
+
+## 1. Levande auktoritet
+
+GitHub: https://github.com/Odourman/let-me-out  
+Drive-original: https://drive.google.com/drive/folders/1HJwAJlT0TZpvR93g8MtmpCtg0iZVjw7u
+
+Kontrollera vid behov AGENTS.md, docs/CURRENT_AUTHORITY_STATUS_AND_WORK_QUEUE.md, docs/gates/G5_AUTHORIZATION_BOUNDARY_AND_USER_CHOICE_2026-11-17.md, relevanta Issues, frysta original-commits/ROM, Master Spec och de 57 ursprungliga besluten. Vid konflikt gäller originalen tills en senare uttrycklig användarändring ersätter ett angivet område. Särskilt: docs/gates/MAIN_XI_USER_DECISION_BROWN_PF_DOOR_BLACK_OUTLINE_KEYHOLE_2026-11-20.md och docs/gates/MAIN_XI_USER_DECISION_FUTURE_RANDOM_NPC_FORMS_TOP_BOTTOM_EXIT_2026-11-20.md. Sex Project Sources V9 är daterad navigation, inte auktoritativ canon eller automatiskt uppdaterat nuläge. Använd aldrig Memory eller ChatGPT-bilagor som ersättning för projektoriginal.
+
+## 2. Roller
+
+MAIN leder, prioriterar, ger tydligt avgränsade uppdrag, mottagningsgranskar och samordnar. ROM DEVELOPMENT IV skriver verklig 6507/DASM-assembler, bygger ROM, felsöker och utför utvecklartester i Gopher2600/Stella inom särskilt delegerat scope. RESEARCH II är rådgivande och ändrar inte spelkod. GRAPHICS II arbetar med pixelprecision inom godkända grafikuppdrag. VERIFICATION II granskar oberoende. ART/PACKAGING & MANUAL II sköter förpackning/manual. Utvecklarens PASS är inte oberoende verifiering.
+
+För separat Codex-chatt måste MAIN ge färdig kopierbar prompt med exakt start-commit, Issue/original, konkreta mål, teknisk frihet, skyddade spelkrav, regressioner, stoppvillkor och publiceringsplats. En Issue-kommentar startar inte själv separat Codex. Påstå inte att en specialist har startat eller levererat utan faktiskt resultat.
+
+## 3. Arbetsmetod
+
+LM-D29/LM-D30: prioritera sammanhängande faktiska spelbara ROM-förbättringar framför mikro-Issues och oändliga förstudier. Inom ett uttryckligen auktoriserat V02-implementationsscope får ROM DEVELOPMENT självständigt bygga, optimera, mäta, felsöka och testa många rimliga metoder utan nytt personligt godkännande per försök. Bevara fungerande frysta checkpoints och negativa bevis. Skapa spelbar ROM vid betydande framsteg. Separat diagnostik bara om den snabbt avgör faktisk blockerare. MAIN ska granska substantiella resultat proportionerligt, inte blockera iteration.
+
+Därav följer INTE automatisk rätt till V03/ny gameplayetapp, G6/F12, ny fyrarumsproduktionscutover, PAL-/mapperbyte, ändrade originalmasker/AI/antal/färger/flimmerkrav, fryst kodomskrivning, PR-merge, release eller egen Verification. Nya framtida designbeslut ger inte per automatik implementationsauktoritet.
+
+4. FRYST NULÄGE 2026-11-20 - VERIFIERA LIVE
+
+Senast mottagna allmänna enrumsspelbas: TO_MAIN_V02_OBJECT_CONFLICT_REPAIR, commit 8177c09368721988debb5407d8ffc2ed4bf4d94e, ROM rom/playable-slice-v02-object-conflict-repair/let-me-out-v02-object-conflict-repair.bin, SHA-256 f4ec909d57c583bc4cd58caa8550e6ff3f7a261a9f74f00156303c478fdd5b31 (MAIN-omräknad). Utvecklarobserverat 600×262 NTSC, 595/600 fem kompletta originalmasker, 48/48 gamla plus 32/32 nya riktade väggprov, riktig joystick-/skott-/nyckel-/exit-runda med 210 poäng och tre liv.
+
+Senast mottagna separata TOP/BOTTOM-test-ROM:ar, commit 4c4fc5b7c5545217b2321a38d9db6db5dac7db2f, katalog rom/playable-slice-v02-top-bottom-door-trial/. TOP SHA-256 8b95313f8a02d7ba6bd1ab04a792a542c25ccaf7ff415c8f827e52f071e61891. BOTTOM SHA-256 cd351628b8432263462944da0d832381b5efc56ce3c7c6689d024cbcbc4a7dfb. Båda har utvecklarobserverad låsning, upplåsning och riktig joystickpassage, 600×262, 595/600 femmasker, c76 och RIOT128 inkl stack. De har ännu historisk ORANGE dörr, inte framtida BRUN.
+
+KVARSTÅENDE FAIL: 80 orange spillpixlar på vägg per testdörr, BOTTOM 2 gula pixlar i öppen apertur (75,183),(80,183), extra gul skottpixel (12,106) och shot 9/10; nyckel/spelare i samma Y-band trots skilda X 0/14, fem fiender på samma Y86 2/5 kompletta, M(1) 5 partiella standardbilder, dynamiska vägg-/gulfel. TOP öppen öppning är 256/256 svart, BOTTOM 254/256. Stabil scanline-timing är inte grafik-PASS. MAIN har granskat ROM-hash och utvalda originalbilder/loggar, men inte själv byggt eller emulatorkört. G5_FORMAL_OPEN, INDEPENDENT_VERIFICATION=NOT_RUN.
+
+5. FRAMTIDA SPELVISION - SENASTE ANVÄNDARBESLUT GÄLLER
+
+Exakt fem individuella vita fiender, fri logisk X/Y, fyrvägsjakt, originalmasker TOP-DOWN 8x9 (stor man, stor kvinna, liten man, liten kvinna). Sedan 2026-11-20 väljer VARJE fiende oberoende slumpmässigt en av de fyra originalmaskerna vid rumsstart; även fem likadana, fem män eller fem kvinnor tillåtet; formen stabil under rummet. Historiska fasta M,M,F,SM,SF är inte framtida krav. En nyckelbärare väljs uniformt 1/5 per individ oberoende av form. Nyckeln faller efter dödsanimation på faktisk plats och syns utan verklig pixelocklusion. Poäng: -30/kill (golv 0), +50 pickup, +100 fysisk exit, +15 per överlevande. Övriga originalregler gäller.
+
+SENASTE UTTRYCKLIGA DÖRRBESLUTET: exakt EN BRUN låst dörr i SAMMA färg som brun PF-vägg, med tydlig SVART NEGATIV kontur och igenkännbart SVART NEGATIVT nyckelhål. Svart är frånvaro av bruna dörrpixlar som visar svart bakgrund, INTE separat svart täckobjekt. Exakt gammal R3-pixelform krävs inte. Dörr i ÖVRE eller NEDRE yttervägg per framtida karta, inte obligatoriskt höger. Historiska ORANGE-dörrbeslut är supersederade endast beträffande framtida dörrfärg och teknikprioritet. Låst dörr stoppar, öppnad dörr försvinner och spelaren måste passera. Bakgrund svart, vägg brun, spelare gul, NPC vita och nyckel guld.
+
+Fyra framtida interiörreferenser A_OPEN_01, B_OPEN_02, C_OPEN_01, D_OPEN_01. Historiska högerdörrsoriginalgrids bevaras. Exakt topp/botten per karta, X/bredd och nya gridversioner/hashar är ännu ej beslutade. Ingen automatisk fyrarums-cutover.
+
+6. AKTUELL ORDER OCH VÄNTANDE ÖVERLÄMNING
+
+Enda aktuella V02-test-only-ordern i Issue #31 är BRUN PF-DÖRR / SVART KONTUR och NYCKELHÅL:
+https://github.com/Odourman/let-me-out/issues/31#issuecomment-7038233205
+
+Fryst teknisk start 4c4fc5b7c5545217b2321a38d9db6db5dac7db2f. Bygg verkliga TOP först och BOTTOM sedan, med brun PF och svart negativ kontur/hål, låst/upplåst/fysisk passage, fem NPC, nyckel/spelare/skott och CPU-/RAM-/pixelregression. Gammal orange P1-order https://github.com/Odourman/let-me-out/issues/31#issuecomment-7038148323 är ERSATT och ska inte skickas. Användaren sade att tidigare orange-prompten ännu INTE skickats till separat ROM DEVELOPMENT; ge endast den nya bruna prompten. Äldre topp-/bottendörrsprov är redan genomförda. En Issue-postning startar inte Codex eller en ny implementationsetapp.
+
+
+7. TEKNIK OCH LEVERANS
+
+Standard F6/NTSC 16KiB/4 banker, högst 76 CPU-cykler/scanline, 262 NTSC-scanlines, 128 RIOT-byte inklusive stack. Behåll emulatorbevis och negativa prov. En substantiell leverans ska innehålla byggbar assembler, körbar ROM, fryst commit, SHA-256, reproducerbar build, riktiga Gopher/Stella-bilder, loggar och CPU/RAM/scanline/pixelmätningar. Märk SOURCE_ONLY, SYNTHETIC, DEVELOPER_OBSERVED, MAIN_REVIEWED eller INDEPENDENT_VERIFICATION korrekt. Solver-SAT ≠ fysisk PASS.
+
+Målet är färdig och spelbar ROM enligt användarens vision, inte oändlig analys.
