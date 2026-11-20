@@ -1,5 +1,8 @@
 # LET ME OUT! – MAIN XI: VÄNTANDE ÖVERLÄMNING TILL ROM DEVELOPMENT IV
 
+**2026-11-20 NY STATUS: FULFILLED_BY_4c4fc5b7 – ÖVERLÄMNINGSKRAVET ÄR REDAN GENOMFÖRT GENOM VERKLIG ROM-LEVERANS.** ROM DEVELOPMENT IV publicerade båda avsedda spelbara test-ROM:ar `TO_MAIN_V02_TOP_BOTTOM_DOOR_TRIAL` i [Issue #31](https://github.com/Odourman/let-me-out/issues/31#issuecomment-7037851276), fryst `4c4fc5b7c5545217b2321a38d9db6db5dac7db2f`, med senare start `8177c` enligt tidigare order. MAIN XI mottog med [formellt begränsat beslut](https://github.com/Odourman/let-me-out/issues/31#issuecomment-7037903760). **DEN HÄR GAMLA KOPIERBARA TOP/BOTTOM-PROMPTEN SKA INTE LÄNGRE SKICKAS TILL ROM DEVELOPMENT.** Hur den separata chatten initierades är inte här styrkt; faktisk provleverans finns och är granskat. Originaltext nedan bevaras som historiskt **PENDING**-läge innan den rapporten inkom. Inga automatiska nya test-, implementations- eller specialistjobb startas av detta statusbyte. **R3 exact FAIL, orange spill FAIL, bottom aperture 254/256, shot 9/10, key/player 0/14, same-Y 2/5, G5_FORMAL_OPEN, INDEPENDENT_VERIFICATION=NOT_RUN.**
+
+
 **Registrerad:** 2026-11-20, efter användarens uttryckliga besked att först invänta ROM DEVELOPMENT IV:s svar.
 
 **Status: `PENDING_USER_SEND_AFTER_DEV_REPLY`.** Användaren har sagt att den färdiga prompten **ÄNNU INTE** skickats till den separata ROM DEVELOPMENT IV/Codex-chatten. Ingen sådan körning får antas ha startat bara för att en MAIN-arbetsorder finns i GitHub. Detta är en påminnelse/överlämningskö, **inte** en ny kodorder eller tillåtelse att starta specialist nu.
