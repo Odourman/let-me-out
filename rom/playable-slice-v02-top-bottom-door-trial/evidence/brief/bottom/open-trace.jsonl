@@ -1,0 +1,16 @@
+{"event":"launch","unix_ns":1795172382566551252,"name":"bottom","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice10/rom/playable-slice-v02-top-bottom-door-trial/let-me-out-v02-door-bottom.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795172382567091673,"pid":5129}
+{"event":"tia_write","unix_ns":1795172385459737406,"instruction":"STA COLUPF","label":"DoorOrange","tv":"FR=0025 SL=212 CL=055","cpu":"PC=f0d8 A=26 X=05 Y=f8 SP=ff SR=sv-BdIzc"}
+{"event":"tia_write","unix_ns":1795172385460135385,"instruction":"STA COLUPF","label":"DoorBrown","tv":"FR=0025 SL=212 CL=097","cpu":"PC=f0e0 A=26 X=05 Y=f8 SP=ff SR=sv-BdIzc"}
+{"event":"tia_write","unix_ns":1795172385460434954,"instruction":"STA WSYNC","label":"NextRoom","tv":"FR=0025 SL=212 CL=151","cpu":"PC=f090 A=00 X=05 Y=f9 SP=ff SR=Sv-BdIzc"}
+{"event":"tia_write","unix_ns":1795172385461400223,"instruction":"STA WSYNC","label":"LastBorderLine","tv":"FR=0025 SL=219 CL=145","cpu":"PC=f0ee A=00 X=05 Y=00 SP=ff SR=sv-BdIZc"}
+{"event":"phase","unix_ns":1795172385465162442,"label":"Frame","tv":"FR=0025 SL=257 CL=-50","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385471716700,"label":"BlankWait","tv":"FR=0026 SL=031 CL=109","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385472937359,"label":"Top","tv":"FR=0026 SL=039 CL=-47","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385474996965,"label":"Room","tv":"FR=0026 SL=044 CL=002","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385512080442,"label":"Bottom","tv":"FR=0026 SL=220 CL=-02","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385516017961,"label":"GameBank","tv":"FR=0026 SL=228 CL=037","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385533847599,"label":"Overscan","tv":"FR=0026 SL=241 CL=049","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385536678263,"label":"Frame","tv":"FR=0026 SL=257 CL=-44","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"stack","unix_ns":1795172385586132632,"tv":"FR=0027 SL=231 CL=016","cpu":"PC=f356 A=0d X=08 Y=52 SP=f7 SR=sv-BdIzc"}
+{"event":"exit","unix_ns":1795172386102555525,"name":"bottom","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":3.5358653769999364,"stderr_hex":""}

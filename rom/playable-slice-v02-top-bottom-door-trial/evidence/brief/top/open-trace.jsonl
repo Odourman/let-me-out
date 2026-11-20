@@ -1,0 +1,15 @@
+{"event":"launch","unix_ns":1795172382568465578,"name":"top","argv":["/workspace/.g5ar-env01/bin/gopher2600","HEADLESS","/workspace/work/slice10/rom/playable-slice-v02-top-bottom-door-trial/let-me-out-v02-door-top.bin"],"isolated_home":true}
+{"event":"started","unix_ns":1795172382569089524,"pid":5130}
+{"event":"tia_write","unix_ns":1795172385415625162,"instruction":"STA COLUPF","label":"DoorOrange","tv":"FR=0025 SL=044 CL=055","cpu":"PC=f0d8 A=26 X=00 Y=50 SP=ff SR=sv-BdIzc"}
+{"event":"tia_write","unix_ns":1795172385416131347,"instruction":"STA COLUPF","label":"DoorBrown","tv":"FR=0025 SL=044 CL=097","cpu":"PC=f0e0 A=26 X=00 Y=50 SP=ff SR=sv-BdIzc"}
+{"event":"tia_write","unix_ns":1795172385416553129,"instruction":"STA WSYNC","label":"NextRoom","tv":"FR=0025 SL=044 CL=151","cpu":"PC=f090 A=00 X=00 Y=51 SP=ff SR=sv-BdIzc"}
+{"event":"phase","unix_ns":1795172385456084873,"label":"Frame","tv":"FR=0025 SL=257 CL=-50","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385466129043,"label":"BlankWait","tv":"FR=0026 SL=031 CL=109","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385469336122,"label":"Top","tv":"FR=0026 SL=039 CL=-47","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385475178324,"label":"Room","tv":"FR=0026 SL=045 CL=-68","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385535077987,"label":"Bottom","tv":"FR=0026 SL=220 CL=-11","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385536919819,"label":"GameBank","tv":"FR=0026 SL=228 CL=037","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385538670616,"label":"Overscan","tv":"FR=0026 SL=241 CL=040","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"phase","unix_ns":1795172385540405968,"label":"Frame","tv":"FR=0026 SL=257 CL=-53","frame":"top: 29, bottom: 242, total: 262"}
+{"event":"stack","unix_ns":1795172385575416122,"tv":"FR=0027 SL=231 CL=016","cpu":"PC=f352 A=0d X=08 Y=52 SP=f7 SR=sv-BdIzc"}
+{"event":"exit","unix_ns":1795172386101200507,"name":"top","status":-9,"stop":"SIGTERM then SIGKILL","elapsed_s":3.532586657000138,"stderr_hex":""}

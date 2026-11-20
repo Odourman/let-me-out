@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/work/slice10/rom/playable-slice-v02-top-bottom-door-trial/scenarios.py", line 236, in <module>
+    run(s,a.case,a.out.resolve(),a.key_lifetime,a.pixel_stride or (10 if a.pixel_probe else 0))
+  File "/workspace/work/slice10/rom/playable-slice-v02-top-bottom-door-trial/scenarios.py", line 150, in run
+    assert total==262
+           ^^^^^^^^^^
+AssertionError
