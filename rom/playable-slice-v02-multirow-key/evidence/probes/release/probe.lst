@@ -1,0 +1,725 @@
+------- FILE multirow.asm LEVEL 1 PASS 2
+      1  10000 ????						; Isolated beam experiment. Both yellow glyphs are rendered through P0.
+      2  10000 ????						; No production kernel, controller state or collision code is modified.
+      3  10000 ????				       processor	6502
+      4  f000					      ORG	$f000
+      5  f000				   Reset
+      6  f000		       78		      sei
+      7  f001		       d8		      cld
+      8  f002		       a2 ff		      ldx	#$ff
+      9  f004		       9a		      txs
+     10  f005		       a9 00		      lda	#0
+     11  f007		       a2 2c		      ldx	#$2c
+     12  f009				   Clear
+     13  f009		       95 00		      sta	0,x
+     14  f00b		       ca		      dex
+     15  f00c		       10 fb		      bpl	Clear
+     16  f00e		       a9 1e		      lda	#$1e
+     17  f010		       85 06		      sta	$06
+     18  f012		       a9 0e		      lda	#$0e
+     19  f014		       85 07		      sta	$07
+     20  f016		       a9 26		      lda	#$26
+     21  f018		       85 08		      sta	$08
+     22  f01a		       a9 01		      lda	#1
+     23  f01c		       85 0a		      sta	$0a
+     24  f01e		       a9 10		      lda	#$10
+     25  f020		       85 0d		      sta	$0d
+     26  f022				   Frame
+     27  f022		       a9 02		      lda	#2
+     28  f024		       85 01		      sta	$01
+     29  f026		       85 00		      sta	$00
+     30  f028					      REPEAT	3
+     31  f028		       85 02		      sta	$02
+     30  f028					      REPEND
+     31  f02a		       85 02		      sta	$02
+     30  f02a					      REPEND
+     31  f02c		       85 02		      sta	$02
+     32  f02e					      REPEND
+     33  f02e		       a9 00		      lda	#0
+     34  f030		       85 00		      sta	$00
+     35  f032		       a9 15		      lda	#FIRST_X-3
+     36  f034		       a2 00		      ldx	#0
+     37  f036		       20 26 f3 	      jsr	Position
+     38  f039		       a9 38		      lda	#56
+     39  f03b		       a2 01		      ldx	#1
+     40  f03d		       20 26 f3 	      jsr	Position
+     41  f040		       a9 76		      lda	#118
+     42  f042		       a2 02		      ldx	#2
+     43  f044		       20 26 f3 	      jsr	Position
+     44  f047		       85 02		      sta	$02
+     45  f049		       85 2a		      sta	$2a
+     46  f04b		       85 02		      sta	$02
+     47  f04d		       85 2b		      sta	$2b
+     48  f04f					      REPEAT	31
+     49  f04f		       85 02		      sta	$02
+     48  f04f					      REPEND
+     49  f051		       85 02		      sta	$02
+     48  f051					      REPEND
+     49  f053		       85 02		      sta	$02
+     48  f053					      REPEND
+     49  f055		       85 02		      sta	$02
+     48  f055					      REPEND
+     49  f057		       85 02		      sta	$02
+     48  f057					      REPEND
+     49  f059		       85 02		      sta	$02
+     48  f059					      REPEND
+     49  f05b		       85 02		      sta	$02
+     48  f05b					      REPEND
+     49  f05d		       85 02		      sta	$02
+     48  f05d					      REPEND
+     49  f05f		       85 02		      sta	$02
+     48  f05f					      REPEND
+     49  f061		       85 02		      sta	$02
+     48  f061					      REPEND
+     49  f063		       85 02		      sta	$02
+     48  f063					      REPEND
+     49  f065		       85 02		      sta	$02
+     48  f065					      REPEND
+     49  f067		       85 02		      sta	$02
+     48  f067					      REPEND
+     49  f069		       85 02		      sta	$02
+     48  f069					      REPEND
+     49  f06b		       85 02		      sta	$02
+     48  f06b					      REPEND
+     49  f06d		       85 02		      sta	$02
+     48  f06d					      REPEND
+     49  f06f		       85 02		      sta	$02
+     48  f06f					      REPEND
+     49  f071		       85 02		      sta	$02
+     48  f071					      REPEND
+     49  f073		       85 02		      sta	$02
+     48  f073					      REPEND
+     49  f075		       85 02		      sta	$02
+     48  f075					      REPEND
+     49  f077		       85 02		      sta	$02
+     48  f077					      REPEND
+     49  f079		       85 02		      sta	$02
+     48  f079					      REPEND
+     49  f07b		       85 02		      sta	$02
+     48  f07b					      REPEND
+     49  f07d		       85 02		      sta	$02
+     48  f07d					      REPEND
+     49  f07f		       85 02		      sta	$02
+     48  f07f					      REPEND
+     49  f081		       85 02		      sta	$02
+     48  f081					      REPEND
+     49  f083		       85 02		      sta	$02
+     48  f083					      REPEND
+     49  f085		       85 02		      sta	$02
+     48  f085					      REPEND
+     49  f087		       85 02		      sta	$02
+     48  f087					      REPEND
+     49  f089		       85 02		      sta	$02
+     48  f089					      REPEND
+     49  f08b		       85 02		      sta	$02
+     50  f08d					      REPEND
+     51  f08d		       85 02		      sta	$02
+     52  f08f		       a9 00		      lda	#0
+     53  f091		       85 01		      sta	$01
+     54  f093					      REPEAT	32
+     55  f093		       85 02		      sta	$02
+     54  f093					      REPEND
+     55  f095		       85 02		      sta	$02
+     54  f095					      REPEND
+     55  f097		       85 02		      sta	$02
+     54  f097					      REPEND
+     55  f099		       85 02		      sta	$02
+     54  f099					      REPEND
+     55  f09b		       85 02		      sta	$02
+     54  f09b					      REPEND
+     55  f09d		       85 02		      sta	$02
+     54  f09d					      REPEND
+     55  f09f		       85 02		      sta	$02
+     54  f09f					      REPEND
+     55  f0a1		       85 02		      sta	$02
+     54  f0a1					      REPEND
+     55  f0a3		       85 02		      sta	$02
+     54  f0a3					      REPEND
+     55  f0a5		       85 02		      sta	$02
+     54  f0a5					      REPEND
+     55  f0a7		       85 02		      sta	$02
+     54  f0a7					      REPEND
+     55  f0a9		       85 02		      sta	$02
+     54  f0a9					      REPEND
+     55  f0ab		       85 02		      sta	$02
+     54  f0ab					      REPEND
+     55  f0ad		       85 02		      sta	$02
+     54  f0ad					      REPEND
+     55  f0af		       85 02		      sta	$02
+     54  f0af					      REPEND
+     55  f0b1		       85 02		      sta	$02
+     54  f0b1					      REPEND
+     55  f0b3		       85 02		      sta	$02
+     54  f0b3					      REPEND
+     55  f0b5		       85 02		      sta	$02
+     54  f0b5					      REPEND
+     55  f0b7		       85 02		      sta	$02
+     54  f0b7					      REPEND
+     55  f0b9		       85 02		      sta	$02
+     54  f0b9					      REPEND
+     55  f0bb		       85 02		      sta	$02
+     54  f0bb					      REPEND
+     55  f0bd		       85 02		      sta	$02
+     54  f0bd					      REPEND
+     55  f0bf		       85 02		      sta	$02
+     54  f0bf					      REPEND
+     55  f0c1		       85 02		      sta	$02
+     54  f0c1					      REPEND
+     55  f0c3		       85 02		      sta	$02
+     54  f0c3					      REPEND
+     55  f0c5		       85 02		      sta	$02
+     54  f0c5					      REPEND
+     55  f0c7		       85 02		      sta	$02
+     54  f0c7					      REPEND
+     55  f0c9		       85 02		      sta	$02
+     54  f0c9					      REPEND
+     55  f0cb		       85 02		      sta	$02
+     54  f0cb					      REPEND
+     55  f0cd		       85 02		      sta	$02
+     54  f0cd					      REPEND
+     55  f0cf		       85 02		      sta	$02
+     54  f0cf					      REPEND
+     55  f0d1		       85 02		      sta	$02
+     56  f0d3					      REPEND
+------- FILE rows.inc LEVEL 2 PASS 2
+      0  f0d3					      include	"rows.inc"
+      1  f0d3				   Row0
+      2  f0d3		       85 02		      sta	$02
+      3  f0d5		       a9 00		      lda	#0
+      4  f0d7		       85 1d		      sta	$1d
+      5  f0d9		       a9 fc		      lda	#252
+      6  f0db		       85 1b		      sta	$1b
+      7  f0dd		       a0 70		      ldy	#112
+      8  f0df		       a2 01		      ldx	#1
+      9  f0e1		       86 04		      stx	$04
+     10  f0e3		       ea		      nop
+     11  f0e4		       ea		      nop
+     12  f0e5				   FirstResp0
+     13  f0e5		       85 10		      sta	$10
+     14  f0e7		       a9 7e		      lda	#126
+     15  f0e9		       85 1c		      sta	$1c
+     16  f0eb		       24 80		      bit	$80
+     17  f0ed		       ea		      nop
+     18  f0ee		       ea		      nop
+     19  f0ef		       ea		      nop
+     20  f0f0				   SecondGrp0
+     21  f0f0		       84 1b		      sty	$1b
+     22  f0f2				   SecondResp0
+     23  f0f2		       85 10		      sta	$10
+     24  f0f4		       24 80		      bit	$80
+     25  f0f6		       ea		      nop
+     26  f0f7		       ea		      nop
+     27  f0f8		       ea		      nop
+     28  f0f9		       a9 00		      lda	#0
+     29  f0fb		       85 04		      sta	$04
+     30  f0fd				   Row1
+     31  f0fd		       85 02		      sta	$02
+     32  f0ff		       a9 00		      lda	#0
+     33  f101		       85 1d		      sta	$1d
+     34  f103		       a9 3c		      lda	#60
+     35  f105		       85 1b		      sta	$1b
+     36  f107		       a0 50		      ldy	#80
+     37  f109		       a2 01		      ldx	#1
+     38  f10b		       86 04		      stx	$04
+     39  f10d		       ea		      nop
+     40  f10e		       ea		      nop
+     41  f10f				   FirstResp1
+     42  f10f		       85 10		      sta	$10
+     43  f111		       a9 18		      lda	#24
+     44  f113		       85 1c		      sta	$1c
+     45  f115		       24 80		      bit	$80
+     46  f117		       ea		      nop
+     47  f118		       ea		      nop
+     48  f119		       ea		      nop
+     49  f11a				   SecondGrp1
+     50  f11a		       84 1b		      sty	$1b
+     51  f11c				   SecondResp1
+     52  f11c		       85 10		      sta	$10
+     53  f11e		       24 80		      bit	$80
+     54  f120		       ea		      nop
+     55  f121		       ea		      nop
+     56  f122		       ea		      nop
+     57  f123		       a9 00		      lda	#0
+     58  f125		       85 04		      sta	$04
+     59  f127				   Row2
+     60  f127		       85 02		      sta	$02
+     61  f129		       a9 02		      lda	#2
+     62  f12b		       85 1d		      sta	$1d
+     63  f12d		       a9 78		      lda	#120
+     64  f12f		       85 1b		      sta	$1b
+     65  f131		       a0 7e		      ldy	#126
+     66  f133		       a2 01		      ldx	#1
+     67  f135		       86 04		      stx	$04
+     68  f137		       ea		      nop
+     69  f138		       ea		      nop
+     70  f139				   FirstResp2
+     71  f139		       85 10		      sta	$10
+     72  f13b		       a9 24		      lda	#36
+     73  f13d		       85 1c		      sta	$1c
+     74  f13f		       24 80		      bit	$80
+     75  f141		       ea		      nop
+     76  f142		       ea		      nop
+     77  f143		       ea		      nop
+     78  f144				   SecondGrp2
+     79  f144		       84 1b		      sty	$1b
+     80  f146				   SecondResp2
+     81  f146		       85 10		      sta	$10
+     82  f148		       24 80		      bit	$80
+     83  f14a		       ea		      nop
+     84  f14b		       ea		      nop
+     85  f14c		       ea		      nop
+     86  f14d		       a9 00		      lda	#0
+     87  f14f		       85 04		      sta	$04
+     88  f151				   Row3
+     89  f151		       85 02		      sta	$02
+     90  f153		       a9 00		      lda	#0
+     91  f155		       85 1d		      sta	$1d
+     92  f157		       a9 30		      lda	#48
+     93  f159		       85 1b		      sta	$1b
+     94  f15b		       a0 24		      ldy	#36
+     95  f15d		       a2 01		      ldx	#1
+     96  f15f		       86 04		      stx	$04
+     97  f161		       ea		      nop
+     98  f162		       ea		      nop
+     99  f163				   FirstResp3
+    100  f163		       85 10		      sta	$10
+    101  f165		       a9 00		      lda	#0
+    102  f167		       85 1c		      sta	$1c
+    103  f169		       24 80		      bit	$80
+    104  f16b		       ea		      nop
+    105  f16c		       ea		      nop
+    106  f16d		       ea		      nop
+    107  f16e				   SecondGrp3
+    108  f16e		       84 1b		      sty	$1b
+    109  f170				   SecondResp3
+    110  f170		       85 10		      sta	$10
+    111  f172		       24 80		      bit	$80
+    112  f174		       ea		      nop
+    113  f175		       ea		      nop
+    114  f176		       ea		      nop
+    115  f177		       a9 00		      lda	#0
+    116  f179		       85 04		      sta	$04
+    117  f17b				   Row4
+    118  f17b		       85 02		      sta	$02
+    119  f17d		       a9 00		      lda	#0
+    120  f17f		       85 1d		      sta	$1d
+    121  f181		       a9 48		      lda	#72
+    122  f183		       85 1b		      sta	$1b
+    123  f185		       a0 04		      ldy	#4
+    124  f187		       a2 01		      ldx	#1
+    125  f189		       86 04		      stx	$04
+    126  f18b		       ea		      nop
+    127  f18c		       ea		      nop
+    128  f18d				   FirstResp4
+    129  f18d		       85 10		      sta	$10
+    130  f18f		       a9 00		      lda	#0
+    131  f191		       85 1c		      sta	$1c
+    132  f193		       24 80		      bit	$80
+    133  f195		       ea		      nop
+    134  f196		       ea		      nop
+    135  f197		       ea		      nop
+    136  f198				   SecondGrp4
+    137  f198		       84 1b		      sty	$1b
+    138  f19a				   SecondResp4
+    139  f19a		       85 10		      sta	$10
+    140  f19c		       24 80		      bit	$80
+    141  f19e		       ea		      nop
+    142  f19f		       ea		      nop
+    143  f1a0		       ea		      nop
+    144  f1a1		       a9 00		      lda	#0
+    145  f1a3		       85 04		      sta	$04
+    146  f1a5		       85 02		      sta	$02
+------- FILE multirow.asm
+     58  f1a7		       a9 00		      lda	#0
+     59  f1a9		       85 1b		      sta	$1b
+     60  f1ab		       85 1c		      sta	$1c
+     61  f1ad		       85 04		      sta	$04
+     62  f1af					      REPEAT	154
+     63  f1af		       85 02		      sta	$02
+     62  f1af					      REPEND
+     63  f1b1		       85 02		      sta	$02
+     62  f1b1					      REPEND
+     63  f1b3		       85 02		      sta	$02
+     62  f1b3					      REPEND
+     63  f1b5		       85 02		      sta	$02
+     62  f1b5					      REPEND
+     63  f1b7		       85 02		      sta	$02
+     62  f1b7					      REPEND
+     63  f1b9		       85 02		      sta	$02
+     62  f1b9					      REPEND
+     63  f1bb		       85 02		      sta	$02
+     62  f1bb					      REPEND
+     63  f1bd		       85 02		      sta	$02
+     62  f1bd					      REPEND
+     63  f1bf		       85 02		      sta	$02
+     62  f1bf					      REPEND
+     63  f1c1		       85 02		      sta	$02
+     62  f1c1					      REPEND
+     63  f1c3		       85 02		      sta	$02
+     62  f1c3					      REPEND
+     63  f1c5		       85 02		      sta	$02
+     62  f1c5					      REPEND
+     63  f1c7		       85 02		      sta	$02
+     62  f1c7					      REPEND
+     63  f1c9		       85 02		      sta	$02
+     62  f1c9					      REPEND
+     63  f1cb		       85 02		      sta	$02
+     62  f1cb					      REPEND
+     63  f1cd		       85 02		      sta	$02
+     62  f1cd					      REPEND
+     63  f1cf		       85 02		      sta	$02
+     62  f1cf					      REPEND
+     63  f1d1		       85 02		      sta	$02
+     62  f1d1					      REPEND
+     63  f1d3		       85 02		      sta	$02
+     62  f1d3					      REPEND
+     63  f1d5		       85 02		      sta	$02
+     62  f1d5					      REPEND
+     63  f1d7		       85 02		      sta	$02
+     62  f1d7					      REPEND
+     63  f1d9		       85 02		      sta	$02
+     62  f1d9					      REPEND
+     63  f1db		       85 02		      sta	$02
+     62  f1db					      REPEND
+     63  f1dd		       85 02		      sta	$02
+     62  f1dd					      REPEND
+     63  f1df		       85 02		      sta	$02
+     62  f1df					      REPEND
+     63  f1e1		       85 02		      sta	$02
+     62  f1e1					      REPEND
+     63  f1e3		       85 02		      sta	$02
+     62  f1e3					      REPEND
+     63  f1e5		       85 02		      sta	$02
+     62  f1e5					      REPEND
+     63  f1e7		       85 02		      sta	$02
+     62  f1e7					      REPEND
+     63  f1e9		       85 02		      sta	$02
+     62  f1e9					      REPEND
+     63  f1eb		       85 02		      sta	$02
+     62  f1eb					      REPEND
+     63  f1ed		       85 02		      sta	$02
+     62  f1ed					      REPEND
+     63  f1ef		       85 02		      sta	$02
+     62  f1ef					      REPEND
+     63  f1f1		       85 02		      sta	$02
+     62  f1f1					      REPEND
+     63  f1f3		       85 02		      sta	$02
+     62  f1f3					      REPEND
+     63  f1f5		       85 02		      sta	$02
+     62  f1f5					      REPEND
+     63  f1f7		       85 02		      sta	$02
+     62  f1f7					      REPEND
+     63  f1f9		       85 02		      sta	$02
+     62  f1f9					      REPEND
+     63  f1fb		       85 02		      sta	$02
+     62  f1fb					      REPEND
+     63  f1fd		       85 02		      sta	$02
+     62  f1fd					      REPEND
+     63  f1ff		       85 02		      sta	$02
+     62  f1ff					      REPEND
+     63  f201		       85 02		      sta	$02
+     62  f201					      REPEND
+     63  f203		       85 02		      sta	$02
+     62  f203					      REPEND
+     63  f205		       85 02		      sta	$02
+     62  f205					      REPEND
+     63  f207		       85 02		      sta	$02
+     62  f207					      REPEND
+     63  f209		       85 02		      sta	$02
+     62  f209					      REPEND
+     63  f20b		       85 02		      sta	$02
+     62  f20b					      REPEND
+     63  f20d		       85 02		      sta	$02
+     62  f20d					      REPEND
+     63  f20f		       85 02		      sta	$02
+     62  f20f					      REPEND
+     63  f211		       85 02		      sta	$02
+     62  f211					      REPEND
+     63  f213		       85 02		      sta	$02
+     62  f213					      REPEND
+     63  f215		       85 02		      sta	$02
+     62  f215					      REPEND
+     63  f217		       85 02		      sta	$02
+     62  f217					      REPEND
+     63  f219		       85 02		      sta	$02
+     62  f219					      REPEND
+     63  f21b		       85 02		      sta	$02
+     62  f21b					      REPEND
+     63  f21d		       85 02		      sta	$02
+     62  f21d					      REPEND
+     63  f21f		       85 02		      sta	$02
+     62  f21f					      REPEND
+     63  f221		       85 02		      sta	$02
+     62  f221					      REPEND
+     63  f223		       85 02		      sta	$02
+     62  f223					      REPEND
+     63  f225		       85 02		      sta	$02
+     62  f225					      REPEND
+     63  f227		       85 02		      sta	$02
+     62  f227					      REPEND
+     63  f229		       85 02		      sta	$02
+     62  f229					      REPEND
+     63  f22b		       85 02		      sta	$02
+     62  f22b					      REPEND
+     63  f22d		       85 02		      sta	$02
+     62  f22d					      REPEND
+     63  f22f		       85 02		      sta	$02
+     62  f22f					      REPEND
+     63  f231		       85 02		      sta	$02
+     62  f231					      REPEND
+     63  f233		       85 02		      sta	$02
+     62  f233					      REPEND
+     63  f235		       85 02		      sta	$02
+     62  f235					      REPEND
+     63  f237		       85 02		      sta	$02
+     62  f237					      REPEND
+     63  f239		       85 02		      sta	$02
+     62  f239					      REPEND
+     63  f23b		       85 02		      sta	$02
+     62  f23b					      REPEND
+     63  f23d		       85 02		      sta	$02
+     62  f23d					      REPEND
+     63  f23f		       85 02		      sta	$02
+     62  f23f					      REPEND
+     63  f241		       85 02		      sta	$02
+     62  f241					      REPEND
+     63  f243		       85 02		      sta	$02
+     62  f243					      REPEND
+     63  f245		       85 02		      sta	$02
+     62  f245					      REPEND
+     63  f247		       85 02		      sta	$02
+     62  f247					      REPEND
+     63  f249		       85 02		      sta	$02
+     62  f249					      REPEND
+     63  f24b		       85 02		      sta	$02
+     62  f24b					      REPEND
+     63  f24d		       85 02		      sta	$02
+     62  f24d					      REPEND
+     63  f24f		       85 02		      sta	$02
+     62  f24f					      REPEND
+     63  f251		       85 02		      sta	$02
+     62  f251					      REPEND
+     63  f253		       85 02		      sta	$02
+     62  f253					      REPEND
+     63  f255		       85 02		      sta	$02
+     62  f255					      REPEND
+     63  f257		       85 02		      sta	$02
+     62  f257					      REPEND
+     63  f259		       85 02		      sta	$02
+     62  f259					      REPEND
+     63  f25b		       85 02		      sta	$02
+     62  f25b					      REPEND
+     63  f25d		       85 02		      sta	$02
+     62  f25d					      REPEND
+     63  f25f		       85 02		      sta	$02
+     62  f25f					      REPEND
+     63  f261		       85 02		      sta	$02
+     62  f261					      REPEND
+     63  f263		       85 02		      sta	$02
+     62  f263					      REPEND
+     63  f265		       85 02		      sta	$02
+     62  f265					      REPEND
+     63  f267		       85 02		      sta	$02
+     62  f267					      REPEND
+     63  f269		       85 02		      sta	$02
+     62  f269					      REPEND
+     63  f26b		       85 02		      sta	$02
+     62  f26b					      REPEND
+     63  f26d		       85 02		      sta	$02
+     62  f26d					      REPEND
+     63  f26f		       85 02		      sta	$02
+     62  f26f					      REPEND
+     63  f271		       85 02		      sta	$02
+     62  f271					      REPEND
+     63  f273		       85 02		      sta	$02
+     62  f273					      REPEND
+     63  f275		       85 02		      sta	$02
+     62  f275					      REPEND
+     63  f277		       85 02		      sta	$02
+     62  f277					      REPEND
+     63  f279		       85 02		      sta	$02
+     62  f279					      REPEND
+     63  f27b		       85 02		      sta	$02
+     62  f27b					      REPEND
+     63  f27d		       85 02		      sta	$02
+     62  f27d					      REPEND
+     63  f27f		       85 02		      sta	$02
+     62  f27f					      REPEND
+     63  f281		       85 02		      sta	$02
+     62  f281					      REPEND
+     63  f283		       85 02		      sta	$02
+     62  f283					      REPEND
+     63  f285		       85 02		      sta	$02
+     62  f285					      REPEND
+     63  f287		       85 02		      sta	$02
+     62  f287					      REPEND
+     63  f289		       85 02		      sta	$02
+     62  f289					      REPEND
+     63  f28b		       85 02		      sta	$02
+     62  f28b					      REPEND
+     63  f28d		       85 02		      sta	$02
+     62  f28d					      REPEND
+     63  f28f		       85 02		      sta	$02
+     62  f28f					      REPEND
+     63  f291		       85 02		      sta	$02
+     62  f291					      REPEND
+     63  f293		       85 02		      sta	$02
+     62  f293					      REPEND
+     63  f295		       85 02		      sta	$02
+     62  f295					      REPEND
+     63  f297		       85 02		      sta	$02
+     62  f297					      REPEND
+     63  f299		       85 02		      sta	$02
+     62  f299					      REPEND
+     63  f29b		       85 02		      sta	$02
+     62  f29b					      REPEND
+     63  f29d		       85 02		      sta	$02
+     62  f29d					      REPEND
+     63  f29f		       85 02		      sta	$02
+     62  f29f					      REPEND
+     63  f2a1		       85 02		      sta	$02
+     62  f2a1					      REPEND
+     63  f2a3		       85 02		      sta	$02
+     62  f2a3					      REPEND
+     63  f2a5		       85 02		      sta	$02
+     62  f2a5					      REPEND
+     63  f2a7		       85 02		      sta	$02
+     62  f2a7					      REPEND
+     63  f2a9		       85 02		      sta	$02
+     62  f2a9					      REPEND
+     63  f2ab		       85 02		      sta	$02
+     62  f2ab					      REPEND
+     63  f2ad		       85 02		      sta	$02
+     62  f2ad					      REPEND
+     63  f2af		       85 02		      sta	$02
+     62  f2af					      REPEND
+     63  f2b1		       85 02		      sta	$02
+     62  f2b1					      REPEND
+     63  f2b3		       85 02		      sta	$02
+     62  f2b3					      REPEND
+     63  f2b5		       85 02		      sta	$02
+     62  f2b5					      REPEND
+     63  f2b7		       85 02		      sta	$02
+     62  f2b7					      REPEND
+     63  f2b9		       85 02		      sta	$02
+     62  f2b9					      REPEND
+     63  f2bb		       85 02		      sta	$02
+     62  f2bb					      REPEND
+     63  f2bd		       85 02		      sta	$02
+     62  f2bd					      REPEND
+     63  f2bf		       85 02		      sta	$02
+     62  f2bf					      REPEND
+     63  f2c1		       85 02		      sta	$02
+     62  f2c1					      REPEND
+     63  f2c3		       85 02		      sta	$02
+     62  f2c3					      REPEND
+     63  f2c5		       85 02		      sta	$02
+     62  f2c5					      REPEND
+     63  f2c7		       85 02		      sta	$02
+     62  f2c7					      REPEND
+     63  f2c9		       85 02		      sta	$02
+     62  f2c9					      REPEND
+     63  f2cb		       85 02		      sta	$02
+     62  f2cb					      REPEND
+     63  f2cd		       85 02		      sta	$02
+     62  f2cd					      REPEND
+     63  f2cf		       85 02		      sta	$02
+     62  f2cf					      REPEND
+     63  f2d1		       85 02		      sta	$02
+     62  f2d1					      REPEND
+     63  f2d3		       85 02		      sta	$02
+     62  f2d3					      REPEND
+     63  f2d5		       85 02		      sta	$02
+     62  f2d5					      REPEND
+     63  f2d7		       85 02		      sta	$02
+     62  f2d7					      REPEND
+     63  f2d9		       85 02		      sta	$02
+     62  f2d9					      REPEND
+     63  f2db		       85 02		      sta	$02
+     62  f2db					      REPEND
+     63  f2dd		       85 02		      sta	$02
+     62  f2dd					      REPEND
+     63  f2df		       85 02		      sta	$02
+     62  f2df					      REPEND
+     63  f2e1		       85 02		      sta	$02
+     64  f2e3					      REPEND
+     65  f2e3		       a9 02		      lda	#2
+     66  f2e5		       85 01		      sta	$01
+     67  f2e7					      REPEAT	30
+     68  f2e7		       85 02		      sta	$02
+     67  f2e7					      REPEND
+     68  f2e9		       85 02		      sta	$02
+     67  f2e9					      REPEND
+     68  f2eb		       85 02		      sta	$02
+     67  f2eb					      REPEND
+     68  f2ed		       85 02		      sta	$02
+     67  f2ed					      REPEND
+     68  f2ef		       85 02		      sta	$02
+     67  f2ef					      REPEND
+     68  f2f1		       85 02		      sta	$02
+     67  f2f1					      REPEND
+     68  f2f3		       85 02		      sta	$02
+     67  f2f3					      REPEND
+     68  f2f5		       85 02		      sta	$02
+     67  f2f5					      REPEND
+     68  f2f7		       85 02		      sta	$02
+     67  f2f7					      REPEND
+     68  f2f9		       85 02		      sta	$02
+     67  f2f9					      REPEND
+     68  f2fb		       85 02		      sta	$02
+     67  f2fb					      REPEND
+     68  f2fd		       85 02		      sta	$02
+     67  f2fd					      REPEND
+     68  f2ff		       85 02		      sta	$02
+     67  f2ff					      REPEND
+     68  f301		       85 02		      sta	$02
+     67  f301					      REPEND
+     68  f303		       85 02		      sta	$02
+     67  f303					      REPEND
+     68  f305		       85 02		      sta	$02
+     67  f305					      REPEND
+     68  f307		       85 02		      sta	$02
+     67  f307					      REPEND
+     68  f309		       85 02		      sta	$02
+     67  f309					      REPEND
+     68  f30b		       85 02		      sta	$02
+     67  f30b					      REPEND
+     68  f30d		       85 02		      sta	$02
+     67  f30d					      REPEND
+     68  f30f		       85 02		      sta	$02
+     67  f30f					      REPEND
+     68  f311		       85 02		      sta	$02
+     67  f311					      REPEND
+     68  f313		       85 02		      sta	$02
+     67  f313					      REPEND
+     68  f315		       85 02		      sta	$02
+     67  f315					      REPEND
+     68  f317		       85 02		      sta	$02
+     67  f317					      REPEND
+     68  f319		       85 02		      sta	$02
+     67  f319					      REPEND
+     68  f31b		       85 02		      sta	$02
+     67  f31b					      REPEND
+     68  f31d		       85 02		      sta	$02
+     67  f31d					      REPEND
+     68  f31f		       85 02		      sta	$02
+     67  f31f					      REPEND
+     68  f321		       85 02		      sta	$02
+     69  f323					      REPEND
+     70  f323		       4c 22 f0 	      jmp	Frame
+     71  f326				   Position
+     72  f326		       85 02		      sta	$02
+     73  f328		       38		      sec
+     74  f329				   Coarse
+     75  f329		       e9 0f		      sbc	#15
+     76  f32b		       b0 fc		      bcs	Coarse
+     77  f32d		       49 07		      eor	#7
+     78  f32f		       0a		      asl
+     79  f330		       0a		      asl
+     80  f331		       0a		      asl
+     81  f332		       0a		      asl
+     82  f333		       95 20		      sta	$20,x
+     83  f335		       95 10		      sta	$10,x
+     84  f337		       60		      rts
+     85  fffa					      ORG	$fffa
+     86  fffa		       00 f0 00 f0*	      word.w	Reset,Reset,Reset
