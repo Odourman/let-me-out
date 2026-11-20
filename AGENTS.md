@@ -1,5 +1,8 @@
 # Let Me Out! — Codex working guide
 
+**MAIN XI 2026-11-20 synchronization note (dated navigation, live status controls):** User explicitly approved **five individually random appearances chosen independently per room from the four unaltered original 8×9 masks** (old fixed visible mix M,M,F,SM,SF superseded) and **the sole future orange locked door with transparent black cut-out in the TOP or BOTTOM outer wall depending on the map** (old mandatory RIGHT side superseded for future design). Actual new top/bottom map geometry and per-map side are NOT selected; original frozen room source grids are historical, not to be overwritten. [Explicit user decision](docs/gates/MAIN_XI_USER_DECISION_FUTURE_RANDOM_NPC_FORMS_TOP_BOTTOM_EXIT_2026-11-20.md), [current MAIN review of playable checkpoint 8177c](https://github.com/Odourman/let-me-out/issues/31#issuecomment-7036737753), [test-only top/bottom V02 order](https://github.com/Odourman/let-me-out/issues/31#issuecomment-7036700643), and [current dated Project Sources V8](docs/project_sources/CURRENT_V8/README.md). **Preserve old X71 and 8177c ROMs as frozen regressions. User requests WAIT for ROM DEVELOPMENT response; do not initiate new Codex/ROM work merely due to docs sync.** G5_FORMAL_OPEN, INDEPENDENT_VERIFICATION=NOT_RUN. Later live GitHub status/Issues supersede this dated note.
+
+
 Scope: **only** the Atari 2600 game in `Odourman/let-me-out`. This file is a short workflow guide, **not** an implementation authorization, game canon, test acceptance, or replacement for original project sources.
 
 ## Read current authority before acting
