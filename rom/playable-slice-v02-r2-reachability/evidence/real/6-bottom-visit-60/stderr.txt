@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 208, in <module>
+    main()
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 201, in main
+    route(s,args.out.resolve(),args.edge,args.blink,args.pickup,args.visit)
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 127, in route
+    assert snap(s,8,"visit-y",out)[:2]==[visit,151]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 208, in <module>
+    parser.add_argument("rom",type=Path)
+    ^^^^^^
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 201, in main
+    assert peek(s,[0xb2,0xb3])==[0,0]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 154, in route
+    life=peek(s,range(0xa0,0xa5))
+^^^^^^^^^^^^
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 64, in walk
+    assert snap(s,count,f"route-{i:02}",out)[:2]==[x,y]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

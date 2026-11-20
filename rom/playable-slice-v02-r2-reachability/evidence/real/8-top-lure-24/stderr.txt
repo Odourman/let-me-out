@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 230, in <module>
+    main()
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 223, in main
+    route(s,args.out.resolve(),args.edge,args.blink,args.pickup,args.visit,args.lure)
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 175, in route
+    walk(s,out,edge)
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/door_trial.py", line 64, in walk
+    assert snap(s,count,f"route-{i:02}",out)[:2]==[x,y]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/slice17/rom/playable-slice-v02-r2-reachability/scenarios.py", line 30, in snap
+    assert set(totals)=={262},(label,totals)
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: ('route-01', [262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 289, 125, 316, 283, 278, 274, 271, 269, 267, 266, 265, 264, 263, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262, 262])
